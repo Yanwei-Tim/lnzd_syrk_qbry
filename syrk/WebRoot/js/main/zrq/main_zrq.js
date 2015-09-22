@@ -19,6 +19,7 @@ $(function(){
 	MainZrq.initNews();//加载通知公告模块
 	MainZrq.initWaitingWork();//加载待办事项模块
 	MainZrq.initRemindDiv();//加载工作提醒模块
+	MainZrq.getInitMenu();
 	$(window).resize(function() {
 		var widthDiv = $("#db").width();
 		var widthDiv1 = $("#yw").width();
@@ -815,4 +816,122 @@ function queryMsg(bs) {
     } else{
        menu_open(bs, "/forward/message|sysMessage2");
     }
+}
+
+/**
+ *获得菜单项
+ * @param {Number} y
+ * @param {Number} m
+ * @param {Number} d
+ * @returns {Number}
+ */
+MainZrq.getInitMenu = function(){
+	var fajax =new FrameTools.Ajax(contextPath+"/ztTheme/ZrqMenu",MainZrq.initmenus_back);
+	fajax.send();
+}
+MainZrq.initmenus_back = function(json){
+	var list = json.list;
+	console.info(list);
+	var htmlStr = "";
+	
+	if(list!=null&&list.length>0){
+		htmlStr += " <table border=\"0\" cellpadding=\"0\" cellspacing=\"15\" style=\"width: 100%;height: 100%;\" >";
+		for(var i=0;i<list.length&&i<7;i++){
+			var menuname = list[i].menuname;
+			if(menuname.length>4){
+				menuname= list[i].menuname.substring(2);
+			}
+			if(i%2==0){
+				htmlStr += "<tr>";
+			}
+			if(list[i].menuopenmode =='2'){
+				htmlStr +="<td style=\"background:#0b7fd9 ;\" class=\"menuCssTd\" onclick=\"menu_open('"+list[i].menuurl+"')\">"+menuname+"";
+				htmlStr +="</td>";
+			}else{
+				htmlStr +="<td style=\"background:#0b7fd9;\" class=\"menuCssTd\" onclick=\"menu_open('"+list[i].menuname+"','"+list[i].menuurl+"')\">"+menuname+"";
+				htmlStr +="</td>";
+			}
+			
+			
+			if(i%2==1){
+				htmlStr += "</tr>";		
+			}
+		}
+		
+		htmlStr +="<td style=\"background: #fff;\" class=\"menuCssTd\" onclick=\"menuConfig()\"><span style=\"color: #000;	font-size: 100px;\"  >+</span>";
+		htmlStr +="</td>";
+		htmlStr +="</tr>";
+		htmlStr +=" </table>";
+	}else{
+		htmlStr += " <table border=\"0\" cellpadding=\"0\" cellspacing=\"20\" style=\"width: 50%;height: 20%;\" >";
+		htmlStr += "<tr>";
+		htmlStr +="<td  style=\"background: #fff;width:100px;height:100px;cursor:pointer;\"onclick=\"menuConfig()\"><span style=\"color: #000;	font-size: 100px;text-align: center; float:left;\"  >+</span>";
+		htmlStr +="</td>";
+		htmlStr +="</tr>";
+		htmlStr +=" </table>";
+	}
+	
+	
+	
+	
+/*	htmlStr += "<tr>";
+	htmlStr +="<td style=\"background: #336666;\" class=\"menuCssTd\" onclick=\"MainZrq.menuOpenSyrk()\">登记人员";
+	htmlStr +="</td>";
+	htmlStr +="<td style=\"background: #6633CC;\" class=\"menuCssTd\">实有人口";
+	htmlStr +="</td>";
+	htmlStr += "</tr>";*/
+	
+	$("#zrqmenu").html(htmlStr);
+		
+}
+
+/**
+ * 配置菜单项
+ * @param {Number} y
+ * @param {Number} m
+ * @param {Number} d
+ * @returns {Number}
+ */
+function menuConfig(){
+	var editUrl = contextPath+"/ztTheme/DhPz";
+   	openWindowNoSave(false, null, this.Window, 
+   		null, 
+   		{
+   		title: '配置导航菜单',
+   		url: editUrl,
+   		maximizable: false,
+   		width: 850,
+   		height: 400
+   		}, 
+   		'', null
+   	);
+  }  
+function openWindowNoSave(isCache, windowID, parentWindow, paramArray, dataOptions) {
+	if (!dataOptions.url) {
+		topMessagerAlert('', '弹出层缺少 url 参数！');
+		return;
+	}
+	if (!dataOptions.title) {
+		dataOptions.title = '';
+	}
+	dataOptions.title = '&nbsp;' + dataOptions.title;
+	if (!dataOptions.width) {
+		dataOptions.width = 850;
+	}
+	if (!dataOptions.height) {
+		dataOptions.height = 420;
+	}
+	if (!windowID) {
+		var myTime = (new Date()).getTime();
+		windowID = "win_" + myTime;
+	}
+	dataOptions.collapsible = dataOptions.collapsible ? dataOptions.collapsible : false;
+	dataOptions.minimizable = dataOptions.minimizable ? dataOptions.minimizable : false;
+	dataOptions.maximizable = dataOptions.maximizable ? dataOptions.maximizable : false; // 是否最大化图标
+	dataOptions.closable = true;
+	dataOptions.closed = false;   
+	dataOptions.cache = false;
+	dataOptions.inline = false;	
+	dataOptions.modal = true;
+	openWindow(isCache, windowID, dataOptions.url, paramArray, dataOptions);
 }

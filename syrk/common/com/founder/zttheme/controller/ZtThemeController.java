@@ -35,7 +35,7 @@ public class ZtThemeController extends BaseController {
 	private ZtThemeService ztThemeService;
 
 	/**
-	 * 主题展示
+	 * 涓婚灞曠ず
 	 * 
 	 * @param fwid
 	 * @param fwdzid
@@ -57,7 +57,7 @@ public class ZtThemeController extends BaseController {
 	}
 
 	/**
-	 * 导航菜单
+	 * 瀵艰埅鑿滃崟
 	 * 
 	 * @return
 	 */
@@ -78,9 +78,27 @@ public class ZtThemeController extends BaseController {
 		mv.addObject("userId1", userId1);
 		return mv;
 	}
+	
+	@RequestMapping(value = "/ZrqMenu" ,method = RequestMethod.POST)
+	public @ResponseBody Map<String,Object> ZrqMenu(){
+		Map<String,Object> resMap = new HashMap<String,Object>();
+		Map<String, String> map = new HashMap<String, String>();
+		OrgUser orgUser = new OrgUser();
+		SessionBean sessionBean = getSessionBean();
+		Long userId = sessionBean.getUserPk();
+		String userId1 = sessionBean.getUserId();
+		map.put("systemid", "100");
+		map.put("userid", userId.toString());
+		map.put("usertype", sessionBean.getUserType());
+		List<ZtysVo> list = ztThemeService.queryByDhZs(map, sessionBean);
+		resMap.put("list", list);
+		resMap.put("userId", userId);
+		resMap.put("userId1", userId1);
+		return resMap;
+	}
 
 	/**
-	 * 导航配置
+	 * 瀵艰埅閰嶇疆
 	 * 
 	 * @return
 	 */
@@ -112,10 +130,10 @@ public class ZtThemeController extends BaseController {
 	}
 
 	/**
-	 * 保存用户配置菜单
+	 * 淇濆瓨鐢ㄦ埛閰嶇疆鑿滃崟
 	 * 
-	 * @param userid用户ID
-	 * @param menuids菜单Id
+	 * @param userid鐢ㄦ埛ID
+	 * @param menuids鑿滃崟Id
 	 * @return
 	 */
 	@RequestMapping(value = "/saveMenuPz", method = RequestMethod.POST)
@@ -144,12 +162,12 @@ public class ZtThemeController extends BaseController {
 			}
 
 		}
-		returnValue = "配置成功！";
+		returnValue = "閰嶇疆鎴愬姛锛�";
 		return returnValue;
 	}
 
 	/**
-	 * 顶部图标
+	 * 椤堕儴鍥炬爣
 	 * 
 	 * @param fwid
 	 * @param fwdzid

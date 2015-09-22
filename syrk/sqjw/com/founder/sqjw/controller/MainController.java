@@ -39,13 +39,15 @@ public class MainController extends BaseController{
 	 */
 	@RequestMapping(value = "/queryPcsXqgkTj",method = RequestMethod.POST)
 	public @ResponseBody EasyUIPage queryPcsXqgkTj(EasyUIPage page,@RequestParam(value = "rows",required=false) Integer rows,MainVo entity){
+		String orgcode = getSessionBean().getUserOrgCode();
+		orgcode = orgcode.substring(0,8);
+		entity.setOrgcode(orgcode);
 		EasyUIPage pageui = mainService.queryPcsXqgkTj(page, entity);
 		List<?> pages = pageui.getRows();
 		int syrknum = 0, bzdznum = 0, sydwnum = 0, syfwnum = 0;
 		for (int i = 0; i < pages.size(); i++) {
 			MainVo mainvo = (MainVo) pages.get(i);
 			String orgCode = mainvo.getOrgcode();
-			System.out.println(orgCode.substring(7, orgCode.length()));
 			if (!orgCode.substring(8, orgCode.length()).equals("0000")) {
 				syrknum = syrknum + Integer.parseInt(mainvo.getSyrknum());
 				bzdznum = bzdznum + Integer.parseInt(mainvo.getBzdznum());
@@ -177,9 +179,16 @@ public class MainController extends BaseController{
 	List<CountMapVO> queryListMapzdrk(String zdrybm,String orgid) {
 		List<CountMapVO> listVo = null;
 		Map<String, String> param = new HashMap<String, String>();
-		param.put("orgCode", orgid);
-		param.put("zdrydm", zdrybm);
-		listVo = mainService.queryListzdry(param);
+		if(orgid.substring(8,orgid.length()).equals("0000")){
+			param.put("orgCode", orgid.substring(0, 8));
+			param.put("zdrydm", zdrybm);
+			listVo = mainService.queryListszzdry(param);
+		}else{
+			param.put("orgCode", orgid);
+			param.put("zdrydm", zdrybm);
+			listVo = mainService.queryListzdry(param);
+		}
+		
 		return listVo;
 	
 		
@@ -203,8 +212,9 @@ public class MainController extends BaseController{
 	    if(orgid.substring(8, orgid.length()).equals("0000")){
 	    	paramMap.put("lx", 14);
 	    	paramMap.put("orgCode", orgid);
+	    	paramMap.put("orgszCode", orgid.substring(0, 8));
 	    	//所长统计
-	    	resMap = mainService.querypcstj(paramMap);
+	    	resMap = mainService.querypcsSztj(paramMap);
 	    	
 	    }else{
 	    	//责任区统计

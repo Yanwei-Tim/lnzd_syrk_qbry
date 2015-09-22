@@ -12,6 +12,15 @@ public class MainVo {
 	private String sydwnum;
 	private String syfwnum;
 	private String bzdznum;
+	private String bjzbz;
+
+	public String getBjzbz() {
+		return bjzbz;
+	}
+
+	public void setBjzbz(String bjzbz) {
+		this.bjzbz = bjzbz;
+	}
 
 	public String getOrgcode() {
 		return orgcode;

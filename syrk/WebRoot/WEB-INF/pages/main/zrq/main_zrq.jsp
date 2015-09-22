@@ -86,33 +86,7 @@
    		   <div class="titleCss">&nbsp;接处警<td class="titleBg"><a href="javascript:void(0);" onclick="menu_open('动态警情', '/forward/jcj|dtjjMessage');" title="更多">>></a></td></div>
 		   <div class="messageCss" id="newDiv"></div>
    		</div>
-   		<div class="rightCss1">
-   		   <table border="0" cellpadding="0" cellspacing="15" style="width: 100%;height: 100%;">
-   		   		<tr>
-   		   			<td style="background: #336666;" class="menuCssTd" onclick="MainZrq.menuOpenSyrk()">登记人员
-   		   			</td>
-   		   			<td style="background: #6633CC;" class="menuCssTd">实有人口
-   		   			</td>
-   		   		</tr>
-   		   		<tr>
-   		   			<td style="background: darkcyan;" class="menuCssTd">开具证明
-   		   			</td>
-   		   			<td style="background: #009966;" class="menuCssTd">矛盾纠纷
-   		   			</td>
-   		   		</tr>
-   		   		<tr>
-   		   			<td style="background: #3366CC;" class="menuCssTd">登记单位
-   		   			</td>
-   		   			<td style="background: #990000;" class="menuCssTd">标准地址
-   		   			</td>
-   		   		</tr>
-   		   		<tr>
-   		   			<td style="background: #CC9933;" class="menuCssTd">出租房屋
-   		   			</td>
-   		   			<td style="background: cadetblue;" class="menuCssTd">犬只管理
-   		   			</td>
-   		   		</tr>
-   		   </table>
+   		<div class="rightCss1" id="zrqmenu">
    		</div>
    	</div>
   </body>
