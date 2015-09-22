@@ -114,22 +114,36 @@ a {
 	float: left;
 	width: 22%;
 	margin: 1%;
-	cursor: pointer;
+	cursor:default;
 	line-height: 50px;
 	white-space: nowrap;
 }
-
+.jobVal1 {
+	float: left;
+	width: 22%;
+	margin: 1%;
+	line-height: 50px;
+	white-space: nowrap;
+}
 .jobVal em {
 	width: 2px;
 	background: rgb(17, 144, 241);
 }
-
+.jobVal1 em {
+	width: 2px;
+	background: rgb(17, 144, 241);
+}
 .jobVal a {
 	color: #000000;
 }
-
-.jobVal a:hover {
-	color: #FF0000;
+.jobVal1 a {
+	color: #000000;
+	text-decoration:underline;
+	
+}
+.jobVal1 a:hover {
+	color: blue;
+    text-decoration:underline;
 }
 .titleBg {
 	background: url("../images/sqjw/homePage/title-bg.png");

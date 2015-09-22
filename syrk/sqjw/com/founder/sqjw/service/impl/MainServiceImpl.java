@@ -99,8 +99,38 @@ public class MainServiceImpl implements MainService{
 		
 	}
 	@Override
+	public Map<String, Object> querypcsSztj(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		// 统计实有人口
+		List<ZzjgVo> zzjg = mainDao.queryPcsTj(paramMap);
+
+		// 统计实有重点人口
+		List<ZdryCountVo> zdry = mainDao.queryZdrySzTj(paramMap);
+		// 统计房屋的
+		long czf = mainDao.queryCzfTj(paramMap);
+		long checkf = mainDao.queryCheckTj(paramMap);
+		//实有房屋
+		 long syfwnum = mainDao.querySyfwTj(paramMap);
+		// 统计治安管理的
+		List<ZdryCountVo>dwtj = mainDao.queryDwtj(paramMap);
+		Map<String, Object> resMap = new HashMap<String, Object>();
+		resMap.put("zzjg", zzjg);
+		resMap.put("zdry", zdry);
+		resMap.put("czf", czf);
+		resMap.put("checkf", checkf);
+		resMap.put("dwtj",dwtj);
+		resMap.put("syfwnum", syfwnum);
+		return resMap;
+		
+	}
+	@Override
 	public List<CountMapVO> queryListMap(Map<String, String> param) {
 		// TODO Auto-generated method stub
 		return mainDao.queryListMap(param);
+	}
+	@Override
+	public List<CountMapVO> queryListszzdry(Map<String, String> param) {
+		// TODO Auto-generated method stub
+		return mainDao.queryListszzdry(param);
 	}
 }

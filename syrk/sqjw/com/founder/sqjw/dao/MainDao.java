@@ -93,4 +93,12 @@ public class MainDao extends BaseDaoImpl{
 		// TODO Auto-generated method stub
 		return (long) queryForObject("Main.querySyfwTj", paramMap);
 	}
+	public List<ZdryCountVo> queryZdrySzTj(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return  queryForList("Main.queryZdrySzTj", paramMap);
+	}
+	public List<CountMapVO> queryListszzdry(Map<String, String> param) {
+		// TODO Auto-generated method stub
+		return queryForList("Main.queryListszzdry",param);
+	}
 }

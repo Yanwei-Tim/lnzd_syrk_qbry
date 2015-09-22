@@ -348,6 +348,7 @@ MainPcs.initPcsXqgk = function(){
 
 MainPcs.onClickRow = function(rowIndex,rowData){
 	MainPcs.initJobzrqCounts(rowData.orgcode);
+	MainPcs.ezMap.moveMapToBjzbz(rowData.bjzbz);
 }
 
 MainPcs.initJobzrqCounts = function(Orgcode){
