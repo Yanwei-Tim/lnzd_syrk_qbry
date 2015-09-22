@@ -45,6 +45,12 @@ $(document).ready(function(){
 		$("#syrkywlxdm").combobox("setValue", "4");
 		setInputReadonly("syrkywlxdm", true);
 	}
+	
+	//gem 核实 初始化人员类别，调用相关事件
+	var code = $("#syrkywlxdm").combobox("getValue");
+	syrkywlxdm_onChange(code, '');
+	//gem end
+	
 });
 
 // 保存按钮 type标示为1为保存并打印，0为保存（默认）
