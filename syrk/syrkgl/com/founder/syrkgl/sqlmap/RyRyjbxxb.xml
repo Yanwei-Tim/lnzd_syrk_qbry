@@ -4,6 +4,7 @@
 <sqlMap namespace="RyRyjbxxb">
 
 	<typeAlias alias="ryRyjbxxb" type="com.founder.syrkgl.bean.RyRyjbxxb" />
+	<typeAlias alias="syrkSyrkxxzb" type="com.founder.syrkgl.bean.SyrkSyrkxxzb" />
 
 	<!-- 查询列表 -->
 	<select id="queryCount" parameterClass="Map" resultClass="Integer">
@@ -241,11 +242,6 @@
 		where rownum <= #end# ) where r > #begin# ]]>
 		</select>
 
-		<!-- 查询单条（根据主键） -->
-		<select id="queryById" parameterClass="String" resultClass="ryRyjbxxb">
-		<![CDATA[ select * from RY_RYJBXXB t where ID = #id# and XT_ZXBZ = '0' and rownum = 1 ]]>
-		</select>
-
 		<!-- 查询单条（根据证件种类和证件号码） -->
 		<select id="queryByCyzjdmZjhm" parameterClass="Map"
 			resultClass="ryRyjbxxb">
@@ -258,6 +254,11 @@
 			</isNotEmpty>
 		</select>
 
+	<!-- 查询单条（根据主键） -->
+	<select id="queryById" parameterClass="String" resultClass="syrkSyrkxxzb">
+		<![CDATA[ select * from SYRK_SYRKXXZB t where ID = #id# and XT_ZXBZ = '0' and rownum = 1 ]]>
+	</select>
+	
 		<!-- 新增 -->
 		<insert id="save" parameterClass="ryRyjbxxb">
 		<![CDATA[ insert into RY_RYJBXXB (ID,SYRKBZ,CYZJDM,ZJHM,WWX,WWM,XM,CYM,XBDM,MZDM,CSRQ,CSDGJHDQDM,CSDSSXDM,GJDM,JGGJDQDM,JGSSXDM,
@@ -320,5 +321,21 @@
 		<update id="delete" parameterClass="ryRyjbxxb">
 		<![CDATA[ update RY_RYJBXXB set ]]><include refid="deleteXtzd" /><![CDATA[ where ID = #id# ]]>
 		</update>
+		
+		<!-- gem 核实 查询单条（根据证件种类和证件号码） -->
+		<select id="queryByCyzjdmZjhmHs" parameterClass="Map"
+			resultClass="syrkSyrkxxzb">
+		<![CDATA[ select * from syrk_syrkxxhsb t where XT_ZXBZ = '0' and rownum = 1 ]]>
+			<isNotEmpty prepend="and" property="cyzjdm">
+				CYZJDM = #cyzjdm#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="zjhm">
+				ZJHM = #zjhm#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="syrkywlxdm">
+				syrkywlxdm = #syrkywlxdm#
+			</isNotEmpty>
+		</select>
+		<!-- gem -->
 
 </sqlMap>

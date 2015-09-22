@@ -4,6 +4,7 @@
 <sqlMap namespace="SyrkSyrkxxzb">
 
 	<typeAlias alias="syrkSyrkxxzb" type="com.founder.syrkgl.bean.SyrkSyrkxxzb" />
+	<!-- isCheck 是用于判断是有人口管理和实有人口核实区分的标志 -->
 
 	<!-- 查询单条（根据主键） -->
 	<select id="queryById" parameterClass="String" resultClass="syrkSyrkxxzb">
@@ -148,7 +149,16 @@
 
 	<!-- 注销 -->
 	<update id="delete" parameterClass="syrkSyrkxxzb">
-		<![CDATA[ update SYRK_SYRKXXZB set ]]><include refid="deleteXtzd" /><![CDATA[ where ID = #id# ]]>
+		update 
+		   <isEmpty prepend="" property="isCheck">
+              SYRK_SYRKXXZB T 
+	       </isEmpty>
+	       <isNotEmpty prepend="" property="isCheck">
+	          SYRK_SYRKXXHSB T 
+	       </isNotEmpty>
+		set 
+		<include refid="deleteXtzd" />
+		<![CDATA[ where ID = #id# ]]>
 	</update>
 
 	<!-- 查询人员的管辖责任区 -->
@@ -176,7 +186,13 @@
 	<select id="query" parameterClass="Map" resultClass="syrkSyrkxxzb">
 	       SELECT * FROM ( SELECT ROWNUM R ,M.* FROM (
 		       SELECT * 
-		          FROM SYRK_SYRKXXZB T 
+		          FROM 
+		          <isEmpty prepend="" property="entity.isCheck">
+		              SYRK_SYRKXXZB T 
+			       </isEmpty>
+			       <isNotEmpty prepend="" property="entity.isCheck">
+			          SYRK_SYRKXXHSB T 
+			       </isNotEmpty>
 		       WHERE T.XT_ZXBZ = '0'
 		       <isNotEmpty prepend="AND" property="entity.syrkywlxdm">
 		             T.SYRKYWLXDM = #entity.syrkywlxdm#
@@ -221,7 +237,13 @@
 	<!-- 实有人口管理列表数据【总数】 -->
 	<select id="queryCount" parameterClass="Map" resultClass="Integer">
 		   SELECT COUNT(T.ID) 
-	          FROM SYRK_SYRKXXZB T 
+	          FROM 
+ 			   <isEmpty prepend="" property="entity.isCheck">
+	              SYRK_SYRKXXZB T 
+		       </isEmpty>
+		       <isNotEmpty prepend="" property="entity.isCheck">
+		          SYRK_SYRKXXHSB T 
+		       </isNotEmpty>
 	       WHERE T.XT_ZXBZ = '0'
 	       <isNotEmpty prepend="AND" property="entity.syrkywlxdm">
 	             T.SYRKYWLXDM = #entity.syrkywlxdm#

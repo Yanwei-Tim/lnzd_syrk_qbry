@@ -837,4 +837,21 @@ public class SyrkSyrkxxzbServiceImpl extends BaseService implements
 		}
 		return syrkSyrkxxzbDao.querySyrkCount(entity);
 	}
+	
+	//gem
+	/**
+	 * @Title: deleteSyrkHs
+	 * @描述: 实有人口核实注销
+	 * @作者: yu_sun@founder.com
+	 * @返回值: String 返回类型
+	 * @throws
+	 */
+	public String deleteSyrkHs(SyrkSyrkxxzb syrk, SessionBean sessionBean) {
+		setCrossoutProperties(syrk, sessionBean);
+		String errorMessage="";
+		syrkSyrkxxzbDao.delete(syrk);
+		return errorMessage;
+	}
+	//gem
+		
 }

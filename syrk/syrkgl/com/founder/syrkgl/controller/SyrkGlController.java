@@ -288,8 +288,7 @@ public class SyrkGlController extends BaseController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		sessionBean = getSessionBean(sessionBean);
 		try {
-			String message = syrkSyrkxxzbService
-					.deleteSyrk(entity, sessionBean);
+			String message = syrkSyrkxxzbService.deleteSyrk(entity, sessionBean);
 			if (StringUtils.isBlank(message)) {
 				map.put(AppConst.STATUS, AppConst.SUCCESS);
 				map.put(AppConst.MESSAGES, "注销成功！");
@@ -428,4 +427,95 @@ public class SyrkGlController extends BaseController {
 				.queryListByRyidYwlx(entity);
 		return listVo;
 	}
+	
+	//gem 核实
+	/**
+	 * 实有人口核实注销
+	 * @param entity
+	 * @param sessionBean
+	 * @return
+	 * @throws RestException
+	 */
+	@RestfulAnnotation(valiField = "jbxx.id,syrkywlxdm", serverId = "3")
+	@RequestMapping(value = { "/cancelSyrkHs", "/{syrklx}/cancel" }, method = RequestMethod.POST)
+	public ModelAndView cancelSyrkHs(SyrkSyrkxxzb entity, SessionBean sessionBean)
+			throws RestException {
+		ModelAndView mv = new ModelAndView(getViewName(sessionBean));
+		Map<String, Object> map = new HashMap<String, Object>();
+		sessionBean = getSessionBean(sessionBean);
+		try {
+			String message = syrkSyrkxxzbService.deleteSyrkHs(entity, sessionBean);
+			if (StringUtils.isBlank(message)) {
+				map.put(AppConst.STATUS, AppConst.SUCCESS);
+				map.put(AppConst.MESSAGES, "注销成功！");
+			} else {
+				map.put(AppConst.STATUS, AppConst.FAIL);
+				map.put(AppConst.MESSAGES, message);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage(), e);
+			map.put(AppConst.STATUS, AppConst.FAIL);
+			map.put(AppConst.MESSAGES, "注销失败！");
+		}
+		mv.addObject(AppConst.MESSAGES, new Gson().toJson(map));
+		return mv;
+	}
+	
+	/**
+	 * 实有人口核实
+	 * @param cyzjdm
+	 * @param zjhm
+	 * @param mainTabID
+	 * @param isCheck
+	 * @param syrkywlxdm
+	 * @param invokeJSMethod
+	 * @param sessionBean
+	 * @param messageid
+	 * @return
+	 */
+	@RequestMapping(value = "/addHs", method = RequestMethod.GET)
+	public ModelAndView addHs(String cyzjdm, String zjhm, String mainTabID, String isCheck,
+			String syrkywlxdm, String invokeJSMethod, SessionBean sessionBean, String messageid) {
+		// 这里修改兼容通过message打开
+		try {
+			//SysMessage sysmessage = new SysMessage();
+			//sysmessage.setId(Long.valueOf(messageid));
+			//sysMessageDao.upadate(sysmessage);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		ModelAndView mv = new ModelAndView("syrkgl/syrkGlAdd");
+		sessionBean = getSessionBean(sessionBean);
+		RyRyjbxxb ryRyjbxxb = null;
+		if (!StringUtils.isBlank(zjhm)) {
+			if (StringUtils.isBlank(cyzjdm)) { // 有身份证号码传入，证件种类为空时默认为居民身份证
+				cyzjdm = "111";
+			}
+			ryRyjbxxb = ryRyjbxxbService.dataApplyHs(cyzjdm, zjhm, isCheck, syrkywlxdm, sessionBean);
+			if (ryRyjbxxb == null) { // 复用无数据
+				ryRyjbxxb = new RyRyjbxxb();
+				ryRyjbxxb.setCyzjdm(cyzjdm);
+				ryRyjbxxb.setZjhm(zjhm);
+			}
+		}
+		mv.addObject("ryRyjbxxb", ryRyjbxxb);
+		mv.addObject("syrkywlxdm", syrkywlxdm);
+		if (sessionBean != null) { // 取责任区空挂地址
+			mv.addObject("pcsdm", sessionBean.getExtendValue("ssPcsCode"));
+			mv.addObject("zrqdm", sessionBean.getUserOrgCode());
+			String zrqdm = sessionBean.getUserOrgCode();
+			DzXxbVO kgJt = dzService.queryHjdKgJt(zrqdm); // 空挂集体
+			mv.addObject("kgJt", kgJt);
+			DzXxbVO kgJm = dzService.queryHjdKgJm(zrqdm); // 空挂居民
+			mv.addObject("kgJm", kgJm);
+		}
+		mv.addObject("mainTabID", mainTabID);
+		mv.addObject("invokeJSMethod", invokeJSMethod);
+		return mv;
+	}
+	//gem 核实 end
+		
 }

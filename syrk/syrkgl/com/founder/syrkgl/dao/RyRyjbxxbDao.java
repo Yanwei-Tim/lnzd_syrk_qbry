@@ -11,6 +11,7 @@ import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
 import com.founder.syrkgl.bean.RyRyjbxxb;
+import com.founder.syrkgl.bean.SyrkSyrkxxzb;
 
 /******************************************************************************
  * @Package: [com.founder.syrkgl.dao.RyRyjbxxbDao.java]
@@ -164,4 +165,28 @@ public class RyRyjbxxbDao extends BaseDaoImpl {
 	public void delete(RyRyjbxxb entity, SessionBean sessionBean) {
 		update("RyRyjbxxb.delete", entity);
 	}
+	
+	//gem 核实
+	/**
+	 * 实有人口核实
+	 * @param cyzjdm
+	 * @param zjhm
+	 * @param isCheck
+	 * @param syrkywlxdm
+	 * @return
+	 */
+	public SyrkSyrkxxzb queryByCyzjdmZjhmHs(String cyzjdm, String zjhm, String isCheck, String syrkywlxdm) {
+		SyrkSyrkxxzb entity = null;
+		if (!StringUtils.isBlank(zjhm)) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("cyzjdm", cyzjdm);
+			map.put("zjhm", zjhm);
+			map.put("isCheck", isCheck);
+			map.put("syrkywlxdm", syrkywlxdm);
+			entity = (SyrkSyrkxxzb) queryForObject("RyRyjbxxb.queryByCyzjdmZjhmHs", map);
+		}
+		return entity;
+	}
+	//gem
+		
 }

@@ -8,8 +8,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import net.sf.json.JSONObject;
-
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.methods.InputStreamRequestEntity;
@@ -20,7 +18,6 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import sun.misc.BASE64Decoder;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.base.service.BaseService;
 import com.founder.framework.utils.BeanUtils;
@@ -42,6 +39,9 @@ import com.founder.syrkgl.dao.RyRylxfsxxbDao;
 import com.founder.syrkgl.dao.SyrkSyrkxxzbDao;
 import com.founder.syrkgl.service.RyRyjbxxbService;
 import com.founder.syrkgl.vo.SyrkZtxx;
+
+import net.sf.json.JSONObject;
+import sun.misc.BASE64Decoder;
 
 /******************************************************************************
  * @Package: [com.founder.syrkgl.service.impl.RyRyjbxxbServiceImpl.java]
@@ -795,4 +795,221 @@ public class RyRyjbxxbServiceImpl implements RyRyjbxxbService {
 
 	}
 
+	//gem 核实
+	/**
+	 * @Title: dataApplyHs
+	 * @Description: TODO(实有人口核实，从临时表读取保存到总表的数据)
+	 * @param @param cyzjdm
+	 * @param @param zjhm
+	 * @param @param isCheck
+	 * @param @param syrkywlxdm
+	 * @param @param sessionBean
+	 * @param @return 设定文件
+	 * @return RyRyjbxxb 返回类型
+	 * @throws
+	 */
+	public RyRyjbxxb dataApplyHs(String cyzjdm, String zjhm, String isCheck, String syrkywlxdm,
+			SessionBean sessionBean) {
+		RyRyjbxxb ryRyjbxxb = new RyRyjbxxb();
+		SyrkSyrkxxzb zb = null;
+		if (!StringUtils.isBlank(zjhm)) {
+			zb = ryRyjbxxbDao.queryByCyzjdmZjhmHs(cyzjdm, zjhm, isCheck, syrkywlxdm);
+			
+			ryRyjbxxb.setId(zb.getId());
+			ryRyjbxxb.setSyrkbz("0");
+			ryRyjbxxb.setCyzjdm(zb.getCyzjdm());
+			ryRyjbxxb.setZjhm(zjhm);
+			ryRyjbxxb.setXm(zb.getXm());
+			ryRyjbxxb.setXbdm(zb.getXbdm());
+			// 根据身份证号获取出生日期
+			StringBuilder csrqs = new StringBuilder(zjhm.substring(6, 14));
+			csrqs.insert(4, "-");
+			csrqs.insert(7, "-");
+			ryRyjbxxb.setCsrq(csrqs.toString());
+			ryRyjbxxb.setMzdm(zb.getMzdm());
+			ryRyjbxxb.setCsdgjhdqdm("156");
+			ryRyjbxxb.setGjdm("156");
+			ryRyjbxxb.setJggjdqdm("156");
+			ryRyjbxxb.setHjd_xzqhdm(zb.getHjd_xzqhdm());
+			
+			boolean invokeRequestService = false;
+			boolean insertRyJbxx = false;
+			boolean insertPicture = false;
+			if ("111".equals(cyzjdm) || "112".equals(cyzjdm) || "335".equals(cyzjdm)) { // 身份证类型、临时身份证、机动车驾驶证
+				if (ryRyjbxxb == null) {
+					insertRyJbxx = true;
+					invokeRequestService = true;
+					insertPicture = true;
+				} else {
+					ZpfjPtryzpglb zpfjPtryzpglb = new ZpfjPtryzpglb();
+					zpfjPtryzpglb.setRyid(ryRyjbxxb.getId());
+					long pictureCount = zpfjPtryzpDao
+							.queryPtryzpCount(zpfjPtryzpglb);
+					if (pictureCount == 0) {
+						invokeRequestService = true;
+						insertPicture = true;
+					}
+				}
+				if (invokeRequestService) {
+					String url = "http://10.78.17.238:9999/lbs";
+					String urlParameter = "operation=GetPersonInfoByID&content=";
+					String content = "{\"data\":[{\"czrkgmsfhm\":\"" + zjhm
+							+ "\"}]}";
+					try {
+
+						content = urlParameter
+								+ java.net.URLEncoder.encode(content, "UTF-8");
+						PostMethod postMethod = new PostMethod(url);
+						byte[] b = content.getBytes("utf-8");
+						InputStream is = new ByteArrayInputStream(b, 0,
+								b.length);
+						RequestEntity re = new InputStreamRequestEntity(is,
+								b.length, "application/soap+xml; charset=utf-8");
+						postMethod.setRequestEntity(re);
+						HttpClient httpClient = new HttpClient();
+						HttpConnectionManagerParams managerParams = httpClient
+								.getHttpConnectionManager().getParams();
+						managerParams.setConnectionTimeout(50000);
+						int statusCode = httpClient.executeMethod(postMethod);
+						if (statusCode == 200) {
+							logger.debug("调用成功！");
+							String soapResponseData = postMethod
+									.getResponseBodyAsString();
+							JSONObject jb = JSONObject
+									.fromObject(soapResponseData);
+							if ((Integer) jb.get("datalen") > 0) {
+								JSONObject jo = jb.getJSONArray("data")
+										.getJSONObject(0);
+								if (insertRyJbxx) { // 写入人员基本信息
+									ryRyjbxxb = new RyRyjbxxb();
+									ryRyjbxxb.setId(UUID.create());
+									ryRyjbxxb.setSyrkbz("0");
+									ryRyjbxxb.setCyzjdm(cyzjdm);
+									ryRyjbxxb.setZjhm(zjhm);
+									ryRyjbxxb.setXm(jo.getString("czrkxm"));
+									ryRyjbxxb.setXbdm(this
+											.convertXbdmFromPukangdi(jo
+													.getString("czrkxb")));
+									// 根据身份证号获取出生日期
+									StringBuilder csrq = new StringBuilder(
+											zjhm.substring(6, 14));
+									csrq.insert(4, "-");
+									csrq.insert(7, "-");
+									ryRyjbxxb.setCsrq(csrq.toString());
+									ryRyjbxxb.setMzdm(jo.getString("czrkmz"));
+									ryRyjbxxb.setCsdgjhdqdm("156");
+									ryRyjbxxb.setGjdm("156");
+									ryRyjbxxb.setJggjdqdm("156");
+									ryRyjbxxb.setHjd_xzqhdm(jo
+											.getString("dzqh"));
+									ryRyjbxxb.setHjd_dzms(jo
+											.getString("czrkzz"));
+									ryRyjbxxb.setBz("全国请求服务平台");
+									BaseService.setSaveProperties(ryRyjbxxb,
+											sessionBean);
+									ryRyjbxxbDao.save(ryRyjbxxb, sessionBean);
+								}
+
+							}
+						} else {
+							logger.debug("调用全国常住人口失败！错误码：" + statusCode);
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					if (insertPicture) {
+						String zpParameter = "operation=GetPersonPhotoByID&content=";
+						String zpContent = "{\"data\":[{\"rybh\":\"" + zjhm
+								+ "\"}]}";
+						try {
+
+							zpContent = zpParameter
+									+ java.net.URLEncoder.encode(zpContent,
+											"UTF-8");
+							PostMethod postMethod = new PostMethod(url);
+							byte[] b = zpContent.getBytes("utf-8");
+							InputStream is = new ByteArrayInputStream(b, 0,
+									b.length);
+							RequestEntity re = new InputStreamRequestEntity(is,
+									b.length,
+									"application/soap+xml; charset=utf-8");
+							postMethod.setRequestEntity(re);
+							HttpClient httpClient = new HttpClient();
+							HttpConnectionManagerParams managerParams = httpClient
+									.getHttpConnectionManager().getParams();
+							managerParams.setConnectionTimeout(50000);
+							int statusCode = httpClient
+									.executeMethod(postMethod);
+							if (statusCode == 200) {
+								logger.debug("调用成功！");
+								String soapResponseData = postMethod
+										.getResponseBodyAsString();
+								JSONObject jb = JSONObject
+										.fromObject(soapResponseData);
+								if ((Integer) jb.get("datalen") > 0) {
+									JSONObject jo = jb.getJSONArray("data")
+											.getJSONObject(0);
+									byte[] pictureByte = null;
+									try {
+										pictureByte = new BASE64Decoder()
+												.decodeBuffer(jo
+														.getString("photo"));
+									} catch (Exception ex) {
+									}
+									if (pictureByte != null) {
+										ZpfjPtryzpxxb zpfjPtryzpxxb = new ZpfjPtryzpxxb();
+										zpfjPtryzpxxb.setId(UUID.create());
+										zpfjPtryzpxxb.setZp(pictureByte);
+										zpfjPtryzpxxb.setZpslt(pictureByte);
+										BaseService.setSaveProperties(
+												zpfjPtryzpxxb, sessionBean);
+										zpfjPtryzpDao.savePtryzpxxb(
+												zpfjPtryzpxxb, null);
+										ZpfjPtryzpglb zpfjPtryzpglb = new ZpfjPtryzpglb();
+										zpfjPtryzpglb.setId(UUID.create());
+										zpfjPtryzpglb
+												.setRyid(ryRyjbxxb.getId());
+										zpfjPtryzpglb.setZpid(zpfjPtryzpxxb
+												.getId());
+										zpfjPtryzpglb.setLyms("人员基本信息表");
+										zpfjPtryzpglb
+												.setLyid(ryRyjbxxb.getId());
+										zpfjPtryzpglb.setLybm("RY_RYJBXXB");
+										BaseService.setSaveProperties(
+												zpfjPtryzpglb, sessionBean);
+										zpfjPtryzpDao.savePtryzpglb(
+												zpfjPtryzpglb, null);
+									}
+
+								} else {
+									System.out.println("调用照片失败！错误码："
+											+ statusCode);
+								}
+							}
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+
+					}
+				}
+			}
+		}
+		if (ryRyjbxxb != null) {
+			SyrkSyrkxxzb syrkSyrkxxzb = syrkSyrkxxzbDao
+					.queryCzrkByRyid(ryRyjbxxb.getId());
+			if (syrkSyrkxxzb != null) { // 户籍地强制取实有人口总表中常住人口的户籍地
+				ryRyjbxxb.setHjd_dzid(syrkSyrkxxzb.getHjd_dzid());
+				ryRyjbxxb.setHjd_dzxz(syrkSyrkxxzb.getHjd_dzxz());
+				ryRyjbxxb.setHjd_mlpdm(syrkSyrkxxzb.getHjd_mlpdm());
+				ryRyjbxxb.setHjd_mlpxz(syrkSyrkxxzb.getHjd_mlpxz());
+				ryRyjbxxb.setHjd_xzqhdm(syrkSyrkxxzb.getHjd_xzqhdm());
+			}
+			String lxdh = ryRylxfsxxbDao.queryLastLxfs(ryRyjbxxb.getId()); // 查询最新的联系电话
+			ryRyjbxxb.setLxdh(lxdh);
+		}
+
+		return ryRyjbxxb;
+	}
+	//gem
+		
 }

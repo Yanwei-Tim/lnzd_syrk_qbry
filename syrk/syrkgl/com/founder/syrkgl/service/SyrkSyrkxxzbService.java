@@ -130,7 +130,7 @@ public interface SyrkSyrkxxzbService {
      */
 	@MethodAnnotation(value = "注销", type = logType.delete)
 	public String deleteSyrk(SyrkAddVO entity, SessionBean sessionBean);
-
+	
 	/**
 	 * 
 	 * @Title: synchronizeCrossoutSyrkxxzb
@@ -191,4 +191,15 @@ public interface SyrkSyrkxxzbService {
 	 */
 	public void synchronizeSyrkxxzb(SyrkWlhryxxb entity);
 
+	//gem
+	/**
+	 * 实有人口注销
+	 * @param entity
+	 * @param sessionBean
+	 * @return
+	 */
+	@MethodAnnotation(value = "注销", type = logType.delete)
+	public String deleteSyrkHs(SyrkSyrkxxzb entity, SessionBean sessionBean);
+	//gem end
+	
 }

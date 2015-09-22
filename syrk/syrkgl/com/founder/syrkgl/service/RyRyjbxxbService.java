@@ -99,7 +99,6 @@ public interface RyRyjbxxbService {
 	public RyRyjbxxb dataApply(String cyzjdm, String zjhm,
 			SessionBean sessionBean);
 
-	
 	/**
 	 * 在逃人员信息
 	 * @param ztrysfzh
@@ -187,5 +186,19 @@ public interface RyRyjbxxbService {
 	 * @throws
 	 */
 	public void update(RyRyjbxxb entity, SessionBean sessionBean);
+	
+	//gem
+	/**
+	 * 实有人口核实，从临时表查询保存到总表的数据
+	 * @param cyzjdm
+	 * @param zjhm
+	 * @param isCheck
+	 * @param syrkywlxdm
+	 * @param sessionBean
+	 * @return
+	 */
+	public RyRyjbxxb dataApplyHs(String cyzjdm, String zjhm, String isCheck, 
+			String syrkywlxdm, SessionBean sessionBean);
+	//gem
 	
 }

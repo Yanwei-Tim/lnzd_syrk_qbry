@@ -22,6 +22,10 @@ public class RyRyjbxxb extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	//gem 核实
+	private String icCheck;
+	//gem
+	
 	@FieldDesc("人员ID")
 	private String id;
 	@FieldDesc("实有人口标识")
@@ -100,6 +104,14 @@ public class RyRyjbxxb extends BaseEntity implements Serializable {
 	private String zwbh;
 	@FieldDesc("备注")
 	private String bz;
+
+	public String getIcCheck() {
+		return icCheck;
+	}
+
+	public void setIcCheck(String icCheck) {
+		this.icCheck = icCheck;
+	}
 
 	public String getId() {
 		return id;
