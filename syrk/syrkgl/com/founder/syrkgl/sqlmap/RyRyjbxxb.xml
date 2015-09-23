@@ -241,7 +241,12 @@
 		select * from ( select rownum r ,m.* from (  select t1.* from RY_RYJBXXB t1 where (cyzjdm='111' or cyzjdm='112' or cyzjdm='335') and not exists(select * from ZPFJ_PTRYZPGLB t2 where t2.ryid=t1.id)order by id) m  
 		where rownum <= #end# ) where r > #begin# ]]>
 		</select>
-
+		
+		<!-- 查询单条（根据主键） -->
+		<select id="queryById" parameterClass="String" resultClass="ryRyjbxxb">
+		<![CDATA[ select * from RY_RYJBXXB t where ID = #id# and XT_ZXBZ = '0' and rownum = 1 ]]>
+		</select>
+	
 		<!-- 查询单条（根据证件种类和证件号码） -->
 		<select id="queryByCyzjdmZjhm" parameterClass="Map"
 			resultClass="ryRyjbxxb">
@@ -254,11 +259,6 @@
 			</isNotEmpty>
 		</select>
 
-	<!-- 查询单条（根据主键） -->
-	<select id="queryById" parameterClass="String" resultClass="syrkSyrkxxzb">
-		<![CDATA[ select * from SYRK_SYRKXXZB t where ID = #id# and XT_ZXBZ = '0' and rownum = 1 ]]>
-	</select>
-	
 		<!-- 新增 -->
 		<insert id="save" parameterClass="ryRyjbxxb">
 		<![CDATA[ insert into RY_RYJBXXB (ID,SYRKBZ,CYZJDM,ZJHM,WWX,WWM,XM,CYM,XBDM,MZDM,CSRQ,CSDGJHDQDM,CSDSSXDM,GJDM,JGGJDQDM,JGSSXDM,

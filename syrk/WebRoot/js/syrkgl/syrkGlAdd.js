@@ -46,9 +46,15 @@ $(document).ready(function(){
 		setInputReadonly("syrkywlxdm", true);
 	}
 	
-	//gem 核实 初始化人员类别，调用相关事件
-	var code = $("#syrkywlxdm").combobox("getValue");
-	syrkywlxdm_onChange(code, '');
+	//gem 核实 初始化业务类型，调用相关事件
+	var isCheck = $('#isCheck').val();
+	if('check' == isCheck){
+		var code = $("#syrkywlxdm").combobox("getValue");
+		syrkywlxdm_onChange(code, '');
+		//初始化业务类型不可编辑
+		 $("#syrkywlxdm").combobox("disable");
+		jbxx_zjhm_onblur();
+	}
 	//gem end
 	
 });

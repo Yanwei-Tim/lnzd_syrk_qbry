@@ -119,7 +119,13 @@
 
 	<!-- 更新 -->
 	<update id="update" parameterClass="syrkSyrkxxzb">
-		<![CDATA[ update SYRK_SYRKXXZB ]]>
+		update  
+		<isEmpty prepend="" property="isCheck">
+          SYRK_SYRKXXZB T 
+	    </isEmpty>
+	    <isNotEmpty prepend="" property="isCheck">
+	      SYRK_SYRKXXHSB T 
+	    </isNotEmpty>
 		<dynamic prepend="set">
 			<isNotNull prepend="," property="xm"><![CDATA[ xm=#xm#]]></isNotNull>
 			<isNotNull prepend="," property="xbdm"><![CDATA[xbdm =#xbdm#]]></isNotNull>
@@ -141,6 +147,7 @@
 			<isNotNull prepend="," property="gxfjdm"><![CDATA[ gxfjdm = #gxfjdm#]]></isNotNull>
 			<isNotNull prepend="," property="gxpcsdm"><![CDATA[gxpcsdm = #gxpcsdm#]]></isNotNull>
 			<isNotNull prepend="," property="gxzrqdm"><![CDATA[gxzrqdm= #gxzrqdm#]]></isNotNull>
+			<isNotNull prepend="," property="hs_status"><![CDATA[hs_status= #hs_status#]]></isNotNull>
 			,
 			<include refid="updateXtzd" />
 		</dynamic>
@@ -189,11 +196,15 @@
 		          FROM 
 		          <isEmpty prepend="" property="entity.isCheck">
 		              SYRK_SYRKXXZB T 
+		              WHERE T.XT_ZXBZ = '0'
 			       </isEmpty>
 			       <isNotEmpty prepend="" property="entity.isCheck">
-			          SYRK_SYRKXXHSB T 
+			          SYRK_SYRKXXHSB T
+			          WHERE 1=1
+			           <isNotEmpty prepend="AND" property="entity.xt_zxbz">
+				             T.XT_ZXBZ = #entity.xt_zxbz#
+				       </isNotEmpty>
 			       </isNotEmpty>
-		       WHERE T.XT_ZXBZ = '0'
 		       <isNotEmpty prepend="AND" property="entity.syrkywlxdm">
 		             T.SYRKYWLXDM = #entity.syrkywlxdm#
 		       </isNotEmpty>
@@ -229,6 +240,9 @@
 			   </isNotEmpty>
 			   <isNotEmpty prepend="AND" property="entity.age">
 				     Substr(T.CSRQ, 0, 4) = #entity.age#
+			   </isNotEmpty>
+			   <isNotEmpty prepend="AND" property="entity.hs_status">
+				     T.hs_status = #entity.hs_status#
 			   </isNotEmpty>
 		       	  ORDER BY T.$sort$ $order$) M 
 		  <![CDATA[WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
@@ -280,6 +294,9 @@
 		   </isNotEmpty>
 		   <isNotEmpty prepend="AND" property="entity.age">
 			     Substr(T.CSRQ, 0, 4) = #entity.age#
+		   </isNotEmpty>
+		   <isNotEmpty prepend="AND" property="entity.hs_status">
+			     T.hs_status = #entity.hs_status#
 		   </isNotEmpty>
 	</select>
 

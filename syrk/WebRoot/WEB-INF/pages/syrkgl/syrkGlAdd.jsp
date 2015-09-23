@@ -20,7 +20,7 @@
 </head>
 
 <body style="margin-top:20px; margin-bottom:10px" class="bodybg">
-
+<input type="hidden" id="isCheck" value="${isCheck}"/>
 <div data-options="region:'center',split:true" style="border-width: 0px;margin:0 0 0;text-align:center;" class="bodybg">
 
 	<table height="100%" style="margin:0 auto;"><tr><td height="100%" valign="top" align="center">
@@ -145,6 +145,8 @@
     				
    				<!-- 实有人口业务类型分类 -->
    				<form action="<%=basePath%>syrkGl/save" id="czrkForm" name="czrkForm" method="post">
+   				<input type="hidden" name="isCheck" value="${isCheck }">
+   				<input type="hidden" name="zbid" value="${ryRyjbxxb.id}"/>
 				<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center" style="display: none;" id="czrkTable" delayParse="true">
     				<tbody>
     				<input type="hidden" id="czrk_id" name="czrk.id" value="${czrk.id}"/>
@@ -261,6 +263,8 @@
     			</form>
 
    				<form action="<%=basePath%>syrkGl/save" id="jzrkForm" name="jzrkForm" method="post">
+				<input type="hidden" name="isCheck" value="${isCheck }">
+				<input type="hidden" name="zbid" value="${ryRyjbxxb.id}"/>
 				<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center" style="display: none;" id="jzrkTable" delayParse="true">
     				<tbody>
     				<input type="hidden" id="jzrk_id" name="jzrk.id" value="${jzrk.id}"/>
@@ -355,6 +359,8 @@
     			</form>
 
    				<form action="<%=basePath%>syrkGl/save" id="ldrkForm" name="ldrkForm" method="post">
+				<input type="hidden" name="isCheck" value="${isCheck }">
+				<input type="hidden" name="zbid" value="${ryRyjbxxb.id}"/>
 				<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center" style="display: none;" id="ldrkTable" delayParse="true">
     				<tbody>
     				<input type="hidden" id="ldrk_id" name="ldrk.id" value="${ldrk.id}"/>
@@ -399,7 +405,7 @@
 				    	<td width="20%" class="dialogTd" align="right">来自国家：</td>
 				    	<td width="30%" class="dialogTd">
 				    		<input class="easyui-combobox-delay" type="text" id="ldrk_lzd_gjhdqdm" name="ldrk.lzd_gjhdqdm" 
-				    		disabled="disabled" value="${ldrk.lzd_gjhdqdm}" style="width:200px;" r
+				    		disabled="disabled" value="${ldrk.lzd_gjhdqdm}" style="width:200px;" 
 							data-options="url: contextPath + '/common/dict/GB_D_GJHDQDM.js',valueField:'id',textField:'text',
 							selectOnNavigation:false,method:'get',tipPosition:'right'"/>
 						</td>
@@ -476,6 +482,8 @@
     			</form>
 
    				<form action="<%=basePath%>syrkGl/save" id="jwryForm" name="jwryForm" method="post">
+				<input type="hidden" name="isCheck" value="${isCheck }">
+				<input type="hidden" name="zbid" value="${ryRyjbxxb.id}"/>
 				<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center" style="display: none;" id="jwryTable" delayParse="true">
     				<tbody>
     				<input type="hidden" id="jwry_id" name="jwry.id" value="${jwry.id}"/>
@@ -697,6 +705,8 @@
     			</form>
     			
     			<form action="<%=basePath%>syrkGl/save" id="wlrkForm" name="wlrkForm" method="post">
+				<input type="hidden" name="isCheck" value="${isCheck }">
+				<input type="hidden" name="zbid" value="${ryRyjbxxb.id}"/>
 				<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center" style="display: none;" id="wlrkTable" delayParse="true">
     				<tbody>
     				<input type="hidden" id="wlrk_id" name="wlrk.id" value="${wlrk.id}"/>

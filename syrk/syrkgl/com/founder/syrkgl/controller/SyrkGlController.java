@@ -233,7 +233,7 @@ public class SyrkGlController extends BaseController {
 	 */
 	@RestfulAnnotation(valiField = "syrkywlxdm,jbxx.cyzjdm,jbxx.zjhm,jbxx.xbdm,jbxx.xm,jbxx.csrq", serverId = "3")
 	@RequestMapping(value = { "/save", "/{syrklx}/save" }, method = RequestMethod.POST)
-	public ModelAndView save(SyrkAddVO syrkAddVO, SessionBean sessionBean)
+	public ModelAndView save(SyrkAddVO syrkAddVO, SessionBean sessionBean, String isCheck, String zbid)
 			throws RestException {
 		if (sessionBean != null
 				&& !StringUtils.isBlank(sessionBean.getUserId())) {
@@ -243,8 +243,15 @@ public class SyrkGlController extends BaseController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		sessionBean = getSessionBean(sessionBean);
 		try {
-			String errorMessage = syrkSyrkxxzbService.isValidSyrkAdd(syrkAddVO,
-					sessionBean);
+			String errorMessage = syrkSyrkxxzbService.isValidSyrkAdd(syrkAddVO, sessionBean);
+			//实有人口核实修改状态
+			if ("check".equals(isCheck)) {
+				SyrkSyrkxxzb zb = new SyrkSyrkxxzb();
+				zb.setId(zbid);
+				zb.setHs_status("1");
+				zb.setIsCheck("check");
+				syrkSyrkxxzbService.update(zb, sessionBean);
+			}
 			if (!StringUtils.isBlank(errorMessage)) {
 				map.put(AppConst.STATUS, AppConst.FAIL);
 				map.put(AppConst.MESSAGES, "实有人口新增失败：<br/><br/>" + errorMessage);
@@ -480,9 +487,9 @@ public class SyrkGlController extends BaseController {
 			String syrkywlxdm, String invokeJSMethod, SessionBean sessionBean, String messageid) {
 		// 这里修改兼容通过message打开
 		try {
-			//SysMessage sysmessage = new SysMessage();
-			//sysmessage.setId(Long.valueOf(messageid));
-			//sysMessageDao.upadate(sysmessage);
+			SysMessage sysmessage = new SysMessage();
+			sysmessage.setId(Long.valueOf(messageid));
+			sysMessageDao.upadate(sysmessage);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -501,6 +508,7 @@ public class SyrkGlController extends BaseController {
 				ryRyjbxxb.setZjhm(zjhm);
 			}
 		}
+		mv.addObject("isCheck", "check");
 		mv.addObject("ryRyjbxxb", ryRyjbxxb);
 		mv.addObject("syrkywlxdm", syrkywlxdm);
 		if (sessionBean != null) { // 取责任区空挂地址
