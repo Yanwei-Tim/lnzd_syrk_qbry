@@ -17,8 +17,22 @@ function resetButton(){
 
 //列表格式化[显示核实/注销]
 datagridProcessFormater = function(val,row,index){
-	return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="syrkCheck(this, '+index+')">核实</a>&nbsp;'+
-	'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doCancel(this, '+index+')">注销</a>&nbsp;';
+	var rows = $('#dg').datagrid('getData');
+	var rowData = rows.rows[index];
+	var hs_status = rowData.hs_status;
+	var xt_zxbz = rowData.xt_zxbz;
+	if ("1" == xt_zxbz) {
+		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" disabled="disabled">核实</a>&nbsp;'+
+		'&nbsp;<a class="link" href="javascript:javascript:void(0)" disabled="disabled">注销</a>&nbsp;';
+	} else {
+		if ("0" == hs_status) {
+			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="syrkCheck(this, '+index+')">核实</a>&nbsp;'+
+			'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doCancel(this, '+index+')">注销</a>&nbsp;';
+		} else if ("1" == hs_status) {
+			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" disabled="disabled">核实</a>&nbsp;'+
+			'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doCancel(this, '+index+')">注销</a>&nbsp;';
+		}
+	}
 };
 
 //实有人口核实

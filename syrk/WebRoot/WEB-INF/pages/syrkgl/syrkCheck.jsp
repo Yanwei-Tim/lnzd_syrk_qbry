@@ -58,6 +58,7 @@
 				        <th data-options="field:'jzd_dzxz',width:120,align:'left',sortable:true,halign:'center',formatter:subjzddzxz">居住地址</th>
 				        <th data-options="field:'hs_status',width:30,align:'center',sortable:true,halign:'center',formatter:isCheck">核实状态</th>
 			            <th data-options="field:'true',width:50,align:'center',halign:'center',formatter:datagridProcessFormater">操作</th>
+			            <th data-options="field:'xt_zxbz',width:50,align:'center',halign:'center',hidden:true">xt_zxbz</th>
 			        </tr>
 			    </thead>
 			</table>

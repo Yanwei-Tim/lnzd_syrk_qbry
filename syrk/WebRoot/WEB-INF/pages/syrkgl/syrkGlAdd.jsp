@@ -145,6 +145,8 @@
     				
    				<!-- 实有人口业务类型分类 -->
    				<form action="<%=basePath%>syrkGl/save" id="czrkForm" name="czrkForm" method="post">
+   				<input type="hidden" name="isCheck" value="${isCheck }">
+   				<input type="hidden" name="zbid" value="${ryRyjbxxb.id}"/>
 				<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center" style="display: none;" id="czrkTable" delayParse="true">
     				<tbody>
     				<input type="hidden" id="czrk_id" name="czrk.id" value="${czrk.id}"/>
@@ -261,6 +263,8 @@
     			</form>
 
    				<form action="<%=basePath%>syrkGl/save" id="jzrkForm" name="jzrkForm" method="post">
+				<input type="hidden" name="isCheck" value="${isCheck }">
+				<input type="hidden" name="zbid" value="${ryRyjbxxb.id}"/>
 				<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center" style="display: none;" id="jzrkTable" delayParse="true">
     				<tbody>
     				<input type="hidden" id="jzrk_id" name="jzrk.id" value="${jzrk.id}"/>
@@ -355,6 +359,8 @@
     			</form>
 
    				<form action="<%=basePath%>syrkGl/save" id="ldrkForm" name="ldrkForm" method="post">
+				<input type="hidden" name="isCheck" value="${isCheck }">
+				<input type="hidden" name="zbid" value="${ryRyjbxxb.id}"/>
 				<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center" style="display: none;" id="ldrkTable" delayParse="true">
     				<tbody>
     				<input type="hidden" id="ldrk_id" name="ldrk.id" value="${ldrk.id}"/>
@@ -476,6 +482,8 @@
     			</form>
 
    				<form action="<%=basePath%>syrkGl/save" id="jwryForm" name="jwryForm" method="post">
+				<input type="hidden" name="isCheck" value="${isCheck }">
+				<input type="hidden" name="zbid" value="${ryRyjbxxb.id}"/>
 				<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center" style="display: none;" id="jwryTable" delayParse="true">
     				<tbody>
     				<input type="hidden" id="jwry_id" name="jwry.id" value="${jwry.id}"/>
@@ -697,6 +705,8 @@
     			</form>
     			
     			<form action="<%=basePath%>syrkGl/save" id="wlrkForm" name="wlrkForm" method="post">
+				<input type="hidden" name="isCheck" value="${isCheck }">
+				<input type="hidden" name="zbid" value="${ryRyjbxxb.id}"/>
 				<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center" style="display: none;" id="wlrkTable" delayParse="true">
     				<tbody>
     				<input type="hidden" id="wlrk_id" name="wlrk.id" value="${wlrk.id}"/>
