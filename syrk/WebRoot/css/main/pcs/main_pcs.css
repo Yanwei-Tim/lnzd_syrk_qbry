@@ -42,12 +42,28 @@ a {
 }
 
 .titleCss {
+	height:1%;
 	font: normal 17px "微软雅黑";
 	color: #FFF;
 	text-align: left;
 	background: rgb(17, 144, 241);
 }
-
+.titleCssleft {
+	
+	font: normal 17px "微软雅黑";
+	color: #FFF;
+	text-align: left;
+	background: rgb(17, 144, 241);
+	float:left;
+}
+.titleCssright {
+	font: normal 17px "微软雅黑";
+	color: #000;
+	text-align: left;
+	background: rgb(17, 144, 241);
+	float:right;
+	cursor: pointer;
+}
 .centerDiv .echartsCss {
 	height: 90%;
 	width: 100%;

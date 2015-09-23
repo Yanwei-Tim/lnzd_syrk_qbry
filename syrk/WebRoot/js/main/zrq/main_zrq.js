@@ -838,9 +838,7 @@ MainZrq.initmenus_back = function(json){
 		htmlStr += " <table border=\"0\" cellpadding=\"0\" cellspacing=\"15\" style=\"width: 100%;height: 100%;\" >";
 		for(var i=0;i<list.length&&i<7;i++){
 			var menuname = list[i].menuname;
-			if(menuname.length>4){
-				menuname= list[i].menuname.substring(2);
-			}
+		
 			if(i%2==0){
 				htmlStr += "<tr>";
 			}
