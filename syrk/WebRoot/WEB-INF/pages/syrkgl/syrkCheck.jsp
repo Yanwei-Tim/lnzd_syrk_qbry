@@ -80,22 +80,17 @@
 				    	    <input class="easyui-combobox" type="text" id="mzdm" name="mzdm" style="width:100px;"
 								data-options="url: contextPath + '/common/dict/GB_D_MZDM.js',valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/>
 					    </td>
-					    <td nowrap="nowrap" align="right">注销状态：</td>
-				    	<td>
-				    	    <input class="easyui-combobox" type="text" id="xt_zxbz" name="xt_zxbz" style="width:100px;"
-								data-options="url: contextPath + '/common/dict/D_RK_ZXBS.js',valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/>
-					    </td>
+					    <td nowrap="nowrap" align="right">证件号码：</td>
+						<td>
+							<input type="text" name="zjhm" id="zjhm" class="easyui-validatebox" style="width:100px" 
+								data-options="required:false,tipPosition:'bottom'" maxlength="400"/>
+						</td>
 					    <td nowrap="nowrap" align="right">居住地：</td>
 				    	<td>
 				            <input type="text" name="jzd_dzxz" id ="jzd_dzxz" class="easyui-validatebox" data-options="required:false,validType:'maxLength[30]'" style="width:180px;"/>
 				        </td>
 					</tr>
 					<tr>
-						<td nowrap="nowrap" align="right">证件号码：</td>
-						<td>
-							<input type="text" name="zjhm" id="zjhm" class="easyui-validatebox" style="width:100px" 
-								data-options="required:false,tipPosition:'bottom'" maxlength="400"/>
-						</td>
 						<td nowrap="nowrap" align="right">人员类型：</td>
 						<td><input class="easyui-combobox" type="text" id="syrkywlxdm" name="syrkywlxdm" style="width:100px"
 							data-options="dataFilter:'[^1,^4]', url: contextPath+'/common/dict/BD_D_SYRKYWLXDM.js',valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/>
@@ -105,6 +100,11 @@
 							<input class="easyui-combobox" type="text" id="hs_status" name="hs_status" style="width:100px;" 
 								data-options="url: contextPath + '/common/dict/D_JWRY_BZHSZT.js',valueField:'id',textField:'text'"/>
 						</td>
+						<td nowrap="nowrap" align="right">注销状态：</td>
+				    	<td>
+				    	    <input class="easyui-combobox" type="text" id="xt_zxbz" name="xt_zxbz" style="width:100px;"
+								data-options="url: contextPath + '/common/dict/D_RK_ZXBS.js',valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/>
+					    </td>
 						<td nowrap="nowrap" colspan="8" align="right">
 							<a class="easyui-linkbutton" iconCls="icon-search" onclick="queryButton();">查询</a>
 				    		<a class="easyui-linkbutton" iconCls="icon-reset" onclick="resetButton()">重置</a>
