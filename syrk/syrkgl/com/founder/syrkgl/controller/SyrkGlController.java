@@ -480,9 +480,9 @@ public class SyrkGlController extends BaseController {
 			String syrkywlxdm, String invokeJSMethod, SessionBean sessionBean, String messageid) {
 		// 这里修改兼容通过message打开
 		try {
-			//SysMessage sysmessage = new SysMessage();
-			//sysmessage.setId(Long.valueOf(messageid));
-			//sysMessageDao.upadate(sysmessage);
+			SysMessage sysmessage = new SysMessage();
+			sysmessage.setId(Long.valueOf(messageid));
+			sysMessageDao.upadate(sysmessage);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -501,6 +501,7 @@ public class SyrkGlController extends BaseController {
 				ryRyjbxxb.setZjhm(zjhm);
 			}
 		}
+		mv.addObject("isCheck", "check");
 		mv.addObject("ryRyjbxxb", ryRyjbxxb);
 		mv.addObject("syrkywlxdm", syrkywlxdm);
 		if (sessionBean != null) { // 取责任区空挂地址

@@ -189,11 +189,15 @@
 		          FROM 
 		          <isEmpty prepend="" property="entity.isCheck">
 		              SYRK_SYRKXXZB T 
+		              WHERE T.XT_ZXBZ = '0'
 			       </isEmpty>
 			       <isNotEmpty prepend="" property="entity.isCheck">
-			          SYRK_SYRKXXHSB T 
+			          SYRK_SYRKXXHSB T
+			          WHERE 1=1
+			           <isNotEmpty prepend="AND" property="entity.xt_zxbz">
+				             T.XT_ZXBZ = #entity.xt_zxbz#
+				       </isNotEmpty>
 			       </isNotEmpty>
-		       WHERE T.XT_ZXBZ = '0'
 		       <isNotEmpty prepend="AND" property="entity.syrkywlxdm">
 		             T.SYRKYWLXDM = #entity.syrkywlxdm#
 		       </isNotEmpty>
@@ -229,6 +233,9 @@
 			   </isNotEmpty>
 			   <isNotEmpty prepend="AND" property="entity.age">
 				     Substr(T.CSRQ, 0, 4) = #entity.age#
+			   </isNotEmpty>
+			   <isNotEmpty prepend="AND" property="entity.hs_status">
+				     T.hs_status = #entity.hs_status#
 			   </isNotEmpty>
 		       	  ORDER BY T.$sort$ $order$) M 
 		  <![CDATA[WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
@@ -280,6 +287,9 @@
 		   </isNotEmpty>
 		   <isNotEmpty prepend="AND" property="entity.age">
 			     Substr(T.CSRQ, 0, 4) = #entity.age#
+		   </isNotEmpty>
+		   <isNotEmpty prepend="AND" property="entity.hs_status">
+			     T.hs_status = #entity.hs_status#
 		   </isNotEmpty>
 	</select>
 

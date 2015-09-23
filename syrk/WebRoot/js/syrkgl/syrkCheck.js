@@ -1,3 +1,8 @@
+$(function(){
+	$('#hs_status').combobox('setValue', '0');
+	$('#xt_zxbz').combobox('setValue', '0');
+	queryButton();
+});
 
 //居住地址截取
 subjzddzxz = function(val, row, index){
@@ -16,7 +21,7 @@ datagridProcessFormater = function(val,row,index){
 	'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doCancel(this, '+index+')">注销</a>&nbsp;';
 };
 
-//实有人口核实panel
+//实有人口核实
 syrkCheck = function(linkObject,index){
 	var datagrid_ID = getDatagrid_ID(0, linkObject);
 	var opts = $('#' + datagrid_ID).datagrid("options");
@@ -33,7 +38,7 @@ syrkCheck = function(linkObject,index){
 function isCheck(val,row,index){
 	var hsStatus = row["hs_status"];
 	if (hsStatus == '0') {
-		return "<div>待核实</div>";
+		return "<div>未核实</div>";
 	} else {
 		return "<div>已核实</div>";
 	}
@@ -102,13 +107,17 @@ function queryButton(){
 	var xbdm = document.getElementById("xbdm").value;
 	var mzdm = document.getElementById("mzdm").value;
 	var jzd_dzxz = document.getElementById("jzd_dzxz").value;
+	var hs_status = document.getElementById("hs_status").value;
+	var xt_zxbz = document.getElementById("xt_zxbz").value;
 	$('#dg').datagrid('load',{    
 		'syrkywlxdm':syrkywlxdm,
 		'xm':xm,
 		'zjhm':zjhm,
 		'xbdm':xbdm,
 		'mzdm':mzdm,
-		'jzd_dzxz':jzd_dzxz
+		'jzd_dzxz':jzd_dzxz,
+		'hs_status':hs_status,
+		'xt_zxbz':xt_zxbz
 	});
 }
 

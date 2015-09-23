@@ -20,7 +20,7 @@
 </head>
 
 <body style="margin-top:20px; margin-bottom:10px" class="bodybg">
-
+<input type="hidden" id="isCheck" value="${isCheck}"/>
 <div data-options="region:'center',split:true" style="border-width: 0px;margin:0 0 0;text-align:center;" class="bodybg">
 
 	<table height="100%" style="margin:0 auto;"><tr><td height="100%" valign="top" align="center">
@@ -399,7 +399,7 @@
 				    	<td width="20%" class="dialogTd" align="right">来自国家：</td>
 				    	<td width="30%" class="dialogTd">
 				    		<input class="easyui-combobox-delay" type="text" id="ldrk_lzd_gjhdqdm" name="ldrk.lzd_gjhdqdm" 
-				    		disabled="disabled" value="${ldrk.lzd_gjhdqdm}" style="width:200px;" r
+				    		disabled="disabled" value="${ldrk.lzd_gjhdqdm}" style="width:200px;" 
 							data-options="url: contextPath + '/common/dict/GB_D_GJHDQDM.js',valueField:'id',textField:'text',
 							selectOnNavigation:false,method:'get',tipPosition:'right'"/>
 						</td>
