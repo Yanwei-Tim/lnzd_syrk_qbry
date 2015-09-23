@@ -8,6 +8,7 @@ import com.founder.framework.annotation.MethodAnnotation.logType;
 import com.founder.framework.annotation.TypeAnnotation;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.utils.EasyUIPage;
+import com.founder.sydw.bean.Dictxxb;
 import com.founder.sydw.bean.Dwjcdata;
 import com.founder.sydw.bean.Dwjctype;
 import com.founder.sydw.bean.Dwjcxxb;
@@ -42,6 +43,8 @@ public interface DwjcxxbService {
 	 * @return
 	 */
 	public List<Dwjctype> queryDwjctype(Map<String,Object> param);
+	
+	public Dictxxb getCt(String dwlbdm);
 	/**
 	 * 查询单位检查项模板<br>
 	 * 

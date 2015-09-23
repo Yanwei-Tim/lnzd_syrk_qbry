@@ -23,6 +23,7 @@ import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.components.AppConst;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
+import com.founder.sydw.bean.Dictxxb;
 import com.founder.sydw.bean.Dwjcdata;
 import com.founder.sydw.bean.Dwjctype;
 import com.founder.sydw.bean.Dwjcxxb;
@@ -257,5 +258,36 @@ public class DwjcxxbController extends BaseController{
 		map.put("dwid", dwid);
 		map.put("maxNum", 10);
 		return dwjcxxbService.dwjcxxb_query(map);
+	}
+	
+	@RequestMapping(value = "/printPreView", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView printPreView(String dwlbdm,String ywlbdm) {
+		ModelAndView mv = new ModelAndView("sydw/jcmbPrint");
+		List<Dwjctype> list = new ArrayList<Dwjctype>();
+		Map<String,Object> param = new HashMap<String,Object>();
+		SessionBean sessionBean = getSessionBean();
+		param.put("sydwlx", dwlbdm);
+		param.put("ywlbdm", ywlbdm);
+		list = dwjcxxbService.queryDwjctype(param);
+		Dictxxb dictxxb = dwjcxxbService.getCt(dwlbdm);
+		mv.addObject("dwlbdm", dwlbdm);
+		mv.addObject("list", list);
+		mv.addObject("dictxxb", dictxxb);
+		mv.addObject("ywlbdm", ywlbdm);
+		return mv;
+	}
+	
+	@RequestMapping(value = "/printPreXfView", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView printPreXfView(String dwlbdm) {
+		ModelAndView mv = new ModelAndView("sydw/jcmbPrintXf");
+		mv.addObject("dwlbdm", dwlbdm);
+		return mv;
+	}
+	
+	@RequestMapping(value = "/printPreJfView", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView printPreJfView(String dwlbdm) {
+		ModelAndView mv = new ModelAndView("sydw/jcmbPrintJf");
+		mv.addObject("dwlbdm", dwlbdm);
+		return mv;
 	}
 }

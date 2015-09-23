@@ -13,6 +13,7 @@ import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.base.service.BaseService;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.UUID;
+import com.founder.sydw.bean.Dictxxb;
 import com.founder.sydw.bean.Dwcyjcrwxxb;
 import com.founder.sydw.bean.Dwjcdata;
 import com.founder.sydw.bean.Dwjctype;
@@ -128,5 +129,9 @@ public class DwjcxxbServiceImpl implements DwjcxxbService {
 	@Override
 	public List<Dwjcxxb> dwjcxxb_query(Map<String, Object> map) {
 		return dwjcxxbDao.dwjcxxb_query(map);
+	}
+	@Override
+	public Dictxxb getCt(String dwlbdm) {
+		return dwjcxxbDao.getCt(dwlbdm);
 	}
 }

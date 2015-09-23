@@ -10,6 +10,7 @@ import com.founder.framework.base.dao.BaseDaoImpl;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
+import com.founder.sydw.bean.Dictxxb;
 import com.founder.sydw.bean.Dwjcdata;
 import com.founder.sydw.bean.Dwjctype;
 import com.founder.sydw.bean.Dwjcxxb;
@@ -190,4 +191,14 @@ public class DwjcxxbDao extends BaseDaoImpl {
 	public List<Dwjcxxb> dwjcxxb_query(Map<String, Object> map) {
 		return queryForList("Dwjcxxb.dwjcxxb_query", map);
 	}
+	
+	public Dictxxb getCt(String dwlbdm) {
+		  Dictxxb dictxxb =(Dictxxb)queryForObject("Dwjcxxb.queryDictByDwlbdm", dwlbdm);
+		  if(dictxxb!=null){
+			  return dictxxb;
+		  }else{
+			  dictxxb = new Dictxxb(); 
+			  return dictxxb;
+		  }
+		}
 }

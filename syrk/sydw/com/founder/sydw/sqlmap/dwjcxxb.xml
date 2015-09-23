@@ -5,6 +5,7 @@
 	<typeAlias alias="dwjcxxb" type="com.founder.sydw.bean.Dwjcxxb" />
 	<typeAlias alias="dwjctype" type="com.founder.sydw.bean.Dwjctype" />
 	<typeAlias alias="dwjcdata" type="com.founder.sydw.bean.Dwjcdata" />
+	<typeAlias alias="dictxxb" type="com.founder.sydw.bean.Dictxxb" />
 	<!-- 新增单位检查信息 -->
 	<insert id="insertDwjcxxb" parameterClass="dwjcxxb">
 		<![CDATA[INSERT INTO DW_DWJCXXB(ID,DWID,JCSJ,JCDWID,JCDW,JCJG,ZGTZSHCJSH,ZGTZSMC,zghcfyj,DWFZR,DWFZRLXDH,JCRY,XCFZR,XCFZRLXDH,CJRS,QTWGQKHAQYH,BZ,JJLXDM,SYDJZMJ,SYDJZJTCS,SZJZGD,DZ_DWDZDM,DZ_DWDZSSXDM,DZ_DWDZXZ,DZ_DWDZMLPDM,DZ_DWDZMLPXZ,YWLBDM,BJCRYXM,BJCRYLXDH,FDDBRXM,FDDBRLXDH,]]>
@@ -174,5 +175,10 @@
 		SELECT T.DWMC,T.DZ_DWDZMLPXZ,T.DZ_DWDZMLPDM,T.DZ_DWDZDM,T.DZ_DWDZSSXDM,T.DZ_DWDZXZ,T.JJLXDM,
 		(SELECT TO_CHAR(WMSYS.WM_CONCAT(F.XM)) XM FROM DW_FRFZRLLRB F WHERE (F.DWRYLXDM='20' OR F.DWRYLXDM='21') AND F.DWID=T.ID)DWFZR,
 		(SELECT D.JZMJ FROM DW_DWXFXXB D WHERE D.DWID=T.ID)SYDJZMJ FROM DW_DWJBXXB T  WHERE T.ID=#dwid#
+	</select>
+	
+	<select id="queryDictByDwlbdm" parameterClass="String" resultClass="dictxxb">
+	  select * from sys_dict2 where 1=1 and zdbh='BD_D_DWLXDM'
+      and dm=#dwlbdm#
 	</select>
 </sqlMap>

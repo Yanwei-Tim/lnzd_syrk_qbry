@@ -209,19 +209,22 @@ public class MainController extends BaseController{
 		Map<String,Object> paramMap=new HashMap<String, Object>();
 		Map<String,Object> resMap = new HashMap<String,Object>();
 		String level = getSessionBean().getUserOrgLevel();
-	    if(orgid.substring(8, orgid.length()).equals("0000")){
-	    	paramMap.put("lx", 14);
-	    	paramMap.put("orgCode", orgid);
-	    	paramMap.put("orgszCode", orgid.substring(0, 8));
-	    	//所长统计
-	    	resMap = mainService.querypcsSztj(paramMap);
-	    	
-	    }else{
-	    	//责任区统计
-	    	paramMap.put("lx", 15);
-	    	 paramMap.put("orgCode", orgid);
-	    	resMap = mainService.querypcstj(paramMap);
-	    }
+		if(!orgid.equals("XT")){
+			 if(orgid.substring(8, orgid.length()).equals("0000")){
+			    	paramMap.put("lx", 14);
+			    	paramMap.put("orgCode", orgid);
+			    	paramMap.put("orgszCode", orgid.substring(0, 8));
+			    	//所长统计
+			    	resMap = mainService.querypcsSztj(paramMap);
+			    	
+			    }else{
+			    	//责任区统计
+			    	paramMap.put("lx", 15);
+			    	 paramMap.put("orgCode", orgid);
+			    	resMap = mainService.querypcstj(paramMap);
+			    }
+		}
+	   
 	   
 		return resMap;
 	}
