@@ -1,6 +1,9 @@
 $(function(){
 	$('#hs_status').combobox('setValue', '0');
 	$('#xt_zxbz').combobox('setValue', '0');
+	$('#dg').datagrid({
+         url: contextPath + '/syrkGl/queryList?isCheck=check'
+	 });
 	queryButton();
 });
 

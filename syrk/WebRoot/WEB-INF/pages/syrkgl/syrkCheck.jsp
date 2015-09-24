@@ -38,7 +38,7 @@
   			<div data-options="region:'center',split:true, title:'',border:false" style="height:auto">
   			<table id="dg" class="easyui-datagrid" 
             	data-options="
-            	    url:'<%=contextPath%>/syrkGl/queryList?isCheck=check',
+            	    url:'',
 	           		toolbar:'#datagridToolbar',
 	           		border:false,
 	           		rownumbers: true,
