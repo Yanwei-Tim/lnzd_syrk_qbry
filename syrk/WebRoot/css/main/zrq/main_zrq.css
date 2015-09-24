@@ -59,7 +59,17 @@ a {
 	background: rgb(17, 144, 241);
 }
 
-
+.titleCssleft{
+	font: normal 16px "微软雅黑";
+	float:left;
+}
+.titleCssright{
+	font: normal 16px "微软雅黑";
+	text-align: center;
+	float:right;
+	cursor: pointer;
+	
+}
 
 .centerDiv .centerTopCss {
 	width: 48.6%;
@@ -207,7 +217,7 @@ a {
 	height: 20%;
 	text-align: center;
 	color:#FFF;
-	font: normal 18px "宋体";
+	font: normal 20px "宋体";
 	cursor:pointer;
 	
 }

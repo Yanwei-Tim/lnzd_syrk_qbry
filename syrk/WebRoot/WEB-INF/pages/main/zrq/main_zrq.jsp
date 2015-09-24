@@ -45,13 +45,13 @@
 	   		<table border="0" cellpadding="0" cellspacing="0" style="width: 100%;height: 100%;">
 	   		<tr>
 	   		<td class="titleCss" style="height: 20px;width:49.5%;">
-	   		待办事项<span><a href="javascript:void(0);" onclick="queryMsg('工作待办');" title="更多">>></a></span>
+	   		<span class="titleCssleft">&nbsp;待办事项</span><a href="javascript:void(0);" onclick="queryMsg('工作待办');" title="更多"><span class="titleCssright" title="更多">>></span></a>
 	   		</td>
 	   		
 	   		<td style="width:1px;">
 	   		</td>
 	   		<td class="titleCss" style="height: 20px;width:49.5%;">
-	   		业务提醒<a href="javascript:void(0);" onclick="queryMsg('消息提醒');" title="更多">>></a>
+	   		<span class="titleCssleft">&nbsp;业务提醒</span><a href="javascript:void(0);" onclick="queryMsg('消息提醒');" title="更多"><span class="titleCssright" title="更多">>></span></a>
 	   		</td>
 	   		
 	   		</tr>
@@ -72,8 +72,8 @@
     		<div class="titleCss" id="ullis">
 				<ul id="tab">
 					<li class="fli" onclick="MainZrq.ChangeTab(this)">每周基础信息采集</li>
-					<li onclick="MainZrq.ChangeTab(this)">重点人员监控</li>
-					<li onclick="MainZrq.ChangeTab(this)">治安防范管理</li>
+				<!-- 	<li onclick="MainZrq.ChangeTab(this)">重点人员监控</li>
+					<li onclick="MainZrq.ChangeTab(this)">治安防范管理</li> -->
 				</ul>
 			</div>
     		<div class="dgCss">
@@ -83,9 +83,21 @@
    	</div>
     <div class="rightDiv">
    		<div class="rightCss">
-   		   <div class="titleCss">&nbsp;接处警<td class="titleBg"><a href="javascript:void(0);" onclick="menu_open('动态警情', '/forward/jcj|dtjjMessage');" title="更多">>></a></td></div>
-		   <div class="messageCss" id="newDiv"></div>
-   		</div>
+   		<table border="0" cellpadding="0" cellspacing="0" style="width: 100%;height: 30%;">
+   		<tr>
+   		<td class="titleCss" style="height: 20px;">
+   		<span class="titleCssleft">&nbsp;接处警</span><a href="javascript:void(0);" onclick="menu_open('动态警情', '/forward/jcj|dtjjMessage');"  title="更多"><span class="titleCssright" title="更多">>></span></a>
+   		</td>
+   		</tr>
+   		<tr>
+   		<td >
+   		   <div class="messageCss" id="newDiv"></div>
+   		
+   		</td>
+   		</tr>
+   		</table>
+   		   <!-- <div class="titleCss">&nbsp;接处警<td class="titleBg"><a href="javascript:void(0);" onclick="menu_open('动态警情', '/forward/jcj|dtjjMessage');" title="更多">>></a></td></div> -->
+		</div>
    		<div class="rightCss1" id="zrqmenu">
    		</div>
    	</div>

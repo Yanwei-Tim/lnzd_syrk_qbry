@@ -177,6 +177,11 @@ function button2_onclick() {
 			optionArray['text'] = node['text'];
 			addNodesArray.push(optionArray);
 		}
+		/*  首页添加7个菜单限制*/
+		if(addNodesArray.length > 7){
+			$.messager.alert('提示','首页快捷菜单最多能配7个','warning');
+			return;
+		}
 	}
 	if (addNodesArray.length > 0) {
 		addOptionsBatch(addNodesArray);
