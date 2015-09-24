@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="ZdryQbzdryYwczb">
+	
+	<typeAlias alias="zdryQbzdryYwczb" type="com.founder.zdrygl.bean.ZdryQbzdryYwczb" />
+
+
+
+
+	<!-- 制定ID查询单条记录 -->
+	<select id="queryById" parameterClass="String" resultClass="zdryQbzdryYwczb">
+		<![CDATA[ select * from ZDRY_QBZDRYYWCZB t where ID = #id#  and rownum = 1 ]]>
+	</select>
+
+	<!-- 新增 -->
+	<insert id="save" parameterClass="zdryQbzdryYwczb">
+		<![CDATA[ insert into ZDRY_QBZDRYYWCZB (ID,CZLB,CZRQ,CZYJ,CZBM,CZR,]]><include refid="insertXtzd"/>)
+		<![CDATA[ values (#id#,#czlb#,#czrq#,#czyj#,#czbm#,#czr#,]]>
+		<include refid="insertXtzdVal"/>)
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="update" parameterClass="zdryQbzdryYwczb">
+		<![CDATA[ update ZDRY_QBZDRYYWCZB ]]>	
+		<dynamic prepend="set">
+		 <isNotNull prepend="," property="id"><![CDATA[ ID=#id# ]]></isNotNull>
+		 <isNotNull prepend="," property="czlb"><![CDATA[ CZLB=#czlb# ]]></isNotNull>
+		 <isNotNull prepend="," property="czrq"><![CDATA[ CZRQ=#czrq# ]]></isNotNull>
+		 <isNotNull prepend="," property="czyj"><![CDATA[ CZYJ=#czyj# ]]></isNotNull>
+		 <isNotNull prepend="," property="czbm"><![CDATA[ CZBM=#czbm# ]]></isNotNull>
+		 <isNotNull prepend="," property="czr"><![CDATA[ CZR=#czr# ]]></isNotNull>
+		
+		<include refid="updateXtzd"/>				
+		</dynamic>
+		<![CDATA[ where ID = #id#]]>	
+	</update>
+	
+
+
+</sqlMap>
