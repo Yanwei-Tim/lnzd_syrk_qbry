@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/pages/commonInclude.jsp"%>
 <%@ page import="com.founder.framework.base.entity.SessionBean"%>
-<%@include file="/WEB-INF/pages/commonInclude.jsp"%>
 <%
     SessionBean userInfo = (SessionBean)session.getAttribute("userSession");
     String userOrgCode = "";
@@ -22,39 +21,34 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
 <style>
-.thhead {
-	text-align: center;
-	background: #e1e1e1;
-	border: 1px solid #333333;
-}
 table.all{
  font-size:16px;
  
  }
-table.all td{
-font-size:20px;
-}
-
-.mainTable td{
-	border:black 1px solid;
-}
-
+.table_1 {border: 1px solid #FFF;border-collapse: collapse;}
+.table_1 td{border: 1px solid #FFF;}
+.table {border: 1px solid #333333;border-collapse: collapse;}
+.table td{border: 1px solid #333333;}
 </style>
 </head>
 <body>
-	<table class="font" width="100%" border="0" cellpadding="2" cellspacing="0">
+	<table width="100%"  cellpadding="2" cellspacing="0">
 		<tr>
 			<td width="100%">
+				<input type='hidden' id="dzvalue" value="<%=xzqhdm%>"/>
+				<div align="center" style="width: 100%;padding: 5px 0 5px 0">
+					<span id="spanid" style="font-size: 18px"></span>
+				</div>
 				<div align="center" style="width: 100%;padding: 10px 0 10px 0">
 					<span style="font-size: 26px">公安派出所日常消防监督检查记录</span>
 				</div>
-					<table style="border:black 2px solid;" class="mainTable" cellpadding="0" cellspacing="0" align="center" class="all">
+					<table  class="table" cellpadding="0" cellspacing="0" align="center">
 					    <div align="right" style="width: 100%;padding: 8px 0 8px 0">
 							<span style="font-size: 15px">编号：[&nbsp;&nbsp;&nbsp;&nbsp;]&nbsp;第&nbsp;&nbsp;&nbsp;号</span>
 						</div>
 					    <tr>
 							<td colspan="3" height="160">
-								<table style="text-align:center;width: 100%;" cellpadding="0" cellspacing="0">
+								<table class="table_1" style="text-align:center;width: 100%;" cellpadding="0" cellspacing="0">
 									<tr height="40">
 										<td>单位(场所)名称</td>
 										<td colspan="3">&nbsp;</td>
@@ -83,7 +77,7 @@ font-size:20px;
 									</tr>
 									<tr height="40">
 										<td style="width: 16%;">
-										 监督检查人员&nbsp;&nbsp;
+										 监督检查人员
 										  (签名)
 										</td>
 										<td style="width: 16%;">&nbsp;</td>
@@ -311,12 +305,82 @@ font-size:20px;
 	</table>
 </body>
 <script type="text/javascript">
-$(document).ready(function() {
-//	var xzqhdm = document.getElementById("xzqhdm").value
-//	alert("aaa"+xzqhdm);
-//	var xzqhMc = window.top.getDictName(contextPath + '/common/dict/D_DW_DWLB.js','110');
-//	alert("aaa"+xzqhdm);
- // 	document.getElementById("xzqh_mc").value = xzqhMc;
-});
+var dzvalue = document.getElementById("dzvalue").value;
+var isReload = false;
+var publicDictArray = new Array(); // 字典管理数组
+window.onload=getDictName(contextPath + '/common/dict/D_BZ_XZQHLIST_MUNICIPAL.js',dzvalue);
+function getDictName(url, dictID,isReload) {
+	var dictName = "";
+	if ("undefined" != typeof dictID && dictID != null && dictID != "") {
+	
+		var data = getPublicDict(url,isReload);
+		if (data != null && data.length > 0) {
+			var nameArray = [];
+			var dictIDArray = dictID.split(",");
+			var searchID = "";
+			for (var j = 0; j < dictIDArray.length; j++) {
+				searchID = dictIDArray[j];
+				if (searchID != "") {
+					for (var i = 0; i < data.length; i++) {
+						if (data[i].id == searchID) {
+							nameArray.push(data[i].text);
+							break;
+						}
+						else if (data[i].children) {
+							searchChildren(data[i].children, searchID, nameArray);
+						}
+					}
+				}
+			}
+			dictName = nameArray.join(",");
+		}
+	}
+	document.getElementById("spanid").innerHTML=dictName+"公安消防大队";
+}
+function getPublicDict(url, isReload) {
+	if ("undefined" != typeof url && url != null && url != "") {
+		if ("undefined" == typeof isReload) {
+			isReload = false;
+		}
+		if (!isReload) {
+			var dictData = publicDictArray[url];
+			if (dictData != null) {
+				return dictData;
+			}
+		}
+		
+		$.ajax({
+			url: url,
+			cache: false,
+			type: "GET",
+			async: false, 
+			dataType: "json",
+			success: function(data) {
+				publicDictArray[url] = data;
+			},
+
+			error: function() {
+				alert("顶层页面字典加载错误：\n\n" + url);
+			}
+		});
+		
+		return publicDictArray[url];
+	}
+	return null;
+}
+function searchChildren(node, searchID, nameArray) {
+	for (var i = 0; i < node.length; i++) {
+		if (node[i].id == searchID) {
+			nameArray.push(node[i].text);
+			return true;
+		}
+		else if (node[i].children) {
+			if (searchChildren(node[i].children, searchID, nameArray)) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
 </script>  
 </html>
