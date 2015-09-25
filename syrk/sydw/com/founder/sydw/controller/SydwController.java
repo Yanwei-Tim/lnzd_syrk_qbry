@@ -199,7 +199,7 @@ public class SydwController extends BaseController {
 	 */
 	@RestfulAnnotation(valiField="dwjbxxb.id",serverId = "3")
 	@RequestMapping(value = "/{dwid}", method = {RequestMethod.PUT,RequestMethod.POST})
-	public @ResponseBody ModelAndView updateDwjbxxb(@RequestParam(value = "uploadFile", required = false)  DwjbxxbSaveVO swjbxxbSaveVO, SessionBean sessionBean) {
+	 public @ResponseBody ModelAndView updateDwjbxxb(@RequestParam CommonsMultipartFile[] uploadFile,DwjbxxbSaveVO swjbxxbSaveVO, SessionBean sessionBean) {
 		ModelAndView mv = new ModelAndView(getViewName(sessionBean));
 		Map<String, Object> model = new HashMap<String, Object>();
 		Dwjbxxb dwjbxxb = swjbxxbSaveVO.getDwjbxxb();
@@ -211,50 +211,50 @@ public class SydwController extends BaseController {
 			model.put(AppConst.MESSAGES, getUpdateSuccess());
 			model.put(AppConst.SAVE_ID, "" + dwjbxxb.getId()); // 返回主键
 			//@star图片更新开始
-//			String lyid="";
-//			String lybm="DW_DWJBXXB";
-//			String lyms="实有单位";
-//			 lyid=dwjbxxb.getId();
-//					CommonsMultipartFile multipartFile = uploadFile[0];
-//					if (!multipartFile.isEmpty()) {
-//						FileItem fileItem = multipartFile.getFileItem();
-//						ZpfjFjxxb entity = new ZpfjFjxxb();
-//						entity.setLybm(lybm);
-//						entity.setLyid(lyid);
-//						entity.setLyms(lyms);
-//						String wjmc = fileItem.getName();
-//						if (wjmc.indexOf("\\") != -1) { // 去除完整路径
-//							wjmc = wjmc.substring(wjmc.lastIndexOf("\\") + 1);
-//						}
-//						String wjhzlx = "";
-//						int atI = wjmc.lastIndexOf(".");
-//						if (atI != -1) {
-//							wjhzlx = wjmc.substring(atI + 1);
-//							wjhzlx = wjhzlx.toLowerCase();
-//						}
-//						entity.setWjmc(wjmc);
-//						entity.setWjhzlx(wjhzlx);
-//						entity.setWj(multipartFile.getBytes());
-//						long wjdx = entity.getWj().length;
-//						entity.setWjdx(new Long(wjdx));
-//						String wjdxsm = "";
-//						if (wjdx < 1024) {
-//							wjdxsm = "" + wjdx + " B";
-//						} else if (wjdx > 1048576) {
-//							double mb = Math.floor(wjdx / 1048576);
-//							DecimalFormat formater = new DecimalFormat(
-//									"###,###,###.00");
-//							wjdxsm = "" + formater.format(mb) + " MB";
-//						} else {
-//							long kb = (long) Math.floor(wjdx / 1024);
-//							wjdxsm = "" + kb + " KB";
-//						}
-//						entity.setWjdxsm(wjdxsm);
-//						entity.setWjxzcs(new Long(0));
-//						zpfjFjxxbService.updateZpfjFjxxb(entity, sessionBean);
-//						model.put(AppConst.STATUS, AppConst.SUCCESS);
-//						model.put(AppConst.MESSAGES, getAddSuccess());
-//					}
+			String lyid="";
+			String lybm="DW_DWJBXXB";
+			String lyms="实有单位";
+			 lyid=dwjbxxb.getId();
+					CommonsMultipartFile multipartFile = uploadFile[0];
+					if (!multipartFile.isEmpty()) {
+						FileItem fileItem = multipartFile.getFileItem();
+						ZpfjFjxxb entity = new ZpfjFjxxb();
+						entity.setLybm(lybm);
+						entity.setLyid(lyid);
+						entity.setLyms(lyms);
+						String wjmc = fileItem.getName();
+						if (wjmc.indexOf("\\") != -1) { // 去除完整路径
+							wjmc = wjmc.substring(wjmc.lastIndexOf("\\") + 1);
+						}
+						String wjhzlx = "";
+						int atI = wjmc.lastIndexOf(".");
+						if (atI != -1) {
+							wjhzlx = wjmc.substring(atI + 1);
+							wjhzlx = wjhzlx.toLowerCase();
+						}
+						entity.setWjmc(wjmc);
+						entity.setWjhzlx(wjhzlx);
+						entity.setWj(multipartFile.getBytes());
+						long wjdx = entity.getWj().length;
+						entity.setWjdx(new Long(wjdx));
+						String wjdxsm = "";
+						if (wjdx < 1024) {
+							wjdxsm = "" + wjdx + " B";
+						} else if (wjdx > 1048576) {
+							double mb = Math.floor(wjdx / 1048576);
+							DecimalFormat formater = new DecimalFormat(
+									"###,###,###.00");
+							wjdxsm = "" + formater.format(mb) + " MB";
+						} else {
+							long kb = (long) Math.floor(wjdx / 1024);
+							wjdxsm = "" + kb + " KB";
+						}
+						entity.setWjdxsm(wjdxsm);
+						entity.setWjxzcs(new Long(0));
+						zpfjFjxxbService.updateZpfjFjxxb(entity, sessionBean);
+						model.put(AppConst.STATUS, AppConst.SUCCESS);
+						model.put(AppConst.MESSAGES, getAddSuccess());
+					}
 			//@star图片更新结束
 
 
