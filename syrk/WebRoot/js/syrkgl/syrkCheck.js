@@ -2,9 +2,8 @@ $(function(){
 	$('#hs_status').combobox('setValue', '0');
 	$('#xt_zxbz').combobox('setValue', '0');
 	$('#dg').datagrid({
-         url: contextPath + '/syrkGl/queryList?isCheck=check'
+         url: contextPath + '/syrkGl/queryList?isCheck=check&xt_zxbz=0&hs_status=0'
 	 });
-	queryButton();
 });
 
 //居住地址截取
@@ -126,6 +125,9 @@ function queryButton(){
 	var jzd_dzxz = document.getElementById("jzd_dzxz").value;
 	var hs_status = document.getElementById("hs_status").value;
 	var xt_zxbz = document.getElementById("xt_zxbz").value;
+	$('#dg').datagrid({
+        url: contextPath + '/syrkGl/queryList?isCheck=check'
+	 });
 	$('#dg').datagrid('load',{    
 		'syrkywlxdm':syrkywlxdm,
 		'xm':xm,
