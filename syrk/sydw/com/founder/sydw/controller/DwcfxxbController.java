@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.founder.framework.annotation.RestfulAnnotation;
 import com.founder.framework.base.controller.BaseController;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.components.AppConst;
@@ -66,6 +67,7 @@ public class DwcfxxbController extends BaseController {
 	 * @param entity
 	 * @return
 	 */
+	@RestfulAnnotation(valiField="xzcfjdszh, dwmc, cflxdm, cfrq, ajbh, jbdw, jbr, cfqk, cfjg, bz", serverId="3")
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView save(Dwcfxxb entity){
 		ModelAndView mv = new ModelAndView("redirect:/forward/"
