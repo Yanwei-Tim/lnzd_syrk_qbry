@@ -8,12 +8,12 @@ import com.founder.framework.base.entity.BaseEntity;
 /**
  * ****************************************************************************
  * @Package:      [com.founder.qbld.bean.Clxxb.java]  
- * @ClassName:    [Clxxb]   
- * @Description:  [车辆信息表]   
- * @Author:       [yu_sun@founder.com.cn]  
- * @CreateDate:   [2015-6-8 上午9:39:28]   
+ * @ClassName:    [ZdryQbZdryxxb]   
+ * @Description:  [情报重点人员信息表]   
+ * @Author:       [cong_rihong@founder.com.cn]  
+ * @CreateDate:   [2015-9-25 上午9:39:28]   
  * @UpdateUser:   [founder(如多次修改保留历史记录，增加修改记录)]   
- * @UpdateDate:   [2015-6-8 上午9:39:28，(如多次修改保留历史记录，增加修改记录)]   
+ * @UpdateDate:   [2015-9-25 上午9:39:28，(如多次修改保留历史记录，增加修改记录)]   
  * @UpdateRemark: [说明本次修改内容,(如多次修改保留历史记录，增加修改记录)]  
  * @Version:      [v1.0]
  */
@@ -26,6 +26,8 @@ public class ZdryQbZdryxxb extends BaseEntity implements Serializable {
 	private String zdryid;
 	@FieldDesc("部级重点人员编号")
 	private String bjzdrybh;
+	@FieldDesc("状态")	
+	private String zt;
 	@FieldDesc("姓名")
 	private String xm;
 	@FieldDesc("姓名拼音")
@@ -105,6 +107,13 @@ public class ZdryQbZdryxxb extends BaseEntity implements Serializable {
 	}
 	public void setBjzdrybh(String bjzdrybh) {
 		this.bjzdrybh = bjzdrybh;
+	}
+	
+	public String getZt() {
+		return zt;
+	}
+	public void setZt(String zt) {
+		this.zt = zt;
 	}
 	public String getXm() {
 		return xm;
