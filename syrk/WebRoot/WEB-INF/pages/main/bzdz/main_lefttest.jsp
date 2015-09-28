@@ -35,25 +35,29 @@
 				for(var j = 0;j<menuacc.length;j++){
 					var menunode = eval(menuacc[j].children);
 					var menuone = eval(menuacc[j]);
-					var aa = menuone.text;
+					var text = menuone.text;
 					var ID = menuone.id;
 					var Str = "";
-					$('#westaction').accordion('add', {title: aa,id :ID,selected: false});
-					for(var k =0;k<menunode.length;k++){
-						var menu = eval(menunode[k]);
-						if(menu.openURL!=""){
-						   var text = menu.text;
-						   var ID1 = menu.id +"ztree";
-						   Str = Str +"<ul  class=\"ztree\" id="+ID1+">";
-						   if(menu.openMode=="new"){
-							   Str = Str +"<li class=\"TreeExpandoLeaf\" id="+menu.id+" onclick=\"window.open('"+menu.openURL+"')\"><a style='margin-left: 28px;margin-top: 8px;' >";
-						   }else{
-							   Str = Str +"<li class=\"TreeExpandoLeaf\" id="+menu.id+" onclick=\"menu_openClass('"+text+"','"+menu.openURL+"','"+menu.id+"')\"><a style='margin-left: 28px;margin-top: 8px;' >"; 
-						   }
-						   Str = Str +menu.text +"";
-						   Str = Str +"</a></li>";
-						   Str = Str +"</ul>";
-						   $("#"+ID).html(Str);  
+					if(text=="标准地址"){
+						$('#westaction').accordion('add', {title: text,id :ID,selected: true});
+						for(var k =0;k<menunode.length;k++){
+							var menu = eval(menunode[k]);
+							if(menu.openURL!=""){
+							   var text = menu.text;
+							   var ID1 = menu.id +"ztree";
+							   if(text!="标准地址管理"){
+								   Str = Str +"<ul  class=\"ztree\" id="+ID1+">";
+								   if(menu.openMode=="new"){
+									   Str = Str +"<li class=\"TreeExpandoLeaf\" id="+menu.id+" onclick=\"window.open('"+menu.openURL+"')\"><a style='margin-left: 28px;margin-top: 8px;' >";
+								   }else{
+									   Str = Str +"<li class=\"TreeExpandoLeaf\" id="+menu.id+" onclick=\"menu_openClass('"+text+"','"+menu.openURL+"','"+menu.id+"')\"><a style='margin-left: 28px;margin-top: 8px;' >"; 
+								   }
+								   Str = Str +menu.text +"";
+								   Str = Str +"</a></li>";
+								   Str = Str +"</ul>";
+								   $("#"+ID).html(Str); 
+							   }
+							}
 						}
 					}
 				}

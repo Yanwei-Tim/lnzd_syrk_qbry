@@ -918,4 +918,29 @@ public class DzController extends BaseController {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * @Title: queryCheckList
+	 * @描述: 地址核实列表
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值: EasyUIPage    返回类型 
+	 * @throws
+	 */
+	@RequestMapping(value = "/queryCheckList",method = RequestMethod.POST)
+	public @ResponseBody EasyUIPage queryCheckList(EasyUIPage page,@RequestParam(value = "rows",required=false) Integer rows,BzdzxxbVO entity,SessionBean sessionBean){
+		page.setPagePara(rows);
+		sessionBean = getSessionBean(sessionBean);
+		if(null != sessionBean){
+			OrgOrganization userOrg = orgOrganizationService.queryById(sessionBean.getUserOrgId());
+			String orglevel = userOrg.getOrglevel();
+			if(("21").equals(orglevel)){
+				entity.setFxjdm((String)sessionBean.getUserOrgCode());
+			}else if("32".equals(orglevel)){
+				entity.setPcsdm((String)sessionBean.getUserOrgCode());
+			}else if("50".equals(orglevel)){
+				entity.setPcsdm(sessionBean.getExtendValue("ssPcsCode"));
+			}
+		}
+		return dzService.queryCheckList(page, entity);
+	}
 }

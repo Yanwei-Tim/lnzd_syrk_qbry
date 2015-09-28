@@ -1128,4 +1128,14 @@ public class DzServiceImpl extends BaseService implements DzService {
 		queryTj(entity);
 		return dzDao.queryDzTjList_export(entity);
 	}
+	/**
+	 * @Title: queryCheckList 
+	 * @Description: 地址核实列表
+	 * @author zhang_guoliang@founder.com 
+	 * @param 传入参数定义 
+	 * @throws
+	 */
+	public EasyUIPage queryCheckList(EasyUIPage page, BzdzxxbVO entity) {
+		return dzDao.queryCheckList(page,entity);
+	}
 }

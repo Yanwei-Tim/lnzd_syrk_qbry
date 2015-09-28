@@ -339,4 +339,13 @@ public interface DzService {
 	 * @throws
 	 */
 	public List<Map<String, String>> queryDzTjList_export(DzTjVO entity);
+	/**
+	 * @Title: queryCheckList 
+	 * @描述: 地址核实列表
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值: EasyUIPage    返回类型 
+	 * @throws
+	 */
+	public EasyUIPage queryCheckList(EasyUIPage page, BzdzxxbVO entity);
 }

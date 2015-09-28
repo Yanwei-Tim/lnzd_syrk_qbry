@@ -1056,4 +1056,35 @@ public class DzDao extends BaseDaoImpl {
 	public List<Map<String, String>> queryDzTjList_export(DzTjVO entity){
 		return queryForList("com.founder.bzdz.sqlmap.Dz.queryDzTjList", entity);
 	}
+	/**
+	 * @Title: queryCheckList 
+	 * @描述: 地址核实列表
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值: EasyUIPage    返回类型 
+	 * @throws
+	 */
+	public EasyUIPage queryCheckList(EasyUIPage page, BzdzxxbVO entity) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("begin", page.getBegin());
+		map.put("end", page.getEnd());
+		String order = page.getOrder();
+		if ("".equals(page.getOrder()) || page.getOrder() == null) {
+			order = "MLPHQC";
+		}
+		map.put("order", order);
+		if ("".equals(entity.getDzzt()) || entity.getDzzt() == null) {
+			entity.setDzzt("01");
+		}
+		map.put("bzdzxxbvo", entity);
+		if ("02".equals(entity.getDzzt()) || "03".equals(entity.getDzzt())) {
+			map.put("tableName", "BZDZ_ADD_MLDZSHB T");
+		} else {
+			map.put("tableName", "BZDZ_ADD_MLDZDXB T");
+		}
+		page.setTotal((Integer) queryForObject(
+				"com.founder.bzdz.sqlmap.Dz.queryDzCount", map));
+		page.setRows(queryForList("com.founder.bzdz.sqlmap.Dz.queryDzList", map));
+		return page;
+	}
 }
