@@ -86,7 +86,7 @@ public class SydwController extends BaseController {
 	 */
 	@RestfulAnnotation(valiField="dwjbxxb.dwlbdm,dwjbxxb.dwmc,dwjbxxb.kyrq,dwjbxxb.lxdh,dwjbxxb.dwztdm",serverId="3")
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public @ResponseBody ModelAndView saveDwjbxxb(@RequestParam CommonsMultipartFile[] uploadFile,DwjbxxbSaveVO swjbxxbSaveVO, String hsrwid ,SessionBean sessionBean) {
+	public @ResponseBody ModelAndView saveDwjbxxb(@RequestParam(value="uploadFile", required=false)CommonsMultipartFile[] uploadFile,DwjbxxbSaveVO swjbxxbSaveVO,String hsrwid,SessionBean sessionBean) {
 		ModelAndView mv = new ModelAndView(getViewName(sessionBean));
 		Map<String, Object> model = new HashMap<String, Object>();
 		Dwjbxxb dwjbxxb = swjbxxbSaveVO.getDwjbxxb();
@@ -121,6 +121,8 @@ public class SydwController extends BaseController {
 					model.put(AppConst.MESSAGES,"该地址已经有该单位名称，地址和名称不可同时重复");
 				}
 				//@star图片上传开始
+				if(uploadFile !=null)
+				{
 				 lyid=dwjbxxb.getId();
 					List<ZpfjFjxxb> list = new ArrayList<ZpfjFjxxb>();
 					for (int i = 0; i < uploadFile.length; i++) {
@@ -168,7 +170,7 @@ public class SydwController extends BaseController {
 						model.put(AppConst.STATUS, AppConst.SUCCESS);
 						model.put(AppConst.MESSAGES, getAddSuccess());
 					} 
-				
+				}
 				//@star图片结束
 			}else{
 				model.put(AppConst.STATUS, AppConst.FAIL);
@@ -199,7 +201,7 @@ public class SydwController extends BaseController {
 	 */
 	@RestfulAnnotation(valiField="dwjbxxb.id",serverId = "3")
 	@RequestMapping(value = "/{dwid}", method = {RequestMethod.PUT,RequestMethod.POST})
-	 public @ResponseBody ModelAndView updateDwjbxxb(@RequestParam CommonsMultipartFile[] uploadFile,DwjbxxbSaveVO swjbxxbSaveVO, SessionBean sessionBean) {
+	 public @ResponseBody ModelAndView updateDwjbxxb(@RequestParam(value="uploadFile", required=false) CommonsMultipartFile[] uploadFile,DwjbxxbSaveVO swjbxxbSaveVO, SessionBean sessionBean) {
 		ModelAndView mv = new ModelAndView(getViewName(sessionBean));
 		Map<String, Object> model = new HashMap<String, Object>();
 		Dwjbxxb dwjbxxb = swjbxxbSaveVO.getDwjbxxb();
@@ -214,6 +216,8 @@ public class SydwController extends BaseController {
 			String lyid="";
 			String lybm="DW_DWJBXXB";
 			String lyms="实有单位";
+			if(uploadFile !=null)
+			{
 			 lyid=dwjbxxb.getId();
 					CommonsMultipartFile multipartFile = uploadFile[0];
 					if (!multipartFile.isEmpty()) {
@@ -256,7 +260,7 @@ public class SydwController extends BaseController {
 						model.put(AppConst.MESSAGES, getAddSuccess());
 					}
 			//@star图片更新结束
-
+			}
 
 		} catch (Exception e) {
 			logger.error(e.getLocalizedMessage(), e);
@@ -266,20 +270,23 @@ public class SydwController extends BaseController {
 		mv.addObject(AppConst.MESSAGES, new Gson().toJson(model));
 		return mv;
 	}
-
+	
 	/**
 	 * 单位注销
 	 * @param entity
 	 * @return
 	 */
-	@RestfulAnnotation(serverId = "3")
+	@RestfulAnnotation(valiField="",serverId = "3")
 	@RequestMapping(value = "/deletesydwxx", method = RequestMethod.POST)
-	public @ResponseBody ModelAndView DeleteRyjzdzzb(Dwjbxxb entity,SessionBean sessionBean) {
+	public @ResponseBody ModelAndView DeleteRyjzdzzb(@RequestParam(value = "id",required = false) String  id,
+			@RequestParam(value = "xt_zxyy",required = false) String  xt_zxyy,Dwjbxxb entity,SessionBean sessionBean) {
 		ModelAndView mv = new ModelAndView(getViewName(sessionBean));
 		Map<String, Object> model = new HashMap<String, Object>();
 		sessionBean = getSessionBean(sessionBean);
+		entity.setId(id);
+		entity.setXt_zxyy(xt_zxyy);
 		try {
-			if (entity.getId() != null) { // 注销
+			if (!StringUtils.isBlank(id)) {
 				sydwQueryService.delete(entity, sessionBean);
 				model.put(AppConst.STATUS, AppConst.SUCCESS);
 				model.put(AppConst.MESSAGES, getDeleteSuccess());
@@ -352,7 +359,6 @@ public class SydwController extends BaseController {
 	 * @return Frfzrllrb    返回类型
 	 * @throws
 	 */
-	@RestfulAnnotation(valiField="dwid", serverId = "3")
 	@RequestMapping(value="/{dwid}/fr" ,method = RequestMethod.GET)
 	public @ResponseBody Frfzrllrb queryFr(@PathVariable(value="dwid")String dwid){
 		return frfzrllrbService.queryFrByDwid(dwid);
