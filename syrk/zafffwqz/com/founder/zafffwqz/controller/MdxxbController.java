@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.founder.framework.annotation.RestfulAnnotation;
 import com.founder.framework.base.controller.BaseController;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.components.AppConst;
@@ -103,6 +105,7 @@ public class MdxxbController extends BaseController {
 	 * @param entity
 	 * @return
 	 */
+	@RestfulAnnotation(valiField="mdlydm,mdgxgsdm,mdlx,mdfssj,mdfsddmc, mdyy, mdxz, gxdwmc, sfyjdm, yjr, jsr, bz",serverId = "3")
 	@RequestMapping(value = "/saveMdxxb", method = RequestMethod.POST)
 	public @ResponseBody
 	ModelAndView saveMdxxb(Mdxxb entity) {
