@@ -12,7 +12,7 @@
             SYFW_FWJBXXB set 
          </isEmpty>
          <isNotEmpty prepend="" property="isCheck">
-          	SYFW_FWJBXXHS set 
+          	SYFW_FWJBXXHS set hs_status= '1',
          </isNotEmpty>
 		<include refid="deleteXtzd" /> 
 		<![CDATA[where ID = #id# ]]>
