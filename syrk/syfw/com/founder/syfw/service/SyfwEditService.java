@@ -12,6 +12,7 @@ import com.founder.syfw.bean.Czfwjcxxb;
 import com.founder.syfw.bean.Czfwxxb;
 import com.founder.syfw.bean.FwCzqkdjxxb;
 import com.founder.syfw.bean.Fwjbxxb;
+import com.founder.syfw.vo.SyfwListVo;
 import com.founder.syfw.vo.SyfwgnVO;
 import com.founder.syfw.vo.SyfwxxzsVO;
 
@@ -35,6 +36,10 @@ public interface SyfwEditService {
 
 	//gem
 	public Fwjbxxb queryFwxx(String fwdz_dzid);
+	
+	//实有房屋核实
+	public SyfwListVo queryFwHsxx(String id);
+	
 	
 	/**
 	 * 查询房屋里的人数

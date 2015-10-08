@@ -27,6 +27,11 @@ public class SyfwEditDao extends BaseDaoImpl{
 	public Fwjbxxb queryFwxx(String fwdz_dzid) {
 		return (Fwjbxxb) queryForObject("SyfwQuery.queryFwxx", fwdz_dzid);
 	}
+	
+	//gem 实有房屋核实 
+	public SyfwListVo queryFwHsxx(String id) {
+		return (SyfwListVo) queryForObject("SyfwQuery.queryFwHsxx", id);
+	}
 
 	public List<SyfwxxzsVO> queryFwzsxx(Map<String, Object> map) {
 		return queryForList("Syfwglpz.queryZhxxzspz",map);

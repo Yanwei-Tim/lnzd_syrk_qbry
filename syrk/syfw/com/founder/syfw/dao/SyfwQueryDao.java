@@ -47,8 +47,16 @@ public class SyfwQueryDao extends BaseDaoImpl {
 		map.put("sort", sort);
 		map.put("order", order);
 		map.put("fwjbxxb", entity);
-		page.setTotal((Integer) queryForObject("SyfwQuery.queryCountFw", map));
-		page.setRows(queryForList("SyfwQuery.queryFw", map));
+		//实有房屋核实 begin
+		String isCheck = entity.getIsCheck();
+		if (!StringUtils.isBlank(isCheck)) {
+			page.setTotal((Integer) queryForObject("SyfwQuery.queryHsCountFw", map));
+			page.setRows(queryForList("SyfwQuery.queryFwHs", map));
+		} else {
+			page.setTotal((Integer) queryForObject("SyfwQuery.queryCountFw", map));
+			page.setRows(queryForList("SyfwQuery.queryFw", map));
+		}
+		//实有房屋核实 end
 		return page;
 	}
 	

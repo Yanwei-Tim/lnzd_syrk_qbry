@@ -710,4 +710,31 @@ public class SyfwEditController extends BaseController {
 		return syfwEditService.queryFwxx(fwdz_dzid);
 	}
 	
+	/**
+	 * 实有房屋核实
+	 * @Title: createHS
+	 * @Description: TODO(打开新增实有房屋页面)
+	 * @param @param type
+	 * @param @return    设定文件
+	 * @return ModelAndView    返回类型
+	 * @throws
+	 */
+	@RequestMapping(value = "createHS", method = RequestMethod.GET)
+	public ModelAndView createHS(String type, String isCheck, String id){
+		ModelAndView mv = new ModelAndView("syfw/syfwAdd");
+		SessionBean sessionBean = getSessionBean();
+		String zrqdm = sessionBean.getUserOrgCode();
+		mv.addObject("nowtime", DateUtils.getShortString(new Date()));
+		mv.addObject("type", type != null ? type : "0");
+		mv.addObject("zrqdm", zrqdm);
+		//实有房屋核实begin
+		if ("check".equals(isCheck)) {
+			SyfwListVo syfw = syfwEditService.queryFwHsxx(id);
+			mv.addObject("entity", syfw);
+			mv.addObject("fwjbxxb", syfw);
+		}
+		//实有房屋核实end
+		return mv;
+	}
+	
 }

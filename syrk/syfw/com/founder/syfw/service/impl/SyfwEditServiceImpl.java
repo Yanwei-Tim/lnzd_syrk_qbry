@@ -19,6 +19,7 @@ import com.founder.syfw.bean.FwCzqkdjxxb;
 import com.founder.syfw.bean.Fwjbxxb;
 import com.founder.syfw.dao.SyfwEditDao;
 import com.founder.syfw.service.SyfwEditService;
+import com.founder.syfw.vo.SyfwListVo;
 import com.founder.syfw.vo.SyfwgnVO;
 import com.founder.syfw.vo.SyfwxxzsVO;
 import com.founder.syrkgl.bean.SyrkSyrkxxzb;
@@ -44,6 +45,10 @@ public class SyfwEditServiceImpl extends BaseService implements SyfwEditService 
 		return syfwEditdao.queryFwxx(fwdz_dzid);
 	}
 	
+	//gem 实有房屋核实
+	public SyfwListVo queryFwHsxx(String id){
+		return syfwEditdao.queryFwHsxx(id);
+	}
 	@Override
 	public List<SyfwxxzsVO> queryFwzsxx(Map<String, Object> map) {
 		map.put("xxdxlxdm","1");
