@@ -125,9 +125,9 @@ function queryButton(){
 	var jzd_dzxz = document.getElementById("jzd_dzxz").value;
 	var hs_status = document.getElementById("hs_status").value;
 	var xt_zxbz = document.getElementById("xt_zxbz").value;
-	$('#dg').datagrid({
-        url: contextPath + '/syrkGl/queryList?isCheck=check'
-	 });
+	var reloadUrl = contextPath + '/syrkGl/queryList?isCheck=check';
+	var opt = $('#dg').datagrid('options');
+	opt.url = reloadUrl;
 	$('#dg').datagrid('load',{    
 		'syrkywlxdm':syrkywlxdm,
 		'xm':xm,

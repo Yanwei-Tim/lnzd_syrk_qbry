@@ -122,9 +122,9 @@ function queryButton(){
 	var sfczfw = document.getElementById("sfczfw").value;
 	var hs_status = document.getElementById("hs_status").value;
 	var xt_zxbz = document.getElementById("xt_zxbz").value;
-	$('#dg').datagrid({
-        url: contextPath + '/syfw/list?isCheck=check&flag=0'
-	 });
+	var reloadUrl = contextPath + '/syfw/list?isCheck=check&flag=0';
+	var opt = $('#dg').datagrid('options');
+	opt.url = reloadUrl;
 	$('#dg').datagrid('load',{    
 		'fz_xm':fz_xm,
 		'fwlbdm':fwlbdm,
