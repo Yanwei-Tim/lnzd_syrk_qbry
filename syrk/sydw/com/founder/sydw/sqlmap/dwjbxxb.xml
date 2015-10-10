@@ -82,7 +82,7 @@
 
 	<!-- 查询未核实ById -->
 	<select id="queryWhsById" parameterClass="String" resultClass="dwjbxxb">
-		<![CDATA[select * from DW_DWJBXXB t where ID = #id# and (t.xt_zxbz = '0' or t.xt_zxbz = '2') ]]>
+		<![CDATA[select * from DW_DWJBXXBHS t where ID = #id# and t.xt_zxbz = '0' ]]>
 	</select>
 	
 	<!-- 查询单条，根据单位名称与单位地址代码 -->
@@ -270,7 +270,13 @@
 	</update>
 	<!-- 更新 -->
 	<update id="update" parameterClass="dwjbxxb">
-		<![CDATA[ update DW_DWJBXXB ]]>	
+		update 
+		<isEmpty prepend="" property="isCheck">
+          DW_DWJBXXB 
+	    </isEmpty>
+	    <isNotEmpty prepend="" property="isCheck">
+	      DW_DWJBXXBHS 
+	    </isNotEmpty>
 			<dynamic prepend="set">
 				 <isNotNull prepend="," property="dwlbdm"><![CDATA[ DWLBDM=#dwlbdm# ]]></isNotNull>
 				 <isNotNull prepend="," property="sjdwid"><![CDATA[ SJDWID=#sjdwid# ]]></isNotNull>
@@ -326,6 +332,7 @@
 				<isNotEmpty prepend="," property="dzms_chdz"><![CDATA[ dzms_chdz=#dzms_chdz# ]]></isNotEmpty>
 				<isNotNull prepend="," property="sfazzaglxxxt"><![CDATA[ sfazzaglxxxt=#sfazzaglxxxt# ]]></isNotNull>
 				<isNotEmpty prepend="," property="dzms_dwdzmlpxz"><![CDATA[ dzms_dwdzmlpxz=#dzms_dwdzmlpxz# ]]></isNotEmpty>
+				<isNotNull prepend="," property="hs_status"><![CDATA[hs_status= #hs_status#]]></isNotNull>
 				,DZMS_ZBX = #dzms_zbx#, DZMS_ZBY = #dzms_zby#,DZMS_SSZRQDM = #dzms_sszrqdm#,DZMS_SSPCSDM = #dzms_sspcsdm#,
 				<include refid="updateXtzd"/>
 			</dynamic>

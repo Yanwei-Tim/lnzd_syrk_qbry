@@ -17,7 +17,8 @@
     	       	   <input type='hidden' name='dwjbxxb.glbmid' id="dwjbxxb_glbmid" value="${zrqdm}"/>
 		    	   <input type='hidden' name='dwjbxxb.glpcsid' id="dwjbxxb_glpcsid" value="${pcsdm}"/>
 		    	   <input type='hidden' name='dwjbxxb.glfxjid' id="dwjbxxb_glfxjid" value="${fsxdm}"/>
-	    		   <input type='hidden' name='dwjbxxb.id' id="dwjbxxb_id" value="${dwjbxxb.id}"/>
+	    		   <input type='hidden' name='hsid' id="dwjbxxb_id" value="${dwjbxxb.id}"/>
+	    		   <input type="hidden" name="isCheck" value="${isCheck}">
 	    		   <input type='hidden' id="dwidString" value="${dwidString}"/>
 	    		   <input type='hidden' id="nextDwid" value="${nextDwid}"/>
 	    		   <input type='hidden' name='hsrwid' id="hsrwid" value="${hsrwid}"/>

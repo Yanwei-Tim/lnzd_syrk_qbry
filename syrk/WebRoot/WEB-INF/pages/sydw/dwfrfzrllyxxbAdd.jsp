@@ -17,8 +17,8 @@
 <script type="text/javascript" src="<%=contextPath%>/js/sydw/dwfrfzrllyxxbAdd.js"></script>
 <div class="easyui-layout" data-options="fit:true">
 	<form action="<%=basePath%>dwfrfzrllyxxb/save" id="dataForm" name="dataForm" method="post">
-		<input type="hidden" name="dwid" id="dwid" value="${entity.dwid }" />
-		<input type="hidden" name="ryid" id="ryid" value="${entity.ryid }" />
+		<input type="text" name="dwid" id="dwid" value="${entity.dwid }" />
+		<input type="text" name="ryid" id="ryid" value="${entity.ryid }" />
 		<!-- 从业人员id -->
 		<input type="hidden" name="jjlxr_ryid" id="jjqklxrid" value="${entity.jjlxr_ryid }" />
 		<!-- 紧急情况联系人ID -->

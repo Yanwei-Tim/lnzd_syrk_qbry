@@ -102,16 +102,16 @@ public class SydwQueryController extends BaseController{
 	}
 	
 	
-	//实有单位核实列表统计列表记录数;
-	@RequestMapping(value = "/queryCountSydwHs", method = RequestMethod.POST)
-	public @ResponseBody
-		long queryCountSydwHs(Dwjbxxb entity) {
-			SessionBean sessionBean = getSessionBean();
-		if(null != sessionBean){
-			//	entity.setGlpcsid((String)sessionBean.getExtendMap().get("ssPcsCode"));
-		}
-		return sydwQueryService.queryCountSydwHs(entity);
-	}
+//	//实有单位核实列表统计列表记录数;
+//	@RequestMapping(value = "/queryCountSydwHs", method = RequestMethod.POST)
+//	public @ResponseBody
+//		long queryCountSydwHs(Dwjbxxb entity) {
+//			SessionBean sessionBean = getSessionBean();
+//		if(null != sessionBean){
+//			//	entity.setGlpcsid((String)sessionBean.getExtendMap().get("ssPcsCode"));
+//		}
+//		return sydwQueryService.queryCountSydwHs(entity);
+//	}
 	
 	/**
 	 * 只查询单位基本信息表

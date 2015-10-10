@@ -61,6 +61,6 @@ public interface SydwQueryService {
 	public EasyUIPage queryDwDzOnPT(EasyUIPage page, Dwjbxxb entity);
 	
 	public long queryCountSydw(Dwjbxxb entity) ;
-	public long queryCountSydwHs(Dwjbxxb entity) ;
+//	public long queryCountSydwHs(Dwjbxxb entity) ;
 	public long queryCountDw(Dwjbxxb entity);
 }
