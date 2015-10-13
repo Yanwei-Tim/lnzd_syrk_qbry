@@ -178,6 +178,18 @@ public class DzDao extends BaseDaoImpl {
 	public void saveChdzDxb(BzdzxxbVO entity) {
 		insert("com.founder.bzdz.sqlmap.Dz.saveChdzDxb", entity);
 	}
+	
+	/**
+	 * @Title: saveChdzHsb 
+	 * @描述: 保存层户地址_【层户地址核实表】
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值: void    返回类型 
+	 * @throws
+	 */
+	public void saveChdzHsb(BzdzxxbVO entity) {
+		insert("com.founder.bzdz.sqlmap.Dz.saveChdzHsb", entity);
+	}
 
 	/**
 	 * @Title: saveJzwChjgb
@@ -384,6 +396,21 @@ public class DzDao extends BaseDaoImpl {
 		// 更新审核地址_【层户地址审核表】
 		update("com.founder.bzdz.sqlmap.Dz.updateShChdz", entity);
 	}
+	
+	/**
+	 * @Title: updateHs 
+	 * @描述: 更新核实地址
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值: void    返回类型 
+	 * @throws
+	 */
+	public void updateHs(BzdzxxbVO entity) {
+		// 更新核实地址_【门楼地址核实表】
+		update("com.founder.bzdz.sqlmap.Dz.updateHsMldz", entity);
+		// 更新核实地址_【层户地址核实表】
+		update("com.founder.bzdz.sqlmap.Dz.updateHsChdz", entity);
+	}
 
 	/**
 	 * @Title: insertDzDxb
@@ -399,6 +426,21 @@ public class DzDao extends BaseDaoImpl {
 		insert("com.founder.bzdz.sqlmap.Dz.insertDzMldz", entity);
 		// 插入审核地址_【层户地址对象表】
 		insert("com.founder.bzdz.sqlmap.Dz.insertDzChdz", entity);
+	}
+	
+	/**
+	 * @Title: insertHsDzDxb 
+	 * @描述: 核实通过将数据插入到门楼地址、层户地址对象表里
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值: void    返回类型 
+	 * @throws
+	 */
+	public void insertHsDzDxb(BzdzxxbVO entity) {
+		// 插入核实地址_【门楼地址对象表】
+		insert("com.founder.bzdz.sqlmap.Dz.insertHsDzMldz", entity);
+		// 插入核实地址_【层户地址对象表】
+		insert("com.founder.bzdz.sqlmap.Dz.insertHsDzChdz", entity);
 	}
 
 	/**
@@ -575,6 +617,19 @@ public class DzDao extends BaseDaoImpl {
 	public void crossOutChdzdxb(BzdzxxbVO entity) {
 		// 注销已启用地址数据_【层户地址对象表】
 		update("com.founder.bzdz.sqlmap.Dz.crossOutChdzdxb", entity);
+	}
+	
+	/**
+	 * @Title: crossOutChdzhsb 
+	 * @描述: 注销核实地址数据_【层户地址核实表】 
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值: void    返回类型 
+	 * @throws
+	 */
+	public void crossOutChdzhsb(BzdzxxbVO entity) {
+		// 注销核实地址数据_【层户地址核实表】
+		update("com.founder.bzdz.sqlmap.Dz.crossOutChdzhsb", entity);
 	}
 
 	/**
@@ -1077,14 +1132,37 @@ public class DzDao extends BaseDaoImpl {
 			entity.setDzzt("01");
 		}
 		map.put("bzdzxxbvo", entity);
-		if ("02".equals(entity.getDzzt()) || "03".equals(entity.getDzzt())) {
-			map.put("tableName", "BZDZ_ADD_MLDZSHB T");
-		} else {
-			map.put("tableName", "BZDZ_ADD_MLDZDXB T");
-		}
-		page.setTotal((Integer) queryForObject(
-				"com.founder.bzdz.sqlmap.Dz.queryDzCount", map));
-		page.setRows(queryForList("com.founder.bzdz.sqlmap.Dz.queryDzList", map));
+		map.put("tableName", "BZDZ_ADD_MLDZDHSB T");
+		page.setTotal((Integer) queryForObject("com.founder.bzdz.sqlmap.Dz.queryDzCheckCount", map));
+		page.setRows(queryForList("com.founder.bzdz.sqlmap.Dz.queryDzCheckList", map));
 		return page;
+	}
+	/**
+	 * @Title: queryMldzDhsb 
+	 * @描述: 创建地址核实和详情页面
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值: BzdzxxbVO    返回类型 
+	 * @throws
+	 */
+	public BzdzxxbVO queryMldzDhsb(String mldzid) {
+		BzdzxxbVO returnValue = null;
+		List<?> list = queryForList("com.founder.bzdz.sqlmap.Dz.queryMldzDhsb", mldzid);
+		if (list != null && list.size() > 0) {
+			returnValue = (BzdzxxbVO) list.get(0);
+		}
+		return returnValue;
+	}
+	/**
+	 * @Title: queryChHsdz 
+	 * @描述: 查询层户结构核实地址
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值: List<BzdzxxbVO>    返回类型 
+	 * @throws
+	 */
+	@SuppressWarnings("unchecked")
+	public List<BzdzxxbVO> queryChHsdz(BzdzxxbVO entity) {
+		return queryForList("com.founder.bzdz.sqlmap.Dz.queryChHsdz", entity);
 	}
 }

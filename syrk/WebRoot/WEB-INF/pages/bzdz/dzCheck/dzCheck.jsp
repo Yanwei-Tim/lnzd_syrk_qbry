@@ -27,7 +27,7 @@
        <div data-options="region:'west',border:false" style="width:528px;">
            <!-- 地址管理列表 -->
            <table id="dg" class="easyui-datagrid"
-	              	data-options="url:'<%=contextPath%>/dz/queryDzList',
+	              	data-options="url:'<%=contextPath%>/dz/queryCheckList',
 						onLoadSuccess:function(data){DzCheck.loadPoint(data,'dg');},
 						selectOnCheck:true,
 		        		checkOnSelect:true,
@@ -45,7 +45,7 @@
 			        <thead>
 			          <tr>
 			            <th data-options="field:'mlphqc',width:300,halign:'center'">地址名称</th>
-			            <th data-options="field:'dzzt',width:90,align:'center',halign:'center',dictName:contextPath+'/common/dict/DZ_BZDZ_DZZT.js',formatter:DzCheck.datagridDzzt">地址状态</th>
+			            <th data-options="field:'dzzt',width:90,align:'center',halign:'center',dictName:contextPath+'/common/dict/DZ_BZDZ_HSZT.js',formatter:DzCheck.datagridDzzt">地址状态</th>
 			          	<th data-options="field:'process',width:90,align:'center',halign:'center',formatter:DzCheck.datagridProcessFormater">操作</th>
 			          </tr>
 			       </thead>
@@ -55,14 +55,14 @@
 				<table cellspacing="0" cellpadding="0" border="0" >
 					<tbody>
 					     <tr class="dialogTr">
-							<td class="dialogTd" style="width:208px;" align="right"> 
-								<input type="text" name="dzmc" id="dzmc" class="easyui-searchbox" data-options="height:24,prompt:'请输入地址名称、拼音、别名搜索',searcher:DzCheck.queryButton" style="width:208px;"/>
+							<td class="dialogTd" style="width:278px;" align="right"> 
+								<input type="text" name="dzmc" id="dzmc" class="easyui-searchbox" data-options="height:24,prompt:'请输入地址名称、拼音、别名搜索',searcher:DzCheck.queryButton" style="width:278px;"/>
 							</td>
 							<td class="toolbarTd"><div class="datagrid-btn-separator"></div></td>
 							<td class="dialogTd" style="width:60px;" align="right">地址状态：</td>
 							<td class="dialogTd" style="width:80px" align="right">
 								 <input type="text" name="dzzt" id="dzzt" class="easyui-combobox"
-								           data-options="url: contextPath + '/common/dict/DZ_BZDZ_DZZT.js',dataFilter:'.*[^00]$',
+								           data-options="url: contextPath + '/common/dict/DZ_BZDZ_HSZT.js',
 						                         method:'get',valueField:'id',textField:'text',selectOnNavigation:false,
 						                         onLoadSuccess:function(){$('#dzzt').combobox('setValue','01');},
 						                         onSelect:function(rec){$('#dzzt').combobox('setValue',rec.id);DzCheck.queryButton();}" style="width:80px"/>
@@ -70,7 +70,6 @@
 							<td class="toolbarTd"><div class="datagrid-btn-separator"></div></td>
 							<td class="toolbarTd" align="center">
 								<a class="easyui-linkbutton" iconCls="icon-search" onclick="DzCheck.queryButton();">查询</a>
-								<a id="dzaddid" class="easyui-linkbutton" iconCls="icon-add" onclick="DzCheck.dzAdd();">新增</a>
 							</td>
 						</tr>
 					</tbody>

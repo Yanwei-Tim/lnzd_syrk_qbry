@@ -607,7 +607,7 @@ DzBuildingAdd.qdButton = function(){
 					});
 					 //返回成功后执行的方法
 					if(result.status == 'success'){
-						if(bzdzSh=="1"){
+						if(bzdzSh=="1"&&dzChb!="2"){
 							closeSelf();
 							executeTabPageMethod(mainTabID, "DzManage.queryButton()");
 						}else{

@@ -9,7 +9,7 @@
       var mldzid = "${mldzid}";
       //type 0为可编辑、1为只读
       var type = "${type}";
-      //dzChb地址层户表 0为层户地址对象表、1为层户地址审核表 
+      //dzChb地址层户表 0为层户地址对象表、1为层户地址审核表、2为层户地址核实表
       var dzChb = "${dzChb}";
       //chType层户结构 0为编辑、1为只读
       var chType = "${chType}";
@@ -24,6 +24,8 @@
 	        ${entity.dzmc}
 	        <a id="zxcjId" href="javascript:DzBuilding.chjgZxcj();" style="font-size: 14px;font-weight: bold;">【注销重建】</a>
 	 </div>
+	 <!-- 判断层户结构是否存在 -->
+	 <input type="hidden" id="pdchjg" value="0">
 	 <!-- 修改地上单元基本信息 -->
 	 <div id='showRightDiv' class="lou_wrap">
 		<table cellpadding="0" cellspacing="0" border="0" class="lou_table" >

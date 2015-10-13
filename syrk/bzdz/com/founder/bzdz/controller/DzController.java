@@ -409,6 +409,43 @@ public class DzController extends BaseController {
 		mv.addObject(AppConst.MESSAGES, new Gson().toJson(model));
 		return mv;
 	}
+	
+	/**
+	 * @Title: updateHszt 
+	 * @描述: 更新核实地址 
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值: ModelAndView    返回类型 
+	 * @throws
+	 */
+	@RequestMapping(value = "/updateHszt", method = RequestMethod.POST)
+	public @ResponseBody ModelAndView updateHszt(BzdzxxbVO entity){
+		ModelAndView mv = new ModelAndView("redirect:/forward/"+ AppConst.FORWORD);
+		SessionBean sessionBean = getSessionBean();
+		//返回提示
+		Map<String, Object> model = new HashMap<String, Object>();
+		//判断门楼地址是否存在
+		List<BzdzxxbVO> mldzlist = new ArrayList<BzdzxxbVO>();
+		mldzlist = dzService.queryMldzPd(entity);
+		if(mldzlist.size()>0){
+			model.put(AppConst.STATUS, AppConst.FAIL);
+			model.put(AppConst.MESSAGES, "核实【"+entity.getMlphqc()+"】失败，该地址已在【"+mldzlist.get(0).getXt_zhxgrbm()+"】存在！");
+			model.put(AppConst.SAVE_ID, entity.getMldzid());
+		}else{
+			//try {
+				dzService.updateHs(entity,sessionBean);
+				model.put(AppConst.STATUS, AppConst.SUCCESS);
+				model.put(AppConst.MESSAGES, "核实【"+entity.getMlphqc()+"】成功！");
+				model.put(AppConst.SAVE_ID, entity.getMldzid());
+			/*} catch (Exception e) {
+				model.put(AppConst.STATUS, AppConst.FAIL);
+				model.put(AppConst.MESSAGES, "核实【"+entity.getMlphqc()+"】失败！" + e);
+			}*/
+		}
+		mv.addObject(AppConst.MESSAGES, new Gson().toJson(model));
+		return mv;
+	}
+	
 	/**
 	 * @Title: queryChjg 
 	 * @描述: 加载层户结构【对象层户】【服务接口】
@@ -536,6 +573,8 @@ public class DzController extends BaseController {
 		BzdzxxbVO entity = new BzdzxxbVO();
 		if("1".equals(dzChb)){
 			entity = dzService.queryMldzShXx(mldzid);
+		}if("2".equals(dzChb)){
+			entity = dzService.queryMldzDhsb(mldzid);
 		}else{
 			entity = dzService.queryMldzDx(mldzid);
 		}
@@ -942,5 +981,43 @@ public class DzController extends BaseController {
 			}
 		}
 		return dzService.queryCheckList(page, entity);
+	}
+	/**
+	 * @Title: createCheckAndXq 
+	 * @描述: 创建地址核实和详情页面
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值: ModelAndView    返回类型 
+	 * @throws
+	 */
+	@RequestMapping(value = "/createCheckAndXq", method = RequestMethod.GET)
+    public ModelAndView createCheckAndXq(String mldzid,String mainTabID,String type){
+		ModelAndView mv = new ModelAndView("bzdz/dzCheck/dzCheckEdit");
+		//查询单条门楼地址详情数据
+		BzdzxxbVO entity = new BzdzxxbVO();
+		entity = dzService.queryMldzDhsb(mldzid);
+		List<BzdzxxbVO> dzBmArray = new ArrayList<BzdzxxbVO>();
+		dzBmArray = dzService.queryDzbm(mldzid);
+		if(dzBmArray.size() == 0){
+			dzBmArray.add(new BzdzxxbVO());
+		}
+		mv.addObject("type",type);
+		mv.addObject("entity", entity);
+		mv.addObject("mainTabID", mainTabID);
+		mv.addObject("dzBmArray",dzBmArray);
+		mv.addObject("dzBmArrayLength",dzBmArray.size());
+		return mv;
+	}
+	/**
+	 * @Title: queryChHsdz 
+	 * @描述: 查询层户结构核实地址
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值: List<BzdzxxbVO>    返回类型 
+	 * @throws
+	 */
+	@RequestMapping(value = "/queryChHsdz/{mldzid}",method = RequestMethod.GET)
+	public @ResponseBody List<BzdzxxbVO> queryChHsdz(BzdzxxbVO entity){
+		return dzService.queryChHsdz(entity);
 	}
 }

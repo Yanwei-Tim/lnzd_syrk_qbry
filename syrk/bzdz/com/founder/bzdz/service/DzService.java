@@ -130,6 +130,15 @@ public interface DzService {
 	 */
 	public void updateSh(BzdzxxbVO entity,SessionBean sessionBean);
 	/**
+	 * @Title: updateHs 
+	 * @描述: 更新核实地址
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值: void    返回类型 
+	 * @throws
+	 */
+	public void updateHs(BzdzxxbVO entity,SessionBean sessionBean);
+	/**
 	 * @Title: queryJzwChjg 
 	 * @描述: 获取建筑物层户机构_【建筑物层户结构表】
 	 * @作者: zhang_guoliang@founder.com 
@@ -348,4 +357,22 @@ public interface DzService {
 	 * @throws
 	 */
 	public EasyUIPage queryCheckList(EasyUIPage page, BzdzxxbVO entity);
+	/**
+	 * @Title: queryMldzDhsb 
+	 * @描述: 创建地址核实和详情页面
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值: BzdzxxbVO    返回类型 
+	 * @throws
+	 */
+	public BzdzxxbVO queryMldzDhsb(String mldzid);
+	/**
+	 * @Title: queryChHsdz 
+	 * @描述: 查询层户结构核实地址
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值: List<BzdzxxbVO>    返回类型 
+	 * @throws
+	 */
+	public List<BzdzxxbVO> queryChHsdz(BzdzxxbVO entity);
 }

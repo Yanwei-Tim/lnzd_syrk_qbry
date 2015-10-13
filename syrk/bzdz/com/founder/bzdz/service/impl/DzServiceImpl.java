@@ -135,37 +135,10 @@ public class DzServiceImpl extends BaseService implements DzService {
 	 * @throws
 	 */
 	public void saveChDz(BzdzxxbVO entity, SessionBean sessionBean) {
-		//地址是否进行审核状态【系统配置】
-		String bzdzSh = SystemConfig.getString("bzdzSh");
-		if("1".equals(bzdzSh)){
-			//更新门楼地址对象表 修改备注字段进入已启用（维护中）状态
-		    setUpdateProperties(entity,sessionBean);
-		    if(!"1".equals(entity.getDzChb())){
-				entity.setBz("维护中");
-				dzDao.updateDzMldz(entity);
-			}
-			List<BzdzxxbVO> volist = dzDao.queryMldzShb(entity.getMldzid());
-			if(volist.size()==0){
-				//将对象表数据插入到审核表中
-				dzDao.insertMldzShb(entity);
-			}
-			entity.setShztdm("01");
-			entity.setShbhgyy("");
-			dzDao.updateMldzShb(entity);
-			setSaveProperties(entity,sessionBean);
-			//建筑物信息表
-			entity.setJzwid(UUID.create());
-			entity.setBz("维护中");
-			dzDao.saveJzw(entity);
-			//建筑物关联表
-			entity.setGlid(UUID.create());
-			dzDao.saveJzwglb(entity);
-			//删除地址审核表数据
-			dzDao.deleteChdzShb(entity.getMldzid());
-		}else{
+		if("2".equals(entity.getDzChb())){
 			//先注销之前层户地址信息
 			setCrossoutProperties(entity,sessionBean);
-			entity.setXt_zxyy("警务综合平台_地址管理_地址维护_层户结构注销重建【注销】");
+			entity.setXt_zxyy("警务综合平台_地址核实_地址核实_层户结构注销重建【注销】");
 			//查询门楼地址关联的JZWID
 			List<BzdzxxbVO> jzwlist = dzDao.queryJzwid(entity);
 			for(int i=0;i<jzwlist.size();i++){
@@ -174,8 +147,8 @@ public class DzServiceImpl extends BaseService implements DzService {
 				//注销关联建筑物ID的数据
 				dzDao.crossOutJzwXx(entity);
 			}
-			//注销已启用地址数据_【层户地址对象表】
-			dzDao.crossOutChdzdxb(entity);
+			//注销核实地址数据_【层户地址核实表】
+			dzDao.crossOutChdzhsb(entity);
 			//保存新建的层户地址信息
 			setSaveProperties(entity,sessionBean);
 			entity.setXt_zxyy("");
@@ -186,11 +159,64 @@ public class DzServiceImpl extends BaseService implements DzService {
 			//建筑物关联表
 			entity.setGlid(UUID.create());
 			dzDao.saveJzwglb(entity);
+		}else{
+			//地址是否进行审核状态【系统配置】
+			String bzdzSh = SystemConfig.getString("bzdzSh");
+			if("1".equals(bzdzSh)){
+				//更新门楼地址对象表 修改备注字段进入已启用（维护中）状态
+			    setUpdateProperties(entity,sessionBean);
+			    if(!"1".equals(entity.getDzChb())){
+					entity.setBz("维护中");
+					dzDao.updateDzMldz(entity);
+				}
+				List<BzdzxxbVO> volist = dzDao.queryMldzShb(entity.getMldzid());
+				if(volist.size()==0){
+					//将对象表数据插入到审核表中
+					dzDao.insertMldzShb(entity);
+				}
+				entity.setShztdm("01");
+				entity.setShbhgyy("");
+				dzDao.updateMldzShb(entity);
+				setSaveProperties(entity,sessionBean);
+				//建筑物信息表
+				entity.setJzwid(UUID.create());
+				entity.setBz("维护中");
+				dzDao.saveJzw(entity);
+				//建筑物关联表
+				entity.setGlid(UUID.create());
+				dzDao.saveJzwglb(entity);
+				//删除地址审核表数据
+				dzDao.deleteChdzShb(entity.getMldzid());
+			}else{
+				//先注销之前层户地址信息
+				setCrossoutProperties(entity,sessionBean);
+				entity.setXt_zxyy("警务综合平台_地址管理_地址维护_层户结构注销重建【注销】");
+				//查询门楼地址关联的JZWID
+				List<BzdzxxbVO> jzwlist = dzDao.queryJzwid(entity);
+				for(int i=0;i<jzwlist.size();i++){
+					String jzwid = jzwlist.get(i).getJzwid();
+					entity.setJzwid(jzwid);
+					//注销关联建筑物ID的数据
+					dzDao.crossOutJzwXx(entity);
+				}
+				//注销已启用地址数据_【层户地址对象表】
+				dzDao.crossOutChdzdxb(entity);
+				//保存新建的层户地址信息
+				setSaveProperties(entity,sessionBean);
+				entity.setXt_zxyy("");
+				//建筑物信息表
+				entity.setJzwid(UUID.create());
+				entity.setBz("");
+				dzDao.saveJzw(entity);
+				//建筑物关联表
+				entity.setGlid(UUID.create());
+				dzDao.saveJzwglb(entity);
+			}
 		}
 		//保存地上基本信息
-		saveDsChdzdxb(entity,bzdzSh);
+		saveDsChdzdxb(entity,entity.getDzChb());
 	    //保存地下基本信息
-		saveDxChdzdxb(entity,bzdzSh);
+		saveDxChdzdxb(entity,entity.getDzChb());
 	}
 	/**
 	 * @Title: saveDsChdzdxb
@@ -223,6 +249,8 @@ public class DzServiceImpl extends BaseService implements DzService {
 				//保存单元地址信息
 				if("1".equals(bzdzSh)){
 					dzDao.saveChdz(entity);
+				}else if("2".equals(bzdzSh)){
+					dzDao.saveChdzHsb(entity);
 				}else{
 					dzDao.saveChdzDxb(entity);
 				}
@@ -253,6 +281,8 @@ public class DzServiceImpl extends BaseService implements DzService {
 				//保存楼层地址信息
 				if("1".equals(bzdzSh)){
 					dzDao.saveChdz(entity);
+				}else if("2".equals(bzdzSh)){
+					dzDao.saveChdzHsb(entity);
 				}else{
 					dzDao.saveChdzDxb(entity);
 				}
@@ -277,6 +307,8 @@ public class DzServiceImpl extends BaseService implements DzService {
 				//保存楼层地址信息
 				if("1".equals(bzdzSh)){
 					dzDao.saveChdz(entity);
+				}else if("2".equals(bzdzSh)){
+					dzDao.saveChdzHsb(entity);
 				}else{
 					dzDao.saveChdzDxb(entity);
 				}
@@ -314,6 +346,8 @@ public class DzServiceImpl extends BaseService implements DzService {
 				//保存单元地址信息
 				if("1".equals(bzdzSh)){
 					dzDao.saveChdz(entity);
+				}else if("2".equals(bzdzSh)){
+					dzDao.saveChdzHsb(entity);
 				}else{
 					dzDao.saveChdzDxb(entity);
 				}
@@ -344,6 +378,8 @@ public class DzServiceImpl extends BaseService implements DzService {
 				//保存楼层地址信息
 				if("1".equals(bzdzSh)){
 					dzDao.saveChdz(entity);
+				}else if("2".equals(bzdzSh)){
+					dzDao.saveChdzHsb(entity);
 				}else{
 					dzDao.saveChdzDxb(entity);
 				}
@@ -368,6 +404,8 @@ public class DzServiceImpl extends BaseService implements DzService {
 				//保存楼层地址信息
 				if("1".equals(bzdzSh)){
 					dzDao.saveChdz(entity);
+				}else if("2".equals(bzdzSh)){
+					dzDao.saveChdzHsb(entity);
 				}else{
 					dzDao.saveChdzDxb(entity);
 				}
@@ -518,6 +556,27 @@ public class DzServiceImpl extends BaseService implements DzService {
 			setUpdateProperties(dzxxvo,sessionBean);
 			dzDao.updateDzMldz(dzxxvo);//不合格退回对象表
 		}
+	}
+	/**
+	 * @Title: updateHs 
+	 * @Description: 地址核实更新 
+	 * @author zhang_guoliang@founder.com 
+	 * @param 传入参数定义 
+	 * @throws
+	 */
+	public void updateHs(BzdzxxbVO entity, SessionBean sessionBean){
+		setUpdateProperties(entity,sessionBean);
+		entity.setXt_zxbz("0");
+		dzDao.updateSh(entity);
+		//如果核实通过将数据插入到门楼地址、层户地址对象表里
+		dzDao.insertDzDxb(entity);
+		BzdzxxbVO mldz = dzDao.queryMldzDx(entity.getMldzid());
+		//同时插入到BZDZ_ADD_MLDZDXB_PT空间表
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("entity", mldz);
+		params.put("srid", gisService.getShapeTableSrid("BZDZ_ADD_MLDZDXB_PT"));
+		params.put("objectid", gisService.getSdeSeqValue("BZDZ_ADD_MLDZDXB_PT"));
+		dzDao.saveDzDxbPT(params);
 	}
 	/**
 	 * @Title: queryJzwChjg 
@@ -1137,5 +1196,25 @@ public class DzServiceImpl extends BaseService implements DzService {
 	 */
 	public EasyUIPage queryCheckList(EasyUIPage page, BzdzxxbVO entity) {
 		return dzDao.queryCheckList(page,entity);
+	}
+	/**
+	 * @Title: queryMldzDhsb 
+	 * @Description: 创建地址核实和详情页面
+	 * @author zhang_guoliang@founder.com 
+	 * @param 传入参数定义 
+	 * @throws
+	 */
+	public BzdzxxbVO queryMldzDhsb(String mldzid) {
+		return dzDao.queryMldzDhsb(mldzid);
+	}
+	/**
+	 * @Title: queryChHsdz 
+	 * @Description: 查询层户结构核实地址
+	 * @author zhang_guoliang@founder.com 
+	 * @param 传入参数定义 
+	 * @throws
+	 */
+	public List<BzdzxxbVO> queryChHsdz(BzdzxxbVO entity) {
+		return dzDao.queryChHsdz(entity);
 	}
 }
