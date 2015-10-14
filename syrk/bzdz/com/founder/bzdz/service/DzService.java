@@ -365,7 +365,7 @@ public interface DzService {
 	 * @返回值: BzdzxxbVO    返回类型 
 	 * @throws
 	 */
-	public BzdzxxbVO queryMldzDhsb(String mldzid);
+	public BzdzxxbVO queryMldzDhsb(String mldzid,String type);
 	/**
 	 * @Title: queryChHsdz 
 	 * @描述: 查询层户结构核实地址
@@ -374,5 +374,5 @@ public interface DzService {
 	 * @返回值: List<BzdzxxbVO>    返回类型 
 	 * @throws
 	 */
-	public List<BzdzxxbVO> queryChHsdz(BzdzxxbVO entity);
+	public List<BzdzxxbVO> queryChHsdz(String mldzid,String type);
 }

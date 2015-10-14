@@ -23,7 +23,7 @@
 	  var type = "${type}";
 	  var title = "";
 	  if(type=="0"){
-		  title = "地址审核";
+		  title = "地址核实";
 	  }else{
 		  title = "地址详情";
 	  }
@@ -32,7 +32,7 @@
     <script type="text/javascript" src="<%=contextPath%>/js/bzdz/dzCheck/dzCheckEdit.js"></script>
   </head>
   <body id="panelid" class="easyui-layout" data-options="fit:true">
-      <div data-options="region:'west',title:title" style="width:380px;">
+      <div data-options="region:'west',title:''" style="width:380px;">
       		<form action="<%=basePath%>dz/updateHszt" id="dataForm" name="dataForm" method="post">
           	<table border="0" cellpadding="0" cellspacing="10" width="100%">
                <tr class="dialogTr">

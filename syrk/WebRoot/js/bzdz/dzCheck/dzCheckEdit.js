@@ -80,8 +80,10 @@ DzCheckEdit.onloadReadonly = function(){
 	setInputReadonly('sqmc', true);
 	//地图错误反馈【只读】
 	setInputReadonly('dtcwfk', true);
-	//不合格原因【只读】
-	setInputReadonly('shbhgyy', true);
+	if(type=="1"){
+		document.getElementById("hgButton").style.display = "none";
+		document.getElementById("dtbdButton").style.display = "none";
+	}
 };
 /**
  * @title:loadInitMarker
@@ -223,7 +225,7 @@ DzCheckEdit.moveMapToDrawPoint = function(){
  */
 DzCheckEdit.onloadChjg = function(){
 	//层户结构URL
-	var src = contextPath+"/dz/dzBuilding?mldzid="+mldzid+"&type=2&dzChb=2&chType=2&mainTabID="+mainTabID;
+	var src = contextPath+"/dz/dzBuilding?mldzid="+mldzid+"&type="+type+"&dzChb=2&chType=2&mainTabID="+mainTabID;
 	//Iframe页面加载，解决加载页面先出输入框在加载样式问题
 	var chjgHtml = "<iframe id='chjgid' style='width: 100%;height: 100%;' frameborder='no' src='"+src+"'></iframe>";
 	$("#chDivId").html(chjgHtml);

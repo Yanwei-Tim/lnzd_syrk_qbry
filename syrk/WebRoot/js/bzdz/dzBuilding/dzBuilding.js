@@ -42,7 +42,7 @@ DzBuilding.onloadChjg = function(){
 	if(dzChb==1){
 		url = contextPath+"/dz/queryChShdz/"+mldzid;
 	}else if(dzChb==2){
-		url = contextPath+"/dz/queryChHsdz/"+mldzid;
+		url = contextPath+"/dz/queryChHsdz/"+mldzid+"/"+type;
 	}
 	//层户地址
 	$.ajax({

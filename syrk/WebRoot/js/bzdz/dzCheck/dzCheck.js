@@ -53,30 +53,16 @@ DzCheck.onloadMap = function(){
  * @date:2014-12-26 10:47:21
  */	
 DzCheck.datagridProcessFormater = function(val,row,index){
-	if(row.dzzt=="01"){
-		if(orglevel != "50"){
-			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.doUpdateAndXq(this, '+index+',1)">详情</a>&nbsp;';
-		}else{
+	if(orglevel != "50"||row.dzzt=="02"){
+		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.doUpdateAndXq(this, '+index+',1)">详情</a>&nbsp;';
+	}else{
+		if(row.dzzt=="01"){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.doUpdateAndXq(this, '+index+',0)">核实</a>&nbsp;'+
-	           	   '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.doDeleteYqy(this, '+index+')">注销</a>&nbsp;';
+        	   	   '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.doDeleteYqy(this, '+index+')">注销</a>&nbsp;';
+		}else{
+			return "";
 		}
-    }else if(row.dzzt=="02"){
-    	if(orglevel != "50"){
-    		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.dzVerifyShAndXq(this, '+index+',1)">详情</a>&nbsp;';
-    	}else{
-    		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.dzVerifyShAndXq(this, '+index+',1)">详情</a>&nbsp;'+
-	           	   '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.doDeleteDspAndTh(this, '+index+',2)">注销</a>&nbsp;';
-    	}
-    }else if(row.dzzt=="03"){
-    	if(orglevel != "50"){
-    		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.dzVerifyShAndXq(this, '+index+',1)">详情</a>&nbsp;';
-    	}else{
-    		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.dzVerifyShAndXq(this, '+index+',1)">详情</a>&nbsp;'+
-    			   '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.doDeleteDspAndTh(this, '+index+',3)">注销</a>&nbsp;';
-    	}
-    }else{
-    	return "";
-    }
+	}
 };
 /**
  * @title:queryButton
@@ -147,11 +133,6 @@ DzCheck.loadPoint = function(data){
 					img = "jzw0.png";
 					openHtml += "<div class='divwrap'><div class='oneText'>3</div><div class='title_big'>注销时间："+rows[count].xt_zhxgsj+"</div></div>";
 				}
-				if(dzzt!="03"){
-					openHtml += "<div class='divwrap'><div class='title_big'><div class='blueText'>";
-					openHtml +=	"<a class='blueText' href='javascript:javascript:void(0)' onclick='DzCheck.onloadChjg(\""+mldzid+"\",\""+title+"\",\""+dzzt+"\")'>【层户结构】</a>";
-					openHtml +=	"</div></div></div>";
-				}
 				var initMarker = DzCheck.map.initMarker(title,zbx,zby,img,openHtml,null,43,37);
 				DzCheck.map._MapApp.addOverlay(initMarker);
 				DzCheck.initMarkerArr.push(initMarker);
@@ -191,10 +172,6 @@ DzCheck.addMapToListFun = function(PMarker,row){
 		//鼠标移动到点上列表选中
 		$('#dg').datagrid("selectRow",row);
 	});
-	/*PMarker.addListener("mouseout",function(){
-		//鼠标移动到点上取消列表选中
-		$('#dg').datagrid("unselectRow",row);
-	});*/
 };
 /**
  * @title:datagridDzzt
@@ -241,9 +218,6 @@ DzCheck.onClickRow = function(rowIndex,rowData){
 		}else if(rowData.dzzt=="03"){
 			openHtml += "<div class='divwrap'><div class='oneText'>3</div><div class='title_big'>注销时间："+rowData.xt_zhxgsj+"</div></div>";
 		}
-		openHtml += "<div class='divwrap'><div class='title_big'><div class='blueText'>";
-		openHtml += "<a class='blueText' href='javascript:javascript:void(0)' onclick='DzCheck.onloadChjg(\""+mldzid+"\",\""+title+"\",\""+rowData.dzzt+"\")'>【层户结构】</a>";
-		openHtml += "</div></div></div>";
 		DzCheck.map._MapApp.openInfoWindow(point,openHtml,true);
 	}else{
 		topMessager.show({
@@ -297,20 +271,6 @@ DzCheck.doDelete_back = function(result){
 			timeout:3500
 		});
 	}
-};
-/**
- * @title:dzVerifyShAndXq
- * @description:地址审核或查看详情
- * @author: zhang_guoliang@founder.com
- * @param type 0为可编辑、1为只读，dzChb地址层户表 0为层户地址对象表、1为层户地址审核表、chType层户结构 0为编辑、1为只读
- * @date:2015-02-09 18:18:54
- */
-DzCheck.dzVerifyShAndXq = function(linkObject,index,type,dzChb,chType){
-	//阻止冒泡，不然要执行onClickRow
-    cancelBubble(); 
-    var rows = $('#dg').datagrid('getData');
-	var rowData = rows.rows[index];
-    menu_open('【'+rowData.mlphqc+'】详情','/dz/createDzShAndXq?mldzid='+rowData.mldzid+'&type='+type+'&dzChb='+dzChb+'&chType='+chType+'&mainTabID='+getMainTabID());
 };
 /**
  * @title:doDeleteYqy
@@ -376,7 +336,7 @@ DzCheck.closeWindow = function(){
  * @param
  * @date:2015-02-04 18:23:35
  */	
-DzCheck.doUpdateAndXq = function(linkObject, index,type){
+DzCheck.doUpdateAndXq = function(linkObject,index,type){
 	//阻止冒泡，不然要执行onClickRow
     cancelBubble(); 
     var rows = $('#dg').datagrid('getData');

@@ -432,15 +432,10 @@ public class DzController extends BaseController {
 			model.put(AppConst.MESSAGES, "核实【"+entity.getMlphqc()+"】失败，该地址已在【"+mldzlist.get(0).getXt_zhxgrbm()+"】存在！");
 			model.put(AppConst.SAVE_ID, entity.getMldzid());
 		}else{
-			//try {
-				dzService.updateHs(entity,sessionBean);
-				model.put(AppConst.STATUS, AppConst.SUCCESS);
-				model.put(AppConst.MESSAGES, "核实【"+entity.getMlphqc()+"】成功！");
-				model.put(AppConst.SAVE_ID, entity.getMldzid());
-			/*} catch (Exception e) {
-				model.put(AppConst.STATUS, AppConst.FAIL);
-				model.put(AppConst.MESSAGES, "核实【"+entity.getMlphqc()+"】失败！" + e);
-			}*/
+			dzService.updateHs(entity,sessionBean);
+			model.put(AppConst.STATUS, AppConst.SUCCESS);
+			model.put(AppConst.MESSAGES, "核实【"+entity.getMlphqc()+"】成功！");
+			model.put(AppConst.SAVE_ID, entity.getMldzid());
 		}
 		mv.addObject(AppConst.MESSAGES, new Gson().toJson(model));
 		return mv;
@@ -574,7 +569,7 @@ public class DzController extends BaseController {
 		if("1".equals(dzChb)){
 			entity = dzService.queryMldzShXx(mldzid);
 		}if("2".equals(dzChb)){
-			entity = dzService.queryMldzDhsb(mldzid);
+			entity = dzService.queryMldzDhsb(mldzid,type);
 		}else{
 			entity = dzService.queryMldzDx(mldzid);
 		}
@@ -995,7 +990,7 @@ public class DzController extends BaseController {
 		ModelAndView mv = new ModelAndView("bzdz/dzCheck/dzCheckEdit");
 		//查询单条门楼地址详情数据
 		BzdzxxbVO entity = new BzdzxxbVO();
-		entity = dzService.queryMldzDhsb(mldzid);
+		entity = dzService.queryMldzDhsb(mldzid,type);
 		List<BzdzxxbVO> dzBmArray = new ArrayList<BzdzxxbVO>();
 		dzBmArray = dzService.queryDzbm(mldzid);
 		if(dzBmArray.size() == 0){
@@ -1016,8 +1011,8 @@ public class DzController extends BaseController {
 	 * @返回值: List<BzdzxxbVO>    返回类型 
 	 * @throws
 	 */
-	@RequestMapping(value = "/queryChHsdz/{mldzid}",method = RequestMethod.GET)
-	public @ResponseBody List<BzdzxxbVO> queryChHsdz(BzdzxxbVO entity){
-		return dzService.queryChHsdz(entity);
+	@RequestMapping(value = "/queryChHsdz/{mldzid}/{type}",method = RequestMethod.GET)
+	public @ResponseBody List<BzdzxxbVO> queryChHsdz(@PathVariable(value="mldzid")String mldzid,@PathVariable(value="type")String type){
+		return dzService.queryChHsdz(mldzid,type);
 	}
 }

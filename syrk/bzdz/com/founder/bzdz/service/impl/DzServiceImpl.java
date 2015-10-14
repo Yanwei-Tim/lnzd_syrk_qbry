@@ -567,9 +567,9 @@ public class DzServiceImpl extends BaseService implements DzService {
 	public void updateHs(BzdzxxbVO entity, SessionBean sessionBean){
 		setUpdateProperties(entity,sessionBean);
 		entity.setXt_zxbz("0");
-		dzDao.updateSh(entity);
+		dzDao.updateHs(entity);
 		//如果核实通过将数据插入到门楼地址、层户地址对象表里
-		dzDao.insertDzDxb(entity);
+		dzDao.insertHsDzDxb(entity);
 		BzdzxxbVO mldz = dzDao.queryMldzDx(entity.getMldzid());
 		//同时插入到BZDZ_ADD_MLDZDXB_PT空间表
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -1204,8 +1204,8 @@ public class DzServiceImpl extends BaseService implements DzService {
 	 * @param 传入参数定义 
 	 * @throws
 	 */
-	public BzdzxxbVO queryMldzDhsb(String mldzid) {
-		return dzDao.queryMldzDhsb(mldzid);
+	public BzdzxxbVO queryMldzDhsb(String mldzid,String type) {
+		return dzDao.queryMldzDhsb(mldzid,type);
 	}
 	/**
 	 * @Title: queryChHsdz 
@@ -1214,7 +1214,7 @@ public class DzServiceImpl extends BaseService implements DzService {
 	 * @param 传入参数定义 
 	 * @throws
 	 */
-	public List<BzdzxxbVO> queryChHsdz(BzdzxxbVO entity) {
-		return dzDao.queryChHsdz(entity);
+	public List<BzdzxxbVO> queryChHsdz(String mldzid,String type) {
+		return dzDao.queryChHsdz(mldzid,type);
 	}
 }

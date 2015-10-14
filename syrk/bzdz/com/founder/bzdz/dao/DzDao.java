@@ -1145,9 +1145,12 @@ public class DzDao extends BaseDaoImpl {
 	 * @返回值: BzdzxxbVO    返回类型 
 	 * @throws
 	 */
-	public BzdzxxbVO queryMldzDhsb(String mldzid) {
+	public BzdzxxbVO queryMldzDhsb(String mldzid,String type) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("mldzid", mldzid);
+		map.put("type", type);
 		BzdzxxbVO returnValue = null;
-		List<?> list = queryForList("com.founder.bzdz.sqlmap.Dz.queryMldzDhsb", mldzid);
+		List<?> list = queryForList("com.founder.bzdz.sqlmap.Dz.queryMldzDhsb", map);
 		if (list != null && list.size() > 0) {
 			returnValue = (BzdzxxbVO) list.get(0);
 		}
@@ -1162,7 +1165,10 @@ public class DzDao extends BaseDaoImpl {
 	 * @throws
 	 */
 	@SuppressWarnings("unchecked")
-	public List<BzdzxxbVO> queryChHsdz(BzdzxxbVO entity) {
-		return queryForList("com.founder.bzdz.sqlmap.Dz.queryChHsdz", entity);
+	public List<BzdzxxbVO> queryChHsdz(String mldzid,String type) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("mldzid", mldzid);
+		map.put("type", type);
+		return queryForList("com.founder.bzdz.sqlmap.Dz.queryChHsdz", map);
 	}
 }
