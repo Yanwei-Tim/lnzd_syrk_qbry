@@ -101,11 +101,11 @@ public class SydwQueryServiceImpl implements SydwQueryService {
 	public long queryCountSydw(Dwjbxxb entity) {
 		return sydwQueryDao.queryCountSydw(entity);
 	}
-
-	@Override
-	public long queryCountSydwHs(Dwjbxxb entity) {
-		return sydwQueryDao.queryCountSydwHs(entity);
-	}
+//
+//	@Override
+//	public long queryCountSydwHs(Dwjbxxb entity) {
+//		return sydwQueryDao.queryCountSydwHs(entity);
+//	}
 
 	@Override
 	public long queryCountDw(Dwjbxxb entity) {

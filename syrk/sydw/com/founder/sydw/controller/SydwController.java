@@ -35,6 +35,7 @@ import com.founder.sydw.service.DwjbxxbService;
 import com.founder.sydw.service.FrfzrllrbService;
 import com.founder.sydw.service.SydwQueryService;
 import com.founder.sydw.vo.DwjbxxbSaveVO;
+import com.founder.syrkgl.bean.SyrkSyrkxxzb;
 
 /**
  * ****************************************************************************
@@ -86,7 +87,7 @@ public class SydwController extends BaseController {
 	 */
 	@RestfulAnnotation(valiField="dwjbxxb.dwlbdm,dwjbxxb.dwmc,dwjbxxb.kyrq,dwjbxxb.lxdh,dwjbxxb.dwztdm",serverId="3")
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public @ResponseBody ModelAndView saveDwjbxxb(@RequestParam(value="uploadFile", required=false)CommonsMultipartFile[] uploadFile,DwjbxxbSaveVO swjbxxbSaveVO,String hsrwid,SessionBean sessionBean) {
+	public @ResponseBody ModelAndView saveDwjbxxb(@RequestParam(value="uploadFile", required=false)CommonsMultipartFile[] uploadFile,DwjbxxbSaveVO swjbxxbSaveVO,String hsrwid,SessionBean sessionBean,String isCheck,String hsid) {
 		ModelAndView mv = new ModelAndView(getViewName(sessionBean));
 		Map<String, Object> model = new HashMap<String, Object>();
 		Dwjbxxb dwjbxxb = swjbxxbSaveVO.getDwjbxxb();
@@ -98,6 +99,13 @@ public class SydwController extends BaseController {
 		String lyms="实有单位";
 		//@star新增结束
 		try {
+			//实有单位核实修改状态
+			if ("check".equals(isCheck)) {
+				dwjbxxb.setId(hsid);
+				dwjbxxb.setHs_status("1");
+				dwjbxxb.setIsCheck("check");
+				dwjbxxbService.updateHs(dwjbxxb, dwbmxxbArray,sessionBean);
+			}
 			if((!StringUtils.isBlank(dwjbxxb.getDz_dwdzdm()) && !StringUtils.isBlank(dwjbxxb.getDz_dwdzmlpdm())  &&
 					!StringUtils.isBlank(dwjbxxb.getDz_dwdzmlpxz())  && !StringUtils.isBlank(dwjbxxb.getDz_dwdzssxdm()) &&
 					!StringUtils.isBlank(dwjbxxb.getDz_dwdzxz())) ||(!StringUtils.isBlank(dwjbxxb.getDzms_zbx()) &&

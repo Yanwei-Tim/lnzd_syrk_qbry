@@ -1,6 +1,6 @@
 $(function(){
-	$('#hs_status').combobox('setValue', '0');
-	$('#xt_zxbz').combobox('setValue', '0');
+	$('#hs_status').combobox('setValue', '01');
+	//$('#xt_zxbz').combobox('setValue', '0');
 	$('#dg').datagrid({
          url: contextPath + '/syfw/list?isCheck=check&flag=0&xt_zxbz=0&hs_status=0'
 	 });
@@ -52,11 +52,14 @@ syrkCheck = function(linkObject,index){
 //列表显示是否核实
 function isCheck(val,row,index){
 	var hsStatus = row["hs_status"];
-	if (hsStatus == '0') {
-		return "<div>未核实</div>";
-	} else {
+	var xt_zxbz = row["xt_zxbz"];
+	if(xt_zxbz == '1'){
+		return "<div>已注销</div>";
+	} if (hsStatus == '0') {
+		return "<div>待核实</div>";
+	} else if(hsStatus == '1') {
 		return "<div>已核实</div>";
-	}
+	} 
 }
 
 //注销panel
@@ -121,10 +124,21 @@ function queryButton(){
 	var fwdz_dzxz = document.getElementById("fwdz_dzxz").value;
 	var sfczfw = document.getElementById("sfczfw").value;
 	var hs_status = document.getElementById("hs_status").value;
-	var xt_zxbz = document.getElementById("xt_zxbz").value;
-	$('#dg').datagrid({
-        url: contextPath + '/syfw/list?isCheck=check&flag=0'
-	 });
+	//var xt_zxbz = document.getElementById("xt_zxbz").value;
+	var reloadUrl = contextPath + '/syfw/list?isCheck=check&flag=0';
+	var opt = $('#dg').datagrid('options');
+	var xt_zxbz = "";
+	if("03" == hs_status){
+		hs_status = "";
+		xt_zxbz = "1";
+	} else if("01" == hs_status){
+		hs_status = "0";
+		xt_zxbz = "0";
+	} else if("02" == hs_status){
+		hs_status = "1";
+		xt_zxbz = "0";
+	}  
+	opt.url = reloadUrl;
 	$('#dg').datagrid('load',{    
 		'fz_xm':fz_xm,
 		'fwlbdm':fwlbdm,

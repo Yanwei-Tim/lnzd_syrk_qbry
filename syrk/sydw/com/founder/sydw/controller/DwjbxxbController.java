@@ -216,6 +216,7 @@ public class DwjbxxbController extends BaseController {
 		} else {
 			throw new BussinessException("sydw.notExist");
 		}
+		mv.addObject("isCheck", "check");
 		return mv;
 	}
 

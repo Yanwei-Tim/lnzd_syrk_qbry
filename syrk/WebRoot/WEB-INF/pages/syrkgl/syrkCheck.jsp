@@ -99,13 +99,15 @@
 						<td nowrap="nowrap" align="right">核实状态：</td>
 						<td>
 							<input class="easyui-combobox" type="text" id="hs_status" name="hs_status" style="width:100px;" 
-								data-options="url: contextPath + '/common/dict/D_JWRY_BZHSZT.js',valueField:'id',textField:'text'"/>
+								data-options="url: contextPath + '/common/dict/DZ_BZDZ_HSZT.js',valueField:'id',textField:'text'"/>
 						</td>
+						<!-- 
 						<td nowrap="nowrap" align="right">注销状态：</td>
 				    	<td>
 				    	    <input class="easyui-combobox" type="text" id="xt_zxbz" name="xt_zxbz" style="width:100px;"
 								data-options="url: contextPath + '/common/dict/D_RK_ZXBS.js',valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/>
 					    </td>
+					     -->
 						<td nowrap="nowrap" colspan="8" align="right">
 							<a class="easyui-linkbutton" iconCls="icon-search" onclick="queryButton();">查询</a>
 				    		<a class="easyui-linkbutton" iconCls="icon-reset" onclick="resetButton()">重置</a>

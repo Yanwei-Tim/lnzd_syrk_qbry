@@ -113,9 +113,15 @@
 	<select id="queryDwHs" parameterClass="Map" resultClass="dwjbxxb"> 
 		<![CDATA[SELECT * FROM ( 
 				 SELECT ROWNUM R ,M.* FROM (
-					SELECT A.ID, A.DWLBDM, A.DWMC, A.JYFWZY,A.jjlxdm,A.DZ_DWDZXZ, A.DZ_DWDZDM
-				  	FROM DW_DWJBXXB A WHERE A.XT_ZXBZ = '2'
+					SELECT A.ID, A.DWLBDM, A.DWMC, A.JYFWZY,A.jjlxdm,A.DZ_DWDZXZ, A.DZ_DWDZDM,A.xt_zxbz,A.hs_status  
+				  	FROM DW_DWJBXXBHS A WHERE 1=1 
 				   		]]>
+	   		<isNotEmpty prepend="AND" property="dwjbxxb.xt_zxbz">
+	            a.XT_ZXBZ = #dwjbxxb.xt_zxbz#
+	        </isNotEmpty>
+	        <isNotEmpty prepend="AND" property="dwjbxxb.hs_status">
+			    a.hs_status = #dwjbxxb.hs_status#
+		    </isNotEmpty>
 		 	<isNotEmpty prepend="and" property="dwjbxxb.dwlbdm">
 				a.DWLBDM = #dwjbxxb.dwlbdm#
 			</isNotEmpty>
@@ -146,7 +152,13 @@
 		
 	<!-- 单位核实列表统计 -->
 	<select id="queryCountDwHs" parameterClass="Map" resultClass="Integer"> 
-	<![CDATA[SELECT count(1) FROM DW_DWJBXXB A WHERE A.XT_ZXBZ = '2' ]]>
+	<![CDATA[SELECT count(1) FROM DW_DWJBXXBHS A WHERE 1=1 ]]>
+			<isNotEmpty prepend="AND" property="dwjbxxb.xt_zxbz">
+	            a.XT_ZXBZ = #dwjbxxb.xt_zxbz#
+	        </isNotEmpty>
+	        <isNotEmpty prepend="AND" property="dwjbxxb.hs_status">
+			    a.hs_status = #dwjbxxb.hs_status#
+		    </isNotEmpty>
 			<isNotEmpty prepend="and" property="dwjbxxb.dwlbdm">
 				a.DWLBDM = #dwjbxxb.dwlbdm#
 			</isNotEmpty>
@@ -172,7 +184,7 @@
 	
 	
 	<update id ="updateDwhsById" parameterClass="Map">
-		<![CDATA[ update DW_DWJBXXB ]]>
+		<![CDATA[ update DW_DWJBXXBHS ]]>
 			<dynamic prepend="set">
 				<include refid="updateXtzd" /> 
 				,xt_zxbz = #dwjbxxb.xt_zxbz#

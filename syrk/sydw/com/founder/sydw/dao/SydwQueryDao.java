@@ -13,6 +13,7 @@ import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
 import com.founder.sydw.bean.Dwjbxxb;
 import com.founder.sydw.vo.SydwxxzsVO;
+import com.founder.syrkgl.bean.SyrkSyrkxxzb;
 
 @Repository("sydwQueryDao")
 public class SydwQueryDao extends BaseDaoImpl {
@@ -100,40 +101,58 @@ public class SydwQueryDao extends BaseDaoImpl {
 	 * @param entity
 	 * @return
 	 */
+//	public EasyUIPage queryDwHs(EasyUIPage page, Dwjbxxb entity) {
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("begin", page.getBegin());
+//		map.put("end", page.getEnd());
+//		String sort = page.getSort();
+//		String order = page.getOrder();
+//		if (StringUtils.isBlank(sort)) { // 默认排序
+//			// sort = "id";
+//			order = "asc";
+//		}
+//		map.put("sort", StringUtils.nullToStr(sort));
+//		map.put("order", StringUtils.nullToStr(order));
+//		entity.setZagldwbm(StringUtils.getSqlExpression(entity.getZagldwbm()));
+//		entity.setDwmc(StringUtils.getSqlExpression(entity.getDwmc()));
+//		map.put("dwjbxxb", entity);
+//		// page.setTotal((Integer) queryForObject("SydwQuery.queryCountDwHs",
+//		// map));
+//		// page.setRows(queryForList("SydwQuery.queryDwHs", map));
+//		// 后期修改增加延时加载
+//		List<?> list = queryForList("SydwQuery.queryDwHs", map);
+//		if (page.getBegin() == 0) {
+//			if (list != null && list.size() > 0) {
+//				page.setTotal(list.size());
+//			} else {
+//				page.setTotal(0);
+//			}
+//		} else {
+//			if (page.getTotal() == 0) {
+//				if (list != null && list.size() > 0) {
+//					page.setTotal(list.size());
+//				}
+//			}
+//		}
+//		page.setRows(list);
+//		return page;
+//	}
+	
 	public EasyUIPage queryDwHs(EasyUIPage page, Dwjbxxb entity) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("begin", page.getBegin());
 		map.put("end", page.getEnd());
 		String sort = page.getSort();
 		String order = page.getOrder();
-		if (StringUtils.isBlank(sort)) { // 默认排序
-			// sort = "id";
+		if (StringUtils.isBlank(sort)) {
+			sort = "id";
 			order = "asc";
 		}
-		map.put("sort", StringUtils.nullToStr(sort));
-		map.put("order", StringUtils.nullToStr(order));
-		entity.setZagldwbm(StringUtils.getSqlExpression(entity.getZagldwbm()));
-		entity.setDwmc(StringUtils.getSqlExpression(entity.getDwmc()));
+		map.put("sort", sort);
+		map.put("order", order);
 		map.put("dwjbxxb", entity);
-		// page.setTotal((Integer) queryForObject("SydwQuery.queryCountDwHs",
-		// map));
-		// page.setRows(queryForList("SydwQuery.queryDwHs", map));
-		// 后期修改增加延时加载
-		List<?> list = queryForList("SydwQuery.queryDwHs", map);
-		if (page.getBegin() == 0) {
-			if (list != null && list.size() > 0) {
-				page.setTotal(list.size());
-			} else {
-				page.setTotal(0);
-			}
-		} else {
-			if (page.getTotal() == 0) {
-				if (list != null && list.size() > 0) {
-					page.setTotal(list.size());
-				}
-			}
-		}
-		page.setRows(list);
+		page.setRows(queryForList("SydwQuery.queryDwHs", map));
+		page.setTotal((Integer) queryForObject("SydwQuery.queryCountDwHs", map));
 		return page;
 	}
 
@@ -144,12 +163,12 @@ public class SydwQueryDao extends BaseDaoImpl {
 	 * @param entity
 	 * @return
 	 */
-	public long queryCountSydwHs(Dwjbxxb entity) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("dwjbxxb", entity);
-		Integer count = (Integer) queryForObject("SydwQuery.queryCountDwHs",map);
-		return count.longValue();
-	}
+//	public long queryCountSydwHs(Dwjbxxb entity) {
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("dwjbxxb", entity);
+//		Integer count = (Integer) queryForObject("SydwQuery.queryCountDwHs",map);
+//		return count.longValue();
+//	}
 
 	/**
 	 * 更新单位表

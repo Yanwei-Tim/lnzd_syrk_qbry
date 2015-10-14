@@ -74,6 +74,18 @@ public interface DwjbxxbService {
 	@MethodAnnotation(value = "更新", type = logType.update)
 	public void update(Dwjbxxb entity,  Dwbmxxb [] dwbmxxbArray,
 			String hsrwid, SessionBean sessionBean);
+	
+	/**
+	 * 
+	 * @Title: updateHs
+	 * @Description: 实有单位核实修改核实表状态
+	 * @param @param entity
+	 * @param @param dwbmxxbArray
+	 * @param @param sessionBean    设定文件
+	 * @return void    返回类型
+	 * @throws
+	 */
+	public void updateHs(Dwjbxxb entity,  Dwbmxxb [] dwbmxxbArray,SessionBean sessionBean);
 
 	/**
 	 * 删除<br>

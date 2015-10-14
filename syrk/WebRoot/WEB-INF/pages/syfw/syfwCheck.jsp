@@ -56,6 +56,7 @@
 					   <th data-options="field:'fwdz_dzxz',width:200,align:'center',halign:'center',sortable:true">房屋地址</th>
 					   <th data-options="field:'fz_xm',width:70,align:'center',halign:'center',sortable:true">房主</th>
 					   <th data-options="field:'sfczfw',width:70,align:'center',halign:'center',sortable:true">出租房屋</th>
+					   <th data-options="field:'hs_status',width:30,align:'center',sortable:true,halign:'center',formatter:isCheck">核实状态</th>
 			           <th data-options="field:'true',width:50,align:'center',halign:'center',formatter:datagridProcessFormater">操作</th>
 			           <th data-options="field:'xt_zxbz',width:50,align:'center',halign:'center',hidden:true">xt_zxbz</th>
 			           <th data-options="field:'id',width:50,align:'center',halign:'center',hidden:true">id</th>
@@ -93,13 +94,15 @@
 						<td nowrap="nowrap" align="right">核实状态：</td>
 						<td>
 							<input class="easyui-combobox" type="text" id="hs_status" name="hs_status" style="width:100px;" 
-								data-options="url: contextPath + '/common/dict/D_JWRY_BZHSZT.js',valueField:'id',textField:'text'"/>
+								data-options="url: contextPath + '/common/dict/DZ_BZDZ_HSZT.js',valueField:'id',textField:'text'"/>
 						</td>
+						<!-- 
 						<td nowrap="nowrap" align="right">注销状态：</td>
 				    	<td>
 				    	    <input class="easyui-combobox" type="text" id="xt_zxbz" name="xt_zxbz" style="width:100px;"
 								data-options="url: contextPath + '/common/dict/D_RK_ZXBS.js',valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/>
 					    </td>
+					    -->
 						<td nowrap="nowrap" colspan="8" align="right">
 							<a class="easyui-linkbutton" iconCls="icon-search" onclick="queryButton();">查询</a>
 				    		<a class="easyui-linkbutton" iconCls="icon-reset" onclick="resetButton()">重置</a>

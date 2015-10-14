@@ -217,7 +217,7 @@ $(document).ready(function(){
 	if ($('#nextDwid').val() != "") {
 		$('#save2Text').html('核实并下一条');
 	}
-	$("#jbxxForm").attr("action",contextPath+"/sydw/"+pk);
+//	$("#jbxxForm").attr("action",contextPath+"/sydw/"+pk);
 	sfblyyzzdmOnchange("");
 	$("#save2Botton").bind("click",function() {
 		if ($("#jbxxForm").form('validate')) {

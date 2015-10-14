@@ -241,6 +241,40 @@ public class DwjbxxbServiceImpl implements DwjbxxbService {
 			}
 		}
 	}
+	
+	public void updateHs(Dwjbxxb entity,  Dwbmxxb [] dwbmxxbArray,SessionBean sessionBean) {
+		BaseService.setUpdateProperties(entity, sessionBean);
+		dwjbxxbDao.update(entity, sessionBean);
+		//另存为到DW_DWXZXXB表数据更新
+		DwxzxxVO dwxzvo = new DwxzxxVO();
+		dwxzvo.setId(entity.getId());
+		dwxzvo.setSydwlx(entity.getDwlbdm());
+		dwxzvo.setGlbmid(entity.getGlbmid());
+		dwxzvo.setGlpcsid(StringUtils.isBlank(entity.getGlpcsid())?entity.getGlbmid():entity.getGlpcsid());
+		dwxzvo.setGlfxjid(StringUtils.isBlank(entity.getGlfxjid())?entity.getGlbmid():entity.getGlfxjid());
+		dwxzvo.setDwbh(entity.getZagldwbm());
+		dwxzvo.setDwmc(entity.getDwmc());
+		dwxzvo.setXt_zhxgsj(entity.getXt_zhxgsj());
+		if(!StringUtils.isBlank(dwxzvo.getDwmc())){
+			dwxzvo.setDwqcjm(ContextSearchUtils.getPasswordString(dwxzvo.getDwmc()));
+			dwxzvo.setDwqcpyjm(ContextSearchUtils.getPasswordString(dwjbxxbDao.queryPyqp(dwxzvo.getDwmc())));
+		}
+		dwjbxxbDao.dwXzUpdate(dwxzvo);
+		String dwid = entity.getId();
+		dwjbxxbDao.deteleDwbm(dwid);
+		if(dwbmxxbArray!=null){
+			for (int i = 0; i < dwbmxxbArray.length; i++) {
+				Dwbmxxb dwbmxxb = dwbmxxbArray[i];
+				if (!"".equals(dwbmxxb.getDwbm())) {
+					dwbmxxb.setDwid(dwid);
+					BaseService.setSaveProperties(dwbmxxb, sessionBean);
+					dwbmxxb.setId(UUID.create()); // 生成主键
+					dwjbxxbDao.saveDwbmxxb(dwbmxxb, sessionBean);
+				}
+			}
+		}
+	}
+
 
 	@Override
 	public List<Dwbmxxb> queryDwbmxxbByDwid(String dwid) {

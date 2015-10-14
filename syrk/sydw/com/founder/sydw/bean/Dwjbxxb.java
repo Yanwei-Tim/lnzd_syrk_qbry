@@ -12,6 +12,7 @@ import com.founder.framework.base.entity.BaseEntity;
 public class Dwjbxxb extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
 	@FieldDesc("单位ID")
 	private String id;
 	@FieldDesc("单位类别代码 ")
@@ -161,6 +162,42 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	@FieldDesc(" 是否安装治安管理系统")
 	private String sfazzaglxxxt;
 
+	private String isCheck;
+	private String hs_status;
+	private String hs_person;
+	private String hs_sj;
+
+	public String getIsCheck() {
+		return isCheck;
+	}
+
+	public void setIsCheck(String isCheck) {
+		this.isCheck = isCheck;
+	}
+
+	public String getHs_status() {
+		return hs_status;
+	}
+
+	public void setHs_status(String hs_status) {
+		this.hs_status = hs_status;
+	}
+
+	public String getHs_person() {
+		return hs_person;
+	}
+
+	public void setHs_person(String hs_person) {
+		this.hs_person = hs_person;
+	}
+
+	public String getHs_sj() {
+		return hs_sj;
+	}
+
+	public void setHs_sj(String hs_sj) {
+		this.hs_sj = hs_sj;
+	}
 
 	public String getZzjgmc() {
 		return zzjgmc;
