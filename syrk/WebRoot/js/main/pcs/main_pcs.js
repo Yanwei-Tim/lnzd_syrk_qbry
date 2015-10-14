@@ -145,7 +145,7 @@ MainPcs.initJobCounts_back = function(json){
 	var zdry = json.zdry;
 	var dwtj = json.dwtj;
 	var htmlStr = "<ul>";
-	htmlStr	+="<li class='xqTitle'>&nbsp;实有人口</li>";
+	htmlStr	+="<li class='xqTitle' onclick=\"queryMsgMenu('实有人口管理');\">&nbsp;实有人口</li>";
 	var czrkNum = 0,jzrkNum = 0,ldrkNum = 0,jwrkNum = 0,wlhrkNum = 0;
 	var sqjznum =0,zdrknum =0,jsbnum =0,fzcswnum=0,xgzzdrynum=0,qugznum=0,sqnum=0,sbnum=0;
 	var ylnum =0,tznum=0,schoolnum=0,jrnum=0,wbnum=0,gqdwnum=0,qttj=0;
@@ -233,7 +233,7 @@ MainPcs.initJobCounts_back = function(json){
 	htmlStr	+="<li class='jobVal'><em></em><a style= 'cursor:default' href='javascript:void(0)'>&nbsp;暂住人口&nbsp;"+ldrkNum+"</a></li>";
 	htmlStr	+="<li class='jobVal'><em></em><a style= 'cursor:default' href='javascript:void(0)'>&nbsp;境外人员&nbsp;"+jwrkNum+"</a></li>";
 	htmlStr	+="<li class='jobVal'><em></em><a style= 'cursor:default' href='javascript:void(0)'>&nbsp;未落户人员&nbsp;"+wlhrkNum+"</a></li>";
-	htmlStr	+="<li class='xqTitle'>&nbsp;重点人员</li>";
+	htmlStr	+="<li class='xqTitle' onclick=\"queryMsgMenu('重点人口管理');\">&nbsp;重点人员</li>";
 	htmlStr	+="<li class='jobVal1'><em></em><a href='javascript:void(0)'onclick=\"MainPcs.initJobzdryMap('01')\">&nbsp;社区矫正&nbsp;"+sqjznum+"</a></li>";
 	htmlStr	+="<li class='jobVal1'><em></em><a href='javascript:void(0)'onclick=\"MainPcs.initJobzdryMap('02')\">&nbsp;重点人口&nbsp;"+zdrknum+"</a></li>";
 	htmlStr	+="<li class='jobVal1'><em></em><a href='javascript:void(0)'onclick=\"MainPcs.initJobzdryMap('03')\">&nbsp;肇事肇祸精神病人&nbsp;"+jsbnum+"</a></li>";
@@ -242,12 +242,12 @@ MainPcs.initJobCounts_back = function(json){
 	htmlStr	+="<li class='jobVal1'><em></em><a href='javascript:void(0)'onclick=\"MainPcs.initJobzdryMap('06')\">&nbsp;其他工作对象&nbsp;"+qugznum+"</a></li>";
 	htmlStr	+="<li class='jobVal1'><em></em><a href='javascript:void(0)'onclick=\"MainPcs.initJobzdryMap('07')\">&nbsp;涉爆重点人员&nbsp;"+sbnum+"</a></li>";
 	htmlStr	+="<li class='jobVal1'><em></em><a href='javascript:void(0)'onclick=\"MainPcs.initJobzdryMap('07')\">&nbsp;涉枪重点人员&nbsp;"+sqnum+"</a></li>";
-	htmlStr	+="<li class='xqTitle'>&nbsp;实有房屋</li>";
+	htmlStr	+="<li class='xqTitle' onclick=\"queryMsgMenu('实有房屋管理');\">&nbsp;实有房屋</li>";
 	htmlStr	+="<li class='jobVal'><em></em><a style= 'cursor:default' href='javascript:void(0)'>&nbsp;实有房屋&nbsp;"+syfwnums+"</a></li>";
 	htmlStr	+="<li class='jobVal'><em></em><a style= 'cursor:default'  href='javascript:void(0)'>&nbsp;出租房&nbsp;"+czf+"</a></li>";
 	htmlStr	+="<li class='jobVal'><em></em><a style= 'cursor:default' href='javascript:void(0)'>&nbsp;已检查租房&nbsp;"+checkf+"</a></li>";
 
-	htmlStr	+="<li class='xqTitle'>&nbsp;实有单位</li>";
+	htmlStr	+="<li class='xqTitle' onclick=\"queryMsgMenu('实有单位管理');\">&nbsp;实有单位</li>";
 	htmlStr	+="<li class='jobVal'><em></em><a style= 'cursor:default' href='javascript:void(0)'>&nbsp;娱乐服务场所&nbsp;"+ylnum+"</a></li>";
 	htmlStr	+="<li class='jobVal'><em></em><a style= 'cursor:default' href='javascript:void(0)'>&nbsp;特种行业&nbsp;"+tznum+"</a></li>";
 	htmlStr	+="<li class='jobVal'><em></em><a style= 'cursor:default' href='javascript:void(0)'>&nbsp;学校&nbsp;"+schoolnum+"</a></li>";
@@ -672,4 +672,20 @@ function queryMsg(bs){
 	    }  else{
 	       menu_open(bs, "/forward/message|sysMessage2");
 	    }
+	
+}
+function queryMsgMenu(bs){
+	if("实有人口管理"==bs){
+		menu_open(bs, "/forward/syrkgl|syrkGl");
+	}
+	if("重点人口管理"==bs){
+		menu_open(bs, "/zdryzb/manager");
+	}
+	if("实有房屋管理"==bs){
+		menu_open(bs, "/syfw/manager");
+	}
+	if("实有单位管理"==bs){
+		menu_open(bs, "/forward/sydw|sydwMain");
+	}
+	
 }
