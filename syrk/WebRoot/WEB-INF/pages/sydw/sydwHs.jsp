@@ -35,7 +35,7 @@
 			            <th data-options="field:'dwmc', 	width:10,	align:'left',	halign:'center',sortable:true">单位名称</th>
 			            <th data-options="field:'jjlxdm',	width:10,	align:'left' ,sortable:true,halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_BZ_JYXZDM.js'">经营性质</th>
 			            <th data-options="field:'dz_dwdzxz', width:20,	align:'left',	halign:'center',sortable:true	">单位详址</th>
-			            <th data-options="field:'hs_status',width:30,align:'center',sortable:true,halign:'center',formatter:isCheck">核实状态</th>
+			            <th data-options="field:'hs_status',width:30,align:'center',sortable:true,halign:'center',formatter:isCheck">单位状态</th>
 			            <th data-options="field:'process',	 width:10,align:'center',	halign:'center',	formatter:datagridProcessFormater">操作</th>
 			            <th data-options="field:'xt_zxbz',width:50,align:'center',halign:'center',hidden:true">xt_zxbz</th>
 			        </tr>
@@ -62,11 +62,6 @@
 									<input type="text" name="dz_dwdzxz" id ="dz_dwdzxz" class="easyui-validatebox" 
 									data-options="required:false,validType:'maxLength[30]'"/>
 								</td>
-								<td class="toolbarTd"><div class="datagrid-btn-separator"></div></td>
-								<td class="toolbarTd">核实状态：
-									<input class="easyui-combobox" type="text" id="hs_status" name="hs_status"  
-										data-options="url: contextPath + '/common/dict/D_JWRY_BZHSZT.js',valueField:'id',textField:'text'"/>
-								</td>
 							</tr>
 							<tr>
 								<td class="toolbarTd">经营性质：
@@ -78,12 +73,18 @@
 									<input class="easyui-validatebox" type="text" id="jyfwzy" name="jyfwzy" 
 									data-options="required:false,validType:'maxLength[30]'"/>
 								</td>
-								
+								<td class="toolbarTd"><div class="datagrid-btn-separator"></div></td>
+								<td class="toolbarTd">单位状态：
+									<input class="easyui-combobox" type="text" id="hs_status" name="hs_status"  
+										data-options="url: contextPath + '/common/dict/DZ_BZDZ_HSZT.js',valueField:'id',textField:'text'"/>
+								</td>
+								<!--  
 								<td class="toolbarTd"><div class="datagrid-btn-separator"></div></td>
 								<td class="toolbarTd">注销状态：
 						    	    <input class="easyui-combobox" type="text" id="xt_zxbz" name="xt_zxbz" 
 										data-options="url: contextPath + '/common/dict/D_RK_ZXBS.js',valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/>
 							    </td>
+							    -->
 								<td class="toolbarTd"><div class="datagrid-btn-separator"></div></td>
 								<td class="toolbarTd">
 									<a class="easyui-linkbutton" iconCls="icon-search" onclick="queryButton();" style="margin-right: 10px;">查询</a>

@@ -257,8 +257,11 @@
 	              WHERE T.XT_ZXBZ = '0'
 		       </isEmpty>
 		       <isNotEmpty prepend="" property="entity.isCheck">
-		          SYRK_SYRKXXHSB T 
+		          SYRK_SYRKXXHSB T
 		          WHERE 1=1
+		           <isNotEmpty prepend="AND" property="entity.xt_zxbz">
+			             T.XT_ZXBZ = #entity.xt_zxbz#
+			       </isNotEmpty>
 		       </isNotEmpty>
 	       <isNotEmpty prepend="AND" property="entity.syrkywlxdm">
 	             T.SYRKYWLXDM = #entity.syrkywlxdm#

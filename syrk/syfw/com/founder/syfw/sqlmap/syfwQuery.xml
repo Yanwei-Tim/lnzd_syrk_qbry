@@ -102,8 +102,8 @@
 		<isNotEmpty prepend="and" property="fwjbxxb.condition">
 				  <![CDATA[ f.fwdz_dzxz || f.fz_xm  like '%' || #fwjbxxb.condition#|| '%']]>
 		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="entity.hs_status">
-		     f.hs_status = #entity.hs_status#
+		<isNotEmpty prepend="AND" property="fwjbxxb.hs_status">
+		     f.hs_status = #fwjbxxb.hs_status#
 	    </isNotEmpty>
 		<isNotEmpty property="sort">
 		   		<![CDATA[ order by $sort$ $order$ ]]>
@@ -134,8 +134,8 @@
 		<isNotEmpty prepend="and" property="fwjbxxb.condition">
 				  <![CDATA[ f.fwdz_dzxz || f.fz_xm  like '%' || #fwjbxxb.condition#|| '%']]>
 		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="entity.hs_status">
-		     f.hs_status = #entity.hs_status#
+		<isNotEmpty prepend="AND" property="fwjbxxb.hs_status">
+		     f.hs_status = #fwjbxxb.hs_status#
 	    </isNotEmpty>
 	</select>
 	
