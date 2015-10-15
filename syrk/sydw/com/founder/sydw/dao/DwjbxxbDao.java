@@ -165,6 +165,15 @@ public class DwjbxxbDao extends BaseDaoImpl {
 	public void update(Dwjbxxb entity, SessionBean sessionBean) {
 		update("Dwjbxxb.update", entity);
 	}
+	
+	/**
+	 * 实有单位核实表数据更新<br>
+	 * 
+	 * @param entity
+	 */
+	public void updateHs(Dwjbxxb entity, SessionBean sessionBean) {
+		update("Dwjbxxb.updatehs", entity);
+	}
 	/**
 	 * @Title: dwXzUpdate 
 	 * @描述: 另存为到DW_DWXZXXB表数据更新
