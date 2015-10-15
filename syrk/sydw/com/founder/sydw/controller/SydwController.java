@@ -367,6 +367,7 @@ public class SydwController extends BaseController {
 	 * @return Frfzrllrb    返回类型
 	 * @throws
 	 */
+	@RestfulAnnotation(valiField="dwid", serverId = "3")
 	@RequestMapping(value="/{dwid}/fr" ,method = RequestMethod.GET)
 	public @ResponseBody Frfzrllrb queryFr(@PathVariable(value="dwid")String dwid){
 		return frfzrllrbService.queryFrByDwid(dwid);
