@@ -278,7 +278,7 @@ HomePage.gzdxListMBR_back = function(json){
 };
 /**
  * @title:ldrkListMBR
- * @description:流动人口统计撒点统计
+ * @description:暂住人口统计撒点统计
  * @author: zhang_guoliang@founder.com
  * @param  
  * @param   
@@ -295,7 +295,7 @@ HomePage.ldrkListMBR = function(lx,mc){
 };
 /**
  * @title:ldrkListMBR_back
- * @description:流动人口统计撒点统计_回调函数
+ * @description:暂住人口统计撒点统计_回调函数
  * @author: zhang_guoliang@founder.com
  * @param  
  * @param   
@@ -478,7 +478,7 @@ HomePage.initFloatWin_back = function(json){
 			"<div class='text1'>" +
 			"常住人口<span class='bold'>"+czrkNum+"</span>人、" +
 			"寄住人口<span class='bold'>"+jzrkNum+"</span>人、" +
-			"流动人口<span class='bold'>"+ldrkNum+"</span>人、" +
+			"暂住人口<span class='bold'>"+ldrkNum+"</span>人、" +
 			"境外人口<span class='bold'>"+jwrkNum+"</span>人、" +
 			"未落户人口<span class='bold'>"+wlhrkNum+"</span>人。<br></div>" +
 			"<div class='textwrap'><div class='oneText'>2</div><div class='title_big'>" +

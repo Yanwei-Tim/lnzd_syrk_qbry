@@ -19,7 +19,7 @@ import com.founder.syrkgl.service.SyrkSyrkxxzbService;
  * ****************************************************************************
  * @Package:      [com.founder.syrkgl.service.impl.SyrkLdrkxxbServiceImpl.java]  
  * @ClassName:    [SyrkLdrkxxbServiceImpl]   
- * @Description:  [流动人口业务服务]   
+ * @Description:  [暂住人口业务服务]   
  * @Author:       [weiwen]  
  * @CreateDate:   [2015-4-9 上午10:23:45]   
  * @UpdateUser:   [weiwen]   

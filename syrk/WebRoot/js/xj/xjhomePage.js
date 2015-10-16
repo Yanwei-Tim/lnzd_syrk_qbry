@@ -515,7 +515,7 @@ HomePage.gzdxListMBR_back = function(json){
 };
 /**
  * @title:ldrkListMBR
- * @description:流动人口统计撒点统计
+ * @description:暂住人口统计撒点统计
  * @author: zhang_guoliang@founder.com
  * @param  
  * @param   
@@ -532,7 +532,7 @@ HomePage.ldrkListMBR = function(lx,mc){
 };
 /**
  * @title:ldrkListMBR_back
- * @description:流动人口统计撒点统计_回调函数
+ * @description:暂住人口统计撒点统计_回调函数
  * @author: zhang_guoliang@founder.com
  * @param  
  * @param   
@@ -757,7 +757,7 @@ HomePage.initFloatWin_back = function(json){
 			"<div class='text1'>" +
 			"常住人口<span class='blueText' onclick='HomePage.gridList(1);'>"+czrkNum+"</span>人、" +
 			"寄住人口<span class='blueText' onclick='HomePage.gridList(2);'>"+jzrkNum+"</span>人、" +
-			"流动人口<span class='blueText' onclick='HomePage.gridList(3);'>"+ldrkNum+"</span>人、" +
+			"暂住人口<span class='blueText' onclick='HomePage.gridList(3);'>"+ldrkNum+"</span>人、" +
 			"境外人口<span class='blueText' onclick='HomePage.gridList(4);'>"+jwrkNum+"</span>人、" +
 			"未落户人口<span class='blueText' onclick='HomePage.gridList(5);'>"+wlhrkNum+"</span>人。<br></div>" +
 			"<div class='text1'>实有人口未核实<span class='blueText' onclick='HomePage.gridList(6);'>"+syrkwhsNum+"</span>人。</div>" +
@@ -800,7 +800,7 @@ HomePage.gridList = function(bs){
 	}else if(bs=='2'){
 		menu_open('寄住人口', '/forward/syrk|syrkMain?syrkgllbdm=02')
 	}else if(bs=='3'){
-		menu_open('流动人口', '/forward/syrk|syrkMain?syrkgllbdm=03')
+		menu_open('暂住人口', '/forward/syrk|syrkMain?syrkgllbdm=03')
 	}else if(bs=='4'){
 		menu_open('境外人口', '/forward/syrk|syrkMain?syrkgllbdm=04')
 	}else if(bs=='5'){

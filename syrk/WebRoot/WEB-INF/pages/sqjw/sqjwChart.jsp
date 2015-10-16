@@ -16,7 +16,7 @@
               /*加载实有人口饼状图*/
  	          swfobject.embedSWF(contextPath+"/js/tools/flashChart/open-flash-chart.swf","ChartDiv","100%","100%;","9.0.0","expressInstall.swf",{"data-file":contextPath+"/homePage/querySyrkChart?zzjgdm=<%=zzjgdm%>"},{wmode:"transparent"});
           }else if(bs=="4"){
-              /*加载流动人口柱状图*/
+              /*加载暂住人口柱状图*/
        	      swfobject.embedSWF(contextPath+"/js/tools/flashChart/open-flash-chart.swf","ChartDiv","100%","100%;","9.0.0","expressInstall.swf",{"data-file":contextPath+"/homePage/queryLdrkChart?zzjgdm=<%=zzjgdm%>"},{wmode:"transparent"});
           }
       }

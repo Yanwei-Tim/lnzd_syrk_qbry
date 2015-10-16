@@ -15,7 +15,7 @@ import com.founder.syrkgl.bean.SyrkLdrkxxb;
  * ****************************************************************************
  * @Package:      [com.founder.syrkgl.dao.SyrkLdrkxxbDao.java]  
  * @ClassName:    [SyrkLdrkxxbDao]   
- * @Description:  [流动人口DAO]   
+ * @Description:  [暂住人口DAO]   
  * @Author:       [weiwen]  
  * @CreateDate:   [2015-4-9 上午10:25:18]   
  * @UpdateUser:   [weiwen]   

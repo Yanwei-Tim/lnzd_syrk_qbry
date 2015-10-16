@@ -496,7 +496,7 @@ HomePcs.initFloatWin_back = function(json){
 			"<div class='text1'>实有人口<span class='blueText' onclick='HomePcs.initFalsh(1);'>"+syrkNum+"</span>人，其中" +
 			"常住人口<span class='bold'>"+czrkNum+"</span>人、" +
 			"寄住人口<span class='bold'>"+jzrkNum+"</span>人、" +
-			"流动人口<span class='blueText' onclick='HomePcs.initFalsh(4);'>"+ldrkNum+"</span>人、" +
+			"暂住人口<span class='blueText' onclick='HomePcs.initFalsh(4);'>"+ldrkNum+"</span>人、" +
 			"境外人口<span class='bold'>"+jwrkNum+"</span>人、" +
 			"未落户人口<span class='bold'>"+wlhrkNum+"</span>人。</div>" +
 			

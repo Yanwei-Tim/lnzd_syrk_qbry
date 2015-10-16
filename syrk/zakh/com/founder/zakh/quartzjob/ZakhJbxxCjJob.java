@@ -113,7 +113,7 @@ public class ZakhJbxxCjJob {
 		//寄住人口
 		List<Map<String,Object>> jzrkList=cjDao.getJZRK(parameter);
 		dealCountResult(jzrkList, countList, cjxxMap, "寄住人口");
-		//暂住/流动人口
+		//暂住/暂住人口
 		List<Map<String,Object>> zzrkList=cjDao.getZZRK(parameter);
 		dealCountResult(zzrkList, countList, cjxxMap, "暂住人口");
 		//境外人口

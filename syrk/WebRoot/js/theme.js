@@ -276,7 +276,7 @@
 		   $(this).removeClass("jizhurenkouguanli_hover");
 	    }
 	  );
-	    //流动人口管理
+	    //暂住人口管理
 	   $(".liudongrenkouguanli").hover(
 	    function () {
 		   $(this).addClass("liudongrenkouguanli_hover");

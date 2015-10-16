@@ -28,7 +28,7 @@ import com.google.gson.Gson;
 /******************************************************************************
  * @Package: [com.founder.syrkgl.controller.SyrkLdrkxxbController.java]
  * @ClassName: [SyrkLdrkxxbController]
- * @Description: [流动人口信息表]
+ * @Description: [暂住人口信息表]
  * @Author: [hongguanjun]
  * @CreateDate: [2015-4-14 下午7:29:42]
  * @UpdateUser: [hongguanjun(如多次修改保留历史记录，增加修改记录)]

@@ -105,7 +105,7 @@ public interface SyrkEditService {
 	/**
 	 * 
 	 * @Title: ldrkxxb_query
-	 * @Description: TODO(流动人口信息查询)
+	 * @Description: TODO(暂住人口信息查询)
 	 * @param @param map
 	 * @param @return    设定文件
 	 * @return SyrkCzrkxxb    返回类型

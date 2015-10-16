@@ -19,7 +19,7 @@ public interface JzzblxxbService {
 	/**
 	 * 
 	 * @Title: queryLdrk
-	 * @Description: TODO(通过流动人口表主键查询对象)
+	 * @Description: TODO(通过暂住人口表主键查询对象)
 	 * @param @return    设定文件
 	 * @return Ldrkxxb    返回类型
 	 * @throws

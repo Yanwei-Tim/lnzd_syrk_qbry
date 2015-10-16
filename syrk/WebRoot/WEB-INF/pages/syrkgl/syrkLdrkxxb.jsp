@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<title>流动人口信息</title>
+<title>暂住人口信息</title>
 </head>
 
 <body>

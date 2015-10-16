@@ -34,11 +34,11 @@ public class Gzltjb extends BaseEntity implements Serializable {
 	private Long jzrk_update;
 	@FieldDesc("寄住人口注销数量")
 	private Long jzrk_delete;
-	@FieldDesc("流动人口新增数量")
+	@FieldDesc("暂住人口新增数量")
 	private Long ldrk_add;
-	@FieldDesc("流动人口修改数量")
+	@FieldDesc("暂住人口修改数量")
 	private Long ldrk_update;
-	@FieldDesc("流动人口注销数量")
+	@FieldDesc("暂住人口注销数量")
 	private Long ldrk_delete;
 	@FieldDesc("未落户人员新增数量")
 	private Long wlhry_add;

@@ -238,7 +238,7 @@ public class ZakhJbxxCjServiceImpl implements ZakhJbxxCjService {
 		Map<String, String> ldrkMap = new HashMap<String, String>();
 		ldrkMap.put("zakh_xq_khx", "基础信息采集");
 		ldrkMap.put("zakh_xq_khxx", "实有人口信息");
-		ldrkMap.put("zakh_xq_khxl", "流动人口");
+		ldrkMap.put("zakh_xq_khxl", "暂住人口");
 		ldrkMap.put("zakh_xq_cls", (String.valueOf(clCount)));
 		ldrkMap.put("zakh_xq_ycjs",
 				String.valueOf(gzltjb.getLdrk_add() == null ? 0 : gzltjb

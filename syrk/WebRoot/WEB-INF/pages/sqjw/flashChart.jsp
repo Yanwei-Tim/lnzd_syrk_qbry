@@ -24,7 +24,7 @@
        	  swfobject.embedSWF(contextPath+"/js/tools/flashChart/open-flash-chart.swf","gzdxChart","100%","450px;","9.0.0","expressInstall.swf",{"data-file":contextPath+"/homePage/queryGzdxChart?zzjgdm=<%=userOrgCode%>"},{wmode:"transparent"});
        	  /*加载标准地址饼状图*/
        	  //swfobject.embedSWF(contextPath+"/js/tools/flashChart/open-flash-chart.swf","bzdzChart","100%","450px;","9.0.0","expressInstall.swf",{"data-file":contextPath+"/homePage/queryBzdzChart?zzjgdm=<%=userOrgCode%>"},{wmode:"transparent"});
-       	  /*加载流动人口柱状图*/
+       	  /*加载暂住人口柱状图*/
        	  swfobject.embedSWF(contextPath+"/js/tools/flashChart/open-flash-chart.swf","ldrkChart","100%","450px;","9.0.0","expressInstall.swf",{"data-file":contextPath+"/homePage/queryLdrkChart?zzjgdm=<%=userOrgCode%>"},{wmode:"transparent"});
        	  /*加载境外人口柱状图*/
        	  //swfobject.embedSWF(contextPath+"/js/tools/flashChart/open-flash-chart.swf","jwrkChart","100%","450px;","9.0.0","expressInstall.swf",{"data-file":contextPath+"/homePage/queryJwrkChart?zzjgdm=<%=userOrgCode%>"},{wmode:"transparent"});

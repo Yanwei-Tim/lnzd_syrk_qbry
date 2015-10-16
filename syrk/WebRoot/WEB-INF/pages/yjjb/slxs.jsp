@@ -682,7 +682,7 @@ $(document).ready(function(){
 								}else if('02' == data.countList[i].LBDM){
 									lb = "寄住人口";
 								}else if('03' == data.countList[i].LBDM){
-									lb = "流动人口";
+									lb = "暂住人口";
 								}else if('04' == data.countList[i].LBDM){
 									lb = "境外人员";
 								}else if('05' == data.countList[i].LBDM){
