@@ -119,13 +119,7 @@
 
 	<!-- 更新 -->
 	<update id="update" parameterClass="syrkSyrkxxzb">
-		update  
-		<isEmpty prepend="" property="isCheck">
-          SYRK_SYRKXXZB T 
-	    </isEmpty>
-	    <isNotEmpty prepend="" property="isCheck">
-	      SYRK_SYRKXXHSB T 
-	    </isNotEmpty>
+		<![CDATA[ UPDATE SYRK_SYRKXXZB ]]>
 		<dynamic prepend="set">
 			<isNotNull prepend="," property="xm"><![CDATA[ xm=#xm#]]></isNotNull>
 			<isNotNull prepend="," property="xbdm"><![CDATA[xbdm =#xbdm#]]></isNotNull>
@@ -147,25 +141,15 @@
 			<isNotNull prepend="," property="gxfjdm"><![CDATA[ gxfjdm = #gxfjdm#]]></isNotNull>
 			<isNotNull prepend="," property="gxpcsdm"><![CDATA[gxpcsdm = #gxpcsdm#]]></isNotNull>
 			<isNotNull prepend="," property="gxzrqdm"><![CDATA[gxzrqdm= #gxzrqdm#]]></isNotNull>
-			<isNotNull prepend="," property="hs_status"><![CDATA[hs_status= #hs_status#]]></isNotNull>
 			,
 			<include refid="updateXtzd" />
 		</dynamic>
-		<![CDATA[ where ID = #id#]]>
+		<![CDATA[ WHERE ID = #id#]]>
 	</update>
 
 	<!-- 注销 -->
 	<update id="delete" parameterClass="syrkSyrkxxzb">
-		update 
-		   <isEmpty prepend="" property="isCheck">
-              SYRK_SYRKXXZB T 
-	       </isEmpty>
-	       <isNotEmpty prepend="" property="isCheck">
-	          SYRK_SYRKXXHSB T 
-	       </isNotEmpty>
-		set 
-		<include refid="deleteXtzd" />
-		<![CDATA[ where ID = #id# ]]>
+		<![CDATA[ UPDATE SYRK_SYRKXXZB set ]]><include refid="deleteXtzd" /><![CDATA[ WHERE ID = #id# ]]>
 	</update>
 
 	<!-- 查询人员的管辖责任区 -->
@@ -193,18 +177,8 @@
 	<select id="query" parameterClass="Map" resultClass="syrkSyrkxxzb">
 	       SELECT * FROM ( SELECT ROWNUM R ,M.* FROM (
 		       SELECT * 
-		          FROM 
-		          <isEmpty prepend="" property="entity.isCheck">
-		              SYRK_SYRKXXZB T 
-		              WHERE T.XT_ZXBZ = '0'
-			       </isEmpty>
-			       <isNotEmpty prepend="" property="entity.isCheck">
-			          SYRK_SYRKXXHSB T
-			          WHERE 1=1
-			           <isNotEmpty prepend="AND" property="entity.xt_zxbz">
-				             T.XT_ZXBZ = #entity.xt_zxbz#
-				       </isNotEmpty>
-			       </isNotEmpty>
+		          FROM SYRK_SYRKXXZB T 
+		       WHERE T.XT_ZXBZ = '0'
 		       <isNotEmpty prepend="AND" property="entity.syrkywlxdm">
 		             T.SYRKYWLXDM = #entity.syrkywlxdm#
 		       </isNotEmpty>
@@ -224,7 +198,7 @@
 		             T.JZD_DZXZ LIKE '%'||#entity.jzd_dzxz#||'%'
 		       </isNotEmpty>
 		       <isNotEmpty prepend="AND" property="entity.searchbox">
-		       instr(T.ZJHM||T.XM||T.JZD_DZXZ,#entity.searchbox#,1,1)>0
+		             instr(T.ZJHM||T.XM||T.JZD_DZXZ,#entity.searchbox#,1,1)>0
 		       </isNotEmpty>
 		       <isNotEmpty prepend="AND" property="entity.jzd_dzid">
 		             T.JZD_DZID = #entity.jzd_dzid#
@@ -239,10 +213,7 @@
 				     T.GXZRQDM = #entity.gxzrqdm#
 			   </isNotEmpty>
 			   <isNotEmpty prepend="AND" property="entity.age">
-				     Substr(T.CSRQ, 0, 4) = #entity.age#
-			   </isNotEmpty>
-			   <isNotEmpty prepend="AND" property="entity.hs_status">
-				     T.hs_status = #entity.hs_status#
+				     SUBSTR(T.CSRQ, 0, 4) = #entity.age#
 			   </isNotEmpty>
 		       	  ORDER BY T.$sort$ $order$) M 
 		  <![CDATA[WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
@@ -251,18 +222,8 @@
 	<!-- 实有人口管理列表数据【总数】 -->
 	<select id="queryCount" parameterClass="Map" resultClass="Integer">
 		   SELECT COUNT(T.ID) 
-	          FROM 
- 			   <isEmpty prepend="" property="entity.isCheck">
-	              SYRK_SYRKXXZB T 
-	              WHERE T.XT_ZXBZ = '0'
-		       </isEmpty>
-		       <isNotEmpty prepend="" property="entity.isCheck">
-		          SYRK_SYRKXXHSB T
-		          WHERE 1=1
-		           <isNotEmpty prepend="AND" property="entity.xt_zxbz">
-			             T.XT_ZXBZ = #entity.xt_zxbz#
-			       </isNotEmpty>
-		       </isNotEmpty>
+	          FROM SYRK_SYRKXXZB T 
+	       WHERE T.XT_ZXBZ = '0'
 	       <isNotEmpty prepend="AND" property="entity.syrkywlxdm">
 	             T.SYRKYWLXDM = #entity.syrkywlxdm#
 	       </isNotEmpty>
@@ -282,7 +243,7 @@
 	             T.JZD_DZXZ LIKE '%'||#entity.jzd_dzxz#||'%'
 	       </isNotEmpty>
 	       <isNotEmpty prepend="AND" property="entity.searchbox">
-		        instr(T.ZJHM||T.XM||T.JZD_DZXZ,#entity.searchbox#,1,1)>0
+		         instr(T.ZJHM||T.XM||T.JZD_DZXZ,#entity.searchbox#,1,1)>0
 		   </isNotEmpty>
 		   <isNotEmpty prepend="AND" property="entity.jzd_dzid">
 	             T.JZD_DZID = #entity.jzd_dzid#
@@ -297,10 +258,7 @@
 			     T.GXZRQDM = #entity.gxzrqdm#
 		   </isNotEmpty>
 		   <isNotEmpty prepend="AND" property="entity.age">
-			     Substr(T.CSRQ, 0, 4) = #entity.age#
-		   </isNotEmpty>
-		   <isNotEmpty prepend="AND" property="entity.hs_status">
-			     T.hs_status = #entity.hs_status#
+			     SUBSTR(T.CSRQ, 0, 4) = #entity.age#
 		   </isNotEmpty>
 	</select>
 
@@ -437,4 +395,141 @@
 		   AND T.CYZJDM = #cyzjdm#
 		   AND T.ZJHM = #zjhm#
 	</select>
+	
+	<!-- 实有人口核实列表数据 -->
+	<select id="queryHs" parameterClass="Map" resultClass="syrkSyrkxxzb">
+	       SELECT * FROM ( SELECT ROWNUM R ,M.* FROM (
+		       SELECT * 
+		          FROM SYRK_SYRKXXHSB T
+			   WHERE 1=1
+	           <isNotEmpty prepend="AND" property="entity.xt_zxbz">
+		             T.XT_ZXBZ = #entity.xt_zxbz#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="entity.syrkywlxdm">
+		             T.SYRKYWLXDM = #entity.syrkywlxdm#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="entity.xm">
+		             T.XM LIKE '%'||#entity.xm#||'%'
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="entity.zjhm">
+		             T.ZJHM LIKE '%'||#entity.zjhm#||'%'
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="entity.xbdm">
+		             T.XBDM = #entity.xbdm#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="entity.mzdm">
+		             T.MZDM = #entity.mzdm#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="entity.jzd_dzxz">
+		             T.JZD_DZXZ LIKE '%'||#entity.jzd_dzxz#||'%'
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="entity.searchbox">
+		       		 instr(T.ZJHM||T.XM||T.JZD_DZXZ,#entity.searchbox#,1,1)>0
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="entity.jzd_dzid">
+		             T.JZD_DZID = #entity.jzd_dzid#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="entity.gxfjdm">
+				     T.GXFJDM = #entity.gxfjdm#
+			   </isNotEmpty>
+			   <isNotEmpty prepend="AND" property="entity.gxpcsdm">
+				     T.GXPCSDM = #entity.gxpcsdm#
+			   </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="entity.gxzrqdm">
+				     T.GXZRQDM = #entity.gxzrqdm#
+			   </isNotEmpty>
+			   <isNotEmpty prepend="AND" property="entity.age">
+				     Substr(T.CSRQ, 0, 4) = #entity.age#
+			   </isNotEmpty>
+			   <isNotEmpty prepend="AND" property="entity.hs_status">
+				     T.HS_STATUS = #entity.hs_status#
+			   </isNotEmpty>
+		       	  ORDER BY T.$sort$ $order$) M 
+		  <![CDATA[WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
+	</select>
+
+	<!-- 实有人口核实列表数据【总数】 -->
+	<select id="queryHsCount" parameterClass="Map" resultClass="Integer">
+		   SELECT COUNT(T.ID) 
+	          FROM SYRK_SYRKXXHSB T
+		   WHERE 1=1
+           <isNotEmpty prepend="AND" property="entity.xt_zxbz">
+	             T.XT_ZXBZ = #entity.xt_zxbz#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="entity.syrkywlxdm">
+	             T.SYRKYWLXDM = #entity.syrkywlxdm#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="entity.xm">
+	             T.XM LIKE '%'||#entity.xm#||'%'
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="entity.zjhm">
+	             T.ZJHM LIKE '%'||#entity.zjhm#||'%'
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="entity.xbdm">
+	             T.XBDM = #entity.xbdm#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="entity.mzdm">
+	             T.MZDM = #entity.mzdm#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="entity.jzd_dzxz">
+	             T.JZD_DZXZ LIKE '%'||#entity.jzd_dzxz#||'%'
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="entity.searchbox">
+		         instr(T.ZJHM||T.XM||T.JZD_DZXZ,#entity.searchbox#,1,1)>0
+		   </isNotEmpty>
+		   <isNotEmpty prepend="AND" property="entity.jzd_dzid">
+	             T.JZD_DZID = #entity.jzd_dzid#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="entity.gxfjdm">
+			     T.GXFJDM = #entity.gxfjdm#
+		   </isNotEmpty>
+		   <isNotEmpty prepend="AND" property="entity.gxpcsdm">
+			     T.GXPCSDM = #entity.gxpcsdm#
+		   </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="entity.gxzrqdm">
+			     T.GXZRQDM = #entity.gxzrqdm#
+		   </isNotEmpty>
+		   <isNotEmpty prepend="AND" property="entity.age">
+			     Substr(T.CSRQ, 0, 4) = #entity.age#
+		   </isNotEmpty>
+		   <isNotEmpty prepend="AND" property="entity.hs_status">
+			     T.HS_STATUS = #entity.hs_status#
+		   </isNotEmpty>
+	</select>
+	<!-- 更新人口核实 -->
+	<update id="updateHs" parameterClass="syrkSyrkxxzb">
+		UPDATE SYRK_SYRKXXHSB T 
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="xm"><![CDATA[ xm=#xm#]]></isNotNull>
+			<isNotNull prepend="," property="xbdm"><![CDATA[xbdm =#xbdm#]]></isNotNull>
+			<isNotNull prepend="," property="mzdm"><![CDATA[ mzdm=#mzdm#]]></isNotNull>
+			<isNotNull prepend="," property="csrq"><![CDATA[ csrq = #csrq#]]></isNotNull>
+			<isNotNull prepend="," property="jgssxdm"><![CDATA[jgssxdm = #jgssxdm#]]></isNotNull>
+			<isNotNull prepend="," property="hjd_xzqhdm"><![CDATA[hjd_xzqhdm= #hjd_xzqhdm#]]></isNotNull>
+			<isNotNull prepend="," property="hjd_mlpdm"><![CDATA[ hjd_mlpdm=#hjd_mlpdm#]]></isNotNull>
+			<isNotNull prepend="," property="hjd_mlpxz"><![CDATA[ hjd_mlpxz=#hjd_mlpxz#]]></isNotNull>
+			<isNotNull prepend="," property="hjd_dzid"><![CDATA[hjd_dzid =#hjd_dzid#]]></isNotNull>
+			<isNotNull prepend="," property="hjd_dzxz"><![CDATA[ hjd_dzxz=#hjd_dzxz#]]></isNotNull>
+			<isNotNull prepend="," property="jzd_xzqhdm"><![CDATA[ jzd_xzqhdm = #jzd_xzqhdm#]]></isNotNull>
+			<isNotNull prepend="," property="jzd_mlpdm"><![CDATA[jzd_mlpdm = #jzd_mlpdm#]]></isNotNull>
+			<isNotNull prepend="," property="jzd_mlpxz"><![CDATA[jzd_mlpxz= #jzd_mlpxz#]]></isNotNull>
+			<isNotNull prepend="," property="jzd_dzid"><![CDATA[ jzd_dzid=#jzd_dzid#]]></isNotNull>
+			<isNotNull prepend="," property="jzd_dzxz"><![CDATA[ jzd_dzxz=#jzd_dzxz#]]></isNotNull>
+			<isNotNull prepend="," property="jzd_zbx"><![CDATA[jzd_zbx =#jzd_zbx#]]></isNotNull>
+			<isNotNull prepend="," property="jzd_zby"><![CDATA[ jzd_zby=#jzd_zby#]]></isNotNull>
+			<isNotNull prepend="," property="gxfjdm"><![CDATA[ gxfjdm = #gxfjdm#]]></isNotNull>
+			<isNotNull prepend="," property="gxpcsdm"><![CDATA[gxpcsdm = #gxpcsdm#]]></isNotNull>
+			<isNotNull prepend="," property="gxzrqdm"><![CDATA[gxzrqdm= #gxzrqdm#]]></isNotNull>
+			<isNotNull prepend="," property="hs_status"><![CDATA[hs_status= #hs_status#]]></isNotNull>
+			,
+			<include refid="updateXtzd" />
+		</dynamic>
+		<![CDATA[ WHERE ID = #id#]]>
+	</update>
+	<!-- 注销核实 -->
+	<update id="deleteHs" parameterClass="syrkSyrkxxzb">
+		UPDATE SYRK_SYRKXXHSB T SET 
+			<include refid="deleteXtzd" />
+		<![CDATA[ WHERE ID = #id# ]]>
+	</update>
 </sqlMap>
