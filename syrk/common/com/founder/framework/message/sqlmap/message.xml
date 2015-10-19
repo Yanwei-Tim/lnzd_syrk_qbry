@@ -125,7 +125,7 @@
 				 t.xxlb =#sysMessage.xxlb#
 			</isEqual>
 			<isEqual property="sysMessage.xxlb" compareValue="2" prepend="and">
-				(t.xxlb = '2' OR t.xxlb = '5')
+				(t.xxlb = '2' OR t.xxlb = '5' OR t.xxlb='6')
 			</isEqual>
 			<isEqual property="sysMessage.xxlb" compareValue="3" prepend="and">
 			    (t.xxlb = '3' OR t.xxlb = '4')
