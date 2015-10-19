@@ -10,7 +10,7 @@
     <script type="text/javascript">
       var contextPath = "<%=request.getContextPath()%>";
       function loadChart(){
-       	  /*加载流动人口柱状图*/
+       	  /*加载暂住人口柱状图*/
        	  swfobject.embedSWF(contextPath+"/js/tools/flashChart/open-flash-chart.swf","ldrkChart","100%","250px","9.0.0","expressInstall.swf",{"data-file":contextPath+"/homePage/queryLdrkChart?zzjgdm=<%=userOrgCode%>"},{wmode:"transparent"});
       }
     </script>

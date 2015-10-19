@@ -16,7 +16,7 @@
 				 <li class="tabOption selectedTab">实有人口</li>
 				 <li class="tabOption">建筑物统计</li>
 				 <li class="tabOption">标准地址统计</li>
-				 <li class="tabOption">流动人口统计</li>
+				 <li class="tabOption">暂住人口统计</li>
 			</ul>
 			<div id="container">
                  <div id="content">
@@ -33,7 +33,7 @@
                        <!-- 显示的内容 -->
                     </div>
                     <div class="tabContent">
-                       <h3>流动人口统计</h3>
+                       <h3>暂住人口统计</h3>
                        <!-- 显示的内容 -->
                     </div>
                  </div>

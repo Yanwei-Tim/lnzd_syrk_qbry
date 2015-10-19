@@ -259,7 +259,7 @@ public class GzltjServiceImpl implements GzltjService {
 	}
 
 	/**
-	 * 流动人口统计
+	 * 暂住人口统计
 	 * 
 	 * @param list
 	 * @return
@@ -478,7 +478,7 @@ public class GzltjServiceImpl implements GzltjService {
 
 		    cell=row1.createCell(10);
 		    cell.setCellStyle(style);
-		    cell.setCellValue("流动人口");
+		    cell.setCellValue("暂住人口");
 		    CellRangeAddress rangeLdrk=new CellRangeAddress(1, 1, 10, 12);	
 		    sheet.addMergedRegion(rangeLdrk);
 

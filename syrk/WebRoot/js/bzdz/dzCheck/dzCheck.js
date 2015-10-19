@@ -15,10 +15,6 @@ DzCheck.setInt = "";//记录延时
  */
 $(function(){
 	DzCheck.onloadMap();
-	//新增权限判断
-	if(orglevel != "50"){
- 	   document.getElementById("dzaddid").style.display = "none";
-    }
 });
 /**
  * @title:onloadMap
@@ -53,44 +49,20 @@ DzCheck.onloadMap = function(){
  * @title:datagridProcessFormater
  * @description:列表操作
  * @author: zhang_guoliang@founder.com
- * @param  bzdzSh 标准地址新增或维护是否审核：0为禁用（默认）、1为启用  
+ * @param 地址核实操作功能
  * @date:2014-12-26 10:47:21
  */	
 DzCheck.datagridProcessFormater = function(val,row,index){
-	if(row.dzzt=="01"){
-		if(orglevel != "50"){
-			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.doUpdateAndXq(this, '+index+',1,0,1)">详情</a>&nbsp;';
+	if(orglevel != "50"||row.dzzt=="02"){
+		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.doUpdateAndXq(this, '+index+',1)">详情</a>&nbsp;';
+	}else{
+		if(row.dzzt=="01"){
+			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.doUpdateAndXq(this, '+index+',0)">核实</a>&nbsp;'+
+        	   	   '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.doDeleteYqy(this, '+index+')">注销</a>&nbsp;';
 		}else{
-			if(row.bz=="维护中"){
-				return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.doUpdateAndXq(this, '+index+',1,0,1)">详情</a>&nbsp;'+
-				       '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.doDeleteYqy(this, '+index+')">注销</a>&nbsp;';
-			}else{
-				return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.doUpdateAndXq(this, '+index+',0,0,0)">维护</a>&nbsp;'+
-		           	   '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.doDeleteYqy(this, '+index+')">注销</a>&nbsp;';
-			}
+			return "";
 		}
-    }else if(row.dzzt=="02"){
-    	if(orglevel != "50"){
-    		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.dzVerifyShAndXq(this, '+index+',1,1,1)">详情</a>&nbsp;';
-    	}else{
-    		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.dzVerifyShAndXq(this, '+index+',1,1,1)">详情</a>&nbsp;'+
-	           	   '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.doDeleteDspAndTh(this, '+index+',2)">注销</a>&nbsp;';
-    	}
-    }else if(row.dzzt=="03"){
-    	if(orglevel != "50"){
-    		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.dzVerifyShAndXq(this, '+index+',1,1,1)">详情</a>&nbsp;';
-    	}else{
-    		if(bzdzSh=="1"){
-        		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.doUpdateAndXq(this, '+index+',0,1,0)">维护</a>&nbsp;'+
-    			   	   '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.doDeleteDspAndTh(this, '+index+',3)">注销</a>&nbsp;';
-        	}else{
-        		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.dzVerifyShAndXq(this, '+index+',1,1,1)">详情</a>&nbsp;'+
-        			   '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="DzCheck.doDeleteDspAndTh(this, '+index+',3)">注销</a>&nbsp;';
-        	}
-    	}
-    }else{
-    	return "";
-    }
+	}
 };
 /**
  * @title:queryButton
@@ -145,69 +117,33 @@ DzCheck.loadPoint = function(data){
 			var mldzid = rows[count].mldzid;
 			if(zbx!=""&&zby!=""){
 				//气泡框内容
-				var openHtml =  "<div id='uploadFileImageDiv' style='width: 300px; height: 300px;text-align: center;'></div>" +
-						        "<div class='divwrap'><div class='oneText'>1</div><div class='title_big'>地址全称："+rows[count].dzmc+"</div></div>" +
+				var openHtml =  "<div class='divwrap'><div class='oneText'>1</div><div class='title_big'>地址全称："+rows[count].dzmc+"</div></div>" +
 								"<div class='divwrap'><div class='oneText'>2</div><div class='title_big'>采集时间："+rows[count].xt_cjsj+"</div></div>";
 				//地图标点
 				var img = "";
 				if(dzzt=="01"){
-					//绿色
-					img = "jzw3.png";
-					openHtml += "<div class='divwrap'><div class='oneText'>3</div><div class='title_big'>启用时间："+rows[count].xt_zhxgsj+"</div></div>";
-				}else if(dzzt=="02"){
-					//黄色
-					img = "jzw4.png";
-				}else if(dzzt=="03"){
 					//红色
 					img = "jzw1.png";
-					openHtml += "<div class='divwrap'><div class='oneText'>3</div><div class='title_big'>退回时间："+rows[count].xt_zhxgsj+"</div></div>";
+					openHtml += "<div class='divwrap'><div class='oneText'>3</div><div class='title_big'>入库时间："+rows[count].xt_zhxgsj+"</div></div>";
+				}else if(dzzt=="02"){
+					//绿色
+					img = "jzw3.png";
 				}else{
 					//灰色
 					img = "jzw0.png";
 					openHtml += "<div class='divwrap'><div class='oneText'>3</div><div class='title_big'>注销时间："+rows[count].xt_zhxgsj+"</div></div>";
-				}
-				if(dzzt!="04"){
-					openHtml += "<div class='divwrap'><div class='title_big'><div class='blueText'>";
-					openHtml +=	"<a class='blueText' href='javascript:javascript:void(0)' onclick='DzCheck.uploadFileEdit(\""+mldzid+"\",\""+title+"\")'>【照片管理】</a>";
-					openHtml +=	"<a class='blueText' href='javascript:javascript:void(0)' onclick='DzCheck.onloadChjg(\""+mldzid+"\",\""+title+"\",\""+dzzt+"\")'>【层户结构】</a>";
-					openHtml +=	"</div></div></div>";
 				}
 				var initMarker = DzCheck.map.initMarker(title,zbx,zby,img,openHtml,null,43,37);
 				DzCheck.map._MapApp.addOverlay(initMarker);
 				DzCheck.initMarkerArr.push(initMarker);
 				//地图元素和列表联动
 				DzCheck.addMapToListFun(initMarker,count);
-				initMarker.addListener("click", function(){
-					DzCheck.uploadFileImageView(mldzid);
-				});
 			}
 		}else{
 			clearInterval(DzCheck.setInt);
 		}
 		count++;
 	},90);
-};
-/**
- * @title:uploadFileImageView
- * @description:加载照片
- * @author: zhang_guoliang@founder.com
- * @param  
- * @date:2015-03-21 14:56:32
- */
-DzCheck.uploadFileImageView = function(mldzid){
-	uploadFileImageView('BZDZ_ADD_MLDZDXB',mldzid, 'uploadFileImageDiv', 300, 275,contextPath+'/images/bzdz/building/building.jpg'); //附件图片多张显示
-};
-/**
- * @title:uploadFileEdit
- * @description:照片管理
- * @author: zhang_guoliang@founder.com
- * @param  
- * @date:2015-03-21 14:56:32
- */
-DzCheck.uploadFileEdit = function(mldzid,title){
-	//关闭所有器已经打开的气泡框
-	DzCheck.map._MapApp.closeInfoWindow();
-	uploadFileEdit('BZDZ_ADD_MLDZDXB',mldzid, '【'+title+'】照片', 'img', '0', '','【'+title+'】照片管理');
 };
 /**
  * @title:onloadChjg
@@ -236,10 +172,6 @@ DzCheck.addMapToListFun = function(PMarker,row){
 		//鼠标移动到点上列表选中
 		$('#dg').datagrid("selectRow",row);
 	});
-	/*PMarker.addListener("mouseout",function(){
-		//鼠标移动到点上取消列表选中
-		$('#dg').datagrid("unselectRow",row);
-	});*/
 };
 /**
  * @title:datagridDzzt
@@ -257,17 +189,9 @@ DzCheck.datagridDzzt = function(value,row,index){
 		catch (err) {}
 	}
     if(row.dzzt=="01"){
-    	if(row.bz=="维护中"){
-    		return "<span style='color:green;font: bold;'>"+value+"(维护中)</span>";
-    	}else{
-    		return "<span style='color:green;font: bold;'>"+value+"</span>";
-    	}
+        return "<span style='color:red;font: bold;'>"+value+"</span>";
     }else if(row.dzzt=="02"){
-    	return "<span style='color:#C86C00;font: bold;'>"+value+"</span>";
-    }else if(row.dzzt=="03"){
-    	return "<span style='color:red;font: bold;'>"+value+"</span>";
-    }else if(row.dzzt=="04"){
-    	return "<span style='color:gray;font: bold;'>"+value+"</span>";
+    	return "<span style='color:green;font: bold;'>"+value+"</span>";
     }else{
     	return value;   
     }	
@@ -285,27 +209,16 @@ DzCheck.onClickRow = function(rowIndex,rowData){
 		var title = rowData.mlphqc;
 		var point = new Point(rowData.zbx,rowData.zby);
 		//气泡框内容
-		var openHtml =  "<div id='uploadFileImageDiv' style='width: 300px; height: 300px;text-align: center;'></div>" +
-				        "<div class='divwrap'><div class='oneText'>1</div><div class='title_big'>地址全称："+rowData.dzmc+"</div></div>" +
+		var openHtml =  "<div class='divwrap'><div class='oneText'>1</div><div class='title_big'>地址全称："+rowData.dzmc+"</div></div>" +
 						"<div class='divwrap'><div class='oneText'>2</div><div class='title_big'>采集时间："+rowData.xt_cjsj+"</div></div>";
 		if(rowData.dzzt=="01"){
-			openHtml += "<div class='divwrap'><div class='oneText'>3</div><div class='title_big'>启用时间："+rowData.xt_zhxgsj+"</div></div>";
+			openHtml += "<div class='divwrap'><div class='oneText'>3</div><div class='title_big'>入库时间："+rowData.xt_zhxgsj+"</div></div>";
+		}else if(rowData.dzzt=="02"){
+			openHtml += "<div class='divwrap'><div class='oneText'>3</div><div class='title_big'>核实时间："+rowData.xt_zhxgsj+"</div></div>";
 		}else if(rowData.dzzt=="03"){
-			openHtml += "<div class='divwrap'><div class='oneText'>3</div><div class='title_big'>退回时间："+rowData.xt_zhxgsj+"</div></div>";
-		}else if(rowData.dzzt=="04"){
 			openHtml += "<div class='divwrap'><div class='oneText'>3</div><div class='title_big'>注销时间："+rowData.xt_zhxgsj+"</div></div>";
 		}
-		if(rowData.dzzt!="04"){
-			openHtml += "<div class='divwrap'><div class='title_big'><div class='blueText'>";
-			openHtml += "<a class='blueText' href='javascript:javascript:void(0)' onclick='DzCheck.uploadFileEdit(\""+mldzid+"\",\""+title+"\")'>【照片管理】</a>";
-			openHtml += "<a class='blueText' href='javascript:javascript:void(0)' onclick='DzCheck.onloadChjg(\""+mldzid+"\",\""+title+"\",\""+rowData.dzzt+"\")'>【层户结构】</a>";
-			openHtml += "</div></div></div>";
-		}
 		DzCheck.map._MapApp.openInfoWindow(point,openHtml,true);
-		//延时获取照片信息
-		setTimeout(function(){
-			DzCheck.uploadFileImageView(mldzid);
-		},1);
 	}else{
 		topMessager.show({
 			title: MESSAGER_TITLE,
@@ -313,16 +226,6 @@ DzCheck.onClickRow = function(rowIndex,rowData){
 			timeout:3500
 		});
 	}
-};
-/**
- * @title:dzAdd
- * @description:新建地址
- * @author: zhang_guoliang@founder.com
- * @param   
- * @date:2014-12-29 14:37:47
- */	
-DzCheck.dzAdd = function(){
-	menu_open('地址新建', '/dz/createDz?mainTabID='+getMainTabID());
 };
 /**
  * @title:doDeleteDspAndTh
@@ -368,20 +271,6 @@ DzCheck.doDelete_back = function(result){
 			timeout:3500
 		});
 	}
-};
-/**
- * @title:dzVerifyShAndXq
- * @description:地址审核或查看详情
- * @author: zhang_guoliang@founder.com
- * @param type 0为可编辑、1为只读，dzChb地址层户表 0为层户地址对象表、1为层户地址审核表、chType层户结构 0为编辑、1为只读
- * @date:2015-02-09 18:18:54
- */
-DzCheck.dzVerifyShAndXq = function(linkObject,index,type,dzChb,chType){
-	//阻止冒泡，不然要执行onClickRow
-    cancelBubble(); 
-    var rows = $('#dg').datagrid('getData');
-	var rowData = rows.rows[index];
-    menu_open('【'+rowData.mlphqc+'】详情','/dz/createDzShAndXq?mldzid='+rowData.mldzid+'&type='+type+'&dzChb='+dzChb+'&chType='+chType+'&mainTabID='+getMainTabID());
 };
 /**
  * @title:doDeleteYqy
@@ -442,23 +331,23 @@ DzCheck.closeWindow = function(){
 };
 /**
  * @title:doUpdateAndXq
- * @description:地址维护
+ * @description:地址核实
  * @author: zhang_guoliang@founder.com
- * @param type 0为可编辑、1为只读，dzChb地址层户表 0为层户地址对象表、1为层户地址审核表, chType层户结构 0为编辑、1为只读
+ * @param
  * @date:2015-02-04 18:23:35
  */	
-DzCheck.doUpdateAndXq = function(linkObject, index,type,dzChb,chType){
+DzCheck.doUpdateAndXq = function(linkObject,index,type){
 	//阻止冒泡，不然要执行onClickRow
     cancelBubble(); 
     var rows = $('#dg').datagrid('getData');
 	var rowData = rows.rows[index];
 	var title = "";
 	if(type=="0"){
-		title = "维护";
+		title = "核实";
 	}else{
 		title = "详情";
 	}
-    menu_open('【'+rowData.mlphqc+'】'+title+'','/dz/createUpdateAndXq?mldzid='+rowData.mldzid+'&type='+type+'&dzChb='+dzChb+'&chType='+chType+'&mainTabID='+getMainTabID());
+    menu_open('【'+rowData.mlphqc+'】'+title+'','/dz/createCheckAndXq?mldzid='+rowData.mldzid+'&type='+type+'&mainTabID='+getMainTabID());
 };
 /**
  * @title:doDelete_back

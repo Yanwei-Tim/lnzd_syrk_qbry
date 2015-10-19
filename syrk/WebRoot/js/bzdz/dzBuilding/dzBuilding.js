@@ -26,7 +26,7 @@ $(function(){
 	//加载层户结构
 	DzBuilding.onloadChjg();
 	//新增【注销重建】权限判断
-    if(chType !="0"){
+    if(chType !="0" && type !="2"){
  	   document.getElementById("zxcjId").style.display = "none";
     }
 });
@@ -34,13 +34,15 @@ $(function(){
  * @title:onloadChjg
  * @description:加载门楼地址信息（房间）
  * @author: zhang_guoliang@founder.com
- * @param mldzid【门楼地址ID】、dzChb【地址层户表 0为层户地址对象表、1为层户地址审核表】
+ * @param mldzid【门楼地址ID】、dzChb【地址层户表 0为层户地址对象表、1为层户地址审核表、2为层户地址核实表】
  * @date:2015-03-02 17:01:21
  */
 DzBuilding.onloadChjg = function(){
 	var url = contextPath+"/dz/queryChdzdxb/"+mldzid;
 	if(dzChb==1){
 		url = contextPath+"/dz/queryChShdz/"+mldzid;
+	}else if(dzChb==2){
+		url = contextPath+"/dz/queryChHsdz/"+mldzid+"/"+type;
 	}
 	//层户地址
 	$.ajax({
@@ -90,6 +92,8 @@ DzBuilding.onloadChjg_back = function(json){
 	DzBuilding.divdxMaxWidth = 0;//地下最大宽度
 	var chjglen = json.length;
 	if(chjglen>0){
+		//用于判断层户结构是否存在
+		document.getElementById("pdchjg").value = chjglen;
 		DzBuilding.dsdyHtml = "";
 		DzBuilding.dxdyHtml = "";
 		for(var t=0;t<chjglen;t++){

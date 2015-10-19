@@ -54,7 +54,7 @@
 		                        <span>寄住人口<span id='jzrkNumId'></span></span>   
 		                    </li>   
 		                    <li>   
-		                        <span>流动人口<span id='ldrkNumId'></span></span>   
+		                        <span>暂住人口<span id='ldrkNumId'></span></span>   
 		                    </li>  
 		                    <li>   
 		                        <span>境外人口<span id='jwrkNumId'></span></span>   

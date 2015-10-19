@@ -31,7 +31,7 @@
        	  swfobject.embedSWF(contextPath+"/js/tools/flashChart/open-flash-chart.swf","gzdxChart","100%","260px;","9.0.0","expressInstall.swf",{"data-file":contextPath+"/homePage/queryCensusChart?zzjgdm=week-" + flag},{wmode:"transparent"});
        	  /*加载标准地址折线图*/
        	  swfobject.embedSWF(contextPath+"/js/tools/flashChart/open-flash-chart.swf","bzdzChart","100%","260px;","9.0.0","expressInstall.swf",{"data-file":contextPath+"/homePage/queryCensusChart?zzjgdm=month-" + flag},{wmode:"transparent"});
-       	  /*加载流动人口折线图*/
+       	  /*加载暂住人口折线图*/
        	  swfobject.embedSWF(contextPath+"/js/tools/flashChart/open-flash-chart.swf","ldrkChart","100%","260px;","9.0.0","expressInstall.swf",{"data-file":contextPath+"/homePage/queryCensusChart?zzjgdm=quarter-" + flag},{wmode:"transparent"});
 	  	  
      }

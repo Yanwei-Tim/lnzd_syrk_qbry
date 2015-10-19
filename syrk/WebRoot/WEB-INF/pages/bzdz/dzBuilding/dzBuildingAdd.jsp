@@ -9,7 +9,7 @@
       var mldzid = "${mldzid}";
       //type 0为可编辑、1为只读
       var type = "${type}";
-      //dzChb地址层户表 0为层户地址对象表、1为层户地址审核表 
+      //dzChb地址层户表 0为层户地址对象表、1为层户地址审核表、2为层户地址核实表 
       var dzChb = "${dzChb}";
       //标准地址新增或维护是否审核：0为禁用（默认）、1为启用
       var bzdzSh = "${bzdzSh}";

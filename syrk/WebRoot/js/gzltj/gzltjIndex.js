@@ -107,7 +107,7 @@ function loadInfo(queryUrl) {
 			   [{title : "人户一致",rowspan : 1,colspan : 3,width : 155}, 
 			    {title : "人户分离",rowspan : 1,colspan : 3,width : 155},
 			    {title : "寄住人口",rowspan : 1,colspan : 3,width : 155},
-			    {title : "流动人口",rowspan : 1,colspan : 3,width : 155}, 
+			    {title : "暂住人口",rowspan : 1,colspan : 3,width : 155}, 
 			    {title : "境外人员",rowspan : 1,colspan : 3,width : 155}, 
 			    {title : "未落户人员",rowspan : 1,colspan : 3,width : 155}, 
 			    {title : "出租房屋",rowspan : 1,colspan : 3,width : 155}, 
@@ -305,7 +305,7 @@ function gzltj_index_toExcel1() {
 		exSheet.Range(exSheet.Cells(2, 5), exSheet.Cells(2, 7)).Merge();
 		exSheet.Cells(2, 8).value = "寄住人口";
 		exSheet.Range(exSheet.Cells(2, 8), exSheet.Cells(2, 10)).Merge();
-		exSheet.Cells(2, 11).value = "流动人口";
+		exSheet.Cells(2, 11).value = "暂住人口";
 		exSheet.Range(exSheet.Cells(2, 11), exSheet.Cells(2, 13)).Merge();
 		exSheet.Cells(2, 14).value = "境外人员";
 		exSheet.Range(exSheet.Cells(2, 14), exSheet.Cells(2, 16)).Merge();

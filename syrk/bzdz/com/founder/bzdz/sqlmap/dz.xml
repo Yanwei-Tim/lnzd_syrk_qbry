@@ -882,6 +882,44 @@
 		 WHERE T.XT_ZXBZ='0' 
 		   AND T.MLDZID = #mldzid#
     </select>
+    <!-- 更新核实地址_【门楼地址核实表】  -->
+    <update id="updateHsMldz" parameterClass="bzdzxxbvo">
+      UPDATE BZDZ_ADD_MLDZDHSB
+       <dynamic prepend="set">
+            <isNotEmpty prepend="," property="zbx">
+		      ZBX = #zbx#
+		    </isNotEmpty>
+		    <isNotEmpty prepend="," property="zby">
+		      ZBY = #zby#
+		    </isNotEmpty>
+		    <isNotEmpty prepend="," property="xt_zxbz">
+		      XT_ZXBZ = #xt_zxbz#
+		    </isNotEmpty>
+		    ,
+			<include refid="updateXtzd"/>
+       </dynamic>
+       WHERE XT_ZXBZ IS NULL
+         AND MLDZID = #mldzid#
+    </update>
+    <!-- 更新核实地址_【层户地址核实表】  -->
+    <update id="updateHsChdz" parameterClass="bzdzxxbvo">
+      UPDATE BZDZ_ADD_CHDZDHSB
+       <dynamic prepend="set">
+            <isNotEmpty prepend="," property="zbx">
+		      ZBX = #zbx#
+		    </isNotEmpty>
+		    <isNotEmpty prepend="," property="zby">
+		      ZBY = #zby#
+		    </isNotEmpty>
+		    <isNotEmpty prepend="," property="xt_zxbz">
+		      XT_ZXBZ = #xt_zxbz#
+		    </isNotEmpty>
+		    ,
+			<include refid="updateXtzd"/>
+       </dynamic>
+       WHERE XT_ZXBZ IS NULL
+         AND MLDZID = #mldzid#
+    </update>
     <!-- 更新审核地址_【门楼地址审核表】  -->
     <update id="updateShMldz" parameterClass="bzdzxxbvo">
       UPDATE BZDZ_ADD_MLDZSHB
@@ -956,7 +994,7 @@
        WHERE XT_ZXBZ = '0' 
           AND MLDZID = #mldzid#
     </update>
-     <!-- 更新地址_【层户地址对象表】  -->
+    <!-- 更新地址_【层户地址对象表】  -->
     <update id="updateDxChdz" parameterClass="bzdzxxbvo">
       UPDATE BZDZ_ADD_CHDZDXB
        <dynamic prepend="set">
@@ -999,6 +1037,30 @@
 		       "XT_CJSJ","XT_HSSJ","XT_LRBZ","XT_LRSJ","XT_LRRXM","XT_LRRID","XT_LRRBM","XT_LRRBMID","XT_LRIP","XT_ZHXGSJ","XT_ZHXGRXM","XT_ZHXGRID",
 		       "XT_ZHXGRBM","XT_ZHXGRBMID","XT_ZHXGIP","XT_ZXBZ","XT_ZXYY"
 	   FROM BZDZ_ADD_CHDZSHB              
+         WHERE XT_ZXBZ='0'
+           AND MLDZID = #mldzid#
+    </insert>
+    <!-- 插入核实地址到_【门楼地址对象表】 -->
+    <insert id="insertHsDzMldz" parameterClass="bzdzxxbvo">
+       INSERT INTO BZDZ_ADD_MLDZDXB("MLDZID","XZQHDM","DMDM","DMMC","SQDM","ZRQDM","PCSDM","FXJDM","MLPHQZ","MLPH","MLPHHZ","MLPHQC","DZMC",
+            "DZMCPY","DZMCPWD","DZMCPYPWD","ZBX","ZBY","BZ","XT_CJSJ","XT_HSSJ","XT_LRBZ","XT_LRSJ","XT_LRRXM","XT_LRRID","XT_LRRBM","XT_LRRBMID","XT_LRIP",
+            "XT_ZHXGSJ","XT_ZHXGRXM","XT_ZHXGRID","XT_ZHXGRBM","XT_ZHXGRBMID","XT_ZHXGIP","XT_ZXBZ","XT_ZXYY","DTCWFK")
+   	   SELECT "MLDZID","XZQHDM","DMDM","DMMC","SQDM","ZRQDM","PCSDM","FXJDM","MLPHQZ","MLPH","MLPHHZ","MLPHQC","DZMC",
+            "DZMCPY","DZMCPWD","DZMCPYPWD","ZBX","ZBY","BZ","XT_CJSJ","XT_HSSJ","XT_LRBZ","XT_LRSJ","XT_LRRXM","XT_LRRID","XT_LRRBM","XT_LRRBMID","XT_LRIP",
+            "XT_ZHXGSJ","XT_ZHXGRXM","XT_ZHXGRID","XT_ZHXGRBM","XT_ZHXGRBMID","XT_ZHXGIP","XT_ZXBZ","XT_ZXYY","DTCWFK"
+       FROM BZDZ_ADD_MLDZDHSB 
+         WHERE XT_ZXBZ='0'
+           AND MLDZID = #mldzid#
+    </insert>
+    <!-- 插入核实地址到_【层户地址对象表】 -->
+    <insert id="insertHsDzChdz" parameterClass="bzdzxxbvo">
+       INSERT INTO BZDZ_ADD_CHDZDXB("CHDZID","MLDZID","DYH","DYHLX","LCH","SH","SHMC","SHBS","DZMC","DZMCPY","DZMCPWD","DZMCPYPWD","DZJB","ZBX","ZBY",
+		       "XT_CJSJ","XT_HSSJ","XT_LRBZ","XT_LRSJ","XT_LRRXM","XT_LRRID","XT_LRRBM","XT_LRRBMID","XT_LRIP","XT_ZHXGSJ","XT_ZHXGRXM","XT_ZHXGRID",
+		       "XT_ZHXGRBM","XT_ZHXGRBMID","XT_ZHXGIP","XT_ZXBZ","XT_ZXYY")
+	   SELECT "CHDZID","MLDZID","DYH","DYHLX","LCH","SH","SHMC","SHBS","DZMC","DZMCPY","DZMCPWD","DZMCPYPWD","DZJB","ZBX","ZBY",
+		       "XT_CJSJ","XT_HSSJ","XT_LRBZ","XT_LRSJ","XT_LRRXM","XT_LRRID","XT_LRRBM","XT_LRRBMID","XT_LRIP","XT_ZHXGSJ","XT_ZHXGRXM","XT_ZHXGRID",
+		       "XT_ZHXGRBM","XT_ZHXGRBMID","XT_ZHXGIP","XT_ZXBZ","XT_ZXYY"
+	   FROM BZDZ_ADD_CHDZDHSB              
          WHERE XT_ZXBZ='0'
            AND MLDZID = #mldzid#
     </insert>
@@ -1066,6 +1128,15 @@
             <include refid="deleteXtzd"/>
        </dynamic>
        WHERE XT_ZXBZ = '0' 
+          AND MLDZID = #mldzid#
+    </update>
+    <!-- 注销核实地址数据_【层户地址核实表】  -->
+    <update id="crossOutChdzhsb" parameterClass="bzdzxxbvo">
+       UPDATE BZDZ_ADD_CHDZDHSB
+       <dynamic prepend="set">
+            <include refid="deleteXtzd"/>
+       </dynamic>
+       WHERE XT_ZXBZ IS NULL 
           AND MLDZID = #mldzid#
     </update>
     <!-- 查询单条门楼对象地址详情数据_【门楼地址对象表】  -->
@@ -1455,6 +1526,98 @@
 		<include refid="insertXtzdVal"/>
        )
     </insert>
+    <!-- 保存层户地址_【层户地址核实表】  -->
+    <insert id="saveChdzHsb" parameterClass="bzdzxxbvo">
+       INSERT INTO BZDZ_ADD_CHDZDHSB
+       (CHDZID
+        <isNotEmpty prepend="," property="mldzid">
+		   MLDZID
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dyh">
+		   DYH
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dyhlx">
+		   DYHLX
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="lch">
+		   LCH
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="sh">
+		   SH
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="shmc">
+		   SHMC
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="shbs">
+		   SHBS
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="chdzmc">
+		   DZMC
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="chdzmcpy">
+		   DZMCPY
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="chdzmcpwd">
+		   DZMCPWD
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="chdzmcpypwd">
+		   DZMCPYPWD
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dzjb">
+		   DZJB
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="zbx">
+		   ZBX
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="zby">
+		   ZBY
+		</isNotEmpty>
+       )VALUES(
+        #chdzid#
+        <isNotEmpty prepend="," property="mldzid">
+		   #mldzid#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dyh">
+		   #dyh#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dyhlx">
+		   #dyhlx#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="lch">
+		   #lch#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="sh">
+		   #sh#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="shmc">
+		   #shmc#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="shbs">
+		   #shbs#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="chdzmc">
+		   #chdzmc#
+		</isNotEmpty>
+        <isNotEmpty prepend="," property="chdzmcpy">
+		   #chdzmcpy#
+		</isNotEmpty>
+        <isNotEmpty prepend="," property="chdzmcpwd">
+		   #chdzmcpwd#
+		</isNotEmpty>
+        <isNotEmpty prepend="," property="chdzmcpypwd">
+		   #chdzmcpypwd#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="dzjb">
+		   #dzjb#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="zbx">
+		   #zbx#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="zby">
+		   #zby#
+		</isNotEmpty>
+       )
+    </insert>
     <!-- 修改单元层数注销楼层数_【层户地址对象表】 -->
     <update id="crossChdxbLcs" parameterClass="bzdzxxbvo">
        UPDATE BZDZ_ADD_CHDZDXB
@@ -1766,5 +1929,101 @@
 		 	AND T.ORGLEVEL = '21'
 		 	AND T.ORGBIZTYPE = '01'
 		 </isEqual>
+    </select>
+    <!-- 地址核实列表 -->
+    <select id="queryDzCheckList" parameterClass="Map" resultClass="bzdzxxbvo">
+      SELECT * FROM ( SELECT ROWNUM R ,M.* FROM (
+	       SELECT T.MLDZID, T.MLPHQC, T.DZMC, T.ZBX, T.ZBY,#bzdzxxbvo.dzzt# DZZT,T.XT_CJSJ,T.XT_HSSJ,T.XT_ZHXGSJ,T.BZ
+			  FROM $tableName$
+		   WHERE 1=1
+		      <isEqual prepend="and" property="bzdzxxbvo.dzzt" compareValue="01">
+	               T.XT_ZXBZ IS NULL
+			  </isEqual>
+		      <isEqual prepend="and" property="bzdzxxbvo.dzzt" compareValue="02">
+	               T.XT_ZXBZ = '0'
+			  </isEqual>
+			  <isEqual prepend="and" property="bzdzxxbvo.dzzt" compareValue="03">
+	               T.XT_ZXBZ = '1'
+			  </isEqual>
+			  <isNotEmpty prepend="and" property="bzdzxxbvo.dzmc">
+			      (T.DMMC||T.MLPH||T.MLPHQC||T.DZMC||T.DZMCPY LIKE '%$bzdzxxbvo.dzmc$%' 
+			     	 OR EXISTS(SELECT B.MLDZID 
+			                     FROM BZDZ_ADD_MLDZBMB B 
+			                   WHERE B.XT_ZXBZ='0'
+			                     AND B.MLDZID = T.MLDZID 
+			                     AND B.DZBM LIKE '%$bzdzxxbvo.dzmc$%'))
+		      </isNotEmpty>
+		      <isNotEmpty prepend="and" property="bzdzxxbvo.fxjdm">
+				   T.FXJDM = #bzdzxxbvo.fxjdm#
+			  </isNotEmpty>
+			  <isNotEmpty prepend="and" property="bzdzxxbvo.pcsdm">
+				   T.PCSDM = #bzdzxxbvo.pcsdm#
+			  </isNotEmpty>
+			  <isNotEmpty prepend="and" property="bzdzxxbvo.zrqdm">
+				   T.ZRQDM = #bzdzxxbvo.zrqdm#
+			  </isNotEmpty>
+			      ORDER BY #order#)M
+      <![CDATA[WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
+    </select>
+    <!-- 地址核实列表总数 -->
+    <select id="queryDzCheckCount" parameterClass="Map" resultClass="Integer">
+         SELECT COUNT(MLDZID)
+			FROM $tableName$
+		  WHERE 1=1
+		      <isEqual prepend="and" property="bzdzxxbvo.dzzt" compareValue="01">
+	               T.XT_ZXBZ IS NULL
+			  </isEqual>
+		      <isEqual prepend="and" property="bzdzxxbvo.dzzt" compareValue="02">
+	               T.XT_ZXBZ = '0'
+			  </isEqual>
+			  <isEqual prepend="and" property="bzdzxxbvo.dzzt" compareValue="03">
+	               T.XT_ZXBZ = '1'
+			  </isEqual>
+			  <isNotEmpty prepend="and" property="bzdzxxbvo.dzmc">
+			      (T.DMMC||T.MLPH||T.MLPHQC||T.DZMC||T.DZMCPY LIKE '%$bzdzxxbvo.dzmc$%' 
+			     	 OR EXISTS(SELECT B.MLDZID 
+			                     FROM BZDZ_ADD_MLDZBMB B 
+			                   WHERE B.XT_ZXBZ='0'
+			                     AND B.MLDZID = T.MLDZID 
+			                     AND B.DZBM LIKE '%$bzdzxxbvo.dzmc$%'))
+		      </isNotEmpty>
+		      <isNotEmpty prepend="and" property="bzdzxxbvo.fxjdm">
+				   T.FXJDM = #bzdzxxbvo.fxjdm#
+			  </isNotEmpty>
+			  <isNotEmpty prepend="and" property="bzdzxxbvo.pcsdm">
+				   T.PCSDM = #bzdzxxbvo.pcsdm#
+			  </isNotEmpty>
+			  <isNotEmpty prepend="and" property="bzdzxxbvo.zrqdm">
+				   T.ZRQDM = #bzdzxxbvo.zrqdm#
+			  </isNotEmpty>
+    </select>
+    <!-- 创建地址核实和详情页面 -->
+    <select id="queryMldzDhsb" parameterClass="Map" resultClass="bzdzxxbvo">
+	  SELECT T.*,(SELECT ORGNAME FROM ORG_ORGANIZATION WHERE XT_ZXBZ = '0' AND ORGCODE = SQDM) SQMC,
+	 			 (SELECT BJZBZ FROM ORG_ORGANIZATION WHERE XT_ZXBZ = '0' AND ORGCODE = ZRQDM) BJZBZ,
+	 			 (SELECT ORGNAME FROM ORG_ORGANIZATION WHERE XT_ZXBZ = '0' AND ORGCODE = ZRQDM) ZRQMC,
+	 			 (SELECT ORGNAME FROM ORG_ORGANIZATION WHERE XT_ZXBZ = '0' AND ORGCODE = PCSDM) PCSMC
+	     FROM BZDZ_ADD_MLDZDHSB T
+	   WHERE T.MLDZID = #mldzid#
+      <isEqual prepend="and" property="type" compareValue="0">
+          T.XT_ZXBZ IS NULL
+	  </isEqual>
+      <isEqual prepend="and" property="type" compareValue="1">
+          T.XT_ZXBZ = '0'
+	  </isEqual>
+	</select>
+	<!-- 获取层户地址_【层户地址核实表】 -->
+    <select id="queryChHsdz" parameterClass="Map" resultClass="bzdzxxbvo">
+       SELECT T.CHDZID,T.DYH, T.DYHLX, T.LCH, T.SH, T.SHMC, T.SHBS, T.DZMC
+		  FROM BZDZ_ADD_CHDZDHSB T
+	   WHERE T.DZJB = '4'
+	     AND T.MLDZID = #mldzid#
+	     <isEqual prepend="and" property="type" compareValue="0">
+             T.XT_ZXBZ IS NULL
+	     </isEqual>
+         <isEqual prepend="and" property="type" compareValue="1">
+             T.XT_ZXBZ = '0'
+	     </isEqual>
+	   ORDER BY T.DZMC
     </select>
 </sqlMap>	

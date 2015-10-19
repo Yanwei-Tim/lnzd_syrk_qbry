@@ -10,6 +10,7 @@ import com.founder.framework.base.dao.BaseDaoImpl;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
 import com.founder.syrkgl.bean.SyrkSyrkxxzb;
+
 /**
  * ****************************************************************************
  * 
@@ -31,7 +32,11 @@ public class SyrkSyrkxxzbDao extends BaseDaoImpl {
 	}
 
 	public void update(SyrkSyrkxxzb entity) {
-		update("SyrkSyrkxxzb.update", entity);
+		if(!"".equals(entity.getIsCheck())){
+			update("SyrkSyrkxxzb.updateHs", entity);
+		}else{
+			update("SyrkSyrkxxzb.update", entity);
+		}
 	}
 
 	/**
@@ -44,7 +49,11 @@ public class SyrkSyrkxxzbDao extends BaseDaoImpl {
 	 * @throws
 	 */
 	public void delete(SyrkSyrkxxzb entity) {
-		update("SyrkSyrkxxzb.delete", entity);
+		if(!"".equals(entity.getIsCheck())){
+			update("SyrkSyrkxxzb.deleteHs", entity);
+		}else{
+			update("SyrkSyrkxxzb.delete", entity);
+		}
 	}
 
 	/**
@@ -153,8 +162,14 @@ public class SyrkSyrkxxzbDao extends BaseDaoImpl {
 		map.put("order", order);
 		map.put("entity", entity);
 		//修改人 wuchunhui@founder.com，需求变更redmine #2520
-		page.setRows(queryForList("SyrkSyrkxxzb.query", map));
-		page.setTotal((Integer) queryForObject("SyrkSyrkxxzb.queryCount", map));
+		if(!"".equals(entity.getIsCheck())){
+			//核实列表数据
+			page.setRows(queryForList("SyrkSyrkxxzb.queryHs", map));
+			page.setTotal((Integer) queryForObject("SyrkSyrkxxzb.queryHsCount", map));
+		}else{
+			page.setRows(queryForList("SyrkSyrkxxzb.query", map));
+			page.setTotal((Integer) queryForObject("SyrkSyrkxxzb.queryCount", map));
+		}
 		return page;
 	}
 

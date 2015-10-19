@@ -179,7 +179,7 @@ public class GzltjbJob {
 
 	}
 	/**
-	 * 流动人口统计
+	 * 暂住人口统计
 	 * @param list
 	 * @return
 	 */

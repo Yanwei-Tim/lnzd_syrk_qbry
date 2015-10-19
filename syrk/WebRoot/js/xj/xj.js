@@ -414,7 +414,7 @@ var markerArr = parent.frames.markerArrQysz;
 				       var MJ_NUM= $(this).attr("MJ_NUM");	
 					   htmlStr="<div class='text1'>实有人口: <span class='bold'>"+SYRK_NUM+"</span>人<br>" +
 						"&nbsp;&nbsp;&nbsp;&nbsp;常住人口: <span class='bold'>"+CZRK_NUM+"</span>人<br>" +
-						"&nbsp;&nbsp;&nbsp;&nbsp;流动人口: <span class='bold'>"+LDRK_NUM+"</span>人<Br>" +
+						"&nbsp;&nbsp;&nbsp;&nbsp;暂住人口: <span class='bold'>"+LDRK_NUM+"</span>人<Br>" +
 						"&nbsp;&nbsp;&nbsp;&nbsp;重点人员: <span class='bold'>"+ZDRK_NUM+"</span>个<br>" +
 						"&nbsp;&nbsp;&nbsp;&nbsp;总警力: <span class='bold'>"+ZJL_NUM+"</span>人<Br>" +
 						"&nbsp;&nbsp;&nbsp;&nbsp;巡逻警力: <span class='bold'>"+XLJL_NUM+"</span>人<br>" +
@@ -1171,7 +1171,7 @@ var selectEachFJPCS=function(marker_fj,dm,mc,zbx,zby,ssyj_zzjglx){
                      var htmlSt=""; 
           htmlStr="<div class='text1'>实有人口: <span class='bold'>"+SYRK_NUM+"</span>人<br>" +
                  	"&nbsp;&nbsp;&nbsp;&nbsp;常住人口: <span class='bold'>"+CZRK_NUM+"</span>人<br>" +
-                 	"&nbsp;&nbsp;&nbsp;&nbsp;流动人口: <span class='bold'>"+LDRK_NUM+"</span>人<Br>" +
+                 	"&nbsp;&nbsp;&nbsp;&nbsp;暂住人口: <span class='bold'>"+LDRK_NUM+"</span>人<Br>" +
                  	"&nbsp;&nbsp;&nbsp;&nbsp;重点人员: <span class='bold'>"+ZDRK_NUM+"</span>个<br>" +
                  	"&nbsp;&nbsp;&nbsp;&nbsp;总警力: <span class='bold'>"+ZJL_NUM+"</span>人<Br>" +
                  	"&nbsp;&nbsp;&nbsp;&nbsp;巡逻警力: <span class='bold'>"+XLJL_NUM+"</span>人<br>" +

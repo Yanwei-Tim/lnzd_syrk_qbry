@@ -4,7 +4,7 @@ import com.founder.framework.annotation.TypeAnnotation;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.syrkgl.bean.SyrkLdrkxxb;
 
-@TypeAnnotation("流动人口信息")
+@TypeAnnotation("暂住人口信息")
 public interface SyrkLdrkxxbService {
 
 	/**
