@@ -131,7 +131,7 @@ function checkRyxx(){
 	$("#yrjbxxDiv").show();
 	$.ajax({
 		type:"POST",
-		url: contextPath + "/cyryxxb/dataApply",
+		url: contextPath + "/ryRyjbxxb/dataApply",
 		dataType:"json",
 		data:"zjhm="+$("#zjhm").val()+"&cyzjdm="+$("#cyzjdm").val(),
 		success:function(data){
