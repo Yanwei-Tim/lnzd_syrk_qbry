@@ -80,7 +80,6 @@ function datagridProcessFormater(val,row,index){
  function deliver(linkObject, index){
 	   var rows = $('#dg').datagrid('getData');
 		var rowData = rows.rows[index];
-		var hsUrl = "/forward/zdry|qbzdry|deliver?zdryid="+rowData.zdryid+"&bs=3";
 		$("#deliverd").show();
 		$("#deliverd").window("open"); 
 	   // menu_open(rowData.xm +'',hsUrl); 
@@ -123,4 +122,9 @@ function detailSearch() {
 }
 function closeWindow() {
 	$("#win").window("close");
+}
+
+//下发相关操作
+function closeWindowdeverd(){
+	$("#deliverd").window("close");
 }
