@@ -184,13 +184,11 @@ public class SyrkGlController extends BaseController {
 	public ModelAndView add(String cyzjdm, String zjhm, String mainTabID,
 			String invokeJSMethod, SessionBean sessionBean, String messageid) {
 		// 这里修改兼容通过message打开
-		try {
+		if(messageid != null && !"".equals(messageid)){
 			SysMessage sysmessage = new SysMessage();
 			sysmessage.setId(Long.valueOf(messageid));
 			sysMessageDao.upadate(sysmessage);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		} 
 
 		ModelAndView mv = new ModelAndView("syrkgl/syrkGlAdd");
 		sessionBean = getSessionBean(sessionBean);
