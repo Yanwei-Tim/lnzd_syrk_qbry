@@ -843,11 +843,13 @@ MainZrq.initmenus_back = function(json){
 				htmlStr += "<tr>";
 			}
 			if(list[i].menuopenmode =='2'){
-				htmlStr +="<td style=\"background:#0b7fd9 ;\" class=\"menuCssTd\" onclick=\"menu_open('"+list[i].menuurl+"')\">"+menuname+"";
+				htmlStr +="<td style=\"background:#0b7fd9 ;\" class=\"menuCssTd\" onclick=\"window.open('"+list[i].menuurl+"')\">"+menuname+"";
 				htmlStr +="</td>";
+
 			}else{
 				htmlStr +="<td style=\"background:#0b7fd9;\" class=\"menuCssTd\" onclick=\"menu_open('"+list[i].menuname+"','"+list[i].menuurl+"')\">"+menuname+"";
 				htmlStr +="</td>";
+
 			}
 			
 			
