@@ -7,6 +7,7 @@ $.parser.onComplete = function() {
 		success:function(data){
 			$.each(data,function(i,item){
 				if(item.xxurl!=""){
+					
 					addInfoHtml_auto(item.xxurl,item.icon==""?"info_jzxx":item.icon,item.xxbtmc,item.cshzk,item.isEdit,item.zdryId,item.gxzrq,item.zdrylxdm,item.zdrylbdm,item.syrkId);
 					var _this = $("div.lf_conta").last();
 					$(_this).find("ul").each(function(i){
@@ -694,7 +695,10 @@ function buildHtml(str,cls,title,isEdit,gxzrq){
 	sb.append("<a class='up_btn down_btn' href='javascript:void(0);'></a>");
 	if(str.indexOf("'method'")>=0 && str.indexOf("image='true'")< 0 && str.indexOf("read='true'")< 0&& isEdit!="0")
 		{
-		sb.append("<a class='info_editbtn' href='javascript:void(0);'>编辑</a>");//<a class='info_savebtn' href='javascript:void(0);'>保存</a>
+		if(title!="常住人口"){
+			sb.append("<a class='info_editbtn' href='javascript:void(0);'>编辑</a>");//<a class='info_savebtn' href='javascript:void(0);'>保存</a>
+
+		  }
 		}
 	if(isEdit!="0")
 		sb.append("</dt><dd class='infoedit'>");
