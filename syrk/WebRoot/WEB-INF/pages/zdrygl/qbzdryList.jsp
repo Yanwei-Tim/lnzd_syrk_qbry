@@ -2,7 +2,7 @@
 <%@ page import="com.founder.framework.base.entity.SessionBean"%>
 <%@ include file="/WEB-INF/pages/commonInclude.jsp"%>
 <%@ include file="/WEB-INF/pages/commonMap.jsp"%>
-<%@ include file="/WEB-INF/pages/zdry/qbzdry/deliver.jsp"%>
+<%@ include file="/WEB-INF/pages/zdrygl/qbzdry/deliver.jsp"%>
 <%
     SessionBean userInfo = (SessionBean)session.getAttribute("userSession");
     String userOrgCode = "";
