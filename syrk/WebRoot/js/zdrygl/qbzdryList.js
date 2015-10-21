@@ -74,10 +74,17 @@ function mapPoint(mapWindow) {
 
 function datagridProcessFormater(val,row,index){
 	return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateAndXq(this, '+index+')">查看</a>&nbsp;'+
-	       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateAndXq(this, '+index+')">下发</a>&nbsp;'+
+	       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">下发</a>&nbsp;'+
 	       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateAndXq(this, '+index+');">呈请变更</a>';
 };
-
+ function deliver(linkObject, index){
+	   var rows = $('#dg').datagrid('getData');
+		var rowData = rows.rows[index];
+		var hsUrl = "/forward/zdry|qbzdry|deliver?zdryid="+rowData.zdryid+"&bs=3";
+		$("#deliverd").show();
+		$("#deliverd").window("open"); 
+	   // menu_open(rowData.xm +'',hsUrl); 
+ }
  function doUpdateAndXq(linkObject, index){
 	// alert(1);
 	//阻止冒泡，不然要执行onClickRow
