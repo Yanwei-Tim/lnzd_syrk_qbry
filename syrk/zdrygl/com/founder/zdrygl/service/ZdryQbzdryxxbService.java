@@ -22,7 +22,7 @@ public interface ZdryQbzdryxxbService {
 	/***
 	 * 
 	 * @Title: queryList
-	 * @Description: TODO(涉环保重点人员列表查询方法)
+	 * @Description: TODO
 	 * @param @param entity
 	 * @param @param page
 	 * @param @return    设定文件

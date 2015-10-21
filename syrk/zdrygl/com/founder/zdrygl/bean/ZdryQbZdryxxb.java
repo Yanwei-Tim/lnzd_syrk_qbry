@@ -96,6 +96,64 @@ public class ZdryQbZdryxxb extends BaseEntity implements Serializable {
 	private String sfzh18;
 	@FieldDesc("写实时间")
 	private String xssj;
+	@FieldDesc("省厅部门代码")
+	private String stbmdm;
+	@FieldDesc("市局部门代码")
+	private String sjbmdm;
+	@FieldDesc("分县局部门代码")
+	private String fxjbmdm;
+	@FieldDesc("派出所部门代码")
+	private String pcsbmdm;
+	@FieldDesc("是否提交过管辖权变更申请")
+	private String sftjbgsq;
+	@FieldDesc("上级是否拒绝过管辖权变更申请")
+	private String sjsfjjbgsq;
+	@FieldDesc("下级提交的退回申请审批是否同意")
+	private String xjspsfty;
+	
+	
+	public String getStbmdm() {
+		return stbmdm;
+	}
+	public void setStbmdm(String stbmdm) {
+		this.stbmdm = stbmdm;
+	}
+	public String getSjbmdm() {
+		return sjbmdm;
+	}
+	public void setSjbmdm(String sjbmdm) {
+		this.sjbmdm = sjbmdm;
+	}
+	public String getFxjbmdm() {
+		return fxjbmdm;
+	}
+	public void setFxjbmdm(String fxjbmdm) {
+		this.fxjbmdm = fxjbmdm;
+	}
+	public String getPcsbmdm() {
+		return pcsbmdm;
+	}
+	public void setPcsbmdm(String pcsbmdm) {
+		this.pcsbmdm = pcsbmdm;
+	}
+	public String getSftjbgsq() {
+		return sftjbgsq;
+	}
+	public void setSftjbgsq(String sftjbgsq) {
+		this.sftjbgsq = sftjbgsq;
+	}
+	public String getSjsfjjbgsq() {
+		return sjsfjjbgsq;
+	}
+	public void setSjsfjjbgsq(String sjsfjjbgsq) {
+		this.sjsfjjbgsq = sjsfjjbgsq;
+	}
+	public String getXjspsfty() {
+		return xjspsfty;
+	}
+	public void setXjspsfty(String xjspsfty) {
+		this.xjspsfty = xjspsfty;
+	}
 	public String getZdryid() {
 		return zdryid;
 	}

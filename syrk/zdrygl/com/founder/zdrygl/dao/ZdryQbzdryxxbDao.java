@@ -67,7 +67,6 @@ public class ZdryQbzdryxxbDao extends BaseDaoImpl {
 		map.put("sort", sort);
 		map.put("order", order);
 		map.put("zdryQbZdryxxb", entity);
-		
 
 		page.setTotal((Integer) queryForObject("ZdryQbZdryxxb.queryListCount", map)==null?0:(Integer) queryForObject("ZdryQbZdryxxb.queryListCount", map));
 		List<ZdryQbZdryxxb> list =queryForList("ZdryQbZdryxxb.queryList", map);
