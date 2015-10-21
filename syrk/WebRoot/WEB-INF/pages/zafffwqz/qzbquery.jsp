@@ -31,7 +31,7 @@
 				        	<th data-options="checkbox:true,align:'center',halign:'center'"></th>
 				        	 <th data-options="field:'zjhm',width:25,align:'center',sortable:true,halign:'center'">养犬人证件号码</th>
 				        	 <th data-options="field:'xm',width:15,align:'center',sortable:true,halign:'center'">养犬人姓名</th>
-				        	 <th data-options="field:'dz_jzdzxz',width:40,align:'left',sortable:true,halign:'center',formatter:dzFormater">养犬人居住地址</th>
+				        	 <th data-options="field:'dz_jzdzxz',width:40,align:'left',sortable:true,halign:'center'">养犬人居住地址</th>
 				        	 <th data-options="field:'yqytdm',width:20,align:'center',sortable:true,halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_FWQZ_YQYT.js'">养犬用途</th>
 				        	 <th data-options="field:'qxdm',width:25,align:'left',sortable:true,halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_FWQZ_QXDM.js'">犬型</th>
 				        	 <th data-options="field:'qzdm',width:25,align:'left',sortable:true,halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_FWQZ_QZDM.js'">犬种</th>

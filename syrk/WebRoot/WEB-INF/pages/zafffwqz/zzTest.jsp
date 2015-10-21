@@ -1,9 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.founder.framework.base.entity.SessionBean"%>
 <%@include file="/WEB-INF/pages/commonInclude.jsp"%>
+<%
+    SessionBean userInfo = (SessionBean)session.getAttribute("userSession");
+    String zrqdm = "";
+    if(userInfo!=null){
+    	zrqdm = userInfo.getUserOrgCode();
+    }
+%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>犬只管理</title>
+<script type="text/javascript">
+   var zrqdm = "<%=zrqdm%>";
+</script>
 </head>
 <body style="margin-top:20px"  class="easyui-layout" data-options="fit:true">
 <div data-options="region:'center', split:true" style="border-width: 0px;margin:0 0 0; width:900px;text-align:center;" class="bodybg">
@@ -69,21 +80,20 @@
 						<tr class="dialogTr" id="jzdz">
 							<td width="100px" class="dialogTd" align="right">居住地址：</td>
 							<td width="520px" class="dialogTd" colspan="3">
-								<input class="easyui-validatebox" type="text" id="jzd1" name="dz_jzdzmlpxz"
-								value="${entity.dz_jzdzmlpxz}" style="width:520px;" data-options="required:false,validType:['maxLength[2000]'],tipPosition:'right'"/>
-								<!--<input class="easyui-combobox" id="jzd1" style="width:520px;" value="${entity.dz_jzdzmlpxz}" data-options="required:false,mode:'remote',method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false">-->
-								<input type='hidden' name='dz_jzdzmlpdm' id="dz_jzdzmlpdm" value="${entity.dz_jzdzmlpdm}"/>
-								<!--<input type='hidden' name='dz_jzdzmlpxz' id="dz_jzdzmlpxz" value="${entity.dz_jzdzmlpxz}"/>    -->
+								<input class="easyui-combobox" id="jzd1" value="${entity.dz_jzdzmlpxz}" style="width:520px;" 
+								data-options="required:false,mode:'remote',method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false">
+								<input type='hidden' id="dz_jzdzmlpdm"  name='dz_jzdzmlpdm' value="${entity.dz_jzdzmlpdm}"/>
+								<input type="hidden" id="dz_jzdzmlpxz" name="dz_jzdzmlpxz" value="${entity.dz_jzdzmlpxz}"/>
 							</td>
 							<td width="100px" class="dialogTd" align="right">门牌号：</td>
 							<td align="right" width="200px" class="dialogTd">
-								<input class="easyui-validatebox" type="text" id="jzd2" name="dz_jzdzxz"
-								value="${entity.dz_jzdzxz}" style="width:200px;" data-options="required:false,validType:['maxLength[2000]'],tipPosition:'right'"/>
-								<!--<input class="easyui-combobox" id="jzd2" style="width:200px;" value="${fn:replace(entity.dz_jzdzxz, entity.dz_jzdzmlpxz, '')}" data-options="required:false,mode:'remote',method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false">  -->
-								<input type='hidden' name='dz_jzdzdm' id='dz_jzdzdm' value="${entity.dz_jzdzdm}" />
-								<input type='hidden' name='dz_jzdzssxdm' id='dz_jzdzssxdm' value="${entity.dz_jzdzssxdm}" />
-								<!--<input type='hidden' name='dz_jzdzxz' id='dz_jzdzxz' value="${entity.dz_jzdzxz}" /> -->
-							</td>	
+								<input class="easyui-combobox" id="jzd2" style="width:200px;" value="${fn:replace(entity.dz_jzdzxz, entity.dz_jzdzmlpxz, '')}" 
+									data-options="required:false,mode:'remote',method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false">
+								<input type='hidden' name='dz_jzdzdm' id='dz_jzdzdm' value="${entity.dz_jzdzdm}" /><!-- jzd_dzid 地址ID-->
+								<input type='hidden' name='dz_jzdzxz' id='dz_jzdzxz' value="${entity.dz_jzdzxz}" /><!-- jzd_dzxz 地址详址-->
+								<input type="hidden" id="jzrk_jzd_zbx"  />
+								<input type="hidden" id="jzrk_jzd_zby" />
+							</td>
 						</tr>
 						<tr class="dialogTr">
 							<td width="100px" class="dialogTd" align="right">联系电话：</td>
@@ -321,6 +331,11 @@ $(document).ready(function(){
 		$("#zjhm").validatebox({validType:['sfzh']});
 	}else {
 		$("#zjhm").validatebox({validType:['maxLength[30]']});
+	}
+	try {
+		initAddressSearch("jzd1"     , {zrqdm:zrqdm}, "dz_jzdzmlpdm"  , "dz_jzdzmlpxz"  , "jzd2"       , {text:"dz_jzdzxz",id:"dz_jzdzdm", dzzbx:"jzrk_jzd_zbx",dzzby:"jzrk_jzd_zby"},null,null);
+	} catch (e) {
+		// TODO: handle exception
 	}
 });
 $(function(){
