@@ -75,22 +75,54 @@ function mapPoint(mapWindow) {
 function datagridProcessFormater(val,row,index){
 	return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateAndXq(this, '+index+')">查看</a>&nbsp;'+
 	       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">下发</a>&nbsp;'+
-	       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateAndXq(this, '+index+');">呈请变更</a>';
+	       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateAndXq1(this, '+index+');">呈请变更</a>';
 };
  function deliver(linkObject, index){
 	   var rows = $('#dg').datagrid('getData');
 		var rowData = rows.rows[index];
+		/*var params = {zdryid:rowData.zdryid};
+		var fajax =new FrameTools.Ajax(contextPath+"/main/countPcs",ZdryxxAndOp_back);
+		fajax.send(params);*/
+		var Str="";
+		Str = Str+"	<table border=\"0\" cellpadding=\"0\" cellspacing=\"10\" width=\"100%\" height=\"100%\" align=\"center\">";
+		Str = Str+" <tr >"
+		Str = Str+"<th  align=\"right\"  width=\"20%\">管辖地市：</th>";
+		Str = Str+"<td width=\"30%\"><input></td>";
+		Str = Str+"<th  align=\"right\"  width=\"20%\">操作意见：</th>";
+		Str = Str+"<td width=\"30%\"></td>";
+		Str = Str+"</tr>";
+		Str = Str+"		<tr class=\"dialogTr\" style=\"padding-bottom:0px;margin-bottom:0px;\">";
+		Str = Str+"		<td width=\"100%\" colspan=\"2\" align=\"right\"><a class=\"easyui-linkbutton\" iconCls=\"icon-ok\" onclick=\"queryButton();\">下发</a>";
+		Str = Str+"		<a class=\"easyui-linkbutton\" iconCls=\"icon-cancel\"	onclick=\"closeWindowdeverd();\">关闭</a></td>";
+		Str = Str+"	</tr>";
+		Str = Str+"	</table>";
+		$("#operation").html(Str);
+	
 		$("#deliverd").show();
 		$("#deliverd").window("open"); 
-	   // menu_open(rowData.xm +'',hsUrl); 
+	   
  }
- function doUpdateAndXq(linkObject, index){
-	// alert(1);
-	//阻止冒泡，不然要执行onClickRow
-  /*   cancelBubble(); 
-    var rows = $('#dg').datagrid('getData');
-	var rowData = rows.rows[index];
-    menu_open(rowData.xm +'','/zdry/'+rowData.ryid+'/'+rowData.syrkid+'/view'+'?mainTabID='+getMainTabID()+'&mode=view'); */
+ function doUpdateAndXq1(linkObject, index){
+	 var rows = $('#dg').datagrid('getData');
+		var rowData = rows.rows[index];
+		/*var params = {zdryid:rowData.zdryid};
+		var fajax =new FrameTools.Ajax(contextPath+"/main/countPcs",ZdryxxAndOp_back);
+		fajax.send(params);*/
+		var Str="";
+		Str = Str+"	<table border=\"0\" cellpadding=\"0\" cellspacing=\"10\" width=\"100%\" height=\"100%\" align=\"center\">";
+		Str = Str+" <tr >"
+		Str = Str+"<th  align=\"right\"  width=\"20%\">操作意见：</th>";
+		Str = Str+"<td width=\"30%\"></td>";
+		Str = Str+"</tr>";
+		Str = Str+"		<tr class=\"dialogTr\" style=\"padding-bottom:0px;margin-bottom:0px;\">";
+		Str = Str+"		<td width=\"100%\" colspan=\"2\" align=\"right\"><a class=\"easyui-linkbutton\" iconCls=\"icon-ok\" onclick=\"queryButton();\">下方法</a>";
+		Str = Str+"		<a class=\"easyui-linkbutton\" iconCls=\"icon-cancel\"	onclick=\"closeWindowdeverd();\">关闭</a></td>";
+		Str = Str+"	</tr>";
+		Str = Str+"	</table>";
+		$("#operation").html(Str);
+	
+		$("#deliverd").show();
+		$("#deliverd").window("open"); 
 };
 //查询按钮
 function queryButton(){
@@ -127,4 +159,8 @@ function closeWindow() {
 //下发相关操作
 function closeWindowdeverd(){
 	$("#deliverd").window("close");
+}
+
+function ZdryxxAndOp_back(){
+	
 }

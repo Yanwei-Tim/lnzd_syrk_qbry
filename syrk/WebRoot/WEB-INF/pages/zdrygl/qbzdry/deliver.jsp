@@ -27,7 +27,7 @@
 						height="100%" align="center">
 			<tr class="dialogTr">
   	        <th  align="right"  width="20%">姓名：</th>
-    	    <td width="30%"></td>
+    	    <td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text"  id="zdryName" name="zdryName" style="width:200px;" readonly="readonly"  /></td>
     	    <th  align="right" width="20%">证件号码：</th>
     	    <td width="30%" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title=""></td>
    	    </tr>
@@ -87,23 +87,8 @@
 					</table>
 				</form>
 			</div>
-			 <div data-options="region:'south'",split:true" style="height:50px;border-style: none;">
-		 	<table border="0" cellpadding="0" cellspacing="10" width="100%"
-						height="100%" align="center">
-						  <tr >
-  	        <th  align="right"  width="20%">管辖地市：</th>
-    	    <td width="30%"><input></td>
-    	    <th  align="right"  width="20%">操作意见：</th>
-    	    <td width="30%"></td>
-   	    </tr>
-							<tr class="dialogTr" style="padding-bottom:0px;margin-bottom:0px;">
-							<td width="100%" colspan="2" align="right"><a
-								class="easyui-linkbutton" iconCls="icon-ok"
-								onclick="queryButton();">下发</a><a
-								class="easyui-linkbutton" iconCls="icon-cancel"
-								onclick="closeWindowdeverd();">关闭</a></td>
-						</tr>
-						</table>
+			 <div data-options="region:'south'",split:true" style="height:50px;border-style: none;" id="operation">
+		 	
 		 </div>
  <div data-options="region:'center'",split:true" style="border-style: none;">
 			<table class="easyui-datagrid"> 
