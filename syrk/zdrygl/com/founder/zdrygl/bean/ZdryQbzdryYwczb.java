@@ -9,7 +9,7 @@ import com.founder.framework.base.entity.BaseEntity;
  * ****************************************************************************
  * @Package:      [com.founder.qbld.bean.Clxxb.java]  
  * @ClassName:    [Clxxb]   
- * @Description:  [车辆信息表]   
+ * @Description:  [重点人员业务操作表]   
  * @Author:       [yu_sun@founder.com.cn]  
  * @CreateDate:   [2015-6-8 上午9:39:28]   
  * @UpdateUser:   [founder(如多次修改保留历史记录，增加修改记录)]   
@@ -34,6 +34,23 @@ public class ZdryQbzdryYwczb extends BaseEntity implements Serializable {
 	private String czbm;
 	@FieldDesc("操作人")
 	private String czr;
+	@FieldDesc("重点人员ID")
+	private String zdryid;
+	@FieldDesc("重点人员当前状态")
+	private String dqzt;
+	
+	public String getZdryid() {
+		return zdryid;
+	}
+	public void setZdryid(String zdryid) {
+		this.zdryid = zdryid;
+	}
+	public String getDqzt() {
+		return dqzt;
+	}
+	public void setDqzt(String dqzt) {
+		this.dqzt = dqzt;
+	}
 	public String getId() {
 		return id;
 	}
