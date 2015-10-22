@@ -110,6 +110,8 @@ function datagridProcessFormater(val,row,index){
 		/*var params = {zdryid:rowData.zdryid};
 		var fajax =new FrameTools.Ajax(contextPath+"/main/countPcs",ZdryxxAndOp_back);
 		fajax.send(params);*/
+		insertZdry(rowData);
+		initopreation(rowData.zdryid);
 		var Str="";
 		Str = Str+"	<table border=\"0\" cellpadding=\"0\" cellspacing=\"10\" width=\"100%\" height=\"100%\" align=\"center\">";
 		Str = Str+" <tr >"
