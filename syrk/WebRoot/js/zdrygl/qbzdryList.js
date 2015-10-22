@@ -78,7 +78,6 @@ function datagridProcessFormater(val,row,index){
 	       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请变更</a>';
 };
  function deliver(linkObject, index){
-		
 	   var rows = $('#dg').datagrid('getData');
 		var rowData = rows.rows[index];
 		insertZdry(rowData);
@@ -212,12 +211,30 @@ function initopreation(zdryid){
 }
 
 //初始化操作列表
-function doUpdateQbBg(zdryid){
+//function doUpdateQbBg(zdryid){
+//	var sq_czyj =$("#sq_czyj").val();
+//	var params = {zdryid:zdryid,czyj:sq_czyj};
+//	var fajax =new FrameTools.Ajax(contextPath+"/zdryQbzdryxxbUp/updateQb",closeWindowdeverd);
+//	fajax.send(params);
+//	
+//}
+function doUpdateQbBg(zdryid) {
+	var doUpdateUrl = contextPath + '/zdryQbzdryxxbUp/updateQb';
+	var datagrid_ID = 'dg';
 	var sq_czyj =$("#sq_czyj").val();
-	var params = {zdryid:zdryid,czyj:sq_czyj};
-	var fajax =new FrameTools.Ajax(contextPath+"/zdryQbzdryxxbUp/updateQb",closeWindowdeverd);
-	fajax.send(params);
-	
+    var data = {
+        "zdryid":zdryid,
+		"czyj":sq_czyj
+	};
+	$.ajax({
+		url: doUpdateUrl,
+		type: 'POST',
+		data: data
+	}).done(function(result) {
+		$("#deliverd").window("close");
+		$('#dg').datagrid('reload');
+		doSubmitResult(result, null, datagrid_ID);
+	});
 }
 
 //下发操作

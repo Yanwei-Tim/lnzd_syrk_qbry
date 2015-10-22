@@ -34,8 +34,8 @@
 		<img src="<%=emptyImage%>" width="650" height="1" border="0">
 		<div class="banner_ct">
 			<div class="banner_rt">
-		        <div class="banner03" style="float:right;width:220px;height:72px;">
-					<table border="0" cellpadding="0" cellspacing="0" height="42" width="220" style="margin-top: 12px;">
+		        <div class="banner03" style="float:right;width:100%;height:72px;">
+					<table border="0" cellpadding="0" cellspacing="0" height="42"  style="margin-top: 12px;">
 						<tr>
 							<td class="bannerUser">
 								<img src="<%=emptyImage%>" width="42" height="42" border="0">

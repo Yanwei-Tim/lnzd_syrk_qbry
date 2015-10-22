@@ -41,4 +41,5 @@ public interface MainService {
 	public List<CountMapVO> queryListMap(Map<String, String> param);
 	public Map<String, Object> querypcsSztj(Map<String, Object> paramMap);
 	public List<CountMapVO> queryListszzdry(Map<String, String> param);
+	public Map<String, Object> zdryDetails(Map<String, Object> paramMap);
 }

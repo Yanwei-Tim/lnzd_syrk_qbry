@@ -1,6 +1,8 @@
 package com.founder.zdrygl.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.founder.framework.annotation.RestfulAnnotation;
 import com.founder.framework.base.controller.BaseController;
 import com.founder.framework.base.entity.SessionBean;
+import com.founder.framework.organization.department.bean.OrgOrganization;
+import com.founder.framework.organization.department.service.OrgOrganizationService;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.zdrygl.bean.ZdryQbZdryxxb;
 import com.founder.zdrygl.bean.ZdryQbzdryYwczb;
@@ -26,7 +30,8 @@ public class ZdryQbzdryxxbController extends BaseController {
 	
 	@Resource
 	private ZdryQbzdryxxbService zdryQbzdryxxbService;
-		
+	@Resource(name = "orgOrganizationService")
+	private OrgOrganizationService orgOrganizationService;	
 	
 	@RequestMapping(value="/qbzdryManage",method = RequestMethod.GET)
 	public String shbManage(){
@@ -44,6 +49,7 @@ public class ZdryQbzdryxxbController extends BaseController {
 		sessionBean = getSessionBean(sessionBean);
 		//entity.setGxzrqdm(sessionBean.getUserOrgCode());
 		return this.zdryQbzdryxxbService.queryList(entity, page,sessionBean);
+		
 	}
 	
 	
@@ -61,6 +67,6 @@ public class ZdryQbzdryxxbController extends BaseController {
 		return this.zdryQbzdryxxbService.queryOperation(entity, page,param);
 	}
 	
-
+	
 	
 }

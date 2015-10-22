@@ -142,6 +142,7 @@ function title_onclick(xxID, ywurl,xxbt) {
   editMsgStar(xxID);
   if(null != ywurl && "" != ywurl){
      menu_open(xxbt, "/"+ywurl);
+	 
   }else{
      window.top.openWindow(false,'', '<%=contextPath %>' +"/sysMessage/view?id="+xxID, {document: document}, {title: '消息信息',    
 	    width: 850,   

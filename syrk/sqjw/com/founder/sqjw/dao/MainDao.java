@@ -101,4 +101,8 @@ public class MainDao extends BaseDaoImpl{
 		// TODO Auto-generated method stub
 		return queryForList("Main.queryListszzdry",param);
 	}
+	public List<SyrkSyrkxxzb> zdryDetails(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return queryForList("Main.zdryDetails",paramMap);
+	}
 }

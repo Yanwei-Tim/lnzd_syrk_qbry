@@ -119,7 +119,7 @@ function zjhm_onblur() {
 		return;
 	}
 	if ($("#zjhm").val() == "") {
-		$("#jbxx_id").val("");
+		$("#jbxx_id").val(""); 
 		return;
 	}
 	var _cyzjdm = $("#zjhm").attr("cyzjdm");
