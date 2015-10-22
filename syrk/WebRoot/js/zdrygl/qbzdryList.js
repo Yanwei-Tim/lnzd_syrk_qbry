@@ -85,17 +85,19 @@ function datagridProcessFormater(val,row,index){
 		var Str="";
 		Str = Str+"	<table border='0' cellpadding='0' cellspacing='10' width='100%' height='100%' align='center'>";
 		Str = Str+" <tr>"
+		Str = Str+" <th align='right' width='20%'>下发部门：</th>";
+		Str = Str+" <td width='30%' class='dialogTd'><input class=\"easyui-combobox\" id = \"deliver_bm\" name =\"deliver_bm\" data-options=\"required:true,selectOnNavigation:false,isTopLoad:false,valueField: 'id',textField: 'text'\" /></td>";
 		Str = Str+" <th align='right' width='20%'>操作意见：</th>";
-		Str = Str+" <td width='30%' class='dialogTd'><input type='text' name='czyj' id ='czyj'style='width:300px;' /></td>";
+		Str = Str+" <td width='30%' class='dialogTd'><input type='text' name='xf_czyj' id ='xf_czyj'style='width:300px;' /></td>";
 		Str = Str+" </tr>";
 		Str = Str+"	<tr>";
-		Str = Str+"	<td width='100%' colspan='2' align='center'>"
-		Str = Str+"	<a id='doUpdateQbBgBtn' href='javascript:void(0)'  onclick='doUpdateQbBg();'>下发</a>" 
+		Str = Str+"	<td width='100%' colspan='2' align='right'>"
+		Str = Str+"	<a  class='easyui-linkbutton'  href='javascript:void(0)'  onclick=\"doDeliver('"+rowData.zdryid+"');\">下发</a>" 
 		Str = Str+"	</td>";
 		Str = Str+"	</tr>";
 		Str = Str+"	</table>";
 		$("#operation").html(Str);
-	
+	    $.parser.parse();
 		$("#deliverd").show();
 		$("#deliverd").window("open"); 
 	   
@@ -118,7 +120,7 @@ function datagridProcessFormater(val,row,index){
 		Str = Str+"	</tr>";
 		Str = Str+"	</table>";
 		$("#operation").html(Str);
-	
+		$.parser.parse();
 		$("#deliverd").show();
 		$("#deliverd").window("open"); 
 };
@@ -214,5 +216,14 @@ function doUpdateQbBg(zdryid){
 	var params = {zdryid:zdryid,czyj:sq_czyj};
 	var fajax =new FrameTools.Ajax(contextPath+"/zdryQbzdryxxbUp/updateQb",closeWindowdeverd);
 	fajax.send(params);
+	
+}
+//根据自己的session 取得自己下级部门
+ function getxjbm(){
+	 
+ }
+//下发操作
+function doDeliver(zdryid){
+	
 	
 }
