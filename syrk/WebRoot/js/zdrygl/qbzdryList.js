@@ -109,11 +109,11 @@ function datagridProcessFormater(val,row,index){
 		Str = Str+"	<table border='0' cellpadding='0' cellspacing='10' width='100%' height='100%' align='center'>";
 		Str = Str+" <tr>"
 		Str = Str+" <th width='20%'>操作意见：</th>";
-		Str = Str+" <td width='30%' class='dialogTd'><input type='text' name='czyj' id ='czyj'style='width:300px;' /></td>";
+		Str = Str+" <td width='30%' class='dialogTd'><input type='text' name='czyj' id ='sq_czyj' style='width:300px;' /></td>";
 		Str = Str+" </tr>";
 		Str = Str+"	<tr>";
 		Str = Str+"	<td width='100%' colspan='2' align='center'>"
-		Str = Str+"	<a id='doUpdateQbBgBtn' href='javascript:void(0)'  onclick='doUpdateQbBg();'>申请变更</a>" 
+		Str = Str+"	<a id='doUpdateQbBgBtn' href='javascript:void(0)'  onclick=\"doUpdateQbBg('"+rowData.zdryid+"');\">申请变更</a>" 
 		Str = Str+"	</td>";
 		Str = Str+"	</tr>";
 		Str = Str+"	</table>";
@@ -154,9 +154,10 @@ function closeWindow() {
 	$("#win").window("close");
 }
 
-//下发相关操作
+//执行完毕
 function closeWindowdeverd(){
 	$("#deliverd").window("close");
+	$('#dg').datagrid('reload');
 }
 
 function ZdryxxAndOp_back(){
@@ -205,6 +206,13 @@ function initopreation(zdryid){
 		 ]]
 		
 	});
-	
+}
+
+//初始化操作列表
+function doUpdateQbBg(zdryid){
+	var sq_czyj =$("#sq_czyj").val();
+	var params = {zdryid:zdryid,czyj:sq_czyj};
+	var fajax =new FrameTools.Ajax(contextPath+"/zdryQbzdryxxbUp/updateQb",closeWindowdeverd);
+	fajax.send(params);
 	
 }
