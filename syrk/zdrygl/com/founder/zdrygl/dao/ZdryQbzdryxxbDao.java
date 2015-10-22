@@ -15,6 +15,7 @@ import com.founder.framework.organization.department.service.OrgOrganizationServ
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
 import com.founder.zdrygl.bean.ZdryQbZdryxxb;
+import com.founder.zdrygl.bean.ZdryQbzdryYwczb;
 import com.founder.zdrygl.bean.ZdryShbzdryxxb;
 @Repository("zdryQbzdryxxbDao")
 public class ZdryQbzdryxxbDao extends BaseDaoImpl {
@@ -74,5 +75,28 @@ public class ZdryQbzdryxxbDao extends BaseDaoImpl {
 		page.setRows(list);
 		return page;
 		
+	}
+
+
+	public EasyUIPage queryOperation(ZdryQbzdryYwczb entity, EasyUIPage page, Map<String, String> param) {
+		// TODO Auto-generated method stub
+		Map<String, Object> map = new HashMap<String, Object>();
+		String zdryid = param.get("zdryid");
+		map.put("zdryid", zdryid);
+		map.put("begin", page.getBegin());
+		map.put("end", page.getEnd());
+		String sort = page.getSort();
+		String order = page.getOrder();
+		if (StringUtils.isBlank(sort)) { // 默认排序
+			sort = "czrq";
+			order = "desc";
+		}
+		map.put("sort", sort);
+		map.put("order", order);
+		map.put("zdryQbzdryYwczb", entity);
+		page.setTotal((Integer) queryForObject("ZdryQbZdryxxb.queryOperationCount", map)==null?0:(Integer) queryForObject("ZdryQbZdryxxb.queryOperationCount", map));
+		List<ZdryQbzdryYwczb> list =queryForList("ZdryQbZdryxxb.queryOperationList", map);
+		page.setRows(list);
+		return page;
 	}
 }

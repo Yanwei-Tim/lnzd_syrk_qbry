@@ -1,5 +1,8 @@
 package com.founder.zdrygl.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,7 @@ import com.founder.framework.base.controller.BaseController;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.zdrygl.bean.ZdryQbZdryxxb;
+import com.founder.zdrygl.bean.ZdryQbzdryYwczb;
 import com.founder.zdrygl.service.ZdryQbzdryxxbService;
 
 @Controller
@@ -41,6 +45,22 @@ public class ZdryQbzdryxxbController extends BaseController {
 		//entity.setGxzrqdm(sessionBean.getUserOrgCode());
 		return this.zdryQbzdryxxbService.queryList(entity, page,sessionBean);
 	}
+	
+	
+	
+	
+	@RequestMapping(value = "/operation", method = RequestMethod.POST)
+	public @ResponseBody
+	EasyUIPage operation(EasyUIPage page,
+			@RequestParam(value = "rows", required = false) Integer rows,
+			ZdryQbzdryYwczb entity, String zdryid) {
+		page.setPagePara(rows);
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("zdryid", zdryid);
+		//entity.setGxzrqdm(sessionBean.getUserOrgCode());
+		return this.zdryQbzdryxxbService.queryOperation(entity, page,param);
+	}
+	
 
 	
 }
