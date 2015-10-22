@@ -9,7 +9,7 @@ import com.founder.framework.base.entity.BaseEntity;
  * ****************************************************************************
  * @Package:      [com.founder.qbld.bean.Clxxb.java]  
  * @ClassName:    [Clxxb]   
- * @Description:  [情报重点人员业务操作信息表]    
+ * @Description:  [重点人员业务操作表]   
  * @Author:       [yu_sun@founder.com.cn]  
  * @CreateDate:   [2015-6-8 上午9:39:28]   
  * @UpdateUser:   [founder(如多次修改保留历史记录，增加修改记录)]   
