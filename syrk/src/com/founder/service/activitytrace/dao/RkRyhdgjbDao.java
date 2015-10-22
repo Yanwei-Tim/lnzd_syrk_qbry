@@ -6,7 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import com.founder.framework.base.dao.BaseDaoImpl;
 import com.founder.framework.utils.StringUtils;
+import com.founder.framework.utils.UUID;
 import com.founder.service.activitytrace.bean.RkRyhdgjb;
+import com.founder.service.provinceservice.bean.ServiceLkxxBean;
 
 @Repository("rkRyhdgjbDao")
 public class RkRyhdgjbDao extends BaseDaoImpl {
@@ -36,5 +38,29 @@ public class RkRyhdgjbDao extends BaseDaoImpl {
 		}
 		return list;
 	}
+	
+	/**
+	 * 查询车辆轨迹（返回最新10条数据）<br>
+	 * 
+	 * @return
+	 */
+	public List<ServiceLkxxBean> queryCarTrail(String sfzh) {
+		List<ServiceLkxxBean> list = null;
+		if (!StringUtils.isBlank(sfzh)) {
+			list = queryForList("activitytrace.queryCarTrail", sfzh);
+		}
+		return list;
+	}
+	
+	/**
+	 * 查询车辆轨迹（返回最新10条数据）<br>
+	 * 
+	 * @return
+	 */
+	public void saveTrail(ServiceLkxxBean entity) {
+		entity.setId(UUID.create());
+		insert("activitytrace.saveTrail", entity);
+	}
+	
 
 }

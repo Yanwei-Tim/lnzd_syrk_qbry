@@ -40,6 +40,7 @@ import com.founder.service.attachment.bean.ZpfjFjxxb;
 import com.founder.service.attachment.service.ZpfjFjxxbService;
 import com.founder.syrkgl.bean.SyrkSyrkxxzb;
 import com.founder.syrkgl.service.RyRyjbxxbService;
+import com.founder.syrkgl.service.RyRylxfsxxbService;
 import com.founder.syrkgl.service.SyrkSyrkxxzbService;
 import com.founder.workflow.service.inteface.JProcessDefinitionService;
 import com.founder.workflow.service.inteface.JProcessManageService;
@@ -48,6 +49,7 @@ import com.founder.zdrygl.bean.ZdrySgafzdryxxb;
 import com.founder.zdrygl.bean.ZdryShbzdryxxb;
 import com.founder.zdrygl.bean.ZdryZdryzb;
 import com.founder.zdrygl.bean.Zdrylxylbdyb;
+import com.founder.zdrygl.service.ZdryCarTrailService;
 import com.founder.zdrygl.service.ZdrySgafzdryxxbService;
 import com.founder.zdrygl.service.ZdryShbzdryxxbService;
 import com.founder.zdrygl.service.ZdryZdryzbService;
@@ -73,6 +75,12 @@ import com.google.gson.Gson;
 @RequestMapping("/zdryzb")
 public class ZdryZdryzbControl extends BaseController {
 	private Logger logger = Logger.getLogger(this.getClass());
+	
+	@Resource(name = "zdryCarTrailService")
+	private ZdryCarTrailService zdryCarTrailService;
+	
+	@Resource(name = "ryRylxfsxxbService")
+	private RyRylxfsxxbService ryRylxfsxxbService;
 	
 	@Resource(name="zdrylxylbdybService")
 	private ZdrylxylbdybService zdrylxylbdybService;
@@ -485,6 +493,7 @@ public class ZdryZdryzbControl extends BaseController {
 		for (int i = 0; i < zdryList.size(); i++) {
 			map  = new HashMap<String,String>();
 			temp = (ZdryZdryzbVO) zdryList.get(i);
+
 			map.put("zdryid", temp.getId());
 			map.put("zdrylx", temp.getZdrygllxdm());
 			map.put("fz", temp.getFz());
@@ -512,6 +521,16 @@ public class ZdryZdryzbControl extends BaseController {
 			}
 		}
 		((ZdryZdryzbVO)zdryList.get(0)).setId(id);//设置从列表点击过来的重点人员id，区分后续操作是哪个类型
+		//gem
+		//信息就一条。所以这里查询联系电话
+		String lxdh =ryRylxfsxxbService.queryLastLxfs(ryid);
+		((ZdryZdryzbVO)zdryList.get(0)).setLxdh(lxdh);
+		//查询重点人员车辆监控状态表
+		//String zjhm = ((ZdryZdryzbVO)zdryList.get(0)).getZjhm();
+		String flag = zdryCarTrailService.queryTrailJkb(lxdh)==null ? "0" : "1";
+		((ZdryZdryzbVO)zdryList.get(0)).setXt_jkbz(flag);
+		//gem end
+				
 		mv.addObject("zdry", zdryList.get(0));
 		mv.addObject("mode", mode);
 		
@@ -524,7 +543,6 @@ public class ZdryZdryzbControl extends BaseController {
 		mv.addObject("zdrylxList", zdrylxList);
 		mv.addObject("zdrylxJson", new Gson().toJson(zdrylxList));
 		mv.addObject("mainTabID", mainTabID);
-		
 		
 		return mv;
 	}

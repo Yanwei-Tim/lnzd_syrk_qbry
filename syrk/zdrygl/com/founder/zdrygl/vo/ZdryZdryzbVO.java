@@ -60,7 +60,15 @@ public class ZdryZdryzbVO implements Serializable {
 	private String sqrbmdm;  //申请人部门代码
 	private String spjg;//审批结果
 	
+	//gem
+	private String xt_jkbz;
 	
+	public String getXt_jkbz() {
+		return xt_jkbz;
+	}
+	public void setXt_jkbz(String xt_jkbz) {
+		this.xt_jkbz = xt_jkbz;
+	}
 	public String getSpjg() {
 		return spjg;
 	}

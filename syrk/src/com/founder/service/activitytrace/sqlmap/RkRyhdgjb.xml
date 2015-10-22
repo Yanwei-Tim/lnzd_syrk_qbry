@@ -4,6 +4,7 @@
 <sqlMap namespace="activitytrace">
 	
 	<typeAlias alias="rkRyhdgjb" type="com.founder.service.activitytrace.bean.RkRyhdgjb" />
+	<typeAlias alias="serviceLkxxBean" type="com.founder.service.provinceservice.bean.ServiceLkxxBean" />
 	
 	<!-- 查询人员轨迹（返回最新10条数据） -->
 	<select id="queryRkRyhdgjb" parameterClass="String" resultClass="rkRyhdgjb">
@@ -17,4 +18,69 @@
 					and t.ZJHM = #zjhm# order by GJKSSJ desc) ]]> 
 	</select>
 
+	<!-- 查询车辆轨迹（返回最新10条数据） -->
+	<select id="queryCarTrail" parameterClass="String" resultClass="serviceLkxxBean">
+		<![CDATA[ select * from (select * from ZDRY_TRAIL_CLGJB t where t.XT_ZXBZ = '0' 
+					and t.sfzh = #sfzh# order by lkdjrzsj desc) where rownum <= 10 ]]> 
+	</select>
+	
+	<!-- 新增 -->
+	<insert id="saveTrail" parameterClass="serviceLkxxBean">
+       insert into ZDRY_TRAIL_CLGJB
+       (
+			ID
+		<isNotEmpty prepend="," property="trailtype">
+			trailtype
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="lkdjrzsj">
+			lkdjrzsj
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="lkdjtfsj">
+			lkdjtfsj
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="qydzxz">
+			qydzxz
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="qyjbqymc">
+			qyjbqymc
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="lkdjrzfh">
+			lkdjrzfh
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="sfzh">
+			sfzh
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="xt_zxbz">
+			xt_zxbz
+		</isNotEmpty>
+       )VALUES(
+			#id#
+		<isNotEmpty prepend="," property="trailtype">
+			#trailtype#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="lkdjrzsj">
+			#lkdjrzsj#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="lkdjtfsj">
+			#lkdjtfsj#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="qydzxz">
+			#qydzxz#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="qyjbqymc">
+			#qyjbqymc#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="lkdjrzfh">
+			#lkdjrzfh#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="sfzh">
+			#sfzh#
+		</isNotEmpty>
+		<isNotEmpty prepend="," property="xt_zxbz">
+			#xt_zxbz#
+		</isNotEmpty>
+		
+       )
+    </insert>
+		
 </sqlMap>
