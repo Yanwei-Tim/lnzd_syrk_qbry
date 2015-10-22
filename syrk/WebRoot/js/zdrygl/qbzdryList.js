@@ -75,27 +75,23 @@ function mapPoint(mapWindow) {
 function datagridProcessFormater(val,row,index){
 	return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateAndXq(this, '+index+')">查看</a>&nbsp;'+
 	       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">下发</a>&nbsp;'+
-	       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateAndXq1(this, '+index+');">呈请变更</a>';
+	       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请变更</a>';
 };
  function deliver(linkObject, index){
 	   var rows = $('#dg').datagrid('getData');
 		var rowData = rows.rows[index];
 		insertZdry(rowData);
 		initopreation(rowData.zdryid);
-		/*var params = {zdryid:rowData.zdryid};
-		var fajax =new FrameTools.Ajax(contextPath+"/main/countPcs",ZdryxxAndOp_back);
-		fajax.send(params);*/
 		var Str="";
-		Str = Str+"	<table border=\"0\" cellpadding=\"0\" cellspacing=\"10\" width=\"100%\" height=\"100%\" align=\"center\">";
-		Str = Str+" <tr >"
-		Str = Str+"<th  align=\"right\"  width=\"20%\">管辖地市：</th>";
-		Str = Str+"<td width=\"30%\"><input></td>";
-		Str = Str+"<th  align=\"right\"  width=\"20%\">操作意见：</th>";
-		Str = Str+"<td width=\"30%\"></td>";
-		Str = Str+"</tr>";
-		Str = Str+"		<tr class=\"dialogTr\" style=\"padding-bottom:0px;margin-bottom:0px;\">";
-		Str = Str+"		<td width=\"100%\" colspan=\"2\" align=\"right\"><a class=\"easyui-linkbutton\" iconCls=\"icon-ok\" onclick=\"queryButton();\">下发</a>";
-		Str = Str+"		<a class=\"easyui-linkbutton\" iconCls=\"icon-cancel\"	onclick=\"closeWindowdeverd();\">关闭</a></td>";
+		Str = Str+"	<table border='0' cellpadding='0' cellspacing='10' width='100%' height='100%' align='center'>";
+		Str = Str+" <tr>"
+		Str = Str+" <th align='right' width='20%'>操作意见：</th>";
+		Str = Str+" <td width='30%' class='dialogTd'><input type='text' name='czyj' id ='czyj'style='width:300px;' /></td>";
+		Str = Str+" </tr>";
+		Str = Str+"	<tr>";
+		Str = Str+"	<td width='100%' colspan='2' align='center'>"
+		Str = Str+"	<a id='doUpdateQbBgBtn' href='javascript:void(0)'  onclick='doUpdateQbBg();'>下发</a>" 
+		Str = Str+"	</td>";
 		Str = Str+"	</tr>";
 		Str = Str+"	</table>";
 		$("#operation").html(Str);
@@ -104,23 +100,21 @@ function datagridProcessFormater(val,row,index){
 		$("#deliverd").window("open"); 
 	   
  }
- function doUpdateAndXq1(linkObject, index){
+ function doUpdateQb(linkObject, index){
 	 var rows = $('#dg').datagrid('getData');
 		var rowData = rows.rows[index];
-		/*var params = {zdryid:rowData.zdryid};
-		var fajax =new FrameTools.Ajax(contextPath+"/main/countPcs",ZdryxxAndOp_back);
-		fajax.send(params);*/
 		insertZdry(rowData);
 		initopreation(rowData.zdryid);
 		var Str="";
-		Str = Str+"	<table border=\"0\" cellpadding=\"0\" cellspacing=\"10\" width=\"100%\" height=\"100%\" align=\"center\">";
-		Str = Str+" <tr >"
-		Str = Str+"<th  align=\"right\"  width=\"20%\">操作意见：</th>";
-		Str = Str+"<td width=\"30%\"></td>";
-		Str = Str+"</tr>";
-		Str = Str+"		<tr class=\"dialogTr\" style=\"padding-bottom:0px;margin-bottom:0px;\">";
-		Str = Str+"		<td width=\"100%\" colspan=\"2\" align=\"right\"><a class=\"easyui-linkbutton\" iconCls=\"icon-ok\" onclick=\"queryButton();\">下方法</a>";
-		Str = Str+"		<a class=\"easyui-linkbutton\" iconCls=\"icon-cancel\"	onclick=\"closeWindowdeverd();\">关闭</a></td>";
+		Str = Str+"	<table border='0' cellpadding='0' cellspacing='10' width='100%' height='100%' align='center'>";
+		Str = Str+" <tr>"
+		Str = Str+" <th width='20%'>操作意见：</th>";
+		Str = Str+" <td width='30%' class='dialogTd'><input type='text' name='czyj' id ='czyj'style='width:300px;' /></td>";
+		Str = Str+" </tr>";
+		Str = Str+"	<tr>";
+		Str = Str+"	<td width='100%' colspan='2' align='center'>"
+		Str = Str+"	<a id='doUpdateQbBgBtn' href='javascript:void(0)'  onclick='doUpdateQbBg();'>申请变更</a>" 
+		Str = Str+"	</td>";
 		Str = Str+"	</tr>";
 		Str = Str+"	</table>";
 		$("#operation").html(Str);
