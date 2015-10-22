@@ -6,10 +6,14 @@
 <%
     SessionBean userInfo = (SessionBean)session.getAttribute("userSession");
     String userOrgCode = "";
+    String orgLevel = "";
+    String parentOrgCode = "";
     String bjzbz = "";
     if(userInfo!=null){
         userOrgCode = userInfo.getUserOrgCode();
         bjzbz = userInfo.getBjzbz();
+    	parentOrgCode = userInfo.getUserOrgCode();
+    	orgLevel = userInfo.getUserOrgLevel();
     }
 %>
 <html>
@@ -18,6 +22,8 @@
     <script type="text/javascript">
        var userOrgCode = "<%=userOrgCode%>"; 
        var bjzbz = "<%=bjzbz%>";
+   	   var orgLevel = "<%=orgLevel%>";
+	  var parentOrgCode ="<%=parentOrgCode%>";
     </script>
     <script type="text/javascript" src="<%=contextPath%>/js/sydw/sydw.js"></script>
     <style type="text/css">
