@@ -6,11 +6,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.namespace.QName;
+
+import org.apache.axis2.addressing.EndpointReference;
+import org.apache.axis2.client.Options;
+import org.apache.axis2.rpc.client.RPCServiceClient;
+
 import net.sf.json.JSONObject;
 import com.founder.framework.config.SystemConfig;
 import com.founder.framework.httpService.CCSHttpClient;
 import com.founder.framework.httpService.HttpClientResultBean;
 import com.founder.framework.utils.StringUtils;
+import com.founder.qbld.bean.CkyjxxQsb;
+import com.founder.qbld.utils.QbldUtil;
 import com.founder.service.provinceservice.bean.ServiceLdyBean;
 import com.founder.service.provinceservice.bean.ServiceLkxxBean;
 import com.founder.service.provinceservice.bean.ServiceResult;
@@ -170,6 +178,33 @@ public class ServiceHttpClient extends CCSHttpClient {
 		return list;
 	}
 
+	/**
+	 * 发送监管车辆轨迹
+	 * 
+	 * @param lxdh
+	 * @return
+	 */
+	public String QueryCarTrailBysfzh(String lxdh){
+		String msg = "";
+		String url = "http://10.81.129.188:8080/bayonet/services/searBayonetService";
+		try{
+			RPCServiceClient client=new RPCServiceClient();
+			Options option=client.getOptions();
+			EndpointReference targetRPR=new EndpointReference(url);
+			option.setTo(targetRPR);
+			Object[] args1=new Object[]{lxdh, "", ""};
+			QName ope1=new QName("http://impl.webservice.sungoal.com", "saveMobile");
+			Class[] classes1=new Class[]{String.class};
+			Object[] result = client.invokeBlocking(ope1, args1, classes1);
+			if (result[0].toString().indexOf("保存成功") != -1) {
+				msg = "success";
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return msg;
+	}
+	
 	public static void main(String[] args) {
 		ServiceHttpClient client = new ServiceHttpClient();
 		// List list = client.QueryEscapedCriminalByID("210219196410175717");
@@ -194,8 +229,9 @@ public class ServiceHttpClient extends CCSHttpClient {
 		// JSONObject jsonObject = JSONObject.fromObject(new Date());
 		// System.out.println(jsonObject);
 
-		List<ServiceLkxxBean> list = client
-				.QueryLkxxBysfzh("210624198510162712");
+		//client.QueryCarTrailBysfzh("15504145370");
+		//client.QueryCarTrailBysfzh("18641498109");
+		//client.QueryCarTrailBysfzh("13941449462");
 		System.out.println();
 	}
 }

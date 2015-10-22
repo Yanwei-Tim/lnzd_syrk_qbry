@@ -8,18 +8,18 @@ package com.founder.service.provinceservice.bean;
  * 
  */
 
-/**
- * @author Administrator
- *
- */
-/**
- * @author Administrator
- * 
- */
 public class ServiceLkxxBean implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	//GEM
+	//轨迹类型
+	private String trailtype;
+	private String xt_zxbz;
+	private String zjhm;
+	private String sfzh;
+	private String id;
+	
 	/**
 	 * 旅客登记编码
 	 */
@@ -104,6 +104,46 @@ public class ServiceLkxxBean implements java.io.Serializable {
 	 * 旅店地址
 	 */
 	private String qydzxz;
+	
+	public String getSfzh() {
+		return sfzh;
+	}
+
+	public void setSfzh(String sfzh) {
+		this.sfzh = sfzh;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getZjhm() {
+		return zjhm;
+	}
+
+	public void setZjhm(String zjhm) {
+		this.zjhm = zjhm;
+	}
+
+	public String getXt_zxbz() {
+		return xt_zxbz;
+	}
+
+	public void setXt_zxbz(String xt_zxbz) {
+		this.xt_zxbz = xt_zxbz;
+	}
+
+	public String getTrailtype() {
+		return trailtype;
+	}
+
+	public void setTrailtype(String trailtype) {
+		this.trailtype = trailtype;
+	}
 
 	public String getLkdjbm() {
 		return lkdjbm;

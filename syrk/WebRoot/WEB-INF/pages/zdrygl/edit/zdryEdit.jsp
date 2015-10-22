@@ -9,6 +9,7 @@
 <title>重点人员档案</title>
 <script type="text/javascript" src="<%=contextPath%>/js/zdryinfo-mould.js"></script>
 <script type="text/javascript" src="<%=contextPath%>/js/infoEdit.js"></script>
+
 <link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/trace.css"></link>
 <style>
 .nameTable{ width:420px;height:auto;overflow:hidden;}
@@ -93,7 +94,7 @@
 </div>
 	<!-- 页面打开模式 -->
 	<input type="hidden" id="mode_"  value="${mode}" />	
-	<input type="hidden" id="formPara" value='"xm":"${zdry.xm}","sfzh":"${zdry.zjhm}"' /><!-- 表单提交附加参数 -->
+	<input type="hidden" id="formPara" value='"xt_jkbz":"${zdry.xt_jkbz}", "lxdh":"${zdry.lxdh}", "xm":"${zdry.xm}","sfzh":"${zdry.zjhm}"' /><!-- 表单提交附加参数 -->
 	<input type="hidden" id="serverListPara" value="rylbdm=${zdry.zdrygllxdm}" /><!-- 业务功能获取参数 -->
 	<input type="hidden" id="serverPara" value="ryid=${zdry.ryid}&syrkid=${zdry.syrkid}&id=${zdry.id}" /><!-- 业务办理附加参数  -->
 	<input type="hidden" id="queryPara" value="ryid=${zdry.ryid}&id=${zdry.id}" /><!-- 表单查询附加参数 -->
@@ -101,6 +102,9 @@
 	<input type="hidden" id="sfzh" value="${zdry.zjhm}" />
 	<input type="hidden"  id="ryid_main" value="${zdry.ryid}" />
 	<input type="hidden"  id="zdryId" value="${zdry.id}" />
+	
+	<input type="hidden" id="xt_jkbz"  value="${zdry.xt_jkbz}" />	
+	<input type="hidden" id="lxdh"  value="${zdry.lxdh}" />
 	
 <div class="clear"></div>
 <div class="editdiv"><a href="javascript:void(0);" class="savebtn">档案编辑完成</a><a href="javascript:void(0);" class="editbtn"  style="display:none">编辑档案信息</a></div>
@@ -128,7 +132,13 @@
 <div class="rttitle" >关联信息</div>
 <ul class="rtul" id="relationMessage" style="text-align:center">
 </ul>
+<!-- 
 <div class="rttitle" >活动轨迹</div>
+<div class="rtshow" style="background-color: #B5CBDE;">
+	<input type="checkbox" id="trailFlag" onclick="isTrail()" />
+	<font color="black">是否车辆监管</font>
+</div>
+ -->
 <div class="rtshow"><div class="timelinebody"><div class="timeliall"></div></div><div class="clear"></div></div>
 </c:if>
 </div>
