@@ -80,6 +80,8 @@ function datagridProcessFormater(val,row,index){
  function deliver(linkObject, index){
 	   var rows = $('#dg').datagrid('getData');
 		var rowData = rows.rows[index];
+		insertZdry(rowData);
+		initopreation(rowData.zdryid);
 		/*var params = {zdryid:rowData.zdryid};
 		var fajax =new FrameTools.Ajax(contextPath+"/main/countPcs",ZdryxxAndOp_back);
 		fajax.send(params);*/
@@ -162,5 +164,51 @@ function closeWindowdeverd(){
 }
 
 function ZdryxxAndOp_back(){
+	
+}
+//初始化重点人员基本信息
+function insertZdry(data){
+	$("#xm").val(data.xm) ;
+	$("#wwxm ").val(data.wwxm) ;
+	$("#xb").val(data.xb) ;
+	$("#csrq").val(data.csrq) ;
+	$("#gj").val(data.gj) ;
+	if(data.sfzh !=null&&data.sfzh!=""){
+		$("#zjhm").val(data.sfzh) ;
+	}else{
+		$("#zjhm").val(data.qtzjhm) ;
+	}
+	$("#mz").val(data.mz) ;
+	
+	$("#jg").val(data.jg) ;
+	$("#hjdxz").val(data.hjdxz) ;
+	$("#xzdxz").val(data.xzdxz) ;
+	$("#ladwjgdm").val(data.ladwjgdm) ;
+	$("#zjlasj").val(data.zjlasj) ;
+	$("#zdryxl").val(data.zdryxl) ;
+	$("#yxx").val(data.yxx) ;
+}
+//初始化操作列表
+function initopreation(zdryid){
+	$('#dgtable').datagrid({
+		url:contextPath+'/zdryQbzdryxxb/operation?zdryid='+zdryid,
+		selectOnCheck:true,
+		checkOnSelect:true,
+		singleSelect:true,
+		fitColumns:true,
+		border:true,
+		pagination:true,
+		width:100,
+		rownumbers:true,
+		columns:[[
+	          	{field:'czrq',title:'操作时间',width:150,align:'center',halign:'center'},
+				{field:'czr',title:'操作人',width:80,align:'center',halign:'center'},
+				{field:'czbm',title:'操作部门',width:80,align:'center',halign:'center'},      
+				{field:'czlb',title:'操作类型',width:80,align:'center',halign:'center'},
+				{field:'czyj',title:'说明',width:80,align:'center',halign:'center'}
+		 ]]
+		
+	});
+	
 	
 }

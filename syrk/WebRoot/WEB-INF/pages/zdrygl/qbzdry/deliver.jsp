@@ -27,64 +27,60 @@
 						height="100%" align="center">
 						<tr class="dialogTr">
 							<th align="right" width="20%">姓名：</th>
-							<td width="30%" class="dialogTd"></td>
+							<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="xm" id="xm" style="width:200px;" readonly="readonly" /></td>
 							<th align="right" width="20%">证件号码：</th>
-							<td width="30%" class="dialogTd"></td>
+							<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="zjhm" id="zjhm" style="width:200px;" readonly="readonly" /></td>
 						</tr>
 						<tr>
 							<th align="right" width="20%">性别：</th>
-							<td width="30%"></td>
+							<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="xb" id="xb" style="width:200px;" readonly="readonly" /></td>
 							<th align="right" width="20%">国籍：</th>
-							<td width="30%" class="dialogTd"></td>
+							<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="gj" id="gj" style="width:200px;" readonly="readonly" /></td>
 						</tr>
 						<tr>
 							<th align="right" width="20%">民族：</th>
-							<td width="30%"></td>
+							<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="mz" id="mz" style="width:200px;" readonly="readonly" /></td>
 							<th align="right" width="20%">籍贯：</th>
-							<td width="30%" class="dialogTd"></td>
+						<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="jg" id="jg" style="width:200px;" readonly="readonly" /></td>
 						</tr>
 						<tr>
 							<th align="right" width="20%">出生日期：</th>
-							<td width="30%" class="dialogTd"></td>
+						<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="csrq" id="csrq" style="width:200px;" readonly="readonly" /></td>
 							<th align="right" width="20%">外文名称：</th>
-							<td width="30%" class="dialogTd"></td>
+							<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="wwxm" id="wwxm" style="width:200px;" readonly="readonly" /></td>
 						</tr>
 						<tr>
+						<th align="right" width="20%">重点人员类别：</th>
+							<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="zdryxl" id="zdryxl" style="width:200px;" readonly="readonly" /></td>
 							<th align="right" width="20%">现居住地址：</th>
-							<td width="30%" class="dialogTd"></td>
+						<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="xjzdxz" id="xjzdxz" style="width:200px;" readonly="readonly" /></td>
 						</tr>
 						<tr>
 							<th align="right" width="20%">户籍地址：</th>
-							<td width="30%" class="dialogTd"></td>
+							<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="hjdxz" id="hjdxz" style="width:200px;" readonly="readonly" /></td>
 						</tr>
 						<tr>
-							<th align="right" width="20%">重点人员类别：</th>
-							<td width="30%" class="dialogTd"></td>
+							
 						</tr>
 						<tr>
 							<th align="right" width="20%">当前级别：</th>
-							<td width="30%" class="dialogTd"></td>
+						<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="gxdw" id="gxdw" style="width:200px;" readonly="readonly" /></td>
 							<th align="right" width="20%">当前状态：</th>
-							<td width="30%" class="dialogTd"></td>
+							<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="yxx" id="yxx" style="width:200px;" readonly="readonly" /></td>
 						</tr>
-						<tr>
-							<th align="right" width="20%">责任单位：</th>
-							<td width="30%" class="dialogTd"></td>
-							<th align="right" width="20%">责任人：</th>
-							<td width="30%" class="dialogTd"></td>
-						</tr>
+						
 						<tr>
 							<th align="right" width="20%">立案单位：</th>
-							<td width="30%"></td>
+							<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="ladwdm" id="ladwdm" style="width:200px;" readonly="readonly" /></td>
 							<th align="right" width="20%">立案时间：</th>
-							<td width="30%" class="dialogTd"></td>
+							<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="zjlasj" id="zjlasj" style="width:200px;" readonly="readonly" /></td>
 						</tr>
 					</table>
 				</form>
 			</div>
 		  <div data-options="region:'south'",split:true" style="height: 100px; border-style: none;"id="operation"></div>
 		  <div id="panel_center" border="0" data-options="region:'center',border:false" style="width:700px;border:none;">
-			<table id="baryxxbDetailGrid" class="easyui-datagrid" style="width:700px;height:170px;" 
+			<%-- <table id="baryxxbDetailGrid" class="easyui-datagrid" style="width:700px;height:170px;">
 				data-options="url:'',
 				fitColumns:true,
 				singleSelect:true,
@@ -102,7 +98,8 @@
 			            <th data-options="field:'lxdh',width:140,align:'center',fixed:true">说明</th>   
 			        </tr>   
 			    </thead>
-    		</table>
+    		</table> --%>
+    		<table id="dgtable" style="width:700px;height:170px;"></table>
 		 </div>
 		</div>
 	</div>

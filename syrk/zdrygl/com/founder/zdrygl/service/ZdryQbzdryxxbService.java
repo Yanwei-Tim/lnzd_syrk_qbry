@@ -1,9 +1,12 @@
 package com.founder.zdrygl.service;
 
+import java.util.Map;
+
 import com.founder.framework.annotation.TypeAnnotation;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.zdrygl.bean.ZdryQbZdryxxb;
+import com.founder.zdrygl.bean.ZdryQbzdryYwczb;
 /***
  * ****************************************************************************
  * @Package:      [com.founder.zdrygl.service.ZdryShbzdryxxbService.java]  
@@ -39,6 +42,11 @@ public interface ZdryQbzdryxxbService {
 	 * @param id
 	 */
 	public ZdryQbZdryxxb queryById(String id);
+
+
+
+
+	public EasyUIPage queryOperation(ZdryQbzdryYwczb entity, EasyUIPage page, Map<String, String> param);
 
 	
 }
