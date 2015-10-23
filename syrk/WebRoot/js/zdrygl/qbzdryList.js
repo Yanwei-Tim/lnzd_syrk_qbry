@@ -81,12 +81,12 @@ function datagridProcessFormater(val,row,index){
 	   var rows = $('#dg').datagrid('getData');
 		var rowData = rows.rows[index];
 		insertZdry(rowData);
-		initopreation(rowData.zdryid);
+		initopreation(rowData.zdryid);	
 		var Str="";
 		Str = Str+"	<table border='0' cellpadding='0' cellspacing='10' width='100%' height='100%' align='center'>";
 		Str = Str+" <tr>"
 		Str = Str+" <th align='right' width='20%'>下发部门：</th>";
-		Str = Str+" <td width='30%' class='dialogTd'><input class=\"easyui-combobox\" id = \"deliver_bm\" name =\"deliver_bm\" data-options=\"required:true,selectOnNavigation:false,isTopLoad:false,valueField: 'id',textField: 'text'\" /></td>";
+		Str = Str+" <td width='30%' class='dialogTd'><input type=\"text\" name=\"orgList\" id=\"orgList\"  class=\"easyui-combobox\" style=\"width:200px;\" data-options=\"url: contextPath + '/orgPublicSelect/queryComboBoxList?parentOrgCode="+parentOrgCode+"',required:true,method:'get',valueField:'id',textField:'text',selectOnNavigation:false,isTopLoad:false\"></td>";
 		Str = Str+" <th align='right' width='20%'>操作意见：</th>";
 		Str = Str+" <td width='30%' class='dialogTd'><input type='text' name='xf_czyj' id ='xf_czyj'style='width:300px;' /></td>";
 		Str = Str+" </tr>";
@@ -237,12 +237,12 @@ function doUpdateQbBg(zdryid) {
 	});
 }
 
-//根据自己的session 取得自己下级部门
- function getxjbm(){
-	 
- }
 //下发操作
 function doDeliver(zdryid){
-	
+var orgListcode =$('#orgList').combobox('getValue');
+var xf_czyj = $("#xf_czyj").val();
+var params = {zdryid:zdryid,xfczyj:xf_czyj,orgcode:orgListcode};
+var fajax =new FrameTools.Ajax(contextPath+"/zdryQbzdryxxb/deliver",closeWindowdeverd);
+fajax.send(params);
 	
 }

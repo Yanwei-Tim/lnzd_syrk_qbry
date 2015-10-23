@@ -133,4 +133,12 @@ public class MainServiceImpl implements MainService{
 		// TODO Auto-generated method stub
 		return mainDao.queryListszzdry(param);
 	}
+	@Override
+	public Map<String, Object> zdryDetails(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		List<SyrkSyrkxxzb> syrkxxb = mainDao.zdryDetails(paramMap);
+		Map<String, Object> resMap = new HashMap<String, Object>();
+		resMap.put("syrkxxb", syrkxxb);
+		return resMap;
+	}
 }

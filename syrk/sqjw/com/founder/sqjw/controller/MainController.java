@@ -31,8 +31,8 @@ public class MainController extends BaseController{
 	private MainService mainService;
 	/**
 	 * @Title: queryPcsXqgkTj
-	 * @描述: 查询派出所辖区概况统计
-	 * @作者: zhang_guoliang@founder.com 
+	 * @描述: 查询派出所辖区组织机构概况统计
+	 * @作者: wu_ping@founder.com 
 	 * @参数: 传入参数定义 
 	 * @返回值: EasyUIPage    返回类型 
 	 * @throws
@@ -71,10 +71,10 @@ public class MainController extends BaseController{
 	}
 	/**
 	 * @Title: queryListsyfw 
-	 * @描述: 查询派出所辖区实有房概况详情
+	 * @描述: 查询派出所辖区和责任区实有房屋地图描点
 	 * @作者: zhang_guoliang@founder.com 
 	 * @参数: 传入参数定义 
-	 * @返回值: EasyUIPage    返回类型 
+	 * @返回值: List<SyfwListVo>    返回类型 
 	 * @throws
 	 */
 	@RequestMapping(value = "/queryListsyfw", method = RequestMethod.POST)
@@ -97,11 +97,11 @@ public class MainController extends BaseController{
 		return listVo;
 	}
 	/**
-	 * @Title: queryListsyfw 
-	 * @描述: 查询派出所辖区重点人口概况详情
-	 * @作者: zhang_guoliang@founder.com 
+	 * @Title: queryListzdrk 
+	 * @描述: 查询责任区辖区重点人口地图描点
+	 * @作者: wu_ping@founder.com 
 	 * @参数: 传入参数定义 
-	 * @返回值: EasyUIPage    返回类型 
+	 * @返回值:List<CountMapVO>   返回类型 
 	 * @throws
 	 */
 	@RequestMapping(value = "/queryListzdrk", method = RequestMethod.POST)
@@ -118,7 +118,7 @@ public class MainController extends BaseController{
 		
 	}
 	/**
-	 * @Title: queryPcsXqgkXq 
+	 * @Title: queryczf 
 	 * @描述: 查询派出所辖区概况详情
 	 * @作者: zhang_guoliang@founder.com 
 	 * @参数: 传入参数定义 
@@ -133,7 +133,7 @@ public class MainController extends BaseController{
 	
 	/**
 	 * @Title: queryListByRyidYwlx
-	 * @描述: 查询人员派出所首页实有人口描点
+	 * @描述: 派出所实有人口统计
 	 * @作者: wuping@founder.com 
 	 * @参数: 传入参数定义 
 	 * @返回值: List<SyrkSyrkxxzb>    返回类型 
@@ -147,11 +147,11 @@ public class MainController extends BaseController{
 		return listVo;
 	}
 	/**
-	 * @Title: queryListByRyidYwlx
-	 * @描述: 查询人员派出所首页描点
+	 * @Title: queryListMapsyrk
+	 * @描述: 派出所首页实有人口描点
 	 * @作者: wuping@founder.com 
 	 * @参数: 传入参数定义 
-	 * @返回值: List<SyrkSyrkxxzb>    返回类型 
+	 * @返回值: List<CountMapVO>    返回类型 
 	 * @throws
 	 */
 	@RequestMapping(value = "/queryListMapsyrk", method = RequestMethod.POST)
@@ -168,10 +168,10 @@ public class MainController extends BaseController{
 	
 	/**
 	 * @Title: queryListMapzdrk
-	 * @描述: 查询人员派出所首页描点
+	 * @描述: 查询人员派出所重点人员描点
 	 * @作者: wuping@founder.com 
 	 * @参数: 传入参数定义 
-	 * @返回值: List<SyrkSyrkxxzb>    返回类型 
+	 * @返回值:List<CountMapVO>    返回类型 
 	 * @throws
 	 */
 	@RequestMapping(value = "/queryListMapzdrk", method = RequestMethod.POST)
@@ -197,11 +197,11 @@ public class MainController extends BaseController{
 	
 	
 	/**
-	 * @Title: queryListByRyidYwlx
-	 * @描述: 查询人员派出所首页实有人口描点
+	 * @Title: countPcs
+	 * @描述: 查询人员派出所首页统计
 	 * @作者: wuping@founder.com 
 	 * @参数: 传入参数定义 
-	 * @返回值: List<SyrkSyrkxxzb>    返回类型 
+	 * @返回值:Map<String,Object>    返回类型 
 	 * @throws
 	 */
 	@RequestMapping(value = "/countPcs" ,method = RequestMethod.POST)
@@ -227,6 +227,23 @@ public class MainController extends BaseController{
 	   
 	   
 		return resMap;
+	}
+	/**
+	 * @Title: zdryDetails
+	 * @描述: 查询重点人员详情
+	 * @作者: wuping@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值:Map<String,Object>    返回类型 
+	 * @throws
+	 */
+	@RequestMapping(value = "/zdryDetails" ,method = RequestMethod.POST)
+	public @ResponseBody Map<String,Object> zdryDetails(String ryid){
+		Map<String,Object> paramMap=new HashMap<String, Object>();
+		Map<String,Object> resMap = new HashMap<String,Object>();
+		paramMap.put("ryid", ryid);
+		resMap = mainService.zdryDetails(paramMap);
+		return resMap;
+		
 	}
 	
 }

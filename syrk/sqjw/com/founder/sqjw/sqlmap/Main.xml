@@ -112,12 +112,17 @@
 
 	<select id="queryListzdry" parameterClass="Map"
 		resultClass="com.founder.sqjw.vo.CountMapVO">
-		select t.jzd_zbx zbx,jzd_zby zby,t.xm title
+		select t.jzd_zbx zbx,jzd_zby zby,t.xm title,t.RYID id 
 		from SYRK_SYRKXXZB t where t.xt_zxbz ='0' and t.id in(select t.SYRKID from
 		ZDRY_ZDRYZB t where t.xt_zxbz ='0' and t.glbm= #orgCode# and
 		t.zdrygllxdm=#zdrydm#)
 	</select>
-
+	<select id="zdryDetails" parameterClass="Map"
+		resultClass="com.founder.syrkgl.bean.SyrkSyrkxxzb">
+		select * 
+		from SYRK_SYRKXXZB t where t.xt_zxbz ='0' and t.id in(select t.SYRKID from
+		ZDRY_ZDRYZB t where t.xt_zxbz ='0' and t.ryid= #ryid#)
+	</select>
 	<select id="queryListszzdry" parameterClass="Map"
 		resultClass="com.founder.sqjw.vo.CountMapVO">
 		select t.jzd_zbx zbx,jzd_zby zby,t.xm title
