@@ -39,4 +39,16 @@ public class ZdryQbzdryxxbServiceImpl implements ZdryQbzdryxxbService {
 		return ZdryQbzdryxxbDao.queryOperation(entity,page,param);
 	}
 
+	@Override
+	public int queryBenOperation(Map<String, String> param) {
+		// TODO Auto-generated method stub
+		return (int) ZdryQbzdryxxbDao.queryBenOperation(param);
+	}
+
+	@Override
+	public boolean Updatexx(Map<String, String> param) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

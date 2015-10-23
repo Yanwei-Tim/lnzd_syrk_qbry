@@ -106,4 +106,12 @@
 				
 		  <![CDATA[  ORDER BY T2.$sort$ $order$) M  WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
 	</select>
+	
+	 <select id="queryBenOperation" parameterClass="Map" resultClass="Integer">
+		    <![CDATA[
+		       SELECT count(1)
+		           FROM ZDRY_QBZDRYYWCZB T2 
+		       WHERE T2.XT_ZXBZ = '0' AND T2.ZDRYID=#zdryid#  ]]> 
+			
+		</select>
 </sqlMap>

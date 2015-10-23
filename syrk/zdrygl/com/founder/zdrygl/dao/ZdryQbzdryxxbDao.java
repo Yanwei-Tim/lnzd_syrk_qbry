@@ -99,4 +99,13 @@ public class ZdryQbzdryxxbDao extends BaseDaoImpl {
 		page.setRows(list);
 		return page;
 	}
+
+
+	public int queryBenOperation(Map<String, String> param) {
+		// TODO Auto-generated method stub
+		return (Integer) queryForObject("ZdryQbZdryxxb.queryBenOperation",param);
+	}
+
+
+	
 }

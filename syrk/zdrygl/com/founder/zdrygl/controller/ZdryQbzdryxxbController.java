@@ -54,7 +54,15 @@ public class ZdryQbzdryxxbController extends BaseController {
 	
 	
 	
-	
+	/**
+	 * 
+	 * @Title: operation
+	 * @Description: 根据重点人员id 查询操作记录
+	 * @param @param zdryid
+	 * @param @return    设定文件
+	 * @return EasyUIPage    返回类型
+	 * @throws
+	 */
 	@RequestMapping(value = "/operation", method = RequestMethod.POST)
 	public @ResponseBody
 	EasyUIPage operation(EasyUIPage page,
@@ -67,6 +75,40 @@ public class ZdryQbzdryxxbController extends BaseController {
 		return this.zdryQbzdryxxbService.queryOperation(entity, page,param);
 	}
 	
-	
+	/**
+	 * 
+	 * @Title: deliver
+	 * @Description: 情报重点人员下发
+	 * @param @param zdryid，下发组织部门，下发说明
+	 * @param @return    设定文件
+	 * @return EasyUIPage    返回类型
+	 * @throws
+	 */
+	@RequestMapping(value = "/deliver", method = RequestMethod.POST)
+	public @ResponseBody
+	String deliver(String zdryid,String xfczyj,String orgcode) {
+		Map<String, String> param = new HashMap<String, String>();
+		param.put("zdryid", zdryid);
+		param.put("xfczyj", xfczyj);
+		param.put("orgcode", orgcode);
+		String userType = getSessionBean().getUserOrgLevel();
+		String noworgcode = getSessionBean().getUserOrgCode();
+		//查看本用户是否有操作记录
+	    //int NUM = zdryQbzdryxxbService.queryBenOperation(param);
+		//不是责任区民警
+		if(!userType.equals("50")){
+			// 查询状态
+		 if(userType.equals("20")){
+			 //当前用户为市局,更新信息表的派出所代码，插入操作
+			//boolean Updatexx = zdryQbzdryxxbService.Updatexx(param);
+			 
+		 }
+		 if(userType.equals("32")){
+			 
+		 }
+			
+		}
+		return null;
+	}
 	
 }

@@ -48,5 +48,15 @@ public interface ZdryQbzdryxxbService {
 
 	public EasyUIPage queryOperation(ZdryQbzdryYwczb entity, EasyUIPage page, Map<String, String> param);
 
+
+
+
+	public int queryBenOperation(Map<String, String> param);
+
+
+
+
+	public boolean Updatexx(Map<String, String> param);
+
 	
 }
