@@ -66,7 +66,7 @@
 						toolbar:'#datagridToolbar'">
 			        <thead>
 			          <tr>
-				            <th data-options="field:'zt',width:70,align:'left',sortable:true,halign:'center'">状态</th>
+				            <th data-options="field:'dqzt',width:70,align:'center',halign:'center',sortable:true,formatter:dictFormatter,dictName:contextPath+'/common/dict/QB_D_DQZT.js'">状态</th>
 				            <th data-options="field:'zdryxl',width:70,align:'left',sortable:true,halign:'center'">重点人员细类</th>
 				            <th data-options="field:'xm',align:'left',halign:'center',sortable:true">姓名</th>
 				            <th data-options="field:'sfzh',width:70,align:'left',halign:'center',sortable:true">证件号码</th>
