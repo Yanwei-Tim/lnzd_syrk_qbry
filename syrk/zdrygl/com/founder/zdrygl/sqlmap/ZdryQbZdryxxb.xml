@@ -79,7 +79,7 @@
 		        SELECT  t2.*,t1.czbm,t1.dqzt,t1.czlb,t1.czrq FROM ZDRY_QBZDRYXXB T2,zdry_qbzdryywczb t1
 				WHERE 1=1
 				and T2.XT_ZXBZ = '0'
-				and t2.SJSFJJBGSQ!='1'
+				and t1.SJSFJJBGSQ!='1'
 				and t1.zdryid(+)=t2.zdryid
 				and t1.czbm = #zdryQbZdryxxb.czbm#
 				)
@@ -96,7 +96,7 @@
 		        SELECT  t2.*,t1.czbm,t1.dqzt,t1.czlb,t1.czrq FROM ZDRY_QBZDRYXXB T2,zdry_qbzdryywczb t1
 				WHERE 1=1
 				and T2.XT_ZXBZ = '0'
-				and t2.SJSFJJBGSQ!='1'
+				and t1.SJSFJJBGSQ!='1'
 				and t1.zdryid(+)=t2.zdryid
 				and t1.czbm = #zdryQbZdryxxb.czbm#
 				)

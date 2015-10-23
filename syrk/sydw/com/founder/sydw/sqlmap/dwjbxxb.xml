@@ -391,6 +391,8 @@
 				<isNotNull prepend="," property="sfazzaglxxxt"><![CDATA[ sfazzaglxxxt=#sfazzaglxxxt# ]]></isNotNull>
 				<isNotEmpty prepend="," property="dzms_dwdzmlpxz"><![CDATA[ dzms_dwdzmlpxz=#dzms_dwdzmlpxz# ]]></isNotEmpty>
 				<isNotNull prepend="," property="hs_status"><![CDATA[hs_status= #hs_status#]]></isNotNull>
+				<isNotNull prepend="," property="hs_person"><![CDATA[hs_person= #hs_person#]]></isNotNull>
+				<isNotNull prepend="," property="hs_sj"><![CDATA[hs_sj= #hs_sj#]]></isNotNull>
 				,DZMS_ZBX = #dzms_zbx#, DZMS_ZBY = #dzms_zby#,DZMS_SSZRQDM = #dzms_sszrqdm#,DZMS_SSPCSDM = #dzms_sspcsdm#,
 				<include refid="updateXtzd"/>
 			</dynamic>
