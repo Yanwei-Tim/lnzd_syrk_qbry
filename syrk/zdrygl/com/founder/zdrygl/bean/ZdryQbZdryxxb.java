@@ -110,8 +110,39 @@ public class ZdryQbZdryxxb extends BaseEntity implements Serializable {
 	private String sjsfjjbgsq;
 	@FieldDesc("下级提交的退回申请审批是否同意")
 	private String xjspsfty;
+	@FieldDesc("操作部门")
+	private String czbm;
+	@FieldDesc("当前状态")
+	private String dqzt;
+	@FieldDesc("操作类别")
+	private String czlb;
+	@FieldDesc("操作日期")
+	private String czrq;
 	
-	
+	public String getCzbm() {
+		return czbm;
+	}
+	public void setCzbm(String czbm) {
+		this.czbm = czbm;
+	}
+	public String getDqzt() {
+		return dqzt;
+	}
+	public void setDqzt(String dqzt) {
+		this.dqzt = dqzt;
+	}
+	public String getCzlb() {
+		return czlb;
+	}
+	public void setCzlb(String czlb) {
+		this.czlb = czlb;
+	}
+	public String getCzrq() {
+		return czrq;
+	}
+	public void setCzrq(String czrq) {
+		this.czrq = czrq;
+	}
 	public String getStbmdm() {
 		return stbmdm;
 	}
