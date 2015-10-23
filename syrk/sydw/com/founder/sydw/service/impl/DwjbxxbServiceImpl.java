@@ -244,8 +244,6 @@ public class DwjbxxbServiceImpl implements DwjbxxbService {
 	
 	public void updateHs(Dwjbxxb entity,  Dwbmxxb [] dwbmxxbArray,SessionBean sessionBean) {
 		BaseService.setUpdateProperties(entity, sessionBean);
-		entity.setHs_person(StringUtils.getSqlExpression(sessionBean.getUserName()));
-		entity.setHs_sj(DateUtils.getSystemDateTimeString());
 		dwjbxxbDao.updateHs(entity, sessionBean);
 		//另存为到DW_DWXZXXB表数据更新
 		DwxzxxVO dwxzvo = new DwxzxxVO();
