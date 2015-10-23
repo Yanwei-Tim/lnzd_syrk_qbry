@@ -73,9 +73,34 @@ function mapPoint(mapWindow) {
 //};
 
 function datagridProcessFormater(val,row,index){
-	return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateAndXq(this, '+index+')">查看</a>&nbsp;'+
+	var rows = $('#dg').datagrid('getData');
+	var rowData = rows.rows[index];
+	var dqzt = rowData.dqzt;
+	var czlb = rowData.czlb;
+	//初始化状态
+	if(dqzt==01&&czlb==100){
+		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateAndXq(this, '+index+')">查看</a>&nbsp;'+
 	       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">下发</a>&nbsp;'+
-	       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请变更</a>';
+	       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请变更</a>';	
+	}
+	//已下发状态
+	if(dqzt==02&&czlb==01){
+		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateAndXq(this, '+index+')">查看</a>';
+		
+	}
+	if(dqzt==03&&czlb==02){
+		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateAndXq(this, '+index+')">查看</a>&nbsp;'+
+	       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">撤销申请</a>';
+	}
+	if(dqzt==04&&czlb==03){
+		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateAndXq(this, '+index+')">查看</a>&nbsp;'+
+	       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">撤销回退</a>';
+	}
+	if((dqzt==03&&czlb==01)||(dqzt==04&&czlb==01)){
+		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateAndXq(this, '+index+')">查看</a>&nbsp;'+
+	       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">重新分配管辖区</a>';
+	}
+	
 };
  function deliver(linkObject, index){
 	   var rows = $('#dg').datagrid('getData');
