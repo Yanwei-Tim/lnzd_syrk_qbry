@@ -45,6 +45,7 @@ public class ZdryQbzdryxxbUpServiceImpl extends BaseService implements ZdryQbzdr
 		ZdryQbzdryYwczb entity_s = new ZdryQbzdryYwczb();
 		entity_s = zdryQbzdryxxbUpDao.query(entity);
 		entity_s.setDqzt("申请变更中");
+		
 		zdryQbzdryxxbUpDao.updateDqzt(entity_s);
 	}
 	
