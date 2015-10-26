@@ -345,8 +345,9 @@ function doCxSqBg(zdryid) {
 //下发操作
 function doDeliver(zdryid){
 var orgListcode =$('#orgList').combobox('getValue');
+var orgtext = $('#orgList').combobox('getText');
 var xf_czyj = $("#xf_czyj").val();
-var params = {zdryid:zdryid,xfczyj:xf_czyj,orgcode:orgListcode};
+var params = {zdryid:zdryid,xfczyj:xf_czyj,orgcode:orgListcode,orgcodetext:orgtext};
 var fajax =new FrameTools.Ajax(contextPath+"/zdryQbzdryxxb/deliver",closeWindowdeverd);
 fajax.send(params);
 	
