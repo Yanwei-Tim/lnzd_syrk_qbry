@@ -115,7 +115,7 @@ public class ZdryQbzdryxxbController extends BaseController {
 			boolean Updatexx = zdryQbzdryxxbService.Updatexx(entity);
 			if(Updatexx){
 				this.zdryQbzdryxxbService.saveZdryqbxxyw(entityyw,param);
-				this.zdryQbzdryxxbService.saveZdryqbxxyw(entityyw,param);
+				this.zdryQbzdryxxbService.acceptZdryqbxxyw(entityyw,param);
 			}
 			
 			 
