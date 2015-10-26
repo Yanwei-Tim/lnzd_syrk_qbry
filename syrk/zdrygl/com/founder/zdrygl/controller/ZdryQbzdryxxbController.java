@@ -98,6 +98,7 @@ public class ZdryQbzdryxxbController extends BaseController {
 		param.put("xfczyj", xfczyj);
 		param.put("noworgcode", noworgcode);
 		param.put("orgName", orgName);
+		param.put("orgcode", orgcode);
 		System.out.println(userType);
 		//查看本用户是否有操作记录
 	    //int NUM = zdryQbzdryxxbService.queryBenOperation(param);
@@ -114,7 +115,7 @@ public class ZdryQbzdryxxbController extends BaseController {
 			boolean Updatexx = zdryQbzdryxxbService.Updatexx(entity);
 			if(Updatexx){
 				this.zdryQbzdryxxbService.saveZdryqbxxyw(entityyw,param);
-				
+				this.zdryQbzdryxxbService.saveZdryqbxxyw(entityyw,param);
 			}
 			
 			 
@@ -126,7 +127,10 @@ public class ZdryQbzdryxxbController extends BaseController {
 				entity.setZrqbmdm(noworgcode);
 				boolean Updatexx = zdryQbzdryxxbService.Updatexx(entity);
 				if(Updatexx){
+					//本业务下发
 					this.zdryQbzdryxxbService.saveZdryqbxxyw(entityyw,param);
+					//下级接受
+					this.zdryQbzdryxxbService.acceptZdryqbxxyw(entityyw,param);
 				}
 			 
 		 }

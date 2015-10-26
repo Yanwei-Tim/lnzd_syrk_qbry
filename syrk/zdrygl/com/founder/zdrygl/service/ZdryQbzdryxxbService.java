@@ -63,5 +63,10 @@ public interface ZdryQbzdryxxbService {
 
 	public void saveZdryqbxxyw(ZdryQbzdryYwczb entityyw, Map<String, String> param);
 
+
+
+
+	public void acceptZdryqbxxyw(ZdryQbzdryYwczb entityyw, Map<String, String> param);
+
 	
 }

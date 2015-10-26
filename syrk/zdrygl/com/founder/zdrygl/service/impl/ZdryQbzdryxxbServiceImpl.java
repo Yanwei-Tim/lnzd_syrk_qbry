@@ -68,4 +68,19 @@ public class ZdryQbzdryxxbServiceImpl implements ZdryQbzdryxxbService {
 		this.ZdryQbzdryxxbDao.saveZdryqbxxyw(entityyw);
 	}
 
+	@Override
+	public void acceptZdryqbxxyw(ZdryQbzdryYwczb entityyw, Map<String, String> param) {
+		// TODO Auto-generated method stub
+		entityyw.setId(UUID.create());
+		entityyw.setXt_zxbz("0");
+		entityyw.setCzrq(DateUtils.getSystemDateTimeString());
+		entityyw.setCzlb("100");
+		entityyw.setDqzt("01");
+		entityyw.setCzbmdm(param.get("orgcode"));
+		entityyw.setCzr(param.get("userName"));
+		entityyw.setCzbm(param.get("orgcodetext"));
+		entityyw.setCzyj(param.get("xfczyj"));
+		this.ZdryQbzdryxxbDao.saveZdryqbxxyw(entityyw);
+	}
+
 }
