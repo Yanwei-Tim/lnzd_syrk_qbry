@@ -32,24 +32,45 @@ public class ZdryQbzdryxxbUpServiceImpl extends BaseService implements ZdryQbzdr
 	public void updateQbBg(ZdryQbzdryYwczb entity, SessionBean sessionBean) {
 		entity.setId(UUID.create());
 		entity.setCzrq(DateUtils.getSystemDateTimeString());
-		entity.setCzbm(sessionBean.getUserOrgName());
+		entity.setCzbm(sessionBean.getUserOrgCode());
 		entity.setCzr(sessionBean.getUserName());
-		entity.setDqzt("申请变更中");
-		entity.setCzlb("申请变更");
-		entity.setXt_zxbz("0");
-//		setUpdateProperties(entity,sessionBean);
-//		zdryQbzdryxxbUpDao.updateQbBg(entity);
+		entity.setDqzt("03");//03 申请变更中、01 待下发、02 已下发、04 退回申请中
+		entity.setCzlb("02");//01下发、02、申请变更
+		entity.setXt_zxbz("0");   
+		entity.setSftjbgsq("1");
+		setUpdateProperties(entity,sessionBean);
+		zdryQbzdryxxbUpDao.updateQbBg(entity);
 		OrgOrganization org = orgOrganizationService.queryParentOrgByOrgcode(sessionBean.getUserOrgCode());
 		String orgcode = org.getOrgcode();
 		entity.setCzbm(orgcode);
 		ZdryQbzdryYwczb entity_s = new ZdryQbzdryYwczb();
 		entity_s = zdryQbzdryxxbUpDao.query(entity);
-		entity_s.setDqzt("申请变更中");
+		entity_s.setCzlb("02");
 		
 		zdryQbzdryxxbUpDao.updateDqzt(entity_s);
 	}
 	
-	
+	@Override
+	public void updateCxQbBg(ZdryQbzdryYwczb entity, SessionBean sessionBean) {
+		entity.setId(UUID.create());
+		entity.setCzrq(DateUtils.getSystemDateTimeString());
+		entity.setCzbm(sessionBean.getUserOrgCode());
+		entity.setCzr(sessionBean.getUserName());
+		entity.setDqzt("01");//03 申请变更中、01 待下发、02 已下发、04 退回申请中
+		entity.setCzlb("01");//01下发、02、申请变更
+		entity.setXt_zxbz("0");   
+		entity.setSftjbgsq("1");
+		setUpdateProperties(entity,sessionBean);
+		zdryQbzdryxxbUpDao.updateQbBg(entity);
+		OrgOrganization org = orgOrganizationService.queryParentOrgByOrgcode(sessionBean.getUserOrgCode());
+		String orgcode = org.getOrgcode();
+		entity.setCzbm(orgcode);
+		ZdryQbzdryYwczb entity_s = new ZdryQbzdryYwczb();
+		entity_s = zdryQbzdryxxbUpDao.query(entity);
+		entity_s.setCzlb("01");
+		
+		zdryQbzdryxxbUpDao.updateDqzt(entity_s);
+	}
 	
 	
 }

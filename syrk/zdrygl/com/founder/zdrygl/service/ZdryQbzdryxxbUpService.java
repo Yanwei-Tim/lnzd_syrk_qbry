@@ -8,4 +8,6 @@ import com.founder.zdrygl.bean.ZdryQbzdryYwczb;
 public interface ZdryQbzdryxxbUpService {
 
 	public void updateQbBg(ZdryQbzdryYwczb entity, SessionBean sessionBean);
+	
+	public void updateCxQbBg(ZdryQbzdryYwczb entity, SessionBean sessionBean);
 }
