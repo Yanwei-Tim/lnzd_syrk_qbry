@@ -11,6 +11,7 @@
 		<isNotEmpty prepend="," property="czrq"><![CDATA[ czrq]]></isNotEmpty>
 		<isNotEmpty prepend="," property="czyj"><![CDATA[ czyj]]></isNotEmpty>
 		<isNotEmpty prepend="," property="czbm"><![CDATA[ czbm]]></isNotEmpty>
+		<isNotEmpty prepend="," property="czbmdm"><![CDATA[ czbmdm]]></isNotEmpty>
 		<isNotEmpty prepend="," property="czr"><![CDATA[ czr]]></isNotEmpty>
 		<isNotEmpty prepend="," property="zdryid"><![CDATA[ zdryid]]></isNotEmpty>
 		<isNotEmpty prepend="," property="dqzt"><![CDATA[ dqzt]]></isNotEmpty>
@@ -22,6 +23,7 @@
 		<isNotEmpty prepend="," property="czrq"><![CDATA[ #czrq#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="czyj"><![CDATA[ #czyj#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="czbm"><![CDATA[ #czbm#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="czbmdm"><![CDATA[ #czbmdm#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="czr"><![CDATA[ #czr#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="zdryid"><![CDATA[ #zdryid#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="dqzt"><![CDATA[ #dqzt#]]></isNotEmpty>
@@ -37,7 +39,7 @@
 		select *from (
 		select * from zdry_qbzdryywczb 
 		where 1=1 
-		and czbm=#czbm#
+		and czbmdm=#czbmdm#
 		and zdryid=#zdryid#
 		order by czrq desc
 		)

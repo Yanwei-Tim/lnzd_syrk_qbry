@@ -32,7 +32,8 @@ public class ZdryQbzdryxxbUpServiceImpl extends BaseService implements ZdryQbzdr
 	public void updateQbBg(ZdryQbzdryYwczb entity, SessionBean sessionBean) {
 		entity.setId(UUID.create());
 		entity.setCzrq(DateUtils.getSystemDateTimeString());
-		entity.setCzbm(sessionBean.getUserOrgCode());
+		entity.setCzbmdm(sessionBean.getUserOrgCode());
+		entity.setCzbm(sessionBean.getUserOrgName());
 		entity.setCzr(sessionBean.getUserName());
 		entity.setDqzt("04");//03 申请变更中、01 待下发、02 已下发、04 退回申请中
 		entity.setCzlb("03");//01下发、02、申请变更、03 申请退回
@@ -42,7 +43,7 @@ public class ZdryQbzdryxxbUpServiceImpl extends BaseService implements ZdryQbzdr
 		zdryQbzdryxxbUpDao.updateQbBg(entity);
 		OrgOrganization org = orgOrganizationService.queryParentOrgByOrgcode(sessionBean.getUserOrgCode());
 		String orgcode = org.getOrgcode();
-		entity.setCzbm(orgcode);
+		entity.setCzbmdm(orgcode);
 		ZdryQbzdryYwczb entity_s = new ZdryQbzdryYwczb();
 		entity_s = zdryQbzdryxxbUpDao.query(entity);
 		entity_s.setCzlb("03");
@@ -54,7 +55,8 @@ public class ZdryQbzdryxxbUpServiceImpl extends BaseService implements ZdryQbzdr
 	public void updateCxQbBg(ZdryQbzdryYwczb entity, SessionBean sessionBean) {
 		entity.setId(UUID.create());
 		entity.setCzrq(DateUtils.getSystemDateTimeString());
-		entity.setCzbm(sessionBean.getUserOrgCode());
+		entity.setCzbmdm(sessionBean.getUserOrgCode());
+		entity.setCzbm(sessionBean.getUserOrgName());
 		entity.setCzr(sessionBean.getUserName());
 		entity.setDqzt("01");//03 申请变更中、01 待下发、02 已下发、04 退回申请中
 		entity.setCzlb("01");//01下发、02、申请变更、03 申请退回
@@ -64,7 +66,7 @@ public class ZdryQbzdryxxbUpServiceImpl extends BaseService implements ZdryQbzdr
 		zdryQbzdryxxbUpDao.updateQbBg(entity);
 		OrgOrganization org = orgOrganizationService.queryParentOrgByOrgcode(sessionBean.getUserOrgCode());
 		String orgcode = org.getOrgcode();
-		entity.setCzbm(orgcode);
+		entity.setCzbmdm(orgcode);
 		ZdryQbzdryYwczb entity_s = new ZdryQbzdryYwczb();
 		entity_s = zdryQbzdryxxbUpDao.query(entity);
 		entity_s.setCzlb("01");

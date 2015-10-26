@@ -283,8 +283,8 @@ function initopreation(zdryid){
 		columns:[[
 	          	{field:'czrq',title:'操作时间',width:150,align:'center',halign:'center'},
 				{field:'czr',title:'操作人',width:80,align:'center',halign:'center'},
-				{field:'czbmdm',title:'操作部门',width:80,align:'center',halign:'center'},      
-				{field:'czlb',title:'操作类型',width:80,align:'center',halign:'center'},
+				{field:'czbm',title:'操作部门',width:80,align:'center',halign:'center'},      
+				{field:'czlb',title:'操作类型',width:80,align:'center',halign:'center',fixed:true,formatter:dictFormatter,dictName:contextPath+'/common/dict/QB_D_DQZT.js'},
 				{field:'czyj',title:'说明',width:80,align:'center',halign:'center'}
 		 ]]
 		
