@@ -32,6 +32,8 @@ public class ZdryQbzdryYwczb extends BaseEntity implements Serializable {
 	private String czyj;
 	@FieldDesc("操作部门")
 	private String czbm;
+	@FieldDesc("操作部门代码")
+	private String czbmdm;
 	@FieldDesc("操作人")
 	private String czr;
 	@FieldDesc("重点人员ID")
@@ -86,6 +88,12 @@ public class ZdryQbzdryYwczb extends BaseEntity implements Serializable {
 	}
 	public void setCzr(String czr) {
 		this.czr = czr;
+	}
+	public String getCzbmdm() {
+		return czbmdm;
+	}
+	public void setCzbmdm(String czbmdm) {
+		this.czbmdm = czbmdm;
 	}
 
 
