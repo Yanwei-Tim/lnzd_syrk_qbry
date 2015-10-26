@@ -116,7 +116,7 @@
 	       <![CDATA[SELECT * FROM ( SELECT ROWNUM R ,M.* FROM (
 		       SELECT * 
 		          FROM ZDRY_QBZDRYYWCZB T2 
-		       WHERE T2.XT_ZXBZ = '0' AND T2.ZDRYID=#zdryid#]]> 
+		       WHERE T2.XT_ZXBZ = '0' AND T2.CZLB !='100' AND T2.ZDRYID=#zdryid#]]> 
 				
 		  <![CDATA[  ORDER BY T2.$sort$ $order$) M  WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
 	</select>
@@ -131,7 +131,7 @@
 			 <isNotNull prepend="," property="sjbmdm"><![CDATA[ SJBMDM=#sjbmdm# ]]></isNotNull>
 			 <isNotNull prepend="," property="pcsbmdm"><![CDATA[ PCSBMDM=#pcsbmdm# ]]></isNotNull>
 			 <isNotNull prepend="," property="zrqbmdm"><![CDATA[ ZRQBMDM=#zrqbmdm# ]]></isNotNull>
-			<include refid="updateXtzd"/>				
+			,<include refid="updateXtzd"/>				
 		</dynamic>
 		<![CDATA[ where ZDRYID = #zdryid#]]>	
 	</update>
@@ -145,22 +145,21 @@
 		<isNotEmpty prepend="," property="czyj"><![CDATA[ czyj]]></isNotEmpty>
 		<isNotEmpty prepend="," property="czbm"><![CDATA[ czbm]]></isNotEmpty>
 		<isNotEmpty prepend="," property="czr"><![CDATA[ czr]]></isNotEmpty>
-		<isNotEmpty prepend="," property="xt_zxbz"><![CDATA[ xt_zxbz]]></isNotEmpty>
 		<isNotEmpty prepend="," property="zdryid"><![CDATA[ zdryid]]></isNotEmpty>
 		<isNotEmpty prepend="," property="dqzt"><![CDATA[ dqzt]]></isNotEmpty>
 		<isNotEmpty prepend="," property="czbmdm"><![CDATA[ czbmdm]]></isNotEmpty>
 		,
 		<include refid="insertXtzd"/>)
 		<![CDATA[ values (#id# ]]>		
-		<isNotEmpty prepend="," property="czlb"><![CDATA[ czlb]]></isNotEmpty>
-		<isNotEmpty prepend="," property="czrq"><![CDATA[ czrq]]></isNotEmpty>
-		<isNotEmpty prepend="," property="czyj"><![CDATA[ czyj]]></isNotEmpty>
-		<isNotEmpty prepend="," property="czbm"><![CDATA[ czbm]]></isNotEmpty>
-		<isNotEmpty prepend="," property="czr"><![CDATA[ czr]]></isNotEmpty>
-		<isNotEmpty prepend="," property="xt_zxbz"><![CDATA[ xt_zxbz]]></isNotEmpty>
-		<isNotEmpty prepend="," property="zdryid"><![CDATA[ zdryid]]></isNotEmpty>
-		<isNotEmpty prepend="," property="dqzt"><![CDATA[ dqzt]]></isNotEmpty>
-		<isNotEmpty prepend="," property="czbmdm"><![CDATA[ czbmdm]]></isNotEmpty>
+		<isNotEmpty prepend="," property="czlb"><![CDATA[ #czlb#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="czrq"><![CDATA[ #czrq#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="czyj"><![CDATA[ #czyj#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="czbm"><![CDATA[ #czbm#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="czr"><![CDATA[ #czr#]]></isNotEmpty>
+
+		<isNotEmpty prepend="," property="zdryid"><![CDATA[ #zdryid#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="dqzt"><![CDATA[ #dqzt#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="czbmdm"><![CDATA[ #czbmdm#]]></isNotEmpty>
 
 		,
 		<include refid="insertXtzdVal"/>)
