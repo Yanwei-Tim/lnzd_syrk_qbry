@@ -14,6 +14,7 @@
 		<isNotEmpty prepend="," property="czr"><![CDATA[ czr]]></isNotEmpty>
 		<isNotEmpty prepend="," property="zdryid"><![CDATA[ zdryid]]></isNotEmpty>
 		<isNotEmpty prepend="," property="dqzt"><![CDATA[ dqzt]]></isNotEmpty>
+		<isNotEmpty prepend="," property="sftjbgsq"><![CDATA[ sftjbgsq]]></isNotEmpty>
 		,
 		<include refid="insertXtzd" />
 		) values (#id#
@@ -24,6 +25,7 @@
 		<isNotEmpty prepend="," property="czr"><![CDATA[ #czr#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="zdryid"><![CDATA[ #zdryid#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="dqzt"><![CDATA[ #dqzt#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="sftjbgsq"><![CDATA[ #sftjbgsq#]]></isNotEmpty>
 		,
 		<include refid="insertXtzdVal" />
 		)
@@ -44,7 +46,7 @@
 	</select>
 	
 	<update id="updateDqzt" parameterClass="zdryQbzdryYwczb">
-		update zdry_qbzdryywczb set dqzt = #dqzt#  where id = #id#
+		update zdry_qbzdryywczb set czlb = #czlb#  where id = #id#
 	</update>
 	
 	
