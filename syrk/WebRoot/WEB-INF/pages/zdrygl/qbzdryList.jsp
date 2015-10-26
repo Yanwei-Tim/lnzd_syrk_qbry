@@ -70,11 +70,6 @@
 				            <th data-options="field:'zdryxl',width:70,align:'left',sortable:true,halign:'center'">重点人员细类</th>
 				            <th data-options="field:'xm',align:'left',halign:'center',sortable:true">姓名</th>
 				            <th data-options="field:'sfzh',width:70,align:'left',halign:'center',sortable:true">证件号码</th>
-				          <!--   
-				            <th  data-options="field:'xb',width:120,align:'left',halign:'center',sortable:true,formatter:dictFormatter,dictName:contextPath+'/common/dict/D_BZ_XB.js'">性别</th>
-				            <th  data-options="field:'mz',width:120,align:'left',halign:'center',sortable:true,formatter:dictFormatter,dictName:contextPath+'/common/dict/D_BZ_MZ.js'">民族</th>
-				            <th  data-options="field:'jg',width:120,align:'left',halign:'center',sortable:true">籍贯</th>
-				             -->
 				           	<th  data-options="field:'sftjbgsq',width:120,align:'left',halign:'center',sortable:true,hidden:true">sftjbgsq</th>
 				           	<th  data-options="field:'sjsfjjbgsq',width:120,align:'left',halign:'center',sortable:true,hidden:true">sjsfjjbgsq</th>
 				           	<th  data-options="field:'xjspsfty',width:120,align:'left',halign:'center',sortable:true,hidden:true">xjspsfty</th>

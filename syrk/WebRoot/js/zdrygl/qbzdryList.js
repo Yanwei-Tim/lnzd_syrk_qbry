@@ -102,10 +102,7 @@ function datagridProcessFormater(val,row,index){
 		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
 	       '<a class="link" href="javascript:javascript:void(0)" onclick="doSpSq(this, '+index+')">审批退回</a>';
 	}
-//	if(dqzt=="04"&&czlb=="03"){
-//		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-//	       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">撤销回退</a>';
-//	}
+
 	if((dqzt=="03"&&czlb=="01")||(dqzt=="04"&&czlb=="01")){
 		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
 	       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">重新分配管辖区</a>';
@@ -286,7 +283,7 @@ function initopreation(zdryid){
 		columns:[[
 	          	{field:'czrq',title:'操作时间',width:150,align:'center',halign:'center'},
 				{field:'czr',title:'操作人',width:80,align:'center',halign:'center'},
-				{field:'czbm',title:'操作部门',width:80,align:'center',halign:'center'},      
+				{field:'czbmdm',title:'操作部门',width:80,align:'center',halign:'center'},      
 				{field:'czlb',title:'操作类型',width:80,align:'center',halign:'center'},
 				{field:'czyj',title:'说明',width:80,align:'center',halign:'center'}
 		 ]]
@@ -294,14 +291,6 @@ function initopreation(zdryid){
 	});
 }
 
-//初始化操作列表
-//function doUpdateQbBg(zdryid){
-//	var sq_czyj =$("#sq_czyj").val();
-//	var params = {zdryid:zdryid,czyj:sq_czyj};
-//	var fajax =new FrameTools.Ajax(contextPath+"/zdryQbzdryxxbUp/updateQb",closeWindowdeverd);
-//	fajax.send(params);
-//	
-//}
 //申请变更
 function doUpdateQbBg(zdryid) {
 	var doUpdateUrl = contextPath + '/zdryQbzdryxxbUp/updateQb';

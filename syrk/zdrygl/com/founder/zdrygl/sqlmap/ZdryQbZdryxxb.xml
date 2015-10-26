@@ -76,12 +76,12 @@
 		     <![CDATA[SELECT * FROM ( SELECT ROWNUM R ,M.* FROM (
 	            select * from (
 		        with a as (
-		        SELECT  t2.*,t1.czbm,t1.dqzt,t1.czlb,t1.czrq FROM ZDRY_QBZDRYXXB T2,zdry_qbzdryywczb t1
+		        SELECT  t2.*,t1.czbm,t1.dqzt,t1.czlb,t1.czrq,t1.czbmdm FROM ZDRY_QBZDRYXXB T2,zdry_qbzdryywczb t1
 				WHERE 1=1
 				and T2.XT_ZXBZ = '0'
 				and t1.SJSFJJBGSQ!='1'
 				and t1.zdryid(+)=t2.zdryid
-				and t1.czbm = #zdryQbZdryxxb.czbm#
+				and t1.czbmdm = #zdryQbZdryxxb.czbmdm#
 				)
 				select * from a t where czrq = (select max(czrq) from a where zdryid = t.zdryid )
 				)T2 ]]>  

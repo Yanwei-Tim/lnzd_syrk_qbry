@@ -67,7 +67,7 @@ public class ZdryQbzdryxxbDao extends BaseDaoImpl {
 		}
 		map.put("sort", sort);
 		map.put("order", order);
-		entity.setCzbm(StringUtils.getSqlExpression(sessionBean.getUserOrgCode()));
+		entity.setCzbmdm(StringUtils.getSqlExpression(sessionBean.getUserOrgCode()));
 		map.put("zdryQbZdryxxb", entity);
 
 		page.setTotal((Integer) queryForObject("ZdryQbZdryxxb.queryListCount", map)==null?0:(Integer) queryForObject("ZdryQbZdryxxb.queryListCount", map));

@@ -120,7 +120,15 @@ public class ZdryQbZdryxxb extends BaseEntity implements Serializable {
 	private String czlb;
 	@FieldDesc("操作日期")
 	private String czrq;
+	@FieldDesc("操作部门代码")
+	private String czbmdm;
 	
+	public String getCzbmdm() {
+		return czbmdm;
+	}
+	public void setCzbmdm(String czbmdm) {
+		this.czbmdm = czbmdm;
+	}
 	public String getZrqbmdm() {
 		return zrqbmdm;
 	}
