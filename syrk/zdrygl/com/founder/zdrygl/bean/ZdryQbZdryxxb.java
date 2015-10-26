@@ -104,6 +104,8 @@ public class ZdryQbZdryxxb extends BaseEntity implements Serializable {
 	private String fxjbmdm;
 	@FieldDesc("派出所部门代码")
 	private String pcsbmdm;
+	@FieldDesc("责任区部门代码")
+	private String zrqbmdm;
 	@FieldDesc("是否提交过管辖权变更申请")
 	private String sftjbgsq;
 	@FieldDesc("上级是否拒绝过管辖权变更申请")
@@ -119,6 +121,12 @@ public class ZdryQbZdryxxb extends BaseEntity implements Serializable {
 	@FieldDesc("操作日期")
 	private String czrq;
 	
+	public String getZrqbmdm() {
+		return zrqbmdm;
+	}
+	public void setZrqbmdm(String zrqbmdm) {
+		this.zrqbmdm = zrqbmdm;
+	}
 	public String getCzbm() {
 		return czbm;
 	}

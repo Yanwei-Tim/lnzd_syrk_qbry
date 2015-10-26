@@ -86,29 +86,53 @@ public class ZdryQbzdryxxbController extends BaseController {
 	 */
 	@RequestMapping(value = "/deliver", method = RequestMethod.POST)
 	public @ResponseBody
-	String deliver(String zdryid,String xfczyj,String orgcode) {
+	String deliver(String zdryid,String xfczyj,String orgcode,String orgcodetext,ZdryQbZdryxxb entity,ZdryQbzdryYwczb entityyw ) {
 		Map<String, String> param = new HashMap<String, String>();
-		param.put("zdryid", zdryid);
-		param.put("xfczyj", xfczyj);
-		param.put("orgcode", orgcode);
+		String SUCCESS = "0";
 		String userType = getSessionBean().getUserOrgLevel();
 		String noworgcode = getSessionBean().getUserOrgCode();
+		String userName = getSessionBean().getUserName();
+		String orgName = getSessionBean().getUserOrgName();
+		param.put("userName", userName);
+		param.put("zdryid", zdryid);
+		param.put("xfczyj", xfczyj);
+		param.put("noworgcode", noworgcode);
+		param.put("orgName", orgName);
+		System.out.println(userType);
 		//查看本用户是否有操作记录
 	    //int NUM = zdryQbzdryxxbService.queryBenOperation(param);
 		//不是责任区民警
 		if(!userType.equals("50")){
 			// 查询状态
 		 if(userType.equals("20")){
-			 //当前用户为市局,更新信息表的派出所代码，插入操作
-			//boolean Updatexx = zdryQbzdryxxbService.Updatexx(param);
+			 //当前用户为市局,分县局更新信息表的派出所代码，插入操作
+			entity.setZdryid(zdryid);
+			entity.setGxdwjgdm(orgcode);
+			entity.setGxdw(orgcodetext);
+			//entity.setSjbmdm(noworgcode);
+			entity.setPcsbmdm(orgcode);
+			boolean Updatexx = zdryQbzdryxxbService.Updatexx(entity);
+			if(Updatexx){
+				this.zdryQbzdryxxbService.saveZdryqbxxyw(entityyw,param);
+				
+			}
+			
 			 
 		 }
 		 if(userType.equals("32")){
+			 entity.setZdryid(zdryid);
+				entity.setGxdwjgdm(orgcode);
+				entity.setGxdw(orgcodetext);
+				entity.setZrqbmdm(noworgcode);
+				boolean Updatexx = zdryQbzdryxxbService.Updatexx(entity);
+				if(Updatexx){
+					this.zdryQbzdryxxbService.saveZdryqbxxyw(entityyw,param);
+				}
 			 
 		 }
 			
 		}
-		return null;
+		return SUCCESS;
 	}
 	
 }

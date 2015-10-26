@@ -108,5 +108,25 @@ public class ZdryQbzdryxxbDao extends BaseDaoImpl {
 	}
 
 
+	public boolean Updatexx(ZdryQbZdryxxb entity) {
+		// TODO Auto-generated method stub
+		boolean b =false;
+		int num = super.update("ZdryQbZdryxxb.updatedeliver", entity);
+		if(num>0){
+			b = true;
+		}else {
+			b = false;
+		}
+		return b;
+	}
+
+
+	public void saveZdryqbxxyw(ZdryQbzdryYwczb entityyw) {
+		// TODO Auto-generated method stub
+		insert("ZdryQbZdryxxb.deliversave", entityyw);
+	}
+
+
+
 	
 }

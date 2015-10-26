@@ -56,7 +56,12 @@ public interface ZdryQbzdryxxbService {
 
 
 
-	public boolean Updatexx(Map<String, String> param);
+	public boolean Updatexx(ZdryQbZdryxxb entity);
+
+
+
+
+	public void saveZdryqbxxyw(ZdryQbzdryYwczb entityyw, Map<String, String> param);
 
 	
 }
