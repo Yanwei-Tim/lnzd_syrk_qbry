@@ -100,7 +100,7 @@ function datagridProcessFormater(val,row,index){
 	}
 	if(dqzt=="02"&&czlb=="02"){
 		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-	       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">审批申请</a>';
+	       '<a class="link" href="javascript:javascript:void(0)" onclick="doSpSq(this, '+index+')">审批申请</a>';
 	}
 	if(dqzt=="04"&&czlb=="03"){
 		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
@@ -183,6 +183,31 @@ function doCxSq(linkObject, index){
 		$("#deliverd").show();
 		$("#deliverd").window("open"); 
 };
+
+//审批申请变更
+function doSpSq(linkObject, index){
+	 var rows = $('#dg').datagrid('getData');
+		var rowData = rows.rows[index];
+		insertZdry(rowData);
+		initopreation(rowData.zdryid);
+		var Str="";
+		Str = Str+"	<table border='0' cellpadding='0' cellspacing='10' width='100%' height='100%' align='center'>";
+		Str = Str+" <tr>"
+		Str = Str+" <th width='20%'>操作意见：</th>";
+		Str = Str+" <td width='30%' class='dialogTd'><input type='text' name='czyj' id ='sq_czyj' style='width:300px;' /></td>";
+		Str = Str+" </tr>";
+		Str = Str+"	<tr>";
+		Str = Str+"	<td width='100%' colspan='2' align='center'>"
+		Str = Str+"	<a id='doUpdateQbBgBtn' href='javascript:void(0)'  onclick=\"doUpdateQbBg('"+rowData.zdryid+"');\">审批申请变更</a>" 
+		Str = Str+"	</td>";
+		Str = Str+"	</tr>";
+		Str = Str+"	</table>";
+		$("#operation").html(Str);
+		$.parser.parse();
+		$("#deliverd").show();
+		$("#deliverd").window("open"); 
+};
+
 //查询按钮
 function queryButton(){
 	
