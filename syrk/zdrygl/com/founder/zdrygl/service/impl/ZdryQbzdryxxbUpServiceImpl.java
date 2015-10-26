@@ -34,8 +34,8 @@ public class ZdryQbzdryxxbUpServiceImpl extends BaseService implements ZdryQbzdr
 		entity.setCzrq(DateUtils.getSystemDateTimeString());
 		entity.setCzbm(sessionBean.getUserOrgCode());
 		entity.setCzr(sessionBean.getUserName());
-		entity.setDqzt("03");//03 申请变更中、01 待下发、02 已下发、04 退回申请中
-		entity.setCzlb("02");//01下发、02、申请变更
+		entity.setDqzt("04");//03 申请变更中、01 待下发、02 已下发、04 退回申请中
+		entity.setCzlb("03");//01下发、02、申请变更、03 申请退回
 		entity.setXt_zxbz("0");   
 		entity.setSftjbgsq("1");
 		setUpdateProperties(entity,sessionBean);
@@ -45,7 +45,7 @@ public class ZdryQbzdryxxbUpServiceImpl extends BaseService implements ZdryQbzdr
 		entity.setCzbm(orgcode);
 		ZdryQbzdryYwczb entity_s = new ZdryQbzdryYwczb();
 		entity_s = zdryQbzdryxxbUpDao.query(entity);
-		entity_s.setCzlb("02");
+		entity_s.setCzlb("03");
 		
 		zdryQbzdryxxbUpDao.updateDqzt(entity_s);
 	}
@@ -57,7 +57,7 @@ public class ZdryQbzdryxxbUpServiceImpl extends BaseService implements ZdryQbzdr
 		entity.setCzbm(sessionBean.getUserOrgCode());
 		entity.setCzr(sessionBean.getUserName());
 		entity.setDqzt("01");//03 申请变更中、01 待下发、02 已下发、04 退回申请中
-		entity.setCzlb("01");//01下发、02、申请变更
+		entity.setCzlb("01");//01下发、02、申请变更、03 申请退回
 		entity.setXt_zxbz("0");   
 		entity.setSftjbgsq("1");
 		setUpdateProperties(entity,sessionBean);

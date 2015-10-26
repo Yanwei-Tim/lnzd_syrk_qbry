@@ -81,7 +81,7 @@ function datagridProcessFormater(val,row,index){
 	if(dqzt=="01"&&czlb=="100"){
 		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
 	       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">下发</a>&nbsp;'+
-	       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请变更</a>';	
+	       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';	
 	}
 	//已下发状态
 	if(dqzt=="02"&&czlb=="01"){
@@ -91,21 +91,21 @@ function datagridProcessFormater(val,row,index){
 	if(dqzt=="01"&&czlb=="01"){
 		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
 	       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">下发</a>&nbsp;'+
-	       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请变更</a>';
+	       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';
 		
-	}
-	if(dqzt=="03"&&czlb=="02"){
-		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-	       '<a class="link" href="javascript:javascript:void(0)" onclick="doCxSq(this, '+index+')">撤销申请</a>';
-	}
-	if(dqzt=="02"&&czlb=="02"){
-		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-	       '<a class="link" href="javascript:javascript:void(0)" onclick="doSpSq(this, '+index+')">审批申请</a>';
 	}
 	if(dqzt=="04"&&czlb=="03"){
 		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-	       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">撤销回退</a>';
+	       '<a class="link" href="javascript:javascript:void(0)" onclick="doCxSq(this, '+index+')">撤回退回</a>';
 	}
+	if(dqzt=="02"&&czlb=="03"){
+		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+	       '<a class="link" href="javascript:javascript:void(0)" onclick="doSpSq(this, '+index+')">审批退回</a>';
+	}
+//	if(dqzt=="04"&&czlb=="03"){
+//		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+//	       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">撤销回退</a>';
+//	}
 	if((dqzt=="03"&&czlb=="01")||(dqzt=="04"&&czlb=="01")){
 		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
 	       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">重新分配管辖区</a>';
@@ -137,7 +137,7 @@ function datagridProcessFormater(val,row,index){
 		$("#deliverd").window("open"); 
 	   
  }
- //申请变更
+ //申请退回
  function doUpdateQb(linkObject, index){
 	 var rows = $('#dg').datagrid('getData');
 		var rowData = rows.rows[index];
@@ -151,7 +151,7 @@ function datagridProcessFormater(val,row,index){
 		Str = Str+" </tr>";
 		Str = Str+"	<tr>";
 		Str = Str+"	<td width='100%' colspan='2' align='center'>"
-		Str = Str+"	<a id='doUpdateQbBgBtn' href='javascript:void(0)'  onclick=\"doUpdateQbBg('"+rowData.zdryid+"');\">申请变更</a>" 
+		Str = Str+"	<a id='doUpdateQbBgBtn' href='javascript:void(0)'  onclick=\"doUpdateQbBg('"+rowData.zdryid+"');\">申请退回</a>" 
 		Str = Str+"	</td>";
 		Str = Str+"	</tr>";
 		Str = Str+"	</table>";
@@ -160,7 +160,7 @@ function datagridProcessFormater(val,row,index){
 		$("#deliverd").show();
 		$("#deliverd").window("open"); 
 };
-//撤销申请变更
+//撤回申请退回
 function doCxSq(linkObject, index){
 	 var rows = $('#dg').datagrid('getData');
 		var rowData = rows.rows[index];
@@ -174,7 +174,7 @@ function doCxSq(linkObject, index){
 		Str = Str+" </tr>";
 		Str = Str+"	<tr>";
 		Str = Str+"	<td width='100%' colspan='2' align='center'>"
-		Str = Str+"	<a id='doUpdateQbBgBtn' href='javascript:void(0)'  onclick=\"doCxSqBg('"+rowData.zdryid+"');\">撤销申请变更</a>" 
+		Str = Str+"	<a id='doCxSqBg' href='javascript:void(0)'  onclick=\"doCxSqBg('"+rowData.zdryid+"');\">撤回退回</a>" 
 		Str = Str+"	</td>";
 		Str = Str+"	</tr>";
 		Str = Str+"	</table>";
