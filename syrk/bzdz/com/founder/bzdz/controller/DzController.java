@@ -845,8 +845,8 @@ public class DzController extends BaseController {
 	 */
 	@RestfulAnnotation(valiField="searchKey",serverId="3")
 	@RequestMapping(value = "/searchAddressMlph", method = RequestMethod.POST)
-    public @ResponseBody List<DzContextCombo> searchAddressMlph(DzContextCondition condition,SessionBean sessionBean) {
-    	return dzService.searchAddressMlph(condition);
+    public @ResponseBody List<DzContextCombo> searchAddressMlph(DzContextCondition condition) {
+		return dzService.searchAddressMlph(condition);
     }
     /**
      * @Title: searchAddressMlphXz 
@@ -859,7 +859,7 @@ public class DzController extends BaseController {
      */
 	@RestfulAnnotation(valiField="id,searchKey",serverId="3")
 	@RequestMapping(value = "/searchAddressMlphXz", method = RequestMethod.POST)
-	public @ResponseBody List<DzContextCombo> searchAddressMlphXz(DzContextCondition condition,SessionBean sessionBean) {
+	public @ResponseBody List<DzContextCombo> searchAddressMlphXz(DzContextCondition condition) {
 		return dzService.searchAddressMlphXz(condition);
 	}
 	/**

@@ -82,6 +82,7 @@ public class CyryxxbController extends BaseController {
 	 * @param entity
 	 * @return
 	 */
+	@RestfulAnnotation(valiField="", serverId = "3")
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public @ResponseBody
 	ModelAndView save(Cyryxxb entity,DwjbxxbSaveVO swjbxxbSaveVO) {
@@ -142,6 +143,7 @@ public class CyryxxbController extends BaseController {
 		return model;
 	}
 	
+	@RestfulAnnotation(valiField="", serverId = "3")
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
 	public @ResponseBody EasyUIPage list(EasyUIPage page,
 			@RequestParam(value = "rows") Integer rows, String dwid) {
@@ -149,6 +151,7 @@ public class CyryxxbController extends BaseController {
 		return cyryxxbService.queryList(page, dwid);
 	}
 	
+	@RestfulAnnotation(valiField="", serverId = "3")
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public ModelAndView deleteCyryxxb(Cyryxxb cyryxxb) {
 		ModelAndView mv = new ModelAndView("redirect:/forward/" + AppConst.FORWORD);

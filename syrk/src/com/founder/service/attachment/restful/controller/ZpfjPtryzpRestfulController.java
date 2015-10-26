@@ -181,6 +181,7 @@ public class ZpfjPtryzpRestfulController extends BaseController {
 	 * @return HttpEntity<byte[]>    返回类型
 	 * @throws
 	 */
+	@RestfulAnnotation(valiField="lybm,lyid,ryid", serverId="33")
 	@RequestMapping(value = "/single/small", method = RequestMethod.GET)
 	public @ResponseBody String queryPtryzpsltSingle(ZpfjPtryzpglb entity) {
 //		HttpHeaders headers = new HttpHeaders();

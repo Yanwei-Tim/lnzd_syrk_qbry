@@ -56,6 +56,9 @@ public class CyryxxbDao extends BaseDaoImpl {
 		if (!StringUtils.isBlank(sort)) { // 默认排序
 			map.put("sort", sort);
 			map.put("order", order);
+		} else { // 默认排序
+			map.put("sort", "id");
+			map.put("order", "asc");
 		}
 		page.setTotal((Integer) queryForObject("Cyryxxb.cyryPaginationCount", map));
 		page.setRows(queryForList("Cyryxxb.cyryPagination", map));
