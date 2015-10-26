@@ -39,6 +39,32 @@ public class ZdryQbzdryYwczb extends BaseEntity implements Serializable {
 	@FieldDesc("重点人员当前状态")
 	private String dqzt;
 	
+	@FieldDesc("是否提交过管辖权变更申请")
+	private String sftjbgsq;
+	@FieldDesc("上级是否拒绝过管辖权变更申请")
+	private String sjsfjjbgsq;
+	@FieldDesc("下级提交的退回申请审批是否同意")
+	private String xjspsfty;
+	
+	
+	public String getSftjbgsq() {
+		return sftjbgsq;
+	}
+	public void setSftjbgsq(String sftjbgsq) {
+		this.sftjbgsq = sftjbgsq;
+	}
+	public String getSjsfjjbgsq() {
+		return sjsfjjbgsq;
+	}
+	public void setSjsfjjbgsq(String sjsfjjbgsq) {
+		this.sjsfjjbgsq = sjsfjjbgsq;
+	}
+	public String getXjspsfty() {
+		return xjspsfty;
+	}
+	public void setXjspsfty(String xjspsfty) {
+		this.xjspsfty = xjspsfty;
+	}
 	public String getZdryid() {
 		return zdryid;
 	}

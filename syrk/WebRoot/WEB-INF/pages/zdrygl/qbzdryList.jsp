@@ -78,7 +78,7 @@
 				           	<th  data-options="field:'sftjbgsq',width:120,align:'left',halign:'center',sortable:true,hidden:true">sftjbgsq</th>
 				           	<th  data-options="field:'sjsfjjbgsq',width:120,align:'left',halign:'center',sortable:true,hidden:true">sjsfjjbgsq</th>
 				           	<th  data-options="field:'xjspsfty',width:120,align:'left',halign:'center',sortable:true,hidden:true">xjspsfty</th>
-				           	
+				           	<th  data-options="field:'czlb',width:120,align:'left',halign:'center',sortable:true,hidden:true">czlb</th>
 				           	<th  data-options="field:'gxdw',width:70,align:'left',halign:'center',sortable:true">管辖单位</th>
 				            <th  data-options="field:'process',align:'center',width:100,halign:'center',formatter:datagridProcessFormater">操作</th>
 				        </tr>

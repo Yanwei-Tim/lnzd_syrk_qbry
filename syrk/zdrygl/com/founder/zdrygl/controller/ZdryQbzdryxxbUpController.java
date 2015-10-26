@@ -36,7 +36,7 @@ public class ZdryQbzdryxxbUpController extends BaseController {
 		try {
 			zdryQbzdryxxbUpService.updateQbBg(entity, sessionBean);
 			model.put(AppConst.STATUS, AppConst.SUCCESS);
-			model.put(AppConst.MESSAGES, "【申请管辖权变更】通知成功！");
+			model.put(AppConst.MESSAGES, "【申请管辖权变更】成功！");
 			model.put(AppConst.SAVE_ID, entity.getId()); 
 		} catch (Exception e) {
 			logger.error(e.getLocalizedMessage(), e);
@@ -46,4 +46,24 @@ public class ZdryQbzdryxxbUpController extends BaseController {
 		mv.addObject(AppConst.MESSAGES, new Gson().toJson(model));
 		return mv;
 	}
+	
+	@RequestMapping(value = "/updateCxQb", method = RequestMethod.POST)
+	public ModelAndView updateCxQb(ZdryQbzdryYwczb entity){
+		ModelAndView mv = new ModelAndView("redirect:/forward/"	+ AppConst.FORWORD);
+		Map<String, Object> model = new HashMap<String, Object>();
+		SessionBean sessionBean = getSessionBean();
+		try {
+			zdryQbzdryxxbUpService.updateCxQbBg(entity, sessionBean);
+			model.put(AppConst.STATUS, AppConst.SUCCESS);
+			model.put(AppConst.MESSAGES, "【撤回管辖权变更申请】成功！");
+			model.put(AppConst.SAVE_ID, entity.getId()); 
+		} catch (Exception e) {
+			logger.error(e.getLocalizedMessage(), e);
+			model.put(AppConst.STATUS, AppConst.FAIL);
+			model.put(AppConst.MESSAGES, getUpdateFail());
+		}
+		mv.addObject(AppConst.MESSAGES, new Gson().toJson(model));
+		return mv;
+	}
+	
 }
