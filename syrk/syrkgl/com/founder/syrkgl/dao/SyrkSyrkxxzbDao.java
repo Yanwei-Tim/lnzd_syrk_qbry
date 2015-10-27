@@ -162,7 +162,7 @@ public class SyrkSyrkxxzbDao extends BaseDaoImpl {
 		map.put("order", order);
 		map.put("entity", entity);
 		//修改人 wuchunhui@founder.com，需求变更redmine #2520
-		if(!"".equals(entity.getIsCheck())){
+		if(!StringUtils.isBlank(entity.getIsCheck())){
 			//核实列表数据
 			page.setRows(queryForList("SyrkSyrkxxzb.queryHs", map));
 			page.setTotal((Integer) queryForObject("SyrkSyrkxxzb.queryHsCount", map));
