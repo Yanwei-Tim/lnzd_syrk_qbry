@@ -68,5 +68,10 @@ public interface ZdryQbzdryxxbService {
 
 	public void acceptZdryqbxxyw(ZdryQbzdryYwczb entityyw, Map<String, String> param);
 
+
+
+
+	public boolean querySyrk(Map<String, String> param);
+
 	
 }

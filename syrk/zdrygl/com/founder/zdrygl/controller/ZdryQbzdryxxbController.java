@@ -81,7 +81,7 @@ public class ZdryQbzdryxxbController extends BaseController {
 	 * @Description: 情报重点人员下发
 	 * @param @param zdryid，下发组织部门，下发说明
 	 * @param @return    设定文件
-	 * @return EasyUIPage    返回类型
+	 * @return String    返回类型
 	 * @throws
 	 */
 	@RequestMapping(value = "/deliver", method = RequestMethod.POST)
@@ -138,5 +138,34 @@ public class ZdryQbzdryxxbController extends BaseController {
 		}
 		return SUCCESS;
 	}
+	
+	/**
+	 * 
+	 * @Title: accept
+	 * @Description: 情报重点人员责任民警接收
+	 * @param @param zdryid，shjh情报重点人员id，身份证
+	 * @param @return    设定文件
+	 * @return String    返回类型
+	 * @throws
+	 */
+	@RequestMapping(value = "/accept", method = RequestMethod.POST)
+	public @ResponseBody
+	String accept(String zdryid,String shjh) {
+		String SUCCESS = "0";
+		Map<String, String> param = new HashMap<String, String>();
+		String orgcode = getSessionBean().getUserOrgCode();
+		param.put("shjh", shjh);
+		param.put("zdryid", zdryid);
+		param.put("orgcode", orgcode);
+		//查询实有人口
+		boolean b = zdryQbzdryxxbService.querySyrk(param);
+		if(b){
+			SUCCESS="1";
+		}
+		return SUCCESS;
+		
+		
+	}
+	
 	
 }

@@ -83,4 +83,10 @@ public class ZdryQbzdryxxbServiceImpl implements ZdryQbzdryxxbService {
 		this.ZdryQbzdryxxbDao.saveZdryqbxxyw(entityyw);
 	}
 
+	@Override
+	public boolean querySyrk(Map<String, String> param) {
+		// TODO Auto-generated method stub
+		return this.ZdryQbzdryxxbDao.querySyrk(param);
+	}
+
 }

@@ -166,4 +166,12 @@
 		<include refid="insertXtzdVal"/>)
 	</insert>
 	
+<!-- 	查询实有人口 -->
+		  <select id="querySyrk" parameterClass="Map" resultClass="Integer">
+		    <![CDATA[
+		       SELECT count(1)
+		           FROM SYRK_SYRKXXZB T2 
+		       WHERE T2.XT_ZXBZ = '0' AND T2.ZJHM =#shjh# AND T2.GXZRQDM=#orgcode#]]> 
+			
+		</select>
 </sqlMap>

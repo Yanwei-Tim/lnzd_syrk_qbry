@@ -127,6 +127,17 @@ public class ZdryQbzdryxxbDao extends BaseDaoImpl {
 	}
 
 
+	public boolean querySyrk(Map<String, String> param) {
+		// TODO Auto-generated method stub
+		boolean b = false;
+		int num =(Integer) queryForObject("ZdryQbZdryxxb.querySyrk",param);
+		if(num>0){
+			b=true;
+		}
+		return b;
+	}
+
+
 
 	
 }
