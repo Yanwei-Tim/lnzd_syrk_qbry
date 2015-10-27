@@ -29,7 +29,6 @@ import com.founder.framework.message.bean.SysMessage;
 import com.founder.framework.message.dao.SysMessageDao;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
-import com.founder.syfw.vo.SyfwListVo;
 import com.founder.syrkgl.bean.RyRyjbxxb;
 import com.founder.syrkgl.bean.SyrkSyrkxxzb;
 import com.founder.syrkgl.service.RyRyjbxxbService;
@@ -234,7 +233,7 @@ public class SyrkGlController extends BaseController {
 	 */
 	@RestfulAnnotation(valiField = "syrkywlxdm,jbxx.cyzjdm,jbxx.zjhm,jbxx.xbdm,jbxx.xm,jbxx.csrq", serverId = "3")
 	@RequestMapping(value = { "/save", "/{syrklx}/save" }, method = RequestMethod.POST)
-	public ModelAndView save(SyrkAddVO syrkAddVO, SessionBean sessionBean, String isCheck, String zbid)
+	public ModelAndView save(SyrkAddVO syrkAddVO, SessionBean sessionBean)
 			throws RestException {
 		if (sessionBean != null
 				&& !StringUtils.isBlank(sessionBean.getUserId())) {
@@ -246,9 +245,9 @@ public class SyrkGlController extends BaseController {
 		try {
 			String errorMessage = syrkSyrkxxzbService.isValidSyrkAdd(syrkAddVO, sessionBean);
 			//实有人口核实修改状态
-			if ("check".equals(isCheck)) {
+			if ("check".equals(syrkAddVO.getIsCheck())) {
 				SyrkSyrkxxzb zb = new SyrkSyrkxxzb();
-				zb.setId(zbid);
+				zb.setId(syrkAddVO.getZbid());
 				zb.setHs_status("1");
 				zb.setIsCheck("check");
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
