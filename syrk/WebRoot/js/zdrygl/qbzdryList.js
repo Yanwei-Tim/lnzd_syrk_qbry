@@ -214,7 +214,7 @@ function doCxSq(linkObject, index){
 		$("#deliverd").window("open"); 
 };
 
-//审批申请变更
+//审批退回申请
 function doSpSq(linkObject, index){
 	 var rows = $('#dg').datagrid('getData');
 		var rowData = rows.rows[index];
@@ -222,13 +222,23 @@ function doSpSq(linkObject, index){
 		initopreation(rowData.zdryid);
 		var Str="";
 		Str = Str+"	<table border='0' cellpadding='0' cellspacing='10' width='100%' height='100%' align='center'>";
-		Str = Str+" <tr>"
-		Str = Str+" <th width='20%'>操作意见：</th>";
-		Str = Str+" <td width='30%' class='dialogTd'><input type='text' name='czyj' id ='sq_czyj' style='width:300px;' /></td>";
+		Str = Str+" <tr class='dialogTr'>";
+		Str = Str+" <td width='20%' class='dialogTd' align=\"right\">审批情况：";
+		Str = Str+" </td>";
+		Str = Str+" <td width='25%' class='dialogTd'>";
+		Str = Str+" <input type=\"radio\" id=\"sfty\" name=\"sfty\" value=\"0\" onclick=\"sp_onClick()\" checked=\"checked\">同意";
+		Str = Str+" <input type=\"radio\" id=\"sfty\" name=\"sfty\" value=\"1\" onclick=\"sp_onClick()\">拒绝";
+		Str = Str+" </td>";
+		Str = Str+" <td width=\"55%\" class=\"dialogTd\" align=\"left\" id=\"sp_tr1\" style=\"display:none;\">操作意见：";
+		Str = Str+" <input type='text' name='czyj' id ='sq_czyj' style='width:280px;'/>";
+		Str = Str+" </td>"
+		Str = Str+" <td width=\"55%\" class=\"dialogTd\" align=\"left\" id=\"sp_tr2\">下发部门：";
+		Str = Str+" <input type=\"text\" name=\"orgList\" id=\"orgList\"  class=\"easyui-combobox\" style=\"width:200px;\" data-options=\"url: contextPath + '/orgPublicSelect/queryComboBoxList?parentOrgCode="+parentOrgCode+"',required:true,method:'get',valueField:'id',textField:'text',selectOnNavigation:false,isTopLoad:false\">";
+		Str = Str+" </td>"
 		Str = Str+" </tr>";
-		Str = Str+"	<tr>";
-		Str = Str+"	<td width='100%' colspan='2' align='center'>"
-		Str = Str+"	<a id='doUpdateQbBgBtn' href='javascript:void(0)'  onclick=\"doUpdateQbBg('"+rowData.zdryid+"');\">审批申请变更</a>" 
+		Str = Str+" <tr class='dialogTr'>";
+		Str = Str+"	<td width='100%' colspan='3' align='center'>"
+		Str = Str+"	<a id='' href='javascript:void(0)'  onclick=\"doSpThSq('"+rowData.zdryid+"');\">审批退回申请</a>" 
 		Str = Str+"	</td>";
 		Str = Str+"	</tr>";
 		Str = Str+"	</table>";
@@ -236,6 +246,18 @@ function doSpSq(linkObject, index){
 		$.parser.parse();
 		$("#deliverd").show();
 		$("#deliverd").window("open"); 
+};
+
+
+function sp_onClick(){
+	var redio = $('input[name="sfty"]:checked').val();
+	if(redio=='0'){
+		$("#sp_tr1").hide();
+		$("#sp_tr2").show();
+	}else if(redio=='1'){
+		$("#sp_tr1").show();
+		$("#sp_tr2").hide();
+	}
 };
 
 //查询按钮
