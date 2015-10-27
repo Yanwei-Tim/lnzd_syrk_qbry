@@ -28,7 +28,6 @@ public class ZdryQbzdryxxbUpServiceImpl extends BaseService implements ZdryQbzdr
 	@Resource(name = "orgOrganizationService")
 	private OrgOrganizationService orgOrganizationService;
 	
-	
 	@Override
 	public void updateQbBg(ZdryQbzdryYwczb entity, SessionBean sessionBean) {
 		entity.setId(UUID.create());
@@ -60,7 +59,7 @@ public class ZdryQbzdryxxbUpServiceImpl extends BaseService implements ZdryQbzdr
 		entity.setCzbm(sessionBean.getUserOrgName());
 		entity.setCzr(sessionBean.getUserName());
 		entity.setDqzt("01");//01 待下发、02 已下发、03 申请变更中、04 退回申请中
-		entity.setCzlb("05");//01下发、02、申请变更、03 申请退回、04撤销变更、05撤销退回、06接收、100 其他
+		entity.setCzlb("01");//01下发、02、申请变更、03 申请退回、04撤销变更、05撤销退回、06接收、100 其他
 		entity.setXt_zxbz("0");   
 		entity.setSftjbgsq("1");
 		setUpdateProperties(entity,sessionBean);
