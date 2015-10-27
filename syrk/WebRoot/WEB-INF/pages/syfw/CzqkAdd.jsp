@@ -22,7 +22,7 @@
 			    	</td>
 			    	<td width="20%" class="dialogTd" align="right">证件号码：</td>
 				    	<td width="30%" class="dialogTd"><input class='easyui-validatebox' type='text' id="chzr_zjhm" name='chzr_zjhm' maxlength="30" value="${entity.chzr_zjhm}" style="width:200px;float:left;" 
-		    	        data-options="required:true,charSet:'halfUpper',validType:['sfzh'],tipPosition:'left'"/><div class="lodingimg" id="czryLoading"></div></td>	
+		    	        data-options="required:true,charSet:'halfUpper',tipPosition:'left'"/><div class="lodingimg" id="czryLoading"></div></td>	
 			    		
 		    	</tr>
 		    	 <tr class="dialogTr">
@@ -130,7 +130,10 @@
 </html>
 <script type="text/javascript" >
 $(document).ready(function(){
-    $("#chzr_cyzjdm").combobox("setValue","111");
+	var id = $("#id").val();
+	if(!id){
+		$("#chzr_cyzjdm").combobox("setValue","111");
+	} 
 	$("#chzr_zjhm").bind("blur",function(e){ checkCzryZjhm();});
 	initDepartmentSearch('fwcs-box', {glpcsid: ''}, '', 'chzr_fwcs', {},'');
 
@@ -154,6 +157,7 @@ function czzjdm_onchange(newVal, oldVal) {
  
 //承租人员信息复用  
 function checkCzryZjhm(){
+	
 	if($("#chzr_zjhm").val()=="" ){
 		return ;
 	}
