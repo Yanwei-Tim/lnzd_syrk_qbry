@@ -132,7 +132,7 @@
 $(document).ready(function(){
 	var id = $("#id").val();
 	if(!id){
-		$("#chzr_cyzjdm").combobox("setValue","111");
+		$("#chzr_cyzjdm").combobox("setValue","111") ;
 	} 
 	$("#chzr_zjhm").bind("blur",function(e){ checkCzryZjhm();});
 	initDepartmentSearch('fwcs-box', {glpcsid: ''}, '', 'chzr_fwcs', {},'');
