@@ -74,34 +74,35 @@
 		<!-- 情报重点人员列表数据  -->
 	<select id="queryList" parameterClass="Map" resultClass="zdryQbZdryxxb">
 		     <![CDATA[SELECT * FROM ( SELECT ROWNUM R ,M.* FROM (
-	            select * from (
-		        with a as (
-		        SELECT  t2.*,t1.czbm,t1.dqzt,t1.czlb,t1.czrq,t1.czbmdm FROM ZDRY_QBZDRYXXB T2,zdry_qbzdryywczb t1
-				WHERE 1=1
-				and T2.XT_ZXBZ = '0'
-				and t1.SJSFJJBGSQ!='1'
-				and t1.zdryid(+)=t2.zdryid
-				and t1.czbmdm = #zdryQbZdryxxb.czbmdm#
-				)
-				select * from a t where czrq = (select max(czrq) from a where zdryid = t.zdryid )
-				)T2 ]]>  
+                select * from (
+		        select * from (
+	            with a as (
+	            SELECT  t2.*,t1.czbm,t1.dqzt,t1.czlb,t1.czrq,t1.czbmdm,t1.SJSFJJBGSQ,t1.sftjbgsq,t1.xjspsfty FROM ZDRY_QBZDRYXXB T2,zdry_qbzdryywczb t1
+		        WHERE 1=1
+		        and T2.XT_ZXBZ = '0'  
+		        and t1.zdryid(+)=t2.zdryid
+		        and t1.czbmdm = #zdryQbZdryxxb.czbmdm#
+		        )
+		        select * from a t where czrq = (select max(czrq) from a where zdryid = t.zdryid )
+		        ) where 1=1  and SJSFJJBGSQ!='1'
+		        )T2]]>  
 			  <![CDATA[  ORDER BY T2.$sort$ $order$) M  WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
 	</select>
 	
 	<!--列表总数统计 -->
     <select id="queryListCount" parameterClass="Map" resultClass="Integer">
 		    <![CDATA[
-		        SELECT count(1) from(
-		        with a as (
-		        SELECT  t2.*,t1.czbm,t1.dqzt,t1.czlb,t1.czrq FROM ZDRY_QBZDRYXXB T2,zdry_qbzdryywczb t1
-				WHERE 1=1
-				and T2.XT_ZXBZ = '0'
-				and t1.SJSFJJBGSQ!='1'
-				and t1.zdryid(+)=t2.zdryid
-				and t1.czbm = #zdryQbZdryxxb.czbm#
-				)
-				select * from a t where czrq = (select max(czrq) from a where zdryid = t.zdryid )
-				) ]]> 
+		        select count(*) from (
+	            with a as (
+	            SELECT  t2.*,t1.czbm,t1.dqzt,t1.czlb,t1.czrq,t1.czbmdm,t1.SJSFJJBGSQ,t1.sftjbgsq,t1.xjspsfty FROM ZDRY_QBZDRYXXB T2,zdry_qbzdryywczb t1
+		        WHERE 1=1
+		        and T2.XT_ZXBZ = '0'  
+		        and t1.zdryid(+)=t2.zdryid
+		        and t1.czbmdm = #zdryQbZdryxxb.czbmdm#
+		        )
+		        select * from a t where czrq = (select max(czrq) from a where zdryid = t.zdryid )
+		        ) where 1=1  and SJSFJJBGSQ!='1'
+		        ]]> 
 		</select>
 		<!--根据重点人员id查询操作记录此重点人员的操作记录 -->
 		  <select id="queryOperationCount" parameterClass="Map" resultClass="Integer">

@@ -42,8 +42,26 @@ public class SyrkAddVO {
 	
 	private String gzdwid;
 	
+	//gem 核实
+	private String isCheck;
+	private String zbid;
 	
-	
+	public String getIsCheck() {
+		return isCheck;
+	}
+
+	public void setIsCheck(String isCheck) {
+		this.isCheck = isCheck;
+	}
+
+	public String getZbid() {
+		return zbid;
+	}
+
+	public void setZbid(String zbid) {
+		this.zbid = zbid;
+	}
+
 	public String getGzdw() {
 		return gzdw;
 	}
