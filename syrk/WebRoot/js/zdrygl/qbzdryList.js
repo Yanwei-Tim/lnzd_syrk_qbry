@@ -88,7 +88,7 @@ function datagridProcessFormater(val,row,index){
 		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>';
 		
 	}
-	if(dqzt=="01"&&czlb=="01"){
+	if(dqzt=="01"&&czlb=="05"){
 		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
 	       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">下发</a>&nbsp;'+
 	       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';

@@ -27,7 +27,14 @@ public class ZdryQbzdryxxbUpController extends BaseController {
 	private ZdryQbzdryxxbUpService zdryQbzdryxxbUpService;
 
 	
-	
+	/***
+	 * @Title: updateQb
+	 * @Description: TODO(管辖权变更申请)
+	 * @param @param entity
+	 * @param @return    设定文件
+	 * @return ModelAndView    返回类型
+	 * @throws
+	 */
 	@RequestMapping(value = "/updateQb", method = RequestMethod.POST)
 	public ModelAndView updateQb(ZdryQbzdryYwczb entity){
 		ModelAndView mv = new ModelAndView("redirect:/forward/"	+ AppConst.FORWORD);
@@ -47,6 +54,15 @@ public class ZdryQbzdryxxbUpController extends BaseController {
 		return mv;
 	}
 	
+	/***
+	 * 
+	 * @Title: updateCxQb
+	 * @Description: TODO(撤回管辖权变更申请操作)
+	 * @param @param entity
+	 * @param @return    设定文件
+	 * @return ModelAndView    返回类型
+	 * @throws
+	 */
 	@RequestMapping(value = "/updateCxQb", method = RequestMethod.POST)
 	public ModelAndView updateCxQb(ZdryQbzdryYwczb entity){
 		ModelAndView mv = new ModelAndView("redirect:/forward/"	+ AppConst.FORWORD);
