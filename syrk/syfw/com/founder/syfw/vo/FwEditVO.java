@@ -5,9 +5,30 @@ import com.founder.syfw.bean.Fwjbxxb;
 
 public class FwEditVO {
 	
+	//核实
+	private String isCheck;
+	private String hsid;
+	// end
+	
 	private Fwjbxxb fwjbxxb = new Fwjbxxb();;
 	
+	public String getHsid() {
+		return hsid;
+	}
+
+	public void setHsid(String hsid) {
+		this.hsid = hsid;
+	}
+
 	private Czfwxxb czfwxxb = new Czfwxxb();
+	
+	public String getIsCheck() {
+		return isCheck;
+	}
+
+	public void setIsCheck(String isCheck) {
+		this.isCheck = isCheck;
+	}
 
 	public Fwjbxxb getFwjbxxb() {
 		return fwjbxxb;

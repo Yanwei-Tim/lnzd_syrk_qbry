@@ -19,6 +19,8 @@
 					<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center">
 						<input type="hidden" id="pk" name="fwjbxxb.id" value="${entity.id}" />
 						<input type="hidden" id="zrqdm" name="zrqdm" value="${zrqdm}" />
+						<input type="hidden" name="isCheck" value="check"/>
+						<input type="hidden" name="hsid" value="${hsid}"/>
 						<tr class="dialogTr">
 		    	      		<td width="20%" class="dialogTd" align="right" style="color: #FF0000;font-weight: bold;">房屋基本信息：</td>
 		    	      		<td width="80%" class="dialogTd" colspan="3"></td>

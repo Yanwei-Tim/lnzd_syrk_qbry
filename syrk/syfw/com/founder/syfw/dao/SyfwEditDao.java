@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.founder.framework.base.dao.BaseDaoImpl;
 import com.founder.service.attachment.bean.ZpfjFjxxb;
+import com.founder.sydw.bean.Dwjbxxb;
 import com.founder.syfw.bean.Czfwjcxxb;
 import com.founder.syfw.bean.Czfwxxb;
 import com.founder.syfw.bean.FwCzqkdjxxb;
@@ -33,6 +34,19 @@ public class SyfwEditDao extends BaseDaoImpl{
 		return (SyfwListVo) queryForObject("SyfwQuery.queryFwHsxx", id);
 	}
 
+	//gem
+	/**
+	 * 更新单位表
+	 * 
+	 * @param entity
+	 * @return
+	 */
+	public int updateHs(SyfwListVo entity) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		String id = entity.getHsid();
+		return update("SyfwQuery.deleteHS", entity);
+	}
+	
 	public List<SyfwxxzsVO> queryFwzsxx(Map<String, Object> map) {
 		return queryForList("Syfwglpz.queryZhxxzspz",map);
 	}

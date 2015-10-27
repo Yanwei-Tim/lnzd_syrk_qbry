@@ -8,6 +8,8 @@ import com.founder.framework.annotation.MethodAnnotation.logType;
 import com.founder.framework.annotation.TypeAnnotation;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.service.attachment.bean.ZpfjFjxxb;
+import com.founder.sydw.bean.Dwbmxxb;
+import com.founder.sydw.bean.Dwjbxxb;
 import com.founder.syfw.bean.Czfwjcxxb;
 import com.founder.syfw.bean.Czfwxxb;
 import com.founder.syfw.bean.FwCzqkdjxxb;
@@ -39,6 +41,18 @@ public interface SyfwEditService {
 	
 	//实有房屋核实
 	public SyfwListVo queryFwHsxx(String id);
+	
+	/**
+	 * 
+	 * @Title: updateHs
+	 * @Description: 实有房屋核实修改核实表状态
+	 * @param @param SyfwListVo
+	 * @param @param sessionBean    设定文件
+	 * @return void    返回类型
+	 * @throws
+	 */
+	public int updateHs(SyfwListVo entity);
+
 	
 	
 	/**

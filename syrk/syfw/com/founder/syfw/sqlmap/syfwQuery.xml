@@ -6,9 +6,21 @@
 	<typeAlias alias="fwjbxxb" type="com.founder.syfw.bean.Fwjbxxb" />
 
 	<!-- 注销 -->
+	<update id="deleteHS" parameterClass="syfwquery">
+		<![CDATA[ update SYFW_FWJBXXHS set hs_status= '1']]>
+          	<isNotEmpty prepend="," property="hs_person">
+			     <![CDATA[hs_person = #hs_person#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="hs_sj">
+			     <![CDATA[hs_sj = #hs_sj#]]>
+			</isNotEmpty>
+		<![CDATA[where ID = #id# ]]>
+	</update>
+	
+	<!-- 注销 -->
 	<update id="delete" parameterClass="syfwquery">
 		<![CDATA[ update ]]>
-		 <isEmpty prepend="" property="isCheck">
+        <isEmpty prepend="" property="isCheck">
             SYFW_FWJBXXB set 
          </isEmpty>
          <isNotEmpty prepend="" property="isCheck">

@@ -500,27 +500,9 @@
 	<update id="updateHs" parameterClass="syrkSyrkxxzb">
 		UPDATE SYRK_SYRKXXHSB T 
 		<dynamic prepend="set">
-			<isNotNull prepend="," property="xm"><![CDATA[ xm=#xm#]]></isNotNull>
-			<isNotNull prepend="," property="xbdm"><![CDATA[xbdm =#xbdm#]]></isNotNull>
-			<isNotNull prepend="," property="mzdm"><![CDATA[ mzdm=#mzdm#]]></isNotNull>
-			<isNotNull prepend="," property="csrq"><![CDATA[ csrq = #csrq#]]></isNotNull>
-			<isNotNull prepend="," property="jgssxdm"><![CDATA[jgssxdm = #jgssxdm#]]></isNotNull>
-			<isNotNull prepend="," property="hjd_xzqhdm"><![CDATA[hjd_xzqhdm= #hjd_xzqhdm#]]></isNotNull>
-			<isNotNull prepend="," property="hjd_mlpdm"><![CDATA[ hjd_mlpdm=#hjd_mlpdm#]]></isNotNull>
-			<isNotNull prepend="," property="hjd_mlpxz"><![CDATA[ hjd_mlpxz=#hjd_mlpxz#]]></isNotNull>
-			<isNotNull prepend="," property="hjd_dzid"><![CDATA[hjd_dzid =#hjd_dzid#]]></isNotNull>
-			<isNotNull prepend="," property="hjd_dzxz"><![CDATA[ hjd_dzxz=#hjd_dzxz#]]></isNotNull>
-			<isNotNull prepend="," property="jzd_xzqhdm"><![CDATA[ jzd_xzqhdm = #jzd_xzqhdm#]]></isNotNull>
-			<isNotNull prepend="," property="jzd_mlpdm"><![CDATA[jzd_mlpdm = #jzd_mlpdm#]]></isNotNull>
-			<isNotNull prepend="," property="jzd_mlpxz"><![CDATA[jzd_mlpxz= #jzd_mlpxz#]]></isNotNull>
-			<isNotNull prepend="," property="jzd_dzid"><![CDATA[ jzd_dzid=#jzd_dzid#]]></isNotNull>
-			<isNotNull prepend="," property="jzd_dzxz"><![CDATA[ jzd_dzxz=#jzd_dzxz#]]></isNotNull>
-			<isNotNull prepend="," property="jzd_zbx"><![CDATA[jzd_zbx =#jzd_zbx#]]></isNotNull>
-			<isNotNull prepend="," property="jzd_zby"><![CDATA[ jzd_zby=#jzd_zby#]]></isNotNull>
-			<isNotNull prepend="," property="gxfjdm"><![CDATA[ gxfjdm = #gxfjdm#]]></isNotNull>
-			<isNotNull prepend="," property="gxpcsdm"><![CDATA[gxpcsdm = #gxpcsdm#]]></isNotNull>
-			<isNotNull prepend="," property="gxzrqdm"><![CDATA[gxzrqdm= #gxzrqdm#]]></isNotNull>
 			<isNotNull prepend="," property="hs_status"><![CDATA[hs_status= #hs_status#]]></isNotNull>
+			<isNotNull prepend="," property="hs_sj"><![CDATA[hs_sj= #hs_sj#]]></isNotNull>
+			<isNotNull prepend="," property="hs_person"><![CDATA[hs_person= #hs_person#]]></isNotNull>
 			,
 			<include refid="updateXtzd" />
 		</dynamic>

@@ -2,7 +2,7 @@ $(function(){
 	$('#hs_status').combobox('setValue', '01');
 	//$('#xt_zxbz').combobox('setValue', '0');
 	$('#dg').datagrid({
-         url: contextPath + '/syfw/list?isCheck=check&flag=0&xt_zxbz=0&hs_status=0'
+         url: contextPath + '/syfw/list?isCheck=check&xt_zxbz=0&hs_status=0'
 	 });
 });
 
@@ -125,7 +125,7 @@ function queryButton(){
 	var sfczfw = document.getElementById("sfczfw").value;
 	var hs_status = document.getElementById("hs_status").value;
 	//var xt_zxbz = document.getElementById("xt_zxbz").value;
-	var reloadUrl = contextPath + '/syfw/list?isCheck=check&flag=0';
+	var reloadUrl = contextPath + '/syfw/list?isCheck=check';
 	var opt = $('#dg').datagrid('options');
 	var xt_zxbz = "";
 	if("03" == hs_status){

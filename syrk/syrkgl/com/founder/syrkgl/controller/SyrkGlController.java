@@ -1,5 +1,7 @@
 package com.founder.syrkgl.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +29,7 @@ import com.founder.framework.message.bean.SysMessage;
 import com.founder.framework.message.dao.SysMessageDao;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
+import com.founder.syfw.vo.SyfwListVo;
 import com.founder.syrkgl.bean.RyRyjbxxb;
 import com.founder.syrkgl.bean.SyrkSyrkxxzb;
 import com.founder.syrkgl.service.RyRyjbxxbService;
@@ -248,6 +251,11 @@ public class SyrkGlController extends BaseController {
 				zb.setId(zbid);
 				zb.setHs_status("1");
 				zb.setIsCheck("check");
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+				Calendar cal = Calendar.getInstance();
+				String now = format.format(cal.getTime());
+				zb.setHs_sj(now);
+				zb.setHs_person(sessionBean.getUserName());
 				syrkSyrkxxzbService.update(zb, sessionBean);
 			}
 			if (!StringUtils.isBlank(errorMessage)) {

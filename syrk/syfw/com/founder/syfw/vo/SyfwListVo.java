@@ -11,6 +11,7 @@ public class SyfwListVo extends BaseEntity {
 		private String hs_status;
 		private String hs_person;
 		private String hs_sj;
+		private String hsid;
 		
 		@FieldDesc("FWCQXZZLDM")private String fwcqxzzldm;
 		@FieldDesc("FWJS")private Long fwjs;
@@ -107,6 +108,12 @@ public class SyfwListVo extends BaseEntity {
 	private String bzdzid;
 	private String condition;
 	
+	public String getHsid() {
+		return hsid;
+	}
+	public void setHsid(String hsid) {
+		this.hsid = hsid;
+	}
 	public String getHs_status() {
 		return hs_status;
 	}

@@ -11,8 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.base.service.BaseService;
+import com.founder.framework.utils.StringUtils;
 import com.founder.framework.utils.UUID;
 import com.founder.service.attachment.bean.ZpfjFjxxb;
+import com.founder.sydw.bean.Dwjbxxb;
 import com.founder.syfw.bean.Czfwjcxxb;
 import com.founder.syfw.bean.Czfwxxb;
 import com.founder.syfw.bean.FwCzqkdjxxb;
@@ -49,6 +51,14 @@ public class SyfwEditServiceImpl extends BaseService implements SyfwEditService 
 	public SyfwListVo queryFwHsxx(String id){
 		return syfwEditdao.queryFwHsxx(id);
 	}
+	
+	//gem
+	@Override
+	public int updateHs(SyfwListVo entity) {
+		int first=syfwEditdao.updateHs(entity);
+		return first;
+	}
+	
 	@Override
 	public List<SyfwxxzsVO> queryFwzsxx(Map<String, Object> map) {
 		map.put("xxdxlxdm","1");

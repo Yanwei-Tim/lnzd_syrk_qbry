@@ -1,6 +1,8 @@
 package com.founder.syfw.controller;
 
 import java.lang.reflect.InvocationTargetException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -231,6 +233,22 @@ public class SyfwEditController extends BaseController {
 				}
 
 			}
+			//gem
+			//是有房屋核实状态
+			//实有单位核实修改状态
+			if ("check".equals(vo.getIsCheck())) {
+				SyfwListVo SyfwListVo = new SyfwListVo();
+				SyfwListVo.setId(vo.getHsid());
+				SyfwListVo.setHs_status("1");
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+				Calendar cal = Calendar.getInstance();
+				String now = format.format(cal.getTime());
+				SyfwListVo.setHs_sj(now);
+				SyfwListVo.setHs_person(sessionBean.getUserName());
+				SyfwListVo.setHsid(vo.getHsid());
+				syfwEditService.updateHs(SyfwListVo);
+			}
+			//gem end
 			model.put(AppConst.STATUS, AppConst.SUCCESS);
 			model.put(AppConst.MESSAGES, "新增【实有房屋信息】成功！");
 			model.put(AppConst.SAVE_ID, entity.getId()); // 返回主键
@@ -732,6 +750,7 @@ public class SyfwEditController extends BaseController {
 			SyfwListVo syfw = syfwEditService.queryFwHsxx(id);
 			mv.addObject("entity", syfw);
 			mv.addObject("fwjbxxb", syfw);
+			mv.addObject("hsid", id);
 		}
 		//实有房屋核实end
 		return mv;
