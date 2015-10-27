@@ -122,7 +122,15 @@ public class ZdryQbZdryxxb extends BaseEntity implements Serializable {
 	private String czrq;
 	@FieldDesc("操作部门代码")
 	private String czbmdm;
+	@FieldDesc("是否在实有人口")
+	private String sfsyrk;
 	
+	public String getSfsyrk() {
+		return sfsyrk;
+	}
+	public void setSfsyrk(String sfsyrk) {
+		this.sfsyrk = sfsyrk;
+	}
 	public String getCzbmdm() {
 		return czbmdm;
 	}

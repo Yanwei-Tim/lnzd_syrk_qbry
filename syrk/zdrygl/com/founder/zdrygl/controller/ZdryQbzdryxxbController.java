@@ -48,7 +48,24 @@ public class ZdryQbzdryxxbController extends BaseController {
 		page.setPagePara(rows);
 		sessionBean = getSessionBean(sessionBean);
 		//entity.setGxzrqdm(sessionBean.getUserOrgCode());
-		return this.zdryQbzdryxxbService.queryList(entity, page,sessionBean);
+		EasyUIPage pages= this.zdryQbzdryxxbService.queryList(entity, page,sessionBean);
+		String userType = getSessionBean().getUserOrgLevel();
+		if(userType.equals("50")){
+			List<?> list=pages.getRows();
+			Map<String, String> param = new HashMap<String, String>();
+			boolean b = false;
+			for(int i=0;i<list.size();i++){
+				ZdryQbZdryxxb zdryxxb = (ZdryQbZdryxxb) list.get(i);
+				param.put("shjh", zdryxxb.getSfzh());
+				param.put("orgcode", getSessionBean().getUserOrgCode());
+				b = zdryQbzdryxxbService.querySyrk(param);
+				if(b){
+					zdryxxb.setSfsyrk("0");
+				}
+				
+			}	
+		}
+		return pages;
 		
 	}
 	
@@ -124,7 +141,7 @@ public class ZdryQbzdryxxbController extends BaseController {
 			 entity.setZdryid(zdryid);
 				entity.setGxdwjgdm(orgcode);
 				entity.setGxdw(orgcodetext);
-				entity.setZrqbmdm(noworgcode);
+				entity.setZrqbmdm(orgcode);
 				boolean Updatexx = zdryQbzdryxxbService.Updatexx(entity);
 				if(Updatexx){
 					//本业务下发
@@ -164,13 +181,7 @@ public class ZdryQbzdryxxbController extends BaseController {
 		param.put("xfczyj", "");
 		param.put("noworgcode", orgcode);
 		param.put("orgName", orgName);
-		
-		//查询实有人口
-		boolean b = zdryQbzdryxxbService.querySyrk(param);
-		if(b){
-			this.zdryQbzdryxxbService.saveZdryqbxxyw(entityyw,param);
-			SUCCESS="1";
-		}
+		this.zdryQbzdryxxbService.saveZdryqbxxyw(entityyw,param);
 		return SUCCESS;
 	}
 	
