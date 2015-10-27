@@ -78,35 +78,68 @@ function datagridProcessFormater(val,row,index){
 	var dqzt = rowData.dqzt;
 	var czlb = rowData.czlb;
 	//初始化状态
-	if(dqzt=="01"&&czlb=="100"){
-		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-	       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">下发</a>&nbsp;'+
-	       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';	
-	}
-	//已下发状态
-	if(dqzt=="02"&&czlb=="01"){
-		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>';
-		
-	}
-	if(dqzt=="01"&&czlb=="01"){
-		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-	       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">下发</a>&nbsp;'+
-	       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';
-		
-	}
-	if(dqzt=="04"&&czlb=="03"){
-		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-	       '<a class="link" href="javascript:javascript:void(0)" onclick="doCxSq(this, '+index+')">撤回退回</a>';
-	}
-	if(dqzt=="02"&&czlb=="03"){
-		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-	       '<a class="link" href="javascript:javascript:void(0)" onclick="doSpSq(this, '+index+')">审批退回</a>';
-	}
+	if(orgLevel!="50"){
+		if(dqzt=="01"&&czlb=="100"){
+			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">下发</a>&nbsp;'+
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';	
+		}
+		//已下发状态
+		if(dqzt=="02"&&czlb=="01"){
+			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>';
+			
+		}
+		if(dqzt=="01"&&czlb=="01"){
+			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">下发</a>&nbsp;'+
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';
+			
+		}
+		if(dqzt=="04"&&czlb=="03"){
+			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="doCxSq(this, '+index+')">撤回退回</a>';
+		}
+		if(dqzt=="02"&&czlb=="03"){
+			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="doSpSq(this, '+index+')">审批退回</a>';
+		}
 
-	if((dqzt=="03"&&czlb=="01")||(dqzt=="04"&&czlb=="01")){
-		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-	       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">重新分配管辖区</a>';
+		if((dqzt=="03"&&czlb=="01")||(dqzt=="04"&&czlb=="01")){
+			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">重新分配管辖区</a>';
+		}
+	}else{
+		if(dqzt=="01"&&czlb=="100"){
+			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="accept(this, '+index+')">接收</a>&nbsp;'+
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';	
+		}
+		//已下发状态
+		if(dqzt=="02"&&czlb=="01"){
+			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>';
+			
+		}
+		if(dqzt=="01"&&czlb=="01"){
+			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">下发</a>&nbsp;'+
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';
+			
+		}
+		if(dqzt=="04"&&czlb=="03"){
+			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="doCxSq(this, '+index+')">撤回退回</a>';
+		}
+		if(dqzt=="02"&&czlb=="03"){
+			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="doSpSq(this, '+index+')">审批退回</a>';
+		}
+
+		if((dqzt=="03"&&czlb=="01")||(dqzt=="04"&&czlb=="01")){
+			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">重新分配管辖区</a>';
+		}
 	}
+	
 	
 };
  function deliver(linkObject, index){
@@ -350,4 +383,15 @@ function doView(linkObject, index){
 		$("#deliverd").show();
 		$("#deliverd").window("open"); 
 	   
+}
+//民警重点人员情报接收
+function accept(linkObject, index){
+	var rows = $('#dg').datagrid('getData');
+	var rowData = rows.rows[index];
+	var zdryid = rowData.zdryid;
+	var shjh = rowData.shjh;
+	var params = {zdryid:zdryid,shjh:shjh};
+	var fajax =new FrameTools.Ajax(contextPath+"/zdryQbzdryxxb/accept");
+	fajax.send(params);
+	
 }
