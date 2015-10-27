@@ -121,7 +121,7 @@ function datagridProcessFormater(val,row,index){
 		}
 		if(dqzt=="01"&&czlb=="01"){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-		       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">下发</a>&nbsp;'+
+			'<a class="link" href="javascript:javascript:void(0)" onclick="accept(this, '+index+')">接收</a>&nbsp;'+
 		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';
 			
 		}
@@ -413,7 +413,15 @@ function accept(linkObject, index){
 	var zdryid = rowData.zdryid;
 	var shjh = rowData.shjh;
 	var params = {zdryid:zdryid,shjh:shjh};
-	var fajax =new FrameTools.Ajax(contextPath+"/zdryQbzdryxxb/accept");
+	var fajax =new FrameTools.Ajax(contextPath+"/zdryQbzdryxxb/accept",accept_back);
 	fajax.send(params);
 	
+}
+function accept_back(json){
+	if(json=="0"){
+	       menu_open('实有人口新增', "/forward/message|sysMessage");
+	}else{
+		jQuery.messager.alert('提示:','接收成功！!','info');
+		$('#dg').datagrid('reload');
+	}
 }

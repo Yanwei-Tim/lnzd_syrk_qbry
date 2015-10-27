@@ -150,21 +150,28 @@ public class ZdryQbzdryxxbController extends BaseController {
 	 */
 	@RequestMapping(value = "/accept", method = RequestMethod.POST)
 	public @ResponseBody
-	String accept(String zdryid,String shjh) {
+	String accept(String zdryid,String shjh,ZdryQbzdryYwczb entityyw) {
 		String SUCCESS = "0";
 		Map<String, String> param = new HashMap<String, String>();
 		String orgcode = getSessionBean().getUserOrgCode();
+		String userName = getSessionBean().getUserName();
+		String orgName = getSessionBean().getUserOrgName();
 		param.put("shjh", shjh);
 		param.put("zdryid", zdryid);
 		param.put("orgcode", orgcode);
+		param.put("userName", userName);
+		param.put("zdryid", zdryid);
+		param.put("xfczyj", "");
+		param.put("noworgcode", orgcode);
+		param.put("orgName", orgName);
+		
 		//查询实有人口
 		boolean b = zdryQbzdryxxbService.querySyrk(param);
 		if(b){
+			this.zdryQbzdryxxbService.saveZdryqbxxyw(entityyw,param);
 			SUCCESS="1";
 		}
 		return SUCCESS;
-		
-		
 	}
 	
 	
