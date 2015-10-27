@@ -59,8 +59,14 @@ public class ZdryQbzdryxxbServiceImpl implements ZdryQbzdryxxbService {
 		entityyw.setId(UUID.create());
 		entityyw.setXt_zxbz("0");
 		entityyw.setCzrq(DateUtils.getSystemDateTimeString());
-		entityyw.setCzlb("01");
-		entityyw.setDqzt("02");
+		if(param.get("userType").equals("50")){
+			entityyw.setDqzt("06");
+			entityyw.setCzlb("06");
+		}else{
+			entityyw.setCzlb("01");
+			entityyw.setDqzt("02");
+		}
+		
 		entityyw.setCzbmdm(param.get("noworgcode"));
 		entityyw.setCzr(param.get("userName"));
 		entityyw.setCzbm(param.get("orgName"));
@@ -75,7 +81,11 @@ public class ZdryQbzdryxxbServiceImpl implements ZdryQbzdryxxbService {
 		entityyw.setXt_zxbz("0");
 		entityyw.setCzrq(DateUtils.getSystemDateTimeString());
 		entityyw.setCzlb("100");
-		entityyw.setDqzt("01");
+		if(param.get("userType").equals("32")){
+			entityyw.setDqzt("05");
+		}else{
+			entityyw.setDqzt("01");
+		}
 		entityyw.setCzbmdm(param.get("orgcode"));
 		entityyw.setCzr(param.get("userName"));
 		entityyw.setCzbm(param.get("orgcodetext"));

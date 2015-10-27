@@ -116,6 +116,7 @@ public class ZdryQbzdryxxbController extends BaseController {
 		param.put("noworgcode", noworgcode);
 		param.put("orgName", orgName);
 		param.put("orgcode", orgcode);
+		param.put("userType", userType);
 		System.out.println(userType);
 		//查看本用户是否有操作记录
 	    //int NUM = zdryQbzdryxxbService.queryBenOperation(param);
