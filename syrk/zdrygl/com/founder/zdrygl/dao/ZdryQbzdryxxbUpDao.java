@@ -32,4 +32,8 @@ public class ZdryQbzdryxxbUpDao extends BaseDaoImpl {
 	public void updateDqzt(ZdryQbzdryYwczb entity) {
 		super.update("ZdryQbZdryxxbUp.updateDqzt", entity);
 	}
+	
+	public void updateSj(ZdryQbzdryYwczb entity) {
+		super.update("ZdryQbZdryxxbUp.updateSj", entity);
+	}
 }

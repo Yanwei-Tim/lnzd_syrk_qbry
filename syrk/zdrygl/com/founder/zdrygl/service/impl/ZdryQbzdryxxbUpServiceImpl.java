@@ -75,4 +75,15 @@ public class ZdryQbzdryxxbUpServiceImpl extends BaseService implements ZdryQbzdr
 	}
 	
 	
+	@Override
+	public ZdryQbzdryYwczb queryXjZx(ZdryQbzdryYwczb entity) {
+		return  zdryQbzdryxxbUpDao.query(entity);
+	}
+	
+	@Override
+	public void updateSj(ZdryQbzdryYwczb entity) {
+       zdryQbzdryxxbUpDao.updateSj(entity);
+	}
+	
+	
 }

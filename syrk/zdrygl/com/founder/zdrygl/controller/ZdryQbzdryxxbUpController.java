@@ -9,12 +9,16 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.founder.framework.base.controller.BaseController;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.components.AppConst;
+import com.founder.framework.organization.department.service.OrgOrganizationService;
+import com.founder.zdrygl.bean.ZdryQbZdryxxb;
 import com.founder.zdrygl.bean.ZdryQbzdryYwczb;
+import com.founder.zdrygl.service.ZdryQbzdryxxbService;
 import com.founder.zdrygl.service.ZdryQbzdryxxbUpService;
 import com.google.gson.Gson;
 
@@ -25,7 +29,10 @@ public class ZdryQbzdryxxbUpController extends BaseController {
 	
 	@Resource
 	private ZdryQbzdryxxbUpService zdryQbzdryxxbUpService;
-
+	@Resource
+	private ZdryQbzdryxxbService zdryQbzdryxxbService;
+	@Resource(name = "orgOrganizationService")
+	private OrgOrganizationService orgOrganizationService;	
 	
 	/***
 	 * @Title: updateQb
@@ -80,6 +87,83 @@ public class ZdryQbzdryxxbUpController extends BaseController {
 		}
 		mv.addObject(AppConst.MESSAGES, new Gson().toJson(model));
 		return mv;
+	}
+	
+	/**
+	 * 
+	 * @Title: deliver
+	 * @Description: 情报重点人员重新下发
+	 * @param @param zdryid，下发组织部门，下发说明
+	 * @param @return    设定文件
+	 * @return String    返回类型
+	 * @throws
+	 */
+	@RequestMapping(value = "/agdeliver", method = RequestMethod.POST)
+	public @ResponseBody
+	String deliver(String zdryid,String orgcode,String orgcodetext,String xjbmdm,ZdryQbZdryxxb entity,ZdryQbzdryYwczb entityyw ) {
+		Map<String, String> param = new HashMap<String, String>();
+		String SUCCESS = "0";
+		String userType = getSessionBean().getUserOrgLevel();
+		String noworgcode = getSessionBean().getUserOrgCode();
+		String userName = getSessionBean().getUserName();
+		String orgName = getSessionBean().getUserOrgName();
+		param.put("userName", userName);
+		param.put("zdryid", zdryid);
+//		param.put("xfczyj", xfczyj);
+		param.put("noworgcode", noworgcode);
+		param.put("orgName", orgName);
+		param.put("orgcode", orgcode);
+		param.put("userType", userType);
+		
+		//查看本用户是否有操作记录
+	    //int NUM = zdryQbzdryxxbService.queryBenOperation(param);
+		//不是责任区民警
+		if(!userType.equals("50")){
+			// 查询状态
+		 if(userType.equals("20")){
+			 //当前用户为市局,分县局更新信息表的派出所代码，插入操作
+			entity.setZdryid(zdryid);
+			entity.setGxdwjgdm(orgcode);
+			entity.setGxdw(orgcodetext);
+			//entity.setSjbmdm(noworgcode);
+			entity.setPcsbmdm(orgcode);
+			boolean Updatexx = zdryQbzdryxxbService.Updatexx(entity);
+			if(Updatexx){
+				this.zdryQbzdryxxbService.saveZdryqbxxyw(entityyw,param);
+				this.zdryQbzdryxxbService.acceptZdryqbxxyw(entityyw,param);
+				
+				//修改下级属性<sjsfjjbgsq 上级是否拒绝变更申请字段>为1 1表示下级提交变更申请之后，上级同意并且再次下发
+				entityyw.setCzbmdm(xjbmdm);
+				ZdryQbzdryYwczb entity_s = new ZdryQbzdryYwczb();
+				entity_s = zdryQbzdryxxbUpService.queryXjZx(entityyw);
+				entity_s.setSjsfjjbgsq("1");
+				zdryQbzdryxxbUpService.updateSj(entity_s);
+			}
+		 }
+		 if(userType.equals("32")){
+			 entity.setZdryid(zdryid);
+				entity.setGxdwjgdm(orgcode);
+				entity.setGxdw(orgcodetext);
+				entity.setZrqbmdm(orgcode);
+				boolean Updatexx = zdryQbzdryxxbService.Updatexx(entity);
+				if(Updatexx){
+					//本业务下发
+					this.zdryQbzdryxxbService.saveZdryqbxxyw(entityyw,param);
+					//下级接受
+					this.zdryQbzdryxxbService.acceptZdryqbxxyw(entityyw,param);
+					
+					//修改下级属性<sjsfjjbgsq 上级是否拒绝变更申请字段>为1 1表示下级提交变更申请之后，上级同意并且再次下发
+					entityyw.setCzbmdm(xjbmdm);
+					ZdryQbzdryYwczb entity_s = new ZdryQbzdryYwczb();
+					entity_s = zdryQbzdryxxbUpService.queryXjZx(entityyw);
+					entity_s.setSjsfjjbgsq("1");
+					zdryQbzdryxxbUpService.updateSj(entity_s);
+					
+				}
+		 }
+			
+		}
+		return SUCCESS;
 	}
 	
 }

@@ -51,5 +51,8 @@
 		update zdry_qbzdryywczb set czlb = #czlb#  where id = #id#
 	</update>
 	
+	<update id="updateSj" parameterClass="zdryQbzdryYwczb">
+		update zdry_qbzdryywczb set sjsfjjbgsq = #sjsfjjbgsq#  where id = #id#
+	</update>
 	
 </sqlMap>

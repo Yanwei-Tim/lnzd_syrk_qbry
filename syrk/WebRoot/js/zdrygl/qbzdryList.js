@@ -230,7 +230,7 @@ function doSpSq(linkObject, index){
 		Str = Str+" <input type=\"radio\" id=\"sfty\" name=\"sfty\" value=\"1\" onclick=\"sp_onClick()\">拒绝";
 		Str = Str+" </td>";
 		Str = Str+" <td width=\"55%\" class=\"dialogTd\" align=\"left\" id=\"sp_tr1\" style=\"display:none;\">操作意见：";
-		Str = Str+" <input type='text' name='czyj' id ='sq_czyj' style='width:280px;'/>";
+		Str = Str+" <input type='text' name='sp_czyj' id ='sp_czyj' style='width:280px;'/>";
 		Str = Str+" </td>"
 		Str = Str+" <td width=\"55%\" class=\"dialogTd\" align=\"left\" id=\"sp_tr2\">下发部门：";
 		Str = Str+" <input type=\"text\" name=\"orgList\" id=\"orgList\"  class=\"easyui-combobox\" style=\"width:200px;\" data-options=\"url: contextPath + '/orgPublicSelect/queryComboBoxList?parentOrgCode="+parentOrgCode+"',required:true,method:'get',valueField:'id',textField:'text',selectOnNavigation:false,isTopLoad:false\">";
@@ -238,7 +238,7 @@ function doSpSq(linkObject, index){
 		Str = Str+" </tr>";
 		Str = Str+" <tr class='dialogTr'>";
 		Str = Str+"	<td width='100%' colspan='3' align='center'>"
-		Str = Str+"	<a id='' href='javascript:void(0)'  onclick=\"doSpThSq('"+rowData.zdryid+"');\">审批退回申请</a>" 
+		Str = Str+"	<a id='' href='javascript:void(0)'  onclick=\"doSpThSq('"+rowData.zdryid+"','"+rowData.zrqbmdm+"','"+rowData.pcsbmdm+"','"+rowData.fxjbmdm+"','"+rowData.sjbmdm+"','"+rowData.stbmdm+"');\">审批退回申请</a>" 
 		Str = Str+"	</td>";
 		Str = Str+"	</tr>";
 		Str = Str+"	</table>";
@@ -384,6 +384,38 @@ function doCxSqBg(zdryid) {
 		$('#dg').datagrid('reload');
 		doSubmitResult(result, null, datagrid_ID);
 	});
+}
+
+//审批退回申请
+function doSpThSq(zdryid,zrqbmdm,pcsbmdm,fxjbmdm,sjbmdm,stbmdm){
+var orgListcode =$('#orgList').combobox('getValue');
+var orgtext = $('#orgList').combobox('getText');
+var sp_czyj = $("#sp_czyj").val(); 
+var redio = $('input[name="sfty"]:checked').val();
+if ("undefined" == typeof orgtext || orgtext == null || orgtext=="") {
+	return;
+}
+//orgLevel=32当前级别为派出所、查找下一级责任区
+if(redio=="0"){
+	if(orgLevel=="32"){
+		if(orgListcode==zrqbmdm)
+			{
+				alert("不可指定原来所下发过的地市");
+			}else{
+				alert("你妹的");
+				Ty(zdryid,orgListcode,orgtext,zrqbmdm);
+			}
+	}
+}
+	
+
+function Ty(zdryid,orgListcode,orgtext,xjbmdm){
+	var params = {zdryid:zdryid,orgcode:orgListcode,orgcodetext:orgtext,xjbmdm:xjbmdm};
+	var fajax =new FrameTools.Ajax(contextPath+"/zdryQbzdryxxbUp/agdeliver",closeWindowdeverd);
+	fajax.send(params);
+}
+
+	
 }
 
 //下发操作
