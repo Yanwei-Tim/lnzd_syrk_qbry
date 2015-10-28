@@ -12,7 +12,7 @@ $(function(){
 	//加载人口列表
 	DzBuildingRoom.initRyList();
 	
-	$.ajax({
+	$.ajax({ 
 		type:"POST",
 		url: contextPath+"/syrkGl/querySyrkCount",
 		dataType:"json",
