@@ -5,7 +5,7 @@
 	
 	<typeAlias alias="zdryQbZdryxxb" type="com.founder.zdrygl.bean.ZdryQbZdryxxb" />
 	<typeAlias alias="zdryQbzdryYwczb" type="com.founder.zdrygl.bean.ZdryQbzdryYwczb" />
-
+    <typeAlias alias="zdryZdryzb" type="com.founder.zdrygl.bean.ZdryZdryzb" />
 
 
 	<!-- 制定ID查询单条记录 -->
