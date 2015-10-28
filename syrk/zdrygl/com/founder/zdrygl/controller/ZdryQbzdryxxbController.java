@@ -16,11 +16,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.founder.framework.annotation.RestfulAnnotation;
 import com.founder.framework.base.controller.BaseController;
 import com.founder.framework.base.entity.SessionBean;
+import com.founder.framework.message.bean.SysMessage;
 import com.founder.framework.organization.department.bean.OrgOrganization;
 import com.founder.framework.organization.department.service.OrgOrganizationService;
 import com.founder.framework.utils.EasyUIPage;
+import com.founder.syrkgl.bean.SyrkSyrkxxzb;
 import com.founder.zdrygl.bean.ZdryQbZdryxxb;
 import com.founder.zdrygl.bean.ZdryQbzdryYwczb;
+import com.founder.zdrygl.bean.ZdryZdryzb;
 import com.founder.zdrygl.service.ZdryQbzdryxxbService;
 
 @Controller
@@ -112,6 +115,8 @@ public class ZdryQbzdryxxbController extends BaseController {
 		String noworgcode = getSessionBean().getUserOrgCode();
 		String userName = getSessionBean().getUserName();
 		String orgName = getSessionBean().getUserOrgName();
+		String userid = getSessionBean().getUserId();
+		param.put("userid", userid);
 		param.put("userName", userName);
 		param.put("zdryid", zdryid);
 		param.put("xfczyj", xfczyj);
@@ -136,6 +141,7 @@ public class ZdryQbzdryxxbController extends BaseController {
 			if(Updatexx){
 				this.zdryQbzdryxxbService.saveZdryqbxxyw(entityyw,param);
 				this.zdryQbzdryxxbService.acceptZdryqbxxyw(entityyw,param);
+			
 			}
 			
 			 
@@ -170,12 +176,15 @@ public class ZdryQbzdryxxbController extends BaseController {
 	 */
 	@RequestMapping(value = "/accept", method = RequestMethod.POST)
 	public @ResponseBody
-	String accept(String zdryid,String shjh,ZdryQbzdryYwczb entityyw) {
+	String accept(String zdryid,String shjh,String zdrylb,ZdryQbzdryYwczb entityyw,ZdryZdryzb zdryzdryzb) {
 		String SUCCESS = "0";
 		Map<String, String> param = new HashMap<String, String>();
 		String orgcode = getSessionBean().getUserOrgCode();
 		String userName = getSessionBean().getUserName();
 		String orgName = getSessionBean().getUserOrgName();
+		String userid = getSessionBean().getUserId();
+		param.put("zdrylb", zdrylb);
+		param.put("userid", userid);
 		param.put("shjh", shjh);
 		param.put("zdryid", zdryid);
 		param.put("orgcode", orgcode);
@@ -185,6 +194,11 @@ public class ZdryQbzdryxxbController extends BaseController {
 		param.put("noworgcode", orgcode);
 		param.put("orgName", orgName);
 		this.zdryQbzdryxxbService.saveZdryqbxxyw(entityyw,param);
+		//根据身份证查询实有人口综表的信息
+		SyrkSyrkxxzb syrkSyrkxxb = this.zdryQbzdryxxbService.querySyrkxxzb(param);
+		//插入重点人员信息总表列管
+		this.zdryQbzdryxxbService.InsertZdryzdryzb(syrkSyrkxxb,zdryzdryzb,param);
+		
 		return SUCCESS;
 	}
 	

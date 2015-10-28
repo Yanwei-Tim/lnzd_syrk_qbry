@@ -125,10 +125,16 @@ function datagridProcessFormater(val,row,index){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>';
 			
 		}
-		if(dqzt=="05"&&czlb=="01"){
+		if(dqzt=="05"&&czlb=="01"&&sfsyrk=="0"){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
 			'<a class="link" href="javascript:javascript:void(0)" onclick="accept(this, '+index+')">接收</a>&nbsp;'+
 		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';
+			
+		}
+		if(dqzt=="05"&&czlb=="01"&&sfsyrk=="1"){
+			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="doAdd(this, '+index+')">新增实有人口</a>&nbsp;'+
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';	
 			
 		}
 		if(dqzt=="04"&&czlb=="03"){
@@ -345,7 +351,7 @@ function initopreation(zdryid){
 	          	{field:'czrq',title:'操作时间',width:150,align:'center',halign:'center'},
 				{field:'czr',title:'操作人',width:80,align:'center',halign:'center'},
 				{field:'czbm',title:'操作部门',width:80,align:'center',halign:'center'},      
-				{field:'czlb',title:'操作类型',width:80,align:'center',halign:'center',fixed:true,formatter:dictFormatter,dictName:contextPath+'/common/dict/QB_D_DQZT.js'},
+				{field:'czlb',title:'操作类型',width:80,align:'center',halign:'center',fixed:true,formatter:dictFormatter,dictName:contextPath+'/common/dict/QB_D_CZLB.js'},
 				{field:'czyj',title:'说明',width:80,align:'center',halign:'center'}
 		 ]]
 		
@@ -473,7 +479,8 @@ function accept(linkObject, index){
 	var rowData = rows.rows[index];
 	var zdryid = rowData.zdryid;
 	var shjh = rowData.shjh;
-	var params = {zdryid:zdryid,shjh:shjh};
+	var zdrylb = rowData.zdryxl;
+	var params = {zdryid:zdryid,shjh:shjh,zdlylb:zdrylb};
 	var fajax =new FrameTools.Ajax(contextPath+"/zdryQbzdryxxb/accept",accept_back);
 	fajax.send(params);
 	
@@ -484,6 +491,11 @@ function accept_back(json){
 }
 
 function doAdd(linkObject, index){
-	menu_open('实有人口新增','/syrkGl/add?mainTabID='+getMainTabID()+'&invokeJSMethod=SyrkGl.queryButton');
+	var rows = $('#dg').datagrid('getData');
+	var rowData = rows.rows[index];
+	var sfzh = rowData.sfzh;
+	var csdm = "111";
+	menu_open('实有人口新增','/syrkGl/add?mainTabID='+getMainTabID()+'&cyzjdm='+csdm+'&zjhm='+sfzh+'&invokeJSMethod=queryButton');
+	//menu_open('实有人口新增','/syrkGl/add?mainTabID='+getMainTabID()+'&invokeJSMethod=SyrkGl.queryButton');
 	
 }

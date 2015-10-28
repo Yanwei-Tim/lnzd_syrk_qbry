@@ -14,9 +14,11 @@ import com.founder.framework.organization.department.bean.OrgOrganization;
 import com.founder.framework.organization.department.service.OrgOrganizationService;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
+import com.founder.syrkgl.bean.SyrkSyrkxxzb;
 import com.founder.zdrygl.bean.ZdryQbZdryxxb;
 import com.founder.zdrygl.bean.ZdryQbzdryYwczb;
 import com.founder.zdrygl.bean.ZdryShbzdryxxb;
+import com.founder.zdrygl.bean.ZdryZdryzb;
 @Repository("zdryQbzdryxxbDao")
 public class ZdryQbzdryxxbDao extends BaseDaoImpl {
 	
@@ -135,6 +137,18 @@ public class ZdryQbzdryxxbDao extends BaseDaoImpl {
 			b=true;
 		}
 		return b;
+	}
+
+
+	public SyrkSyrkxxzb querySyrkxxzb(Map<String, String> param) {
+		// TODO Auto-generated method stub
+		return (SyrkSyrkxxzb) queryForObject("ZdryQbZdryxxb.querySyrkxxzb",param);
+	}
+
+
+	public void InsertZdryzdryzb(ZdryZdryzb zdryzdryzb) {
+		// TODO Auto-generated method stub
+		insert("ZdryQbZdryxxb.savezdryzdryzb", zdryzdryzb);
 	}
 
 

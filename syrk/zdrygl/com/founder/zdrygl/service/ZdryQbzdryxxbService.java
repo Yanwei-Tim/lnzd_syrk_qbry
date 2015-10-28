@@ -5,8 +5,10 @@ import java.util.Map;
 import com.founder.framework.annotation.TypeAnnotation;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.utils.EasyUIPage;
+import com.founder.syrkgl.bean.SyrkSyrkxxzb;
 import com.founder.zdrygl.bean.ZdryQbZdryxxb;
 import com.founder.zdrygl.bean.ZdryQbzdryYwczb;
+import com.founder.zdrygl.bean.ZdryZdryzb;
 /***
  * ****************************************************************************
  * @Package:      [com.founder.zdrygl.service.ZdryShbzdryxxbService.java]  
@@ -72,6 +74,16 @@ public interface ZdryQbzdryxxbService {
 
 
 	public boolean querySyrk(Map<String, String> param);
+
+
+
+
+	public SyrkSyrkxxzb querySyrkxxzb(Map<String, String> param);
+
+
+
+
+	public void InsertZdryzdryzb(SyrkSyrkxxzb syrkSyrkxxb, ZdryZdryzb zdryzdryzb, Map<String, String> param);
 
 	
 }

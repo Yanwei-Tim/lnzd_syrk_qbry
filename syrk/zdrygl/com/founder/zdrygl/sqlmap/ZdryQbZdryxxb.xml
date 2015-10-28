@@ -174,4 +174,60 @@
 		       WHERE T2.XT_ZXBZ = '0' AND T2.ZJHM =#shjh# AND T2.GXZRQDM=#orgcode#]]> 
 			
 		</select>
+		<!-- 	查询实有人口列表 -->
+			  <select id="querySyrkxxzb" parameterClass="Map" resultClass="Integer">
+		    <![CDATA[
+		       SELECT *
+		           FROM SYRK_SYRKXXZB T2 
+		       WHERE T2.XT_ZXBZ = '0' AND T2.ZJHM =#shjh# AND T2.GXZRQDM=#orgcode#]]> 
+			
+		</select>
+		
+		<!-- 	新增重点人员总表实行列管-->
+		<!-- 新增 -->
+	<insert id="savezdryzdryzb" parameterClass="zdryZdryzb">
+		<![CDATA[ insert into ZDRY_ZDRYZB (ID]]>		
+		<isNotEmpty prepend="," property="ryid"><![CDATA[ ryid]]></isNotEmpty>
+		<isNotEmpty prepend="," property="zdrylb"><![CDATA[ zdrylb]]></isNotEmpty>
+		<isNotEmpty prepend="," property="syrkid"><![CDATA[ syrkid]]></isNotEmpty>
+		<isNotEmpty prepend="," property="zdrygllxdm"><![CDATA[ zdrygllxdm]]></isNotEmpty>
+		<isNotEmpty prepend="," property="glzt"><![CDATA[ glzt]]></isNotEmpty>
+		<isNotEmpty prepend="," property="zywtjxsbx"><![CDATA[ zywtjxsbx]]></isNotEmpty>
+		<isNotEmpty prepend="," property="zdlgbmid"><![CDATA[ zdlgbmid]]></isNotEmpty>
+		<isNotEmpty prepend="," property="zdlgbmmc"><![CDATA[ zdlgbmmc]]></isNotEmpty>
+		<isNotEmpty prepend="," property="sfjm"><![CDATA[ sfjm]]></isNotEmpty>
+		<isNotEmpty prepend="," property="sfzkdm"><![CDATA[ sfzkdm]]></isNotEmpty>
+		<isNotEmpty prepend="," property="glbm"><![CDATA[ glbm]]></isNotEmpty>
+		<isNotEmpty prepend="," property="cxbm"><![CDATA[ cxbm]]></isNotEmpty>		
+		<isNotEmpty prepend="," property="jgssxdm"><![CDATA[ jgssxdm]]></isNotEmpty>
+		<isNotEmpty prepend="," property="hjd_ssxjgajgdm"><![CDATA[ hjd_ssxjgajgdm]]></isNotEmpty>
+		<isNotEmpty prepend="," property="hjd_sspcsdm"><![CDATA[ hjd_sspcsdm]]></isNotEmpty>
+		<isNotEmpty prepend="," property="hjd_sssq"><![CDATA[ hjd_sssq]]></isNotEmpty>
+		<isNotEmpty prepend="," property="jzd_szdsdm"><![CDATA[ jzd_szdsdm]]></isNotEmpty>
+		<isNotEmpty prepend="," property="gxbm"><![CDATA[ gxbm]]></isNotEmpty>
+		,
+		<include refid="insertXtzd"/>)
+		<![CDATA[ values (#id# ]]>		
+		<isNotEmpty prepend="," property="ryid"><![CDATA[#ryid#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="zdrylb"><![CDATA[#zdrylb#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="syrkid"><![CDATA[#syrkid#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="zdrygllxdm"><![CDATA[#zdrygllxdm#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="glzt"><![CDATA[#glzt#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="zywtjxsbx"><![CDATA[#zywtjxsbx#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="zdlgbmid"><![CDATA[#zdlgbmid#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="zdlgbmmc"><![CDATA[#zdlgbmmc#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="sfjm"><![CDATA[#sfjm#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="sfzkdm"><![CDATA[#sfzkdm#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="glbm"><![CDATA[#glbm#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="cxbm"><![CDATA[#cxbm#]]></isNotEmpty>		
+		<isNotEmpty prepend="," property="jgssxdm"><![CDATA[#jgssxdm#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="hjd_ssxjgajgdm"><![CDATA[#hjd_ssxjgajgdm#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="hjd_sspcsdm"><![CDATA[#hjd_sspcsdm#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="hjd_sssq"><![CDATA[#hjd_sssq#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="jzd_szdsdm"><![CDATA[#jzd_szdsdm#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="gxbm"><![CDATA[#gxbm#]]></isNotEmpty>
+
+		,
+		<include refid="insertXtzdVal"/>)
+	</insert>
 </sqlMap>
