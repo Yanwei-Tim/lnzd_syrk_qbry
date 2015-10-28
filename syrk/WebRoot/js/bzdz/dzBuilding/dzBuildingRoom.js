@@ -11,7 +11,26 @@ if(typeof DzBuildingRoomRoom == "undefined" || !DzBuildingRoom){
 $(function(){
 	//加载人口列表
 	DzBuildingRoom.initRyList();
+	
+	$.ajax({
+		type:"POST",
+		url: contextPath+"/syrkGl/querySyrkCount",
+		dataType:"json",
+		data:{jzd_dzid:chdzid},
+		success:function(data) {
+			if(data==0){
+				$('#roomDetail').tabs("select","单位信息");
+	
+			}
+		}
+	});	
+	
+
+
 });
+
+
+
 /**
  * @title:initRyList
  * @description:加载人口列表
