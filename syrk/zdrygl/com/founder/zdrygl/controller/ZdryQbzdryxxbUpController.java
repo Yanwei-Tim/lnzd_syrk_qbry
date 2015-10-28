@@ -121,12 +121,16 @@ public class ZdryQbzdryxxbUpController extends BaseController {
 		if(!userType.equals("50")){
 			// 查询状态
 		 if(userType.equals("20")){
-			 //当前用户为市局,分县局更新信息表的派出所代码，插入操作
+			 //当前userType为市 则把orgcode存到分县局中
+			entity.setFxjbmdm(orgcode);
+		 }else if(userType.equals("32")){
+			 //当前userType为派出所 则把orgcode存到责任区中
+			entity.setZrqbmdm(orgcode);
+		 }
 			entity.setZdryid(zdryid);
 			entity.setGxdwjgdm(orgcode);
 			entity.setGxdw(orgcodetext);
 			//entity.setSjbmdm(noworgcode);
-			entity.setPcsbmdm(orgcode);
 			boolean Updatexx = zdryQbzdryxxbService.Updatexx(entity);
 			if(Updatexx){
 				this.zdryQbzdryxxbService.saveZdryqbxxyw(entityyw,param);
@@ -140,30 +144,6 @@ public class ZdryQbzdryxxbUpController extends BaseController {
 				entity_s.setSjsfjjbgsq("1");
 				zdryQbzdryxxbUpService.updateSj(entity_s);
 			}
-		 }
-		 if(userType.equals("32")){
-			 entity.setZdryid(zdryid);
-				entity.setGxdwjgdm(orgcode);
-				entity.setGxdw(orgcodetext);
-				entity.setZrqbmdm(orgcode);
-				boolean Updatexx = zdryQbzdryxxbService.Updatexx(entity);
-				if(Updatexx){
-					//本业务下发
-					this.zdryQbzdryxxbService.saveZdryqbxxyw(entityyw,param);
-					//下级接受
-					this.zdryQbzdryxxbService.acceptZdryqbxxyw(entityyw,param);
-					
-					//修改下级属性<sjsfjjbgsq 上级是否拒绝变更申请字段>为1 1表示下级提交变更申请之后，上级同意并且再次下发
-					entityyw.setCzbmdm(xjbmdm);
-					ZdryQbzdryYwczb entity_s = new ZdryQbzdryYwczb();
-					//通过下级czbmdm、zdryid字段查找业务操作表中最新的一条记录并将 sjsfjjbgsq字段修改为1 目的是让原属下级不在有这条重口人员信息
-					entity_s = zdryQbzdryxxbUpService.queryXjZx(entityyw);
-					entity_s.setSjsfjjbgsq("1");
-					zdryQbzdryxxbUpService.updateSj(entity_s);
-					
-				}
-		 }
-			
 		}
 		return SUCCESS;
 	}
