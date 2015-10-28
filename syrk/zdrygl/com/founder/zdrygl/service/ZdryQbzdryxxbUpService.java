@@ -12,6 +12,8 @@ public interface ZdryQbzdryxxbUpService {
 	
 	public void updateCxQbBg(ZdryQbzdryYwczb entity, SessionBean sessionBean);
 	
+	public void updateJjBg(ZdryQbzdryYwczb entity, SessionBean sessionBean);
+	
 	public ZdryQbzdryYwczb queryXjZx(ZdryQbzdryYwczb entity);
 	
 	public void updateSj(ZdryQbzdryYwczb entity);

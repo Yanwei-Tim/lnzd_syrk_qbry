@@ -135,6 +135,7 @@ public class ZdryQbzdryxxbUpController extends BaseController {
 				//修改下级属性<sjsfjjbgsq 上级是否拒绝变更申请字段>为1 1表示下级提交变更申请之后，上级同意并且再次下发
 				entityyw.setCzbmdm(xjbmdm);
 				ZdryQbzdryYwczb entity_s = new ZdryQbzdryYwczb();
+				//通过下级czbmdm、zdryid字段查找业务操作表中最新的一条记录并将 sjsfjjbgsq字段修改为1 目的是让原属下级不在有这条重口人员信息
 				entity_s = zdryQbzdryxxbUpService.queryXjZx(entityyw);
 				entity_s.setSjsfjjbgsq("1");
 				zdryQbzdryxxbUpService.updateSj(entity_s);
@@ -155,6 +156,7 @@ public class ZdryQbzdryxxbUpController extends BaseController {
 					//修改下级属性<sjsfjjbgsq 上级是否拒绝变更申请字段>为1 1表示下级提交变更申请之后，上级同意并且再次下发
 					entityyw.setCzbmdm(xjbmdm);
 					ZdryQbzdryYwczb entity_s = new ZdryQbzdryYwczb();
+					//通过下级czbmdm、zdryid字段查找业务操作表中最新的一条记录并将 sjsfjjbgsq字段修改为1 目的是让原属下级不在有这条重口人员信息
 					entity_s = zdryQbzdryxxbUpService.queryXjZx(entityyw);
 					entity_s.setSjsfjjbgsq("1");
 					zdryQbzdryxxbUpService.updateSj(entity_s);
@@ -164,6 +166,35 @@ public class ZdryQbzdryxxbUpController extends BaseController {
 			
 		}
 		return SUCCESS;
+	}
+	
+	
+	/***
+	 * 上级拒绝变更申请
+	 * @Title: updateCxQb
+	 * @Description: TODO(上级拒绝下级申请退回操作)
+	 * @param @param entity
+	 * @param @return    设定文件
+	 * @return ModelAndView    返回类型
+	 * @throws
+	 */
+	@RequestMapping(value = "/jjbgsq", method = RequestMethod.POST)
+	public ModelAndView jjbgsq(ZdryQbzdryYwczb entity){
+		ModelAndView mv = new ModelAndView("redirect:/forward/"	+ AppConst.FORWORD);
+		Map<String, Object> model = new HashMap<String, Object>();
+		SessionBean sessionBean = getSessionBean();
+		try {
+			zdryQbzdryxxbUpService.updateJjBg(entity, sessionBean);
+			model.put(AppConst.STATUS, AppConst.SUCCESS);
+			model.put(AppConst.MESSAGES, "【拒绝管辖权变更申请】成功！");
+			model.put(AppConst.SAVE_ID, entity.getId()); 
+		} catch (Exception e) {
+			logger.error(e.getLocalizedMessage(), e);
+			model.put(AppConst.STATUS, AppConst.FAIL);
+			model.put(AppConst.MESSAGES, getUpdateFail());
+		}
+		mv.addObject(AppConst.MESSAGES, new Gson().toJson(model));
+		return mv;
 	}
 	
 }
