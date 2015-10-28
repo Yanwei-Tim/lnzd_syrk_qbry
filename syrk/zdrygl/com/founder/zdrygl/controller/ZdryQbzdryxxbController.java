@@ -61,6 +61,8 @@ public class ZdryQbzdryxxbController extends BaseController {
 				b = zdryQbzdryxxbService.querySyrk(param);
 				if(b){
 					zdryxxb.setSfsyrk("0");
+				}else{
+					zdryxxb.setSfsyrk("1");
 				}
 				
 			}	
