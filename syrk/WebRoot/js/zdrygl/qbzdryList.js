@@ -398,31 +398,54 @@ var orgListcode =$('#orgList').combobox('getValue');
 var orgtext = $('#orgList').combobox('getText');
 var sp_czyj = $("#sp_czyj").val(); 
 var redio = $('input[name="sfty"]:checked').val();
-if ("undefined" == typeof orgtext || orgtext == null || orgtext=="") {
-	return;
-}
 //orgLevel=32当前级别为派出所、查找下一级责任区
 if(redio=="0"){
+	if ("undefined" == typeof orgtext || orgtext == null || orgtext=="") {
+		return;
+	}
 	if(orgLevel=="32"){
 		if(orgListcode==zrqbmdm)
 			{
 				alert("不可指定原来所下发过的地市");
 			}else{
-				alert("你妹的");
 				Ty(zdryid,orgListcode,orgtext,zrqbmdm);
 			}
 	}
 }
-	
-
+if(redio=="1"){
+	if(orgLevel=="32"){
+		alert("aaaa");
+		Jj(zdryid,zrqbmdm);
+	}
+}	
+}
 function Ty(zdryid,orgListcode,orgtext,xjbmdm){
 	var params = {zdryid:zdryid,orgcode:orgListcode,orgcodetext:orgtext,xjbmdm:xjbmdm};
 	var fajax =new FrameTools.Ajax(contextPath+"/zdryQbzdryxxbUp/agdeliver",closeWindowdeverd);
 	fajax.send(params);
 }
 
-	
-}
+//拒绝申请变更
+function Jj(zdryid,zrqbmdm) {
+	var doUpdateUrl = contextPath + '/zdryQbzdryxxbUp/jjbgsq';
+	var datagrid_ID = 'dg';
+	var sp_czyj =$("#sp_czyj").val();
+    var data = {
+        "zdryid":zdryid,
+		"czyj":sp_czyj,
+		"czbmdm":zrqbmdm
+	};
+	$.ajax({
+		url: doUpdateUrl,
+		type: 'POST',
+		data: data
+	}).done(function(result) {
+		$("#deliverd").window("close");
+		$('#dg').datagrid('reload');
+		doSubmitResult(result, null, datagrid_ID);
+	});
+}	
+
 
 //下发操作
 function doDeliver(zdryid){

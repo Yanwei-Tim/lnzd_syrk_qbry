@@ -58,8 +58,14 @@ public class ZdryQbzdryxxbUpServiceImpl extends BaseService implements ZdryQbzdr
 		entity.setCzbmdm(sessionBean.getUserOrgCode());
 		entity.setCzbm(sessionBean.getUserOrgName());
 		entity.setCzr(sessionBean.getUserName());
-		entity.setDqzt("01");//01 待下发、02 已下发、03 申请变更中、04 退回申请中
-		entity.setCzlb("01");//01下发、02、申请变更、03 申请退回、04撤销变更、05撤销退回、06接收、100 其他
+		String orgLevel = sessionBean.getUserOrgLevel();
+		if(orgLevel.equals("50")){
+			entity.setDqzt("05");//01 待下发、02 已下发、03 申请变更中、04 退回申请中
+			entity.setCzlb("01");//01下发、02、申请变更、03 申请退回、04撤销变更、05撤销退回、06接收、100 其他
+		}else{
+			entity.setDqzt("01");//01 待下发、02 已下发、03 申请变更中、04 退回申请中
+			entity.setCzlb("01");//01下发、02、申请变更、03 申请退回、04撤销变更、05撤销退回、06接收、100 其他
+		}
 		entity.setXt_zxbz("0");   
 		entity.setSftjbgsq("1");
 		setUpdateProperties(entity,sessionBean);
@@ -77,25 +83,32 @@ public class ZdryQbzdryxxbUpServiceImpl extends BaseService implements ZdryQbzdr
 	//上级拒绝下级管辖权变更申请
 	@Override
 	public void updateJjBg(ZdryQbzdryYwczb entity, SessionBean sessionBean) {
+		ZdryQbzdryYwczb entity_s = new ZdryQbzdryYwczb();
+		entity_s = zdryQbzdryxxbUpDao.query(entity);
+		String orgLevel = sessionBean.getUserOrgLevel();
+		if(orgLevel.equals("32")){ //当前用户如果为派出所 下级责任区只能做接收处理
+			entity_s.setDqzt("05");//01 待下发、02 已下发、03 申请变更中、04 退回申请中
+			entity_s.setCzlb("01");//01下发、02、申请变更、03 申请退回、04撤销变更、05撤销退回、06接收、100 其他
+		}else{
+			entity_s.setDqzt("01");//01 待下发、02 已下发、03 申请变更中、04 退回申请中
+			entity_s.setCzlb("01");//01下发、02、申请变更、03 申请退回、04撤销变更、05撤销退回、06接收、100 其他
+		}
+		entity_s.setSjsfjjbgsq("2");
+		zdryQbzdryxxbUpDao.updateZtLb(entity_s);
+		
 		entity.setId(UUID.create());
 		entity.setCzrq(DateUtils.getSystemDateTimeString());
 		entity.setCzbmdm(sessionBean.getUserOrgCode());
 		entity.setCzbm(sessionBean.getUserOrgName());
 		entity.setCzr(sessionBean.getUserName());
-		entity.setDqzt("01");//01 待下发、02 已下发、03 申请变更中、04 退回申请中
+		entity.setDqzt("02");//01 待下发、02 已下发、03 申请变更中、04 退回申请中
 		entity.setCzlb("01");//01下发、02、申请变更、03 申请退回、04撤销变更、05撤销退回、06接收、100 其他
 		entity.setXt_zxbz("0");   
 		entity.setSftjbgsq("1");
 		setUpdateProperties(entity,sessionBean);
 		zdryQbzdryxxbUpDao.updateQbBg(entity);
-		OrgOrganization org = orgOrganizationService.queryParentOrgByOrgcode(sessionBean.getUserOrgCode());
-		String orgcode = org.getOrgcode();
-		entity.setCzbmdm(orgcode);
-		ZdryQbzdryYwczb entity_s = new ZdryQbzdryYwczb();
-		entity_s = zdryQbzdryxxbUpDao.query(entity);
-		entity_s.setCzlb("01");
 		
-		zdryQbzdryxxbUpDao.updateDqzt(entity_s);
+		
 	}
 	
 	
