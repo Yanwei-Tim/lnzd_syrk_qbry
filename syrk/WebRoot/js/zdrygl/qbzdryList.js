@@ -477,7 +477,7 @@ function accept(linkObject, index){
 	var rows = $('#dg').datagrid('getData');
 	var rowData = rows.rows[index];
 	var zdryid = rowData.zdryid;
-	var shjh = rowData.shjh;
+	var shjh = rowData.sfzh;
 	var zdrylb = rowData.zdryxl;
 	var params = {zdryid:zdryid,shjh:shjh,zdlylb:zdrylb};
 	var fajax =new FrameTools.Ajax(contextPath+"/zdryQbzdryxxb/accept",accept_back);

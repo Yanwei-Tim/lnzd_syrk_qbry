@@ -6,6 +6,7 @@
 	<typeAlias alias="zdryQbZdryxxb" type="com.founder.zdrygl.bean.ZdryQbZdryxxb" />
 	<typeAlias alias="zdryQbzdryYwczb" type="com.founder.zdrygl.bean.ZdryQbzdryYwczb" />
     <typeAlias alias="zdryZdryzb" type="com.founder.zdrygl.bean.ZdryZdryzb" />
+    <typeAlias alias="syrkSyrkxxzb" type="com.founder.syrkgl.bean.SyrkSyrkxxzb" />
 
 
 	<!-- 制定ID查询单条记录 -->
@@ -175,7 +176,7 @@
 			
 		</select>
 		<!-- 	查询实有人口列表 -->
-			  <select id="querySyrkxxzb" parameterClass="Map" resultClass="Integer">
+			  <select id="querySyrkxxzb" parameterClass="Map" resultClass="syrkSyrkxxzb">
 		    <![CDATA[
 		       SELECT *
 		           FROM SYRK_SYRKXXZB T2 

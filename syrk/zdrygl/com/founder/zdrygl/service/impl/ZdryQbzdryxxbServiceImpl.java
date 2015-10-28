@@ -133,7 +133,7 @@ public class ZdryQbzdryxxbServiceImpl implements ZdryQbzdryxxbService {
 		zdryzdryzb.setGlbm(param.get("orgName"));
 		zdryzdryzb.setZdlgbmid(param.get("orgcode"));
 		zdryzdryzb.setZdlgbmmc(param.get("orgName"));
-		zdryzdryzb.setXt_lrrbmid(param.get("userid"));
+		//zdryzdryzb.setXt_lrrbmid(param.get("userid"));
 		zdryzdryzb.setZdrylb(param.get("zdrylb"));
 		zdryzdryzb.setXt_zxbz("0");
 		this.ZdryQbzdryxxbDao.InsertZdryzdryzb(zdryzdryzb);
