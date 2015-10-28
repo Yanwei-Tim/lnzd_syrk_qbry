@@ -420,7 +420,6 @@ if(redio=="0"){
 }
 if(redio=="1"){
 	if(orgLevel=="32"){
-		alert("aaaa");
 		Jj(zdryid,zrqbmdm);
 	}
 }	
@@ -495,7 +494,7 @@ function doAdd(linkObject, index){
 	var rowData = rows.rows[index];
 	var sfzh = rowData.sfzh;
 	var csdm = "111";
-	menu_open('实有人口新增','/syrkGl/add?mainTabID='+getMainTabID()+'&cyzjdm='+csdm+'&zjhm='+sfzh+'&invokeJSMethod=queryButton');
-//	menu_open('实有人口新增','/syrkGl/add?mainTabID='+getMainTabID()+'&invokeJSMethod=SyrkGl.queryButton');
+//	menu_open('实有人口新增','/syrkGl/add?mainTabID='+getMainTabID()+'&cyzjdm='+csdm+'&zjhm='+sfzh+'&invokeJSMethod=queryButton');
+	menu_open('实有人口新增','/syrkGl/add?mainTabID='+getMainTabID()+'&invokeJSMethod=SyrkGl.queryButton');
 	
 }
