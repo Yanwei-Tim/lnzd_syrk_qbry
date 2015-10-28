@@ -11,21 +11,36 @@ if(typeof DzBuildingRoomRoom == "undefined" || !DzBuildingRoom){
 $(function(){
 	//加载人口列表
 	DzBuildingRoom.initRyList();
-	
+	var ry=0;
+	var dw=0;
 	$.ajax({ 
 		type:"POST",
 		url: contextPath+"/syrkGl/querySyrkCount",
 		dataType:"json",
+		async: false ,
 		data:{jzd_dzid:chdzid},
 		success:function(data) {
-			if(data==0){
-				$('#roomDetail').tabs("select","单位信息");
-	
-			}
+				ry=data;
+					
 		}
 	});	
-	
+	$.ajax({ 
+		type:"POST",
+		url: contextPath+"/sydwcx/queryCountDw",
+		dataType:"json",
+		async: false ,
+		data:{dz_dwdzdm:chdzid},
+		success:function(data) {
+			
+			dw=data;
+					
+			
+		}
+	});	
+	if(ry==0 && dw>0){
+		$("#roomDetail").tabs("select","单位信息");
 
+	}
 
 });
 
