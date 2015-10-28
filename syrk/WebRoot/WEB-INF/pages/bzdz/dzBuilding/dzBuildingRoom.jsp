@@ -11,7 +11,7 @@
 	  <script type="text/javascript" src="<%=contextPath%>/js/bzdz/dzBuilding/dzBuildingRoom.js"></script>
 </head>
 <body style="overflow: hidden;">
-	<div class="easyui-tabs" data-options="border:false">
+	<div id="roomDetail" class="easyui-tabs" data-options="border:false">
 	    <div title="人员信息">
 	        <table class="tabid" style='border-collapse: collapse; padding: 0; margin: 0 auto;'>
 				<tr>
@@ -63,7 +63,7 @@
 				</tr>
 			</table>
 		</div>
-		<div title="单位信息" style="height: 535px;">
+		<div title="单位信息" id="dwxx" style="height: 535px;">
           <table id="dg" class="easyui-datagrid" 
            	data-options="url:'<%=basePath %>sydwcx/queryDw?flag=jsq',
 	           		delayCountUrl:'<%=basePath %>sydwcx/queryCountDw?flag=jsq',
