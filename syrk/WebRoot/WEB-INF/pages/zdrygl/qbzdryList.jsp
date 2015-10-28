@@ -80,7 +80,7 @@
 				           	<th  data-options="field:'pcsbmdm',width:120,align:'left',halign:'center',sortable:true,hidden:true">pcsbmdm</th>
 				           	<th  data-options="field:'zrqbmdm',width:120,align:'left',halign:'center',sortable:true,hidden:true">zrqbmdm</th>
 				           	<th  data-options="field:'gxdw',width:70,align:'left',halign:'center',sortable:true">管辖单位</th>
-				            <th  data-options="field:'process',align:'center',width:100,halign:'center',formatter:datagridProcessFormater">操作</th>
+				            <th  data-options="field:'process',align:'center',width:200,halign:'center',formatter:datagridProcessFormater">操作</th>
 				        </tr>
 			       </thead>
 	       </table>

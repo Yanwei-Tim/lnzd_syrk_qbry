@@ -77,6 +77,7 @@ function datagridProcessFormater(val,row,index){
 	var rowData = rows.rows[index];
 	var dqzt = rowData.dqzt;
 	var czlb = rowData.czlb;
+	var sfsyrk = rowData.sfsyrk;
 	//初始化状态
 	if(orgLevel!="50"){
 		if(dqzt=="01"&&czlb=="100"){
@@ -109,17 +110,22 @@ function datagridProcessFormater(val,row,index){
 		       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">重新分配管辖区</a>';
 		}
 	}else{
-		if(dqzt=="01"&&czlb=="100"){
+		if(dqzt=="05"&&czlb=="100"&&sfsyrk=="0"){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-		       '<a class="link" href="javascript:javascript:void(0)" onclick="accept(this, '+index+')">接收</a>&nbsp;'+
+			'<a class="link" href="javascript:javascript:void(0)" onclick="accept(this, '+index+')">接收</a>&nbsp;'+
 		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';	
 		}
-		//已下发状态
-		if(dqzt=="02"&&czlb=="01"){
+		if(dqzt=="05"&&czlb=="100"&&sfsyrk=="1"){
+			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="doAdd(this, '+index+')">新增实有人口</a>&nbsp;'+
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';	
+		}
+		//已接收状态
+		if(dqzt=="06"&&czlb=="06"){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>';
 			
 		}
-		if(dqzt=="01"&&czlb=="01"){
+		if(dqzt=="05"&&czlb=="01"){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
 			'<a class="link" href="javascript:javascript:void(0)" onclick="accept(this, '+index+')">接收</a>&nbsp;'+
 		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';
@@ -450,10 +456,11 @@ function accept(linkObject, index){
 	
 }
 function accept_back(json){
-	if(json=="0"){
-	       menu_open('实有人口新增', "/forward/message|sysMessage");
-	}else{
-		jQuery.messager.alert('提示:','接收成功！!','info');
-		$('#dg').datagrid('reload');
-	}
+	jQuery.messager.alert('提示:','接收成功！!','info');
+	$('#dg').datagrid('reload');
+}
+
+function doAdd(linkObject, index){
+	menu_open('实有人口新增','/syrkGl/add?mainTabID='+getMainTabID()+'&invokeJSMethod=SyrkGl.queryButton');
+	
 }
