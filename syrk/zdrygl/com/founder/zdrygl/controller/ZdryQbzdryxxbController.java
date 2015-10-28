@@ -183,6 +183,8 @@ public class ZdryQbzdryxxbController extends BaseController {
 		String userName = getSessionBean().getUserName();
 		String orgName = getSessionBean().getUserOrgName();
 		String userid = getSessionBean().getUserId();
+		String userType = getSessionBean().getUserOrgLevel();
+		param.put("userType", userType);
 		param.put("zdrylb", zdrylb);
 		param.put("userid", userid);
 		param.put("shjh", shjh);
