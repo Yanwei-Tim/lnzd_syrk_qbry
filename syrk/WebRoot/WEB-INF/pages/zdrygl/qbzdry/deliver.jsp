@@ -66,9 +66,8 @@
 							<th align="right" width="20%">当前级别：</th>
 						<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="gxdw" id="gxdw" style="width:200px;" readonly="readonly" /></td>
 							<th align="right" width="20%">当前状态：</th>
-							<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="yxx" id="yxx" style="width:200px;" readonly="readonly" /></td>
+							<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="dqzt" id="dqzt" style="width:200px;" readonly="readonly" /></td>
 						</tr>
-						
 						<tr>
 							<th align="right" width="20%">立案单位：</th>
 							<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="ladwdm" id="ladwdm" style="width:200px;" readonly="readonly" /></td>

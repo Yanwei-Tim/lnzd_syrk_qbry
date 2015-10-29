@@ -80,7 +80,7 @@ function datagridProcessFormater(val,row,index){
 	var sfsyrk = rowData.sfsyrk;
 	//初始化状态
 	if(orgLevel!="50"){
-		if(dqzt=="01"&&czlb=="100"){
+		if((dqzt=="01"&&czlb=="100") || (dqzt=="01"&&czlb=="05")){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
 		       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">下发</a>&nbsp;'+
 		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';	
@@ -90,32 +90,32 @@ function datagridProcessFormater(val,row,index){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>';
 			
 		}
-		if(dqzt=="01"&&czlb=="01"){
-			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-		       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">下发</a>&nbsp;'+
-		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';
-			
-		}
+//		if(dqzt=="01"&&czlb=="05"){
+//			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+//		       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">下发</a>&nbsp;'+
+//		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';
+//			
+//		}
 		if(dqzt=="04"&&czlb=="03"){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-		       '<a class="link" href="javascript:javascript:void(0)" onclick="doCxSq(this, '+index+')">撤回退回</a>';
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="doCxSq(this, '+index+')">撤回申请</a>';
 		}
 		if(dqzt=="02"&&czlb=="03"){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
 		       '<a class="link" href="javascript:javascript:void(0)" onclick="doSpSq(this, '+index+')">审批退回</a>';
 		}
 
-		if((dqzt=="03"&&czlb=="01")||(dqzt=="04"&&czlb=="01")){
-			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-		       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">重新分配管辖区</a>';
-		}
+//		if((dqzt=="03"&&czlb=="01")||(dqzt=="04"&&czlb=="01")){
+//			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+//		       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">重新分配管辖区</a>';
+//		}
 	}else{
-		if(dqzt=="05"&&czlb=="100"&&sfsyrk=="0"){
+		if((dqzt=="05"&&czlb=="100"&&sfsyrk=="0")||(dqzt=="05"&&czlb=="05"&&sfsyrk=="0")){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
 			'<a class="link" href="javascript:javascript:void(0)" onclick="accept(this, '+index+')">接收</a>&nbsp;'+
 		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';	
 		}
-		if(dqzt=="05"&&czlb=="100"&&sfsyrk=="1"){
+		if((dqzt=="05"&&czlb=="100"&&sfsyrk=="1")||(dqzt=="05"&&czlb=="05"&&sfsyrk=="1")){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
 		       '<a class="link" href="javascript:javascript:void(0)" onclick="doAdd(this, '+index+')">新增实有人口</a>&nbsp;'+
 		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';	
@@ -125,31 +125,28 @@ function datagridProcessFormater(val,row,index){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>';
 			
 		}
-		if(dqzt=="05"&&czlb=="01"&&sfsyrk=="0"){
-			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-			'<a class="link" href="javascript:javascript:void(0)" onclick="accept(this, '+index+')">接收</a>&nbsp;'+
-		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';
-			
-		}
-		if(dqzt=="05"&&czlb=="01"&&sfsyrk=="1"){
-			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-		       '<a class="link" href="javascript:javascript:void(0)" onclick="doAdd(this, '+index+')">新增实有人口</a>&nbsp;'+
-		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';	
-			
-		}
+//		if(dqzt=="05"&&czlb=="05"&&sfsyrk=="0"){
+//			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+//			'<a class="link" href="javascript:javascript:void(0)" onclick="accept(this, '+index+')">接收</a>&nbsp;'+
+//		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';
+//			
+//		}
+//		if(dqzt=="05"&&czlb=="05"&&sfsyrk=="1"){
+//			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+//		       '<a class="link" href="javascript:javascript:void(0)" onclick="doAdd(this, '+index+')">新增实有人口</a>&nbsp;'+
+//		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';	
+//			
+//		}
 		if(dqzt=="04"&&czlb=="03"){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-		       '<a class="link" href="javascript:javascript:void(0)" onclick="doCxSq(this, '+index+')">撤回退回</a>';
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="doCxSq(this, '+index+')">撤回申请</a>';
 		}
 		if(dqzt=="02"&&czlb=="03"){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
 		       '<a class="link" href="javascript:javascript:void(0)" onclick="doSpSq(this, '+index+')">审批退回</a>';
 		}
 
-		if((dqzt=="03"&&czlb=="01")||(dqzt=="04"&&czlb=="01")){
-			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-		       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">重新分配管辖区</a>';
-		}
+		
 	}
 	
 	
@@ -164,8 +161,8 @@ function datagridProcessFormater(val,row,index){
 		Str = Str+" <tr>"
 		Str = Str+" <th align='right' width='20%'>下发部门：</th>";
 		Str = Str+" <td width='30%' class='dialogTd'><input type=\"text\" name=\"orgList\" id=\"orgList\"  class=\"easyui-combobox\" style=\"width:200px;\" data-options=\"url: contextPath + '/orgPublicSelect/queryComboBoxList?parentOrgCode="+parentOrgCode+"',required:true,method:'get',valueField:'id',textField:'text',selectOnNavigation:false,isTopLoad:false\"></td>";
-		Str = Str+" <th align='right' width='20%'>操作意见：</th>";
-		Str = Str+" <td width='30%' class='dialogTd'><input type='text' name='xf_czyj' id ='xf_czyj'style='width:300px;' /></td>";
+		Str = Str+" <td align='right' width='20%'>操作意见：</td>";
+		Str = Str+" <td width='30%' class='dialogTd' align='left'><input type='text' name='xf_czyj' id ='xf_czyj' class=\"easyui-validatebox\" data-options=\"required:true\"style='width:280px;' /></td>";
 		Str = Str+" </tr>";
 		Str = Str+"	<tr>";
 		Str = Str+"	<td width='100%' colspan='2' align='right'>"
@@ -188,12 +185,12 @@ function datagridProcessFormater(val,row,index){
 		var Str="";
 		Str = Str+"	<table border='0' cellpadding='0' cellspacing='10' width='100%' height='100%' align='center'>";
 		Str = Str+" <tr>"
-		Str = Str+" <th width='20%'>操作意见：</th>";
-		Str = Str+" <td width='30%' class='dialogTd'><input type='text' name='czyj' id ='sq_czyj' style='width:300px;' /></td>";
+		Str = Str+" <td width='20%' align='right'>操作意见：</td>";
+		Str = Str+" <td width='30%' class='dialogTd' align='left'><input type='text' name='czyj' id ='sq_czyj' class=\"easyui-validatebox\" data-options=\"required:true\"style='width:300px;' /></td>";
 		Str = Str+" </tr>";
 		Str = Str+"	<tr>";
 		Str = Str+"	<td width='100%' colspan='2' align='center'>"
-		Str = Str+"	<a id='doUpdateQbBgBtn' href='javascript:void(0)'  onclick=\"doUpdateQbBg('"+rowData.zdryid+"');\">申请退回</a>" 
+		Str = Str+"	<a id='doUpdateQbBgBtn' href='javascript:void(0)'  onclick=\"doUpdateQbBg('"+rowData.zdryid+"','"+rowData.sjsfjjbgsq+"');\">申请退回</a>" 
 		Str = Str+"	</td>";
 		Str = Str+"	</tr>";
 		Str = Str+"	</table>";
@@ -211,8 +208,8 @@ function doCxSq(linkObject, index){
 		var Str="";
 		Str = Str+"	<table border='0' cellpadding='0' cellspacing='10' width='100%' height='100%' align='center'>";
 		Str = Str+" <tr>"
-		Str = Str+" <th width='20%'>操作意见：</th>";
-		Str = Str+" <td width='30%' class='dialogTd'><input type='text' name='czyj' id ='sq_czyj' style='width:300px;' /></td>";
+		Str = Str+" <td width='20%' align='right'>操作意见：</td>";
+		Str = Str+" <td width='30%' class='dialogTd' align='left'><input type='text' name='czyj' id ='sq_czyj' class=\"easyui-validatebox\" data-options=\"required:true\"style='width:300px;' /></td>";
 		Str = Str+" </tr>";
 		Str = Str+"	<tr>";
 		Str = Str+"	<td width='100%' colspan='2' align='center'>"
@@ -242,7 +239,7 @@ function doSpSq(linkObject, index){
 		Str = Str+" <input type=\"radio\" id=\"sfty\" name=\"sfty\" value=\"1\" onclick=\"sp_onClick()\">拒绝";
 		Str = Str+" </td>";
 		Str = Str+" <td width=\"55%\" class=\"dialogTd\" align=\"left\" id=\"sp_tr1\" style=\"display:none;\">操作意见：";
-		Str = Str+" <input type='text' name='sp_czyj' id ='sp_czyj' style='width:280px;'/>";
+		Str = Str+" <input type='text' name='sp_czyj' id ='sp_czyj' class=\"easyui-validatebox\" data-options=\"required:true\"style='width:280px;' /></td>";
 		Str = Str+" </td>"
 		Str = Str+" <td width=\"55%\" class=\"dialogTd\" align=\"left\" id=\"sp_tr2\">下发部门：";
 		Str = Str+" <input type=\"text\" name=\"orgList\" id=\"orgList\"  class=\"easyui-combobox\" style=\"width:200px;\" data-options=\"url: contextPath + '/orgPublicSelect/queryComboBoxList?parentOrgCode="+parentOrgCode+"',required:true,method:'get',valueField:'id',textField:'text',selectOnNavigation:false,isTopLoad:false\">";
@@ -317,7 +314,12 @@ function ZdryxxAndOp_back(){
 function insertZdry(data){
 	$("#xm").val(data.xm) ;
 	$("#wwxm ").val(data.wwxm) ;
-	$("#xb").val(data.xb) ;
+	if(data.xb == "1"){
+		$("#xb").val("男") ;
+	}else{
+		$("#xb").val("女") ;
+	}
+	
 	$("#csrq").val(data.csrq) ;
 	$("#gj").val(data.gj) ;
 	if(data.sfzh !=null&&data.sfzh!=""){
@@ -333,7 +335,7 @@ function insertZdry(data){
 	$("#ladwjgdm").val(data.ladwjgdm) ;
 	$("#zjlasj").val(data.zjlasj) ;
 	$("#zdryxl").val(data.zdryxl) ;
-	$("#yxx").val(data.yxx) ;
+	$("#dqzt").val(data.dqzt) ;
 }
 //初始化操作列表
 function initopreation(zdryid){
@@ -359,10 +361,16 @@ function initopreation(zdryid){
 }
 
 //申请变更
-function doUpdateQbBg(zdryid) {
+function doUpdateQbBg(zdryid,sjsfjjbgsq) {
+	if(sjsfjjbgsq=="2"){
+		alert("上级已经拒绝过一次变更申请,不可再次申请！");
+	}else{
+	var sq_czyj =$("#sq_czyj").val();
+	if(sq_czyj==""||sq_czyj==null){
+		alert("操作意见不能为空！");
+	}else{
 	var doUpdateUrl = contextPath + '/zdryQbzdryxxbUp/updateQb';
 	var datagrid_ID = 'dg';
-	var sq_czyj =$("#sq_czyj").val();
     var data = {
         "zdryid":zdryid,
 		"czyj":sq_czyj
@@ -376,6 +384,8 @@ function doUpdateQbBg(zdryid) {
 		$('#dg').datagrid('reload');
 		doSubmitResult(result, null, datagrid_ID);
 	});
+	}
+	}
 }
 
 //撤销申请变更
@@ -383,6 +393,9 @@ function doCxSqBg(zdryid) {
 	var doUpdateUrl = contextPath + '/zdryQbzdryxxbUp/updateCxQb';
 	var datagrid_ID = 'dg';
 	var sq_czyj =$("#sq_czyj").val();
+	if(sq_czyj==""||sq_czyj==null){
+		alert("操作意见不能为空！");
+	}else{
     var data = {
         "zdryid":zdryid,
 		"czyj":sq_czyj
@@ -396,6 +409,7 @@ function doCxSqBg(zdryid) {
 		$('#dg').datagrid('reload');
 		doSubmitResult(result, null, datagrid_ID);
 	});
+	}
 }
 
 //审批退回申请
