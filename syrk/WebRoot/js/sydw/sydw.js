@@ -355,6 +355,7 @@ function addMarker(title,zbx,zby,imgName,msgHtml,mouseFun,imgWidth,imgHeight,ifC
 	 if(title=="" || title==null){
 		 title="坐标定位";
 	 }
+	 
 	var marker = SydwMap.map.initMarker(title,zbx,zby,imgName,null,null,imgWidth,imgHeight);
 	marker.addListener("click", function(){
 		//if(type=="zdrk"){
@@ -407,19 +408,20 @@ function queryDwByDzDm(marker,dz_dwdzdm){
 			var msgHtml="<div style='width:490px;' cellpadding='0' cellspacing='10'  align='right'>";
 				msgHtml+='<div id="'+idVaule+'"  >';
 			for(var i=0;i<len;i++){
-				var lb = window.top.getDictName(contextPath + '/common/dict/D_DW_DWLB.js', json[i].dwlbdm);
-			msgHtml+='<div title="'+json[i].dwmc+'['+lb+']"   style="overflow:false;padding:10px;height:auto"> '
-			msgHtml+="<table style='width:100%' ><tr><td>";
-			msgHtml+="<table   border='0'  cellpadding='0' cellspacing='10'  align='center' >";
-			msgHtml+="<tr><td style='width:90px'>实有单位名称:</td><td>"+json[i].dwmc+"</td></tr>" ;
-			msgHtml+="<tr><td>单位类别:</td><td>"+lb+"</td></tr>" ;
-			msgHtml+="<tr><td>联系电话:</td><td>"+json[i].lxdh+"</td></tr>" ;
-			msgHtml+="<tr><td>单位地址:</td><td>"+json[i].dz_dwdzxz+"</td></tr>" ;
-			msgHtml+="<tr><td></td><td></td></tr>" ;
-			msgHtml+="</table>" ;
-			console.log(contextPath+"/zpfjFjxxb/queryZpByLyid.jpg?id="+json[i].id);
-			msgHtml+="</td><td><img   width='140px' height='110' src='"+contextPath+"/zpfjFjxxb/queryZpByLyid.jpg?id="+json[i].id+"' /></td>";
-			msgHtml+="</tr></table></div>";
+				var lb = window.top.getDictName(contextPath + '/common/dict/BD_D_DWLXDM.js', json[i].dwlbdm);
+				
+				msgHtml+='<div title="'+json[i].dwmc+'['+lb+']"   style="overflow:false;padding:10px;height:auto"> '
+				msgHtml+="<table style='width:100%' ><tr><td>";
+				msgHtml+="<table   border='0'  cellpadding='0' cellspacing='10'  align='center' >";
+				msgHtml+="<tr><td style='width:90px'>实有单位名称:</td><td>"+json[i].dwmc+"</td></tr>" ;
+				msgHtml+="<tr><td>单位类别:</td><td>"+lb+"</td></tr>" ;
+				msgHtml+="<tr><td>联系电话:</td><td>"+json[i].lxdh+"</td></tr>" ;
+				msgHtml+="<tr><td>单位地址:</td><td>"+json[i].dz_dwdzxz+"</td></tr>" ;
+				msgHtml+="<tr><td></td><td></td></tr>" ;
+				msgHtml+="</table>" ;
+				console.log(contextPath+"/zpfjFjxxb/queryZpByLyid.jpg?id="+json[i].id);
+				msgHtml+="</td><td><img   width='140px' height='110' src='"+contextPath+"/zpfjFjxxb/queryZpByLyid.jpg?id="+json[i].id+"' /></td>";
+				msgHtml+="</tr></table></div>";
 			}
 				//msgHtml+="</div><a href='javascript:void(0);' style='height:25px;margin-top:5px;'  onclick='openCh("+dz_dwdzdm+")'  >层户结构</a></div>"	;
 			marker.openInfoWindowHtml(msgHtml);
