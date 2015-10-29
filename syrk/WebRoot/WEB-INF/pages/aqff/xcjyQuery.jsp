@@ -41,7 +41,7 @@
 					        	<th data-options="field:'xcjyxs',width:15,align:'center',sortable:true,halign:'center'
 					        					 ,formatter:dictFormatter
 					        					 ,dictName:contextPath+'/common/dict/D_AQFF_XCJYXS.js'">宣传教育形式</th>
-					        	<th data-options="field:'trjf',width:15,align:'center',sortable:true,halign:'center'">投入经费</th>
+					        	<th data-options="field:'trjf',width:15,align:'center',sortable:true,halign:'center',formatter:jfFormatter">投入经费</th>
 					        	<th data-options="field:'jyqzrs',width:15,align:'center',sortable:true,halign:'center'">教育群众人数</th>
 					        	<th data-options="field:'jydwsl',width:15,align:'center',sortable:true,halign:'center'">教育单位数量</th>
 					        	<th data-options="field:'dz',width:25,align:'center',sortable:true,halign:'center'">地址</th>
@@ -209,6 +209,17 @@
 	</body>
 	<script type="text/javascript">
 		var zzjgdmPd = "<%=userOrgCode%>";
+		
+		function jfFormatter(value,row,index){
+			
+			if(value == null || "" == value){
+				return "0.00";
+			}else{
+				return value.toFixed(2);
+			}
+			
+		}
+		
 	</script>
 	<script type="text/javascript" src="<%=contextPath%>/js/aqff/xcjy.js"></script> 
 </html>
