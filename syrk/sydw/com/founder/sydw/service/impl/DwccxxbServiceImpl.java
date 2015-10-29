@@ -42,6 +42,7 @@ public class DwccxxbServiceImpl extends BaseService implements DwccxxbService {
 				ryjbxx.setXm(entity.getCcfzr());
 				ryjbxx.setZjhm(entity.getCcfzrzjhm());
 				ryjbxx.setCyzjdm(entity.getCcfzrcyzjdm());
+				ryjbxx.setSyrkbz("0");
 				setSaveProperties(ryjbxx,sessionBean);
 				ryRyjbxxbDao.save(ryjbxx,null);
 			}
