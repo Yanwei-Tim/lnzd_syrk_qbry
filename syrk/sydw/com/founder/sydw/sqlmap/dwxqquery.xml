@@ -85,14 +85,9 @@
 	 <![CDATA[ where id = #id#]]>
 	</update>
 	
-	<update id ="updateXqById" parameterClass="Map">
-		<![CDATA[ update dw_xqjbxxb ]]>
-			<dynamic prepend="set">
-				<include refid="updateXtzd" /> 
-				,xt_zxbz = #dwxqxxb.xt_zxbz#
-				,xt_zxyy = #dwxqxxb.xt_zxyy#
-			</dynamic>
-			<![CDATA[ where id = #dwxqxxb.id#]]>
+		<update id ="delete" parameterClass="dwxqxxb">
+				<![CDATA[ update DW_XQJBXXB set ]]><include refid="deleteXtzd"/><![CDATA[ where ID = #id# ]]>	
+
 	</update>
 	
 </sqlMap>

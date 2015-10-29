@@ -70,8 +70,6 @@ public class DwXqjbxxbDao extends BaseDaoImpl{
 	}
 	
 	public int dwxqzx(Dwxqxxb entity) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("dwxqxxb", entity);
-		return update("dwxqquery.updateXqById", map);
+		return update("dwxqquery.delete", entity);
 	}
 }

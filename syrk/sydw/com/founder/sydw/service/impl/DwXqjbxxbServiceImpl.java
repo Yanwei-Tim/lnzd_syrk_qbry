@@ -54,8 +54,11 @@ public class DwXqjbxxbServiceImpl extends BaseService implements
 	
 	@Override
 	public int dwxqzx(Dwxqxxb entity, SessionBean sessionBean) {
-		BaseService.setUpdateProperties(entity, sessionBean);
-		int first=dwXqjbxxbDao.dwxqzx(entity);
+		Dwxqxxb xq=dwXqjbxxbDao.queryEntityById(entity.getId());
+		xq.setXt_zxbz("1");
+		xq.setXt_zxyy(entity.getXt_zxyy());
+		BaseService.setCrossoutProperties(xq, sessionBean);
+		int first=dwXqjbxxbDao.dwxqzx(xq);
 		return first;
 	}
 	
