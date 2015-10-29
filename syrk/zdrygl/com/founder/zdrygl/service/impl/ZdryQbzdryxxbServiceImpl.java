@@ -134,7 +134,8 @@ public class ZdryQbzdryxxbServiceImpl implements ZdryQbzdryxxbService {
 		zdryzdryzb.setZdlgbmid(param.get("orgcode"));
 		zdryzdryzb.setZdlgbmmc(param.get("orgName"));
 		//zdryzdryzb.setXt_lrrbmid(param.get("userid"));
-		zdryzdryzb.setZdrylb(param.get("zdrylb"));
+		//要求写情报重点人员的被别501
+		zdryzdryzb.setZdrylb("501");
 		zdryzdryzb.setXt_zxbz("0");
 		this.ZdryQbzdryxxbDao.InsertZdryzdryzb(zdryzdryzb);
 		
