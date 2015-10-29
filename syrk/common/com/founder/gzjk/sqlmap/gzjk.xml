@@ -1308,7 +1308,7 @@
 		  from ZDRY_ZDRYZB 
 		 where xt_zhxgsj like '$currentDay$%'
 		   and (glbm=#dwdm# or substr(glbm,1,8)||'0000'= #dwdm# or substr(glbm,1,6)||'000000'=#dwdm#
-		    or  substr(glbm,1,4)||'00000000'=#dwdm#)
+		    or substr(glbm,1,4)||'00000000'=#dwdm#)
 		 ]]>
 	</select>
 	
