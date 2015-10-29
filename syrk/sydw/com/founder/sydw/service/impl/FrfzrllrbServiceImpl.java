@@ -302,7 +302,7 @@ public class FrfzrllrbServiceImpl  extends BaseService implements FrfzrllrbServi
 	public String saveRyjbxxb(Frfzrllrb entity, SessionBean sessionBean) {
 		String ryid = "";
 		if (StringUtils.isBlank(entity.getRyid())) {
-			String xt_lrrxm = "法人/负责人/联络员新增";
+			String xt_lrrxm =  "法人/负责人/联络员新增";
 			ryid = UUID.create();
 
 			// 写入人员基本信息
