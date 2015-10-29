@@ -72,6 +72,20 @@ function mapPoint(mapWindow) {
 //	ZdryManage.map._MapApp.centerAndZoom(point, 19);
 //};
 
+//搜索功能
+function searchMain(){
+	var condition = document.getElementById("condition").value;
+	if(condition=="请输入重点人员证件号码、姓名信息"){
+		condition="";
+	}
+	var reloadUrl = contextPath + '/zdryQbzdryxxb/list';
+	var opt = $('#dg').datagrid('options');
+	opt.url = reloadUrl;
+	condition= $.trim(condition);
+	$('#dg').datagrid('load',{condition:condition});
+	$('#dg').datagrid("clearSelections");
+}
+
 function datagridProcessFormater(val,row,index){
 	var rows = $('#dg').datagrid('getData');
 	var rowData = rows.rows[index];

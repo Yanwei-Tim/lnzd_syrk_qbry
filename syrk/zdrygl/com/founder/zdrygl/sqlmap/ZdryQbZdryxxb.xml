@@ -85,8 +85,13 @@
 		        and t1.czbmdm = #zdryQbZdryxxb.czbmdm#
 		        )
 		        select * from a t where czrq = (select max(czrq) from a where zdryid = t.zdryid )
-		        ) where 1=1  and SJSFJJBGSQ!='1'
-		        )T2]]>  
+		        ) 
+		        where 1=1  and SJSFJJBGSQ!='1'
+		        ]]> 
+		        <isNotEmpty prepend="and" property="zdryQbZdryxxb.condition">
+		        	sfzh || xm  like '%$zdryQbZdryxxb.condition$%'
+				</isNotEmpty>
+		        )T2 
 			  <![CDATA[  ORDER BY T2.$sort$ $order$) M  WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
 	</select>
 	
@@ -104,6 +109,10 @@
 		        select * from a t where czrq = (select max(czrq) from a where zdryid = t.zdryid )
 		        ) where 1=1  and SJSFJJBGSQ!='1'
 		        ]]> 
+		        <isNotEmpty prepend="and" property="zdryQbZdryxxb.condition">
+		        	sfzh || xm  like '%$zdryQbZdryxxb.condition$%'
+				</isNotEmpty>
+		        
 		</select>
 		<!--根据重点人员id查询操作记录此重点人员的操作记录 -->
 		  <select id="queryOperationCount" parameterClass="Map" resultClass="Integer">

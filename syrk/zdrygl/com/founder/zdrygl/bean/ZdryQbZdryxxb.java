@@ -124,7 +124,14 @@ public class ZdryQbZdryxxb extends BaseEntity implements Serializable {
 	private String czbmdm;
 	@FieldDesc("是否在实有人口")
 	private String sfsyrk;
+	private String condition;
 	
+	public String getCondition() {
+		return condition;
+	}
+	public void setCondition(String condition) {
+		this.condition = condition;
+	}
 	public String getSfsyrk() {
 		return sfsyrk;
 	}
