@@ -485,8 +485,12 @@ function accept(linkObject, index){
 	
 }
 function accept_back(json){
-	jQuery.messager.alert('提示:','接收成功！!','info');
-	$('#dg').datagrid('reload');
+	if(json == "0"){
+		jQuery.messager.alert('提示:','接收成功！!','info');
+		$('#dg').datagrid('reload');
+	} else if(json == "1"){
+		jQuery.messager.alert('提示:','接收失败, 该重点人员信息已被接收！!','error');
+	}
 }
 
 function doAdd(linkObject, index){
