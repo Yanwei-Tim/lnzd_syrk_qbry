@@ -309,6 +309,7 @@ public class FrfzrllrbServiceImpl  extends BaseService implements FrfzrllrbServi
 			RyRyjbxxb ryjbxx = new RyRyjbxxb();
 			BaseService.setSaveProperties(ryjbxx, sessionBean);
 			ryjbxx.setId(ryid);
+			ryjbxx.setSyrkbz("0");
 			ryjbxx.setCyzjdm(entity.getCyzjdm());
 			ryjbxx.setZjhm(entity.getZjhm());
 			ryjbxx.setXm(entity.getXm());
