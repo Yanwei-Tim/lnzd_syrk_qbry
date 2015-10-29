@@ -1307,8 +1307,8 @@
        nvl(sum(case when glzt='4' then 1 else 0 end),0) zx
 		  from ZDRY_ZDRYZB 
 		 where xt_zhxgsj like '$currentDay$%'
-		   and (sszrqdm=#dwdm# or substr(sszrqdm,1,8)||'0000'= #dwdm# or substr(sszrqdm,1,6)||'000000'=#dwdm#
-		    or  substr(sszrqdm,1,4)||'00000000'=#dwdm#)
+		   and (glbm=#dwdm# or substr(glbm,1,8)||'0000'= #dwdm# or substr(glbm,1,6)||'000000'=#dwdm#
+		    or  substr(glbm,1,4)||'00000000'=#dwdm#)
 		 ]]>
 	</select>
 	
