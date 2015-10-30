@@ -108,7 +108,7 @@ $(function(){
 	var date = dates.getDate();
 	var month = dates.getMonth()+1;
 	if(month<10){
-		month='0'+month;
+		month='0'+month; 
 	}
 	var rishuchu = year+'-'+month+'-'+date;
 	$("#tbsj").val(rishuchu);
