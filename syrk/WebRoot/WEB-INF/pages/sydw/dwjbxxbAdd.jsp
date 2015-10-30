@@ -303,8 +303,8 @@
 					    	    </td>
 					    	    <td width="16%" class="dialogTd" align="right">周期性营业规律：</td>
 					    	    <td width="18%" class="dialogTd">
-					    	    	<input id="dwjbxxb_zqxyygl"    name="dwjbxxb.zqxyygl" class="easyui-validatebox" style="width:130px;"
-									data-options="validType:['maxLength[500]'],invalidMessage:'周期性营业规律不能超过500个汉字，请重新输入！',tipPosition:'left'">${dwjbxxb.zqxyygl}</input>
+					    	    	<input id="dwjbxxb_zqxyygl"    name="dwjbxxb.zqxyygl" class="easyui-validatebox" style="width:130px;" value="${dwjbxxb.zqxyygl}"
+									data-options="validType:['maxLength[500]'],invalidMessage:'周期性营业规律不能超过500个汉字，请重新输入！',tipPosition:'left'"/>
 								</td>
 								<td width="15%" class="dialogTd" align="right">停业日期：</td>
 					    	    <td width="20%" class="dialogTd">
