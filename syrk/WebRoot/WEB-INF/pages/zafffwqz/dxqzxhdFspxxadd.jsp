@@ -71,7 +71,7 @@
 			<tr class="dialogTr">
 				<td width="15%" class="dialogTd" align="right">联系方式：</td>
 				<td width="35%" class="dialogTd"><input  type="text" id="lxfs" name="lxfs" class="easyui-validatebox" style="width:200px;"
-				 maxlength="50" value="${entity.lxfs}"  data-options="required:false,validType:'maxLength[20]'" /></td>
+				 maxlength="50" value="${entity.lxfs}"  data-options="required:false,validType:'phone'" /></td>
 			</tr>
 			<tr class="dialogTr">
     		<td width="15%" class="dialogTd" align="right">活动主要内容：</td>
