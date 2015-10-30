@@ -119,13 +119,13 @@
 										<td width="20%" class="dialogTd" align="right">转交人：</td>
 										<td width="30%" class="dialogTd">
 												<input type="text" name="yjr" id="yjr" class="easyui-validatebox" value="${entity.yjr}"  style="width:200px"  maxlength="60"
-														data-options="required:false,validType:'maxLength[50]'"/></td>
+														data-options="required:false,validType:'maxLength[20]'"/></td>
 								</tr>
 								<tr class="dialogTr">
 										<td width="20%" class="dialogTd" align="right">接受人：</td>
 										<td width="30%" class="dialogTd">
 												<input type="text" name="jsr" id="jsr" class="easyui-validatebox" value="${entity.jsr}"  style="width:200px"  maxlength="60"
-														data-options="required:false,validType:'maxLength[50]'"/></td>	
+														data-options="required:false,validType:'maxLength[20]'"/></td>	
 								</tr>
 								<tr class="dialogTr">
 										<td width="20%" class="dialogTd" align="right">备注：</td>
