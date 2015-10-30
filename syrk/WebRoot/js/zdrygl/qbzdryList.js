@@ -274,22 +274,32 @@ function sp_onClick(){
 
 //查询按钮
 function queryButton(){
-	
-	var xm =$("#xm").val();
-	var zjhm =$("#sfzh").val();
-	var xzdxz =$("#xzdxz").val();
+	var zdryxl = $("#qb_zdryxl").combobox("getValue");
+	var xm = document.getElementById("qb_xm").value;
+	var sfzh = document.getElementById("qb_sfzh").value;
+	var xb = document.getElementById("qb_xbdm").value;
+	var xzdxz = document.getElementById("qb_xzdxz").value;	
+	xm= $.trim(xm);
+	sfzh= $.trim(sfzh);
+	xzdxz= $.trim(xzdxz);
+	var reloadUrl = contextPath + '/zdryQbzdryxxb/list';
+	var opt = $('#dg').datagrid('options');
+	opt.url = reloadUrl;
 	$('#dg').datagrid(
 			'load',
 			{    
+				'zdryxl': zdryxl,
 				'xm': xm,   
-				'sfzh': zjhm ,
+				'sfzh': sfzh ,
+				'xb': xb,
 				'xzdxz':xzdxz
 			});
+	closeWindow();
 }
 
 //重置按钮
 function resetButton(){
-	$("#queryForm").form("reset");
+	$("#query_Qb_Form").form("reset");
 }
 
 function setDzqc(obj){
@@ -317,12 +327,7 @@ function ZdryxxAndOp_back(){
 function insertZdry(data){
 	$("#xm").val(data.xm) ;
 	$("#wwxm ").val(data.wwxm) ;
-	if(data.xb == "1"){
-		$("#xb").val("男") ;
-	}else{
-		$("#xb").val("女") ;
-	}
-	
+	$("#xb").val(window.top.getDictName(contextPath+'/common/dict/D_BZ_XB.js',data.xb));
 	$("#csrq").val(data.csrq) ;
 	$("#gj").val(data.gj) ;
 	if(data.sfzh !=null&&data.sfzh!=""){
@@ -338,7 +343,7 @@ function insertZdry(data){
 	$("#ladwjgdm").val(data.ladwjgdm) ;
 	$("#zjlasj").val(data.zjlasj) ;
 	$("#zdryxl").val(data.zdryxl) ;
-	$("#dqzt").val(data.dqzt) ;
+	$("#dqzt").val(window.top.getDictName(contextPath+'/common/dict/QB_D_DQZT.js',data.dqzt)) ;
 }
 //初始化操作列表
 function initopreation(zdryid){
@@ -474,17 +479,33 @@ function doDeliver(zdryid){
 var orgListcode =$('#orgList').combobox('getValue');
 var orgtext = $('#orgList').combobox('getText');
 var xf_czyj = $("#xf_czyj").val();
+if ("undefined" == typeof orgtext || orgtext == null || orgtext=="") {
+	alert("请选择所要下发的单位！");
+}else if(xf_czyj =="" || xf_czyj == null){
+	alert("操作意见不能为空！");
+}
+else{
 var params = {zdryid:zdryid,xfczyj:xf_czyj,orgcode:orgListcode,orgcodetext:orgtext};
 var fajax =new FrameTools.Ajax(contextPath+"/zdryQbzdryxxb/deliver",closeWindowdeverd);
 fajax.send(params);
-	
+}	
 }
 //查看
 function doView(linkObject, index){
 	   var rows = $('#dg').datagrid('getData');
 		var rowData = rows.rows[index];
 		insertZdry(rowData);
-		initopreation(rowData.zdryid);	
+		initopreation(rowData.zdryid);
+		var Str="";
+		Str = Str+"	<table border='0' cellpadding='0' cellspacing='10' width='100%' height='100%' align='center'>";
+		Str = Str+" <tr class='dialogTr'>";
+		Str = Str+"	<td width='100%' align='center'>"
+		Str = Str+"	<a class='easyui-linkbutton' href='javascript:void(0)'  onclick=\"closeWindowdeverd();\">关闭</a>" 
+		Str = Str+"	</td>";
+		Str = Str+"	</tr>";
+		Str = Str+"	</table>";
+		$("#operation").html(Str);
+		$.parser.parse();
 		$("#deliverd").show();
 		$("#deliverd").window("open"); 
 		$("#deliverd").panel({

@@ -114,31 +114,31 @@
 		        height:260,
 		        left:50">   
 	          <div data-options="region:'left'">  
-		        <form id ="queryForm" >
+		        <form id ="query_Qb_Form" >
 			        <table border="0" cellpadding="0" cellspacing="10" width="100%" height="100%" align="center">
 				       <tr class="dialogTr">
 					    	<td width="30%" class="dialogTd" align="right">重点人员类型：</td>
 					    	<td width="70%" class="dialogTd">
-								<input class="easyui-combobox" type="text" id="zdrygllxdm" name="zdrygllxdm" style="width:150px;"
+								<input class="easyui-combobox" type="text" id="qb_zdryxl" name="qb_zdryxl" style="width:150px;"
 								data-options="url: contextPath +'/zdryzb/queryZdryTopLbList',valueField:'lbdm',textField:'bz',selectOnNavigation:false,method:'get'"/>
 								</td>
 					   	</tr>	
 				        <tr class="dialogTr">
 					    	<td width="30%" class="dialogTd" align="right">姓名：</td>
-					    	<td width="70%" class="dialogTd"><input type="text" name="xm" id ="xm" class="easyui-validatebox" data-options="required:false,validType:'maxLength[20]'"  style="width:150px;" /></td>
+					    	<td width="70%" class="dialogTd"><input type="text" name="qb_xm" id ="qb_xm" class="easyui-validatebox" data-options="required:false,validType:'maxLength[20]'"  style="width:150px;" /></td>
 					    </tr>
 					    <tr class="dialogTr">
 					    	<td width="30%" class="dialogTd" align="right">身份证号码：</td>
-					    	<td width="70%" class="dialogTd"><input type="text" id="sfzh" name="sfzh" class="easyui-validatebox" data-options="required:false,validType:'maxLength[30]'"  style="width:150px;" /></td>
+					    	<td width="70%" class="dialogTd"><input type="text" id="qb_sfzh" name="qb_sfzh" class="easyui-validatebox" data-options="required:false,validType:'maxLength[30]'"  style="width:150px;" /></td>
 					    </tr>	
 					    <tr class="dialogTr">
 					    	<td width="30%" class="dialogTd" align="right">性别：</td>
-					    	<td width="70%" class="dialogTd"><input class="easyui-combobox" type="text" id="xbdm" name="xbdm" style="width:150px;"
+					    	<td width="70%" class="dialogTd"><input class="easyui-combobox" type="text" id="qb_xbdm" name="qb_xbdm" style="width:150px;"
 								data-options="url: contextPath + '/common/dict/GB_D_XBDM.js',valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/></td>
 					    </tr>	  
 					    <tr class="dialogTr">
 					    	<td width="30%" class="dialogTd" align="right">居住地址：</td>
-					    	<td width="70%" class="dialogTd"><input type="text" name="dz_jzdzxz" id ="dz_jzdzxz" class="easyui-validatebox" data-options="required:false,validType:'maxLength[30]'"  style="width:150px;" /></td>
+					    	<td width="70%" class="dialogTd"><input type="text" name="qb_xzdxz" id ="qb_xzdxz" class="easyui-validatebox" data-options="required:false,validType:'maxLength[30]'"  style="width:150px;" /></td>
 					    </tr>	
 					    <tr class="dialogTr" style="padding-bottom:0px;margin-bottom:0px;">
 					    	<td width="100%" colspan="2" align="right">

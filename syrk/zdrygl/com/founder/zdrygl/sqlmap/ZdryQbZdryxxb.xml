@@ -91,6 +91,21 @@
 		        <isNotEmpty prepend="and" property="zdryQbZdryxxb.condition">
 		        	sfzh || xm  like '%$zdryQbZdryxxb.condition$%'
 				</isNotEmpty>
+				<isNotEmpty prepend="and" property="zdryQbZdryxxb.zdryxl">
+		       	    zdryxl = #zdryQbZdryxxb.zdryxl#
+		        </isNotEmpty>
+		        <isNotEmpty prepend="and" property="zdryQbZdryxxb.xm">
+		        	xm like '%$zdryQbZdryxxb.xm$%'
+		        </isNotEmpty>
+		        <isNotEmpty prepend="and" property="zdryQbZdryxxb.sfzh">
+		        	sfzh = #zdryQbZdryxxb.sfzh#
+		      	</isNotEmpty>
+		        <isNotEmpty prepend="and" property="zdryQbZdryxxb.xb">
+		       	    xb = #zdryQbZdryxxb.xb#
+		      	</isNotEmpty>
+		      	<isNotEmpty prepend="and" property="zdryQbZdryxxb.xzdxz">
+		        	xzdxz like '%$zdryQbZdryxxb.xzdxz$%'
+				</isNotEmpty>
 		        )T2 
 			  <![CDATA[  ORDER BY T2.$sort$ $order$) M  WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
 	</select>
@@ -112,7 +127,21 @@
 		        <isNotEmpty prepend="and" property="zdryQbZdryxxb.condition">
 		        	sfzh || xm  like '%$zdryQbZdryxxb.condition$%'
 				</isNotEmpty>
-		        
+		        <isNotEmpty prepend="and" property="zdryQbZdryxxb.zdryxl">
+		       	    zdryxl = #zdryQbZdryxxb.zdryxl#
+		        </isNotEmpty>
+		        <isNotEmpty prepend="and" property="zdryQbZdryxxb.xm">
+		        	xm like '%$zdryQbZdryxxb.xm$%'
+		        </isNotEmpty>
+		        <isNotEmpty prepend="and" property="zdryQbZdryxxb.sfzh">
+		        	sfzh = #zdryQbZdryxxb.sfzh#
+		      	</isNotEmpty>
+		        <isNotEmpty prepend="and" property="zdryQbZdryxxb.xb">
+		       	    xb = #zdryQbZdryxxb.xb#
+		      	</isNotEmpty>
+		      	<isNotEmpty prepend="and" property="zdryQbZdryxxb.xzdxz">
+		        	xzdxz like '%$zdryQbZdryxxb.xzdxz$%'
+				</isNotEmpty>
 		</select>
 		<!--根据重点人员id查询操作记录此重点人员的操作记录 -->
 		  <select id="queryOperationCount" parameterClass="Map" resultClass="Integer">
