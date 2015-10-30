@@ -86,7 +86,7 @@ function searchMain(){
 	$('#dg').datagrid("clearSelections");
 }
 
-function datagridProcessFormater(val,row,index){
+function datagridProcessQbFormater(val,row,index){
 	var rows = $('#dg').datagrid('getData');
 	var rowData = rows.rows[index];
 	var dqzt = rowData.dqzt;
@@ -104,12 +104,6 @@ function datagridProcessFormater(val,row,index){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>';
 			
 		}
-//		if(dqzt=="01"&&czlb=="05"){
-//			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-//		       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">下发</a>&nbsp;'+
-//		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';
-//			
-//		}
 		if(dqzt=="04"&&czlb=="03"){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
 		       '<a class="link" href="javascript:javascript:void(0)" onclick="doCxSq(this, '+index+')">撤回申请</a>';
@@ -119,10 +113,6 @@ function datagridProcessFormater(val,row,index){
 		       '<a class="link" href="javascript:javascript:void(0)" onclick="doSpSq(this, '+index+')">审批退回</a>';
 		}
 
-//		if((dqzt=="03"&&czlb=="01")||(dqzt=="04"&&czlb=="01")){
-//			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-//		       '<a class="link" href="javascript:javascript:void(0)" onclick="deliver(this, '+index+')">重新分配管辖区</a>';
-//		}
 	}else{
 		if((dqzt=="05"&&czlb=="100"&&sfsyrk=="0")||(dqzt=="05"&&czlb=="05"&&sfsyrk=="0")){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
@@ -139,18 +129,6 @@ function datagridProcessFormater(val,row,index){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>';
 			
 		}
-//		if(dqzt=="05"&&czlb=="05"&&sfsyrk=="0"){
-//			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-//			'<a class="link" href="javascript:javascript:void(0)" onclick="accept(this, '+index+')">接收</a>&nbsp;'+
-//		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';
-//			
-//		}
-//		if(dqzt=="05"&&czlb=="05"&&sfsyrk=="1"){
-//			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-//		       '<a class="link" href="javascript:javascript:void(0)" onclick="doAdd(this, '+index+')">新增实有人口</a>&nbsp;'+
-//		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';	
-//			
-//		}
 		if(dqzt=="04"&&czlb=="03"){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
 		       '<a class="link" href="javascript:javascript:void(0)" onclick="doCxSq(this, '+index+')">撤回申请</a>';
@@ -188,7 +166,9 @@ function datagridProcessFormater(val,row,index){
 	    $.parser.parse();
 		$("#deliverd").show();
 		$("#deliverd").window("open"); 
-	   
+		$("#deliverd").panel({
+			title:"情报下发"
+			});
  }
  //申请退回
  function doUpdateQb(linkObject, index){
@@ -204,7 +184,7 @@ function datagridProcessFormater(val,row,index){
 		Str = Str+" </tr>";
 		Str = Str+"	<tr>";
 		Str = Str+"	<td width='100%' colspan='2' align='center'>"
-		Str = Str+"	<a id='doUpdateQbBgBtn' href='javascript:void(0)'  onclick=\"doUpdateQbBg('"+rowData.zdryid+"','"+rowData.sjsfjjbgsq+"');\">申请退回</a>" 
+		Str = Str+"	<a class='easyui-linkbutton' href='javascript:void(0)'  onclick=\"doUpdateQbBg('"+rowData.zdryid+"','"+rowData.sjsfjjbgsq+"');\">申请退回</a>" 
 		Str = Str+"	</td>";
 		Str = Str+"	</tr>";
 		Str = Str+"	</table>";
@@ -212,6 +192,9 @@ function datagridProcessFormater(val,row,index){
 		$.parser.parse();
 		$("#deliverd").show();
 		$("#deliverd").window("open"); 
+		$("#deliverd").panel({
+			title:"申请退回"
+			});
 };
 //撤回申请退回
 function doCxSq(linkObject, index){
@@ -227,7 +210,7 @@ function doCxSq(linkObject, index){
 		Str = Str+" </tr>";
 		Str = Str+"	<tr>";
 		Str = Str+"	<td width='100%' colspan='2' align='center'>"
-		Str = Str+"	<a id='doCxSqBg' href='javascript:void(0)'  onclick=\"doCxSqBg('"+rowData.zdryid+"');\">撤回退回</a>" 
+		Str = Str+"	<a  class='easyui-linkbutton' id='doCxSqBg' href='javascript:void(0)'  onclick=\"doCxSqBg('"+rowData.zdryid+"');\">撤回退回</a>" 
 		Str = Str+"	</td>";
 		Str = Str+"	</tr>";
 		Str = Str+"	</table>";
@@ -235,6 +218,9 @@ function doCxSq(linkObject, index){
 		$.parser.parse();
 		$("#deliverd").show();
 		$("#deliverd").window("open"); 
+		$("#deliverd").panel({
+			title:"撤回申请"
+			});
 };
 
 //审批退回申请
@@ -261,7 +247,7 @@ function doSpSq(linkObject, index){
 		Str = Str+" </tr>";
 		Str = Str+" <tr class='dialogTr'>";
 		Str = Str+"	<td width='100%' colspan='3' align='center'>"
-		Str = Str+"	<a id='' href='javascript:void(0)'  onclick=\"doSpThSq('"+rowData.zdryid+"','"+rowData.zrqbmdm+"','"+rowData.pcsbmdm+"','"+rowData.fxjbmdm+"','"+rowData.sjbmdm+"','"+rowData.stbmdm+"');\">审批退回申请</a>" 
+		Str = Str+"	<a class='easyui-linkbutton' href='javascript:void(0)'  onclick=\"doSpThSq('"+rowData.zdryid+"','"+rowData.zrqbmdm+"','"+rowData.pcsbmdm+"','"+rowData.fxjbmdm+"','"+rowData.sjbmdm+"','"+rowData.stbmdm+"');\">审批退回申请</a>" 
 		Str = Str+"	</td>";
 		Str = Str+"	</tr>";
 		Str = Str+"	</table>";
@@ -269,6 +255,9 @@ function doSpSq(linkObject, index){
 		$.parser.parse();
 		$("#deliverd").show();
 		$("#deliverd").window("open"); 
+		$("#deliverd").panel({
+			title:"审批退回申请"
+			});
 };
 
 
@@ -498,6 +487,9 @@ function doView(linkObject, index){
 		initopreation(rowData.zdryid);	
 		$("#deliverd").show();
 		$("#deliverd").window("open"); 
+		$("#deliverd").panel({
+			title:"情报详情"
+			});
 	   
 }
 //民警重点人员情报接收

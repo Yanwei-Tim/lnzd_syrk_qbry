@@ -80,7 +80,7 @@
 				           	<th  data-options="field:'pcsbmdm',width:120,align:'left',halign:'center',sortable:true,hidden:true">pcsbmdm</th>
 				           	<th  data-options="field:'zrqbmdm',width:120,align:'left',halign:'center',sortable:true,hidden:true">zrqbmdm</th>
 				           	<th  data-options="field:'gxdw',width:70,align:'left',halign:'center',sortable:true">管辖单位</th>
-				            <th  data-options="field:'process',align:'center',width:200,halign:'center',formatter:datagridProcessFormater">操作</th>
+				            <th  data-options="field:'process',align:'center',width:200,halign:'center',formatter:datagridProcessQbFormater">操作</th>
 				        </tr>
 			       </thead>
 	       </table>
@@ -88,7 +88,7 @@
 				<table border="0" cellpadding="0" cellspacing="10" width="100%"	align="center">
 					<tr>
 						<td align="right" >
-							<input type="text" class="searchText" name="condition"  id="condition" value="请输入重点人员证件号码、姓名或居住地址" 
+							<input type="text" class="searchText" name="condition"  id="condition" value="请输入重点人员证件号码、姓名" 
 									style="color:gray;height:32px;font-size:13px;width:220px" charSet="halfUpper" onclick="setDzqc(this)" onkeydown="passwordOnkeyPress(this)" />
 						</td>
 						<td align="left">
