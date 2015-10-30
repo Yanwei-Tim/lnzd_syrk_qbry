@@ -115,7 +115,7 @@ $(function(){
 	$("#tbsj").validatebox({required:true});
 	
 	var id=$("#pk").val();
-	if(id){
+	if(id){ 
 		$("#tbr").val("${entity.tbr}");  
 		$("#tbdw").val('${entity.tbdw}');
 	}
