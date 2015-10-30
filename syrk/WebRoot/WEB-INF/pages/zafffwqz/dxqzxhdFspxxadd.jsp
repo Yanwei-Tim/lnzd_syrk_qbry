@@ -113,6 +113,13 @@ $(function(){
 	var rishuchu = year+'-'+month+'-'+date;
 	$("#tbsj").val(rishuchu);
 	$("#tbsj").validatebox({required:true});
+	
+	var id=$("#pk").val();
+	if(id){
+		$("#tbr").val("${entity.tbr}");  
+		$("#tbdw").val('${entity.tbdw}');
+	}
+	
 
 }); 
 function body_onload() {
@@ -139,9 +146,11 @@ function setDates(){
 }
 // 页面加载完成事件
 window.onload = function() {
-	
-	$("#tbr").val('<%=tbrxmss%>');  
-	$("#tbdw").val('<%=myOrgName%>');
+	if(!id){
+		$("#tbr").val('<%=tbrxmss%>');  
+		$("#tbdw").val('<%=myOrgName%>');
+	}
+
 	body_onload();
 }
 //重置
