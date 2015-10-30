@@ -88,7 +88,7 @@
 				<table border="0" cellpadding="0" cellspacing="10" width="100%"	align="center">
 					<tr>
 						<td align="right" >
-							<input type="text" class="searchText" name="condition"  id="condition" value="请输入重点人员证件号码、姓名" 
+							<input type="text" class="searchText" name="condition"  id="condition" value="请输入重点人员证件号码、姓名信息" 
 									style="color:gray;height:32px;font-size:13px;width:220px" charSet="halfUpper" onclick="setDzqc(this)" onkeydown="passwordOnkeyPress(this)" />
 						</td>
 						<td align="left">
