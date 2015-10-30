@@ -55,7 +55,7 @@ function queryDsr(linkObject,index){
 			height : 360
 		}, '详细数据!');
 }
-//查看调节详细信息1
+//查看调解详细信息1
 function queryTj(linkObject,index){
 		cancelBubble(); // 阻止冒泡，不然要执行onClickRow
 		var querytUrl = contextPath + '/tjxxzb/queryTjxx';
@@ -67,7 +67,7 @@ function queryTj(linkObject,index){
 		var idField = opts.idField;
 		querytUrl = querytUrl + idField + "=" + rowData[idField];
 		datagridView(obj, 'viewWindow', null, {
-			title : '调节信息',
+			title : '调解信息',
 			url : querytUrl,
 			width : 850,
 			height : 360

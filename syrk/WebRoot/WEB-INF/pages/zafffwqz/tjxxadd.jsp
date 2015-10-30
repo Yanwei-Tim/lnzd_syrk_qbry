@@ -3,7 +3,7 @@
 <%
 /******************************************************************************
  * @JSPName:      [tjxxAdd.jsp]   
- * @Description:  [矛盾-调节添加页面]   
+ * @Description:  [矛盾-调解添加页面]   
  * @Author:       [tian_chengwei@founder.com.cn]  
  * @CreateDate:   [2015-06-03]   
  * @UpdateUser:   [lk(如多次修改保留历史记录，增加修改记录)]   

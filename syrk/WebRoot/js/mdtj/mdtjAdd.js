@@ -1,6 +1,6 @@
 /**
  * 
- * @description:矛盾调节添加
+ * @description:矛盾调解添加
  * @author: tian_chengwei@founder.com  
  * @date:2015-06-02
  * 
@@ -110,7 +110,7 @@ function processFormater(val, row, index) { // 自定义操作生成
 	return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="edit(this,'+index+',1)">编辑</a>&nbsp;'+
 		   '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="del(this, '+index+',1)">注销</a>&nbsp;';
 }
-//调节
+//调解
 function processFormater1(val, row, index) { // 自定义操作生成
 	return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="edit(this,'+index+',2)">编辑</a>&nbsp;'+
 		   '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="del(this, '+index+',2)">注销</a>&nbsp;';
@@ -120,7 +120,7 @@ function processFormater2(val, row, index) { // 自定义操作生成
 	return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="edit(this,'+index+',3)">编辑</a>&nbsp;'+
 		   '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="del(this, '+index+',3)">注销</a>&nbsp;';
 }
-//当事人/调节/进度修改方法
+//当事人/调解/进度修改方法
 function edit(linkObject, index,stype){
 		cancelBubble(); // 阻止冒泡，不然要执行onClickRow
 	var tabName = "";
@@ -138,7 +138,7 @@ function edit(linkObject, index,stype){
 		editUrl = editUrl + idField + "=" + rowData[idField];
 	break;
 	case 2:
-		tabName = "调节信息";
+		tabName = "调解信息";
 		editUrl = contextPath + '/tjxxzb/addTjxxzb';
 		editUrl =editUrl + (editUrl.indexOf('?') != -1 ? '&' : '?');
 		editUrl = editUrl + idField + "=" + rowData[idField];
@@ -162,7 +162,7 @@ function edit(linkObject, index,stype){
 	}, '您是否要保存数据？');
 	
 }
-////当事人/调节/进度注销
+////当事人/调解/进度注销
 function del(linkObject, index,style){
 	cancelBubble(); // 阻止冒泡，不然要执行onClickRow
 	var datagrid_ID = getDatagrid_ID(0, linkObject);
@@ -253,7 +253,7 @@ function add(obj,style){
 		addUrl = addUrl + (addUrl.indexOf('?') != -1 ? '&' : '?');
 		break;
 	case 2:
-		tabName = "调节信息";
+		tabName = "调解信息";
 		addUrl = contextPath + '/tjxxzb/addTjxxzb?mdjfxxid='+mdjfxxid+'&mainTabID='+getMainTabID();
 		addUrl = addUrl + (addUrl.indexOf('?') != -1 ? '&' : '?');
 		break;
@@ -286,7 +286,7 @@ function dsrxxAdd(obj){
 			height : 360
 		}, '您是否要保存数据？');
 }
-//添加调节
+//添加调解
 function tjxxzbAdd(obj){
 	var mdjfxxid = document.getElementById("pk").value;
 	var addUrl = contextPath + '/tjxxzb/addTjxxzb?mdjfxxid='+mdjfxxid+'&mainTabID='+getMainTabID();
@@ -320,7 +320,7 @@ function dsrList(){
 	var mdjfxxid=$("#pk").val()+"";
 	$('#dg0').datagrid('load',{mdjfxxid:mdjfxxid});
 }
-//刷新调节添加后的列表内容
+//刷新调解添加后的列表内容
 function tjxList(){
 	var reloadUrl  = contextPath + '/tjxxzb/queryList';
 	var opt = $('#tb1').datagrid('options');

@@ -1,6 +1,6 @@
 /**
  * 
- * @description:矛盾调节添加
+ * @description:矛盾调解添加
  * @author: tian_chengwei@founder.com     
  * @date:2015-06-02
  * 
@@ -30,7 +30,7 @@ function fstj(){
 	}
 
 }
-//保存调节信息后，之行此函数，刷新TABLE，调用父页面的tjxList();
+//保存调解信息后，之行此函数，刷新TABLE，调用父页面的tjxList();
 function afterSubmit(arr) {
 	if(arr["saveID"]){
 		$("#pk").val(arr["saveID"]);

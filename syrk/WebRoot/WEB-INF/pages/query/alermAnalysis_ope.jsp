@@ -156,7 +156,7 @@
 					<td width="70%" class="dialogTd" >
 						<select id="alermType2" class="easyui-combobox" style="width: 130px" >
 							<option value="21">救助群众</option>
-							<option value="22">调节纠纷</option>
+							<option value="22">调解纠纷</option>
 							<option value="23">治安案件</option>
 							<option value="24">刑事案件</option>
 						</select>
