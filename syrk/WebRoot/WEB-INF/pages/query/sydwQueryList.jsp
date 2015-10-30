@@ -290,6 +290,7 @@ function mapPoint(mapWindow) {
 				dz_dwdzdmArr[rows[i].dz_dwdzdm] = rows[i].dz_dwdzdm;
 			}
 		}
+		
 		if (len > 0) {
 			$.ajax({
 				type:"GET",
@@ -303,7 +304,7 @@ function mapPoint(mapWindow) {
 						if (dwmcArr[json[i].dz_dwdzdm] != "" && json[i].zbx!=null && json[i].zbx!="") {
 							var marker = null;
 							if (IE) {
-								marker = mapWindow.addMarker(dwmcArr[json[i].dz_dwdzdm],json[i].zbx,json[i].zby,"location.png",null,null,34,34,false,json[i].dz_dwdzdm,null);
+								marker = mapWindow.addMarker(json[i].dwmc,json[i].zbx,json[i].zby,"location.png",null,null,34,34,false,json[i].dz_dwdzdm,null);
 							} else{
 								marker = mapWindow.addMarker(dwmcArr[json[i].dz_dwdzdm],json[i].zbx,json[i].zby,"location.png",null,null,34,34,false,json[i].dz_dwdzdm,null);
 							}
