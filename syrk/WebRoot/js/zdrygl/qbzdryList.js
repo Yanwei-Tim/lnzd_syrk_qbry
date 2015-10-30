@@ -157,7 +157,7 @@ function datagridProcessQbFormater(val,row,index){
 		Str = Str+" <td width='30%' class='dialogTd' align='left'><input type='text' name='xf_czyj' id ='xf_czyj' class=\"easyui-validatebox\" data-options=\"required:true\"style='width:280px;' /></td>";
 		Str = Str+" </tr>";
 		Str = Str+"	<tr>";
-		Str = Str+"	<td width='100%' colspan='2' align='right'>"
+		Str = Str+"	<td width='100%' colspan='4' align='center'>"
 		Str = Str+"	<a  class='easyui-linkbutton'  href='javascript:void(0)'  onclick=\"doDeliver('"+rowData.zdryid+"');\">下发</a>" 
 		Str = Str+"	</td>";
 		Str = Str+"	</tr>";
