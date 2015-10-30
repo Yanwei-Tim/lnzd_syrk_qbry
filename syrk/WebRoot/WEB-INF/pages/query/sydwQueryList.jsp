@@ -59,8 +59,8 @@
             		<!-- onClickRow:doOnClickRow 单击行事件 --> 
 				    <thead>
 				        <tr>
-				            <th data-options="field:'jgjbdm',	width:50,align:'left',halign:'center',formatter:jgjbdm"></th>
-				            <th data-options="field:'dwlbdm',	width:70,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_DW_DWLB.js',sortable:true">类别</th>
+				            <th data-options="field:'jgjbdm',	width:70,align:'left',halign:'center',formatter:jgjbdm">监管级别</th>
+				            <th data-options="field:'dwlbdm',	width:70,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_SDWLXDM.js',sortable:true">类别</th>
 				            <th data-options="field:'dwmc',		width:120,align:'left',halign:'center',sortable:true">单位名称</th>
 				            <th data-options="field:'dz_dwdzxz',	width:200,align:'right',halign:'center',formatter:subjzdz,sortable:true">单位地址</th>
 				            <th data-options="field:'process',width:70,align:'center',halign:'center',formatter:datagridProcessFormater">操作</th>
@@ -84,8 +84,9 @@
 							<tr class="dialogTr">
 									<td width="20%" class="dialogTd" align="right">单位类型：</td>
 						    		<td width="30%" class="dialogTd">
-										<input class="easyui-combobox" type="text" id="dwlbdm" name="dwlbdm" style="width:130px;"
-										data-options="url: contextPath + '/common/dict/D_DW_DWLB.js',valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/>
+									<input class="easyui-combotree" type="text" id="dwlbdm" name="dwlbdm"
+								        style="width:130px;" data-options="url: contextPath + '/common/dict/BD_D_SDWLXDM.js',onlyLeaf:true,multiple:false,
+									     method:'get',editable:true,lines:true"/>
 									</td>
 						    	<td width="20%" class="dialogTd" align="right">单位名称：</td>
 						    	<td width="30%" class="dialogTd">
