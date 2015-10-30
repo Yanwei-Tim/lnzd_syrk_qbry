@@ -76,12 +76,12 @@
 			<tr class="dialogTr">
     		<td width="15%" class="dialogTd" align="right">活动主要内容：</td>
 		    	<td width="85%" class="dialogTd" colspan="3" ><textarea id="hdzynr" name="hdzynr" class="easyui-validatebox" style="width: 613px; height:48px;"
-					data-options="validType:['maxLength[2000]'],invalidMessage:'活动主要内容不能超过2000个汉字，请重新输入！',tipPosition:'left'">${entity.hdzynr}</textarea></td>
+					data-options="validType:['maxLength[200]'],invalidMessage:'活动主要内容不能超过200个汉字，请重新输入！',tipPosition:'left'">${entity.hdzynr}</textarea></td>
     		</tr>
     		<tr class="dialogTr">
     		<td width="15%" class="dialogTd" align="right">市(县/区)局意见：</td>
 		    	<td width="85%" class="dialogTd" colspan="3" ><textarea id="sxqjyj" name="sxqjyj" class="easyui-validatebox" style="width: 613px; height:48px;"
-					data-options="validType:['maxLength[2000]'],invalidMessage:'市(县/区)局意见不能超过2000个汉字，请重新输入！',tipPosition:'left'">${entity.sxqjyj}</textarea></td>
+					data-options="validType:['maxLength[200]'],invalidMessage:'市(县/区)局意见不能超过200个汉字，请重新输入！',tipPosition:'left'">${entity.sxqjyj}</textarea></td>
     		</tr>
     		<tr class="dialogTr">
     		<td width="15%" class="dialogTd" align="right">备注：</td>
