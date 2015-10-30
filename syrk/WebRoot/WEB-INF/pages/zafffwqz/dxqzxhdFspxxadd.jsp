@@ -32,7 +32,7 @@
 				<td width="15%" class="dialogTd" align="right">填报时间：</td>
 				<td width="35%" class="dialogTd">
 				<input  type="text" id="tbsj" name="tbsj" class="easyui-validatebox" style="width:200px;"
-				 maxlength="19" value="${entity.tbsj}" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'})" data-options="validType:['date[\'yyyy-MM-dd\']'],required:true,tipPosition:'left'"/></td>	
+				 maxlength="19" value="${entity.tbsj}" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'})" data-options="validType:['date[\'yyyy-MM-dd\']'],required:false,tipPosition:'left'"/></td>	
 			</tr>
 			 <tr class="dialogTr">
 				<td width="15%" class="dialogTd" align="right">活动名称：</td>
@@ -102,6 +102,19 @@
 </div>
 </html>
 <script type="text/javascript" >
+$(function(){ 
+	var dates = new Date();
+	var year = dates.getFullYear();
+	var date = dates.getDate();
+	var month = dates.getMonth()+1;
+	if(month<10){
+		month='0'+month;
+	}
+	var rishuchu = year+'-'+month+'-'+date;
+	$("#tbsj").val(rishuchu);
+	$("#tbsj").validatebox({required:true});
+
+}); 
 function body_onload() {
 	$('#dataform').form({  
         onSubmit:function(){
@@ -126,7 +139,7 @@ function setDates(){
 }
 // 页面加载完成事件
 window.onload = function() {
-	setDates();
+	
 	$("#tbr").val('<%=tbrxmss%>');  
 	$("#tbdw").val('<%=myOrgName%>');
 	body_onload();
