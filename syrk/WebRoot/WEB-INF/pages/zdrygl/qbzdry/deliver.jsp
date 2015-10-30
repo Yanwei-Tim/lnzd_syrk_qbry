@@ -33,7 +33,9 @@
 						</tr>
 						<tr>
 							<th align="right" width="20%">性别：</th>
-							<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="xb" id="xb" style="width:200px;" readonly="readonly" /></td>
+							<td width="30%" class="dialogTd">
+							<input class="easyui-validatebox inputreadonly" type="text" name="xb" id="xb" style="width:200px;" readonly="readonly" />
+							</td>
 							<th align="right" width="20%">国籍：</th>
 							<td width="30%" class="dialogTd"><input class="easyui-validatebox inputreadonly" type="text" name="gj" id="gj" style="width:200px;" readonly="readonly" /></td>
 						</tr>
