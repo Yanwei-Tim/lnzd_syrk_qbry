@@ -14,6 +14,7 @@ import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.base.service.BaseService;
 import com.founder.framework.utils.ComboBox;
 import com.founder.framework.utils.EasyUIPage;
+import com.founder.framework.utils.StringUtils;
 import com.founder.framework.utils.UUID;
 /**
  * @类名: DmServiceImpl 
@@ -98,6 +99,9 @@ public class DmServiceImpl extends BaseService implements DmService {
 			entity.setDmid(UUID.create());
 			String xzqhdm = zxqhArry[0].getXzqhdm();
 			String dmdm = dmDao.queryDmdm(xzqhdm);
+			if(StringUtils.isBlank(dmdm)){
+				dmdm=xzqhdm.substring(4)+"0001";
+			}
 			entity.setDmdm(dmdm);
 			setSaveProperties(entity,sessionBean);
 			dmDao.saveDm(entity);
