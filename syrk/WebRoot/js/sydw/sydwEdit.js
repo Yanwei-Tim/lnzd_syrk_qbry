@@ -12,6 +12,7 @@ $(document).ready(function(){
 		$("a.editbtn").click(edit_view).click(toggleCyryBtn);
 		getServerMenu(1);
 		getServerMenu(2);
+		$(".rt").show();
 	}
 	
 	/***************固定事件注册，页面初始化**************************/
@@ -21,7 +22,7 @@ $(document).ready(function(){
 	$(".addphoto").click(addFile);
 	iterateDict($("div.lf_conta").eq(1));
 
-	$(".rt").show();
+	
 	$(".rt_view").hide();
 		
 	/**********自己定义方法*************************/
