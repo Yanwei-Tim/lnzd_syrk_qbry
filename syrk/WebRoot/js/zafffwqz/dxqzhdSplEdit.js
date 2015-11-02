@@ -362,3 +362,22 @@ function cancelJzhmCtr(name){
 		setInputReadonly(name+'lxdh',false);
 	}
 }
+
+/*
+ * 
+ */
+function fixNum(){
+	var jbxx_cdmj = $('#jbxx_cdmj').val();
+	if(jbxx_cdmj!=null && jbxx_cdmj!=""){
+		var num = new Number(jbxx_cdmj);
+		var number = num.toFixed(2);//格式化,保留两位小数
+		$("#jbxx_cdmj").val(number);
+	}
+	var hdab_jjss = $('#hdab_jjss').val();
+	if(hdab_jjss!=null && hdab_jjss!=""){
+		var num = new Number(hdab_jjss);
+		var number = num.toFixed(2);//格式化,保留两位小数
+		$("#hdab_jjss").val(number);
+	}
+}
+

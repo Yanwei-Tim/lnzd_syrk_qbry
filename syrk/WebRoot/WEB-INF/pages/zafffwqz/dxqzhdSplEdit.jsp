@@ -136,8 +136,8 @@
 								<td width="20%" class="dialogTd" align="right">场地面积：</td>
 								<td width="30%" class="dialogTd" colspan="3">
 									<input class="easyui-validatebox" type="text" style="width:160px" 
-					  					   name="jbxx.cdmj" id="jbxx_cdmj" value="${hd.jbxx.cdmj}" 
-					  					   data-options="required:false,validType:['naturalNumber','maxLength[10]']"/>平方米
+					  					   name="jbxx.cdmj" id="jbxx_cdmj" value="${hd.jbxx.cdmj}" onblur="fixNum();"
+					  					   data-options="required:false"/>平方米
 								</td>
 							</tr>
 							<tr class="dialogTr">
@@ -990,7 +990,7 @@
 					  					   			<input type="checkbox" onclick="hdab_input_col(this,'jjss')"/>
 				    								经济损失 
 				    								<input class="easyui-validatebox inputReadonly" type="text" style="width:80px" 
-							  					   		   name="hdab.jjss" id="hdab_jjss" 
+							  					   		   name="hdab.jjss" id="hdab_jjss" onblur="fixNum();"
 							  					   		   value="${hd.hdab.jjss}" readonly="readonly" 
 							  					   		   data-options="required:false
 							  					   		   				,validType:['naturalNumber','maxLength[10]']"/> 元
@@ -1000,7 +1000,7 @@
 				    								经济损失 
 				    								<input class="easyui-validatebox" type="text" style="width:80px" 
 							  					   		   name="hdab.jjss" id="hdab_jjss" value="${hd.hdab.jjss}" 
-							  					   		   data-options="required:false
+							  					   		   data-options="required:false onblur="fixNum();"
 							  					   		   				,validType:['naturalNumber','maxLength[10]']"/> 元
 					  					   		</c:otherwise>
 					  					   	</c:choose>
