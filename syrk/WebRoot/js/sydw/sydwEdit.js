@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	
+	$("#moreInfo").hide();
 	var mode_ = $("#mode_").val();
  	if(mode_=="view"){
  		//$("#server_Menu").hide();
@@ -623,4 +623,18 @@ function dwcfView(id,dwmc) {
    		}, 
    		null, null,null
    	);
+}
+
+/**
+ * gem 
+ */
+function moreInfoMethod(){
+	var moreButtonVal=$("#moreButton").html();
+	if(moreButtonVal=="更多"){
+	$("#moreInfo").show();
+	$("#moreButton").html("收缩");
+	}else if (moreButtonVal=="收缩"){
+		$("#moreInfo").hide();
+		$("#moreButton").html("更多");
+	}
 }

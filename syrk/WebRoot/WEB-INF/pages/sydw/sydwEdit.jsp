@@ -31,17 +31,25 @@
 						<div class="lf_contc">
 							<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
 								<tr>
-									<td colspan="2" align="center" style="border-bottom:dashed 1px #e2e2e2;">
-										<strong><span id="dwmc_dw">${dw.dwmc }</span><span></span>
-										</strong>
+									<td valign="top" align="center" style="width:200px;">
+										<div class="pphoto_1" style="text-align: center;" >
+											<div>
+												<img  id="topPhotoid" width="160" height="200" style="border:solid 0px #e2e2e2;" alt="" />
+											</div>
+											<c:if test="${mode != 'view'}">
+											    <a href="javascript:void(0);" info="dwid,DW_DWJBXXB,单位基本信息表" class="addphoto"></a>
+											</c:if>
+										</div>
 									</td>
-								</tr>
-								<tr>
 									<td style="vertical-align: top;">
-									<div class="pinfo1" style="margin:0; width:500px;">
+									<div class="pinfo1" >
 										<ul><li style="padding:0px;">
 											<table border='0' cellpadding="0" cellspacing="0" class="nameTable">
-												<tr>
+												 <tr>
+													<td colspan="4" align="left" valign="top" height="30">
+													</td>
+												 </tr>
+												 <tr>
 									    	        <th align="right" width="110">单位名称：</th>
 											    	<td width="150">${dw.dwmc}</td>
 										    	  	<th align="right" width="110">单位编码：</th>
@@ -86,6 +94,9 @@
 											    	<th  align="right" width="110">经营范围（兼营）：</th>
 											    	<td  colspan="3" >${dw.jyfwjy }</td>
 										    	  </tr>
+										    	  </table>
+										    <div id="moreInfo" />
+										    <table cellpadding="0" cellspacing="0" class="nameTable" style="margin-left: 10px;">
 										    	 <tr >
 										    	  	<th  align="right" width="110">是否重点单位：</th>
 											    	<td><script type="text/javascript">document.write(window.top.getDictName(contextPath + '/common/dict/D_GG_SF.js', "${dw.zddwbs}"));</script></td>
@@ -108,19 +119,12 @@
 								    	  	 		<th align="right" width="110">组织机构：</th>
 											    	<td width="110"> ${dw.zzjgmc}</td>
 									    	  	 </tr>
-											 </table>
+									    	  	  </table>
+												 </div>
+										         <!-- 可隐藏部分end -->
+										         <a href="javascript:void(0);" class="" onclick="moreInfoMethod();" id="moreButton" style="margin-left: 70px;width: 40px">更多</a>	
 										</li></ul> 														
 									</div>
-									</td>
-									<td style="vertical-align: top;">
-										<div class="pphoto_1" style="margin:0;">
-											<div>
-												<img  id="topPhotoid" width="210" style="border:solid 2px #e2e2e2;" height="260" alt="" />
-											</div>
-											<c:if test="${mode != 'view'}">
-											    <a href="javascript:void(0);" info="dwid,DW_DWJBXXB,单位基本信息表" class="addphoto"></a>
-											</c:if>
-										</div>
 									</td>
 								</tr>
 							</table>
