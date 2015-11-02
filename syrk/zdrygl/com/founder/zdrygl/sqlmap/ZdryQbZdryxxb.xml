@@ -169,6 +169,7 @@
 			  <isNotNull prepend="," property="gxdw"><![CDATA[ GXDW=#gxdw# ]]></isNotNull>
 			 <isNotNull prepend="," property="gxdwjgdm"><![CDATA[ GXDWJGDM=#gxdwjgdm# ]]></isNotNull>
 			 <isNotNull prepend="," property="sjbmdm"><![CDATA[ SJBMDM=#sjbmdm# ]]></isNotNull>
+			 <isNotNull prepend="," property="fxjbmdm"><![CDATA[ FXJBMDM=#fxjbmdm# ]]></isNotNull>
 			 <isNotNull prepend="," property="pcsbmdm"><![CDATA[ PCSBMDM=#pcsbmdm# ]]></isNotNull>
 			 <isNotNull prepend="," property="zrqbmdm"><![CDATA[ ZRQBMDM=#zrqbmdm# ]]></isNotNull>
 			,<include refid="updateXtzd"/>				

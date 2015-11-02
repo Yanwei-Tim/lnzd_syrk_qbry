@@ -48,7 +48,7 @@
 	</select>
 	
 	<update id="updateDqzt" parameterClass="zdryQbzdryYwczb">
-		update zdry_qbzdryywczb set czlb = #czlb#  where id = #id#
+		update zdry_qbzdryywczb set dqzt = #dqzt#  where id = #id#
 	</update>
 	
 	<update id="updateSj" parameterClass="zdryQbzdryYwczb">

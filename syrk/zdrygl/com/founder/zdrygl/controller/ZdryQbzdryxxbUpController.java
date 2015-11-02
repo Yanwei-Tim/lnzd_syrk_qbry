@@ -118,15 +118,20 @@ public class ZdryQbzdryxxbUpController extends BaseController {
 		//查看本用户是否有操作记录
 	    //int NUM = zdryQbzdryxxbService.queryBenOperation(param);
 		//不是责任区民警
-		if(!userType.equals("50")){
-			// 查询状态
-		 if(userType.equals("20")){
-			 //当前userType为市 则把orgcode存到分县局中
-			entity.setFxjbmdm(orgcode);
-		 }else if(userType.equals("32")){
-			 //当前userType为派出所 则把orgcode存到责任区中
-			entity.setZrqbmdm(orgcode);
-		 }
+		 if(!userType.equals("50")){
+				// 查询状态
+			 if(userType.equals("10")){
+				 //当前用户为市局,更新分县局字段插入操作
+				entity.setFxjbmdm(orgcode);
+			 }
+			 if(userType.equals("21")){
+				//当前用户为分县局,更新派出所字段插入操作 
+				 entity.setPcsbmdm(orgcode);
+			 }
+			 if(userType.equals("32")){
+				//当前用户为派出所,更新责任区字段插入操作 
+				entity.setZrqbmdm(orgcode);
+			 }
 			entity.setZdryid(zdryid);
 			entity.setGxdwjgdm(orgcode);
 			entity.setGxdw(orgcodetext);

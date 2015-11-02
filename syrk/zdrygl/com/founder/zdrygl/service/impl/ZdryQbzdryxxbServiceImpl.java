@@ -79,7 +79,7 @@ public class ZdryQbzdryxxbServiceImpl implements ZdryQbzdryxxbService {
 		this.ZdryQbzdryxxbDao.saveZdryqbxxyw(entityyw);
 		//向下级下发消息
 		SysMessage sysMsg = new SysMessage();
-		sysMsg.setXxnr(param.get("xfczyj"));
+		sysMsg.setXxnr("【"+param.get("userName")+"】向您下发了一条情报重点人员信息！请查收");
 		sysMsg.setXxlb("1");
 		//sysMsg.setYwurl(jwry.getId()+","+jwry.getRyid()+","+jwry.getDzms()+","+jwry.getDzms_zbx()+","+jwry.getDzms_zby()+",0");
 		sysMsg.setFsr(param.get("userName"));

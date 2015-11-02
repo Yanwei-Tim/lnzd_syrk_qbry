@@ -23,6 +23,7 @@
        var userOrgCode = "<%=userOrgCode%>"; 
        var bjzbz = "<%=bjzbz%>";
    	   var orgLevel = "<%=orgLevel%>";
+   	   alert("aaa"+orgLevel);
 	  var parentOrgCode ="<%=parentOrgCode%>";
     </script>
     <script type="text/javascript" src="<%=contextPath%>/js/sydw/sydw.js"></script>

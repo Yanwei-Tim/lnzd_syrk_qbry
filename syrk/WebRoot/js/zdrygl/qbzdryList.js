@@ -108,7 +108,7 @@ function datagridProcessQbFormater(val,row,index){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
 		       '<a class="link" href="javascript:javascript:void(0)" onclick="doCxSq(this, '+index+')">撤回申请</a>';
 		}
-		if(dqzt=="02"&&czlb=="03"){
+		if(dqzt=="04"&&czlb=="01"){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
 		       '<a class="link" href="javascript:javascript:void(0)" onclick="doSpSq(this, '+index+')">审批退回</a>';
 		}
@@ -116,27 +116,27 @@ function datagridProcessQbFormater(val,row,index){
 	}else{
 		if((dqzt=="05"&&czlb=="100"&&sfsyrk=="0")||(dqzt=="05"&&czlb=="05"&&sfsyrk=="0")){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-			'<a class="link" href="javascript:javascript:void(0)" onclick="accept(this, '+index+')">接收</a>&nbsp;'+
-		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';	
+			'<a class="link" href="javascript:javascript:void(0)" onclick="accept(this, '+index+')">接收</a>&nbsp;';
+//		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';	
 		}
 		if((dqzt=="05"&&czlb=="100"&&sfsyrk=="1")||(dqzt=="05"&&czlb=="05"&&sfsyrk=="1")){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-		       '<a class="link" href="javascript:javascript:void(0)" onclick="doAdd(this, '+index+')">新增实有人口</a>&nbsp;'+
-		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';	
+		       '<a class="link" href="javascript:javascript:void(0)" onclick="doAdd(this, '+index+')">新增实有人口</a>&nbsp;';
+//		       '<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateQb(this, '+index+');">申请退回</a>';	
 		}
 		//已接收状态
 		if(dqzt=="06"&&czlb=="06"){
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>';
 			
 		}
-		if(dqzt=="04"&&czlb=="03"){
-			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-		       '<a class="link" href="javascript:javascript:void(0)" onclick="doCxSq(this, '+index+')">撤回申请</a>';
-		}
-		if(dqzt=="02"&&czlb=="03"){
-			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
-		       '<a class="link" href="javascript:javascript:void(0)" onclick="doSpSq(this, '+index+')">审批退回</a>';
-		}
+//		if(dqzt=="04"&&czlb=="03"){
+//			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+//		       '<a class="link" href="javascript:javascript:void(0)" onclick="doCxSq(this, '+index+')">撤回申请</a>';
+//		}
+//		if(dqzt=="02"&&czlb=="03"){
+//			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView(this, '+index+')">查看</a>&nbsp;'+
+//		       '<a class="link" href="javascript:javascript:void(0)" onclick="doSpSq(this, '+index+')">审批退回</a>';
+//		}
 
 		
 	}
@@ -431,6 +431,24 @@ if(redio=="0"){
 	if ("undefined" == typeof orgtext || orgtext == null || orgtext=="") {
 		return;
 	}
+	if(orgLevel=="10"){
+		alert("aaa"+orgListcode);
+		alert("bbb"+fxjbmdm);
+		if(orgListcode==fxjbmdm)
+		{
+			alert("不可指定原来所下发过的地市");
+		}else{
+			Ty(zdryid,orgListcode,orgtext,fxjbmdm);
+		}
+	}
+	if(orgLevel=="21"){
+		if(orgListcode==pcsbmdm)
+		{
+			alert("不可指定原来所下发过的地市");
+		}else{
+			Ty(zdryid,orgListcode,orgtext,pcsbmdm);
+		}
+	}
 	if(orgLevel=="32"){
 		if(orgListcode==zrqbmdm)
 			{
@@ -441,6 +459,12 @@ if(redio=="0"){
 	}
 }
 if(redio=="1"){
+	if(orgLevel=="10"){
+		Jj(zdryid,fxjbmdm);
+	}
+	if(orgLevel=="21"){
+		Jj(zdryid,pcsbmdm);
+	}
 	if(orgLevel=="32"){
 		Jj(zdryid,zrqbmdm);
 	}

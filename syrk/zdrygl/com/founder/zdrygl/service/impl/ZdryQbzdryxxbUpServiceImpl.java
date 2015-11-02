@@ -51,7 +51,7 @@ public class ZdryQbzdryxxbUpServiceImpl extends BaseService implements ZdryQbzdr
 		entity.setCzbmdm(orgcode);
 		ZdryQbzdryYwczb entity_s = new ZdryQbzdryYwczb();
 		entity_s = zdryQbzdryxxbUpDao.query(entity);
-		entity_s.setCzlb("03");
+		entity_s.setDqzt("04");
 		zdryQbzdryxxbUpDao.updateDqzt(entity_s);
 		
 		//向上级发送消息
@@ -97,7 +97,7 @@ public class ZdryQbzdryxxbUpServiceImpl extends BaseService implements ZdryQbzdr
 		entity.setCzbmdm(orgcode);
 		ZdryQbzdryYwczb entity_s = new ZdryQbzdryYwczb();
 		entity_s = zdryQbzdryxxbUpDao.query(entity);
-		entity_s.setCzlb("01");
+		entity_s.setDqzt("02");
 		zdryQbzdryxxbUpDao.updateDqzt(entity_s);
 		
 		//向上级发送消息
