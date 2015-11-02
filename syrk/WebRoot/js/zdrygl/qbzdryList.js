@@ -370,6 +370,9 @@ function initopreation(zdryid){
 
 //申请变更
 function doUpdateQbBg(zdryid,sjsfjjbgsq) {
+	if(orgLevel=="10"){
+		alert("当前最高级为市局！省厅暂时未开发！");
+	}else{
 	if(sjsfjjbgsq=="2"){
 		alert("上级已经拒绝过一次变更申请,不可再次申请！");
 	}else{
@@ -392,6 +395,7 @@ function doUpdateQbBg(zdryid,sjsfjjbgsq) {
 		$('#dg').datagrid('reload');
 		doSubmitResult(result, null, datagrid_ID);
 	});
+	}
 	}
 	}
 }
@@ -432,8 +436,6 @@ if(redio=="0"){
 		return;
 	}
 	if(orgLevel=="10"){
-		alert("aaa"+orgListcode);
-		alert("bbb"+fxjbmdm);
 		if(orgListcode==fxjbmdm)
 		{
 			alert("不可指定原来所下发过的地市");
