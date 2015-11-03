@@ -69,6 +69,8 @@ public class QzbServiceImpl extends BaseService implements QzbService {
 	public void saveQzb(Qzb entity, SessionBean sessionBean) {
 		entity.setId(UUID.create());
 		entity.setRyid(UUID.create());
+		entity.setCbrid(sessionBean.getUserId());
+		entity.setCbr(sessionBean.getUserName());
 		setSaveProperties(entity, sessionBean);
 		qzbDao.saveQzb(entity);
 		ryRylxfsxxbService.saveLxdh(entity.getRyid(), entity.getLxdh(), sessionBean);

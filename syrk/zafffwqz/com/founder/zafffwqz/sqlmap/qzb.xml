@@ -118,6 +118,9 @@
 			<isNotEmpty prepend="," property="cbr">
 				<![CDATA[ cbr]]>	
 			</isNotEmpty>
+			<isNotEmpty prepend="," property="cbrid">
+				<![CDATA[ cbrid]]>	
+			</isNotEmpty>
 			<isNotEmpty prepend="," property="sl">
 				<![CDATA[ sl]]>	
 			</isNotEmpty>
@@ -239,6 +242,9 @@
 			</isNotEmpty>
 			<isNotEmpty prepend="," property="cbr">
 				<![CDATA[ #cbr#]]>	
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="cbrid">
+				<![CDATA[ #cbrid#]]>	
 			</isNotEmpty>
 			<isNotEmpty prepend="," property="sl">
 				<![CDATA[ #sl#]]>	
