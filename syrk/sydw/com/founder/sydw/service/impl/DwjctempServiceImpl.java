@@ -31,6 +31,7 @@ public class DwjctempServiceImpl extends BaseService implements DwjctempService 
 		for(String name:names){
 			entity.setName(name);
 			entity.setId(UUID.create());
+			setSaveProperties(entity,sessionBean);
 			dwjctempDao.saveDwjctype(entity, sessionBean);
 		}
 	}
@@ -63,6 +64,7 @@ public class DwjctempServiceImpl extends BaseService implements DwjctempService 
 			}else{
 				entity.setDef(defs[i]);
 			}
+			setSaveProperties(entity,sessionBean);
 			dwjctempDao.saveDwjcdata(entity, sessionBean);
 		}
 	}

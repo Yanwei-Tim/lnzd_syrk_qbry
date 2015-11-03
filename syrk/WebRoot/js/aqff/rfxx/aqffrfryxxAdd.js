@@ -155,6 +155,7 @@ function validateZjhm(param){
 function checkZjhm(){
 	if ($('#zjhm').validatebox("isValid")){
 		var zjhm = $('#zjhm').val();
+		$("#yrjbxxDiv").show();
 		$.ajax({
 			type:"POST",
 			url: contextPath + "/ryRyjbxxb/dataApply",
@@ -184,6 +185,9 @@ function checkZjhm(){
 					$("#zzmmdm").combobox("setValue",data.ryRyjbxxb.zzmmdm);
 					//setInputReadonly('zzmmdm',true);
 				}
+			},
+			complete:function(){
+				$("#yrjbxxDiv").hide();
 			}
 		});	
 	}else{
