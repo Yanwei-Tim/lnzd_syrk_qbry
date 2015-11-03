@@ -255,7 +255,7 @@ $(document).ready(function(){
 
 });
 $(function(){
-		
+	
 		var flag = document.getElementById("flag").value;
 		if(flag=="update"){
 			setInputReadonly("xm", true);
@@ -347,49 +347,49 @@ $(function(){
 		$('#backBotton').click(function(){
 			closeSelf();
 		});
+		
 		$('#resetBotton').click(function(){
+			
+			console.log("======                   resetBotton");
+			
 			var flag = document.getElementById("flag").value;
-		if(flag=="update"){
-			$("#lxdh").val("");
-			$("#sfddjzdm").combobox("clear");
-			$("#yqytdm").combobox("clear");
-			$("#wqxwnldm").combobox("clear");
-			$("#qxdm").combobox("clear");
-			$("#qzdm").combobox("clear");
-			$("#msdm").combobox("clear");
-			$("#cxdm").combobox("clear");
-			$("#ywxtzdm").combobox("clear");
-			$("#qn").val("");
-			$("#tz").val("");
-			$("#tg").val("");
-			$("#fzjg").val("");
-			$("#xtzbh").val("");
-			$("#fyzhm").val("");
-			$("#fyyxqzrq").val("");
-			$("#yqxkzhm").val("");
-			$("#fzrq").val("");
-			$("#yqxkzyxqzrq").val("");
-			$("#lqr").val("");
-			$("#cbryj").val("");
-			$("#fybm").val("");
-			setInputReadonly("fzjg", false);
-			setInputReadonly("xtzbh", false);
-		}else{
-			document.forms["jbxxForm"].reset();
-			setInputReadonly("xm", false);
-			setInputReadonly("csrq", false);
-			setInputReadonly("xb", false);
-			setInputReadonly("mzdm", false);
-			setInputReadonly("jzd1", false);
-			setInputReadonly("jzd2", false);
-			setInputReadonly("fzjg",false);
-			setInputReadonly("xtzbh",false);
-			$("#cyzjdm").combobox('setValue', '111');
-		
-		
-		}
-			
-			
+			if(flag=="update"){
+				$("#lxdh").val("");
+				$("#sfddjzdm").combobox("clear");
+				$("#yqytdm").combobox("clear");
+				$("#wqxwnldm").combobox("clear");
+				$("#qxdm").combobox("clear");
+				$("#qzdm").combobox("clear");
+				$("#msdm").combobox("clear");
+				$("#cxdm").combobox("clear");
+				$("#ywxtzdm").combobox("clear");
+				$("#qn").val("");
+				$("#tz").val("");
+				$("#tg").val("");
+				$("#fzjg").val("");
+				$("#xtzbh").val("");
+				$("#fyzhm").val("");
+				$("#fyyxqzrq").val("");
+				$("#yqxkzhm").val("");
+				$("#fzrq").val("");
+				$("#yqxkzyxqzrq").val("");
+				$("#lqr").val("");
+				$("#cbryj").val("");
+				$("#fybm").val("");
+				setInputReadonly("fzjg", false);
+				setInputReadonly("xtzbh", false);
+			}else{
+				document.forms["jbxxForm"].reset();
+				setInputReadonly("xm", false);
+				setInputReadonly("csrq", false);
+				setInputReadonly("xb", false);
+				setInputReadonly("mzdm", false);
+				setInputReadonly("jzd1", false);
+				setInputReadonly("jzd2", false);
+				setInputReadonly("fzjg",false);
+				setInputReadonly("xtzbh",false);
+				$("#cyzjdm").combobox('setValue', '111');
+			}
 		});
 	});
 
@@ -478,6 +478,7 @@ function checkZjhm() {
 	
 }	
 function clearTable(){
+	
 	$("#xm").val("");
 	$("#xb").combobox("setValue","");
 	$("#csrq").val("");

@@ -86,6 +86,7 @@
 				    	<input type="text" name="zjhm" id ="zjhm" 
 						class="easyui-validatebox" maxlength="30" 
 						data-options="required:true,tipPosition:'left'" style="width:240px;float:left;" />
+						<div class="lodingimg" id="yrjbxxDiv"></div>
 					</td>
 				</tr>
 				<tr>

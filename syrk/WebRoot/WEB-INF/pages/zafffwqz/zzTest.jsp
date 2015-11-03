@@ -280,7 +280,7 @@ data-options="modal:false,minimizable:false,maximizable:false,resizable:false,cl
 <div id="saveDiv" style="text-align:center; height:50px; padding-top: 10px; display:block;">
 	<table>
 		<tr>
-			<td>
+			<td id="saveTd">
 				<a id="saveBotton" class="l-btn l-btn-small" href="javascript:void(0)" group="">
 					<span class="l-btn-left l-btn-icon-left">
 						<span class="l-btn-text">保存</span>
@@ -297,7 +297,7 @@ data-options="modal:false,minimizable:false,maximizable:false,resizable:false,cl
 					</span>
 				</a>
 			</td>
-			<td>
+			<td >
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a id="backBotton" class="l-btn l-btn-small" href="javascript:void(0)" group="">
 					<span class="l-btn-left l-btn-icon-left">
@@ -306,7 +306,7 @@ data-options="modal:false,minimizable:false,maximizable:false,resizable:false,cl
 					</span>
 				</a>
 			</td>
-			<td>
+			<td id="resetTd">
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a id="resetBotton" class="l-btn l-btn-small" href="javascript:void(0)" group="">
 					<span class="l-btn-left l-btn-icon-left">
@@ -337,6 +337,13 @@ $(document).ready(function(){
 	} catch (e) {
 		// TODO: handle exception
 	}
+	
+	if($("#flag").val() == "see"){
+		$("#saveTd").hide();
+		$("#resetTd").hide();
+	}
+	
+	
 });
 $(function(){
 	var flag = document.getElementById("flag").value;
@@ -407,24 +414,49 @@ $(function(){
             	//$("#pk").val(json.saveID); 
             	executeTabPageMethod(mainTabID, "reloadDg");
             	if(saveFlag=="1"){
+            		$("#cyzjdm").combobox('setValue', '111');
+            		$('#zjhm').validatebox({validType:['sfzh']});
+            		$("#ryid").val("");
+            		$("#pk").val("");
+            		$("#ywxtzdm").val("");
+            		$("#fzjg").val("");
+            		$("#xtzbh").val("");
+            		$("#cbryj").val("");
+            		$("#mzdm").combotree("clear");
+            		$("#xb").combobox("clear");
+            		$("#zjhm").val("");
+            		$("#xm").val("");
+            		$("#csrq").val("");
+            		$("#lxdh").val("");
+            		$("#sfddjzdm").combobox("clear");
             		$("#yqytdm").combobox("clear");
+            		$("#wqxwnldm").combobox("clear");
             		$("#qxdm").combobox("clear");
-					$("#qzdm").combobox("clear");
-					$("#msdm").combobox("clear");
-					$("#cxdm").combobox("clear");
-					$("#qn").val("");
-					$("#tz").val("");
-					$("#tg").val("");
-					$("#fyzhm").val("");
-					$("#fyyxqzrq").val("");
-					$("#yqxkzhm").val("");
-					$("#fzrq").val("");
-					$("#yqxkzyxqzrq").val("");
-					$("#lqr").val("");
-					$("#cbryj").val("");
-					$("#fybm").val("");
-					$("#sl").val("");
-					$("#fyyxfzrq").val("");
+            		$("#qzdm").combobox("clear");
+            		$("#msdm").combobox("clear");
+            		$("#cxdm").combobox("clear");
+            		$("#ywxtzdm").val("");
+            		$("#qn").val("");
+            		$("#tz").val("");
+            		$("#tg").val("");
+            		$("#fzjg").val("");
+            		$("#xtzbh").val("");
+            		$("#fyzhm").val("");
+            		$("#fyyxqzrq").val("");
+            		$("#yqxkzhm").val("");
+            		$("#fzrq").val("");
+            		$("#yqxkzyxqzrq").val("");
+            		$("#lqr").val("");
+            		$("#cbryj").val("");
+            		$("#fybm").val("");
+            		$("#sl").val("");
+            		$("#fyyxfzrq").val("");
+            		$("#jzd1").combobox("clear");
+            		$("#jzd2").combobox("clear");
+            		$("#dz_jzdzmlpdm").val("");
+            		$("#dz_jzdzmlpxz").val("");
+            		$("#dz_jzdzdm").val("");
+            		$("#dz_jzdzxz").val("");
             	}else{
             		closeSelf();
             	}
