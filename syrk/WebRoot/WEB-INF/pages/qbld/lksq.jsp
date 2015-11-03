@@ -95,12 +95,27 @@
 							<tr><td class='infoTypeTd'>人<br>员<br>信<br>息</td>
 								<td>
 									<table class='infoBodyTable'>
-										<tr><td class='infoName  red'>证件种类</td><td class='infoValue'><input id="lksq_bbkrzjlx" name="bbkrzjlx" class="notNull"></td><td class='infoName  red'>证件号码</td><td class='infoValue'><input id="lksq_bbkrzjhm" class="notNull"   name="bbkrzjhm" maxlength="18"></td><td id='imgTd' rowspan=6><img id="lksq_zp" style='width:150;height:185px'></img></td></tr>
-										<tr><td class='infoName  red'>姓名</td><td class='infoValue'><input id="lksq_bbkrxm" name="bbkrxm" class="notNull" maxlength="15"></td><td class='infoName  red'>性别</td><td class='infoValue'><input id="lksq_bbkrxb" class="notNull"   name="bbkrxb"></td></tr>
+										<tr>
+										<td class='infoName  red'>证件种类</td>
+										<td class='infoValue'>
+											<input id="lksq_bbkrzjlx" name="bbkrzjlx" class="notNull">
+										</td>
+										<td class='infoName  red'>证件号码</td>
+										<td class='infoValue' style="width: 200px">
+											<input id="lksq_bbkrzjhm" class="notNull" 
+												onblur="checkZjhm('bbkrzjhm')" name="bbkrzjhm" maxlength="18">
+											<span class="lodingimg" id="yrjbxxDiv"></span>
+										</td>
+										<td id='imgTd' rowspan=6><img id="lksq_zp" style='width:150;height:185px'></img></td></tr>
+										<tr><td class='infoName  red'>姓名</td><td class='infoValue'>
+											<input id="lksq_bbkrxm" name="bbkrxm" class="notNull" maxlength="15">
+										</td><td class='infoName  red'>性别</td><td class='infoValue'><input id="lksq_bbkrxb" class="notNull"   name="bbkrxb"></td></tr>
 										<tr><td class='infoName  red'>出生日期</td><td class='infoValue'><input id="lksq_bbkrcsrq" name="bbkrcsrq" class="notNull"  onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyyMMdd'})"></td><td class='infoName'>身高</td><td class='infoValue'><input id="lksq_bc_sg" name="bc_sg"  maxlength=56 ></td></tr>
-										<tr><td class='infoName'>体貌特征</td><td class='infoValue' colspan=3><textarea id='lksq_bc_tmtz' onpropertychange="if(value.length>128) value=value.substr(0,128)" name="bc_tmtz" placeholder="最多填写128个文字"></textarea></td></tr>
-										<tr><td class='infoName'>户籍地祥址</td><td class='infoValue' colspan=3><input id="lksq_bc_hjzz" name="bc_hjzz" maxlength="128" placeholder="最多填写128个文字"> </td></tr>
-										<tr><td class='infoName'>现住地祥址</td><td class='infoValue' colspan=3><input id="lksq_bc_xzz" name="bc_xzz" maxlength="128" placeholder="最多填写128个文字"> </td></tr>
+										<tr><td class='infoName'>体貌特征</td><td class='infoValue' colspan=3><textarea id='lksq_bc_tmtz' maxlength=128 name="bc_tmtz" placeholder="最多填写128个文字"></textarea></td></tr>
+										<tr><td class='infoName'>户籍地祥址</td><td class='infoValue' colspan=3>
+											<input id="lksq_bc_hjzz" name="bc_hjzz" maxlength=128 placeholder="最多填写128个文字"> </td></tr>
+										<tr><td class='infoName'>现住地祥址</td><td class='infoValue' colspan=3>
+										<input id="lksq_bc_xzz" name="bc_xzz" maxlength=128 placeholder="最多填写128个文字"> </td></tr>
 									</table>
 								</td>	
 							</tr>
@@ -130,14 +145,20 @@
 									<table class='infoBodyTable'>
 										<tr><td class='infoName  red'>申请人</td><td class='infoValue' ><input id="lksq_sqrxm" class="notNull"  name="sqrxm" readonly placeholder='点击选择发现责任民警'  onclick='public_singleSelectOrgUser("", "", "", "", "","", "lksq_sqrsfhm", "lksq_sqrxm", "", "lksq_sqdwjgdm", "lksq_sqdw", "", false, "", window, "", "")' >
 												<input id="lksq_sqrsfhm" name="sqrsfhm" style="display:none"></td>
-											<td class='infoName'>联系电话</td><td class='infoValue' ><input id="lksq_sqrlxhm" name="sqrlxhm"  maxlength="40"  placeholder='多个已;号隔开'  ></td></tr>
+											<td class='infoName'>联系电话</td><td class='infoValue' >
+												<input id="lksq_sqrlxhm" name="sqrlxhm"  maxlength="40" placeholder='多个已;号隔开' title='多个已;号隔开'  
+													onchange="checkPhone('lksq_sqrlxhm');">
+											</td></tr>
 										<tr><td class='infoName'>申请时间</td><td class='infoValue'><input id="lksq_bc_sqsj" name="bc_sqsj" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyyMMddHHmmss'})"></td>
 											<td class='infoName  red'>申请单位</td><td class='infoValue'><input id="lksq_sqdw" class="notNull"  name="sqdw" readonly placeholder='自动填写' ><input id="lksq_sqdwjgdm" name="sqdwjgdm"  style="display:none"></td></tr>
 										
 										<tr><td class='infoName'>发布时间</td><td class='infoValue'><input id="lksq_bc_fbsj" name="bc_fbsj"></td><td class='infoName'>发布单位</td><td class='infoValue'><input id="lksq_bc_fbdw" name="bc_fbdw" value="<%=userOrgName%>" ></td></tr>
 										<tr><td class='infoName'>发布人</td><td class='infoValue'   ><input id="lksq_bc_fbr" name="bc_fbr" value="<%=userName%>"></td>
-											<td class='infoName'>联系电话</td><td class='infoValue'  ><input id="lksq_bc_fbrlxdh" name="bc_fbrlxdh"></td></tr>
+											<td class='infoName'>联系电话</td><td class='infoValue'  >
+											<input id="lksq_bc_fbrlxdh" name="bc_fbrlxdh" onchange="checkPhone('lksq_bc_fbrlxdh');" />
+										</td></tr>
 									</table>
+								</td>
 								</td>
 							</tr>
 							<tr id="opTr" style="display:none">
