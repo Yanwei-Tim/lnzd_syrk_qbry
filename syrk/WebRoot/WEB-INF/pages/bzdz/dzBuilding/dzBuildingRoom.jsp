@@ -57,7 +57,7 @@
 				   </table>
 				</tr>
 				<tr>
-				   <div id="xjzryzpDiv">
+				   <div id="xjzryzpDiv" style="height:140;overflow:auto">
 					 <ul id="xjzryzp"></ul>
 				   </div>
 				</tr>

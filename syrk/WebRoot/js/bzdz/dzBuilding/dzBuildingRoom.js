@@ -119,7 +119,7 @@ DzBuildingRoom.initRyList = function(){
 DzBuildingRoom.querySyrkZp = function(json){
 	var htmlText = "";
 	$.each(json,function(i){
-		htmlText += "<li><img width='132'height='160' alt='' src='"+contextPath+"/zpfjPtryzp/queryPtryzpSingle.jpg?ryid="+json[i].ryid+"&zjhm="+json[i].zjhm+"&cyzjdm="+json[i].cyzjdm+"'/></li>";
+		htmlText += "<li><img width='120'height='140' alt='' src='"+contextPath+"/zpfjPtryzp/queryPtryzpSingle.jpg?ryid="+json[i].ryid+"&zjhm="+json[i].zjhm+"&cyzjdm="+json[i].cyzjdm+"'/></li>";
 	});
 	$("#xjzryzp").html(htmlText);
 };

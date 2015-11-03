@@ -294,7 +294,9 @@ public class SyrkSyrkxxzbDao extends BaseDaoImpl {
 			map.put("tableName", "SYRK_SYRKXXZB T");
 		}
 		List<?> list = queryForList("SyrkSyrkxxzb.querySyrk", map);
-		if (page.getBegin() == 0) {
+		int count=(Integer)queryForObject("SyrkSyrkxxzb.querySyrkCount",map);
+		page.setTotal(count);
+		/*if (page.getBegin() == 0) {
 			if (list != null && list.size() > 0) {
 				page.setTotal(list.size());
 			} else {
@@ -306,7 +308,7 @@ public class SyrkSyrkxxzbDao extends BaseDaoImpl {
 					page.setTotal(list.size());
 				}
 			}
-		}
+		}*/
 		page.setRows(list);
 		return page;
 	}
