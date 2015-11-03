@@ -6,7 +6,18 @@
 <typeAlias alias="dsrxxzb" type="com.founder.zafffwqz.bean.Dsrxxzb"/>
 		<!-- 查询单条 -->
 	<select id="queryDsrxxzb" parameterClass="dsrxxzb" resultClass="Dsrxxzb">
-		<![CDATA[select * from FWQZ_MD_DSRXXZB t where id= #id# ]]>
+		<![CDATA[select * from FWQZ_MD_DSRXXZB t where xt_zxbz= '0' and T.ID = #id#]]>
+	
+
+	</select>
+	
+		<select id="queryDsrxxzbList" parameterClass="dsrxxzb" resultClass="Dsrxxzb">
+		<![CDATA[select * from FWQZ_MD_DSRXXZB t where xt_zxbz= '0']]>
+		
+		<isNotEmpty prepend="AND" property="mdjfxxid">
+			T.mdjfxxid = #mdjfxxid#
+		</isNotEmpty>
+
 	</select>
 	<!-- 插入 -->
 	<insert id="insertDsrxxzb" parameterClass="dsrxxzb">

@@ -1,5 +1,6 @@
 package com.founder.zafffwqz.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
@@ -18,6 +19,10 @@ public class DsrxxzbDao extends BaseDaoImpl {
 		
 	}
 	
+	public List<Dsrxxzb> queryDsrxxzbList(Dsrxxzb entity){
+		return (List<Dsrxxzb> ) super.queryForList("Dsrxxzb.queryDsrxxzbList", entity);
+		
+	}
 	public void saveDsrxxzb(Dsrxxzb entity){
 		super.insert("Dsrxxzb.insertDsrxxzb", entity);	
 	}

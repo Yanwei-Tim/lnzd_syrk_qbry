@@ -7,8 +7,22 @@
 
 	<!-- 查询单条 -->
 	<select id="queryGzjzqkzb" parameterClass="gzjzqkzb" resultClass="Gzjzqkzb">
-		<![CDATA[select * from FWQZ_MD_GZJZQKZB t where id= #id# ]]>
+		<![CDATA[select * from FWQZ_MD_GZJZQKZB t where xt_zxbz='0' and  T.ID = #id#]]>
+	
 	</select>
+	
+	
+		<!-- 查询单条 -->
+	<select id="queryGzjzqkzbList" parameterClass="gzjzqkzb" resultClass="Gzjzqkzb">
+		<![CDATA[select * from FWQZ_MD_GZJZQKZB t where xt_zxbz='0' ]]>
+		<isNotEmpty prepend="AND" property="id">
+			T.ID = #id#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="mdjfxxid">
+			T.mdjfxxid = #mdjfxxid#
+		</isNotEmpty>
+	</select>
+	
 	<!-- 插入 -->
 	<insert id="insertGzjzqkzb" parameterClass="gzjzqkzb">
 		 INSERT INTO FWQZ_MD_GZJZQKZB

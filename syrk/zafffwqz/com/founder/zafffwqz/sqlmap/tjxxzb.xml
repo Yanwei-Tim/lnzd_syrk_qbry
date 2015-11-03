@@ -7,8 +7,25 @@
 	
 	<!-- 查询单条 -->
 	<select id="queryTjxxzb" parameterClass="tjxxzb" resultClass="Tjxxzb">
-		<![CDATA[select * from FWQZ_MD_TJXXZB t where id= #id# ]]>
+		<![CDATA[select * from FWQZ_MD_TJXXZB t where xt_zxbz= '0' and 	T.ID = #id#]]>
+		<isNotEmpty prepend="AND" property="id">
+		
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="mdjfxxid">
+			T.mdjfxxid = #mdjfxxid#
+		</isNotEmpty>
+		 
 	</select>
+	
+    	<select id="queryTjxxzbList" parameterClass="tjxxzb" resultClass="Tjxxzb">
+		<![CDATA[select * from FWQZ_MD_TJXXZB t where xt_zxbz= '0' ]]>
+	
+		<isNotEmpty prepend="AND" property="mdjfxxid">
+			T.mdjfxxid = #mdjfxxid#
+		</isNotEmpty>
+		 
+	</select>	
+	
 	<insert id="insertTjxxzb" parameterClass="tjxxzb">
 		 INSERT INTO FWQZ_MD_TJXXZB
 		 	(id		

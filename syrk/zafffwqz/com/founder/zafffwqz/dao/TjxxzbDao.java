@@ -1,5 +1,6 @@
 package com.founder.zafffwqz.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
@@ -16,7 +17,10 @@ public class TjxxzbDao extends BaseDaoImpl {
 		return (Tjxxzb) super.queryForObject("Tjxxzb.queryTjxxzb", entity);
 		
 	}
-	
+	public List<Tjxxzb> queryTjxxzbList(Tjxxzb entity){
+		return (List<Tjxxzb>) super.queryForList("Tjxxzb.queryTjxxzbList", entity);
+		
+	}
 	public void saveTjxxzb(Tjxxzb entity){
 		super.insert("Tjxxzb.insertTjxxzb", entity);	
 	}

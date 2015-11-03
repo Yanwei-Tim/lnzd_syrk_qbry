@@ -1,5 +1,6 @@
 package com.founder.zafffwqz.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
@@ -14,6 +15,10 @@ public class GzjzqkzbDao extends BaseDaoImpl {
 	
 	public Gzjzqkzb queryGzjzqkzb(Gzjzqkzb entity){
 		return (Gzjzqkzb) super.queryForObject("Gzjzqkzb.queryGzjzqkzb", entity);
+		
+	}
+	public List<Gzjzqkzb> queryGzjzqkzbList(Gzjzqkzb entity){
+		return (List<Gzjzqkzb>) super.queryForList("Gzjzqkzb.queryGzjzqkzbList", entity);
 		
 	}
 	
