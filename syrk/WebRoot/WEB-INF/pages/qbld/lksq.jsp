@@ -45,7 +45,7 @@
   								姓名
   							</td>
   							<td>
-  								<input  class="whereInput" id="where_bbkrxm" />
+  								<input  class="whereInput" id="where_bbkrxm"  maxlength="15"/>
   							</td>
   						</tr>
   						<tr class="whereTr"> 
@@ -53,7 +53,7 @@
   								证件号码
   							</td>
   							<td>
-  								<input  class="whereInput" id="where_bbkrzjhm" />
+  								<input  class="whereInput" id="where_bbkrzjhm" maxlength="18" />
   							</td>
   						</tr>
   						<tr class="whereTr"> 
@@ -98,9 +98,9 @@
 										<tr><td class='infoName  red'>证件种类</td><td class='infoValue'><input id="lksq_bbkrzjlx" name="bbkrzjlx" class="notNull"></td><td class='infoName  red'>证件号码</td><td class='infoValue'><input id="lksq_bbkrzjhm" class="notNull"   name="bbkrzjhm" maxlength="18"></td><td id='imgTd' rowspan=6><img id="lksq_zp" style='width:150;height:185px'></img></td></tr>
 										<tr><td class='infoName  red'>姓名</td><td class='infoValue'><input id="lksq_bbkrxm" name="bbkrxm" class="notNull" maxlength="15"></td><td class='infoName  red'>性别</td><td class='infoValue'><input id="lksq_bbkrxb" class="notNull"   name="bbkrxb"></td></tr>
 										<tr><td class='infoName  red'>出生日期</td><td class='infoValue'><input id="lksq_bbkrcsrq" name="bbkrcsrq" class="notNull"  onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyyMMdd'})"></td><td class='infoName'>身高</td><td class='infoValue'><input id="lksq_bc_sg" name="bc_sg"  maxlength=56 ></td></tr>
-										<tr><td class='infoName'>体貌特征</td><td class='infoValue' colspan=3><textarea id='lksq_bc_tmtz' maxlength=128 name="bc_tmtz" placeholder="最多填写128个文字"></textarea></td></tr>
-										<tr><td class='infoName'>户籍地祥址</td><td class='infoValue' colspan=3><input id="lksq_bc_hjzz" name="bc_hjzz" maxlength=128 placeholder="最多填写128个文字"> </td></tr>
-										<tr><td class='infoName'>现住地祥址</td><td class='infoValue' colspan=3><input id="lksq_bc_xzz" name="bc_xzz" maxlength=128 placeholder="最多填写128个文字"> </td></tr>
+										<tr><td class='infoName'>体貌特征</td><td class='infoValue' colspan=3><textarea id='lksq_bc_tmtz' onpropertychange="if(value.length>128) value=value.substr(0,128)" name="bc_tmtz" placeholder="最多填写128个文字"></textarea></td></tr>
+										<tr><td class='infoName'>户籍地祥址</td><td class='infoValue' colspan=3><input id="lksq_bc_hjzz" name="bc_hjzz" maxlength="128" placeholder="最多填写128个文字"> </td></tr>
+										<tr><td class='infoName'>现住地祥址</td><td class='infoValue' colspan=3><input id="lksq_bc_xzz" name="bc_xzz" maxlength="128" placeholder="最多填写128个文字"> </td></tr>
 									</table>
 								</td>	
 							</tr>
@@ -117,10 +117,10 @@
 										<!-- gem修改 
 										<tr><td class='infoName'>短信号码</td><td class='infoValue' colspan=3><input id="lksq_sqrlxhm1" name="sqrlxhm1" maxlength="40"  placeholder='多个已;号隔开'  ></td></tr>
 										 -->
-										<tr><td class='infoName  red'>布控原因</td><td class='infoValue' colspan=3><textarea id='lksq_bkyy' class="notNull"  name="bkyy" maxlength=512 placeholder="最多填写512个文字"></textarea></td></tr>
-										<tr><td class='infoName  red'>处置要求</td><td class='infoValue' colspan=3><textarea id='lksq_czyq' class="notNull"  name="czyq" maxlength=512 placeholder="最多填写512个文字"></textarea></td></tr>
-										<tr><td class='infoName  red'>执法依据</td><td class='infoValue' colspan=3><textarea id='lksq_zfyj' class="notNull"  name="zfyj" maxlength=512 placeholder="最多填写512个文字"></textarea></td></tr>
-										<tr><td class='infoName'>备注</td><td class='infoValue' colspan=3><textarea id='lksq_bz' name="bz" maxlength=200 placeholder="最多填写200个文字"></textarea></td></tr>
+										<tr><td class='infoName  red'>布控原因</td><td class='infoValue' colspan=3><textarea id='lksq_bkyy' class="notNull"  name="bkyy" onpropertychange="if(value.length>512) value=value.substr(0,512)" placeholder="最多填写512个文字"></textarea></td></tr>
+										<tr><td class='infoName  red'>处置要求</td><td class='infoValue' colspan=3><textarea id='lksq_czyq' class="notNull"  name="czyq" onpropertychange="if(value.length>512) value=value.substr(0,512)" placeholder="最多填写512个文字"></textarea></td></tr>
+										<tr><td class='infoName  red'>执法依据</td><td class='infoValue' colspan=3><textarea id='lksq_zfyj' class="notNull"  name="zfyj" onpropertychange="if(value.length>512) value=value.substr(0,512)" placeholder="最多填写512个文字"></textarea></td></tr>
+										<tr><td class='infoName'>备注</td><td class='infoValue' colspan=3><textarea id='lksq_bz' name="bz" maxlength="200" placeholder="最多填写200个文字"></textarea></td></tr>
 									</table>
 								</td>
 							</tr>
