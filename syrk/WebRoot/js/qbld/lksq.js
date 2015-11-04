@@ -251,6 +251,13 @@ Lksq.addLksqInfo = function(){
 		url:contextPath +'/lksq/saveLksqb',	
 		success:Lksq.addLksqInfo_back
 	});
+	//gem 提交后按钮灰色不可用，防止再次提交
+	var inputObjs = $(".infoOneTable :input")
+	var num = inputObjs.length
+	for(var i = 0;i<num;i++){
+			$(inputObjs[i]).attr("disabled",true);
+			$("#opTr").hide();
+	}
 };
 /**
  * @method:addLksqInfo_back
