@@ -25,6 +25,9 @@
 			  <isNotEmpty prepend="and" property="lksqb.bc_gklx">
 				   bc_gklx in($lksqb.bc_gklx$)
 			  </isNotEmpty>
+			  <isNotEmpty prepend="and" property="lksqb.bc_bkjb">
+				   bc_bkjb in($lksqb.bc_bkjb$)
+			  </isNotEmpty>
 			  <isNotEmpty prepend="and" property="lksqb.sqdwjgdm">
 				   sqdwjgdm = #lksqb.sqdwjgdm#
 			  </isNotEmpty>
@@ -33,6 +36,9 @@
 			  </isNotEmpty>
 			  <isNotEmpty prepend="and" property="lksqb.bkqssjE">
 				    <![CDATA[ bkqssj <= #lksqb.bkqssjE# ]]> 
+			  </isNotEmpty>
+			  <isNotEmpty prepend="and" property="lksqb.bkzxzt">
+					 <![CDATA[ bkzxzt = #lksqb.bkzxzt# ]]> 
 			  </isNotEmpty>
 			  <![CDATA[ 
 			  	order by $sort$ $order$
@@ -61,6 +67,9 @@
 			  <isNotEmpty prepend="and" property="lksqb.bc_gklx">
 				   bc_gklx in($lksqb.bc_gklx$)
 			  </isNotEmpty>
+			  <isNotEmpty prepend="and" property="lksqb.bc_bkjb">
+				   bc_bkjb in($lksqb.bc_bkjb$)
+			  </isNotEmpty>
 			  <isNotEmpty prepend="and" property="lksqb.sqdwjgdm">
 				   sqdwjgdm = #lksqb.sqdwjgdm#
 			  </isNotEmpty>
@@ -69,6 +78,9 @@
 			  </isNotEmpty>
 			  <isNotEmpty prepend="and" property="lksqb.bkqssjE">
 				    <![CDATA[ bkqssj <= #lksqb.bkqssjE# ]]> 
+			  </isNotEmpty>
+			  <isNotEmpty prepend="and" property="lksqb.bkzxzt">
+					 <![CDATA[ bkzxzt = #lksqb.bkzxzt# ]]> 
 			  </isNotEmpty>
     </select>
     

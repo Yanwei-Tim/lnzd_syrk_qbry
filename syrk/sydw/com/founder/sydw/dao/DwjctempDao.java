@@ -69,6 +69,19 @@ public class DwjctempDao  extends BaseDaoImpl {
 	public void deleteDwjctype(Dwjctype entity, SessionBean sessionBean) {
 		update("Dwjctemp.deleteDwjctype", entity);
 	}
+	
+	/**
+	 * @Title: deleteDwjcdata 
+	 * @描述: 变更DW_DWJC_DATA表数据的状态
+	 * @作者: yu_guangli@founder.com 
+	 * @参数: 传入参数定义 
+	 * @日期：  2015-6-5 下午1:28:39 
+	 * @返回值: void    返回类型 
+	 * @throws
+	 */
+	public void deleteDwjcdata_zx(Dwjctype entity, SessionBean sessionBean) {
+		update("Dwjctemp.deleteDwjcdata_zx", entity);
+	}
 	/**
 	 * @Title: queryDwjctype 
 	 * @描述: 单位检查类型分页查询

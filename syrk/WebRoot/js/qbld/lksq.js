@@ -105,7 +105,7 @@ Lksq.queryLksqList = function(total,begin,end,page){
 					"bbkrxm":$("#where_bbkrxm").val(),
 					"bbkrzjhm":$("#where_bbkrzjhm").val(),
 					"bkzxzt":$("#where_bkzxzt").val(),
-					"bc_gklx":gklx.substring(0, gklx.length-1),
+					"bc_bkjb":gklx.substring(0, gklx.length-1),
 					"bkqssjB":$("#where_bkqssjB").val(),
 					"bkqssjE":$("#where_bkqssjE").val(),
 					"total":total,
@@ -251,6 +251,13 @@ Lksq.addLksqInfo = function(){
 		url:contextPath +'/lksq/saveLksqb',	
 		success:Lksq.addLksqInfo_back
 	});
+	//gem 提交后按钮灰色不可用，防止再次提交
+	var inputObjs = $(".infoOneTable :input")
+	var num = inputObjs.length
+	for(var i = 0;i<num;i++){
+			$(inputObjs[i]).attr("disabled",true);
+			$("#opTr").hide();
+	}
 };
 /**
  * @method:addLksqInfo_back
