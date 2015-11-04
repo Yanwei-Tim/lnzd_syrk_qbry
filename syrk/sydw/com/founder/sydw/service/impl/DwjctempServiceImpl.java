@@ -45,6 +45,11 @@ public class DwjctempServiceImpl extends BaseService implements DwjctempService 
 	public void deleteDwjctype(Dwjctype entity, SessionBean sessionBean) {
 		dwjctempDao.deleteDwjctype(entity, sessionBean);
 	}
+	
+	@Override
+	public void deleteDwjcdata_zx(Dwjctype entity, SessionBean sessionBean) {
+		dwjctempDao.deleteDwjcdata_zx(entity, sessionBean);
+	}
 
 	@Override
 	public EasyUIPage queryDwjctype(EasyUIPage page, Dwjctype entity) {

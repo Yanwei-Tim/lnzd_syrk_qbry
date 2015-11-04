@@ -61,6 +61,18 @@ public interface DwjctempService {
 	 */
 	@MethodAnnotation(value = "注销", type = logType.delete)
 	public void deleteDwjctype(Dwjctype entity,SessionBean sessionBean);
+	
+	/**
+	 * @Title: deleteDwjctype 
+	 * @描述: 变更DW_DWJC_DATA表数据的状态
+	 * @作者: liang_lihe@founder.com 
+	 * @参数: 传入参数定义 
+	 * @日期：  2015-6-5 下午1:28:39 
+	 * @返回值: void    返回类型 
+	 * @throws
+	 */
+	@MethodAnnotation(value = "注销", type = logType.delete)
+	public void deleteDwjcdata_zx(Dwjctype entity,SessionBean sessionBean);
 	/**
 	 * @Title: queryDwjctype 
 	 * @描述: 单位检查类型分页查询

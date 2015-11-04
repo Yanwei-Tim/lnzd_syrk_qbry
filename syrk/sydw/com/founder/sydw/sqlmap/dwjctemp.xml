@@ -32,6 +32,11 @@
 	<update id ="deleteDwjctype" parameterClass="dwjctype">
 		 UPDATE  DW_DWJC_TYPE T SET T.XT_ZXBZ='1'  WHERE ID = #id#
 	</update>
+	
+	<!-- 注销单位检查类目子项信息 -->
+	<update id ="deleteDwjcdata_zx" parameterClass="dwjctype">
+		 UPDATE  DW_DWJC_DATA T SET T.XT_ZXBZ='1'  WHERE TYPEID = #id#
+	</update>
 	<!-- 查询单位检查类目信息 -->
 	<select id="queryDwjctype" parameterClass="Map" resultClass="dwjctype">
 		<![CDATA[

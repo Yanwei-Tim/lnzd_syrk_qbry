@@ -129,6 +129,7 @@ public class DwjctempController extends BaseController {
 		try {
 			entity.setXt_zxbz("1");
 			dwjctempService.deleteDwjctype(entity, sessionBean);
+			dwjctempService.deleteDwjcdata_zx(entity, sessionBean);
 			model.put(AppConst.STATUS, AppConst.SUCCESS);
 			model.put(AppConst.MESSAGES, "注销【检查类目】成功！");
 		}catch (Exception e) {

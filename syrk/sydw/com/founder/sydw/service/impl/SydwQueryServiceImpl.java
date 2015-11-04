@@ -93,8 +93,8 @@ public class SydwQueryServiceImpl implements SydwQueryService {
 		sydwQueryDao.delete(entity);
 		//另存为到DW_DWXZXXB表数据更新
 		sydwQueryDao.dwXzDelete(entity.getId());
-//		applicationContext.publishEvent(new SydwModifyEvent(new EventObject(entity.getId(), "del")));
-//		applicationContext.publishEvent(new TempModifyEvent(new EventObjectTemp(entity.getId(), "delete", "sydw", sessionBean)));
+		applicationContext.publishEvent(new SydwModifyEvent(new EventObject(entity.getId(), "del")));
+		applicationContext.publishEvent(new TempModifyEvent(new EventObjectTemp(entity.getId(), "delete", "sydw", sessionBean)));
 	}
 
 	@Override
