@@ -108,7 +108,6 @@ $(function(){
             return $('#rfryxxForm').form('validate');  
         },  
         success:function(data){  
-        	alert(2);
             var json = $.parseJSON(data);
             if(json.status != 'success'){
             	topMessagerAlert(null,json.message);
