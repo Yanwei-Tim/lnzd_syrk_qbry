@@ -119,10 +119,17 @@ public class AqffRfxxbController extends BaseController{
 				}
 				entity.setId(UUID.create());
 				rfxxService.insertRfxx(entity, sessionBean);
-				//添加人员之前先删掉之前已有人员
-				rfxxService.deleteRfryxx(entity);
+				
 				for(int i = 0;i<list.size();i++){
 					Aqffrfryxxb rfry = list.get(i);
+					list.remove(i);
+					if(list.contains(rfry)){
+						model.put(AppConst.STATUS, AppConst.ERRORS);
+						model.put(AppConst.MESSAGES,  "组织人员重复!");
+						mv.addObject(AppConst.MESSAGES, new Gson().toJson(model));
+						return mv;
+					}
+					list.add(i, rfry);
 					rfry.setRfid(entity.getId());
 					rfxxService.saveRfcyxx(rfry, sessionBean);
 				}
@@ -141,10 +148,21 @@ public class AqffRfxxbController extends BaseController{
 					}
 				}
 				rfxxService.updateRfxx(entity, sessionBean);
-				//添加人员之前先删掉之前已有人员
-				rfxxService.deleteRfryxx(entity);
+				
 				for(int i = 0;i<list.size();i++){
 					Aqffrfryxxb rfry = list.get(i);
+					list.remove(i);
+					if(list.contains(rfry)){
+						model.put(AppConst.STATUS, AppConst.ERRORS);
+						model.put(AppConst.MESSAGES,  "组织人员重复!");
+						mv.addObject(AppConst.MESSAGES, new Gson().toJson(model));
+						return mv;
+					}
+					list.add(i, rfry);
+					//添加人员之前先删掉之前已有人员,第一次循环时删掉
+					if(i==0){
+						rfxxService.deleteRfryxx(entity);
+					}
 					rfry.setRfid(entity.getId());
 					rfxxService.saveRfcyxx(rfry, sessionBean);
 				}
@@ -268,7 +286,7 @@ public class AqffRfxxbController extends BaseController{
 					model.put(AppConst.SAVE_ID, entity.getId()); // 返回主键
 				}else{
 					model.put(AppConst.STATUS, AppConst.ERRORS);
-					model.put(AppConst.MESSAGES,  "人员重复!");
+					model.put(AppConst.MESSAGES,  "组织人员重复!");
 					model.put(AppConst.SAVE_ID, entity.getId());
 				}
 			} else {

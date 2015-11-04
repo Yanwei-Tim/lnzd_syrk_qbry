@@ -307,5 +307,19 @@ public class Aqffrfryxxb extends BaseEntity implements Serializable {
 	public void setXt_zxyy(String xt_zxyy) {
 		this.xt_zxyy = xt_zxyy;
 	}
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof Aqffrfryxxb)){
+			return false;
+		}else{
+			Aqffrfryxxb bean=(Aqffrfryxxb)obj;
+			if(bean.getZjlxdm().equals(this.zjlxdm)&&bean.getZjhm().equals(this.zjhm)){
+				return true;
+			}else{
+				return false;
+			}
+			
+		}		
+	}
 	
 }
