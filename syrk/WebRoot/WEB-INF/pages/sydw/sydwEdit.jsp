@@ -289,6 +289,7 @@ var fsxmc = "${fsxmc}";
 var dsjdm = "${dsjdm}";
 var dsjmc = "${dsjmc}";
 var dwid="${dw.id}";
+var dwmc="${dw.dwmc}";
 var dwlbdm="${dw.dwlbdm}";
 var infoPara = {
 		mainUrl:"/sydwgl/queryDwzsxx",

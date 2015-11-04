@@ -285,7 +285,7 @@
 		}
 		executeTabPageMethod(mainTabID, "queryButton()");
 		//gem #86 实有单位-单位编辑页面，单位检查信息和单位处罚信息新增后，当前页面未刷新
-		parent.location.reload();
+		//parent.location.reload();
 	}
 	
 	function checkboxToRadio() {

@@ -496,7 +496,7 @@ function dwjcView(index) {
 		editUrl = basePath+"dwjcxxb/addJf?id="+rowData.id;
 	}
 	window.top.openWindowNoSave(false, null, window, 
-   		{dwmc:rowData.dwmc,dwlbdm:rowData.dwlbdm,ywlbdm:rowData.ywlbdm,mode:"view"}, 
+   		{dwmc:dwmc,dwlbdm:dwlbdm,ywlbdm:rowData.ywlbdm,mode:"view"}, 
    		{
    		title: '单位检查信息',
    		url: editUrl,
@@ -522,7 +522,7 @@ function dwjcmodigy(index){
 		editUrl = basePath+"dwjcxxb/add?id="+rowData.id+"&mainTabID="+getMainTabID();
 	}
 	window.top.openWindowWithSave(false, null, window, 
-   		{dwmc:rowData.dwmc,dwlbdm:rowData.dwlbdm,ywlbdm:rowData.ywlbdm}, 
+   		{dwmc:dwmc,dwlbdm:dwlbdm,ywlbdm:rowData.ywlbdm}, 
    		{
    		title: '单位检查信息',
    		url: editUrl,
@@ -530,9 +530,13 @@ function dwjcmodigy(index){
    		inline:true,
    		height:500
    		}, 
-   		null, null,null
+   		null, 'dwjcSubmitSuccess',null
    	);
 };
+
+function dwjcSubmitSuccess(){
+	$('#dwjcxxb_datagrid').datagrid('reload');
+}
 
 /*
  * 整改
