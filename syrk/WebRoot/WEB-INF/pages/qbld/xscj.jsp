@@ -107,10 +107,10 @@
 											<td class='infoName  red'>是否发生<input id="xscj_sfyfs" name="sfyfs" value="0" class="notNull" style="display:none"></td>
 											<td class='infoValue' id="sfyfs_td"></td></tr>
 										<tr><td class='infoName  red'>线索来源</td><td class='infoValue' id="xsly_td"><input id="xscj_xsly" name="xsly"  class="notNull"></td>
-											<td class='infoName  red'>是否续报<input id="xscj_sfxb" name="sfxb" value="0"  class="notNull" style="display:none"></td>
+											<td class='infoName'>是否续报<input id="xscj_sfxb" name="sfxb" value="0" style="display:none"></td>
 											<td class='infoValue' id="sfxb_td"></td></tr>
 										<tr id="sbxx_tr" style="display:none">
-											<td class='infoName  red'>续报线索</td><td class='infoValue' colspan=3><input id="xscj_xbyjlbt" name="xbyjlbt" class="notNull" onclick="$('#win').window('open');">
+											<td class='infoName'>续报线索</td><td class='infoValue' colspan=3><input id="xscj_xbyjlbt" name="xbyjlbt" onclick="$('#win').window('open');">
 																										<input id="xscj_xbyjlid" name="xbyjlid" style="display:none" ></td>
 										<tr id="fssj_tr" style="display:none">
 											<td class='infoName  red'>开始时间</td><td class='infoValue'><input id="xscj_b_assj_ks" name="b_assj_ks"  class="notNull" placeholder="点击请选择日期" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyyMMddHHmmss'})"></td>
