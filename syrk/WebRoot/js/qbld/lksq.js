@@ -105,7 +105,7 @@ Lksq.queryLksqList = function(total,begin,end,page){
 					"bbkrxm":$("#where_bbkrxm").val(),
 					"bbkrzjhm":$("#where_bbkrzjhm").val(),
 					"bkzxzt":$("#where_bkzxzt").val(),
-					"bc_gklx":gklx.substring(0, gklx.length-1),
+					"bc_bkjb":gklx.substring(0, gklx.length-1),
 					"bkqssjB":$("#where_bkqssjB").val(),
 					"bkqssjE":$("#where_bkqssjE").val(),
 					"total":total,
