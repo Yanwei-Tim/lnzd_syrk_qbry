@@ -430,6 +430,7 @@ function doFjxxDelete(linkObject, index) {
 //单位检查操作列
 function dwjcprocessFormater(val, row, index) { // 自定义操作生成
 	var  zghtml = "";
+
 	if(row.zt=="10"){
 		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="dwjcmodigy('+index+')">编辑</a>&nbsp;' +
 				 '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doZg('+index+')">整改</a>&nbsp;';
@@ -466,10 +467,16 @@ function dwjcprocessFormater(val, row, index) { // 自定义操作生成
 	}else if(row.zt=="120"){
 		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="cancelBubble();" style="color:gray;">编辑</a>&nbsp;' +
 				 '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doPrint('+index+');">打印</a>&nbsp;';
-	}else{
-		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="dwjcmodigy('+index+')">编辑</a>&nbsp;' +
+	}else {
+		if($('#mode_').val()=="view"){
+			zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" style="color:gray;">编辑</a>&nbsp;' +
+			 '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="cancelBubble();" style="color:gray;">整改</a>&nbsp;';
+		}else{
+			zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="dwjcmodigy('+index+')">编辑</a>&nbsp;' +
 				 '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="cancelBubble();" style="color:gray;">整改</a>&nbsp;';
+		}
 	}
+	
 	return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="dwjcView('+index+')">查看</a>&nbsp;'+
 			zghtml;
 };
