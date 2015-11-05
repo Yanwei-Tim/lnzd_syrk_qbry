@@ -71,9 +71,9 @@ public class DwjctempDao  extends BaseDaoImpl {
 	}
 	
 	/**
-	 * @Title: deleteDwjcdata 
+	 * @Title: deleteDwjcdata_zx 
 	 * @描述: 变更DW_DWJC_DATA表数据的状态
-	 * @作者: yu_guangli@founder.com 
+	 * @作者: liang_lihe@founder.com 
 	 * @参数: 传入参数定义 
 	 * @日期：  2015-6-5 下午1:28:39 
 	 * @返回值: void    返回类型 

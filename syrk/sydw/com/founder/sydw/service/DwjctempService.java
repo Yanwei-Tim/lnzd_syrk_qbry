@@ -63,7 +63,7 @@ public interface DwjctempService {
 	public void deleteDwjctype(Dwjctype entity,SessionBean sessionBean);
 	
 	/**
-	 * @Title: deleteDwjctype 
+	 * @Title: deleteDwjcdata_zx 
 	 * @描述: 变更DW_DWJC_DATA表数据的状态
 	 * @作者: liang_lihe@founder.com 
 	 * @参数: 传入参数定义 
