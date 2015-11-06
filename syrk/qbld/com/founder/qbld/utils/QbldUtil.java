@@ -105,7 +105,39 @@ public class QbldUtil {
 				map = list.get(i);
 				for(int j = 0; j < keyArray.length; j++){
 					cell = row.createCell(j);
-					cell.setCellValue(map.get(keyArray[j].toUpperCase()));
+					//预警级别数据字典转换
+					String cellValue = map.get(keyArray[j].toUpperCase());
+					String cellKey = keyArray[j].toUpperCase();
+					if ("YJJB".equalsIgnoreCase(cellKey)) {
+						if ("1".equals(map.get("YJJB"))) {
+							cellValue = "一级";
+						} else if ("2".equals(map.get("YJJB"))) {
+							cellValue = "二级";
+						} else if ("3".equals(map.get("YJJB"))) {
+							cellValue = "三级";
+						} else if ("4".equals(map.get("YJJB"))) {
+							cellValue = "四级";
+						} else if ("5".equals(map.get("YJJB"))) {
+							cellValue = "五级";
+						}
+					} else if ("ZLJB".equalsIgnoreCase(cellKey)) {
+						if ("11".equals(map.get("YJJB"))) {
+							cellValue = "红色";
+						} else if ("12".equals(map.get("YJJB"))) {
+							cellValue = "橙色";
+						} else if ("13".equals(map.get("YJJB"))) {
+							cellValue = "黄色";
+						} else if ("14".equals(map.get("YJJB"))) {
+							cellValue = "蓝色";
+						} 
+					}  else if ("QSFKZT".equalsIgnoreCase(cellKey)) {
+						if ("0".equals(map.get("YJJB"))) {
+							cellValue = "待签收";
+						} else if ("1".equals(map.get("YJJB"))) {
+							cellValue = "已签收";
+						} 
+					} 
+					cell.setCellValue(cellValue);
 				}
 			}
 			wb.write(outputStream);
