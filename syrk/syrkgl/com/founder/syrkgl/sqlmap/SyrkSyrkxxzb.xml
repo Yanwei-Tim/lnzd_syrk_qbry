@@ -500,11 +500,16 @@
 	<update id="updateHs" parameterClass="syrkSyrkxxzb">
 		UPDATE SYRK_SYRKXXHSB T 
 		<dynamic prepend="set">
-			<isNotNull prepend="," property="hs_status"><![CDATA[hs_status= #hs_status#]]></isNotNull>
-			<isNotNull prepend="," property="hs_sj"><![CDATA[hs_sj= #hs_sj#]]></isNotNull>
-			<isNotNull prepend="," property="hs_person"><![CDATA[hs_person= #hs_person#]]></isNotNull>
-			,
-			<include refid="updateXtzd" />
+			<isNotEmpty prepend="," property="hs_status"><![CDATA[hs_status= #hs_status#]]></isNotEmpty>
+			<isNotEmpty prepend="," property="hs_sj"><![CDATA[hs_sj= #hs_sj#]]></isNotEmpty>
+			<isNotEmpty prepend="," property="hs_person"><![CDATA[hs_person= #hs_person#]]></isNotEmpty>
+			
+			<isNotEmpty prepend="," property="xt_zhxgsj"><![CDATA[xt_zhxgsj= #xt_zhxgsj#]]></isNotEmpty>
+			<isNotEmpty prepend="," property="xt_zhxgrxm"><![CDATA[xt_zhxgrxm= #xt_zhxgrxm#]]></isNotEmpty>
+			<isNotEmpty prepend="," property="xt_zhxgrid"><![CDATA[xt_zhxgrid= #xt_zhxgrid#]]></isNotEmpty>
+			<isNotEmpty prepend="," property="xt_zhxgrbm"><![CDATA[xt_zhxgrbm= #xt_zhxgrbm#]]></isNotEmpty>
+			<isNotEmpty prepend="," property="xt_zhxgsj"><![CDATA[xt_zhxgrbmid= #xt_zhxgrbmid#]]></isNotEmpty>
+
 		</dynamic>
 		<![CDATA[ WHERE ID = #id#]]>
 	</update>
