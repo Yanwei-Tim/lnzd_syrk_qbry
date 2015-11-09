@@ -1,12 +1,11 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" errorPage="/errorPage.jsp"%>
-<%@page import="com.founder.framework.config.SystemConfig" %>
+<%@ page import="com.founder.framework.config.SystemConfig" %>
 <%
-String contextPath = request.getContextPath();
-String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + contextPath + "/";
+	String contextPath = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + contextPath + "/";
 %>
 <script type="text/javascript" src="<%=contextPath%>/common/jeasyui/jquery1.11.min.js"></script>
 <script type="text/javascript" src="<%=contextPath%>/common/jeasyui/jquery.cookie.js"></script>
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -14,30 +13,17 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <link href="<%=contextPath%>/common/skin/login.css" rel="stylesheet" />
 <script type="text/javascript">
  function setTab(name,cursel,n){
- for(i=1;i<=n;i++){
-  var menu=document.getElementById(name+i);
-  var con=document.getElementById("con_"+name+"_"+i);
-  menu.className=i==cursel?"hover":"";
-  con.style.display=i==cursel?"block":"none";
- }
+	 for(i=1;i<=n;i++){
+		  var menu=document.getElementById(name+i);
+		  var con=document.getElementById("con_"+name+"_"+i);
+		  menu.className=i==cursel?"hover":"";
+		  con.style.display=i==cursel?"block":"none";
+	 }
 }
 </script>
 </head>
-
 <body bgcolor="#F3FAFF" onload="body_onload();" style="overflow: auto;">
-
 <div class="login_nr">
-<div class="header">
-<form>
-<ul>
-<li><input value="用户名" type="text" onclick="setUser(this)" id="userId1" class="input2" /></li>
-<li><input value="密码" type="text" id="password1" onclick="setPsd(this)" class="input2" /></li>
-<li><input type="button" onclick="login1();" class="login_btn3" value="" /></li>
-<li><input type="button" class="login_btn4" value="" /></li>
-<li><img src="<%=contextPath%>/common/skin/images/hf2.png" width="14" height="14" class="hf img1" /></li>
-</ul>
-</form>
-</div>
   <div class="tabbox">
     <div class="menu5">
       <ul>
@@ -77,12 +63,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
         </tr>
       </table>
     </div>
-
   </div>
-
 </div>
 </body>
-
 <script language="JavaScript" >
 try {
    if (window != top) { // 在顶层窗口打开登陆页面
@@ -119,7 +102,6 @@ function login(){
     var userIdValue = document.getElementById("userId").value;
     userIdValue = userIdValue.trim(); 
     if(null == userIdValue || "" == userIdValue ){
-      //alert("请输入用户名！");
       document.getElementById("erroword").innerHTML="请输入用户名！";
       document.getElementById("userId").focus();
       document.getElementById("userId").className="inputerro";
@@ -135,7 +117,6 @@ function login1(){
     var password1Value = document.getElementById("password1").value;
     userIdValue = userIdValue.trim(); 
     if(null == userIdValue || "" == userIdValue ){
-      //alert("请输入用户名！");
       document.getElementById("erroword").innerHTML="请输入用户名！";
       document.getElementById("userId").focus();
       document.getElementById("userId").className="inputerro";
@@ -159,7 +140,6 @@ function errMsg(){
    var errors = "${errors}";
    var focus = "${focus}";
    if (errors != "") {
-      //alert(errors);
       document.getElementById("erroword").innerHTML=errors;
    }
 }

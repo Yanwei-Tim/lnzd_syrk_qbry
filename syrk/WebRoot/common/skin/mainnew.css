@@ -47,7 +47,7 @@ img {
 
 .banner03 {
 	background: no-repeat right;
-	margin-top: -10px;
+	width: 100%;
 }
 
 .banner04 {
@@ -205,22 +205,17 @@ img {
 }
 
 .banner_lf {
-	width: 190px;
 	height: 50px;
 	float: left;
+	width: 100%;
 	background-position-y: 1;
 }
 
-.banner_ct {
-	padding: 0 220px 0 0;
-}
-
 .banner_rt {
-	width: 220px;
 	height: 50px;
+	list-style: 50px;
 	position: absolute;
 	right: 0;
-	top: 0;
 }
 
 .banner_btnlf {
@@ -400,11 +395,15 @@ img {
 .logout1 {
 	color: #80B1DB;
 	cursor: pointer;
+	padding-left: 20px;
+	padding-right: 10px;
 }
 
 .logout2 {
 	color: #FFFFFF;
 	cursor: pointer;
+	padding-left: 20px;
+	padding-right: 10px;
 }
 
 .home1 {

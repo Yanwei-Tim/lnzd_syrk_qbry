@@ -2,7 +2,6 @@
 <%@	page import="com.founder.framework.base.entity.SessionBean"%>
 <%
 	String contextPath = request.getContextPath();
-	String emptyImage = contextPath+ "/common/skin/images/sys_empty.gif";
 	SessionBean userInfo = (SessionBean) session.getAttribute("userSession");
 	String userName = "";
 	String userOrgName = "";
@@ -31,30 +30,27 @@
 <BODY class="bannerBody" onselectstart="return false;" oncontextmenu="return false;">
 	<form name="dataform" action="<%=contextPath%>/LoginPage/login?action=caslogout" checkType="blur" target="_self" method="post"></form>
 	<div class="banner_lf banner01">
-		<img src="<%=emptyImage%>" width="650" height="1" border="0">
-		<div class="banner_ct">
-			<div class="banner_rt">
-		        <div class="banner03" style="float:right;width:100%;height:72px;">
-					<table border="0" cellpadding="0" cellspacing="0" height="42"  style="margin-top: 12px;">
-						<tr>
-							<td class="bannerUser">
-								<img src="<%=emptyImage%>" width="42" height="42" border="0">
-							</td>
-							<td style="width: 95px;">
-							    <span class="userInfo">
-							       <%=userName%>
-							    </span>
-							    <br>
-							    <span class="userInfo">
-							       <%=userOrgName%>
-							    </span>
-							</td>
-							<td width="30" class="logout1" onclick="logout_click()" onmousemove="this.className='logout2'" onmouseout="this.className='logout1'">退出</td>
-						</tr>
-				    </table>
-			   </div>
-	    	</div>
-		</div>
+		<div class="banner_rt">
+	        <div class="banner03">
+				<table border="0" cellpadding="0" cellspacing="0" style="line-height: 50px;height: 50px;">
+					<tr>
+						<td class="bannerUser">
+							<img src="" width="42" height="42" border="0">
+						</td>
+						<td>
+						    <span class="userInfo">
+						       <%=userName%>
+						    </span>
+						    <br>
+						    <span class="userInfo">
+						       <%=userOrgName%>
+						    </span>
+						</td>
+						<td class="logout1" onclick="logout_click()" onmousemove="this.className='logout2'" onmouseout="this.className='logout1'">退出</td>
+					</tr>
+			    </table>
+		   </div>
+    	</div>
 	 </div>
 </BODY>
 </HTML>
