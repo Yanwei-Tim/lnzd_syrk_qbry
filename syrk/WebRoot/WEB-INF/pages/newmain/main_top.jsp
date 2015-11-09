@@ -31,25 +31,23 @@
 	<form name="dataform" action="<%=contextPath%>/LoginPage/login?action=caslogout" checkType="blur" target="_self" method="post"></form>
 	<div class="banner_lf banner01">
 		<div class="banner_rt">
-	        <div class="banner03">
-				<table border="0" cellpadding="0" cellspacing="0" style="line-height: 50px;height: 50px;">
-					<tr>
-						<td class="bannerUser">
-							<img src="" width="42" height="42" border="0">
-						</td>
-						<td>
-						    <span class="userInfo">
-						       <%=userName%>
-						    </span>
-						    <br>
-						    <span class="userInfo">
-						       <%=userOrgName%>
-						    </span>
-						</td>
-						<td class="logout1" onclick="logout_click()" onmousemove="this.className='logout2'" onmouseout="this.className='logout1'">退出</td>
-					</tr>
-			    </table>
-		   </div>
+			<table border="0" cellpadding="0" cellspacing="0"  style="float:right;line-height: 50px;height: 50px;">
+				<tr>
+					<td class="bannerUser">
+						<img src="" width="42" height="42" border="0">
+					</td>
+					<td>
+					    <span class="userInfo">
+					       <%=userName%>
+					    </span>
+					    <br>
+					    <span class="userInfo">
+					       <%=userOrgName%>
+					    </span>
+					</td>
+					<td class="logout1" onclick="logout_click()" onmousemove="this.className='logout2'" onmouseout="this.className='logout1'">退出</td>
+				</tr>
+		    </table>
     	</div>
 	 </div>
 </BODY>
