@@ -20,6 +20,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import com.founder.bzdz.service.DzService;
 import com.founder.bzdz.vo.BzdzxxbVO;
 import com.founder.framework.organization.department.service.OrgOrganizationService;
+import com.founder.framework.utils.DateUtils;
 import com.founder.framework.utils.StringUtils;
 import com.founder.sydw.bean.Cyryxxb;
 import com.founder.sydw.bean.Dwjbxxb;
@@ -39,6 +40,7 @@ import com.founder.syrkgl.dao.SyrkSyrkxxzbDao;
 import com.founder.syrkgl.dao.SyrkWlhryxxbDao;
 import com.founder.ywxt.bean.Ywxtcyryxxb;
 import com.founder.ywxt.factory.XtFactory;
+import com.founder.ywxt.service.AbstractXtTask;
 import com.founder.ywxt.service.XtTaskService;
 
 /**
@@ -452,12 +454,18 @@ public class SyrkModelInterceptor {
 		ywxtcyryxxb.setSspcs(orgOrganizationService.queryParentOrgByOrgcode(sszrq).getOrgcode());
 		ywxtcyryxxb.setSszrq(sszrq);
 		ywxtcyryxxb.setXtdz("发起");
+		ywxtcyryxxb.setXtjg(AbstractXtTask.RIGHT);
+		ywxtcyryxxb.setXt_cjsj(DateUtils.getSystemDateTimeString());
+		ywxtcyryxxb.setXt_zhxgsj(DateUtils.getSystemDateTimeString());
 		listCyr.add(ywxtcyryxxb);
 		Map<String,String> jsMap=new HashMap<String,String>();
 		ywxtcyryxxb=new Ywxtcyryxxb();
 		ywxtcyryxxb.setSspcs(pcsdm);
 		ywxtcyryxxb.setSszrq(zrqdm);
 		ywxtcyryxxb.setXtdz("接收");
+		ywxtcyryxxb.setXtjg(AbstractXtTask.ERROR);
+		ywxtcyryxxb.setXt_cjsj(DateUtils.getSystemDateTimeString());
+		ywxtcyryxxb.setXt_zhxgsj(DateUtils.getSystemDateTimeString());
 		listCyr.add(ywxtcyryxxb);
 		paramMap.put("users", listCyr);
 		//这里拼接JSONMap用于生产JSON
@@ -508,6 +516,9 @@ public class SyrkModelInterceptor {
 		ywxtcyryxxb.setSspcs(orgOrganizationService.queryParentOrgByOrgcode(sszrq).getOrgcode());
 		ywxtcyryxxb.setSszrq(sszrq);
 		ywxtcyryxxb.setXtdz("发起");
+		ywxtcyryxxb.setXtjg(AbstractXtTask.RIGHT);
+		ywxtcyryxxb.setXt_cjsj(DateUtils.getSystemDateTimeString());
+		ywxtcyryxxb.setXt_zhxgsj(DateUtils.getSystemDateTimeString());
 		listCyr.add(ywxtcyryxxb);
 		Map<String,String> jsMap=new HashMap<String,String>();
 		jsMap.put("zjhm", syrkWlhryxxb.getZjhm());
@@ -521,6 +532,9 @@ public class SyrkModelInterceptor {
 		ywxtcyryxxb.setSspcs(orgOrganizationService.queryParentOrgByOrgcode(syrkWlhryxxb.getXt_zhxgrbmid()).getOrgcode());
 		ywxtcyryxxb.setSszrq(syrkWlhryxxb.getXt_zhxgrbmid());
 		ywxtcyryxxb.setXtdz("接收");
+		ywxtcyryxxb.setXtjg(AbstractXtTask.ERROR);
+		ywxtcyryxxb.setXt_cjsj(DateUtils.getSystemDateTimeString());
+		ywxtcyryxxb.setXt_zhxgsj(DateUtils.getSystemDateTimeString());
 		listCyr.add(ywxtcyryxxb);
 		paramMap.put("users", listCyr);
 		//这里拼接JSONMap用于生产JSON
@@ -573,6 +587,9 @@ public class SyrkModelInterceptor {
 		ywxtcyryxxb.setSspcs(orgOrganizationService.queryParentOrgByOrgcode(sszrq).getOrgcode());
 		ywxtcyryxxb.setSszrq(sszrq);
 		ywxtcyryxxb.setXtdz("发起");
+		ywxtcyryxxb.setXtjg(AbstractXtTask.RIGHT);
+		ywxtcyryxxb.setXt_cjsj(DateUtils.getSystemDateTimeString());
+		ywxtcyryxxb.setXt_zhxgsj(DateUtils.getSystemDateTimeString());
 		listCyr.add(ywxtcyryxxb);
 		Map<String,String> jsMap=new HashMap<String,String>();
 		jsMap.put("zjhm", syrkLdrkxxb.getZjhm());
@@ -586,6 +603,9 @@ public class SyrkModelInterceptor {
 		ywxtcyryxxb.setSspcs(orgOrganizationService.queryParentOrgByOrgcode(syrkLdrkxxb.getXt_zhxgrbmid()).getOrgcode());
 		ywxtcyryxxb.setSszrq(syrkLdrkxxb.getXt_zhxgrbmid());
 		ywxtcyryxxb.setXtdz("接收");
+		ywxtcyryxxb.setXtjg(AbstractXtTask.ERROR);
+		ywxtcyryxxb.setXt_cjsj(DateUtils.getSystemDateTimeString());
+		ywxtcyryxxb.setXt_zhxgsj(DateUtils.getSystemDateTimeString());
 		listCyr.add(ywxtcyryxxb);
 		paramMap.put("users", listCyr);
 		//这里拼接JSONMap用于生产JSON
@@ -640,6 +660,9 @@ public class SyrkModelInterceptor {
 		ywxtcyryxxb.setSspcs(orgOrganizationService.queryParentOrgByOrgcode(sszrq).getOrgcode());
 		ywxtcyryxxb.setSszrq(sszrq);
 		ywxtcyryxxb.setXtdz("发起");
+		ywxtcyryxxb.setXtjg(AbstractXtTask.RIGHT);
+		ywxtcyryxxb.setXt_cjsj(DateUtils.getSystemDateTimeString());
+		ywxtcyryxxb.setXt_zhxgsj(DateUtils.getSystemDateTimeString());
 		listCyr.add(ywxtcyryxxb);
 		Map<String,String> jsMap=new HashMap<String,String>();
 		jsMap.put("zjhm", syrkjzrkxxb.getGmsfhm());
@@ -653,6 +676,9 @@ public class SyrkModelInterceptor {
 		ywxtcyryxxb.setSspcs(orgOrganizationService.queryParentOrgByOrgcode(syrkjzrkxxb.getXt_zhxgrbmid()).getOrgcode());
 		ywxtcyryxxb.setSszrq(syrkjzrkxxb.getXt_zhxgrbmid());
 		ywxtcyryxxb.setXtdz("接收");
+		ywxtcyryxxb.setXtjg(AbstractXtTask.ERROR);
+		ywxtcyryxxb.setXt_cjsj(DateUtils.getSystemDateTimeString());
+		ywxtcyryxxb.setXt_zhxgsj(DateUtils.getSystemDateTimeString());
 		listCyr.add(ywxtcyryxxb);
 		paramMap.put("users", listCyr);
 		//这里拼接JSONMap用于生产JSON
@@ -706,6 +732,9 @@ public class SyrkModelInterceptor {
 		ywxtcyryxxb.setSspcs(orgOrganizationService.queryParentOrgByOrgcode(sszrq).getOrgcode());
 		ywxtcyryxxb.setSszrq(sszrq);
 		ywxtcyryxxb.setXtdz("发起");
+		ywxtcyryxxb.setXtjg(AbstractXtTask.RIGHT);
+		ywxtcyryxxb.setXt_cjsj(DateUtils.getSystemDateTimeString());
+		ywxtcyryxxb.setXt_zhxgsj(DateUtils.getSystemDateTimeString());
 		listCyr.add(ywxtcyryxxb);
 		Map<String,String> jsMap=new HashMap<String,String>();
 		jsMap.put("zjhm", syrkJwryxxb.getZjhm());
@@ -723,6 +752,9 @@ public class SyrkModelInterceptor {
 		ywxtcyryxxb.setSspcs(orgOrganizationService.queryParentOrgByOrgcode(syrkJwryxxb.getXt_zhxgrbmid()).getOrgcode());
 		ywxtcyryxxb.setSszrq(syrkJwryxxb.getXt_zhxgrbmid());
 		ywxtcyryxxb.setXtdz("接收");
+		ywxtcyryxxb.setXtjg(AbstractXtTask.ERROR);
+		ywxtcyryxxb.setXt_cjsj(DateUtils.getSystemDateTimeString());
+		ywxtcyryxxb.setXt_zhxgsj(DateUtils.getSystemDateTimeString());
 		listCyr.add(ywxtcyryxxb);
 		paramMap.put("users", listCyr);
 		//这里拼接JSONMap用于生产JSON
@@ -771,6 +803,9 @@ public class SyrkModelInterceptor {
 		ywxtcyryxxb.setSspcs(orgOrganizationService.queryParentOrgByOrgcode(sszrq).getOrgcode());
 		ywxtcyryxxb.setSszrq(sszrq);
 		ywxtcyryxxb.setXtdz("发起");
+		ywxtcyryxxb.setXtjg(AbstractXtTask.RIGHT);
+		ywxtcyryxxb.setXt_cjsj(DateUtils.getSystemDateTimeString());
+		ywxtcyryxxb.setXt_zhxgsj(DateUtils.getSystemDateTimeString());
 		listCyr.add(ywxtcyryxxb);
 		Map<String,String> jsMap=new HashMap<String,String>();
 		jsMap.put("zjhm", syrkCzrkxxb.getGmsfhm());
@@ -784,6 +819,9 @@ public class SyrkModelInterceptor {
 		ywxtcyryxxb.setSspcs(orgOrganizationService.queryParentOrgByOrgcode(syrkCzrkxxb.getXt_zhxgrbmid()).getOrgcode());
 		ywxtcyryxxb.setSszrq(syrkCzrkxxb.getXt_zhxgrbmid());
 		ywxtcyryxxb.setXtdz("接收");
+		ywxtcyryxxb.setXtjg(AbstractXtTask.ERROR);
+		ywxtcyryxxb.setXt_cjsj(DateUtils.getSystemDateTimeString());
+		ywxtcyryxxb.setXt_zhxgsj(DateUtils.getSystemDateTimeString());
 		listCyr.add(ywxtcyryxxb);
 		paramMap.put("users", listCyr);
 		//这里拼接JSONMap用于生产JSON

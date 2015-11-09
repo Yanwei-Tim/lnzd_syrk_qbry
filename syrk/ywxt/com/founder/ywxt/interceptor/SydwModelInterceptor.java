@@ -20,12 +20,13 @@ import org.aspectj.lang.annotation.Pointcut;
 import com.founder.bzdz.service.DzService;
 import com.founder.bzdz.vo.BzdzxxbVO;
 import com.founder.framework.organization.department.service.OrgOrganizationService;
+import com.founder.framework.utils.DateUtils;
 import com.founder.framework.utils.StringUtils;
 import com.founder.sydw.bean.Cyryxxb;
-import com.founder.syrkgl.bean.SyrkCzrkxxb;
 import com.founder.syrkgl.dao.SyrkSyrkxxzbDao;
 import com.founder.ywxt.bean.Ywxtcyryxxb;
 import com.founder.ywxt.factory.XtFactory;
+import com.founder.ywxt.service.AbstractXtTask;
 import com.founder.ywxt.service.XtTaskService;
 
 /**
@@ -191,12 +192,18 @@ public class SydwModelInterceptor {
 		ywxtcyryxxb.setSspcs(orgOrganizationService.queryParentOrgByOrgcode(sszrq).getOrgcode());
 		ywxtcyryxxb.setSszrq(sszrq);
 		ywxtcyryxxb.setXtdz("发起");
+		ywxtcyryxxb.setXtjg(AbstractXtTask.RIGHT);
+		ywxtcyryxxb.setXt_cjsj(DateUtils.getSystemDateTimeString());
+		ywxtcyryxxb.setXt_zhxgsj(DateUtils.getSystemDateTimeString());
 		listCyr.add(ywxtcyryxxb);
 		Map<String,String> jsMap=new HashMap<String,String>();
 		ywxtcyryxxb=new Ywxtcyryxxb();
 		ywxtcyryxxb.setSspcs(pcsdm);
 		ywxtcyryxxb.setSszrq(zrqdm);
 		ywxtcyryxxb.setXtdz("接收");
+		ywxtcyryxxb.setXtjg(AbstractXtTask.ERROR);
+		ywxtcyryxxb.setXt_cjsj(DateUtils.getSystemDateTimeString());
+		ywxtcyryxxb.setXt_zhxgsj(DateUtils.getSystemDateTimeString());
 		listCyr.add(ywxtcyryxxb);
 		paramMap.put("users", listCyr);
 		//这里拼接JSONMap用于生产JSON
