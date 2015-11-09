@@ -15,7 +15,7 @@
 		<!-- 查询显示列表 -->
 	<select id="query" parameterClass="Map" resultClass="ywxtsfqypzb">
 		SELECT * FROM ( SELECT ROWNUM R ,M.* FROM (
-		SELECT *
+		SELECT * 
 		FROM SYS_YWXTSFQYPZB T
 		WHERE T.XT_ZXBZ = '0'
 		ORDER BY T.YWXTLX) M 
