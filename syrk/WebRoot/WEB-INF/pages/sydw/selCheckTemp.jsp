@@ -103,6 +103,9 @@
 		if(ywlbdm=="11"){
 			editUrl = contextPath + "/forward/sydw|xfjcTemp";
 		}
+		if(ywlbdm=="14"){
+			editUrl = contextPath + "/forward/sydw|jfjcTemp";
+		}
 		window.top.datagridView('dg', 'itemWindow', 
 	   		null,
 	  		{

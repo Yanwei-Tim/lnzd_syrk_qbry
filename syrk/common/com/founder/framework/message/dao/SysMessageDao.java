@@ -188,7 +188,7 @@ public class SysMessageDao extends BaseDaoImpl {
 						saveEntity.setYwurl(ywurl);
 					}
 					insert("Message.save", saveEntity);
-					sysMessageSend(entity);
+//					sysMessageSend(entity);
 					returnArray[i] = saveEntity.getId();
 				}
 			}

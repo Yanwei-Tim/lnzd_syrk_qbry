@@ -113,7 +113,7 @@
 	}
 	function afterSubmit(arr) {
 		executeTabPageMethod(mainTabID, "queryButton()");
-		alert(arr["saveID"]);
+		//alert(arr["saveID"]);
 		if (arr["saveID"]) {
 			window.open(contextPath + "/jfjczg/queryJfzlzgtzs?id="+arr["saveID"],"详情","height=554,width=1054,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no");
 		}
