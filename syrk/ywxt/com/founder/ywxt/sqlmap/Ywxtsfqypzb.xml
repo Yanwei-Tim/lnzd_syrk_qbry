@@ -3,7 +3,7 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="Ywxtsfqypzb">
 	
-	<typeAlias alias="ywxtsfqypzb" type="cn.mos.ywxt.bean.Ywxtsfqypzb" />
+	<typeAlias alias="ywxtsfqypzb" type="com.founder.ywxt.bean.Ywxtsfqypzb" />
 	<!-- 查询单条（根据业务协同类型） -->
 	<select id="queryByYwxtlx" parameterClass="String" resultClass="ywxtsfqypzb">
 		<![CDATA[ select * from SYS_YWXTSFQYPZB t where xt_zxbz='0' and Ywxtlx = #ywxtlx#  and rownum = 1 ]]>
