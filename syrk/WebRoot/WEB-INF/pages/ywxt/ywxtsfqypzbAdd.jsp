@@ -21,7 +21,7 @@
 	    	<tr class="dialogTr">
 		    	<td width="20%" class="dialogTd" align="right">是否启用：</td>
 		    	<td width="30%" class="dialogTd"><input class="easyui-combobox" type="text" id="ywxtlx" name="sfqy" style="width:200px;"
-					data-options="url: contextPath + '/common/dict/BD_D_SF.js',valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'left'"/></td>
+					data-options="url: contextPath + '/common/dict/BD_D_SFDM.js',valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'left'"/></td>
 	    	</tr>
 	    	<tr class="dialogTr">
 		    	<td width="20%" class="dialogTd" align="right">备注：</td>
