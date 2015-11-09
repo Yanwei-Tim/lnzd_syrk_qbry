@@ -25,9 +25,11 @@ import com.founder.framework.utils.StringUtils;
 import com.founder.sydw.bean.Cyryxxb;
 import com.founder.syrkgl.dao.SyrkSyrkxxzbDao;
 import com.founder.ywxt.bean.Ywxtcyryxxb;
+import com.founder.ywxt.bean.Ywxtsfqypzb;
 import com.founder.ywxt.factory.XtFactory;
 import com.founder.ywxt.service.AbstractXtTask;
 import com.founder.ywxt.service.XtTaskService;
+import com.founder.ywxt.service.YwxtsfqypzService;
 
 /**
  * ****************************************************************************
@@ -53,7 +55,9 @@ public class SydwModelInterceptor {
 	private XtFactory xtFactory;
 	@Resource(name = "orgOrganizationService")
 	private OrgOrganizationService orgOrganizationService;
-
+	@Resource
+	private YwxtsfqypzService ywxtsfqypzService;
+	private static String YWXTLX_CYRYSYRKXT="05";
 	/***
 	 * 
 	 * @Title: srykPoint
@@ -131,6 +135,12 @@ public class SydwModelInterceptor {
 			NoSuchMethodException, IntrospectionException,
 			IllegalArgumentException, IllegalAccessException,
 			InvocationTargetException {
+		 Ywxtsfqypzb pz =ywxtsfqypzService.queryByYwxtlx(YWXTLX_CYRYSYRKXT);
+		   if(pz!=null &&pz.getSfqy().equals("0")){
+			   return;
+		   }
+		
+		
 		Class refClass = obj.getClass();
 		// 这里bean内key值必须通用类型，由于没有抽象父类
 		PropertyDescriptor dzXzzdmP = new PropertyDescriptor("dz_xzzdmlpdm", refClass);

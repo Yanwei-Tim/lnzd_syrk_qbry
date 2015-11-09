@@ -39,9 +39,11 @@ import com.founder.syrkgl.dao.SyrkLdrkxxbDao;
 import com.founder.syrkgl.dao.SyrkSyrkxxzbDao;
 import com.founder.syrkgl.dao.SyrkWlhryxxbDao;
 import com.founder.ywxt.bean.Ywxtcyryxxb;
+import com.founder.ywxt.bean.Ywxtsfqypzb;
 import com.founder.ywxt.factory.XtFactory;
 import com.founder.ywxt.service.AbstractXtTask;
 import com.founder.ywxt.service.XtTaskService;
+import com.founder.ywxt.service.YwxtsfqypzService;
 
 /**
  * ****************************************************************************
@@ -82,7 +84,17 @@ public class SyrkModelInterceptor {
 	@Resource(name = "dwjbxxbDao")
 	private DwjbxxbDao dwjbxxbDao;
 	
-	
+	@Resource
+	private YwxtsfqypzService ywxtsfqypzService;
+
+	//人户分离协同类型
+	private static String YWXTLX_RHFLXT="01";
+	//实有人口注销协同
+	private static String YWXTLX_SYRKZXXT="02";
+	//工作单位协同
+	private static String YWXTLX_RYGZDWXT="03";
+	//联系电话协同
+	private static String YWXTLX_RYLXDHXT="04";
 
 	/***
 	 * 
@@ -206,6 +218,10 @@ public class SyrkModelInterceptor {
 			NoSuchMethodException, IntrospectionException,
 			IllegalArgumentException, IllegalAccessException,
 			InvocationTargetException {
+		 Ywxtsfqypzb pz =ywxtsfqypzService.queryByYwxtlx(YWXTLX_RHFLXT);
+		   if(pz!=null &&pz.getSfqy().equals("0")){
+			   return;
+		   }
 		Class refClass = obj.getClass();
 		// 这里bean内key值必须通用类型，由于没有抽象父类
 		PropertyDescriptor cyzjdmP = new PropertyDescriptor("cyzjdm", refClass);
@@ -255,6 +271,10 @@ public class SyrkModelInterceptor {
 			NoSuchMethodException, IntrospectionException,
 			IllegalArgumentException, IllegalAccessException,
 			InvocationTargetException {
+		 Ywxtsfqypzb pz =ywxtsfqypzService.queryByYwxtlx(YWXTLX_SYRKZXXT);
+		   if(pz!=null &&pz.getSfqy().equals("0")){
+			   return;
+		   }
 		Class refClass = obj.getClass();
 		// 这里bean内key值必须通用类型，由于没有抽象父类
 		PropertyDescriptor xtZxbzP = new PropertyDescriptor("xt_zxbz", refClass);
@@ -296,6 +316,11 @@ public class SyrkModelInterceptor {
 	private void rygzdwXt(Object obj,String zdmc) throws SecurityException,
 			NoSuchMethodException, IllegalArgumentException,
 			IllegalAccessException, InvocationTargetException, IntrospectionException {
+		 Ywxtsfqypzb pz =ywxtsfqypzService.queryByYwxtlx(YWXTLX_RYGZDWXT);
+		   if(pz!=null &&pz.getSfqy().equals("0")){
+			   return;
+		   }
+		
 		Class refClass = obj.getClass();
 		// 这里bean内key值必须通用类型，由于没有抽象父类
 		PropertyDescriptor gzdwidP;
@@ -354,6 +379,10 @@ public class SyrkModelInterceptor {
 	private void rylxdhXt(Object obj,String zdmc) throws SecurityException,
 			NoSuchMethodException, IllegalArgumentException,
 			IllegalAccessException, InvocationTargetException, IntrospectionException {
+		 Ywxtsfqypzb pz =ywxtsfqypzService.queryByYwxtlx(YWXTLX_RYLXDHXT);
+		   if(pz!=null &&pz.getSfqy().equals("0")){
+			   return;
+		   }
 		Class refClass = obj.getClass();
 		// 这里bean内key值必须通用类型，由于没有抽象父类
 		PropertyDescriptor zjhmP = new PropertyDescriptor(zdmc, refClass);
