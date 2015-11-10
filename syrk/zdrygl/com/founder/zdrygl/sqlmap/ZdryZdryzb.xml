@@ -142,6 +142,7 @@
 			<isNotNull prepend="," property="sfjm"><![CDATA[ sfjm = #sfjm#]]></isNotNull>
 			<isNotNull prepend="," property="sfzkdm"><![CDATA[ sfzkdm = #sfzkdm#]]></isNotNull>
 			<isNotNull prepend="," property="glbm"><![CDATA[ glbm = #glbm#]]></isNotNull>
+			<isNotNull prepend="," property="gxbm"><![CDATA[ gxbm = #gxbm#]]></isNotNull>			
 			<isNotNull prepend="," property="cxbm"><![CDATA[ cxbm = #cxbm#]]></isNotNull>			
 			<isNotNull prepend="," property="jgssxdm"><![CDATA[ jgssxdm = #jgssxdm#]]></isNotNull>
 			<isNotNull prepend="," property="hjd_ssxjgajgdm"><![CDATA[ hjd_ssxjgajgdm = #hjd_ssxjgajgdm#]]></isNotNull>
