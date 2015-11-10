@@ -101,7 +101,11 @@ public class RylxdhXtServiceImpl extends AbstractXtTask {
 		}
 		ywxtYwxtxxb.setYwnr(messageContent);
 		ywxtYwxtxxb.setXt_zhxgsj(DateUtils.getSystemDateTimeString());
-		ywxtYwxtxxbDao.update(ywxtYwxtxxb);
+		try {
+			ywxtYwxtxxbDao.update(ywxtYwxtxxb);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		// 发起协同任务通过message功能组件
 		String url = "/ywxt/creatRyxt?xtId=" + ywxtYwxtxxb.getId()
 				+ "&approvalLevel=1";

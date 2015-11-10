@@ -179,7 +179,6 @@ public abstract class AbstractXtTask implements XtTaskService {
 		
 		//如果不是领导拒绝，而是底层拒绝，那么证明不能清除协同数据
 		if(approvalLevel < APPROVALLEVEL && xtjg.equals("0")){
-			System.out.println("协同任务未结束");
 			return;
 		}
 		
