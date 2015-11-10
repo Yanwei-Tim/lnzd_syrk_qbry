@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.founder.framework.base.controller.BaseController;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.components.AppConst;
+import com.founder.framework.exception.BussinessException;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.syrkgl.bean.RyRyjbxxb;
 import com.founder.zdrygl.bean.ZdrySgafzdryxxb;
@@ -115,10 +116,17 @@ public class ZdrySgafzdryGlController extends BaseController {
 			this.zdrySgafzdryxxbService.saveAdd(addVO, sessionBean);
 			map.put(AppConst.STATUS, AppConst.SUCCESS);
 			map.put(AppConst.MESSAGES, "新增成功");
-		} catch (Exception e) {
+		}catch (BussinessException e) {
 			e.printStackTrace();
 			logger.error(e.getMessage(), e);
-			map.put(AppConst.STATUS, e.getMessage());
+			map.put(AppConst.STATUS, AppConst.FAIL);
+			map.put(AppConst.MESSAGES, "该涉公安访重点人员信息已存在");
+		}
+		
+		catch (Exception e) {
+			e.printStackTrace();
+			logger.error(e.getMessage(), e);
+			map.put(AppConst.STATUS, AppConst.FAIL);
 			map.put(AppConst.MESSAGES, "新增失败");
 		}
 		return map;
