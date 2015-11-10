@@ -121,7 +121,7 @@ public class DwjbxxbServiceImpl implements DwjbxxbService {
 			}
 			//发送内容
 			SysMessage sysMsg = new SysMessage();
-			String xxnr = "【标准地址维护提醒】因登记实有单位‘"+entity.getDwmc()+"’无法选择‘"+dzms+"’，请尽快维护该地址！";
+			String xxnr = "因登记实有单位‘"+entity.getDwmc()+"’无法选择‘"+dzms+"’，请尽快维护该地址！";
 			sysMsg.setXxnr(xxnr);
 			sysMsg.setXxlb("1");
 			sysMsg.setYwurl(entity.getId()+","+dzms+","+entity.getDzms_zbx()+","+entity.getDzms_zby()+",0");
@@ -196,7 +196,7 @@ public class DwjbxxbServiceImpl implements DwjbxxbService {
 			}
 			//发送内容
 			SysMessage sysMsg = new SysMessage();
-			String xxnr = "【标准地址维护提醒】因登记实有单位‘"+entity.getDwmc()+"’无法选择‘"+dzms+"’，请尽快维护该地址！";
+			String xxnr = "因登记实有单位‘"+entity.getDwmc()+"’无法选择‘"+dzms+"’，请尽快维护该地址！";
 			sysMsg.setXxnr(xxnr);
 			sysMsg.setXxlb("1");
 			sysMsg.setYwurl(entity.getId()+","+dzms+","+entity.getDzms_zbx()+","+entity.getDzms_zby()+",0");

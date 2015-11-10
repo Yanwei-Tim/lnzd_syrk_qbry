@@ -80,7 +80,7 @@ MainPcs.initECharts = function(){
 		            mark : {show: false},
 		            dataView : {show: false, readOnly: false},
 		            magicType : {
-		                show: true, 
+		                show: false, 
 		                type: ['pie', 'funnel'],
 		                option: {
 		                    funnel: {
@@ -92,7 +92,7 @@ MainPcs.initECharts = function(){
 		                }
 		            },
 		            restore : {show: true},
-		            saveAsImage : {show: true}
+		            saveAsImage : {show: false}
 		        }
 		    },
 		    calculable : true,
@@ -330,6 +330,7 @@ MainPcs.initPcsXqgk = function(){
 		fitColumns:true,
 		border:false,
 		pagination:false,
+		
 		width:100,
 		onClickRow:function (index, row){
 			MainPcs.onClickRow(index, row);
