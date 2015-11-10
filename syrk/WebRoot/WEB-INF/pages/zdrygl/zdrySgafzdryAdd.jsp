@@ -41,7 +41,7 @@
 					<td width="20%" class="dialogTd" align="right" id="jbxx_xm_td">姓名：</td>
 					<td width="30%" class="dialogTd">
 						<input class="easyui-validatebox" type="text" id="jbxx_xm" name="ryRyjbxxb.xm"
-							value="${addVO.ryRyjbxxb.xm}" style="width: 200px;" maxlength="50"
+							value="${addVO.ryRyjbxxb.xm}" style="width: 200px;" maxlength="20"
 							data-options="tipPosition:'left',required:true" />
 					</td>
 				</tr>
