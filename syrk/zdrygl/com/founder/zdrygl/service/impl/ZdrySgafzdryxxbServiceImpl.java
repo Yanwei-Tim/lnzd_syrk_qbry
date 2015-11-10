@@ -93,6 +93,7 @@ public class ZdrySgafzdryxxbServiceImpl extends BaseService implements ZdrySgafz
 			ZdryZdryzb zdryzb = (ZdryZdryzb)this.zdryZdryzbDao.queryById(updateEntity.getId());
 			if(zdryzb != null){
 				zdryzb.setGlbm(entity.getSszrq());
+				zdryzb.setGxbm(entity.getSszrq());
 				zdryzb.setGlzt("2");
 				super.setUpdateProperties(zdryzb, sessionBean);
 				this.zdryZdryzbDao.update(zdryzb);
