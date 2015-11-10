@@ -33,8 +33,8 @@
 		<div class="banner_rt">
 			<table border="0" cellpadding="0" cellspacing="0"  style="float:right;line-height: 50px;height: 50px;">
 				<tr>
-					<td class="bannerUser">
-						<img src="" width="42" height="42" border="0">
+					<td>
+						<img src="../common/skin/images/banner_user.jpg" width="42" height="42" border="0">
 					</td>
 					<td>
 					    <span class="userInfo">

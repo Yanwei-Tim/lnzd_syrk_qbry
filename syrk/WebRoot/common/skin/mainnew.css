@@ -363,10 +363,6 @@ img {
 	cursor: pointer;
 }
 
-.bannerUser {
-	background: url(images/banner_user.jpg) no-repeat right;
-}
-
 .bannerJz {
 	background: url(images/user_icon.png) no-repeat center;
 }
@@ -378,9 +374,7 @@ img {
 
 .userInfo {
 	color: #FFFFFF;
-	padding-left: 4px;
-	padding-right: 2px;
-	padding-bottom: 5px;
+	padding: 5px;
 }
 
 .userInfo1 {
