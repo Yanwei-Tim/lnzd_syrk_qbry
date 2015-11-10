@@ -350,7 +350,7 @@ var card = document.getElementById(name).value;
 //是否为空  
 if(card === '')  
 {  
-	$.messager.alert('提示', '请输入身份证号，身份证号不能为空');  
+	$.messager.alert('提示', '请输入证件号码，证件号码不能为空');  
     document.getElementById('card_no').focus;  
     return false;  
 }  
