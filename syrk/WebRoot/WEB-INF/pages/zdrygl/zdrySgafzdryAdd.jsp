@@ -58,11 +58,11 @@
 					<tr class="dialogTr">
 				    	<td width="20%" class="dialogTd" align="right">居住地：</td>
 				    	<td width="50%" class="dialogTd" colspan="3">
-					    	<input class="easyui-combobox" id="czrk_jzd1" style="width:380px;" value="${addVO.ryRyjbxxb.jzd_mlpxz}" data-options="required:false,mode:'remote',method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false">
+					    	<input class="easyui-combobox" id="czrk_jzd1" style="width:380px;" value="${addVO.ryRyjbxxb.jzd_mlpxz}" data-options="required:true,mode:'remote',method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false">
 					    	<input type="hidden" id="czrk_jzd_mlpdm" name="ryRyjbxxb.jzd_mlpdm" value="${addVO.ryRyjbxxb.jzd_mlpdm}"/>
 					    	<input type="hidden" id="czrk_jzd_mlpxz" name="ryRyjbxxb.jzd_mlpxz" value="${addVO.ryRyjbxxb.jzd_mlpxz}"/>
 					    	&nbsp;&nbsp;
-					    	<input class="easyui-combobox" id="czrk_jzd2" style="width:200px;" value="${fn:replace(addVO.ryRyjbxxb.jzd_dzxz, addVO.ryRyjbxxb.jzd_mlpxz, '')}" data-options="required:false,mode:'remote',method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false">
+					    	<input class="easyui-combobox" id="czrk_jzd2" style="width:200px;" value="${fn:replace(addVO.ryRyjbxxb.jzd_dzxz, addVO.ryRyjbxxb.jzd_mlpxz, '')}" data-options="required:true,mode:'remote',method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false">
 					    	<input type="hidden" id="czrk_jzd_dzid" name="ryRyjbxxb.jzd_dzid" value="${addVO.ryRyjbxxb.jzd_dzid}"/>
 					    	<input type="hidden" id="czrk_jzd_xzqhdm" name="ryRyjbxxb.jzd_xzqhdm" value="${addVO.ryRyjbxxb.jzd_xzqhdm}"/>
 					    	<input type="hidden" id="czrk_jzd_dzxz" name="ryRyjbxxb.jzd_dzxz" value="${addVO.ryRyjbxxb.jzd_dzxz}"/>

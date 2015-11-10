@@ -5,6 +5,18 @@ $(function(){
 		dataType:"json",
 		onSubmit: function() {
 			if($("#dataForm").form("validate")){
+				if ($("#czrk_jzd_mlpdm").val() == "") {
+					topMessager.alert("", "居住地必须为标准地址，请重新选择！");
+					var comboText = $("#czrk_jzd1").next(".combo").children(".combo-text");
+					comboText.focus();
+					return false;
+				}
+				if ($("#czrk_jzd2").combobox("getValue") == "") {
+					topMessager.alert("", "居住地必须为标准地址，请重新选择！");
+					var comboText = $("#czrk_jzd2").next(".combo").children(".combo-text");
+					comboText.focus();
+					return false;
+				}
 	    		return true;
 	    	}else{
 	    		return false;
@@ -13,7 +25,7 @@ $(function(){
 		success: function(result) {
 			var returnData = parseReturn(result);
 	    	if(returnData.status == "error"){
-	    		topMessager.alert('下发失败', returnData.message, "error");
+	    		topMessager.alert('新增失败', returnData.message, "error");
 //	    		topMessager.show({
 //					title: MESSAGER_TITLE,
 //					msg: returnData.message,
