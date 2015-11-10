@@ -70,7 +70,7 @@ public class ZdrySgafzdryGlController extends BaseController {
 			if("dcl".equals(entity.getSearchStatus())){//待处理
 				entity.setSearchStatus("T2.SSFJ is null");
 			}else if("xfz".equals(entity.getSearchStatus())){//下发中
-				entity.setSearchStatus("T2.SSFJ is not null");
+				entity.setSearchStatus("T2.SSFJ is not null AND (T2.SSZRQ is null or T2.SSPCS is null)");
 			}else{//已下发
 				entity.setSearchStatus("T2.SSZRQ is not null");
 			}
@@ -79,7 +79,7 @@ public class ZdrySgafzdryGlController extends BaseController {
 			if("dcl".equals(entity.getSearchStatus())){//待处理
 				entity.setSearchStatus("T2.SSPCS is null");
 			}else if("xfz".equals(entity.getSearchStatus())){//下发中
-				entity.setSearchStatus("T2.SSPCS is not null");
+				entity.setSearchStatus("T2.SSPCS is not null AND T2.SSZRQ is null");
 			}else{//已下发
 				entity.setSearchStatus("T2.SSZRQ is not null");
 			}
