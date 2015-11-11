@@ -275,7 +275,7 @@
 					</tbody>
 				</table>
            </div>
-           <div id="win" class="easyui-window" title="实有人口精确查询"  data-options="iconCls:'icon-search',
+           <div id="win" class="easyui-window" title="涉公安访重点人员精确查询"  data-options="iconCls:'icon-search',
                 collapsible:false,minimizable:false,maximizable:false,
 		        modal:true,closed:true,width:380,height:300">
 		        <form id ="queryForm" >
@@ -285,7 +285,7 @@
 					    	<td width="70%" class="dialogTd">
 								<input class="easyui-combobox" id = "query_searchStatus" name ="searchStatus" 
 								data-options="required:true,selectOnNavigation:false,isTopLoad:false,
-									valueField: 'id',textField: 'text'" />
+									valueField: 'id',textField: 'text'"  style="width:180px;"/>
 							</td>
 					   	</tr>	
 				        <tr class="dialogTr">
