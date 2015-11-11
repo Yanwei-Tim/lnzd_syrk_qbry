@@ -28,7 +28,7 @@
   		
   		<table id="xiafaTable" border="0" cellpadding="0" cellspacing="10" width="auto" height="auto" align="center" delayParse="true">
 	        <tr class="dialogTr">
-		    	<td class="dialogTd item_title">姓名：</td>
+		    	<td  class="dialogTd item_title">姓名：</td>
 		    	<td class="dialogTd item_context" >
 		    		${zdrySgafzdryxxb.xm}
 		    	</td>
@@ -45,10 +45,11 @@
 							valueField:'id',textField:'text',selectOnNavigation:false,isTopLoad:false,onChange:orgList11_onChange">
 		    	</td>
 		    	<td class="dialogTd item_title">市局领导：</td>
-		    	<td class="dialogTd item_context">
-		    		<input type="text" id="text_sjzrld"  value ="${zdrySgafzdryxxb.sjzrld}" name="sjzrld" class="easyui-validatebox" data-options="required:false" style="width: 80px" />
+		    	<td colspan="3" class="dialogTd item_context">
+		    		<input type="text" id="text_sjzrld"  value ="${zdrySgafzdryxxb.sjzrld}" name="sjzrld" class="easyui-validatebox" data-options="required:false" style="width: 200px" />
 		    		<%-- <input type="hidden" name="sjzrld" id="value_sjzrld" value ="${zdrySgafzdryxxb.sjzrld}"> --%>
 		    		<a id="userSelect_sjzrld" href="#" class="easyui-linkbutton" onclick="onOrgUserSelect('10','sjzrld','市局责任领导')" style="width: 50px;height: 20px">选择</a>  
+		    	
 		    	</td>
 	    	</tr>
 	    	
@@ -60,38 +61,41 @@
 							valueField:'id',textField:'text',selectOnNavigation:false,isTopLoad:false,onChange:orgList21_onChange">
 		    	</td>
 		    	<td class="dialogTd item_title">分市县局领导：</td>
-		    	<td class="dialogTd item_context">
-			    	<input type="text" id="text_fjzrld" name="fjzrld" value ="${zdrySgafzdryxxb.fjzrld}" class="easyui-validatebox" data-options="required:false" style="width: 80px" />
+		    	<td colspan="3" class="dialogTd item_context">
+			    	<input type="text" id="text_fjzrld" name="fjzrld" value ="${zdrySgafzdryxxb.fjzrld}" class="easyui-validatebox" data-options="required:false" style="width: 200px" />
 		    		<%-- <input type="hidden" name="fjzrld" id="value_fjzrld" value ="${zdrySgafzdryxxb.fjzrld}"> --%>
-		    		<a id="userSelect_fjzrld" href="#" class="easyui-linkbutton" onclick="onOrgUserSelect('21','fjzrld','分县局责任领导')" style="width: 50px;height: 20px">选择</a>
+			     <input type="button" id="userSelect_fjzrld" value="选择" onclick="onOrgUserSelect('21','fjzrld','分县局责任领导')" style="cursor:pointer; background:#EEF2F8 ;border:1px solid #082F4F;HEIGHT: 18px; WIDTH: 48px;font-family:宋体;font-size:9pt;" />
+			    
 			    </td>
 		    </tr>
 			<tr class="dialogTr">
 		    	<td class="dialogTd item_title">所属派出所：</td>
-		    	<td class="dialogTd item_context">
+		    	<td  class="dialogTd item_context">
 					<input type="text" name="sspcs" id="orgList22" value="${zdrySgafzdryxxb.sspcs}" class="easyui-combobox" style="width:200px;" 
 						data-options="required:true,method:'get',
 							valueField:'id',textField:'text',selectOnNavigation:false,isTopLoad:false,onChange:orgList22_onChange">
 		    	</td>
 		    	<td class="dialogTd item_title">派出所领导：</td>
-		    	<td class="dialogTd item_context">
-		    		<input type="text" id="text_pcszrld" name="pcszrld" value ="${zdrySgafzdryxxb.pcszrld}" class="easyui-validatebox" data-options="required:false" style="width: 80px" />
+		    	<td colspan="3" class="dialogTd item_context">
+		    		<input type="text" id="text_pcszrld" name="pcszrld" value ="${zdrySgafzdryxxb.pcszrld}" class="easyui-validatebox" data-options="required:false" style="width: 200px" />
 		    		<%-- <input type="hidden" name="pcszrld" id="value_pcszrld" value ="${zdrySgafzdryxxb.pcszrld}"> --%>
-		    		<a id="userSelect_pcszrld" href="#" class="easyui-linkbutton" onclick="onOrgUserSelect('32','pcszrld','派出所责任领导')" style="width: 50px;height: 20px">选择</a>
+		    		<input type="button" id="userSelect_pcszrld" value="选择" onclick="onOrgUserSelect('32','pcszrld','派出所责任领导')" style="cursor:pointer; background:#EEF2F8 ;border:1px solid #082F4F;HEIGHT: 18px; WIDTH: 48px;font-family:宋体;font-size:9pt;" />
+		    	
 		    	</td>
 		    </tr>
 			<tr class="dialogTr">
 		    	<td class="dialogTd item_title">所属责任区：</td>
-		    	<td class="dialogTd item_context">
+		    	<td  class="dialogTd item_context">
 					<input type="text" name="sszrq" id="orgList23" value="${zdrySgafzdryxxb.sszrq}" class="easyui-combobox" style="width:200px;" 
 						data-options="required:true,method:'get',
 							valueField:'id',textField:'text',selectOnNavigation:false,isTopLoad:false">
 		    	</td>
 		    	<td class="dialogTd item_title">责任区民警：</td>
-		    	<td class="dialogTd item_context">
-		    		<input type="text" id="text_zrqmj" name="zrqmj" value ="${zdrySgafzdryxxb.zrqmj}" class="easyui-validatebox" data-options="required:false" style="width: 80px" />
+		    	<td colspan="3" class="dialogTd item_context">
+		    		<input type="text" id="text_zrqmj" name="zrqmj" value ="${zdrySgafzdryxxb.zrqmj}" class="easyui-validatebox" data-options="required:false" style="width: 200px" />
 		    		<%-- <input type="hidden" name="zrqmj" id="value_zrqmj" value ="${zdrySgafzdryxxb.zrqmj}"> --%>
-		    		<a id="userSelect_zrqmj" href="#" class="easyui-linkbutton" onclick="onOrgUserSelect('50','zrqmj','责任区民警')" style="width: 50px;height: 20px">选择</a>
+		    	    <input type="button" id="userSelect_zrqmj" value="选择" onclick="onOrgUserSelect('50','zrqmj','责任区民警')" style="cursor:pointer; background:#EEF2F8 ;border:1px solid #082F4F;HEIGHT: 18px; WIDTH: 48px;font-family:宋体;font-size:9pt;" />
+		    	
 		    	</td>
 		    </tr>
 		    <tr class="dialogTr" style="width: 460px">
