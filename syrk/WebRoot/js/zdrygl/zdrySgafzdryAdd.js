@@ -11,7 +11,12 @@ $(function(){
 					comboText.focus();
 					return false;
 				}
-				if ($("#czrk_jzd2").val() == "") {
+				
+				var dz = $("#czrk_jzd2").combobox("getValue");
+				if(dz == "" || dz == null){
+					dz = $("#czrk_jzd2").val();
+				}
+				if (dz == "") {
 					topMessager.alert("", "居住地必须为标准地址，请重新选择！");
 					var comboText = $("#czrk_jzd2").next(".combo").children(".combo-text");
 					comboText.focus();
@@ -34,10 +39,11 @@ $(function(){
 	    	}else{
 				topMessager.show({
 					title: MESSAGER_TITLE,
-					msg: returnData.message+" 请刷新表格数据",
+					msg: returnData.message,
 					timeout:1500
 				});
 	    		closeSelf();
+	    		executeTabPageMethod($("#tabid").val(), "SgafzdryGl.loadGrid");
 	    	}
 		}
 	});
