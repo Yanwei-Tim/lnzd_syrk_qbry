@@ -36,12 +36,13 @@ public class ZdrySgafzdryGlController extends BaseController {
 	
 	
 	@RequestMapping(value = "/addView", method = RequestMethod.GET)
-	public ModelAndView add(){
+	public ModelAndView add(@RequestParam String tabid){
 		ModelAndView mv = new ModelAndView("zdrygl/zdrySgafzdryAdd");
 		ZdrySgafzdryAddVO vo = new ZdrySgafzdryAddVO();
 		vo.setRyRyjbxxb(new RyRyjbxxb());
 		vo.setZdrySgafzdryxxb(new ZdrySgafzdryxxb());
 		mv.addObject("addVO", vo);
+		mv.addObject("tabid", tabid);
 		return mv;
 	}
 	
@@ -162,11 +163,12 @@ public class ZdrySgafzdryGlController extends BaseController {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value = "/viewXiaFa/{id}", method = RequestMethod.GET)
-	public ModelAndView viewXiaFa(@PathVariable("id")String id) {
+	@RequestMapping(value = "/viewXiaFa", method = RequestMethod.GET)
+	public ModelAndView viewXiaFa(@RequestParam String id,@RequestParam String tabid) {
 		ModelAndView mv = new ModelAndView("zdrygl/zdrySgafzdryXf");
 		ZdrySgafzdryxxb model = this.zdrySgafzdryxxbService.queryById(id);
 		mv.addObject("zdrySgafzdryxxb", model);
+		mv.addObject("tabid", tabid);
 		return mv;
 	}
 	
