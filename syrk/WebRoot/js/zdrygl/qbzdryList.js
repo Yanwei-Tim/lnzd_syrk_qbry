@@ -252,7 +252,7 @@ function doSpSq(linkObject, index){
 		Str = Str+"	</tr>";
 		Str = Str+"	</table>";
 		$("#operation").html(Str);
-		$.parser.parse();
+		$.parser.parse();   //解析所有页面
 		$("#deliverd").show();
 		$("#deliverd").window("open"); 
 		$("#deliverd").panel({
