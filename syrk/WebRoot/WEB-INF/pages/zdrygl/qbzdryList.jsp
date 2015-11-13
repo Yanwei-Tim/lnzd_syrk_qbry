@@ -25,7 +25,9 @@
    	   var orgLevel = "<%=orgLevel%>";
 	  var parentOrgCode ="<%=parentOrgCode%>";
     </script>
+    <!--  
     <script type="text/javascript" src="<%=contextPath%>/js/sydw/sydw.js"></script>
+    -->
     <style type="text/css">
 	.searchText {
 	   font-size: 13px;
@@ -51,7 +53,7 @@
        <div data-options="region:'west',border:false" style="width:538px;">
            <table id="dg" class="easyui-datagrid"
 	              	data-options="url:'<%=contextPath%>/zdryQbzdryxxb/list',
-	              	    onLoadSuccess:function(data){loadpoints1(data);},
+	              	    onLoadSuccess:function(data){QbZdryManage.loadPoint(data,'dg');},
 						selectOnCheck:true,
 		        		checkOnSelect:true,
 		        		rownumbers:true,
@@ -63,7 +65,8 @@
 		        		getAutoPageSize(335) * 2],
 		        		singleSelect:true,
 		        		fitColumns:true,
-						toolbar:'#datagridToolbar'">
+						toolbar:'#datagridToolbar',
+						onClickRow:QbZdryManage.onClickRow">
 			        <thead>
 			          <tr>
 				            <th data-options="field:'dqzt',width:70,align:'center',halign:'center',sortable:true,formatter:dictFormatter,dictName:contextPath+'/common/dict/QB_D_DQZT.js'">状态</th>

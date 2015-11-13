@@ -199,6 +199,7 @@
 	<input type="hidden" id="serverPara" value="syrkid=${syrkid}" /><!-- 业务办理附加参数-->
 	<input type="hidden" id="queryPara" value="ryid=${ry.id }" /><!-- 表单查询附加参数 -->
 	<input type="hidden" id="mode_"	 value="${mode }" />
+	<input type="hidden" id="ry_type" value="${ry_type }" />
 	<input type="hidden" id="ryid_main"	 value="${ry.id }" />
 	<input type="hidden" id="serverListPara"  value="syrklx=${syrklx}" />
 	
@@ -244,12 +245,13 @@
 <script type="text/javascript">
 //重点人员类型
 var syrkJson='${syrkJson}';
+var ry_type = $("#ry_type").val();
 var infoPara = {
 		mainUrl:"/syrkEdit/queryRyzsxx",
 		mainPara:"rylbdm="+$("#rylbdm_").val()+"&syrkJson="+syrkJson,
 		queryUrl:"/syrkEdit/service/",
 		queryPara:$("#queryPara").val(),
-		serverMenuUrl:"/syrkEdit/queryYwglgn",
+		serverMenuUrl:"/syrkEdit/queryYwglgn?ry_type="+ry_type,
 		serverMenuPara:$("#serverListPara").val()+"&syrkJson="+syrkJson,
 		zpUrl:"/zpfjPtryzp/queryZpById.jpg",
 		editPara:"ryid="+$("#ryid_main").val()+"&"+$("#serverPara").val(),
