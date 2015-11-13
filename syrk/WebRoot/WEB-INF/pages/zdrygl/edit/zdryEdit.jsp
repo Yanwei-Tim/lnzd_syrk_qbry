@@ -41,7 +41,7 @@
 </div>
 <table >
 	<tr>
-		<td colspan="2" align="left"><strong><span id="dwmc_dw">${zdry.xm }</span><span>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="openSyrk('${zdry.xm }','${zdry.ryid}','${zdry.syrkid}')">实有人口管理</a></span></strong></td>
+		<td colspan="2" align="left"><strong><span id="dwmc_dw">${zdry.xm }</span><span>&nbsp;&nbsp;<a id="syrkid" href="javascript:void(0);" onclick="openSyrk('${zdry.xm }','${zdry.ryid}','${zdry.syrkid}')">实有人口管理</a></span></strong></td>
 	</tr>
 	<tr>
 		<td>
@@ -160,7 +160,6 @@
 <script type="text/javascript">
 //重点人员类型
 var zdrylxJson='${zdrylxJson}';
-
 var infoPara = {
 		mainUrl:"/zdryEdit/queryRyzsxx",
 		mainPara:"zdrylxJson="+zdrylxJson,
@@ -180,6 +179,11 @@ var infoPara = {
 		del_childInfo:"/zdryEdit/delete_xxzsnrb"
 	};
 $(document).ready(function(){
+	var syrkid='${zdry.syrkid}';
+
+	if(!syrkid){
+		$("#syrkid").hide();
+	}
 	var mode_ = $("#mode_").val();
  	if(mode_=="view"){
  		$("#server_Menu").hide();

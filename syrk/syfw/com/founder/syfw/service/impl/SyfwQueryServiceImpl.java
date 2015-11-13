@@ -79,10 +79,10 @@ public class SyfwQueryServiceImpl extends BaseService implements SyfwQueryServic
 					&& !StringUtils.isBlank(entity.getDrawZbz())) {
 				entity.setDrawSrid(gisService.getShapeTableSrid("BZDZ_ADD_MLDZDXB_PT"));// 获取地图图层SRID，为公共方法查询
 																	// 不止一个空间表名。
-				//调下面方法出错  传入121.58452 38.90506  返回的是121.5845238.90506   有可能是因为换地图了 不需要调下面方法了
-				//if (!"drawRect".equals(entity.getDrawType())) {
-					//entity.setDrawZbz(MapUtils.getSdeZbz(entity.getDrawZbz()));
-				//}
+				
+				if ("drawPolygon".equals(entity.getDrawType())) {
+					entity.setDrawZbz(MapUtils.getSdeZbz(entity.getDrawZbz()));
+				}
 			}
 			return syfwQueryDao.querySyfw(entity, page);
 	}

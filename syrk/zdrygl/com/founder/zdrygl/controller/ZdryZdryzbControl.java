@@ -474,81 +474,125 @@ public class ZdryZdryzbControl extends BaseController {
 	 */
 	@RequestMapping(value = "/{ryid}/{id}/view" ,method = RequestMethod.GET)
 	public @ResponseBody ModelAndView view(@PathVariable(value="ryid")String ryid,
-			@RequestParam(value="mode",defaultValue="edit")String mode,String mainTabID,@PathVariable(value="id")String id) throws BussinessException{
+			@RequestParam(value = "mode", defaultValue = "edit") String mode, String mainTabID,
+			@PathVariable(value = "id") String id) throws BussinessException {
 		ModelAndView mv = new ModelAndView("zdrygl/edit/zdryEdit");
-		
-		List zdryList =zdryZdryzbService.queryList(ryid);
-		
-		/** 1. syrkid 判断是否当前人管理
-		 *  2. glzt 只查2，3
-		*/
-		if(zdryList.isEmpty())
+
+		List zdryList = zdryZdryzbService.queryList(ryid);
+
+		/**
+		 * 1. syrkid 判断是否当前人管理 2. glzt 只查2，3
+		 */
+		if (zdryList.isEmpty())
 			throw new BussinessException("syrk.notExist");
-		
+
 		ZdryZdryzbVO temp = null;
-		List<Map<String,String>> zdrylxList = new ArrayList<Map<String,String>>();
-		Map<String,String> map = null;
-		StringBuffer zdrylxBuffer = new StringBuffer();//本人管理类型
-		int sort = 0 ;
+		List<Map<String, String>> zdrylxList = new ArrayList<Map<String, String>>();
+		Map<String, String> map = null;
+		StringBuffer zdrylxBuffer = new StringBuffer();// 本人管理类型
+		int sort = 0;
 		for (int i = 0; i < zdryList.size(); i++) {
-			map  = new HashMap<String,String>();
+			map = new HashMap<String, String>();
 			temp = (ZdryZdryzbVO) zdryList.get(i);
 
 			map.put("zdryid", temp.getId());
 			map.put("zdrylx", temp.getZdrygllxdm());
 			map.put("fz", temp.getFz());
-			//map.put("gxzrq", temp.getSszrqdm());
-		/*	if("07".equals(temp.getZdrygllxdm())){
-				map.put("isEdit", "1");
-			}else{
-				if(syrkid.equals(temp.getSyrkid())){
-				*/
-					//已列管 重点人员 类型
-					if(zdrylxBuffer.length()>0) zdrylxBuffer.append(" ");
-					zdrylxBuffer.append(temp.getZdrygllxmc());
-					/*
-					map.put("isEdit", "1");
-					zdryList.remove(i);
-					zdryList.add(sort++, temp);
-				}else{
-					map.put("isEdit", "0");
-				}
-			}*/
-					
-			//只取当前重点人员id的重点人员类型
-			if(temp.getId().equals(id)){
+
+			// 已列管 重点人员 类型
+			if (zdrylxBuffer.length() > 0)
+				zdrylxBuffer.append(" ");
+			zdrylxBuffer.append(temp.getZdrygllxmc());
+
+			// 只取当前重点人员id的重点人员类型
+			if (temp.getId().equals(id)) {
 				zdrylxList.add(map);
 			}
 		}
-		((ZdryZdryzbVO)zdryList.get(0)).setId(id);//设置从列表点击过来的重点人员id，区分后续操作是哪个类型
-		//gem
-		//信息就一条。所以这里查询联系电话
-		String lxdh =ryRylxfsxxbService.queryLastLxfs(ryid);
-		((ZdryZdryzbVO)zdryList.get(0)).setLxdh(lxdh);
-		//查询重点人员车辆监控状态表
-		//String zjhm = ((ZdryZdryzbVO)zdryList.get(0)).getZjhm();
-		String flag = zdryCarTrailService.queryTrailJkb(lxdh)==null ? "0" : "1";
-		((ZdryZdryzbVO)zdryList.get(0)).setXt_jkbz(flag);
-		//gem end
-				
+		((ZdryZdryzbVO) zdryList.get(0)).setId(id);// 设置从列表点击过来的重点人员id，区分后续操作是哪个类型
+		// gem
+		// 信息就一条。所以这里查询联系电话
+		String lxdh = ryRylxfsxxbService.queryLastLxfs(ryid);
+		((ZdryZdryzbVO) zdryList.get(0)).setLxdh(lxdh);
+		// 查询重点人员车辆监控状态表
+		// String zjhm = ((ZdryZdryzbVO)zdryList.get(0)).getZjhm();
+		String flag = zdryCarTrailService.queryTrailJkb(lxdh) == null ? "0" : "1";
+		((ZdryZdryzbVO) zdryList.get(0)).setXt_jkbz(flag);
+		// gem end
+
 		mv.addObject("zdry", zdryList.get(0));
 		mv.addObject("mode", mode);
-		
-		String zdrylxStr=zdrylxBuffer.toString();
-		if(zdrylxStr.length()>17){
+
+		String zdrylxStr = zdrylxBuffer.toString();
+		if (zdrylxStr.length() > 17) {
 			mv.addObject("zdrylxMore", zdrylxBuffer.toString());
-			zdrylxStr=zdrylxStr.subSequence(0, 17)+"……";
-		}				
+			zdrylxStr = zdrylxStr.subSequence(0, 17) + "……";
+		}
 		mv.addObject("zdrylx", zdrylxStr);
 		mv.addObject("zdrylxList", zdrylxList);
 		mv.addObject("zdrylxJson", new Gson().toJson(zdrylxList));
 		mv.addObject("mainTabID", mainTabID);
-		
+
 		return mv;
 	}
-	
-	
 	@RequestMapping(value = "/{zdrySgafzdryxxbId}/sgafview" ,method = RequestMethod.GET)
+	public ModelAndView sgafview(@PathVariable(value="zdrySgafzdryxxbId")String zdrySgafzdryxxbId,
+			@RequestParam(value = "mode", defaultValue = "edit") String mode, String mainTabID, SessionBean sessionBean)
+					throws BussinessException {
+
+		ModelAndView mv = new ModelAndView("zdrygl/edit/zdryEdit");
+		String ryid = zdrySgafzdryxxbService.queryRyidByZdrySgafzdryId(zdrySgafzdryxxbId);
+
+		List zdryList = zdryZdryzbService.queryList(ryid);
+
+		if (zdryList.isEmpty())
+			throw new BussinessException("syrk.notExist");
+
+		ZdryZdryzbVO temp = null;
+		List<Map<String, String>> zdrylxList = new ArrayList<Map<String, String>>();
+		Map<String, String> map = null;
+		StringBuffer zdrylxBuffer = new StringBuffer();// 本人管理类型
+		int sort = 0;
+		for (int i = 0; i < zdryList.size(); i++) {
+			map = new HashMap<String, String>();
+			temp = (ZdryZdryzbVO) zdryList.get(i);
+
+			map.put("zdryid", temp.getId());
+			map.put("zdrylx", temp.getZdrygllxdm());
+			map.put("fz", temp.getFz());
+
+			if (zdrylxBuffer.length() > 0)
+				zdrylxBuffer.append(" ");
+			zdrylxBuffer.append(temp.getZdrygllxmc());
+
+			if (temp.getId().equals(zdrySgafzdryxxbId)) {
+				zdrylxList.add(map);
+			}
+		}
+		((ZdryZdryzbVO) zdryList.get(0)).setId(zdrySgafzdryxxbId);// 设置从列表点击过来的重点人员id，区分后续操作是哪个类型
+		String lxdh = ryRylxfsxxbService.queryLastLxfs(ryid);
+		((ZdryZdryzbVO) zdryList.get(0)).setLxdh(lxdh);
+
+		String flag = zdryCarTrailService.queryTrailJkb(lxdh) == null ? "0" : "1";
+		((ZdryZdryzbVO) zdryList.get(0)).setXt_jkbz(flag);
+		mv.addObject("zdry", zdryList.get(0));
+		mv.addObject("mode", "view");
+
+		String zdrylxStr = zdrylxBuffer.toString();
+		if (zdrylxStr.length() > 17) {
+			mv.addObject("zdrylxMore", zdrylxBuffer.toString());
+			zdrylxStr = zdrylxStr.subSequence(0, 17) + "……";
+		}
+		mv.addObject("zdrylx", zdrylxStr);
+		mv.addObject("zdrylxList", zdrylxList);
+		mv.addObject("zdrylxJson", new Gson().toJson(zdrylxList));
+		mv.addObject("mainTabID", mainTabID);
+
+		return mv;
+
+	}
+	
+	/*	@RequestMapping(value = "/{zdrySgafzdryxxbId}/sgafview" ,method = RequestMethod.GET)
 	public ModelAndView sgafview(@PathVariable(value="zdrySgafzdryxxbId")String zdrySgafzdryxxbId,
 			@RequestParam(value="mode",defaultValue="edit")String mode,String mainTabID,SessionBean sessionBean) throws BussinessException{
 		sessionBean=getSessionBean(sessionBean);
@@ -600,7 +644,7 @@ public class ZdryZdryzbControl extends BaseController {
 		
 		
 		return mv;
-	}
+	}*/
 	
 	
 	/**

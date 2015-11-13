@@ -809,7 +809,7 @@ public class SyrkSyrkxxzbServiceImpl extends BaseService implements
 			entity.setDrawSrid(gisService
 					.getShapeTableSrid("BZDZ_ADD_MLDZDXB_PT"));// 获取地图图层SRID，为公共方法查询
 																// 不止一个空间表名。
-			if (!"drawRect".equals(entity.getDrawType())) {
+			if ("drawPolygon".equals(entity.getDrawType())) {
 				entity.setDrawZbz(MapUtils.getSdeZbz(entity.getDrawZbz()));
 			}
 		}

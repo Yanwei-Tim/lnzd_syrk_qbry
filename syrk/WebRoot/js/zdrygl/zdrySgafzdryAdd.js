@@ -11,7 +11,12 @@ $(function(){
 					comboText.focus();
 					return false;
 				}
-				if ($("#czrk_jzd2").combobox("getValue") == "") {
+				
+				var dz = $("#czrk_jzd2").combobox("getValue");
+				if(dz == "" || dz == null){
+					dz = $("#czrk_jzd2").val();
+				}
+				if (dz == "") {
 					topMessager.alert("", "居住地必须为标准地址，请重新选择！");
 					var comboText = $("#czrk_jzd2").next(".combo").children(".combo-text");
 					comboText.focus();
@@ -19,7 +24,7 @@ $(function(){
 				}
 	    		return true;
 	    	}else{
-	    		return false;
+	    		return false; 
 	    	}
 		},
 		success: function(result) {
@@ -34,10 +39,11 @@ $(function(){
 	    	}else{
 				topMessager.show({
 					title: MESSAGER_TITLE,
-					msg: returnData.message+" 请刷新表格数据",
+					msg: returnData.message,
 					timeout:1500
 				});
 	    		closeSelf();
+	    		executeTabPageMethod($("#tabid").val(), "SgafzdryGl.loadGrid");
 	    	}
 		}
 	});
@@ -66,21 +72,11 @@ function jbxx_zjhm_onblur() {
 				$("#jbxx_xm").val(data.ryRyjbxxb.xm);
 				$("#jbxx_xm").validatebox("validate");
 				$("#jbxx_xbdm").combobox("setValue", data.ryRyjbxxb.xbdm);
-				
-				/*$("#jbxx_hjd_dzms").val(data.ryRyjbxxb.hjd_dzms);
-				$("#jbxx_hjd_xzqhdm").val(data.ryRyjbxxb.hjd_xzqhdm);
-				$("#jbxx_hjd_mlpdm").val(data.ryRyjbxxb.hjd_mlpdm);
-				$("#jbxx_hjd_mlpxz").val(data.ryRyjbxxb.hjd_mlpxz);
-				$("#jbxx_hjd_dzid").val(data.ryRyjbxxb.hjd_dzid);
-				$("#jbxx_hjd_dzxz").val(data.ryRyjbxxb.hjd_dzxz);
-				$("#jbxx_hjd_pcsdm").val(data.ryRyjbxxb.hjd_pcsdm);*/
-				
 				$("#czrk_jzd_xzqhdm").val(data.ryRyjbxxb.jzd_xzqhdm);
 				$("#czrk_jzd_mlpdm").val(data.ryRyjbxxb.jzd_mlpdm);
 				$("#czrk_jzd_mlpxz").val(data.ryRyjbxxb.jzd_mlpxz);
 				$("#czrk_jzd1").combobox("setValue", data.ryRyjbxxb.jzd_mlpxz);
-				//${fn:replace(zdrySgafzdryxxb.jzd_dzxz, zdrySgafzdryxxb.jzd_mlpxz, "")}
-				//$("#czrk_jzd2").combobox("setValue", ${fn:replace(data.ryRyjbxxb.jzd_dzxz, data.ryRyjbxxb.jzd_mlpxz, "")});
+			
 				$("#czrk_jzd2").combobox("setValue", data.ryRyjbxxb.jzd_dzxz.replace(data.ryRyjbxxb.jzd_mlpxz, ""));
 				$("#czrk_jzd_dzid").val(data.ryRyjbxxb.jzd_dzid);
 				$("#czrk_jzd_dzxz").val(data.ryRyjbxxb.jzd_dzxz);
