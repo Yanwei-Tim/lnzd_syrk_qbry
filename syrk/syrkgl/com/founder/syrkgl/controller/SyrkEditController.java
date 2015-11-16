@@ -85,7 +85,8 @@ public class SyrkEditController extends BaseController {
 	@RequestMapping(value = "/{ryid}/{syrkid}/view", method = RequestMethod.GET)
 	public ModelAndView view(@PathVariable(value = "ryid") String ryid,
 			@PathVariable(value = "syrkid") String syrkid,
-			@RequestParam(value = "mode", defaultValue = "edit") String mode,String messageid)
+			@RequestParam(value = "mode", defaultValue = "edit") String mode,
+			@RequestParam(value = "ry_type",required = false) String  ry_type,String messageid)
 			throws BussinessException {
 		SysMessage sysmessage = new SysMessage();
 		try{
@@ -140,6 +141,7 @@ public class SyrkEditController extends BaseController {
 		mv.addObject("ry",ryRyjbxxb);
 		mv.addObject("syrkid",syrkid);
 		mv.addObject("mode", mode);
+		mv.addObject("ry_type", ry_type);
 		mv.addObject("syrklx", syrklx);
 		mv.addObject("lxdh", lxdh);
 		mv.addObject("syrkJson", new Gson().toJson(syrkList));
@@ -172,8 +174,8 @@ public class SyrkEditController extends BaseController {
 	 * @throws
 	 */
 	@RequestMapping(value = "/queryYwglgn", method = RequestMethod.POST)
-	public @ResponseBody List<SyrkgnVo> queryYwglgn(String gnlxdm,String syrklx) {
-		return syrkEditService.queryYwglgn(gnlxdm,syrklx);
+	public @ResponseBody List<SyrkgnVo> queryYwglgn(String gnlxdm,String syrklx,@RequestParam(value = "ry_type",required = false) String  ry_type) {
+		return syrkEditService.queryYwglgn(gnlxdm,syrklx,ry_type);
 	}
 
 	

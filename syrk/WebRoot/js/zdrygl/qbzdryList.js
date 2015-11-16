@@ -1,76 +1,211 @@
-var markerArr = new Array();
-var dz_dwdzdmArr = new Array();
-//datagrid加载完成后事件，地图定位
-function loadpoints1(data){
-	//延迟加载统计
-	beforeTableLoad(data,'dg');
-	var mapWindow = null;
-	if (IE) {
-		mapWindow = parent.frames["biz_center"];
-	}else {
-		mapWindow = parent.frames.document.getElementById("biz_center").contentWindow;
-	}
-	if ("undefined" != typeof mapWindow && mapWindow != null) {
-		if (mapWindow.SydwMap) {
-			mapPoint(mapWindow);
-		}else {
-			setTimeout(function() {mapPoint(mapWindow);}, 3000);
+if (typeof QbZdryManage == "undefined" || !QbZdryManage) {
+	var QbZdryManage = {};
+};
+QbZdryManage = function() {
+	this.pk = Math.random();
+};
+QbZdryManage.initMarkerArr = new Array();// 放点对象
+QbZdryManage.setInt = "";// 记录延时
+/**
+ * @title:Jquery
+ * @description:初始化地址管理
+ * @author: zhang_guoliang@founder.com
+ * @param
+ * @date:2014-12-26 10:37:32
+ */
+$(function() {
+	QbZdryManage.onloadMap();
+	// 键盘回车进行查询
+	$("body").bind("keydown", function(e) {
+		if (e.keyCode == 13) {
+			queryButton();
 		}
+	});
+});
+/**
+ * @title:onloadMap
+ * @description:加载地图
+ * @author: zhang_guoliang@founder.com
+ * @param
+ * @date:2014-12-26 10:38:12
+ */
+QbZdryManage.onloadMap = function() {
+	/* 地图对象 */
+	QbZdryManage.map = new FrameTools.Map();
+	/* 设置地图代理 */
+	QbZdryManage.map.setProxy(contextPath + "/Proxy");
+	/* 设置地图加载容器 */
+	QbZdryManage.map.setMapDiv("mapDiv");
+	/* 加载地图 */
+	QbZdryManage.map.onloadMap();
+	/* 显示鹰眼 */
+	QbZdryManage.map.addOverView();
+	/* 隐藏自带矢量影像图层对象 */
+	QbZdryManage.map._MapApp.hideMapServer();
+	/* 加载自定义的矢量影像图层对象 */
+	QbZdryManage.map.showNewMapServer("mapDiv", "QbZdryManage.map");
+	/* 加载地图工具条 */
+	QbZdryManage.map.buildTools("mapDiv", "toolDiv", "QbZdryManage.map");
+	/* 设置工具条显示的位置 */
+	QbZdryManage.diyToolDiv();
+	/* 窗口变化地图工具条自动变 */
+	$("#mapDiv").resize(function() {
+		QbZdryManage.diyToolDiv();
+	});
+	/* 加载边界坐标值 */
+	if (bjzbz != "" && bjzbz != 'null') {
+		/* 显示当前用户边界 */
+		QbZdryManage.moveMapToBjzbz();
 	}
-}
-//地图定位
-function mapPoint(mapWindow) {
-	//markerArr = new Array();
-	if (mapWindow.SydwMap) {
-		mapWindow.SydwMap.clearMarkers();
-		var rows = $('#dg').datagrid("getRows");
-		var len = rows.length;
-		var dwidsArray = [];
-		for (var i = 0; i < len; i++) {
-			dwidsArray.push("'" + rows[i].id + "'");
-			if (rows[i].dz_dwdzdm != "undefined" && rows[i].dz_dwdzdm != "") {
-				dz_dwdzdmArr[rows[i].dz_dwdzdm] = rows[i].dz_dwdzdm;
+};
+/**
+ * @title:diyToolDiv
+ * @description:设置工具条显示的位置
+ * @author: zhang_guoliang@founder.com
+ * @param
+ * @date:2014-12-26 10:39:41
+ */
+QbZdryManage.diyToolDiv = function() {
+	var top = $("#mapDiv").height() - 40;
+	$("#toolDiv").css({
+		"top" : top,
+		"left" : 10
+	});
+};
+/**
+ * @title:moveMapToBjzbz
+ * @description:加载当前用户边界
+ * @author: zhang_guoliang@founder.com
+ * @param
+ * @date:2014-12-26 10:39:54
+ */
+QbZdryManage.moveMapToBjzbz = function() {
+	/* 清楚地图上所有的标记 */
+	QbZdryManage.map._MapApp.clear();
+	/* 非地坐标 */
+	var bj = bjzbz.split(";");
+	var bjnum = bj.length;
+	/* 记录边线中心点坐标 */
+	QbZdryManage.mbrArr = new Array();
+	for ( var j = 0; j < bjnum; j++) {
+		var gArr = bj[j];
+		/* 创建边界图元素 */
+		var polyline = QbZdryManage.map.initPolyline(gArr, "blue");
+		/* 图元素添加到地图上 */
+		if (polyline) {
+			QbZdryManage.map._MapApp.addOverlay(polyline);
+			QbZdryManage.mbrArr.push(polyline);
+			if (QbZdryManage.Mbr == null) {
+				QbZdryManage.Mbr = polyline.getMBR();
+			} else {
+				QbZdryManage.Mbr = MBR.union(QbZdryManage.Mbr, polyline.getMBR());
 			}
 		}
-		if (len > 0) {
-			$.ajax({
-				type:"GET",
-				sync:true,
-				url:contextPath+"/sydwcx/queryZbByDzId",
-				data:{dwids:dwidsArray.join(",")},
-				dataType:'json',
-				success:function(json){
-					var len = json.length;
-					for (var i = 0; i < len; i++) {
-						
-						if (json[i].zbx!=null && json[i].zbx!=""){
-							var marker = null;
-							if (IE) {
-								marker = mapWindow.addMarker(json[i].dwmc,json[i].zbx,json[i].zby,"location.png",null,null,34,34,false,json[i].dz_dwdzdm,null);
-							} else{
-								marker = mapWindow.addMarker(json[i].dwmc,json[i].zbx,json[i].zby,"location.png",null,null,34,34,false,json[i].dz_dwdzdm,null);
-							}
-							markerArr[json[i].dz_dwdzdm] = marker;
-							dz_dwdzdmArr[json[i].dz_dwdzdm] = json[i].dz_dwdzdm;
-							console.log(json[i].dz_dwdzdm);
-						}
-					}
-				}
-			});
+	}
+	/* 根据图元素将地图放到最适合的级别和位置 */
+	QbZdryManage.map._MapApp.centerAtMBR(QbZdryManage.Mbr);
+	/* 新版本cliect自动适应级别有问题必须降一级 */
+	QbZdryManage.map._MapApp.zoomOut();
+};
+
+/**
+ * @title:loadPoint
+ * @description:加载地图坐标点
+ * @author: zhang_guoliang@founder.com
+ * @param
+ * @date:2014-12-26 10:58:43
+ */
+ QbZdryManage.loadPoint = function(data) {
+	// 延迟加载列表统计
+	beforeTableLoad(data, 'dg');
+	// 关闭所有器已经打开的气泡框
+	QbZdryManage.map._MapApp.closeInfoWindow();
+	// 判断延时是否执行完，没执行完终止此方法
+	if (QbZdryManage.setInt != "") {
+		clearInterval(QbZdryManage.setInt);
+	}
+	// 判断地图上已经存在点图层清除
+	if (QbZdryManage.initMarkerArr != null) {
+		var markerLen = QbZdryManage.initMarkerArr.length;
+		for ( var j = 0; j < markerLen; j++) {
+			QbZdryManage.map._MapApp.removeOverlay(QbZdryManage.initMarkerArr[j]);
 		}
 	}
-}
-
-//ZdryManage.onClickRow = function(rowIndex, rowData) {
-//	var point = new Point(rowData.zbx, rowData.zby);
-//	// 气泡框内容
-//	//var openHtml = "";
-//	//ZdryManage.map._MapApp.openInfoWindow(point, openHtml, true);
-//	ZdryManage.clearMarkers();
-//	//ZdryManage.map._MapApp.clear();
-//	ZdryManage.map._MapApp.addOverlay(ZdryManage.initMarkerArr[rowIndex]);
-//	ZdryManage.map._MapApp.centerAndZoom(point, 19);
-//};
+	// 延时加载点图层     地图zbx、zby 从后台获取过来更改一下
+	var rows = $('#dg').datagrid("getRows");
+	var len = rows.length;
+	var count = 0;
+	QbZdryManage.setInt = setInterval(function() {
+		if (count < len) {
+//			var zbx = rows[count].zbx;
+//			var zby = rows[count].zby;
+			var zbx = "121.5853";
+			var zby = "38.9031";
+			var title = rows[count].xm;
+			if (zbx != "" && zby != "") {
+				// 气泡框内容
+				var openHtml = "";
+				var initMarker = QbZdryManage.map.initMarker(title, zbx, zby,
+						"jzw1.png", openHtml, null, 43, 37);
+				QbZdryManage.map._MapApp.addOverlay(initMarker);
+				QbZdryManage.initMarkerArr.push(initMarker);
+				// 地图元素和列表联动
+				QbZdryManage.addMapToListFun(initMarker, count);
+			}
+		} else {
+			clearInterval(QbZdryManage.setInt);
+		}
+		count++;
+	}, 90);
+};
+/**
+ * @title:addMapToListFun
+ * @description:地图元素和列表联动
+ * @author: zhang_guoliang@founder.com
+ * @param
+ * @date:2014-12-26 18:02:12
+ */
+QbZdryManage.addMapToListFun = function(PMarker, row) {
+	PMarker.addListener("click", function() {
+		// 鼠标移动到点上列表选中
+		$('#dg').datagrid("selectRow", row);
+	});
+	/*
+	 * PMarker.addListener("mouseout",function(){ //鼠标移动到点上取消列表选中
+	 * $('#dg').datagrid("unselectRow",row); });
+	 */
+};
+/**
+ * @title:onClickRow
+ * @description:点击一行的时候触发
+ * @author: zhang_guoliang@founder.com
+ * @param
+ * @date:2014-12-27 14:57:21
+ */
+QbZdryManage.onClickRow = function(rowIndex, rowData) {
+	var point = new Point("121.5853", "38.9031");
+	// 气泡框内容
+	//var openHtml = "";
+	//ZdryManage.map._MapApp.openInfoWindow(point, openHtml, true);
+	QbZdryManage.clearMarkers();
+	//ZdryManage.map._MapApp.clear();
+	QbZdryManage.map._MapApp.addOverlay(QbZdryManage.initMarkerArr[rowIndex]);
+	QbZdryManage.map._MapApp.centerAndZoom(point, 19);
+};
+//只清除marker
+QbZdryManage.clearMarkers = function(){
+	QbZdryManage.map._MapApp.closeInfoWindow();
+	var objs = QbZdryManage.map._MapApp.getOverlays() ;
+	var len = objs.length;
+	if(len>=1){
+		for(var i=0;i<len;i++){
+			var obj =objs[i].toString().split(",");
+			if(obj.length<=2){
+				QbZdryManage.map._MapApp.removeOverlay(objs[i]);
+			}
+		}
+	}
+};
 
 //搜索功能
 function searchMain(){

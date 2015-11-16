@@ -325,10 +325,11 @@ function loadRelationMessage() { // 显示关联信息
 	});
 }
 
+//ry_type参数解决《实有人口编辑页面，业务办理区域不应该有重点人员转类的按钮》所填加
 function openSyrk(xm,ryid,syrkid){
-	var editUrl = "/syrkEdit/"+ryid+"/"+syrkid+"/view";
+	var editUrl = "/syrkEdit/"+ryid+"/"+syrkid+"/view?ry_type=1";
 	if($("#mode_").val()=="view"){
-		editUrl += "?mode=view";
+		editUrl += "&mode=view";
 	}
 	menu_open("实有人口【"+xm+"】",editUrl);
 }

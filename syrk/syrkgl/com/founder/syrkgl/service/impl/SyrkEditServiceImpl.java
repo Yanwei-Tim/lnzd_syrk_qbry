@@ -124,11 +124,16 @@ public class SyrkEditServiceImpl extends BaseService implements SyrkEditService 
 	private JzzblxxbDao jzzblxxbDao;
 	
 	@Override
-	public List<SyrkgnVo> queryYwglgn(String gnlxdm,String syrklx) {
+	public List<SyrkgnVo> queryYwglgn(String gnlxdm,String syrklx,String ry_type) {
 		List<SyrkgnVo> infoList = new ArrayList<SyrkgnVo>();
 		infoList=syrkEditDao.queryYwglgn(gnlxdm,syrklx);
 		//查询编号为00的公共功能
-		infoList.addAll(syrkEditDao.queryYwglgn(gnlxdm,"00"));
+		if(!ry_type.equals("1"))
+		{
+			infoList.addAll(syrkEditDao.queryYwglgn(gnlxdm,"00"));
+		}else if(ry_type.equals("1")&&!gnlxdm.equals("1")){
+			infoList.addAll(syrkEditDao.queryYwglgn(gnlxdm,"00"));
+		}
 		return infoList;
 		
 	}

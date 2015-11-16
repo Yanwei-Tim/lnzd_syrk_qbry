@@ -48,7 +48,7 @@ public interface SyrkEditService {
 	 * @return List<SyrkgnVo>    返回类型
 	 * @throws
 	 */
-	public List<SyrkgnVo> queryYwglgn(String gnlxdm,String syrklx);
+	public List<SyrkgnVo> queryYwglgn(String gnlxdm,String syrklx,String ry_type);
 
 	/***
 	 * 
