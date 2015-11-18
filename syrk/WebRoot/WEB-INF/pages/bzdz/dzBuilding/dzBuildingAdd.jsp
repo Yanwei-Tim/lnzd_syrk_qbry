@@ -114,6 +114,8 @@
          			<input type='hidden' name='mldzid' id="mldzid" value="${mldzid}"/>
          			<input type='hidden' name='dzChb' id="dzChb" value="${dzChb}"/>
          			<input type='hidden' name='dzmc' id="dzmc" value="${entity.dzmc}"/>
+         			<input type='hidden' name='zbx' id="zbx" value="${entity.zbx}"/>
+         			<input type='hidden' name='zby' id="zby" value="${entity.zby}"/>
 					<!-- 生成层户机构 -->
 		            <!-- 地上信息 -->
 		            <input type='hidden' name='dsdys' id="dsdys" value=""/>
