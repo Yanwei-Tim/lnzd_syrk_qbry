@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/syrk.css"></link>
-<title>会员卡新建</title>
+<title>人员经历新建</title>
 </head>
 
 <div class="easyui-layout" data-options="fit:true">
