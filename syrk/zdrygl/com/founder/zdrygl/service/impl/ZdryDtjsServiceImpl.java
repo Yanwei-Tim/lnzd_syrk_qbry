@@ -12,9 +12,11 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.base.service.BaseService;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
+import com.founder.framework.utils.UUID;
 import com.founder.zdrygl.bean.ZdryDtjsClxxb;
 import com.founder.zdrygl.bean.ZdryDtjsGxbgxxb;
 import com.founder.zdrygl.bean.ZdryDtjsSaxxb;
@@ -78,11 +80,18 @@ public class ZdryDtjsServiceImpl extends BaseService implements ZdryDtjsService 
 	}		
 
 	@Override
-	public String saveDtjs(ZdryDtjsXsxxb entity) {		
-		entity.setCjsj(gerNowDateTimeStr());
-		return zdryDtjsXsDao.saveRyxsb(entity);
+	public String saveDtjs(ZdryDtjsXsxxb entity,SessionBean sessionBean) {	
+		entity.setId(UUID.create());
+		BaseService.setSaveProperties(entity, sessionBean);
+		 zdryDtjsXsDao.saveRyxsb(entity);
+		 return entity.getId();
 	}
-	
+	@Override
+	public String updateDtjs(ZdryDtjsXsxxb entity,SessionBean sessionBean) {		
+		BaseService.setUpdateProperties(entity, sessionBean);
+
+		return zdryDtjsXsDao.updateZdryDtjsXsxxb(entity);
+	}
 	@Override
 	public void saveZtxxb(ZdryDtjsZtxxb entity){
 		entity.setTxrq(gerNowDateTimeStr());
@@ -444,5 +453,17 @@ public class ZdryDtjsServiceImpl extends BaseService implements ZdryDtjsService 
 	private String gerNowDateTimeStr(){		
 		Calendar cal = Calendar.getInstance();		
 		return formatStr.format(cal.getTime());
+	}
+
+	@Override
+	public ZdryDtjsXsxxb queryXsjbxxById(String xsid) {
+		
+		return zdryDtjsXsDao.querXsjbxxById(xsid);
+	}
+
+	@Override
+	public List<ZdryDtjsXsxxb> queryByZdryid(String zdryid) {
+		
+		return null;
 	}
 }

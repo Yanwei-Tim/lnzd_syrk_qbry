@@ -36,10 +36,25 @@ public class ZdryDtjsXsDao extends BaseDaoImpl {
 	 * @return String    返回类型
 	 * @throws
 	 */
-	public String saveRyxsb(ZdryDtjsXsxxb entity) {
+	public void saveRyxsb(ZdryDtjsXsxxb entity) {
 		insert("ZdryDtjsXs.saveZdryDtjsXsxxb", entity); 
+	
+	}
+	
+	public String updateZdryDtjsXsxxb(ZdryDtjsXsxxb entity) {
+		update("ZdryDtjsXs.updateZdryDtjsXsxxb", entity); 
 		return entity.getId();
 	}
+	
+	public ZdryDtjsXsxxb querXsjbxxById(String id){
+		return (ZdryDtjsXsxxb)queryForObject("ZdryDtjsXs.queryZdryDtjsXsxxbById", id);
+	}
+	
+	public List<ZdryDtjsXsxxb> queryZdryDtjsXsxxbByZdryZjhm(String zdryZjhm){
+		return (List<ZdryDtjsXsxxb>)queryForList("ZdryDtjsXs.queryZdryDtjsXsxxbByZdryZjhm", zdryZjhm);
+
+	}
+	
 	
 	public void updateGxdw(ZdryDtjsGxbgxxb entity) {
 		update("ZdryDtjsXs.updateGxdw",entity);		

@@ -7,6 +7,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.service.attachment.bean.ZpfjFjxxb;
+import com.founder.zdrygl.bean.ZdryDtjsXsxxb;
 import com.founder.zdrygl.bean.ZdryFzcsfryxxb;
 import com.founder.zdrygl.bean.ZdryJgdxxxb;
 import com.founder.zdrygl.bean.ZdrySgafzdryxxb;
@@ -54,6 +55,12 @@ public interface ZdryEditService {
 	 */
 	public List<ZpfjFjxxb> fjxx_query(Map<String,Object> map);
 	
+	/**
+	 * 动态纪实写实基本信息
+	 * @param map
+	 * @return
+	 */
+	public List<ZdryDtjsXsxxb> dtjsxsjbxx_query(Map<String,Object> map);
 
 	
 	public ZdryZdrkxxb zdrkxxb_query (Map<String,Object> map);

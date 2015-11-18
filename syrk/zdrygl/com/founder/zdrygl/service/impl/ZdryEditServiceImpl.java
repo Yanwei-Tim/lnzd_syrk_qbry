@@ -16,8 +16,12 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.base.service.BaseService;
+import com.founder.framework.utils.StringUtils;
 import com.founder.service.attachment.bean.ZpfjFjxxb;
 import com.founder.service.attachment.service.ZpfjFjxxbService;
+import com.founder.syrkgl.bean.RyRyjbxxb;
+import com.founder.syrkgl.service.RyRyjbxxbService;
+import com.founder.zdrygl.bean.ZdryDtjsXsxxb;
 import com.founder.zdrygl.bean.ZdryFzcsfryxxb;
 import com.founder.zdrygl.bean.ZdryGzb;
 import com.founder.zdrygl.bean.ZdryJgdxxxb;
@@ -29,6 +33,7 @@ import com.founder.zdrygl.bean.ZdryZdrkxxb;
 import com.founder.zdrygl.bean.ZdryZdryzb;
 import com.founder.zdrygl.bean.ZdryZszhjsbrxxb;
 import com.founder.zdrygl.bean.Zdrylxylbdyb;
+import com.founder.zdrygl.dao.ZdryDtjsXsDao;
 import com.founder.zdrygl.dao.ZdryEditDao;
 import com.founder.zdrygl.dao.ZdryFzcsfryxxbDao;
 import com.founder.zdrygl.dao.ZdryGzbDao;
@@ -105,7 +110,10 @@ public class ZdryEditServiceImpl extends BaseService implements ZdryEditService 
 
 	@Resource(name = "zpfjFjxxbService")
 	private ZpfjFjxxbService zpfjFjxxbService;
-	
+	@Resource
+	private ZdryDtjsXsDao zdryDtjsXsDao;	
+	@Resource
+	private RyRyjbxxbService ryRyjbxxbService;
 	@Override
 	public List<ZdryZdryzb> queryZdryByRyid(String ryid) {
 		return zdryZdryzbDao.queryZdryByRyid(ryid);
@@ -186,7 +194,14 @@ public class ZdryEditServiceImpl extends BaseService implements ZdryEditService 
 	public List<ZpfjFjxxb> fjxx_query(Map<String, Object> map) {
 		return zdryZdryzbDao.fjxx_query(map);
 	}
-
+	@Override
+	public List<ZdryDtjsXsxxb> dtjsxsjbxx_query(Map<String, Object> map) {
+		String id=map.get("zdryid").toString();
+		ZdryZdryzb zb=(ZdryZdryzb)this.zdryZdryzbDao.queryById(id);
+		RyRyjbxxb ryjbxxb=this.ryRyjbxxbService.queryById(zb.getRyid());
+		return this.zdryDtjsXsDao.queryZdryDtjsXsxxbByZdryZjhm(ryjbxxb.getZjhm());
+		
+	} 
 	@Override
 	public ZdryZdrkxxb zdrkxxb_query(Map<String, Object> map) {
 		map.put("qydm", zdryUntil.querySYSConfig());
@@ -427,5 +442,7 @@ public class ZdryEditServiceImpl extends BaseService implements ZdryEditService 
 			return true;
 		}
 		return false;
-	} 
+	}
+
+	
 }

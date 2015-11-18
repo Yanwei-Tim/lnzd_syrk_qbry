@@ -134,9 +134,9 @@ function info_shb_(){
 //附件信息
 function info_fjxx_(){
 	var sb = new StringBuffer();
-	sb.append("<ul level='1'>");
+/*	sb.append("<ul level='1'>");
 	sb.append("<input type='hidden' name='id' /><input type='hidden'  name='method' fj='true' value='fjxx' /><input type='hidden' name='openUrl' value='/zdryEdit/zdryFjUploadPre' />");
-	sb.append("</ul>");
+	sb.append("</ul>");*/
 	return sb.toString();
 }
 //帮教力量
@@ -222,3 +222,45 @@ function info_psjdb_(){
 	return sb.toString();	
 }
 
+function info_dtjs_(){
+	var sb = new StringBuffer();
+
+	sb.append("<ul url='info_dtjsxsjbxx' level='2'><li class='uline' ><span>写实基本信息</span><a href='javascript:void(0);' class='addfw_btn' ></a>");
+	sb.append(refresh+"</li>");
+	sb.append("<input type='hidden' name='id' /><input type='hidden' name='method2' value='dtjsxsjbxx' /><input type='hidden' name='openUrl' value='/zdryDtjs/addDtjsXsjbxx' /><input type='hidden' name='editUrl' value='/zdryDtjs/{id}' /></ul></ul>");
+	sb.append("<div class='clear'></div>");
+
+	return sb.toString();
+}
+
+function info_dtjsxsjbxx_(){
+	var sb = new StringBuffer();
+	sb.append("<ul>");
+	sb.append("<li><span class='spantitle'>核实时间：</span><span name='hssj' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>核实地点区划：</span><span name='hsddqh' dict='/common/dict/D_BZ_XZQH_MUNICIPAL'   class='edit_word input_w2'></span></li>"); 
+	sb.append("<li><span class='spantitle'>核实地点名称：</span><span name='hsddmc' class='edit_word input_w2'></span></li>"); 
+	sb.append("<li><span class='spantitle'>核实地点详址：</span><span name='hsddxz' class='edit_word input_w2'></span></li>"); 
+	sb.append("<li><span class='spantitle'>在控状态：</span><span name='zkzt' dict='/common/dict/D_QBLD_ZKZT' class='edit_word input_w1'></span></li>");
+	sb.append("<li><span class='spantitle'>在籍状态：</span><span name='zjzt' dict='/common/dict/D_QBLD_ZJZT' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>离开时间：</span><span name='lksj' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>去往省市：</span><span name='qwss' dict='/common/dict/D_BZ_XZQH'  class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>危险级别（提示）：</span><span name='wxjb' dict='/common/dict/D_QBLD_WXJB'  class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>主要意向：</span><span name='zyyx' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>职业：</span><span name='zy' dict='/common/dict/GB_D_ZYFLYDM'  class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>实际收入：</span><span name='sjsr' dict='/common/dict/D_QBLD_SJSR' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>经济来源：</span><span name='jjly'  dict='/common/dict/D_QBLD_JJLY' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>工作单位：</span><span name='gzdw' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>工作单位详址：</span><span name='gzdwxz' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>现住地区划：</span><span name='jzdqh' dict='/common/dict/D_BZ_XZQH' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>现住地详址：</span><span name='jzdxz' dict='/common/dict/D_BZ_XZQH' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>管辖单位：</span><span name='gxdwmc' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>是否见到本人：</span><span name='sfjdbr' dict='/common/dict/D_QBLD_SF' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>直系亲属信息：</span><span name='zxqsxx'  class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>虚拟身份信息：</span><span name='xnsfxx'class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>情况描述：</span><span name='hsqkms' class='edit_word input_w2'></span></li>");
+
+	sb.append("<li class='uline2'><a class='delfw_btn ulrt_btn' href='javascript:void(0);'></a><a class='editfw_btn ulrt_btn' href='javascript:void(0);'></a></li>");
+	sb.append("<input type='hidden' name='id' />");
+	sb.append("</ul>");
+	return sb.toString();
+};

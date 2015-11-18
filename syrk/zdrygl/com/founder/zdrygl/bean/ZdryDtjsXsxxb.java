@@ -94,6 +94,23 @@ public class ZdryDtjsXsxxb extends BaseEntity implements Serializable {
 	private String zklx;
 	@FieldDesc("YJZQ")
 	private String yjzq;
+	
+	/**
+	 * 数据库没有此字段
+	 */
+	private String zdryid;
+	
+	
+	
+	public String getZdryid() {
+		return zdryid;
+	}
+	public void setZdryid(String zdryid) {
+		this.zdryid = zdryid;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	public String getId() {
 		return id;
 	}
