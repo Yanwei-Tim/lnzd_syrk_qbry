@@ -70,8 +70,10 @@
 			</tr>
 			<tr class="dialogTr">
 				<td width="20%" class="dialogTd" align="right">联系电话：</td>
-		    	<td width="30%" class="dialogTd" align="left"><input class="easyui-validatebox" type="text" id="lxdh" name="lxdh" style="width:200px;float:left;" value="${entity.lxdh }" maxlength="100" 
-		    		data-options="required:false,validType:['phone'],tipPosition:'left'" /></td>
+		    	<td width="30%" class="dialogTd" align="left">
+		    	<input class="easyui-validatebox" type="text" id="lxdh" name="lxdh" style="width:200px;float:left;" value="${entity.lxdh }" maxlength="100" 
+		    		data-options="required:false,tipPosition:'right'" onchange="checkPhone('lxdh');"/>
+	    		</td>
 		    </tr>
 		    <tr class="dialogTr">
 		    	<td width="20%" class="dialogTd" align="right">工作单位：</td>
@@ -294,5 +296,16 @@ $(document).ready(function(){
 	}
 });
 
+//电话校验
+function checkPhone(mobile){
+	var isMobile=/^(?:13\d|15\d)\d{5}(\d{3}|\*{3})$/;   
+	var isPhone=/^((0\d{2,3})-)?(\d{7,8})(-(\d{3,}))?$/;
+	if(!isMobile.test($("#"+mobile).val()) && !isPhone.test($("#"+mobile).val())){
+        $("#"+mobile).val(""); 
+		$.messager.alert("提示", "联系电话号码格式不正确！");
+        return false;
+    }
+
+}
 </script>
 </html>
