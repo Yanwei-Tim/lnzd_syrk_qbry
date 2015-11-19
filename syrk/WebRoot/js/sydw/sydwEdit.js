@@ -55,7 +55,7 @@ function export_cyryxxb(){
 }
 //打开 从业人员新增页面
 function add_cyryxxb(){
-	openWindowWithSaveNext(false, null, window, 
+	openWindowWithSave(false, null, window, 
    		{"_p":$("#cyry_datagrid")}, 
    		{
    		title: '从业人员新增',

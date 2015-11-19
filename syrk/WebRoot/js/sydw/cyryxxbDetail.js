@@ -45,7 +45,7 @@ function export_cyryxxb(){
 }
 //添加从业人员
 function add_cyryxxb(){
-	window.top.openWindowWithSaveNext(false, null, window, 
+	window.top.openWindowWithSave(false, null, window, 
  		{}, 
  		{
  		title: '从业人员新增',
