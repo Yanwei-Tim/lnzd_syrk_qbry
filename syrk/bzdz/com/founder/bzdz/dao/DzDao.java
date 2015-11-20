@@ -588,7 +588,7 @@ public class DzDao extends BaseDaoImpl {
 		// 注销地址数据_【门楼地址别名表】
 		update("com.founder.bzdz.sqlmap.Dz.crossOutMldzbmb", entity);
 		// 注销已启用地址数据_【门楼地址对象表_空间表】
-//		crossOutMldzdxbPT(entity);
+		crossOutMldzdxbPT(entity);
 		// 注销已启用地址数据_【层户地址对象表】
 		crossOutChdzdxb(entity);
 	}
