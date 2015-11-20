@@ -292,7 +292,7 @@ function info_ryzjxxb_(){
 	sb.append("<ul><li><span class='spantitle'>证件种类：</span><span name='cyzjdm' dict='/common/dict/KX_D_CYZJDM' class='edit_word input_w2'></span></li>");
 	sb.append("<li><span class='spantitle'>证件号码：</span><span name='zjhm' class='edit_word input_w2'></span></li>");
 	sb.append("<li><span class='spantitle'>证件取得时间：</span><span name='zjqdsj'  class='edit_word input_w2'></span></li>");
-	sb.append("<li><span class='spantitle'>证件有效期：</span><span name='zjyxq'  class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>证件有效期至：</span><span name='zjyxq'  class='edit_word input_w2'></span></li>");
 	sb.append("<li class='uline2'><a class='delfw_btn ulrt_btn' href='javascript:void(0);'></a><a class='editfw_btn ulrt_btn' href='javascript:void(0);'></a></li>");
 	sb.append("<input type='hidden' name='id' />");
 	sb.append("</ul>");

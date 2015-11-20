@@ -27,7 +27,7 @@
 	    		<td width="20%" class="dialogTd" align="right">证件取得时间：</td>
 			    <td width="30%" class="dialogTd"><input type="text" name="zjqdsj" id="zjqdsj" value="${entity.zjqdsj}" class="easyui-validatebox"  style="width: 200px;" 
 			     	onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'})" data-options="validType:['date[\'yyyy-MM-dd\']'],required:false,tipPosition:'right'"/></td>
-			   	<td width="20%" class="dialogTd" align="right">证件有效期：</td>
+			   	<td width="20%" class="dialogTd" align="right">证件有效期至：</td>
 			    <td width="30%" class="dialogTd"><input type="text" name="zjyxq" id="zjyxq" value="${entity.zjyxq}" class="easyui-validatebox"  style="width: 200px;" 
 			     	onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" data-options="validType:['date[\'yyyy-MM-dd\']'],required:false,tipPosition:'left'"/></td>
 	    	</tr>
@@ -44,6 +44,11 @@ function doInit(paramArray){
 }
 
 function beforeSubmit() {
+	if ($("#zjqdsj").val() > $("#zjyxq").val()) {
+		topMessager.alert('', '证件有效期必须大于证件取得时间，请重新输入！');
+		$("#zjyxq").focus();
+		return false;
+	}
 	if ($("#pk").val() == "") {
 		var _count;
 		$.ajax({

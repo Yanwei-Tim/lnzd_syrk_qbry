@@ -6,7 +6,20 @@
 	<typeAlias alias="fwjbxxb" type="com.founder.syfw.bean.Fwjbxxb" />
 	
 	<select id="queryById" parameterClass="String" resultClass="fwjbxxb">
-		<![CDATA[select t.* , (select count(*) from  syrk_syrkxxzb s where s.jzd_dzid = t.fwdz_dzid and s.xt_zxbz='0') jzrs from SYFW_FWJBXXB t where ID = #value# and ]]><include refid="yxjl"/>
+		<![CDATA[
+			select s.*,
+		       (select count(*)
+		          from syfw_czqkdjxxb c, SYFW_CZFWXXB t
+		          where 1 = 1
+		          and c.czfwid = t.id
+		          and t.fwid = s.id
+		          and c.xt_zxbz = '0'
+		          and t.xt_zxbz = '0'
+	           ) jzrs
+			  from SYFW_FWJBXXB s
+			  where 1 = 1
+			  and s.ID = #value# and ]]>
+			<include refid="yxjl"/>
 	</select>
 	
 	<insert id="save" parameterClass="fwjbxxb">
