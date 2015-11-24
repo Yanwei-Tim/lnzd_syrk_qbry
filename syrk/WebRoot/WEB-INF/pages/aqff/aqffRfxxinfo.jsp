@@ -97,8 +97,8 @@
 											</tr>
 											<tr class="dialogTr">
 												<td colspan="2" align="right">	 
-										    		<a href="javascript:void(0)" class="easyui-linkbutton"  iconCls="icon-add"   onclick="pointbiaozhu();">巡逻点</a>&nbsp;&nbsp;
-													<a href="javascript:void(0)" class="easyui-linkbutton"  iconCls="icon-add"   onclick="areabiaozhu();">巡逻区域</a>
+										    		<a href="javascript:void(0)" class="easyui-linkbutton"  iconCls=""   onclick="pointbiaozhu();">查看巡逻点</a>&nbsp;&nbsp;
+													<a href="javascript:void(0)" class="easyui-linkbutton"  iconCls=""   onclick="areabiaozhu();">查看巡逻区域</a>
 												</td>
 										 		<td width="200px" class="dialogTd" align="right" >巡逻区域：</td>
 										    	<td width="200px" class="dialogTd">
