@@ -15,6 +15,9 @@
 <script type="text/javascript">
    var orglevel = "<%=orglevel%>";
 </script>
+<style type="text/css">
+	.pphoto_1{margin:0 0 0 0;width:auto; float:center;text-align:center;}
+</style>
 <script type="text/javascript" src="<%=contextPath%>/js/syrkgl/syrkGlAdd.js"></script>
 
 </head>
@@ -481,7 +484,7 @@
 				</table>
     			</form>
 
-   				<form action="<%=basePath%>syrkGl/save" id="jwryForm" name="jwryForm" method="post">
+   				<form action="<%=basePath%>syrkGl/save" id="jwryForm" name="jwryForm" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="isCheck" value="${isCheck }">
 				<input type="hidden" name="zbid" value="${ryRyjbxxb.id}"/>
 				<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center" style="display: none;" id="jwryTable" delayParse="true">
@@ -495,9 +498,22 @@
 					    <td width="20%" class="dialogTd" align="right">国籍（地区）：</td>
 				    	<td width="30%" class="dialogTd"><input class="easyui-combobox-delay" type="text" id="jwry_gjdm" name="jwry.gjdm" value="${jwry.gjdm}" style="width:200px;" 
 							data-options="required:true,url: contextPath + '/common/dict/GB_D_GJHDQDM.js',valueField:'id',textField:'text',selectOnNavigation:false,method:'get',tipPosition:'right',onChange:jwry_gjdm_onChange"/></td> 
+					    <!--  
 					    <td width="50%" class="dialogTd" rowspan="9" colspan="2" align="center" style="border: 1px solid #dedfe3;">
 					       <img src="<%=contextPath%>/common/skin/images/empty_ryzp.jpg" style="width:162px;height:200px;"/>
 					    </td>
+					    -->
+					    <td width="50%" class="dialogTd" colspan="2" rowspan="9" style="vertical-align: top;" >
+						<div class="pphoto_1">
+							<div id="topPhotoid" style="width:210px;height:260px;border:solid 1px #e2e2e2;text-align:center;">
+								<img id="imgHeadPhoto" src="<%=contextPath%>/common/skin/images/empty_ryzp.jpg" style="width:210px;height:260px;" alt="" />
+							</div>
+							<input onchange="PreviewImage(this,'imgHeadPhoto','topPhotoid');" type="file" name="uploadFile" id="upload" style="width:5px;" 
+							style="position:absolute;z-index:10;right:310px;filter:alpha(opacity=0);opacity=0;"
+						    class="easyui-validatebox" data-options="validType:['imgFile'],tipPosition:'left',invalidMessage:'请选择图片格式的文件！'" />
+								<span info="ryid_main,RY_RYJBXXB,人员基本信息表" style="position:absolute;margin-top: 0px;right:305px;" class="addphoto"></span>
+			    	    </div>
+			    	    </td>
 					</tr>
 					<tr class="dialogTr">
 					    <td width="20%" class="dialogTd" align="right">证件种类：</td>
