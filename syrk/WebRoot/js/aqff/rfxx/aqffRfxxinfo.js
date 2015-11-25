@@ -39,7 +39,7 @@ function pointbiaozhu(){
 	openWindow(true, 'pointbiaozhu', url, 
    		paramArray, 
    		{
-	   		title:'巡逻点标注（鼠标点击左键标注位置，右键退出标注模式）',
+	   		title:'巡逻点标注',
 	   		maximizable: false,
 	   		width: 850,	
 	   		height: 560
@@ -53,7 +53,7 @@ function areabiaozhu(){
 	openWindow(true, 'areabiaozhu', url, 
    		paramArray, 
    		{
-	   		title:'巡逻区域标注（鼠标点击左键标注位置，右键退出标注模式）',
+	   		title:'巡逻区域标注',
 	   		maximizable: false,
 	   		width: 850,	
 	   		height: 560
