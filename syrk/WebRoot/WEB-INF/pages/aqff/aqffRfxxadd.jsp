@@ -47,30 +47,30 @@
 										<input type="hidden" id="xlqy" name="xlqy" value="${entity.xlqy}" />
 										<input type="hidden" id="ryAll" name="ryAll" />
 										<tr class="dialogTr" >
-											<td width="150px" class="dialogTd" align="right">组织名称：</td>
-									    	<td width="200px" class="dialogTd"  colspan="3" >
+											<td width="85px" class="dialogTd" align="right">组织名称：</td>
+									    	<td width="" class="dialogTd">
 								   	        	<input class="easyui-validatebox" type="text" id="zzmc"  name="zzmc" value="${entity.zzmc}"  onblur="checks(this);"
-								   	        	style="width:568px;" data-options="required:true,validType:['maxLength[100]'],tipPosition:'right'" />
+								   	        	style="width:;" data-options="required:true,validType:['maxLength[100]'],tipPosition:'right'" />
 								   	        </td>
-									        <td width="120px" class="dialogTd" align="right">组织类别：</td>
-									    	<td width="200px" class="dialogTd">
+									        <td width="85px" class="dialogTd" align="right">组织类别：</td>
+									    	<td width="" class="dialogTd">
 									    	<input class="easyui-combobox" id="zzlbdm" name="zzlbdm" value="${entity.zzlbdm}" 
-									    		style="width:200px;" data-options="required:false,url: contextPath + '/common/dict/BD_D_ZZLB.js',
+									    		style="width:" data-options="required:false,url: contextPath + '/common/dict/BD_D_ZZLB.js',
 									    		valueField:'id',textField:'text',selectOnNavigation:false,method:'get',tipPosition:'right'"/>
 											</td> 
 										</tr>
 										<tr class="dialogTr">
-									    	<td  width="150px" class="dialogTd" align="right">组织地址：</td>
-										    <td colspan="2"  class="td2">
-											    <input class="easyui-combobox" id="fzd3"  style="width:350px;" 
+									    	<td  width="" class="dialogTd" align="right">组织地址：</td>
+										    <td class="td2">
+											    <input class="easyui-combobox" id="fzd3"  style="width:" 
 											    value="${entity.dz_zzdzmlpxz}" 
 											    data-options="required:false,mode:'remote'
 											    ,method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false">
 										    	<input type='hidden' name='dz_zzdzmlpdm' id="dz_zzdzmlpdm" value="${entity.dz_zzdzmlpdm}"/>
 										    	<input type='hidden' name='dz_zzdzmlpxz' id="dz_zzdzmlpxz" value="${entity.dz_zzdzmlpxz}"/>
 										    </td>
-										    <td class="td2" align="right">
-											    <input class="easyui-combobox"  id="fzd4" style="width:200px;" 
+										    <td class="td2" align="left" colspan="2">
+											    <input class="easyui-combobox"  id="fzd4" style="width:228px;" 
 											    value="${fn:replace(entity.dz_zzdzxz,entity.dz_zzdzmlpxz, '')}"
 											    data-options="required:false,mode:'remote',method:'post'
 											    ,panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false">
@@ -78,46 +78,46 @@
 										    	<input type='hidden' name='dz_zzdzssxqdm' id="dz_zzdzssxqdm" value="${entity.dz_zzdzssxqdm}"/>
 										    	<input type='hidden' name='dz_zzdzxz' id="dz_zzdzxz" value="${entity.dz_zzdzxz}"/>
 										    </td>
-								    		<td width="120px" class="dialogTd" align="right">隶属关系：</td>
-									    	<td width="200px" class="dialogTd">
+								    		<td width="85px" class="dialogTd" align="right">隶属关系：</td>
+									    	<td width="" class="dialogTd">
 									    		<input class="easyui-combobox" id="lsggdm" name="lsggdm" value="${entity.lsggdm}" 
-									    		style="width:200px;" data-options="required:false,url: contextPath + '/common/dict/D_ZAFF_LSGX.js',
+									    		style="width:" data-options="required:false,url: contextPath + '/common/dict/D_ZAFF_LSGX.js',
 									    		valueField:'id',textField:'text',selectOnNavigation:false,method:'get',tipPosition:'left'"/>	
 											</td> 
 										</tr>
 										<tr class="dialogTr">
-									    	<td width="150px" class="dialogTd" align="right">防范组织形式：</td>
-									    	<td width="200px" class="dialogTd">
+									    	<td width="" class="dialogTd" align="right">防范组织形式：</td>
+									    	<td width="" class="dialogTd">
 									    		<input class="easyui-combobox" id="ffzzxsdm" name="ffzzxsdm" value="${entity.ffzzxsdm}" 
-									    			style="width:200px;" data-options="required:false,url: contextPath + '/common/dict/D_ZAFF_ZZXS.js',
+									    			style="width:" data-options="required:false,url: contextPath + '/common/dict/D_ZAFF_ZZXS.js',
 									    			valueField:'id',textField:'text',selectOnNavigation:false,method:'get',
 									    			tipPosition:'right',onSelect:function(newValue,oldValue){}"/>
 											</td> 
-											<td width="150px" class="dialogTd" align="right">组建日期：</td>
-											<td width="200px" class="dialogTd">
-												<input type="text" name="zjrq" id="zjrq" class="easyui-validatebox " style="width: 200px;" value="${entity.zjrq}"
+											<td width="" class="dialogTd" align="right">组建日期：</td>
+											<td width="" class="dialogTd">
+												<input type="text" name="zjrq" id="zjrq" class="easyui-validatebox " style="width: ;" value="${entity.zjrq}"
 													data-options="validType:['date[\'yyyy-MM-dd\']'],tipPosition:'right'" 
 													onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'})" /></td>
-											<td width="120px" class="dialogTd" align="right">经费来源：</td>
-									    	<td width="200px" class="dialogTd">
+											<td width="" class="dialogTd" align="right">经费来源：</td>
+									    	<td width="" class="dialogTd">
 							    	        	<input class="easyui-combobox" type="text" id="jflydm" name="jflydm" value="${entity.jflydm}"
-							    	        	style="width: 200px;" maxlength="50" data-options="required:false,url: contextPath + '/common/dict/BD_D_JFLY.js',
+							    	        	style="width: " maxlength="50" data-options="required:false,url: contextPath + '/common/dict/BD_D_JFLY.js',
 									    			valueField:'id',textField:'text',selectOnNavigation:false,method:'get',tipPosition:'right'"/>
 							    	        </td>
 										</tr>	
 										<tr class="dialogTr">
-				    	      			    <td width="150px" class="dialogTd" align="right">防范方式：</td>
-								    		<td width="200px" class="dialogTd">
+				    	      			    <td width="" class="dialogTd" align="right">防范方式：</td>
+								    		<td width="" class="dialogTd">
 								    			<input class="easyui-combobox" id="fffsdm" name="fffsdm" value="${entity.fffsdm}" 
-								    			style="width:200px;" data-options="required:false,url: contextPath + '/common/dict/D_ZAFF_FFFS.js',
+								    			style="width:" data-options="required:false,url: contextPath + '/common/dict/D_ZAFF_FFFS.js',
 								    			valueField:'id',textField:'text',selectOnNavigation:false,method:'get',tipPosition:'left'"/>	</td>
-								    		<td width="150px" class="dialogTd" align="right">是否治安承包：</td>
-								    		<td width="200px" class="dialogTd">
+								    		<td width="" class="dialogTd" align="right">是否治安承包：</td>
+								    		<td width="" class="dialogTd">
 								    			<input class="easyui-combobox" id="sfzacbdm" name="sfzacbdm" value="${entity.sfzacbdm}" 
-								    			style="width:200px;" data-options="required:false,url: contextPath + '/common/dict/D_BZ_SF.js',
+								    			style="width:;" data-options="required:false,url: contextPath + '/common/dict/D_BZ_SF.js',
 								    			valueField:'id',textField:'text',selectOnNavigation:false,method:'get',tipPosition:'left'"/>	</td>
-								    		<td width="120px" class="dialogTd" align="right">携带装备：</td>
-								    		<td width="200px" class="dialogTd" rowspan="3" border="1px" >
+								    		<td width="" class="dialogTd" align="right">携带装备：</td>
+								    		<td width="68px" class="dialogTd" rowspan="3" >
 							    	 			<input type="checkbox" name ="xdzbdm" value="1"/>胶皮警棍
 							    	 			<input type="checkbox" name ="xdzbdm" value="2"/>齐眉棍
 							    	 			<input type="checkbox" name ="xdzbdm" value="3"/>对讲机
@@ -130,61 +130,61 @@
 											</td> 
 										</tr>
 										<tr class="dialogTr">
-											<td colspan="2" align="right">	 
+											<td colspan="2" align="left">	 
 										    	<a href="javascript:void(0)" class="easyui-linkbutton"  iconCls="icon-add"   onclick="pointbiaozhu();">巡逻点</a>&nbsp;&nbsp;
 												<a href="javascript:void(0)" class="easyui-linkbutton"  iconCls="icon-add"   onclick="areabiaozhu();">巡逻区域</a>
 											</td>
-										 	<td width="150px" class="dialogTd" align="right" >巡逻区域：</td>
-									    	<td width="200px" class="dialogTd">
+										 	<td width="" class="dialogTd" align="right" >巡逻区域：</td>
+									    	<td width="" class="dialogTd">
 									    		<input class="easyui-combobox" id="xlqydm" name="xlqydm" value="${entity.xlqydm}" 
-									    			style="width:200px;" data-options="required:false,url: contextPath + '/common/dict/D_ZAFF_DYLB.js',
+									    			style="width:" data-options="required:false,url: contextPath + '/common/dict/D_ZAFF_DYLB.js',
 									    			valueField:'id',textField:'text',selectOnNavigation:false,method:'get',tipPosition:'right'"/>	
 							    	        </td>
 										</tr >
 										<tr class="dialogTr">
-									    	<td width="150px" class="dialogTd" align="right">组织联系方式：</td>
-									    	<td width="200px" class="dialogTd">
+									    	<td width="" class="dialogTd" align="right">组织联系方式：</td>
+									    	<td width="" class="dialogTd">
 							    	        	<input class="easyui-validatebox" type="text" id="zzlxfs" name="zzlxfs" value="${entity.zzlxfs}"
-							    	        	style="width: 200px;" data-options="validType:['naturalNumber','maxLength[50]'],validType:['phone'],tipPosition:'right'"/>
+							    	        	style="width: ;" data-options="validType:['naturalNumber','maxLength[50]'],validType:['phone'],tipPosition:'right'"/>
 							    	        </td>
-									    	<td width="150px" class="dialogTd" align="right">组织传真号码：</td>
-									    	<td width="200px" class="dialogTd">
+									    	<td width="" class="dialogTd" align="right">组织传真号码：</td>
+									    	<td width="" class="dialogTd">
 									    		<input class="easyui-validatebox" type="text" id="zzczhm" name="zzczhm"
-							    	 			value="${entity.zzczhm}"  style="width:200px;" data-options="validType:['maxLength[50]'],validType:['phone'],tipPosition:'left'"/>
+							    	 			value="${entity.zzczhm}"  style="width:;" data-options="validType:['maxLength[50]'],validType:['phone'],tipPosition:'left'"/>
 											</td> 
 										</tr>
 										<tr class="dialogTr">
-									    	<td width="150px" class="dialogTd" align="right">责任范围：</td>
-									    	<td width="200px" class="dialogTd">
+									    	<td width="" class="dialogTd" align="right">责任范围：</td>
+									    	<td width="" class="dialogTd">
 									    	<input class="easyui-combobox" type="text" id="zrfwdm" name="zrfwdm"
-							    	 			value="${entity.zrfwdm}" maxlength="200" style="width:200px;" 
+							    	 			value="${entity.zrfwdm}" maxlength="200" style="width:;" 
 							    	 				data-options="required:false,url: contextPath + '/common/dict/BD_D_ZRFWDM.js',
 									    			valueField:'id',textField:'text',selectOnNavigation:false,method:'get',tipPosition:'right'"/>
 											</td> 
-											<td width="150px" class="dialogTd" align="right">防范部位：</td>
-									    	<td width="200px" class="dialogTd">
+											<td width="" class="dialogTd" align="right">防范部位：</td>
+									    	<td width="" class="dialogTd">
 							    	        	<input class="easyui-combobox" type="text" id="ffbwdm" name="ffbwdm" value="${entity.ffbwdm}"
-							    	        	style="width: 200px;" maxlength="200" data-options="required:false,url: contextPath + '/common/dict/D_ZAFF_DYLB.js',
+							    	        	style="width: ;" maxlength="200" data-options="required:false,url: contextPath + '/common/dict/D_ZAFF_DYLB.js',
 									    			valueField:'id',textField:'text',selectOnNavigation:false,method:'get',tipPosition:'right'"/>
 							    	        </td>
-							    	        <td width="120px" class="dialogTd" align="right">地域类别：</td>
-									    	<td width="200px" class="dialogTd">
+							    	        <td width="" class="dialogTd" align="right">地域类别：</td>
+									    	<td width="" class="dialogTd">
 									    		<input class="easyui-combobox" id="dylbdm" name="dylbdm" value="${entity.dylbdm}" 
-									    			style="width:200px;" data-options="required:false,url: contextPath + '/common/dict/D_ZAFF_DYLB.js',
+									    			style="width:;" data-options="required:false,url: contextPath + '/common/dict/D_ZAFF_DYLB.js',
 									    			valueField:'id',textField:'text',selectOnNavigation:false,method:'get',tipPosition:'right'"/>	
 							    	        </td>
 										</tr>
 										<tr class="dialogTr">
-									    	<td width="150px" class="dialogTd" align="right">作用情况：</td>
-									    	<td width="910px" class="dialogTd"  colspan="5">
+									    	<td width="85px" class="dialogTd" align="right">作用情况：</td>
+									    	<td width="" class="dialogTd"  colspan="5">
 									    		<input class="easyui-validatebox" type="text" id="zyqk" name="zyqk"
-							    	 				value="${entity.zyqk}"  style="width:910px" data-options="validType:['maxLength[200]'],tipPosition:'right'"/>
+							    	 				value="${entity.zyqk}"  style="width:716px;" data-options="validType:['maxLength[200]'],tipPosition:'right'"/>
 											</td> 
 										</tr>
 										<tr class="dialogTr">
-								    	    <td width="150px" class="dialogTd" align="right">备注：</td>
-								    	    <td width="910px" class="dialogTd" colspan="5">
-								    	    	<textarea id="bz" name="bz"  class="easyui-validatebox" rows="1" style="width:910px; height:52px;"
+								    	    <td width="85px" class="dialogTd" align="right">备注：</td>
+								    	    <td width="" class="dialogTd" colspan="5">
+								    	    	<textarea id="bz" name="bz"  class="easyui-validatebox" rows="1" style="width:716px; height:52px;"
 													data-options="validType:['maxLength[1000]'],invalidMessage:'备注不能超过1000个汉字，请重新输入！',tipPosition:'left'">${entity.bz}</textarea>
 											</td>
 										</tr>
@@ -212,10 +212,10 @@
 			</tr>
 		</table>
 	</div> 
-	<div data-options="region:'center', split:true" style="width:1080px; margin:0 0 0;border-width: 0px; height:250px;">
-		<div class="easyui-tabs" style="height: auto;" id="xxk" style="width:1080px;">  
+	<div data-options="region:'center', split:true" style="width:870px; margin:0 0 0;border-width: 0px; height:250px;">
+		<div class="easyui-tabs" style="height: auto;" id="xxk" style="width:870px;">  
 			<div title="组织人员名单"  >
-	    		<div id="dg1" data-options="region:'center',split:true,title:'人防成员',border:true" style="height:250px;width:1080px;">
+	    		<div id="dg1" data-options="region:'center',split:true,title:'人防成员',border:true" style="height:250px;width:867px;">
     		 		<table id="dg0" class="easyui-datagrid" data-options="
 		            		singleSelect:false,
 		            		fitColumns:false,
