@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="sysMessageRemind">
+	
+	<typeAlias alias="sysMessageRemind" type="com.founder.framework.message.bean.SysMessageRemind" />
+
+	<!-- 新增（根据多个 orgcode，接收类型为部门）-->
+	<insert id="saveByOrgcode" parameterClass="Map">
+		<![CDATA[ insert into SYS_MESSAGE_REMIND (ID,XXNR,XXLB,YWURL,FSR,FSRDM,FSSJ,FSRSSDW,FSRSSDWDM,DXZT,JSLX,JSR,JSRDM,JSRSSDW,JSRSSDWDM,SFCK,CKSJ,XXBT,DKFS,TXRQ,YWID,YWLX)
+			select SEQ_PK.NEXTVAL as ID,#sysMessageRemind.xxnr# as XXNR,#sysMessageRemind.xxlb# as XXLB,decode(#sysMessageRemind.ywurl#,null,null,#sysMessageRemind.ywurl# || SEQ_PK.CURRVAL) as YWURL,
+			#sysMessageRemind.fsr# as FSR,#sysMessageRemind.fsrdm# as FSRDM,#sysMessageRemind.fssj# as FSSJ,#sysMessageRemind.fsrssdw# as FSRSSDW,
+			#sysMessageRemind.fsrssdwdm# as FSRSSDWDM, #sysMessageRemind.dxzt# as DXZT,#sysMessageRemind.jslx# as JSLX,
+			'' as JSR,'' as JSRDM,t.ORGNAME as JSRSSDW,t.ORGCODE as JSRSSDWDM,
+			#sysMessageRemind.sfck# as SFCK,#sysMessageRemind.cksj# as CKSJ,#sysMessageRemind.xxbt# as XXBT,#sysMessageRemind.dkfs# as DKFS,#sysMessageRemind.txrq# as TXRQ,#sysMessageRemind.ywid# as YWID,,#sysMessageRemind.ywlx# as YWLX
+			from (select distinct a.ORGCODE,a.ORGNAME from ORG_ORGANIZATION a where a.ORGCODE in ($orgCodeCondition$) and a.XT_ZXBZ = '0') t ]]>
+	
+	
+	</insert>
+
+</sqlMap>
