@@ -14,7 +14,7 @@ public class SysMessageRemind extends SysMessage {
 	/**业务id*/
 	private String ywid;
 	/**业务类型 ——存业务表的表名*/ 
-	private String ywlx;
+	private String ywlx; 
 
 	public String getTxrq() {
 		return txrq;

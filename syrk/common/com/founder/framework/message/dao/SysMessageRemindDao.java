@@ -23,7 +23,7 @@ public class SysMessageRemindDao extends BaseDaoImpl {
 	 * @return
 	 */
 	public Long[] saveMessageByOrg(SysMessageRemind entity, String orgCodeString) {
-		Long[] returnArray = new Long[2];
+		Long[] returnArray = new Long[2]; 
 		if (entity != null && !StringUtils.isBlank(orgCodeString)) {
 			String orgCodeCondition = "'"
 					+ orgCodeString.replaceAll(",", "','") + "'";

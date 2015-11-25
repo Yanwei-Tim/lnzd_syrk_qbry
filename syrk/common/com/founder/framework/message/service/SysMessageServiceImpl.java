@@ -27,7 +27,7 @@ import com.founder.framework.utils.EasyUIPage;
 @TypeAnnotation("系统消息表")
 @Transactional
 @Resource(name = "sysMessageService")
-public class SysMessageServiceImpl extends BaseService implements
+public class SysMessageServiceImpl extends BaseService implements 
 		SysMessageService {
 
 	@Resource(name = "sysMessageDao")
