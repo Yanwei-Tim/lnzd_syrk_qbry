@@ -253,8 +253,13 @@ SyrkGl.subjzddzxz = function(val, row, index){
  */	
 SyrkGl.datagridProcessFormater = function(val,row,index){
 	if(orglevel=="50"){
-		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="SyrkGl.doEdit('+index+')">编辑</a>&nbsp;'+
+		if(row.syrkywlxdm != "1"){
+			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="SyrkGl.doEdit('+index+')">编辑</a>&nbsp;'+
 	       	   '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="SyrkGl.doCancel(this, '+index+')">注销</a>&nbsp;';
+		}else{
+			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="SyrkGl.doEdit('+index+')">编辑</a>&nbsp;';
+		}
+	
 	}else if(orglevel=="32"){
 		var rows = $('#dg').datagrid('getData');
 		var rowData = rows.rows[index];

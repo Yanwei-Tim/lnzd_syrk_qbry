@@ -60,7 +60,7 @@
             		<!-- onClickRow:doOnClickRow 单击行事件 --> 
 				    <thead>
 				        <tr>
-				            <th data-options="field:'dwlbdm',	width:80,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_DWLXDM.js',sortable:true">类别</th>
+				            <th data-options="field:'dwlbdm',	width:80,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_SDWLXDM.js',sortable:true">类别</th>
 				            <th data-options="field:'dwmc',		width:120,align:'left',halign:'center',sortable:true">单位名称</th>
 				            <th data-options="field:'dz_dwdzxz',	width:200,align:'right',halign:'center',formatter:subjzdz,sortable:true">单位地址</th>
 				            <th data-options="field:'process',width:90,align:'center',halign:'center',formatter:datagridProcessFormater">操作</th>
@@ -103,7 +103,7 @@
 					    	<td width="30%" class="dialogTd" align="right">单位类型：</td>
 					    	<td width="70%" class="dialogTd">
 								<input class="easyui-combotree" type="text" id="dwlbdm" name="dwlbdm"
-								 style="width:150px;" data-options="url: contextPath + '/common/dict/BD_D_DWLXDM.js',onlyLeaf:true,multiple:false,panelWidth:250,panelHeight:210,
+								 style="width:150px;" data-options="url: contextPath + '/common/dict/BD_D_SDWLXDM.js',onlyLeaf:true,multiple:false,panelWidth:250,panelHeight:210,
 									method:'get',editable:true,lines:true"/>
 							</td>
 					   </tr>					      

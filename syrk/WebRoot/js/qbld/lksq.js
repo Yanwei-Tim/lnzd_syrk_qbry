@@ -508,7 +508,7 @@ return card;
  */
 function checkZjhm(name){
 	if(!checkCard(name)){
-		alert("不是生份证");
+		alert("不是身份证");
 	} else {
 		var zjhm = document.getElementById(name).value;
 		$("#yrjbxxDiv").show();

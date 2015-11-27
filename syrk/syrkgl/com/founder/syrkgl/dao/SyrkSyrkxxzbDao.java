@@ -49,7 +49,7 @@ public class SyrkSyrkxxzbDao extends BaseDaoImpl {
 	 * @throws
 	 */
 	public void delete(SyrkSyrkxxzb entity) {
-		if(!"".equals(entity.getIsCheck())){
+		if(!"".equals(entity.getIsCheck())&&entity.getIsCheck()!=null){
 			update("SyrkSyrkxxzb.deleteHs", entity);
 		}else{
 			update("SyrkSyrkxxzb.delete", entity);

@@ -24,6 +24,7 @@ import com.founder.framework.base.controller.BaseController;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.components.AppConst;
 import com.founder.framework.exception.BussinessException;
+import com.founder.framework.utils.DateUtils;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
 import com.founder.service.attachment.bean.ZpfjFjxxb;
@@ -103,6 +104,8 @@ public class SydwController extends BaseController {
 			if ("check".equals(isCheck)) {
 				dwjbxxb.setId(hsid);
 				dwjbxxb.setHs_status("1");
+				dwjbxxb.setHs_person(sessionBean.getUserName());
+				dwjbxxb.setHs_sj(DateUtils.getSystemDateTimeString());
 				dwjbxxb.setIsCheck("check");
 				dwjbxxbService.updateHs(dwjbxxb, dwbmxxbArray,sessionBean);
 			}

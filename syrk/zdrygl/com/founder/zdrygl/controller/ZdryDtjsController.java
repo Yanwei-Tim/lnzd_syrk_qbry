@@ -7,17 +7,21 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.founder.framework.annotation.RestfulAnnotation;
 import com.founder.framework.base.controller.BaseController;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.components.AppConst;
+import com.founder.framework.exception.BussinessException;
 import com.founder.framework.organization.department.service.OrgOrganizationService;
 import com.founder.framework.utils.EasyUIPage;
+import com.founder.framework.utils.StringUtils;
 import com.founder.qbld.utils.QbldUtil;
 import com.founder.syrkgl.bean.RyRyjbxxb;
 import com.founder.syrkgl.service.RyRyjbxxbService;
@@ -32,10 +36,11 @@ import com.founder.zdrygl.bean.ZdryDtjsShgxrxxb;
 import com.founder.zdrygl.bean.ZdryDtjsSwxxb;
 import com.founder.zdrygl.bean.ZdryDtjsXsxxb;
 import com.founder.zdrygl.bean.ZdryDtjsZdxsfzqkxxb;
-import com.founder.zdrygl.bean.ZdryDtjsZszhjsbrxxb;
-import com.founder.zdrygl.bean.ZdryDtjsZtxxb;
 import com.founder.zdrygl.bean.ZdryDtjsZszhjsbrZdjlxxb;
 import com.founder.zdrygl.bean.ZdryDtjsZszhjsbrZszhjlxxb;
+import com.founder.zdrygl.bean.ZdryDtjsZszhjsbrxxb;
+import com.founder.zdrygl.bean.ZdryDtjsZtxxb;
+import com.founder.zdrygl.bean.ZdryZdryzb;
 import com.founder.zdrygl.service.ZdryDtjsService;
 import com.founder.zdrygl.service.ZdryZdryzbService;
 import com.google.gson.Gson;
@@ -77,7 +82,37 @@ public class ZdryDtjsController extends BaseController {
 		mv.addObject("zdryList",zdryList);
 		return mv;
 	}		
-	
+	@RestfulAnnotation(serverId = "3")
+	@RequestMapping(value = "/addDtjsXsjbxx", method = RequestMethod.GET)
+	public ModelAndView addDtjsXsjbxx( String zdryid,
+			SessionBean sessionBean) throws BussinessException {
+
+		    sessionBean = getSessionBean(sessionBean);
+			ModelAndView mv = new ModelAndView("zdrygl/zdryDtjsXsjbxx");
+			
+			ZdryZdryzb zdryzb=this.zdryZdryzbService.queryById(zdryid);
+			
+			ZdryDtjsXsxxb entity=new ZdryDtjsXsxxb();
+			entity.setZdryid(zdryid);
+			entity.setRylbxx(zdryzb.getZdrygllxdm());
+			mv.addObject("entity", entity);
+			return mv;
+		
+	}
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ModelAndView editDtjsXsjbxx(@PathVariable(value = "id") String id,
+			SessionBean sessionBean) throws BussinessException {
+		    sessionBean = getSessionBean(sessionBean);
+			ModelAndView mv = new ModelAndView("zdrygl/zdryDtjsXsjbxx");
+			ZdryDtjsXsxxb entity = this.zdryDtjsService.queryXsjbxxById(id);
+			if (entity == null) {
+				throw new BussinessException("查询无数据！");
+			}
+			mv.addObject(AppConst.MESSAGES, new Gson().toJson(entity));
+			mv.addObject("entity",entity);
+			return mv;
+		
+	}
 	@RequestMapping(value = "/saveDtjs", method = RequestMethod.POST)
 	public @ResponseBody
 	ModelAndView saveDtjs(ZdryDtjsXsxxb entity, SessionBean sessionBean) {
@@ -89,8 +124,23 @@ public class ZdryDtjsController extends BaseController {
 		entity.setTxrdwdm(sessionBean.getUserOrgCode());
 		entity.setTxrdwmc(sessionBean.getUserOrgName());
 		try {
-			zdryDtjsService.saveDtjs(entity);			
-			model.put(AppConst.STATUS, AppConst.SUCCESS);
+			if(StringUtils.isBlank(entity.getId())){
+				ZdryZdryzb zb=(ZdryZdryzb)this.zdryZdryzbService.queryById(entity.getZdryid());
+				RyRyjbxxb ryjbxxb=this.ryRyjbxxbService.queryById(zb.getRyid());
+				entity.setZdry_zjhm(ryjbxxb.getZjhm());
+				entity.setTxrsfzh(sessionBean.getUserId());
+				String id =zdryDtjsService.saveDtjs(entity,sessionBean);		
+				model.put(AppConst.MESSAGES, getAddSuccess());
+				model.put(AppConst.STATUS, AppConst.SUCCESS);
+				model.put(AppConst.SAVE_ID, "" + id); // 返回主键
+
+			}else{
+				zdryDtjsService.updateDtjs(entity, sessionBean);
+				
+				model.put(AppConst.STATUS, AppConst.SUCCESS);
+				model.put(AppConst.MESSAGES, getUpdateSuccess());
+				model.put(AppConst.SAVE_ID, "" + entity.getId()); // 返回主键
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			model.put(AppConst.STATUS, AppConst.FAIL);

@@ -1,6 +1,9 @@
 package com.founder.zdrygl.service;
 
+import java.util.List;
+
 import com.founder.framework.annotation.TypeAnnotation;
+import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.zdrygl.bean.ZdryDtjsClxxb;
 import com.founder.zdrygl.bean.ZdryDtjsGxbgxxb;
@@ -53,7 +56,15 @@ public interface ZdryDtjsService {
 	 * @return String    返回类型
 	 * @throws
 	 */
-	public String saveDtjs(ZdryDtjsXsxxb entity);
+	public String saveDtjs(ZdryDtjsXsxxb entity,SessionBean sessionBean);
+	
+	
+	public ZdryDtjsXsxxb queryXsjbxxById(String xsid);
+	
+	public List<ZdryDtjsXsxxb> queryByZdryid(String zdryid);
+
+	
+	public String updateDtjs(ZdryDtjsXsxxb entity,SessionBean sessionBean);
 
 	public void saveSwxxb(ZdryDtjsSwxxb entity);
 	

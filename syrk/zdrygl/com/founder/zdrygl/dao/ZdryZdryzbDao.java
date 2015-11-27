@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Repository;
 
+import com.founder.zdrygl.bean.ZdryDtjsXsxxb;
 import com.founder.zdrygl.bean.ZdryZdryzb;
 import com.founder.framework.base.dao.BaseDaoImpl;
 import com.founder.framework.config.SystemConfig;
@@ -170,6 +171,11 @@ public class ZdryZdryzbDao extends BaseDaoImpl {
 	
 	public List<ZpfjFjxxb> fjxx_query(Map<String, Object> map){
 		map.put("lybm","ZDRY_ZDRYZB");
+		map.put("id",map.get("zdryid"));
+		return queryForList("ZpfjFjxxb.fjxx_query", map);
+	}
+	
+	public List<ZdryDtjsXsxxb> dtjsxsjbxx_query(Map<String, Object> map){
 		map.put("id",map.get("zdryid"));
 		return queryForList("ZpfjFjxxb.fjxx_query", map);
 	}
