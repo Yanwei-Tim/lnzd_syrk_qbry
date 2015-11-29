@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+<script type="text/javascript" src="<%=contextPath%>/js/sydw/rcjcMain.js"></script>
 <title>日常检查管理</title>
 </head>
 <body class="easyui-layout" data-options="fit:true">  
@@ -12,7 +12,7 @@
             <div data-options="region:'center',split:true,title:'日常检查管理',border:true" style="height:auto">
             	<input type="hidden" id="mode" value="select">
             	<table id="dg" class="easyui-datagrid" data-options="url: contextPath +'/dwjcxxb/queryList',
-            		toolbar:'#datagridToolbar',queryParams:{dwid:'${dwid}'},
+            		toolbar:'#datagridToolbar',queryParams:{dwid:'${dwid}',ywlbdm:(('${ywlbdm}' == null || '${ywlbdm}' == '')? '04': '${ywlbdm}'),status:'unCheck'},
             		singleSelect:true,selectOnCheck:true,
             		checkOnSelect:true,border:false,
             		sortName:'a.xt_cjsj',sortOrder:'desc',
@@ -51,6 +51,18 @@
 									</td>
 								</tr>
 								<tr>
+									<td class="toolbarTd" style="width:10%;white-space: nowrap;" align="right">检查状态：</td>
+									<td class="toolbarTd" style="width:40%;">
+										<input type="radio" name="checkStatus" value="unCheck" checked="checked"/>未检查
+										<input type="radio" name="checkStatus" value="checked"/>已检查
+									</td>
+									<td class="toolbarTd" style="width:10%;white-space: nowrap;" align="right">管理部门：</td>
+									<td class="toolbarTd" style="width:40%;">
+										<input class='easyui-combobox' type='text' id='ywlbdm' name='ywlbdm' style="width:222px;" 
+											data-options="valueField:'id',textField:'text',selectOnNavigation:false,required:false"/>
+									</td>
+								</tr>
+								<tr>
 									<td class="toolbarTd" style="width:10%;white-space: nowrap;" align="right">检查时间：</td>
 									<td class="toolbarTd" style="width:40%;">
 										<input type="text" name="jcsj" id="jcsj" class="easyui-validatebox " style="width:140px;"
@@ -68,6 +80,7 @@
 										<a href="javascript:void(0)" class="easyui-linkbutton"  iconCls="icon-add"  onclick="addRcjc();">新增</a>
 									</td>
 								</tr>
+								
 							</tbody>
 						</table>
 					</form>
@@ -79,49 +92,99 @@
 <script type="text/javascript">
 function processFormater(val, row, index) { // 自定义操作生成
 	var  zghtml = "";
+	if(row.ywlbdm == "14"){
+		zghtml = processFormaterJf(val, row, index);
+	}else{
+		zghtml = processFormaterNormal(val, row, index);
+	}
+	
+	 return	zghtml;
+}
+
+function processFormaterJf(val, row, index) {
+	var  zghtml = "";
+	
+	if(row.zt=="0"){
+		//未下发通知
+		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="Workflow.createJfjctzs('+index+')">下发通知</a>&nbsp;';
+	}else if(row.zt=="1"){
+		//已下发通知
+		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="Workflow.createJfjctzs('+index+')">下发通知</a>&nbsp;';
+	}else if(row.zt=="2"){
+		//开展检查
+		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="Workflow.createJfdwjcjl('+index+')">检查</a>&nbsp;';
+	}else if(row.zt=="3"){
+		//检查合格
+		//zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="Workflow.createJfjctzs('+index+')">查看记录</a>&nbsp;';
+	}else if(row.zt=="4"){
+		//复查未录入记录
+		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="Workflow.createJfjctzs('+index+')">新增记录</a>&nbsp;';
+	}else if(row.zt=="5"){
+		//复查合格
+		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="Workflow.createJfjctzs('+index+')">查看记录</a>&nbsp;';
+	}else if(row.zt=="99"){
+		//开展检查
+		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="Workflow.createJfdwjcjl('+index+')">检查</a>&nbsp;';
+	}else if(row.zt=="80"){
+		//责令整改通知书
+		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="Workflow.createJfzltzs('+index+')">整改通知</a>&nbsp;';
+	}else if(row.zt=="40"){
+		//复查
+		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="Workflow.createJffctzs('+index+')">复查通知</a>&nbsp;';
+	}else if(row.zt=="110"){
+	}else if(row.zt=="120"){
+	}else{
+	}
+	
+	return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="Workflow.showJfWorkflow('+index+')">流程</a>&nbsp;'+
+	zghtml;
+}
+
+function processFormaterNormal(val, row, index) {
+	var  zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView('+index+')">查看</a>&nbsp;';
 	if(row.zt=="10"){
-		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doEdit('+index+')">编辑</a>&nbsp;' +
+		zghtml += '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doEdit('+index+')">编辑</a>&nbsp;' +
 				 '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doZg('+index+')">整改</a>&nbsp;';
 	}else if(row.zt=="20"){
-		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doEdit('+index+')">编辑</a>&nbsp;' +
+		zghtml += '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doEdit('+index+')">编辑</a>&nbsp;' +
 				 '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doZg('+index+')">整改</a>&nbsp;';
 	}else if(row.zt=="30"){
-		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doEdit('+index+')">编辑</a>&nbsp;' +
+		zghtml += '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doEdit('+index+')">编辑</a>&nbsp;' +
 				 '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doZg('+index+')">整改</a>&nbsp;';
 	}else if(row.zt=="50"){
-		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="cancelBubble();" style="color:gray;">编辑</a>&nbsp;' +
+		zghtml += '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="cancelBubble();" style="color:gray;">编辑</a>&nbsp;' +
 				 '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doPrint('+index+');">打印</a>&nbsp;';
 	}else if(row.zt=="60"){
-		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="cancelBubble();" style="color:gray;">编辑</a>&nbsp;' +
+		zghtml += '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="cancelBubble();" style="color:gray;">编辑</a>&nbsp;' +
 				 '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doPrint('+index+');">打印</a>&nbsp;';
 	}else if(row.zt=="70"){
-		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="cancelBubble();" style="color:gray;">编辑</a>&nbsp;' +
+		zghtml += '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="cancelBubble();" style="color:gray;">编辑</a>&nbsp;' +
 				 '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doPrint('+index+');">打印</a>&nbsp;';
 	}else if(row.zt=="80"){
-		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doEdit('+index+')">编辑</a>&nbsp;' +
+		zghtml += '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doEdit('+index+')">编辑</a>&nbsp;' +
 				 '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doZg('+index+')">整改</a>&nbsp;';
 	}else if(row.zt=="90"){
-		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="cancelBubble();" style="color:gray;">编辑</a>&nbsp;' +
+		zghtml += '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="cancelBubble();" style="color:gray;">编辑</a>&nbsp;' +
 				 '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doPrint('+index+');">打印</a>&nbsp;';
 	}else if(row.zt=="100"&&row.ywlbdm!=14){
-		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="cancelBubble();" style="color:gray;">编辑</a>&nbsp;' +
+		zghtml += '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="cancelBubble();" style="color:gray;">编辑</a>&nbsp;' +
 				 '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="cancelBubble();" style="color:gray;">打印</a>&nbsp;';
 	}else if(row.zt=="100"&&row.ywlbdm==14){
-		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="cancelBubble();" style="color:gray;">编辑</a>&nbsp;' +
+		zghtml += '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="cancelBubble();" style="color:gray;">编辑</a>&nbsp;' +
 				 '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doPrint('+index+');">打印</a>&nbsp;';
 	}else if(row.zt=="110"){
-		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doEdit('+index+')">编辑</a>&nbsp;' +
+		zghtml += '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doEdit('+index+')">编辑</a>&nbsp;' +
 				 '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doZg('+index+')">复查</a>&nbsp;';
 	}else if(row.zt=="120"){
-		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="cancelBubble();" style="color:gray;">编辑</a>&nbsp;' +
+		zghtml += '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="cancelBubble();" style="color:gray;">编辑</a>&nbsp;' +
 				 '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doPrint('+index+');">打印</a>&nbsp;';
 	}else{
-		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doEdit('+index+')">编辑</a>&nbsp;' +
+		zghtml += '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doEdit('+index+')">编辑</a>&nbsp;' +
 				 '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="cancelBubble();" style="color:gray;">整改</a>&nbsp;';
 	}
-	return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doView('+index+')">查看</a>&nbsp;'+
-			zghtml;
+	return zghtml;
 }
+
 /*
  * 修改日常检查
  * index 行索引 
@@ -268,7 +331,10 @@ function queryButton(){
 	var dwmc = $("#dwmc").val();
 	var jcsj = $("#jcsj").val();
 	var jcsjz = $("#jcsjz").val();
-	$('#dg').datagrid('load',{'dwlbdm':dwlbdm,'dwmc':dwmc,'jcsj':jcsj,'jcsjz':jcsjz});
+	var ywlbdm =  $("#ywlbdm").combobox("getValue");
+	//设置后续数据状态
+	var status = $("input[name=checkStatus]:checked ").val();
+	$('#dg').datagrid('load',{'dwlbdm':dwlbdm,'dwmc':dwmc,'jcsj':jcsj,'jcsjz':jcsjz,'ywlbdm':ywlbdm,'status':status});
 }
 
 function clearCase(){
@@ -277,11 +343,15 @@ function clearCase(){
 	  	 $("#dwlbdm").combotree("setValue","");
 	 	 $("#dwmc").val("");
 	  }
+	  if('${ywlbdm}' == null || '${ywlbdm}' == '' || typeof('${ywlbdm}') == 'undefined'){
+		  $("#ywlbdm").combobox("setValue",'');
+	  }
 	  $("#jcsj").val("");
 	  $("#jcsjz").val("");
 };
 
 $(function(){
+	
 	var dwmc="${dwmc}";
 	var dwlbdm="${dwlbdm}";
 	if(dwmc!=""&&dwmc!=null){
@@ -294,7 +364,46 @@ $(function(){
 		});
 		$("#mode").val("");
 	}
+	
+	initYwlbdmCombo();
 });
+
+function initYwlbdmCombo(){
+	$("#ywlbdm").combobox({
+		onChange:function (i,o){
+			queryButton();
+		}
+	});
+	$("#ywlbdm").combobox("loadData"
+		,[{id:"04",text:"治安/内保"}
+		,{id:"11",text:"三级消防单位"}
+		,{id:"12",text:"环保单位"}
+		,{id:"13",text:"保安单位"}
+		,{id:"14",text:"技防单位"}]);
+	if('${ywlbdm}' == null || '${ywlbdm}' == ''){
+		$("#ywlbdm").combobox("setValue","04");
+		$("#ywlbdm").combobox("setText","治安/内保");
+	}else{
+		if('${ywlbdm}' == '14'){
+			$("#ywlbdm").combobox("setValue",'${ywlbdm}');
+			$("#ywlbdm").combobox("setText","技防单位");
+		}else if('${ywlbdm}' == '11'){
+			$("#ywlbdm").combobox("setValue",'${ywlbdm}');
+			$("#ywlbdm").combobox("setText","三级消防单位");
+		}else if('${ywlbdm}' == '12'){
+			$("#ywlbdm").combobox("setValue",'${ywlbdm}');
+			$("#ywlbdm").combobox("setText","环保单位");
+		}else if('${ywlbdm}' == '13'){
+			$("#ywlbdm").combobox("setValue",'${ywlbdm}');
+			$("#ywlbdm").combobox("setText","保安单位");
+		}else{
+			$("#ywlbdm").combobox("setValue",'${ywlbdm}');
+			$("#ywlbdm").combobox("setText","治安/内保");
+		}
+		
+	}
+	
+}
 </script>  
 
 </html>

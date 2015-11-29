@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Dwjfzltzs">
+	<typeAlias alias="dwjfzltzs" type="com.founder.sydw.bean.Dwjfzltzs" />
+	
+	<!-- 新增责令整改通知书 -->
+	<insert id="save" parameterClass="dwjfzltzs">
+		<![CDATA[INSERT INTO DW_JFZLTZS(ID,JCID,DWID,ZZJGMC,TITLE,WH,DWMC,WFXW,FG,GZFS,GZNR,GZSJ,ZGSX,FYDWMC,FYMC,FHRQ,WFXWR,HGRQ,]]>
+		<include refid="insertXtzd"/>)
+		<![CDATA[values(#id#,#jcid#,#dwid#,#zzjgmc#,#title#,#wh#,#dwmc#,#wfxw#,#fg#,#gzfs#,#gznr#,#gzsj#,#zgsx#,#fydwmc#,#fymc#,#fhrq#,#wfxwr#,#hgrq#,]]>
+		<include refid="insertXtzdVal"/>)
+	</insert>
+	
+	<!-- 查询序号-->
+	<select id="queryXh" parameterClass="Map" resultClass="String">
+		SELECT TO_CHAR(SEQ_JFZLTZS_WH.NEXTVAL,'FM0000') FROM DUAL
+	</select>
+	
+	<update id="update" parameterClass="dwjfzltzs">
+		<![CDATA[ UPDATE DW_JFZLTZS ]]>	
+			<dynamic prepend="set">
+				 <isNotNull prepend="," property="jcid"><![CDATA[ JCID=#jcid# ]]></isNotNull>
+				 <isNotNull prepend="," property="dwid"><![CDATA[ DWID=#dwid# ]]></isNotNull>
+				 <isNotNull prepend="," property="zzjgmc"><![CDATA[ ZZJGMC=#zzjgmc# ]]></isNotNull>
+				 <isNotNull prepend="," property="title"><![CDATA[ TITLE=#title# ]]></isNotNull>
+				 <isNotNull prepend="," property="wh"><![CDATA[ WH=#wh# ]]></isNotNull>
+				 <isNotNull prepend="," property="dwmc"><![CDATA[ DWMC=#dwmc# ]]></isNotNull>
+				 <isNotNull prepend="," property="wfxw"><![CDATA[ WFXW=#wfxw# ]]></isNotNull>
+				 <isNotNull prepend="," property="fg"><![CDATA[ FG=#fg# ]]></isNotNull>
+				 <isNotNull prepend="," property="gzfs"><![CDATA[ GZFS=#gzfs# ]]></isNotNull>
+				 <isNotNull prepend="," property="gznr"><![CDATA[ GZNR=#gznr# ]]></isNotNull>
+				 <isNotNull prepend="," property="gzsj"><![CDATA[ GZSJ=#gzsj# ]]></isNotNull>
+				 <isNotNull prepend="," property="zgsx"><![CDATA[ ZGSX=#zgsx# ]]></isNotNull>
+				 <isNotNull prepend="," property="fydwmc"><![CDATA[ FYDWMC=#fydwmc# ]]></isNotNull>
+				 <isNotNull prepend="," property="fymc"><![CDATA[ FYMC=#fymc# ]]></isNotNull>
+				 <isNotNull prepend="," property="fhrq"><![CDATA[ FHRQ=#fhrq# ]]></isNotNull>
+				 <isNotNull prepend="," property="wfxwr"><![CDATA[ WFXWR=#wfxwr# ]]></isNotNull>
+				 <isNotNull prepend="," property="hgrq"><![CDATA[ HGRQ=#hgrq# ]]></isNotNull>
+				  ,<include refid="updateXtzd"/>	
+			</dynamic>
+		<![CDATA[ WHERE ID = #id#]]>	
+	</update>
+
+	<select id="query" parameterClass="dwjfzltzs" resultClass="dwjfzltzs">
+		SELECT * FROM DW_JFZLTZS T WHERE T.xt_zxbz = '0' 
+			 <isNotEmpty prepend="and" property="id"><![CDATA[ ID=#id# ]]></isNotEmpty>
+			 <isNotEmpty prepend="and" property="jcid"><![CDATA[ JCID=#jcid# ]]></isNotEmpty>
+			 <isNotEmpty prepend="and" property="dwid"><![CDATA[ DWID=#dwid# ]]></isNotEmpty>
+			 <isNotEmpty prepend="and" property="zzjgmc"><![CDATA[ ZZJGMC=#zzjgmc# ]]></isNotEmpty>
+			 <isNotEmpty prepend="and" property="title"><![CDATA[ TITLE=#title# ]]></isNotEmpty>
+			 <isNotEmpty prepend="and" property="wh"><![CDATA[ WH=#wh# ]]></isNotEmpty>
+			 <isNotEmpty prepend="and" property="dwmc"><![CDATA[ DWMC=#dwmc# ]]></isNotEmpty>
+			 <isNotEmpty prepend="and" property="wfxw"><![CDATA[ WFXW=#wfxw# ]]></isNotEmpty>
+			 <isNotEmpty prepend="and" property="fg"><![CDATA[ FG=#fg# ]]></isNotEmpty>
+			 <isNotEmpty prepend="and" property="gzfs"><![CDATA[ GZFS=#gzfs# ]]></isNotEmpty>
+			 <isNotEmpty prepend="and" property="gznr"><![CDATA[ GZNR=#gznr# ]]></isNotEmpty>
+			 <isNotEmpty prepend="and" property="gzsj"><![CDATA[ GZSJ=#gzsj# ]]></isNotEmpty>
+			 <isNotEmpty prepend="and" property="zgsx"><![CDATA[ ZGSX=#zgsx# ]]></isNotEmpty>
+			 <isNotEmpty prepend="and" property="fydwmc"><![CDATA[ FYDWMC=#fydwmc# ]]></isNotEmpty>
+			 <isNotEmpty prepend="and" property="fymc"><![CDATA[ FYMC=#fymc# ]]></isNotEmpty>
+			 <isNotEmpty prepend="and" property="fhrq"><![CDATA[ FHRQ=#fhrq# ]]></isNotEmpty>
+			 <isNotEmpty prepend="and" property="wfxwr"><![CDATA[ WFXWR=#wfxwr# ]]></isNotEmpty>
+			 <isNotEmpty prepend="and" property="hgrq"><![CDATA[ HGRQ=#hgrq# ]]></isNotEmpty>
+	</select>
+	
+</sqlMap>

@@ -104,6 +104,15 @@ public class Dwjfdwxxb extends BaseEntity implements Serializable {
 	private String xt_lrbz;
 	@FieldDesc("核实时间")
 	private String xt_hssj;
+	
+	private String scjcrq;
+	
+	public String getScjcrq() {
+		return scjcrq;
+	}
+	public void setScjcrq(String scjcrq) {
+		this.scjcrq = scjcrq;
+	}
 	public String getId() {
 		return id;
 	}

@@ -93,7 +93,42 @@ public class Dwjcxxb extends BaseEntity implements Serializable {
 	private String glpcsid;
 	@FieldDesc("管理分县局ID")
 	private String glfxjid;
+	
+	@FieldDesc("协助检查人姓名")
+	private String xzjcrxm;
+	@FieldDesc("协助检查人联系电话")
+	private String xzjcrlxdh;
+	@FieldDesc("单位分管负责人姓名")
+	private String dwfgfzrxm;
+	@FieldDesc("单位分管负责人姓名联系电话")
+	private String dwfgfzrlxdh;
+	@FieldDesc("参检人员")
+	private String cjry;
+	
+	private String statusFlag;
+	
+	private String status;
+	
 	private List<Dwjctype> list = new ArrayList<Dwjctype>();
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getStatusFlag() {
+		return statusFlag;
+	}
+	public void setStatusFlag(String statusFlag) {
+		this.statusFlag = statusFlag;
+	}
+	public String getCjry() {
+		return cjry;
+	}
+	public void setCjry(String cjry) {
+		this.cjry = cjry;
+	}
 	public String getId() {
 		return id;
 	}
@@ -347,4 +382,29 @@ public class Dwjcxxb extends BaseEntity implements Serializable {
 	public void setGlfxjid(String glfxjid) {
 		this.glfxjid = glfxjid;
 	}
+	public String getXzjcrxm() {
+		return xzjcrxm;
+	}
+	public void setXzjcrxm(String xzjcrxm) {
+		this.xzjcrxm = xzjcrxm;
+	}
+	public String getXzjcrlxdh() {
+		return xzjcrlxdh;
+	}
+	public void setXzjcrlxdh(String xzjcrlxdh) {
+		this.xzjcrlxdh = xzjcrlxdh;
+	}
+	public String getDwfgfzrxm() {
+		return dwfgfzrxm;
+	}
+	public void setDwfgfzrxm(String dwfgfzrxm) {
+		this.dwfgfzrxm = dwfgfzrxm;
+	}
+	public String getDwfgfzrlxdh() {
+		return dwfgfzrlxdh;
+	}
+	public void setDwfgfzrlxdh(String dwfgfzrlxdh) {
+		this.dwfgfzrlxdh = dwfgfzrlxdh;
+	}
+	
 }
