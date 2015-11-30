@@ -357,21 +357,21 @@ if(card === '')
 //校验长度，类型  
 if(isCardNo(card) === false)  
 {  
-	$.messager.alert('提示', '您输入的证件号码不正确，请重新输入');  
+	$.messager.alert('提示', '您输入的身份证号码不正确，请重新输入');  
     document.getElementById('card_no').focus;  
     return false;  
 }  
 //检查省份  
 if(checkProvince(card) === false)  
 {  
-	$.messager.alert('提示', '您输入的证件号码不正确,请重新输入');  
+	$.messager.alert('提示', '您输入的身份证号码不正确,请重新输入');  
     document.getElementById('card_no').focus;  
     return false;  
 }  
 //校验生日  
 if(checkBirthday(card) === false)  
 {  
-	$.messager.alert('提示', '您输入的证件号码生日不正确,请重新输入');  
+	$.messager.alert('提示', '您输入的身份证号码生日不正确,请重新输入');  
     document.getElementById('card_no').focus();  
     return false;  
 }  
@@ -389,7 +389,7 @@ return true;
 //检查号码是否符合规范，包括长度，类型  
 isCardNo = function(card)  
 {  
-//证件号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X  
+//身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X  
 var reg = /(^\d{15}$)|(^\d{17}(\d|X)$)/;  
 if(reg.test(card) === false)  
 {  
