@@ -43,7 +43,6 @@
 	<div class="easyui-layout" data-options="fit:true">
 		<form action="<%=basePath%>jfjfjctz/saveJfzltzs" id="dataForm" name="dataForm" method="post">
 			<input type="hidden" name="dwid" id="dwid" value="${entity.dwid}" />
-			<input type="hidden" name="dwmc" id="dwmc" value="${entity.dwmc}" />
 			<input type="hidden" name="jcid" id="jcid" value="${entity.jcid}" />
 			<input type="hidden" name="id" id="pk" value="${entity.id}" />
 			<input type="hidden" name="wh" id="wh" value="${entity.wh}" />

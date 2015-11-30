@@ -32,7 +32,7 @@
 		    		<input type="hidden" name="id" id="pk" value="${entity.id}" />
 		    		<input type="hidden" name="flag" id="flag" value="${flag}" />
 		    		<tr class="dialogTr">
-				    	<td width="20%" class="dialogTd" align="right">有无监控1111：</td>
+				    	<td width="20%" class="dialogTd" align="right">有无监控：</td>
 						<td width="30%" class="dialogTd">
 							<input class='easyui-combobox ' data-options="url: contextPath + '/common/dict/D_GG_YW.js',valueField:'id',textField:'text',selectOnNavigation:false,required:false,method:'get'"
 						 	type='text' name='spjk_ywjkdm' style="width:200px;" value="${entity.spjk_ywjkdm}" />
@@ -189,7 +189,7 @@ function doInit(paramArray) {
 		$('#unCheck').hide();
 		
 		$('#jcgjButton').click(function(){
-			var editUrl = "/forward/sydw|rcjcMain?dwid="+'${dwjcxxb.id}'+"&dwmc="+encodeURI('${dwjcxxb.dwmc}')+"&dwlbdm="+'${dwjcxxb.dwlbdm}'+'&ywlbdm=14';
+			var editUrl = "/forward/sydw|rcjcMain?dwid="+'${dwjcxxb.dwid}'+"&dwmc="+encodeURI('${dwjcxxb.dwmc}')+"&dwlbdm="+'${dwjcxxb.dwlbdm}'+'&ywlbdm=14';
 			console.log(editUrl);
 			menu_open("检查轨迹",editUrl);
 		});
