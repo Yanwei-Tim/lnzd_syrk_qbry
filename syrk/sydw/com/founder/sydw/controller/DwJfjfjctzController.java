@@ -344,7 +344,7 @@ public class DwJfjfjctzController extends BaseController{
 			entity.setJcid(jcid);
 			entity = this.dwjfjfjctzsDao.query(entity);
 			if(entity == null){
-				entity = new Dwjfjfjctzs();
+				entity = new Dwjfjfjctzs(); 
 				entity.setWh(this.dwjfjfjctzService.getWhHead(sessionBean)+"公责通字["+DateUtils.getSystemYearString()+"]"+this.dwjfjfjctzsDao.queryXh()+"号");
 				entity.setZzjgid(sessionBean.getExtendValue("ssFsxCode"));
 				entity.setZzjgmc(sessionBean.getExtendValue("ssFsxName"));
