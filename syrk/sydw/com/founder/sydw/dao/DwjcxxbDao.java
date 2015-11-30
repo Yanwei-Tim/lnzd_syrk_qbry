@@ -29,6 +29,8 @@ import com.founder.sydw.bean.Dwjcxxb;
 @Repository("dwjcxxbDao")
 public class DwjcxxbDao extends BaseDaoImpl {
 
+	
+	
 	/**
 	 * 新增<br>
 	 * 
@@ -190,6 +192,15 @@ public class DwjcxxbDao extends BaseDaoImpl {
 	@SuppressWarnings("unchecked")
 	public List<Dwjcxxb> dwjcxxb_query(Map<String, Object> map) {
 		return queryForList("Dwjcxxb.dwjcxxb_query", map);
+	}
+	
+	/**
+	 * 查询上次检查时间
+	 * @param dwid
+	 * @return
+	 */
+	public Dwjcxxb queryScjcsj(String dwid){
+		return (Dwjcxxb)queryForObject("Dwjcxxb.queryScjcsj", dwid);
 	}
 	
 	public Dictxxb getCt(String dwlbdm) {

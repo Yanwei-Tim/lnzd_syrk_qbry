@@ -30,12 +30,19 @@
 </head>
 <body>
 	<form action="<%=basePath%>dwjcxxb/save" id="dataForm" name="dataForm" method="post">
+	
+		<input type="hidden" name="id" id="pk" value="${entity.id}" />
 		<input type="hidden" name="dwid" id="dwid" value="${entity.dwid}" />
 		<input type="hidden" name="dwmc" id="dwmc"  />
 		<input type="hidden" name="ywlbdm" id="ywlbdm" value="${entity.ywlbdm}"/>
 		<input type="hidden" name="rwid" id="rwid" value="${rwid}" />
+		<input type='hidden' name='dz_dwdzmlpdm' id="dz_dwdzmlpdm" value="${entity.dz_dwdzmlpdm}"/>
+		<input type='hidden' name='dz_dwdzmlpxz' id="dz_dwdzmlpxz" value="${entity.dz_dwdzmlpxz}"/>
+		<input type='hidden' name='dz_dwdzdm' id='dz_dwdzdm' value="${entity.dz_dwdzdm}" />
+    	<input type='hidden' name='dz_dwdzssxdm' id='dz_dwdzssxdm' value="${entity.dz_dwdzssxdm}" />
+    	<input type='hidden' name='dz_dwdzxz' id='dz_dwdzxz' value="${entity.dz_dwdzxz}" />
+		
 		<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center">
-			<input type="hidden" name="id" id="pk" value="${entity.id}" />
 			<tr class="dialogTr" id="tr1">
 				<td width="23%" class="dialogTd" align="right">监督检查人员：</td>
 				<td width="33%" class="dialogTd">
@@ -65,17 +72,10 @@
 			<tr class="dialogTr">
 				<td width="21%" class="dialogTd" align="right">地址：</td>
 				<td width="54%" class="dialogTd" colspan="2">
-					<input class="easyui-combobox" id="jzd1" style="width:400px;" value="${entity.dz_dwdzmlpxz}" 
-						data-options="mode:'remote',method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false,required:true">
-					<input type='hidden' name='dz_dwdzmlpdm' id="dz_dwdzmlpdm" value="${entity.dz_dwdzmlpdm}"/>
-					<input type='hidden' name='dz_dwdzmlpxz' id="dz_dwdzmlpxz" value="${entity.dz_dwdzmlpxz}"/>
+					<input type="text" class="easyui-validatebox inputreadonly"  readonly="readonly" style="width:400px;" value="${entity.dz_dwdzmlpxz}"/>
 				</td>
 				<td>
-					<input class="easyui-combobox" id="jzd2"  style="width:200px;" value="${fn:replace(entity.dz_dwdzxz, entity.dz_dwdzmlpxz, '')}" 
-			    	 	data-options="mode:'remote',method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false,required:true,tipPosition:'left'">
-			    	<input type='hidden' name='dz_dwdzdm' id='dz_dwdzdm' value="${entity.dz_dwdzdm}" />
-			    	<input type='hidden' name='dz_dwdzssxdm' id='dz_dwdzssxdm' value="${entity.dz_dwdzssxdm}" />
-			    	<input type='hidden' name='dz_dwdzxz' id='dz_dwdzxz' value="${entity.dz_dwdzxz}" /> 
+					<input class="easyui-validatebox inputreadonly" readonly="readonly" type="text" style="width:200px;" value="${fn:replace(entity.dz_dwdzxz, entity.dz_dwdzmlpxz, '')}"/>
 				</td>
 			</tr>
 			<tr class="dialogTr">
@@ -131,6 +131,7 @@
 				<td width="23%" class="dialogTd" align="right" style="vertical-align: top;">
 					<br />检查内容和情况记录：
 				</td>
+				<!-- 引入系统中配置好的模板 -->
 				<td width="78%" class="dialogTd" colspan="3">
 					<jsp:include page="/WEB-INF/pages/sydw/jfjcTemp.jsp"></jsp:include>
 				</td>
@@ -168,8 +169,8 @@
 	var flag = "${flag}";
 	var dwmc = "${dwmc}";
 	function doInit(paramArray) {
-		initAddressSearch('jzd1', {fxjdm:fxjdm,pcsdm:pcsdm,zrqdm:zrqdm}, 'dz_dwdzmlpdm', 'dz_dwdzmlpxz', 'jzd2', {text:'dz_dwdzxz',dzxzqh:'dz_dwdzssxdm',id:'dz_dwdzdm'}, null, null);
-		$("#dwmc").val(paramArray["dwmc"]);
+		//initAddressSearch('jzd1', {fxjdm:fxjdm,pcsdm:pcsdm,zrqdm:zrqdm}, 'dz_dwdzmlpdm', 'dz_dwdzmlpxz', 'jzd2', {text:'dz_dwdzxz',dzxzqh:'dz_dwdzssxdm',id:'dz_dwdzdm'}, null, null);
+		//$("#dwmc").val(paramArray["dwmc"]);
 		$("#dw-box").combobox("setText",paramArray["dwmc"]);
 		if(paramArray["dwmc"]==null||paramArray["dwmc"]==''){
 			$("#dwmc").val(dwmc);

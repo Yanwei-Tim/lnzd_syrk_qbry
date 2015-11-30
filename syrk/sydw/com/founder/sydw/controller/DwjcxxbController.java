@@ -7,9 +7,6 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JsonConfig;
-
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,13 +21,18 @@ import com.founder.framework.components.AppConst;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
 import com.founder.sydw.bean.Dictxxb;
+import com.founder.sydw.bean.Dwjbxxb;
 import com.founder.sydw.bean.Dwjcdata;
 import com.founder.sydw.bean.Dwjctype;
 import com.founder.sydw.bean.Dwjcxxb;
+import com.founder.sydw.dao.DwjfjfjctzsDao;
+import com.founder.sydw.dao.DwjfjfjctzscgDao;
+import com.founder.sydw.service.DwjbxxbService;
 import com.founder.sydw.service.DwjcxxbService;
-import com.founder.sydw.vo.SydwgnVO;
-
 import com.google.gson.Gson;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JsonConfig;
 @Controller
 @RequestMapping(value = "dwjcxxb")
 public class DwjcxxbController extends BaseController{
@@ -38,6 +40,12 @@ public class DwjcxxbController extends BaseController{
 	private Logger logger = Logger.getLogger(this.getClass());
 	@Resource(name = "dwjcxxbService")
 	private DwjcxxbService dwjcxxbService;
+	@Resource(name="dwjfjfjctzsDao")
+	private DwjfjfjctzsDao dwjfjfjctzsDao;
+	@Resource(name="dwjfjfjctzscgDao")
+	private DwjfjfjctzscgDao dwjfjfjctzscgDao;
+	@Resource(name="dwjbxxbService")
+	private DwjbxxbService dwjbxxbService;
 	
 	/**
 	 * 添加
@@ -89,7 +97,7 @@ public class DwjcxxbController extends BaseController{
 		list = (List<Dwjctype>)jcxmxJsonArray.toCollection(jcxmxJsonArray, jsonConfig);
 		entity.setList(list);
 		try {
-			if(null==entity.getId()||"".equals(entity.getId())){
+			if(StringUtils.isBlank(entity.getId())){
 				entity.setXt_zxbz("0");
 				dwjcxxbService.save(entity, sessionBean);
 				model.put(AppConst.STATUS, AppConst.SUCCESS);
@@ -144,8 +152,10 @@ public class DwjcxxbController extends BaseController{
 	 * @throws
 	 */
 	@RequestMapping(value = "/selCheckTemp", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView selCheckTemp(String id, String dwid,String dwlbdm,String url,String mainTabID,String rwid) {
-		ModelAndView mv = new ModelAndView("sydw/selCheckTemp");
+	public @ResponseBody ModelAndView selCheckTemp(String id, String dwid,String dwlbdm,String url,String mainTabID,String rwid,String fromType) {
+		//selCheckTemp
+		//beforeCheck
+		ModelAndView mv = new ModelAndView("sydw/beforeCheck");
 		Dwjcxxb entity = new Dwjcxxb();
 		entity.setId(id);
 		entity.setDwid(dwid);
@@ -153,6 +163,7 @@ public class DwjcxxbController extends BaseController{
 		mv.addObject("entity", entity);
 		mv.addObject("mainTabID", mainTabID);
 		mv.addObject("rwid", rwid);
+		mv.addObject("fromType", fromType);
 		return mv;
 	}
 	
@@ -167,6 +178,26 @@ public class DwjcxxbController extends BaseController{
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put(AppConst.STATUS, AppConst.SUCCESS);
 		model.put(AppConst.MESSAGES, "模板匹配成功，跳转检查页面！");
+		model.put("entity", entity); // 返回主键
+		mv.addObject(AppConst.MESSAGES, new Gson().toJson(model));
+		return mv;
+	}
+	
+	/**
+	 * 
+	 * @param entity
+	 * @return
+	 */
+	@RequestMapping(value = "/beforeCheck", method = RequestMethod.POST)
+	public ModelAndView saveBeforeCheck(Dwjcxxb entity,String flag){
+		ModelAndView mv = new ModelAndView("redirect:/forward/" + AppConst.FORWORD);
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put(AppConst.STATUS, AppConst.SUCCESS);
+		if("jf".equals(flag)){
+			model.put(AppConst.MESSAGES, "跳转技防通知书生成页面！");
+		}else{
+			model.put(AppConst.MESSAGES, "模板匹配成功，跳转检查页面！");
+		}
 		model.put("entity", entity); // 返回主键
 		mv.addObject(AppConst.MESSAGES, new Gson().toJson(model));
 		return mv;
@@ -207,42 +238,100 @@ public class DwjcxxbController extends BaseController{
 		mv.addObject("rwid", rwid);
 		return mv;
 	}
-	/**
-	 * 跳转技防检查页面
-	 * @param id
-	 * @param dwid
-	 * @return
-	 */
-	@RequestMapping(value = "/addJf", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView addJf(String id, String dwid,String mainTabID,String flag,String rwid) {
-		ModelAndView mv = new ModelAndView("sydw/jfDwjcAdd");
+	
+	@RequestMapping(value = "/addJfdwjcjlb", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView addJfdwjcjlb(String jcid, String dwid,String dwlbdm,String ywlbdm,String mainTabID,String rwid) {
+		ModelAndView mv = new ModelAndView("sydw/jfdwjcjlbAdd");
 		Dwjcxxb entity = new Dwjcxxb();
-		SessionBean sessionBean = getSessionBean();
+		List<Dwjctype> list = new ArrayList<Dwjctype>();
 		entity.setDwid(dwid);
-		if (!StringUtils.isBlank(id)) {
-			entity.setId(id);
-			entity = dwjcxxbService.query(entity);
-		}else{//新增消防检查信息时，从单位信息中查询回填信息
-			entity = dwjcxxbService.queryDwfsxxByDwid(dwid);
-			entity.setDwid(dwid);
-		}
-		if (sessionBean != null) {
-			mv.addObject("pcsdm", sessionBean.getExtendValue("ssPcsCode"));
-			mv.addObject("zrqdm", sessionBean.getUserOrgCode());
-			mv.addObject("pcsmc", sessionBean.getExtendValue("ssPcsName"));
-			mv.addObject("fsxdm", sessionBean.getExtendValue("ssFsxCode"));
-			mv.addObject("fsxmc", sessionBean.getExtendValue("ssFsxName"));
-			mv.addObject("dsjdm", sessionBean.getExtendValue("ssDsjCode"));
-			mv.addObject("dsjmc", sessionBean.getExtendValue("ssDsjName"));
+		entity.setId(jcid);
+		entity = dwjcxxbService.query(entity);
+		list= entity.getList();
+		if (list == null || list.isEmpty()) {
+			Map<String,Object> param = new HashMap<String,Object>();
+			param.put("sydwlx", dwlbdm);
+			param.put("ywlbdm", ywlbdm);
+			list = dwjcxxbService.queryDwjctype(param);
 		}
 		mv.addObject("entity", entity);
-		mv.addObject("list",new Gson().toJson(entity.getList()));
+		mv.addObject("list", list);
 		mv.addObject("mainTabID", mainTabID);
-		mv.addObject("flag", flag);
-		mv.addObject("dwmc", entity.getDwmc());
 		mv.addObject("rwid", rwid);
 		return mv;
 	}
+	
+	@RequestMapping(value = "/addJfdwjcjl", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView addJfdwjcjl(String jcid, String dwid,String dwlbdm,String ywlbdm,String mainTabID,String rwid) {
+		ModelAndView mv = new ModelAndView("sydw/jfdwjcjlAdd");
+		Dwjcxxb entity = new Dwjcxxb();
+		entity.setDwid(dwid);
+		entity.setId(jcid);
+		entity = dwjcxxbService.query(entity);
+		
+		SessionBean sessionBean = getSessionBean();
+		entity.setJcry(sessionBean.getUserName());
+		entity.setJcdw(sessionBean.getExtendValue("ssFsxName"));
+		entity.setJcdwid(sessionBean.getExtendValue("ssFsxCode"));
+		
+		Dwjbxxb dw = new Dwjbxxb();
+		dw.setId(dwid);
+		dw = this.dwjbxxbService.query(dw);
+		entity.setDwmc(dw.getDwmc());
+		entity.setDwlbdm(dwlbdm);
+		
+		
+		mv.addObject("entity", entity);
+		mv.addObject("mainTabID", mainTabID);
+		mv.addObject("rwid", rwid);
+		return mv;
+	}
+	
+	
+//	/**
+//	 * 跳转技防检查页面
+//	 * @param id
+//	 * @param dwid
+//	 * @return
+//	 */
+//	@RequestMapping(value = "/addJf", method = RequestMethod.GET)
+//	public @ResponseBody ModelAndView addJf(String id, String dwid,String mainTabID,String flag,String rwid,String operationType) {
+//		ModelAndView mv = new ModelAndView("sydw/jfDwjcAdd");
+//		Dwjcxxb entity = new Dwjcxxb();
+//		SessionBean sessionBean = getSessionBean();
+//		entity.setDwid(dwid);
+//		if (!StringUtils.isBlank(id)) {
+//			entity.setId(id);
+//			entity = dwjcxxbService.query(entity);
+//		}else{//新增消防检查信息时，从单位信息中查询回填信息
+//			entity = dwjcxxbService.queryDwfsxxByDwid(dwid);
+//			entity.setDwid(dwid);
+//		}
+//		if (sessionBean != null) {
+//			mv.addObject("pcsdm", sessionBean.getExtendValue("ssPcsCode"));
+//			mv.addObject("zrqdm", sessionBean.getUserOrgCode());
+//			mv.addObject("pcsmc", sessionBean.getExtendValue("ssPcsName"));
+//			mv.addObject("fsxdm", sessionBean.getExtendValue("ssFsxCode"));
+//			mv.addObject("fsxmc", sessionBean.getExtendValue("ssFsxName"));
+//			mv.addObject("dsjdm", sessionBean.getExtendValue("ssDsjCode"));
+//			mv.addObject("dsjmc", sessionBean.getExtendValue("ssDsjName"));
+//		}
+//		mv.addObject("entity", entity);
+//		mv.addObject("list",new Gson().toJson(entity.getList()));
+//		mv.addObject("mainTabID", mainTabID);
+//		mv.addObject("flag", flag);
+//		
+//		Dwjbxxb dw = new Dwjbxxb();
+//		dw.setId(dwid);
+//		dw = this.dwjbxxbService.query(dw);
+//		if(dw != null){
+//			mv.addObject("dwmc", dw.getDwmc());
+//		}
+//		
+//		mv.addObject("rwid", rwid);
+//		return mv;
+//	}
+	
 	/**
 	 * 
 	 * @Title: dwjcxxb_query

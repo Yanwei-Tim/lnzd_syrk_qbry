@@ -24,10 +24,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.founder.framework.base.controller.BaseController;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.components.AppConst;
-import com.founder.sydw.bean.Dwbadwxxb;
+import com.founder.sydw.bean.Dwjbxxb;
+import com.founder.sydw.bean.Dwjcxxb;
 import com.founder.sydw.bean.Dwjfdwxxb;
+import com.founder.sydw.dao.DwjbxxbDao;
+import com.founder.sydw.dao.DwjcxxbDao;
 import com.founder.sydw.service.DwJfdwxxbService;
-
 import com.google.gson.Gson;
 
 @Controller
@@ -38,6 +40,12 @@ public class DwJfdwxxbController extends BaseController {
 	
 	@Resource(name = "dwJfdwxxbService")
 	private DwJfdwxxbService dwJfdwxxbService;
+	
+	@Resource(name="dwjcxxbDao")
+	private DwjcxxbDao dwjcxxbDao;
+	
+	@Resource(name="dwjbxxbDao")
+	private DwjbxxbDao dwjbxxbDao;
 	
 	/**
 	 * 跳转
@@ -55,6 +63,19 @@ public class DwJfdwxxbController extends BaseController {
 			flag="update";
 		}
 		entity.setDwid(dwid);
+		
+		Dwjcxxb dwjcxxb = this.dwjcxxbDao.queryScjcsj(dwid);
+		if(dwjcxxb != null){
+			Dwjbxxb dw = new Dwjbxxb();
+			dw.setId(dwid);
+			dw = this.dwjbxxbDao.query(dw);
+			dwjcxxb.setDwmc(dw.getDwmc());
+			dwjcxxb.setDwlbdm(dw.getDwlbdm());
+			
+			entity.setScjcrq(dwjcxxb.getJcsj());
+			mv.addObject("dwjcxxb", dwjcxxb);
+		}
+		
 		mv.addObject("flag", flag);
 		mv.addObject("entity", entity);
 		return mv;

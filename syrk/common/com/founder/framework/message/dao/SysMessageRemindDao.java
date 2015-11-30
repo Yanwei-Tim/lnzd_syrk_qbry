@@ -10,7 +10,7 @@ import com.founder.framework.message.bean.SysMessage;
 import com.founder.framework.message.bean.SysMessageRemind;
 import com.founder.framework.utils.StringUtils;
 
-@Repository("sysMessageDao")
+@Repository("sysMessageRemindDao")
 public class SysMessageRemindDao extends BaseDaoImpl {
 
 
