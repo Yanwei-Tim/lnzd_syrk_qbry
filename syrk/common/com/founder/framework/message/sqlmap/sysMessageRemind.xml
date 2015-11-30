@@ -12,7 +12,7 @@
 			#sysMessageRemind.fsr# as FSR,#sysMessageRemind.fsrdm# as FSRDM,#sysMessageRemind.fssj# as FSSJ,#sysMessageRemind.fsrssdw# as FSRSSDW,
 			#sysMessageRemind.fsrssdwdm# as FSRSSDWDM, #sysMessageRemind.dxzt# as DXZT,#sysMessageRemind.jslx# as JSLX,
 			'' as JSR,'' as JSRDM,t.ORGNAME as JSRSSDW,t.ORGCODE as JSRSSDWDM,
-			#sysMessageRemind.sfck# as SFCK,#sysMessageRemind.cksj# as CKSJ,#sysMessageRemind.xxbt# as XXBT,#sysMessageRemind.dkfs# as DKFS,#sysMessageRemind.txrq# as TXRQ,#sysMessageRemind.ywid# as YWID,,#sysMessageRemind.ywlx# as YWLX
+			#sysMessageRemind.sfck# as SFCK,#sysMessageRemind.cksj# as CKSJ,#sysMessageRemind.xxbt# as XXBT,#sysMessageRemind.dkfs# as DKFS,#sysMessageRemind.txrq# as TXRQ,#sysMessageRemind.ywid# as YWID,#sysMessageRemind.ywlx# as YWLX
 			from (select distinct a.ORGCODE,a.ORGNAME from ORG_ORGANIZATION a where a.ORGCODE in ($orgCodeCondition$) and a.XT_ZXBZ = '0') t ]]>
 	
 	
