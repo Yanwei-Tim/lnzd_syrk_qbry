@@ -345,7 +345,7 @@ public class DwJfjfjctzController extends BaseController{
 			entity = this.dwjfjfjctzsDao.query(entity);
 			if(entity == null){
 				entity = new Dwjfjfjctzs();
-				entity.setWh("X公（技）责通字["+DateUtils.getSystemYearString()+"]"+this.dwjfjfjctzsDao.queryXh()+"号");
+				entity.setWh(this.dwjfjfjctzService.getWhHead(sessionBean)+"公责通字["+DateUtils.getSystemYearString()+"]"+this.dwjfjfjctzsDao.queryXh()+"号");
 				entity.setZzjgid(sessionBean.getExtendValue("ssFsxCode"));
 				entity.setZzjgmc(sessionBean.getExtendValue("ssFsxName"));
 				entity.setJcid(dwjcxxb.getId());
@@ -385,7 +385,8 @@ public class DwJfjfjctzController extends BaseController{
 			entity = this.dwjffctzsDao.query(entity);
 			if(entity == null){
 				entity = new Dwjffctzs();
-				entity.setWh("X公（技）责通字["+DateUtils.getSystemYearString()+"]"+this.dwjffctzsDao.queryXh()+"号");
+				SessionBean sessionBean = getSessionBean();
+				entity.setWh(this.dwjfjfjctzService.getWhHead(sessionBean)+"公责通字["+DateUtils.getSystemYearString()+"]"+this.dwjffctzsDao.queryXh()+"号");
 				entity.setJcid(dwjcxxb.getId());
 				entity.setDwid(dwjcxxb.getDwid());
 				
@@ -428,11 +429,11 @@ public class DwJfjfjctzController extends BaseController{
 			entity = this.dwjffctzscgDao.query(entity);
 			if(entity == null){
 				entity = new Dwjffctzscg();
-				entity.setWh("X公（技）责通字["+DateUtils.getSystemYearString()+"]"+this.dwjffctzscgDao.queryXh()+"号");
+				SessionBean sessionBean = getSessionBean();
+				entity.setWh(this.dwjfjfjctzService.getWhHead(sessionBean)+"公责通字["+DateUtils.getSystemYearString()+"]"+this.dwjffctzscgDao.queryXh()+"号");
 				entity.setJcid(dwjcxxb.getId());
 				entity.setDwid(dwjcxxb.getDwid());
 				
-				SessionBean sessionBean = getSessionBean();
 				entity.setZzjgmc(sessionBean.getExtendValue("ssFsxName"));
 				
 				Dwjbxxb dw = new Dwjbxxb();
@@ -480,7 +481,7 @@ public class DwJfjfjctzController extends BaseController{
 			entity = new Dwjfzltzs();
 			entity.setJcid(dwjcxxb.getId());
 			entity.setDwid(dwjcxxb.getDwid());
-			entity.setWh("X公（技）责通字["+DateUtils.getSystemYearString()+"]"+this.dwjfzltzsDao.queryXh()+"号");
+			entity.setWh(this.dwjfjfjctzService.getWhHead(sessionBean)+"公责通字["+DateUtils.getSystemYearString()+"]"+this.dwjfzltzsDao.queryXh()+"号");
 			entity.setZzjgmc(sessionBean.getExtendValue("ssFsxName"));
 			
 			Dwjbxxb dw = new Dwjbxxb();

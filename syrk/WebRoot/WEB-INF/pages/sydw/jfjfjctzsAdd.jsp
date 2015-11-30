@@ -110,7 +110,7 @@
 		//打印
 		$('#printButton').click(function(){
 			var editUrl = basePath+"jfjfjctz/showPrintView?mainTabID="+mainTabID+"&jcid="+'${entity.jcid}'+"&type=jfjfjctzs";
-			window.open(editUrl,"详情","height=1054,width=724,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no");
+			window.open(editUrl,"详情","height=1054,width=924,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no");
 		});
 	}
 	function beforeSubmit() {

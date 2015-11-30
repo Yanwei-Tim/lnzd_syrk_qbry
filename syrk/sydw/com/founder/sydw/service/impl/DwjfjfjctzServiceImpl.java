@@ -200,4 +200,43 @@ public class DwjfjfjctzServiceImpl extends BaseService implements DwjfjfjctzServ
 		return entity;
 	}
 
+	@Override
+	public String getWhHead(SessionBean sessionBean) {
+		
+		String userOrgcode = sessionBean.getUserOrgCode();
+		String codeHead = userOrgcode.substring(2, 4);
+		if("01".equals(codeHead)){
+			return "沈";
+		}else if("02".equals(codeHead)){
+			return "大";
+		}else if("03".equals(codeHead)){
+			return "鞍";
+		}else if("04".equals(codeHead)){
+			return "抚";
+		}else if("05".equals(codeHead)){
+			return "本";
+		}else if("06".equals(codeHead)){
+			return "丹";
+		}else if("07".equals(codeHead)){
+			return "锦";
+		}else if("08".equals(codeHead)){
+			return "营";
+		}else if("09".equals(codeHead)){
+			return "阜";
+		}else if("10".equals(codeHead)){
+			return "辽";
+		}else if("11".equals(codeHead)){
+			return "铁";
+		}else if("12".equals(codeHead)){
+			return "盘";
+		}else if("13".equals(codeHead)){
+			return "朝";
+		}else if("14".equals(codeHead)){
+			return "葫";
+		}else{
+			return null;
+		}
+		
+	}
+
 }

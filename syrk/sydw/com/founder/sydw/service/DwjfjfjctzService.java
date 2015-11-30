@@ -31,4 +31,6 @@ public interface DwjfjfjctzService {
 	public void saveJffctzscg(Dwjffctzscg entity,SessionBean sessionBean);
 	
 	public void updateJffctzscg(Dwjffctzscg entity,SessionBean sessionBean);
+	
+	public String getWhHead(SessionBean sessionBean);
 }
