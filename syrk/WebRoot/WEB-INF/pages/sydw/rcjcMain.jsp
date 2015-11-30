@@ -121,7 +121,7 @@ function processFormaterJf(val, row, index) {
 		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="Workflow.createJfjctzs('+index+')">新增记录</a>&nbsp;';
 	}else if(row.zt=="5"){
 		//复查合格
-		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="Workflow.createJfjctzs('+index+')">查看记录</a>&nbsp;';
+		//zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="Workflow.createJfjctzs('+index+')">查看记录</a>&nbsp;';
 	}else if(row.zt=="99"){
 		//开展检查
 		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="Workflow.createJfdwjcjl('+index+')">检查</a>&nbsp;';

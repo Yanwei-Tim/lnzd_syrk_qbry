@@ -1,5 +1,10 @@
 package com.founder.sydw.service.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -58,11 +63,37 @@ public class DwjfjfjctzServiceImpl extends BaseService implements DwjfjfjctzServ
 		dwjcxxb.setJcsj(entity.getJcrq());
 		this.dwjcxxbDao.update(dwjcxxb, sessionBean);
 		
-		//生成系统定时消息
-		String mess = "您于"+DateUtils.getSystemDateString()+"对 "+dwjcxxb.getDwmc()+" 单位下发的单位检查通知书，检查日期为"
-				+ entity.getJcrq() + ",请做好对该单位的检查准备！";
-		SysMessageRemind message = this.buildMessage("单位技防检查提醒", mess, sessionBean);
-		this.sysMessageRemindService.saveMessageByOrg(message, sessionBean.getUserOrgCode());
+		try {
+			//生成系统定时消息
+			String mess = "您于"+DateUtils.getSystemDateString()+"对 "+dwjcxxb.getDwmc()+" 单位下发的单位检查通知书，检查日期为"
+					+ entity.getJcrq() + ",请做好对该单位的检查准备！";
+			
+			SysMessageRemind message = this.buildMessage("单位技防检查提醒", mess, sessionBean);
+			message.setTxrq(this.getSendDate(entity.getJcrq(), -10));
+			message.setYwid(entity.getId());
+			
+			this.sysMessageRemindService.saveMessageByOrg(message, sessionBean.getUserOrgCode());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	private String getSendDate(String tzDateStr,int preDateCount){
+		SimpleDateFormat df=new SimpleDateFormat("yyyy年MM月dd日");
+		Date d = null;
+		try {
+			d = df.parse("2011年10月12日");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		if(d == null){
+			return null;
+		}
+		Calendar cal=Calendar.getInstance();
+		cal.setTime(d);
+		cal.add(Calendar.DATE, preDateCount);
+		return df.format(cal.getTime());
 	}
 
 	@Override

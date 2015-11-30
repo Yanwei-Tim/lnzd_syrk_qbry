@@ -180,7 +180,7 @@
 				text: '新增通知书存根',
 				onclick: function(){
 					
-					var editUrl = basePath+"jfjfjctz/addJfjfjctzscg?dwid="+dwid+"&dwlbdm="+dwlbdm+"&ywlbdm=14"+"&mainTabID="+mainTabID+"&jcid="+jcid;
+					var editUrl = basePath+"jfjfjctz/addJfjfjctzscg?mainTabID="+mainTabID+"&jcid="+'${entity.id}';
 					window.top.openWindowWithSave(false, null, window, null, 
 				   		{title: '单位检查通知书存根',url: editUrl,width: 880,inline:true,height:500}, 
 				   		null, null,null
@@ -365,12 +365,6 @@
 		if(jczt == "0"){
 			//未下发通知
 			$("#td_jctz").attr("class","workflow_next");
-			
-			$('#m_jctz').menu('appendItem', {
-				text: '新增检查通知',
-				onclick: function(){alert('提示：打开Excel文档！')}
-			});
-			
 		}else if(jczt == "99"){
 			//开展检查
 			$("#td_jctz").attr("class","workflow_done");

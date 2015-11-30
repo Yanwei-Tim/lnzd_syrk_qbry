@@ -33,7 +33,7 @@
 		<form action="<%=basePath%>jfjfjctz/saveJfdwjcjl" id="dataForm" name="dataForm" method="post">
 			<input type="hidden" name="id" id="pk" value="${entity.id}" />
 			<input type="hidden" name="jcdw" value="${entity.jcdw}" />
-			<input type="hidden" name="jcdw" value="${entity.jcdwid}" />
+			<input type="hidden" name="jcdwid" value="${entity.jcdwid}" />
 			<div data-options="region:'center', split:true" style="width:100%; border-width: 0px;">
 				<table border="0" cellpadding="0" cellspacing="6" width="100%" align="center" style="font-size: 26px;">
 					<tr class="dialogTr">

@@ -603,11 +603,18 @@ public class DwJfjfjctzController extends BaseController{
 	}
 	
 	@RequestMapping(value = "/addJfjfjctzscg", method = RequestMethod.GET)
-	public @ResponseBody ModelAndView addJfjfjctzscg(String tzsid, String mainTabID) {
+	public @ResponseBody ModelAndView addJfjfjctzscg(String tzsid,String jcid, String mainTabID) {
 		
 		ModelAndView mv = new ModelAndView("sydw/jfjfjctzscgAdd");
 		
-		Dwjfjfjctzs dwjfjfjctzs = this.dwjfjfjctzsDao.queryEntityById(tzsid);
+		Dwjfjfjctzs dwjfjfjctzs = null;
+		if(StringUtils.isBlank(tzsid)){
+			dwjfjfjctzs = new Dwjfjfjctzs();
+			dwjfjfjctzs.setJcid(jcid);
+			dwjfjfjctzs = this.dwjfjfjctzsDao.query(dwjfjfjctzs);
+		}else{
+			dwjfjfjctzs = this.dwjfjfjctzsDao.queryEntityById(tzsid);
+		}
 		
 		Dwjfjfjctzscg entity = new Dwjfjfjctzscg();
 		entity.setJcid(dwjfjfjctzs.getJcid());
