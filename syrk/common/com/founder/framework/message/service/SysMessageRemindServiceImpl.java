@@ -10,7 +10,7 @@ import com.founder.framework.message.dao.SysMessageRemindDao;
 @Service
 public class SysMessageRemindServiceImpl implements SysMessageRemindService {
 
-	@Resource
+	@Resource(name="sysMessageRemindDao")
 	private SysMessageRemindDao sysMessageRemindDao;
 	
 	@Override

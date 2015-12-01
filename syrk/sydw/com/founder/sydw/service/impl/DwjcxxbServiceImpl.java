@@ -11,7 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.base.service.BaseService;
+import com.founder.framework.exception.BussinessException;
 import com.founder.framework.utils.EasyUIPage;
+import com.founder.framework.utils.StringUtils;
 import com.founder.framework.utils.UUID;
 import com.founder.sydw.bean.Dictxxb;
 import com.founder.sydw.bean.Dwcyjcrwxxb;
@@ -64,6 +66,9 @@ public class DwjcxxbServiceImpl implements DwjcxxbService {
 	@Override
 	public Dwjcxxb query(Dwjcxxb entity) {
 		Dwjcxxb dwjcxxb = dwjcxxbDao.query(entity.getId());
+		if(dwjcxxb == null){
+			return null;
+		}
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("jcid", entity.getId());
 		List<Dwjctype> list = dwjcxxbDao.queryDwjcxxbtype(map);
@@ -78,7 +83,21 @@ public class DwjcxxbServiceImpl implements DwjcxxbService {
 
 	@Override
 	public void update(Dwjcxxb entity, SessionBean sessionBean) {
-		BaseService.setUpdateProperties(entity, sessionBean);
+		
+		if(StringUtils.isBlank(entity.getXt_cjsj())&& "14".equals(entity.getYwlbdm())){
+			BaseService.setSaveProperties(entity, sessionBean);
+		}else{
+			BaseService.setUpdateProperties(entity, sessionBean);
+		}
+		
+		//技防的需要做特殊的业务处理
+		if("14".equals(entity.getYwlbdm())){
+			//业务状态为99的，应该是检查通过的，更改状态码
+			if("99".equals(entity.getZt())){
+				entity.setZt("2");
+			}
+		}
+		
 		dwjcxxbDao.update(entity, sessionBean);
 		dwjcxxbDao.deleteDwjctype(entity, sessionBean);
 		dwjcxxbDao.deleteDwjcdata(entity, sessionBean);
@@ -95,6 +114,25 @@ public class DwjcxxbServiceImpl implements DwjcxxbService {
 				dwjcxxbDao.saveDwjcdata(dd, sessionBean);
 			}
 		}
+	}
+	
+	@Override
+	public void updateZt(String id,String zt, SessionBean sessionBean) {
+		
+		Dwjcxxb entity = this.dwjcxxbDao.query(id);
+		entity.setZt(zt);
+//		String oldZt = entity.getZt();
+//		
+//		if("1".equals(zt) && !"0".equals(oldZt)){
+//			throw new BussinessException("请重新刷新数据");
+//		}else if("2".equals(zt) && !"1".equals(oldZt)){
+//			throw new BussinessException("请重新刷新数据");
+//		}else if("3".equals(zt) && !"2".equals(oldZt)){
+//			throw new BussinessException("请重新刷新数据");
+//		}
+		
+		BaseService.setUpdateProperties(entity, sessionBean);
+		dwjcxxbDao.update(entity, sessionBean);
 	}
 
 	@Override
@@ -118,6 +156,11 @@ public class DwjcxxbServiceImpl implements DwjcxxbService {
 
 	@Override
 	public EasyUIPage queryList(EasyUIPage page, Dwjcxxb entity) {
+		if("unCheck".equals(entity.getStatus())){
+			entity.setStatus("A.ZT in ('0','1')");
+		}else if("checked".equals(entity.getStatus())){
+			entity.setStatus("A.ZT not in ('0','1')");
+		}
 		return dwjcxxbDao.queryList(page, entity);
 	}
 
@@ -134,4 +177,6 @@ public class DwjcxxbServiceImpl implements DwjcxxbService {
 	public Dictxxb getCt(String dwlbdm) {
 		return dwjcxxbDao.getCt(dwlbdm);
 	}
+
+
 }

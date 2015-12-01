@@ -13,6 +13,19 @@
     <form action="<%=basePath%>dwjfdwxxb/save" id="dataForm" name="dataForm" method="post">
     	<input type="hidden" name="dwid" id="dwid" value="${entity.dwid}" />
 	    <div data-options="region:'center', split:true" style="width:500px; border-width: 0px;margin-top:10px;text-align: center;">
+	    	<div style="width: 100%;padding: 20px;" align="left">
+	    		<div id="scjcrq">
+		    		<span style="font: bold red;font-size: 20px">上次检查日期:${entity.scjcrq }</span> 
+		    		&nbsp;&nbsp;
+		    		<a id="jcgjButton" class="l-btn l-btn-small" href="javascript:void(0)" >
+						<span >
+							<span class="l-btn-text">检查轨迹</span>
+							<span class="l-btn-icon"> </span>
+						</span>
+					</a>
+				</div>
+	    		<span id="unCheck" style="font: bold red;font-size: 20px">温馨提示：您还未对该单位进行日常检查!</span>
+	    	</div> 
 	    	<fieldset style="width: 95%;">
 	  			<legend>视频监控</legend>
 	  			<table border="0" cellpadding="0" cellspacing="5" width="100%" align="center">
@@ -171,6 +184,20 @@
 <script type="text/javascript" >
 var _p ;
 function doInit(paramArray) {
+	
+	if('${entity.scjcrq}' != null && '${entity.scjcrq}' != ''){
+		$('#unCheck').hide();
+		
+		$('#jcgjButton').click(function(){
+			var editUrl = "/forward/sydw|rcjcMain?dwid="+'${dwjcxxb.dwid}'+"&dwmc="+encodeURI('${dwjcxxb.dwmc}')+"&dwlbdm="+'${dwjcxxb.dwlbdm}'+'&ywlbdm=14';
+			console.log(editUrl);
+			menu_open("检查轨迹",editUrl);
+		});
+		
+	}else{
+		$('#scjcrq').hide();
+	}
+	
 	_p = paramArray["_p"];
 	$("#bafzrsfzh").validatebox({validType:['sfzh'],charSet:'halfUpper'});
 	$("#fwqyfzrsfzh").validatebox({validType:['sfzh'],charSet:'halfUpper'});

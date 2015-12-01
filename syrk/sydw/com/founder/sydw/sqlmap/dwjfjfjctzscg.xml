@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="Dwjfjfjctzscg">
+	<typeAlias alias="dwjfjfjctzscg" type="com.founder.sydw.bean.Dwjfjfjctzscg" />
+	
+	<!-- 新增责令整改通知书 -->
+	<insert id="save" parameterClass="dwjfjfjctzscg">
+		<![CDATA[INSERT INTO DW_JFJFJCTZSCG(ID,JCID,DWID,DWMC,ZZJGMC,ZZJGID,WH,TZID,TZYY,AY,JBR,PZR,TFR,PZRQ,TFRQ,]]>
+		<include refid="insertXtzd"/>)
+		<![CDATA[values(#id#,#jcid#,#dwid#,#dwmc#,#zzjgmc#,#zzjgid#,#wh#,#tzid#,#tzyy#,#ay#,#jbr#,#pzr#,#tfr#,#pzrq#,#tfrq#,]]>
+		<include refid="insertXtzdVal"/>)
+	</insert>
+	
+	<update id="update" parameterClass="dwjfjfjctzscg">
+		<![CDATA[ UPDATE DW_JFJFJCTZSCG ]]>	
+			<dynamic prepend="set">
+				 <isNotNull prepend="," property="jcid"><![CDATA[ JCID=#jcid# ]]></isNotNull>
+				 <isNotNull prepend="," property="dwid"><![CDATA[ DWID=#dwid# ]]></isNotNull>
+				 <isNotNull prepend="," property="zzjgmc"><![CDATA[ ZZJGMC=#zzjgmc# ]]></isNotNull>
+				 <isNotNull prepend="," property="zzjgid"><![CDATA[ ZZJGID=#zzjgid# ]]></isNotNull>
+				 <isNotNull prepend="," property="wh"><![CDATA[ WH=#wh# ]]></isNotNull>
+				 <isNotNull prepend="," property="tzid"><![CDATA[ TZID=#tzid# ]]></isNotNull>
+				 <isNotNull prepend="," property="tzyy"><![CDATA[ TZYY=#tzyy# ]]></isNotNull>
+				 <isNotNull prepend="," property="ay"><![CDATA[ AY=#ay# ]]></isNotNull>
+				 <isNotNull prepend="," property="jbr"><![CDATA[ JBR=#jbr# ]]></isNotNull>
+				 <isNotNull prepend="," property="pzr"><![CDATA[ PZR=#pzr# ]]></isNotNull>
+				 <isNotNull prepend="," property="tfr"><![CDATA[ TFR=#tfr# ]]></isNotNull>
+				 <isNotNull prepend="," property="pzrq"><![CDATA[ PZRQ=#pzrq# ]]></isNotNull>
+				 <isNotNull prepend="," property="tfrq"><![CDATA[ TFRQ=#tfrq# ]]></isNotNull>
+				  ,<include refid="updateXtzd"/>	
+			</dynamic>
+		<![CDATA[ WHERE ID = #id#]]>	
+	</update>
+
+	<select id="query" parameterClass="dwjfjfjctzscg" resultClass="dwjfjfjctzscg">
+		SELECT * FROM DW_JFJFJCTZSCG T WHERE T.xt_zxbz = '0' 
+		 <isNotEmpty prepend="and" property="id"><![CDATA[ ID=#id# ]]></isNotEmpty>
+		 <isNotEmpty prepend="and" property="jcid"><![CDATA[ JCID=#jcid# ]]></isNotEmpty>
+		 <isNotEmpty prepend="and" property="dwid"><![CDATA[ DWID=#dwid# ]]></isNotEmpty>
+		 <isNotEmpty prepend="and" property="zzjgmc"><![CDATA[ ZZJGMC=#zzjgmc# ]]></isNotEmpty>
+		 <isNotEmpty prepend="and" property="zzjgid"><![CDATA[ ZZJGID=#zzjgid# ]]></isNotEmpty>
+		 <isNotEmpty prepend="and" property="wh"><![CDATA[ WH=#wh# ]]></isNotEmpty>
+		 <isNotEmpty prepend="and" property="tzid"><![CDATA[ TZID=#tzid# ]]></isNotEmpty>
+		 <isNotEmpty prepend="and" property="tzyy"><![CDATA[ TZYY=#tzyy# ]]></isNotEmpty>
+		 <isNotEmpty prepend="and" property="ay"><![CDATA[ AY=#ay# ]]></isNotEmpty>
+		 <isNotEmpty prepend="and" property="jbr"><![CDATA[ JBR=#jbr# ]]></isNotEmpty>
+		 <isNotEmpty prepend="and" property="pzr"><![CDATA[ PZR=#pzr# ]]></isNotEmpty>
+		 <isNotEmpty prepend="and" property="tfr"><![CDATA[ TFR=#tfr# ]]></isNotEmpty>
+		 <isNotEmpty prepend="and" property="pzrq"><![CDATA[ PZRQ=#pzrq# ]]></isNotEmpty>
+		 <isNotEmpty prepend="and" property="tfrq"><![CDATA[ TFRQ=#tfrq# ]]></isNotEmpty>
+	</select>
+	
+</sqlMap>
