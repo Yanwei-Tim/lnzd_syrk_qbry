@@ -47,12 +47,12 @@ public class Lcgcg implements JavaDelegate {
 		String spbm = sessionBean.getUserOrgCode();
 		
 		if("01".equals(sqlxdm))
-			zdryUntil.lgSuccess(zdryId, zdryxm, ywsqrId, spr, spbm, cghZdryId);
+			zdryUntil.lgSuccess(zdryId, zdryxm, ywsqrId, spr, spbm, cghZdryId,sessionBean);
 		else if("02".equals(sqlxdm))
 			zdryUntil.cgSuccess(zdryId, zdryxm, ywsqrId, spr, spbm, cghZdryId);
 		else if("04".equals(sqlxdm)){//请假
 			String qjId=(String) execution.getVariable("qjId");			
-			zdryUntil.qjSuccess(qjId,sessionBean.getUserName(),spr,sessionBean.getRemoteAddr(),spyj);
+			zdryUntil.qjSuccess(qjId,sessionBean.getUserName(),spr,spyj,sessionBean);
 		}
 	}
 

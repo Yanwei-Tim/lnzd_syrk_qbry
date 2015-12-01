@@ -2,10 +2,7 @@ package com.founder.zdrygl.controller;
 
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.annotation.Resource;
 
@@ -233,7 +230,22 @@ public class ZdryApprovalController extends BaseController {
 				zdryWorkflowVO.setApprovalMethod(approvalMethod);
 				zdryWorkflowList.add(zdryWorkflowVO);
 			}
-			 
+
+		         Collections.sort(zdryWorkflowList, new Comparator<ZdryWorkflowVO>() {
+					@Override
+					public int compare(ZdryWorkflowVO o1, ZdryWorkflowVO o2) {
+						if (o1.getCreateTime() == null && o2.getCreateTime()!=null){
+							return 1;
+						}
+						if (o2.getCreateTime()==null && o1.getCreateTime()!=null){
+							return -1;
+						}
+						if (o1.getCreateTime()==null && o2.getCreateTime()==null){
+						 return 0;
+						}
+						return o2.getCreateTime().compareTo(o1.getCreateTime());
+					}
+				});
 				Map<String, Object> map = new HashMap<String, Object>();
 				map.put("begin", page.getBegin());
 				map.put("end", page.getEnd());

@@ -164,7 +164,7 @@ public class ZdryEditServiceImpl extends BaseService implements ZdryEditService 
 			map.put("xxdxlxdm","2");
 			for (int i = 0; i < temp.size(); i++) {				
 				map.put("dlbh",temp.get(i).getXxbh().substring(0, 2));
-				temp.get(i).setList( zdryEditDao.queryRyzsxx(map));
+				temp.get(i).setList( zdryEditDao. queryRyzsxx(map));
 			}
 			infoList.addAll(temp);
 		}

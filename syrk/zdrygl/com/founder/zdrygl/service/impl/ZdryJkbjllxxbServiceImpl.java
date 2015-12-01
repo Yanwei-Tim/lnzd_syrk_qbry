@@ -143,6 +143,11 @@ public class ZdryJkbjllxxbServiceImpl implements ZdryJkbjllxxbService {
 		entity.setXt_lrsj(systemDateTime);	
 		entity.setXt_zxbz("0");
 		entity.setXt_lrrxm("System");
+		//add by zhoulj 2015-11-27 系統字段补全
+		entity.setXt_zhxgsj(systemDateTime);
+		entity.setXt_zhxgrxm("System");
+		entity.setXt_zhxgrbm("System");
+		// 2015-11-27 end
 		zdryJkbjllxxbDao.save(entity);
 	}
 }

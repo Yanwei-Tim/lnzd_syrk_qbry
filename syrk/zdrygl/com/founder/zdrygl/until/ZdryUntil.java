@@ -281,6 +281,7 @@ public class ZdryUntil {
 		}
 	}
 
+
 	/***
 	 * 
 	 * @Title: lgSuccess
@@ -289,9 +290,14 @@ public class ZdryUntil {
 	 * @return void 返回类型
 	 * @throws
 	 */
-	public void lgSuccess(String zdryId,String zdryxm,String ywsqrId,String spr,String spbm,String cghZdryId) {
+	public void lgSuccess(String zdryId,String zdryxm,String ywsqrId,String spr,String spbm,String cghZdryId,SessionBean sessionBean) {
 		ZdryZdryzb zdryZdryzb = (ZdryZdryzb) zdryZdryzbDao.queryById(zdryId);
 		zdryZdryzb.setGlzt("2");
+		//add by zhoulj 2015-11-27 系統字段补全
+		if (sessionBean!=null){
+			BaseService.setSaveProperties(zdryZdryzb, sessionBean);
+		}
+		// 2015-11-27 end
 		zdryZdryzbDao.update(zdryZdryzb);
 		sendMessageByLC(zdryxm, ywsqrId, spr, spbm, zdryId, cghZdryId, "LG", "1");
 		//如果是涉环保重点人员列管成功，还要给接受部门的人发消息提醒
@@ -344,8 +350,13 @@ public class ZdryUntil {
 	 * @throws
 	 */
 
-	public void lgFail(String zdryId,String zdryxm,String ywsqrId,String spr,String spbm,String cghZdryId) {
+	public void lgFail(String zdryId,String zdryxm,String ywsqrId,String spr,String spbm,String cghZdryId,SessionBean sessionBean) {
 		ZdryZdryzb zdryZdryzb = (ZdryZdryzb) zdryZdryzbDao.queryById(zdryId);
+		//add by zhoulj 2015-11-27 系統字段补全
+		if (sessionBean!=null){
+			BaseService.setSaveProperties(zdryZdryzb,sessionBean);
+		}
+		// 2015-11-27 end
 		zdryZdryzbDao.delete(zdryZdryzb);
 		String zdrylx = zdryZdryzb.getZdrygllxdm();
 		Zdrylxylbdyb zdrylxylbdyb = new Zdrylxylbdyb();
@@ -377,10 +388,25 @@ public class ZdryUntil {
 	 * @return void 返回类型
 	 * @throws
 	 */
-	public void cgFail(String zdryId,String zdryxm,String ywsqrId,String spr,String spbm,String cghZdryId) {
+	public void cgFail(String zdryId,String zdryxm,String ywsqrId,String spr,String spbm,String cghZdryId,SessionBean sessionBean) {
 		ZdryZdryzb zdryZdryzb = (ZdryZdryzb) zdryZdryzbDao.queryById(zdryId);
 		zdryZdryzb.setGlzt("2");
-		zdryZdryzbDao.update(zdryZdryzb);		
+		zdryZdryzb.setXt_zxbz("0");
+		//add by zhoulj 2015-11-27 系統字段补全
+		if (sessionBean!=null){
+			BaseService.setSaveProperties(zdryZdryzb,sessionBean);
+		}
+		// 2015-11-27 end
+		zdryZdryzbDao.update(zdryZdryzb);
+		//add by zhoulj 2015-11-27 撤管审批不通过，修改状态
+		ZdryZdryzb cgZdryZdryzb=(ZdryZdryzb) zdryZdryzbDao.queryById(cghZdryId);
+		cgZdryZdryzb.setGlzt("4");
+		cgZdryZdryzb.setXt_zxbz("1");
+		if (sessionBean!=null){
+			BaseService.setSaveProperties(cgZdryZdryzb,sessionBean);
+		}
+		zdryZdryzbDao.update(cgZdryZdryzb);
+		// 2015-11-27 end
 		sendMessageByLC(zdryxm, ywsqrId, spr, spbm, zdryId, cghZdryId, "CG", "0");
 	}
 
@@ -398,6 +424,7 @@ public class ZdryUntil {
 		ZdryZdryzb zdryZdryzb = (ZdryZdryzb) zdryZdryzbDao.queryById(zdryId);
 		zdryZdryzb.setGlzt("4");
 		zdryZdryzb.setXt_zhxgsj(DateUtils.getSystemDateTimeString());
+		zdryZdryzb.setXt_zxbz("1");
 		zdryZdryzbDao.update(zdryZdryzb);//撤管不能修删除（xt_zxbz修改为1），应改将glbz修改为4
 		String zdrylx = zdryZdryzb.getZdrygllxdm();
 		Zdrylxylbdyb zdrylxylbdyb = new Zdrylxylbdyb();
@@ -625,7 +652,7 @@ public class ZdryUntil {
 	 * @return void    返回类型
 	 * @throws
 	 */
-	public void qjSuccess(String qjId,String SPR_XM, String SPR_ID,String SPR_IP,String spyj) {
+	public void qjSuccess(String qjId,String SPR_XM, String SPR_ID,String spyj,SessionBean sessionBean) {
 		ZdryJgdxqxjdjb entity=new ZdryJgdxqxjdjb();
 		entity.setId(qjId);
 		entity.setSpr_id(SPR_ID);		
@@ -633,11 +660,16 @@ public class ZdryUntil {
 		entity.setSpsj(getNowTimeString());
 		entity.setSpjg("1");//同意
 		entity.setSpyj(spyj);
-			
-		entity.setXt_zhxgrid(SPR_ID);
+
+/*		entity.setXt_zhxgrid(SPR_ID);
 		entity.setXt_zhxgrxm(SPR_XM);
-		entity.setXt_zhxgip(SPR_IP);
-		zdryJgdxqxjdjbDao.update(entity);	
+		entity.setXt_zhxgip(SPR_IP);*/
+		//add by zhoulj 2015-11-27 系統字段补全
+		if (sessionBean!=null){
+			BaseService.setSaveProperties(entity, sessionBean);
+		}
+		// 2015-11-27 end
+		zdryJgdxqxjdjbDao.update(entity);
 		
 	//后期删除所有附件属性表
 		//sendMessageByLC(zdryxm, ywsqrId, spr, spbm, zdryId, cghZdryId, "CG", "1");
@@ -654,7 +686,7 @@ public class ZdryUntil {
 	 * @return void    返回类型
 	 * @throws
 	 */
-	public void qjFail(String qjId,String SPR_XM, String SPR_ID,String SPR_IP,String spyj) {
+	public void qjFail(String qjId,String SPR_XM, String SPR_ID,String spyj,SessionBean sessionBean) {
 		ZdryJgdxqxjdjb entity=new ZdryJgdxqxjdjb();
 		entity.setId(qjId);
 		entity.setSpr_id(SPR_ID);		
@@ -663,9 +695,14 @@ public class ZdryUntil {
 		entity.setSpjg("0");//拒绝
 		entity.setSpyj(spyj);
 		
-		entity.setXt_zhxgrid(SPR_ID);
+	/*	entity.setXt_zhxgrid(SPR_ID);
 		entity.setXt_zhxgrxm(SPR_XM);
-		entity.setXt_zhxgip(SPR_IP);
+		entity.setXt_zhxgip(SPR_IP);*/
+		//add by zhoulj 2015-11-27 系統字段补全
+		if (sessionBean!=null){
+			BaseService.setSaveProperties(entity, sessionBean);
+		}
+		// 2015-11-27 end
 		zdryJgdxqxjdjbDao.update(entity);		
 		//sendMessageByLC(zdryxm, ywsqrId, spr, spbm, zdryId, cghZdryId, "CG", "0");
 	}

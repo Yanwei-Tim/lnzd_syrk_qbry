@@ -61,14 +61,14 @@ public class WorkReject implements JavaDelegate{
 		String spbm=sessionBean.getUserOrgCode();
 		
 		if(sqlxdm.equals("01")){//列管
-			zdryUntil.lgFail(zdryId, zdryxm, ywsqrId, spr, spbm, cghZdryId);
+			zdryUntil.lgFail(zdryId, zdryxm, ywsqrId, spr, spbm, cghZdryId,sessionBean);
 		}
 		if(sqlxdm.equals("02")){//撤管
-			zdryUntil.cgFail(zdryId, zdryxm, ywsqrId, spr, spbm, cghZdryId);
+			zdryUntil.cgFail(zdryId, zdryxm, ywsqrId, spr, spbm, cghZdryId,sessionBean);
 		}
 		if(sqlxdm.equals("04")){//请假
 			String qjId=(String) arg0.getVariable("qjId");			
-			zdryUntil.qjFail(qjId,sessionBean.getUserName(),spr,sessionBean.getRemoteAddr(),spyj);
+			zdryUntil.qjFail(qjId,sessionBean.getUserName(),spr,spyj,sessionBean);
 		}
 		
 	}

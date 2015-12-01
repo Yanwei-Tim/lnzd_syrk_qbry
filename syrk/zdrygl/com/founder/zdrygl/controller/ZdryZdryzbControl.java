@@ -366,7 +366,7 @@ public class ZdryZdryzbControl extends BaseController {
 				processDefinitionService.startProcessInstance(sessionBean.getUserId(), "zalcg", zdryZdryzb.getId(), variables);
 			}	
 			else{
-				zdryUntil.lgSuccess(zdryZdryzb.getId(), zdryxm, sessionBean.getUserId(), sessionBean.getUserName(), sessionBean.getUserOrgCode(), null);
+				zdryUntil.lgSuccess(zdryZdryzb.getId(), zdryxm, sessionBean.getUserId(), sessionBean.getUserName(), sessionBean.getUserOrgCode(), null,sessionBean);
 			}	
 			
 		}	
