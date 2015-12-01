@@ -47,7 +47,7 @@
 						　　根据  ${entity.jctzswh} 责令通知书，我局（分局）于
 								<input type="text" name="fcrq" value="${entity.fcrq}" class="easyui-validatebox" style="line-height: 20px;text-align:center;border-top: 0px;border-left: 0px;border-right: 0px;width: 100px;border-color: #333333;"
 								data-options="validType:['date[\'yyyy年MM月dd日\']'],tipPosition:'left'"
-								onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日'})"/>对你（单位）进行了复查。复查意见如下：
+								onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日'})"/>日派员对你单位整改情况进行了复查。复查意见如下：
 						</td>
 					</tr>
 					<tr class="dialogTr">

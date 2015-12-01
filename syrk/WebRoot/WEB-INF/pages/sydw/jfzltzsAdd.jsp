@@ -83,7 +83,7 @@
 					</tr>
 					<tr class="dialogTr">
 						<td >
-						&nbsp;&nbsp;&nbsp;&nbsp;根据 <input type="text" name="fg" value="${entity.fg}" class="easyui-validatebox text" style="width: 400px;"/>之规定，责令你（单位）
+						&nbsp;&nbsp;&nbsp;&nbsp;根据 <input type="text" name="fg" value="${entity.fg}" class="easyui-validatebox text" style="width: 400px;"/>之规定，现责令你（单位）
 						</td>
 					</tr>
 					<tr class="dialogTr">

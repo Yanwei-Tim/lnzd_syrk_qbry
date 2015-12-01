@@ -122,7 +122,9 @@ public class DwJfjfjctzController extends BaseController{
 		}else if("jfdwjcjlb".equals(type)){
 			//检查记录表
 			viewName += "jfdwjcjlbDetail";
-			Dwjcxxb dwjcxxb = this.dwjcxxbDao.query(jcid);
+			Dwjcxxb dwjcxxb = new Dwjcxxb();
+			dwjcxxb.setId(jcid);
+			dwjcxxb = dwjcxxbService.query(dwjcxxb);
 			
 			list = new ArrayList<Dwjctype>();
 			list= dwjcxxb.getList();
@@ -604,7 +606,9 @@ public class DwJfjfjctzController extends BaseController{
 		dwjcxxb.setDz_dwdzmlpdm(dw.getDz_dwdzmlpdm());
 		dwjcxxb.setDz_dwdzmlpxz(dw.getDz_dwdzmlpxz());
 		dwjcxxb.setDz_dwdzxz(dw.getDz_dwdzxz());
-		
+//		dwjcxxb.setGlfxjid(sessionBean.getExtendValue("ssFsxCode"));
+//		dwjcxxb.setGlpcsid(sessionBean.getExtendValue("ssPcsCode"));
+//		dwjcxxb.setGlbmid(sessionBean.getUserOrgCode());
 		dwjcxxb.setDwlbdm(dw.getDwlbdm());
 		this.dwjcxxbService.save(dwjcxxb, sessionBean);
 		return dwjcxxb;

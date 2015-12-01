@@ -66,7 +66,7 @@
 					</tr>
 					<tr class="dialogTr">
 						<td>
-						&nbsp;&nbsp;&nbsp;&nbsp;复查意见书文号<input type="text" name="fcyjswh"   value="${entity.fcyjswh}"  class="easyui-validatebox text"  />
+						&nbsp;&nbsp;&nbsp;&nbsp;《复查意见书文号》<input type="text" name="fcyjswh"   value="${entity.fcyjswh}"  class="easyui-validatebox text"  />
 						</td>
 					</tr>
 					<tr class="dialogTr">
@@ -109,7 +109,7 @@
 								onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日'})"/>
 						</td>
 					</tr>
-					<tr class="dialogTr">
+					<%-- <tr class="dialogTr">
 						<td>
 						&nbsp;&nbsp;&nbsp;&nbsp;填发人<input type="text" id="tfr" name="tfr"   value="${entity.tfr}"  class="easyui-validatebox text"/>
 						</td>
@@ -120,7 +120,7 @@
 								data-options="validType:['date[\'yyyy年MM月dd日\']'],tipPosition:'left'"
 								onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日'})"/>
 						</td>
-					</tr>
+					</tr> --%>
 					<tr class="dialogTr">
 						<td>
 						&nbsp;&nbsp;&nbsp;&nbsp;送达时间<input type="text" name="sdrq" value="${entity.sdrq}" class="easyui-validatebox date" 

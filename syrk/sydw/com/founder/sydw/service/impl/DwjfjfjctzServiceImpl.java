@@ -245,6 +245,11 @@ public class DwjfjfjctzServiceImpl extends BaseService implements DwjfjfjctzServ
 
 	@Override
 	public String getGzsjStrArray(String jcsj) {
+		
+		if(StringUtils.isBlank(jcsj)){
+			return null;
+		}
+		
 		//getSendDate
 		String zgsjArray = this.getSendDate(jcsj, 10);
 		zgsjArray += ","+this.getSendDate(jcsj, 20);

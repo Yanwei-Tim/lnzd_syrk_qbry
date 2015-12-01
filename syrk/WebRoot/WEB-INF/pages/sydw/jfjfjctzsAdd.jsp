@@ -55,10 +55,10 @@
 								data-options="validType:['date[\'yyyy年MM月dd日\']'],tipPosition:'left'"
 								onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日'})"/>对你（单位）进行检查。
 							<br/>检查内容如下：
-							<br/>1. 公共安全技术防范系统工作落实情况
+							<br/>1. 公共安全技术防范系统工作制度落实情况
 							<br/>2. 公共安全技术防范系统防范效能
 							<br/>3. 公共安全技术防范系统操作人员使用熟练度
-							<br/>4. 其他：
+							<br/>4. 其它：
 						</td>
 					</tr>
 					<tr class="dialogTr">
