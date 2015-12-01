@@ -145,6 +145,7 @@ Lksq.queryLksqList_back = function(json){
 						"发布时间:"+row.bc_fbsj+"</div></td>"+
 				"</tr>" ;
 		}
+	rsHtml += "<tr class='fyTr'><td colspan=4 >"+Yjxx.showfy(json.total,json.rownum,json.page,"Lksq.queryLksqList")+"</td></tr>";
 		rsHtml+="</table>";
 	$("#InfoList").html(rsHtml);
 	Main.initChangeListColor();
