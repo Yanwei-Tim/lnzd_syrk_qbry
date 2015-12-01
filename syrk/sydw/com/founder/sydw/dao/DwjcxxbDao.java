@@ -156,8 +156,8 @@ public class DwjcxxbDao extends BaseDaoImpl {
 		String sort = page.getSort();
 		String order = page.getOrder();
 		if (StringUtils.isBlank(sort)) { // 默认排序
-			sort = "id";
-			order = "asc";
+			sort = "a.jcsj";
+			order = "desc";
 		}
 		map.put("sort", sort);
 		map.put("order", order);

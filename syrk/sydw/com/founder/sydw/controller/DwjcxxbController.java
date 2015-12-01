@@ -137,6 +137,9 @@ public class DwjcxxbController extends BaseController{
 		entity.setGlfxjid(sessionBean.getExtendValue("ssFsxCode"));
 		entity.setGlpcsid(sessionBean.getExtendValue("ssPcsCode"));
 		entity.setGlbmid(sessionBean.getUserOrgCode());
+		if(StringUtils.isBlank(entity.getYwlbdm())){
+			entity.setYwlbdm("04");
+		}
 		return dwjcxxbService.queryList(page, entity);
 	}
 	

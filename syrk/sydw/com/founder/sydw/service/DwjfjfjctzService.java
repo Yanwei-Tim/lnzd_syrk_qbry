@@ -33,4 +33,6 @@ public interface DwjfjfjctzService {
 	public void updateJffctzscg(Dwjffctzscg entity,SessionBean sessionBean);
 	
 	public String getWhHead(SessionBean sessionBean);
+	
+	public String getGzsjStrArray(String jcsj);
 }

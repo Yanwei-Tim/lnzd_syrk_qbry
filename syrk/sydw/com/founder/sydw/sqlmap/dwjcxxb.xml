@@ -155,7 +155,7 @@
 			<isNotEmpty  property="sort">								
 				<![CDATA[ order by $sort$ $order$ ]]>
 			</isNotEmpty>
-		<![CDATA[) M  
+		<![CDATA[ ) M  
 		WHERE ROWNUM <= #end# ) WHERE R > #begin# ]]>
 	</select>
 	<!-- 单位检查分页查询 总数-->

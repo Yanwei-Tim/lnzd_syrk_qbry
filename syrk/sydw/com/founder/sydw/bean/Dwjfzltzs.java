@@ -47,6 +47,23 @@ public class Dwjfzltzs extends BaseEntity implements Serializable {
 	private String wfxwr;
 	@FieldDesc("函告日期")
 	private String hgrq;
+	
+	private String gzsjStrArray;
+	
+	private String operation;
+	
+	public String getOperation() {
+		return operation;
+	}
+	public void setOperation(String operation) {
+		this.operation = operation;
+	}
+	public String getGzsjStrArray() {
+		return gzsjStrArray;
+	}
+	public void setGzsjStrArray(String gzsjStrArray) {
+		this.gzsjStrArray = gzsjStrArray;
+	}
 	public String getId() {
 		return id;
 	}

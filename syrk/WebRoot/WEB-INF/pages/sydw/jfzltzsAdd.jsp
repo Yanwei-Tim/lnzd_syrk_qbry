@@ -46,7 +46,9 @@
 			<input type="hidden" name="jcid" id="jcid" value="${entity.jcid}" />
 			<input type="hidden" name="id" id="pk" value="${entity.id}" />
 			<input type="hidden" name="wh" id="wh" value="${entity.wh}" />
+			<input type="hiddem" name="gzsj" id="gzsj" value="${entity.gzsj}">
 			<input type="hiddem" name="gzfs" id="gzfs" value="${entity.gzfs}">
+			<input type="hiddem" name="operation" id="operation" value="${entity.operation}">
 			<div data-options="region:'center', split:true" style="width:100%; border-width: 0px;">
 				<table id="table" border="0" cellpadding="0" cellspacing="6" width="100%" align="center" style="font-size: 26px;">
 					<tr class="dialogTr">
@@ -95,9 +97,14 @@
 						</td>
 					</tr>
 					<tr class="dialogTr">
-						<td >
+						<%-- <td >
 						&nbsp;&nbsp;&nbsp;&nbsp;<input name="gzfsCheck" type="checkbox" value="2" />在<input type="text" name="gzsj" value="${entity.gzsj}" style="width:100px" class="easyui-validatebox date" 
 								data-options="validType:['date[\'yyyy年MM月dd日\']'],tipPosition:'left'" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日'})"/>
+								前改正或者整改完毕，并将结果函告我单位。在期限届满之前，你（单位）必须<input type="text" name="zgsx" value="${entity.zgsx}" class="easyui-validatebox text" style="width: 400px;"/>。
+						</td> --%>
+						<td >
+						&nbsp;&nbsp;&nbsp;&nbsp;<input name="gzfsCheck" type="checkbox" value="2" />在<input class='easyui-combobox' type='text' id='gzsjArray' style="width:160px;" 
+											data-options="valueField:'id',textField:'text',selectOnNavigation:false,required:false"/>
 								前改正或者整改完毕，并将结果函告我单位。在期限届满之前，你（单位）必须<input type="text" name="zgsx" value="${entity.zgsx}" class="easyui-validatebox text" style="width: 400px;"/>。
 						</td>
 					</tr>
@@ -133,6 +140,8 @@
 					</tr>
 					<tr class="dialogTr" align="center">
 						<td>
+							<input name="operationCheck" type="checkbox" value="1" /> 进入下一步：复查
+							&nbsp;&nbsp;&nbsp;&nbsp;
 							<a id="printButton" class="l-btn l-btn-small" href="javascript:void(0)" group="">
 								<span class="l-btn-left l-btn-icon-left">
 									<span class="l-btn-text">预览</span>
@@ -150,6 +159,15 @@
 <script type="text/javascript">
 	var mainTabID = "${mainTabID}";
 	function doInit(paramArray) {
+		
+		$('input[name=operationCheck]').click(function(){
+			if($(this).is(':checked')){
+				$('#operation').val('fc');
+			}
+		});
+		
+		initGzsjArray();
+		
 		initCheckbox();
 		//打印
 		$('#printButton').click(function(){
@@ -158,13 +176,71 @@
 		});
 	}
 	
+	function initGzsjArray(){
+		
+		var array = new Array();
+		array = '${entity.gzsjStrArray}'.split(",");
+		$("#gzsjArray").combobox("loadData"
+			,[{id:"10",text:array[0]}
+			,{id:"20",text:array[1]}
+			,{id:"30",text:array[2]}
+			,{id:"60",text:array[3]}
+			,{id:"90",text:array[4]}]);
+		
+		$("#gzsjArray").combobox({
+			onChange:function (i,o){
+				if(i != null && i != ''){
+					var gzsj = '';
+					if(i == '10'){
+						gzsj = array[0];
+					}else if(i == '20'){
+						gzsj = array[1];
+					}else if(i == '30'){
+						gzsj = array[2];
+					}else if(i == '60'){
+						gzsj = array[3];
+					}else{
+						gzsj = array[4];
+					}
+					$('#gzsj').val(gzsj);
+				}
+			}
+		});
+		
+		var gzsj = $('#gzsj').val();
+		if(gzsj != null&& gzsj != ''){
+			
+			for(var i = 0;i < array.length;i++){
+				
+				if(array[i] == gzsj){
+					var cid = '10';
+					if(i == 0){
+						cid = '10';
+					}else if(i == 1){
+						cid = '20';
+					}else if(i == 2){
+						cid = '30';
+					}else if(i == 3){
+						cid = '60';
+					}else{
+						cid = '90';
+					}
+					console.log('cid:'+cid+' value:'+array[i]);
+					$("#gzsjArray").combobox("setValue",cid);
+					$("#gzsjArray").combobox("setText",array[i]);
+				}
+			}
+			
+		}
+	}
+	
 	function initCheckbox(){
 		var defaultVal = '${entity.gzfs}';
 		if( defaultVal == null || defaultVal == ""){
 			defaultVal = 2;
 		}
 		
-		$('input[type=checkbox]').each(function(i,o){
+		$('input[name=gzfsCheck]').each(function(i,o){
 			var elment = $(o);
 			if(elment.val() == defaultVal){
 				elment.attr('checked',true);
@@ -173,11 +249,11 @@
 			}
 		});
 		
-		$('input[type=checkbox]').click(function(){
+		$('input[name=gzfsCheck]').click(function(){
 			$(this).attr('checked',true);
 			var clickElement = $(this).val();
 			$('#gzfs').val(clickElement);
-			$('input[type=checkbox]').each(function(i,o){
+			$('input[name=gzfsCheck]').each(function(i,o){
 				var elment = $(o);
 				if(elment.val() != clickElement){
 					elment.attr('checked',false);
@@ -193,9 +269,9 @@
 	function afterSubmit(arr) {
 		executeTabPageMethod(mainTabID, "queryButton()");
 		if (arr["saveID"]) {
-			var editUrl = basePath+'jfjfjctz/addJffctzs?jcid='+$("#jcid").val()+"&mainTabID="+mainTabID;
-			window.top.openWindowWithSave(false, null, window, null,
-			{title: '复查知书',url: editUrl,width: 880,inline:true,height:500}, null, null,null);
+			//var editUrl = basePath+'jfjfjctz/addJffctzs?jcid='+$("#jcid").val()+"&mainTabID="+mainTabID;
+			//window.top.openWindowWithSave(false, null, window, null,
+			//{title: '复查知书',url: editUrl,width: 880,inline:true,height:500}, null, null,null);
 		}
 	}
 </script>

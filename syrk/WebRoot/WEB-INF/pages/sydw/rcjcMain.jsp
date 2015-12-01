@@ -12,7 +12,7 @@
             <div data-options="region:'center',split:true,title:'日常检查管理',border:true" style="height:auto">
             	<input type="hidden" id="mode" value="select">
             	<table id="dg" class="easyui-datagrid" data-options="url: contextPath +'/dwjcxxb/queryList',
-            		toolbar:'#datagridToolbar',queryParams:{dwid:'${dwid}',ywlbdm:(('${ywlbdm}' == null || '${ywlbdm}' == '')? '04': '${ywlbdm}'),status:'unCheck'},
+            		toolbar:'#datagridToolbar',queryParams:getInitQuery(),
             		singleSelect:true,selectOnCheck:true,
             		checkOnSelect:true,border:false,
             		sortName:'a.xt_cjsj',sortOrder:'desc',
@@ -90,6 +90,15 @@
     </div>   
 </body>
 <script type="text/javascript">
+
+function getInitQuery(){
+	var ywlbdmVal = '${ywlbdm}';
+	if(ywlbdmVal == null || ywlbdmVal == ''){
+		ywlbdmVal = '04';
+	}
+	return {dwid:'${dwid}',ywlbdm:ywlbdmVal,status:'unCheck'};
+}
+
 function processFormater(val, row, index) { // 自定义操作生成
 	var  zghtml = "";
 	if(row.ywlbdm == "14"){

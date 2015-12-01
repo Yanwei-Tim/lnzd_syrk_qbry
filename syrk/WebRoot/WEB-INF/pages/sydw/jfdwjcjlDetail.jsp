@@ -75,7 +75,7 @@
 					</tr>
 					<tr class="dialogTr">
 						<td >
-						&nbsp;&nbsp;&nbsp;&nbsp;地址：<input class="easyui-validatebox text" readonly="readonly" type="text" style="width:400px" value="${entity.dz_dwdzmlpxz}" />
+						&nbsp;&nbsp;&nbsp;&nbsp;地址：<input class="easyui-validatebox text" readonly="readonly" type="text" style="width:400px" value="${entity.entity.dz_dwdzxz}" />
 						</td>
 					</tr>
 					<tr class="dialogTr">

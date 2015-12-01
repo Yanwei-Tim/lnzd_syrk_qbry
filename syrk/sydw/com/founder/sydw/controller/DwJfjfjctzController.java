@@ -345,7 +345,7 @@ public class DwJfjfjctzController extends BaseController{
 			entity = this.dwjfjfjctzsDao.query(entity);
 			if(entity == null){
 				entity = new Dwjfjfjctzs(); 
-				entity.setWh(this.dwjfjfjctzService.getWhHead(sessionBean)+"公责通字["+DateUtils.getSystemYearString()+"]"+this.dwjfjfjctzsDao.queryXh()+"号");
+				entity.setWh(this.dwjfjfjctzService.getWhHead(sessionBean)+"公（技）责通字["+DateUtils.getSystemYearString()+"]"+this.dwjfjfjctzsDao.queryXh()+"号");
 				entity.setZzjgid(sessionBean.getExtendValue("ssFsxCode"));
 				entity.setZzjgmc(sessionBean.getExtendValue("ssFsxName"));
 				entity.setJcid(dwjcxxb.getId());
@@ -386,7 +386,7 @@ public class DwJfjfjctzController extends BaseController{
 			if(entity == null){
 				entity = new Dwjffctzs();
 				SessionBean sessionBean = getSessionBean();
-				entity.setWh(this.dwjfjfjctzService.getWhHead(sessionBean)+"公责通字["+DateUtils.getSystemYearString()+"]"+this.dwjffctzsDao.queryXh()+"号");
+				entity.setWh(this.dwjfjfjctzService.getWhHead(sessionBean)+"公（技）责通字["+DateUtils.getSystemYearString()+"]"+this.dwjffctzsDao.queryXh()+"号");
 				entity.setJcid(dwjcxxb.getId());
 				entity.setDwid(dwjcxxb.getDwid());
 				
@@ -430,7 +430,7 @@ public class DwJfjfjctzController extends BaseController{
 			if(entity == null){
 				entity = new Dwjffctzscg();
 				SessionBean sessionBean = getSessionBean();
-				entity.setWh(this.dwjfjfjctzService.getWhHead(sessionBean)+"公责通字["+DateUtils.getSystemYearString()+"]"+this.dwjffctzscgDao.queryXh()+"号");
+				entity.setWh(this.dwjfjfjctzService.getWhHead(sessionBean)+"公（技）责通字["+DateUtils.getSystemYearString()+"]"+this.dwjffctzscgDao.queryXh()+"号");
 				entity.setJcid(dwjcxxb.getId());
 				entity.setDwid(dwjcxxb.getDwid());
 				
@@ -481,7 +481,7 @@ public class DwJfjfjctzController extends BaseController{
 			entity = new Dwjfzltzs();
 			entity.setJcid(dwjcxxb.getId());
 			entity.setDwid(dwjcxxb.getDwid());
-			entity.setWh(this.dwjfjfjctzService.getWhHead(sessionBean)+"公责通字["+DateUtils.getSystemYearString()+"]"+this.dwjfzltzsDao.queryXh()+"号");
+			entity.setWh(this.dwjfjfjctzService.getWhHead(sessionBean)+"公（技）责通字["+DateUtils.getSystemYearString()+"]"+this.dwjfzltzsDao.queryXh()+"号");
 			entity.setZzjgmc(sessionBean.getExtendValue("ssFsxName"));
 			
 			Dwjbxxb dw = new Dwjbxxb();
@@ -491,6 +491,8 @@ public class DwJfjfjctzController extends BaseController{
 				entity.setDwmc(dw.getDwmc());
 			}
 		}
+		
+		entity.setGzsjStrArray(this.dwjfjfjctzService.getGzsjStrArray(dwjcxxb.getJcsj()));
 		
 		mv.addObject("entity", entity);
 		mv.addObject("mainTabID", mainTabID);
@@ -508,14 +510,19 @@ public class DwJfjfjctzController extends BaseController{
 				this.dwjfjfjctzService.saveJfzltzs(entity, sessionBean);
 				model.put(AppConst.STATUS, AppConst.SUCCESS);
 				model.put(AppConst.MESSAGES, "保存成功！");
-				//更新检查记录状态为：复查
-				this.dwjcxxbService.updateZt(entity.getJcid(), "40", sessionBean);
 			} else {
 				this.dwjfjfjctzService.updateJfzltzs(entity, sessionBean);
 				model.put(AppConst.STATUS, AppConst.SUCCESS);
 				model.put(AppConst.MESSAGES, "修改成功！");
 			}
 			model.put(AppConst.SAVE_ID, entity.getId()); // 返回主键
+			
+			//用户选择进入复查环节
+			if(!StringUtils.isBlank(entity.getOperation())){
+				//更新检查记录状态为：复查
+				this.dwjcxxbService.updateZt(entity.getJcid(), "40", sessionBean);
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getLocalizedMessage(), e);

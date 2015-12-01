@@ -69,7 +69,11 @@ public class DwjfjfjctzServiceImpl extends BaseService implements DwjfjfjctzServ
 					+ entity.getJcrq() + ",请做好对该单位的检查准备！";
 			
 			SysMessageRemind message = this.buildMessage("单位技防检查提醒", mess, sessionBean);
-			message.setTxrq(this.getSendDate(entity.getJcrq(), -10));
+			String sendDateStr = this.getSendDate(entity.getJcrq(), -10);
+			sendDateStr = sendDateStr.replace("年", "-");
+			sendDateStr = sendDateStr.replace("月", "-");
+			sendDateStr = sendDateStr.replace("日", "-");
+			message.setTxrq(sendDateStr);
 			message.setYwid(entity.getId());
 			
 			this.sysMessageRemindService.saveMessageByOrg(message, sessionBean.getUserOrgCode());
@@ -83,7 +87,7 @@ public class DwjfjfjctzServiceImpl extends BaseService implements DwjfjfjctzServ
 		SimpleDateFormat df=new SimpleDateFormat("yyyy年MM月dd日");
 		Date d = null;
 		try {
-			d = df.parse("2011年10月12日");
+			d = df.parse(tzDateStr);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -237,6 +241,18 @@ public class DwjfjfjctzServiceImpl extends BaseService implements DwjfjfjctzServ
 			return null;
 		}
 		
+	}
+
+	@Override
+	public String getGzsjStrArray(String jcsj) {
+		//getSendDate
+		String zgsjArray = this.getSendDate(jcsj, 10);
+		zgsjArray += ","+this.getSendDate(jcsj, 20);
+		zgsjArray += ","+this.getSendDate(jcsj, 30);
+		zgsjArray += ","+this.getSendDate(jcsj, 60);
+		zgsjArray += ","+this.getSendDate(jcsj, 90);
+		
+		return zgsjArray;
 	}
 
 }
