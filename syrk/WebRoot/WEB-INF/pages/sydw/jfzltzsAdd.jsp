@@ -244,6 +244,7 @@
 			var elment = $(o);
 			if(elment.val() == defaultVal){
 				elment.attr('checked',true);
+				$('#gzfs').val(2);
 			}else{
 				elment.attr('checked',false);
 			}
