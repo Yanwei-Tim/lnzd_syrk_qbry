@@ -5,6 +5,8 @@ import java.util.Map;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.sqjw.vo.CountMapVO;
 import com.founder.sqjw.vo.MainVo;
+import com.founder.sqjw.vo.YdjwBbrwVO;
+import com.founder.sqjw.vo.YdjwCountVO;
 import com.founder.syfw.vo.SyfwListVo;
 import com.founder.syrkgl.bean.SyrkSyrkxxzb;
 /**
@@ -42,4 +44,22 @@ public interface MainService {
 	public Map<String, Object> querypcsSztj(Map<String, Object> paramMap);
 	public List<CountMapVO> queryListszzdry(Map<String, String> param);
 	public Map<String, Object> zdryDetails(Map<String, Object> paramMap);
+	/**
+	 * @Title: queryEntityCount
+	 * @描述: 获取辖区统计信息-提供给两实移动端调用【服务接口】
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值: YdjwCountVO 返回类型 
+	 * @throws
+	 */
+	public YdjwCountVO queryEntityCount(Map<String, Object> paramMap);
+	/**
+	 * @Title: qqueryBbrw
+	 * @描述: 报备任务-提供给两实移动端调用【服务接口】
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值: YdjwCountVO 返回类型 
+	 * @throws
+	 */
+	public List<YdjwBbrwVO> queryBbrw(Map<String, Object> paramMap);
 }
