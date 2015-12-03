@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.founder.bzdz.bean.DzContextCombo;
 import com.founder.bzdz.bean.DzContextCondition;
+import com.founder.bzdz.bean.DzContextReturn;
 import com.founder.bzdz.dao.DzDao;
 import com.founder.bzdz.service.DzService;
 import com.founder.bzdz.vo.BzdzxxbVO;
@@ -610,6 +611,18 @@ public class DzServiceImpl extends BaseService implements DzService {
 	 */
 	public List<BzdzxxbVO> queryChdzdxb(BzdzxxbVO entity){
 		return dzDao.queryChdzdxb(entity);
+	}
+	/**
+     * @Title: queryChdzDx 
+     * @描述: 获取单条层户地址详情数据_【层户地址对象表】
+     * @作者: zhang_guoliang@founder.com 
+     * @参数: 传入参数定义 
+     * @日期： 2015-11-30 下午2:44:23 
+     * @返回值: List<DzContextReturn>    返回类型 
+     * @throws
+     */
+	public List<DzContextReturn> queryChdzDx(DzContextReturn entity) {
+		return dzDao.queryChdzDx(entity);
 	}
 	/**
 	 * @Title: doDeleteYqy 

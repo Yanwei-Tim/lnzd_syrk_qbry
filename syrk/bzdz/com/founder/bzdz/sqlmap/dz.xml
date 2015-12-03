@@ -1105,6 +1105,9 @@
 	   WHERE T.XT_ZXBZ = '0'
 		 AND T.DZJB = '4'
 	     AND T.MLDZID = #mldzid#
+	     <isNotEmpty prepend="and" property="shbs">
+		     T.SHBS = #shbs#
+	  	 </isNotEmpty>
 	   ORDER BY T.DZMC
     </select>
     <!-- 注销已启用地址数据_【门楼地址对象表】  -->
@@ -1149,6 +1152,26 @@
 	   WHERE T.XT_ZXBZ = '0'
 	     AND T.MLDZID = #mldzid#
 	</select>
+	<!-- 获取单条层户地址详情数据_【层户地址对象表】 -->
+    <select id="queryChdzDx" parameterClass="com.founder.bzdz.bean.DzContextReturn" resultClass="com.founder.bzdz.bean.DzContextReturn">
+        SELECT T.MLDZID MLPDM,
+		       M.DZMC   MLPXZ,
+		       T.CHDZID DZID,
+		       M.XZQHDM,
+		       T.DZMC   DZXZ,
+		       M.ZBX,
+		       M.ZBY
+		  FROM BZDZ_ADD_CHDZDXB T, BZDZ_ADD_MLDZDXB M
+		 WHERE T.XT_ZXBZ = '0'
+		   AND M.XT_ZXBZ = '0'
+		   AND T.MLDZID = M.MLDZID
+		   <isNotEmpty prepend="and" property="mldzid">
+			   T.MLDZID = #mldzid#
+		   </isNotEmpty>
+		   <isNotEmpty prepend="and" property="chdzid">
+			   T.CHDZID = #chdzid#
+		   </isNotEmpty>
+    </select>
 	<!-- 查询门楼地址审核表 _【门楼地址审核表】 -->
 	<select id="queryMldzShb" parameterClass="String" resultClass="bzdzxxbvo">
 	   SELECT *

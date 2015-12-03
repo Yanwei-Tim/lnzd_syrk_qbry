@@ -4,6 +4,7 @@ import java.util.Map;
 
 import com.founder.bzdz.bean.DzContextCombo;
 import com.founder.bzdz.bean.DzContextCondition;
+import com.founder.bzdz.bean.DzContextReturn;
 import com.founder.bzdz.vo.BzdzxxbVO;
 import com.founder.bzdz.vo.DzBuildingVO;
 import com.founder.bzdz.vo.DzTjVO;
@@ -168,6 +169,16 @@ public interface DzService {
      * @throws
      */
 	public List<BzdzxxbVO> queryChdzdxb(BzdzxxbVO entity);
+	 /**
+     * @Title: queryChdzDx 
+     * @描述: 获取单条层户地址详情数据_【层户地址对象表】
+     * @作者: zhang_guoliang@founder.com 
+     * @参数: 传入参数定义 
+     * @日期： 2015-11-30 下午2:44:23 
+     * @返回值: List<DzContextReturn>    返回类型 
+     * @throws
+     */
+	public List<DzContextReturn> queryChdzDx(DzContextReturn entity);
 	/**
 	 * @Title: doDeleteYqy 
 	 * @描述: 已启用地址注销【有业务数据处理】

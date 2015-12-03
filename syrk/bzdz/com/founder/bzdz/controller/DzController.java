@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.founder.bzdz.bean.DzContextCombo;
 import com.founder.bzdz.bean.DzContextCondition;
+import com.founder.bzdz.bean.DzContextReturn;
 import com.founder.bzdz.service.DzService;
 import com.founder.bzdz.vo.BzdzxxbVO;
 import com.founder.bzdz.vo.DzBuildingVO;
@@ -35,7 +36,6 @@ import com.founder.framework.organization.department.service.OrgOrganizationServ
 import com.founder.framework.utils.DateUtils;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.utils.FileUtils;
-
 import com.google.gson.Gson;
 /**
  * @类名: DzController 
@@ -498,24 +498,6 @@ public class DzController extends BaseController {
 		return dzService.queryChShdz(entity);
 	}
 	/**
-	 * @Title: queryChdzdxb 
-	 * @描述: 获取层户地址_【层户地址对象表】【服务接口】
-	 * @作者: zhang_guoliang@founder.com 
-	 * @参数: 传入参数定义 
-	 * @日期： 2015-3-3 下午2:09:10 
-	 * @返回值: List<BzdzxxbVO>    返回类型 
-	 * @throws
-	 */
-	@RestfulAnnotation(valiField="mldzid,",serverId="3")
-	@RequestMapping(value = "/queryChdzdxb/{mldzid}",method = RequestMethod.GET)
-	public @ResponseBody List<BzdzxxbVO> queryChdzdxb(BzdzxxbVO entity) throws RestException{
-		List<BzdzxxbVO> vo = dzService.queryChdzdxb(entity);
-		if(vo.size()==0){
-			throw new RestException("查无此层户地址信息！");
-		}
-		return vo;
-	}
-	/**
 	 * @Title: updateMldz 
 	 * @描述: 更新维护门楼地址【服务接口】
 	 * @作者: zhang_guoliang@founder.com 
@@ -781,6 +763,42 @@ public class DzController extends BaseController {
 		return vo;
 	}
 	/**
+	 * @Title: queryChdzDx
+	 * @描述: 获取单条层户地址详情数据_【层户地址对象表】【服务接口】
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: chdzid 层户地址ID 或者 mldzid 进行查询多条
+	 * @日期： 2015-3-3 下午2:09:10 
+	 * @返回值: List<BzdzxxbVO>    返回类型 
+	 * @throws
+	 */
+	@RestfulAnnotation(valiField="chdzid",serverId="3")
+	@RequestMapping(value = "/chdz/{chdzid}",method = RequestMethod.GET)
+	public @ResponseBody List<DzContextReturn> queryChdzDx(DzContextReturn entity) throws RestException{
+		List<DzContextReturn> vo = dzService.queryChdzDx(entity);
+		if(vo.size()==0){
+			throw new RestException("查无此层户地址信息！");
+		}
+		return vo;
+	}
+	/**
+	 * @Title: queryChdzdxb 
+	 * @描述: 获取层户地址_【层户地址对象表】【服务接口】
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: mldzid 门楼地址ID
+	 * @日期： 2015-3-3 下午2:09:10 
+	 * @返回值: List<BzdzxxbVO>    返回类型 
+	 * @throws
+	 */
+	@RestfulAnnotation(valiField="mldzid",serverId="3")
+	@RequestMapping(value = "/queryChdzdxb/{mldzid}",method = RequestMethod.GET)
+	public @ResponseBody List<BzdzxxbVO> queryChdzdxb(BzdzxxbVO entity) throws RestException{
+		List<BzdzxxbVO> vo = dzService.queryChdzdxb(entity);
+		if(vo.size()==0){
+			throw new RestException("查无此层户地址信息！");
+		}
+		return vo;
+	}
+	/**
 	 * @Title: updateHouseHb 
 	 * @描述: 合并保存事件【层户地址对象表】
 	 * @作者: zhang_guoliang@founder.com 
@@ -905,12 +923,27 @@ public class DzController extends BaseController {
 	 * @throws
 	 */
 	@RequestMapping(value = "/dzBuildingRoom", method = RequestMethod.GET)
-    public ModelAndView dzBuildingRoom(String mldzid,String chdzid){
+    public ModelAndView dzBuildingRoom(String mldzid,String chdzid,String shbs){
 		ModelAndView mv = new ModelAndView("bzdz/dzBuilding/dzBuildingRoom");
 		BzdzxxbVO entity = dzService.queryMldzDx(mldzid);
 		mv.addObject("entity", entity);
 		mv.addObject("mldzid", mldzid);
-		mv.addObject("chdzid", chdzid);
+		if(shbs!=null&&!"".equals(shbs)){
+			BzdzxxbVO entity1 = new BzdzxxbVO();
+			entity1.setShbs(shbs);
+			entity1.setMldzid(mldzid);
+			String chdzidlist="";
+			List<BzdzxxbVO> chdzlist = dzService.queryChdzdxb(entity1);
+			for(int i=0;i<chdzlist.size();i++){
+				BzdzxxbVO vo = chdzlist.get(i);
+				chdzidlist += vo.getChdzid()+",";
+			}
+			chdzidlist = chdzidlist.substring(0, chdzidlist.length()-1);
+			mv.addObject("chdzid", chdzidlist);
+		}else{
+			mv.addObject("chdzid", chdzid);
+		}
+		mv.addObject("shbs", shbs);
 		return mv;
     }
 	/**
