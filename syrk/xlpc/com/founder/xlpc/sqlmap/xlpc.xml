@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.founder.xlpc.sqlmap.xlpc">
+	<typeAlias alias="pcryvo" type="com.founder.xlpc.vo.PcryVO"/>
+	<typeAlias alias="pcrwvo" type="com.founder.xlpc.vo.PcrwVO"/>
+ 	<!-- 盘查人员列表 -->
+    <select id="queryPcryList" parameterClass="Map" resultClass="pcryvo">
+      SELECT * FROM ( SELECT ROWNUM R ,M.* FROM (
+		SELECT T.RYID,T.RYXM,T.XB,T.SFZH,T.MZ,T.CSRQ,T.XJZD,T.JG,T.ZZZQK,
+		       T.SFZT,T.SFFA,T.SFPCDX,T.GLPCID,T.PCYY,
+		       P.FSSJ, P.CLZT, P.CJR, P.XPOINT, P.YPOINT
+			FROM SM_YDJW_XLPC_RY T,SM_YDJW_XLPC_PC P
+		WHERE T.GLPCID = P.PCID
+	  	<isNotEmpty prepend="and" property="pcryvo.ryxm">
+		     T.RYXM LIKE '%'||#pcryvo.ryxm#||'%'
+	  	</isNotEmpty>
+	  	<isNotEmpty prepend="and" property="pcryvo.sfzh">
+		     T.SFZH LIKE '%'||#pcryvo.sfzh#||'%'
+	  	</isNotEmpty>
+	  	<isNotEmpty prepend="and" property="pcryvo.sfzt">
+		     T.SFZT = #pcryvo.sfzt#
+	  	</isNotEmpty>
+	  	<isNotEmpty prepend="and" property="pcryvo.sffa">
+		     T.SFFA = #pcryvo.sffa#
+	  	</isNotEmpty>
+	  	<isNotEmpty prepend="and" property="pcryvo.sfpcdx">
+		     T.SFPCDX = #pcryvo.sfpcdx#
+	  	</isNotEmpty>
+	  	ORDER BY #order#)M
+      <![CDATA[WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
+    </select>
+    <!-- 盘查人员列表总数 -->
+    <select id="queryPcryCount" parameterClass="Map" resultClass="Integer">
+    	SELECT COUNT(T.RYID) 
+    		FROM SM_YDJW_XLPC_RY T,SM_YDJW_XLPC_PC P
+		WHERE T.GLPCID = P.PCID
+		<isNotEmpty prepend="and" property="pcryvo.ryxm">
+		     T.RYXM LIKE '%'||#pcryvo.ryxm#||'%'
+	  	</isNotEmpty>
+	  	<isNotEmpty prepend="and" property="pcryvo.sfzh">
+		     T.SFZH LIKE '%'||#pcryvo.sfzh#||'%'
+	  	</isNotEmpty>
+	  	<isNotEmpty prepend="and" property="pcryvo.sfzt">
+		     T.SFZT = #pcryvo.sfzt#
+	  	</isNotEmpty>
+	  	<isNotEmpty prepend="and" property="pcryvo.sffa">
+		     T.SFFA = #pcryvo.sffa#
+	  	</isNotEmpty>
+	  	<isNotEmpty prepend="and" property="pcryvo.sfpcdx">
+		     T.SFPCDX = #pcryvo.sfpcdx#
+	  	</isNotEmpty>
+    </select>
+    <!-- 盘查任务列表 -->
+    <select id="queryPcrwList" parameterClass="Map" resultClass="pcrwvo">
+      SELECT * FROM ( SELECT ROWNUM R ,M.* FROM (
+		SELECT T.GZXXBH,T.KSSJ,T.JSSJ,T.XFFS,T.GZDD,T.GZDDMS,T.GZDDDM,T.ZBX,T.ZBY,T.XLMC,
+		       T.JYXM,T.JYBH,T.XJRS,T.STMJXM,T.STMJBH,T.BZ,T.DJR,T.DJSJ,T.DJDW,T.XGR,T.XGDW,
+		       T.XGSJ,T.XLDM
+ 			FROM SM_YDJW_XLPC_PCRW T
+ 		WHERE 1=1
+ 		<isNotEmpty prepend="and" property="pcrwvo.gzdd">
+		     T.GZDD LIKE '%'||#pcrwvo.gzdd#||'%'
+	  	</isNotEmpty>
+	  	<isNotEmpty prepend="and" property="pcrwvo.xlmc">
+		     T.XLMC LIKE '%'||#pcrwvo.xlmc#||'%'
+	  	</isNotEmpty>
+	 ORDER BY #order#)M
+     <![CDATA[WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
+    </select>
+    <!-- 盘查任务列表总数 -->
+    <select id="queryPcrwCount" parameterClass="Map" resultClass="Integer">
+    	SELECT COUNT(T.GZXXBH)
+ 			FROM SM_YDJW_XLPC_PCRW T
+ 		WHERE 1=1
+ 		<isNotEmpty prepend="and" property="pcrwvo.gzdd">
+		     T.GZDD LIKE '%'||#pcrwvo.gzdd#||'%'
+	  	</isNotEmpty>
+	  	<isNotEmpty prepend="and" property="pcrwvo.xlmc">
+		     T.XLMC LIKE '%'||#pcrwvo.xlmc#||'%'
+	  	</isNotEmpty>
+    </select>
+</sqlMap>
