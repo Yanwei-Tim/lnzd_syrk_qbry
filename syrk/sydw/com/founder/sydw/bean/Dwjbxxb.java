@@ -12,7 +12,7 @@ import com.founder.framework.base.entity.BaseEntity;
 public class Dwjbxxb extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@FieldDesc("单位ID")
 	private String id;
 	@FieldDesc("单位类别代码 ")
@@ -127,12 +127,12 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	private String mapRadius;
 	@FieldDesc("坐标值")
 	private String zbz;
-	private HttpEntity<byte[]>  zpfj;
+	private HttpEntity<byte[]> zpfj;
 	private String condition;
 	private String cxfs;
 	private String dwbm;
 	private String sjdwmc;
-	//zhang_guoliang@founder.com 增加地址描述业务流程【开始】
+	// zhang_guoliang@founder.com 增加地址描述业务流程【开始】
 	@FieldDesc("地址描述_坐标X")
 	private String dzms_zbx;
 	@FieldDesc("地址描述_坐标Y")
@@ -143,18 +143,18 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	@FieldDesc("地址描述_所属派出所代码")
 	private String dzms_sspcsdm;
 	private String dzms_sspcsmc;
-	
+
 	@FieldDesc("地址描述")
 	private String dzms;
 	@FieldDesc("层户地址")
 	private String dzms_chdz;
-	//地址描述_单位地址门楼牌代码
+	// 地址描述_单位地址门楼牌代码
 	private String dzms_dwdzmlpdm;
-	//地址描述_单位地址门楼牌详址
+	// 地址描述_单位地址门楼牌详址
 	private String dzms_dwdzmlpxz;
-	//地址状态
+	// 地址状态
 	private String dwdzzt;
-	//zhang_guoliang@founder.com 增加地址描述业务流程【结束】
+	// zhang_guoliang@founder.com 增加地址描述业务流程【结束】
 	/**
 	 * @return the sjdwmc
 	 */
@@ -166,6 +166,16 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	private String hs_status;
 	private String hs_person;
 	private String hs_sj;
+	@FieldDesc("房间合并")
+	private String shbs;
+
+	public String getShbs() {
+		return shbs;
+	}
+
+	public void setShbs(String shbs) {
+		this.shbs = shbs;
+	}
 
 	public String getIsCheck() {
 		return isCheck;
@@ -214,12 +224,12 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	public void setSfazzaglxxxt(String sfazzaglxxxt) {
 		this.sfazzaglxxxt = sfazzaglxxxt;
 	}
-		
-    // @star新增是否安装治安管理系统结束
+
+	// @star新增是否安装治安管理系统结束
 	public String getSjdwmc() {
 		return sjdwmc;
 	}
-   
+
 	public String getDwdzzt() {
 		return dwdzzt;
 	}
@@ -229,7 +239,8 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	}
 
 	/**
-	 * @param sjdwmc the sjdwmc to set
+	 * @param sjdwmc
+	 *            the sjdwmc to set
 	 */
 	public void setSjdwmc(String sjdwmc) {
 		this.sjdwmc = sjdwmc;
@@ -243,7 +254,8 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	}
 
 	/**
-	 * @param zpfj the zpfj to set
+	 * @param zpfj
+	 *            the zpfj to set
 	 */
 	public void setZpfj(HttpEntity<byte[]> zpfj) {
 		this.zpfj = zpfj;
@@ -257,7 +269,8 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	}
 
 	/**
-	 * @param cxfs the cxfs to set
+	 * @param cxfs
+	 *            the cxfs to set
 	 */
 	public void setCxfs(String cxfs) {
 		this.cxfs = cxfs;
@@ -271,7 +284,8 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	}
 
 	/**
-	 * @param zczb the zczb to set
+	 * @param zczb
+	 *            the zczb to set
 	 */
 	public void setZczb(String zczb) {
 		this.zczb = zczb;
@@ -285,7 +299,8 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	}
 
 	/**
-	 * @param jymjMjpfm the jymj_mjpfm to set
+	 * @param jymjMjpfm
+	 *            the jymj_mjpfm to set
 	 */
 	public void setJymj_mjpfm(String jymjMjpfm) {
 		jymj_mjpfm = jymjMjpfm;
@@ -299,7 +314,8 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	}
 
 	/**
-	 * @param hdrnrs the hdrnrs to set
+	 * @param hdrnrs
+	 *            the hdrnrs to set
 	 */
 	public void setHdrnrs(String hdrnrs) {
 		this.hdrnrs = hdrnrs;
@@ -313,7 +329,8 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	}
 
 	/**
-	 * @param dwbm the dwbm to set
+	 * @param dwbm
+	 *            the dwbm to set
 	 */
 	public void setDwbm(String dwbm) {
 		this.dwbm = dwbm;
@@ -327,7 +344,8 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	}
 
 	/**
-	 * @param condition the condition to set
+	 * @param condition
+	 *            the condition to set
 	 */
 	public void setCondition(String condition) {
 		this.condition = condition;
@@ -341,7 +359,8 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	}
 
 	/**
-	 * @param srid the srid to set
+	 * @param srid
+	 *            the srid to set
 	 */
 	public void setSrid(int srid) {
 		this.srid = srid;
@@ -355,7 +374,8 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	}
 
 	/**
-	 * @param type the type to set
+	 * @param type
+	 *            the type to set
 	 */
 	public void setType(String type) {
 		this.type = type;
@@ -369,7 +389,8 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	}
 
 	/**
-	 * @param zbx the zbx to set
+	 * @param zbx
+	 *            the zbx to set
 	 */
 	public void setZbx(String zbx) {
 		this.zbx = zbx;
@@ -383,7 +404,8 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	}
 
 	/**
-	 * @param zby the zby to set
+	 * @param zby
+	 *            the zby to set
 	 */
 	public void setZby(String zby) {
 		this.zby = zby;
@@ -397,7 +419,8 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	}
 
 	/**
-	 * @param mapRadius the mapRadius to set
+	 * @param mapRadius
+	 *            the mapRadius to set
 	 */
 	public void setMapRadius(String mapRadius) {
 		this.mapRadius = mapRadius;
@@ -411,7 +434,8 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	}
 
 	/**
-	 * @param zbz the zbz to set
+	 * @param zbz
+	 *            the zbz to set
 	 */
 	public void setZbz(String zbz) {
 		this.zbz = zbz;
@@ -446,7 +470,7 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	public void setDwlbdm(String dwlbdm) {
 		this.dwlbdm = dwlbdm;
 	}
-	
+
 	/**
 	 * @return the sjdwid
 	 */
@@ -461,7 +485,6 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	public void setSjdwid(String sjdwid) {
 		this.sjdwid = sjdwid;
 	}
-
 
 	/**
 	 * @return the glbmid
@@ -628,7 +651,6 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 		this.yyzzfzjg = yyzzfzjg;
 	}
 
-	
 	/**
 	 * @return the zzjgdm
 	 */
@@ -704,8 +726,6 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 		this.jyfsdm = jyfsdm;
 	}
 
-	
-
 	/**
 	 * @return the jjlxdm
 	 */
@@ -750,7 +770,6 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	public void setCzhm(String czhm) {
 		this.czhm = czhm;
 	}
-
 
 	/**
 	 * @return the sfyfwjddm
@@ -812,8 +831,6 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 		this.dwztdm = dwztdm;
 	}
 
-	
-
 	/**
 	 * @return the yysj
 	 */
@@ -874,7 +891,6 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 		this.bz = bz;
 	}
 
-
 	/**
 	 * @return the dz_dwdzdm
 	 */
@@ -919,7 +935,6 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	public void setDz_dwdzxz(String dzDwdzxz) {
 		dz_dwdzxz = dzDwdzxz;
 	}
-
 
 	/**
 	 * @return the dz_dwdzmlpdm
@@ -996,8 +1011,6 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 		this.kyrq = kyrq;
 	}
 
-
-
 	/**
 	 * @return the zddwbs
 	 */
@@ -1006,7 +1019,8 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	}
 
 	/**
-	 * @param zddwbs the zddwbs to set
+	 * @param zddwbs
+	 *            the zddwbs to set
 	 */
 	public void setZddwbs(String zddwbs) {
 		this.zddwbs = zddwbs;
@@ -1026,7 +1040,6 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	public void setSfzqxyydm(String sfzqxyydm) {
 		this.sfzqxyydm = sfzqxyydm;
 	}
-
 
 	/**
 	 * @return the xt_lrbz
@@ -1212,6 +1225,5 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	public void setDzms(String dzms) {
 		this.dzms = dzms;
 	}
-	
-	
+
 }

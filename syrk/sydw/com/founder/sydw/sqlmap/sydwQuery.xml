@@ -32,7 +32,7 @@
 				a.glpcsid = #dwjbxxb.glpcsid#
 			</isNotEmpty>
 			<isNotEmpty prepend="and" property="dwjbxxb.dz_dwdzdm">
-				a.dz_dwdzdm =#dwjbxxb.dz_dwdzdm#
+				A.DZ_DWDZDM IN ($dwjbxxb.dz_dwdzdm$)
 			</isNotEmpty>	
 			<isNotEmpty prepend="and" property="dwjbxxb.dz_dwdzxz">
 				a.dz_dwdzxz like '%$dwjbxxb.dz_dwdzxz$%'
@@ -85,7 +85,7 @@
 				a.dz_dwdzxz like '%$dwjbxxb.dz_dwdzxz$%'
 			</isNotEmpty>
 			<isNotEmpty prepend="and" property="dwjbxxb.dz_dwdzdm">
-				a.dz_dwdzdm =#dwjbxxb.dz_dwdzdm#
+				A.DZ_DWDZDM IN ($dwjbxxb.dz_dwdzdm$)
 			</isNotEmpty>			
 			<isNotEmpty prepend="and" property="dwjbxxb.condition">
 				a.dwmc || a.dz_dwdzxz  like '%$dwjbxxb.condition$%'
