@@ -1,8 +1,6 @@
 package com.founder.syrkgl.controller;
 
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -10,14 +8,12 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.fileupload.FileItem;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.founder.bzdz.service.DzService;
@@ -32,12 +28,7 @@ import com.founder.framework.organization.department.service.OrgOrganizationServ
 import com.founder.framework.message.bean.SysMessage;
 import com.founder.framework.message.dao.SysMessageDao;
 import com.founder.framework.utils.EasyUIPage;
-import com.founder.framework.utils.ImageUtils;
 import com.founder.framework.utils.StringUtils;
-import com.founder.service.attachment.bean.ZpfjFjxxb;
-import com.founder.service.attachment.bean.ZpfjPtryzpglb;
-import com.founder.service.attachment.bean.ZpfjPtryzpxxb;
-import com.founder.service.attachment.service.ZpfjPtryzpService;
 import com.founder.syrkgl.bean.RyRyjbxxb;
 import com.founder.syrkgl.bean.SyrkSyrkxxzb;
 import com.founder.syrkgl.service.RyRyjbxxbService;
@@ -77,9 +68,6 @@ public class SyrkGlController extends BaseController {
 	
 	@Resource(name = "sysMessageDao")
 	private SysMessageDao sysMessageDao;
-	
-	@Resource(name = "zpfjPtryzpService")
-	private ZpfjPtryzpService zpfjPtryzpService;
 	/**
 	 * @Title: query
 	 * @Description: TODO(实有人口管理列表页面跳转)
@@ -127,14 +115,11 @@ public class SyrkGlController extends BaseController {
 	@RestfulAnnotation(serverId = "3")
 	@RequestMapping(value = "/queryList", method = RequestMethod.POST)
 	public @ResponseBody
-	EasyUIPage queryList(EasyUIPage page,
-			@RequestParam(value = "rows", required = false) Integer rows,
-			SyrkSyrkxxzb entity, SessionBean sessionBean) {
+	EasyUIPage queryList(EasyUIPage page,@RequestParam(value = "rows", required = false) Integer rows,SyrkSyrkxxzb entity, SessionBean sessionBean) {
 		page.setPagePara(rows);
 		sessionBean = getSessionBean(sessionBean);
-		if (null != sessionBean) {
-			OrgOrganization userOrg = orgOrganizationService
-					.queryById(sessionBean.getUserOrgId());
+		if (null != sessionBean&&StringUtils.isBlank(entity.getIsCheck())){
+			OrgOrganization userOrg = orgOrganizationService.queryById(sessionBean.getUserOrgId());
 			String orglevel = userOrg.getOrglevel();
 			if (("21").equals(orglevel)) {
 				entity.setGxfjdm((String) sessionBean.getUserOrgCode());
@@ -143,6 +128,8 @@ public class SyrkGlController extends BaseController {
 			} else if ("50".equals(orglevel)) {
 				entity.setGxzrqdm((String) sessionBean.getUserOrgCode());
 			}
+		}else{
+			entity.setGxpcsdm(sessionBean.getExtendValue("ssPcsCode"));
 		}
 		return syrkSyrkxxzbService.queryList(entity, page);
 	}
@@ -245,7 +232,7 @@ public class SyrkGlController extends BaseController {
 	 */
 	@RestfulAnnotation(valiField = "syrkywlxdm,jbxx.cyzjdm,jbxx.zjhm,jbxx.xbdm,jbxx.xm,jbxx.csrq", serverId = "3")
 	@RequestMapping(value = { "/save", "/{syrklx}/save" }, method = RequestMethod.POST)
-	public ModelAndView save(@RequestParam(value="uploadFile", required=false)CommonsMultipartFile uploadFile,SyrkAddVO syrkAddVO, SessionBean sessionBean)
+	public ModelAndView save(SyrkAddVO syrkAddVO, SessionBean sessionBean)
 			throws RestException {
 		if (sessionBean != null
 				&& !StringUtils.isBlank(sessionBean.getUserId())) {
@@ -254,10 +241,6 @@ public class SyrkGlController extends BaseController {
 		ModelAndView mv = new ModelAndView(getViewName(sessionBean));
 		Map<String, Object> map = new HashMap<String, Object>();
 		sessionBean = getSessionBean(sessionBean);
-		//@star新增开始
-		String lybm="RY_RYJBXXB";
-		String lyms="人员基本信息表";
-		//@star新增结束
 		try {
 			String errorMessage = syrkSyrkxxzbService.isValidSyrkAdd(syrkAddVO, sessionBean);
 			//实有人口核实修改状态
@@ -283,22 +266,6 @@ public class SyrkGlController extends BaseController {
 						sessionBean);
 				map.put(AppConst.SAVE_ID, syrkid); // 返回主键
 				map.put("ryid", syrkAddVO.getJbxx().getId()); // 返回主键
-				if (uploadFile !=null && uploadFile.getSize()!=0) {
-					System.out.println(uploadFile.getSize());
-					byte[] imageByte = uploadFile.getBytes();
-					ZpfjPtryzpxxb zpfjPtryzpxxb = new ZpfjPtryzpxxb();
-					zpfjPtryzpxxb.setZp(imageByte);
-					zpfjPtryzpxxb.setZpslt(ImageUtils.convertImageSize(imageByte,
-							179, 220, false));
-					ZpfjPtryzpglb zpfjPtryzpglb = new ZpfjPtryzpglb();
-					zpfjPtryzpglb.setRyid(syrkAddVO.getJbxx().getId());
-					zpfjPtryzpglb.setLybm(lybm);
-					zpfjPtryzpglb.setLyid(syrkAddVO.getJbxx().getId());
-					zpfjPtryzpglb.setLyms(lyms);
-					zpfjPtryzpService.savePtryzpxxb(zpfjPtryzpglb, zpfjPtryzpxxb,sessionBean);
-					map.put(AppConst.STATUS, AppConst.SUCCESS);
-					map.put(AppConst.MESSAGES, getAddSuccess());
-				} 
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -411,8 +378,6 @@ public class SyrkGlController extends BaseController {
 				exceptionStr = "居住地_坐标X必填";
 			else if (StringUtils.isBlank(syrkAddVO.getLdrk().getJzd_zby()))
 				exceptionStr = "居住地_坐标Y必填";
-			else if (StringUtils.isBlank(syrkAddVO.getLdrk().getZjzsydm()))
-				exceptionStr = "暂（居）住事由必填";
 		} else if ("4".equals(syrklx)) {
 			if (syrkAddVO.getJwry() == null)
 				exceptionStr = "实有人口类型和对象类型传递错误";
@@ -523,14 +488,13 @@ public class SyrkGlController extends BaseController {
 	public ModelAndView addHs(String cyzjdm, String zjhm, String mainTabID, String isCheck,
 			String syrkywlxdm, String invokeJSMethod, SessionBean sessionBean, String messageid) {
 		// 这里修改兼容通过message打开
-		try {
+		/*try {
 			SysMessage sysmessage = new SysMessage();
 			sysmessage.setId(Long.valueOf(messageid));
 			sysMessageDao.upadate(sysmessage);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-
+		}*/
 		ModelAndView mv = new ModelAndView("syrkgl/syrkGlAdd");
 		sessionBean = getSessionBean(sessionBean);
 		RyRyjbxxb ryRyjbxxb = null;
@@ -562,5 +526,19 @@ public class SyrkGlController extends BaseController {
 		return mv;
 	}
 	//gem 核实 end
-		
+   
+	/**
+	 * @Title: querySyrkxxzb
+	 * @描述: 根据ZJHM、JZD_DZID条件，查询实有人口详细信息【服务接口】
+	 * @作者: zhang_guoliang@founder.com
+	 * @参数: SyrkSyrkxxzb
+	 * @日期： 2015-12-01 下午12:40:32
+	 * @返回值: SyrkSyrkxxzb 返回类型
+	 * @throws
+	 */
+	@RestfulAnnotation(valiField="zjhm",serverId="3")
+	@RequestMapping(value = "/querySyrkxxzb", method = RequestMethod.POST)
+	public @ResponseBody SyrkSyrkxxzb querySyrkxxzb(SyrkSyrkxxzb entity) {
+		return syrkSyrkxxzbService.querySyrkxxzb(entity);
+	}
 }

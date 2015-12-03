@@ -280,6 +280,7 @@ public class RyRyjbxxbServiceImpl implements RyRyjbxxbService {
 						}
 						if (StringUtils.isBlank(ryRyjbxxb.getHjd_dzms())) {
 							ryRyjbxxb.setHjd_dzms(jo.getString("czrkzz"));
+							ryRyjbxxb.setHjd_dzxz(jo.getString("czrkzz"));
 							isUpdated = true;
 
 						}
@@ -322,8 +323,7 @@ public class RyRyjbxxbServiceImpl implements RyRyjbxxbService {
 			boolean invokeRequestService = false;
 			boolean insertRyJbxx = false;
 			boolean insertPicture = false;
-			if ("111".equals(cyzjdm) || "112".equals(cyzjdm)
-					|| "335".equals(cyzjdm)) { // 身份证类型、临时身份证、机动车驾驶证
+			if ("111".equals(cyzjdm) || "112".equals(cyzjdm)|| "335".equals(cyzjdm)) {//身份证类型、临时身份证、机动车驾驶证
 				if (ryRyjbxxb == null) {
 					insertRyJbxx = true;
 					invokeRequestService = true;
@@ -341,12 +341,9 @@ public class RyRyjbxxbServiceImpl implements RyRyjbxxbService {
 				if (invokeRequestService) {
 					String url = "http://10.78.17.238:9999/lbs";
 					String urlParameter = "operation=GetPersonInfoByID&content=";
-					String content = "{\"data\":[{\"czrkgmsfhm\":\"" + zjhm
-							+ "\"}]}";
+					String content = "{\"data\":[{\"czrkgmsfhm\":\"" + zjhm + "\"}]}";
 					try {
-
-						content = urlParameter
-								+ java.net.URLEncoder.encode(content, "UTF-8");
+						content = urlParameter + java.net.URLEncoder.encode(content, "UTF-8");
 						PostMethod postMethod = new PostMethod(url);
 						byte[] b = content.getBytes("utf-8");
 						InputStream is = new ByteArrayInputStream(b, 0,
@@ -375,12 +372,9 @@ public class RyRyjbxxbServiceImpl implements RyRyjbxxbService {
 									ryRyjbxxb.setCyzjdm(cyzjdm);
 									ryRyjbxxb.setZjhm(zjhm);
 									ryRyjbxxb.setXm(jo.getString("czrkxm"));
-									ryRyjbxxb.setXbdm(this
-											.convertXbdmFromPukangdi(jo
-													.getString("czrkxb")));
+									ryRyjbxxb.setXbdm(this.convertXbdmFromPukangdi(jo.getString("czrkxb")));
 									// 根据身份证号获取出生日期
-									StringBuilder csrq = new StringBuilder(
-											zjhm.substring(6, 14));
+									StringBuilder csrq = new StringBuilder(zjhm.substring(6, 14));
 									csrq.insert(4, "-");
 									csrq.insert(7, "-");
 									ryRyjbxxb.setCsrq(csrq.toString());
@@ -388,13 +382,11 @@ public class RyRyjbxxbServiceImpl implements RyRyjbxxbService {
 									ryRyjbxxb.setCsdgjhdqdm("156");
 									ryRyjbxxb.setGjdm("156");
 									ryRyjbxxb.setJggjdqdm("156");
-									ryRyjbxxb.setHjd_xzqhdm(jo
-											.getString("dzqh"));
-									ryRyjbxxb.setHjd_dzms(jo
-											.getString("czrkzz"));
+									ryRyjbxxb.setHjd_xzqhdm(jo.getString("dzqh"));
+									ryRyjbxxb.setHjd_dzms(jo.getString("czrkzz"));
+									ryRyjbxxb.setHjd_dzxz(jo.getString("czrkzz"));
 									ryRyjbxxb.setBz("全国请求服务平台");
-									BaseService.setSaveProperties(ryRyjbxxb,
-											sessionBean);
+									BaseService.setSaveProperties(ryRyjbxxb,sessionBean);
 									ryRyjbxxbDao.save(ryRyjbxxb, sessionBean);
 								}
 
@@ -407,13 +399,9 @@ public class RyRyjbxxbServiceImpl implements RyRyjbxxbService {
 					}
 					if (insertPicture) {
 						String zpParameter = "operation=GetPersonPhotoByID&content=";
-						String zpContent = "{\"data\":[{\"rybh\":\"" + zjhm
-								+ "\"}]}";
+						String zpContent = "{\"data\":[{\"rybh\":\"" + zjhm + "\"}]}";
 						try {
-
-							zpContent = zpParameter
-									+ java.net.URLEncoder.encode(zpContent,
-											"UTF-8");
+							zpContent = zpParameter + java.net.URLEncoder.encode(zpContent,"UTF-8");
 							PostMethod postMethod = new PostMethod(url);
 							byte[] b = zpContent.getBytes("utf-8");
 							InputStream is = new ByteArrayInputStream(b, 0,
@@ -794,8 +782,6 @@ public class RyRyjbxxbServiceImpl implements RyRyjbxxbService {
 		return ztxx;
 
 	}
-
-	//gem 核实
 	/**
 	 * @Title: dataApplyHs
 	 * @Description: TODO(实有人口核实，从临时表读取保存到总表的数据)
@@ -833,6 +819,4 @@ public class RyRyjbxxbServiceImpl implements RyRyjbxxbService {
 		}
 		return ryRyjbxxb;
 	}
-	//gem
-		
 }
