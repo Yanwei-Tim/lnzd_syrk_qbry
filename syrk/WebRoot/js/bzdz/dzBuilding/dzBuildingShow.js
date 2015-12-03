@@ -210,9 +210,9 @@ DzBuildingShow.getHsHtml = function(cs,hs,dys,bz){
 			if(shbs!=null&&shbs!=""){
 				htmlStr += "<li style='background: #"+shbs+";'>";
 				if(chdz==chdzid){
-					htmlStr += "<div class='cengButton' id='dsfjh_"+dys+"-"+roomName+"'><a href='javascript:void(0);' id='dsfj_"+roomName+"' name='dsfjName' style='background: peachpuff;' title='"+dzmc+"' value='"+dys+"-"+roomName+"'>"+roomName+"</a>";
+					htmlStr += "<div class='cengButton' id='dsfjh_"+dys+"-"+roomName+"'><a href='javascript:void(0);' id='dsfj_"+roomName+"' name='dsfjName' style='background: peachpuff;' title='"+dzmc+"' onclick='DzBuildingShow.showCalendarHouseDiv(\""+dys+"-"+roomName+"\",\""+chdz+"\",\""+shbs+"\");' value='"+dys+"-"+roomName+"'>"+roomName+"</a>";
 				}else{
-					htmlStr += "<div class='cengButton' id='dsfjh_"+dys+"-"+roomName+"'><a href='javascript:void(0);' id='dsfj_"+roomName+"' name='dsfjName' title='"+dzmc+"' value='"+dys+"-"+roomName+"'>"+roomName+"</a>";
+					htmlStr += "<div class='cengButton' id='dsfjh_"+dys+"-"+roomName+"'><a href='javascript:void(0);' id='dsfj_"+roomName+"' name='dsfjName' title='"+dzmc+"' onclick='DzBuildingShow.showCalendarHouseDiv(\""+dys+"-"+roomName+"\",\""+chdz+"\",\""+shbs+"\");' value='"+dys+"-"+roomName+"'>"+roomName+"</a>";
 				}
 			}else{
 				if(chdz==chdzid){
@@ -220,7 +220,7 @@ DzBuildingShow.getHsHtml = function(cs,hs,dys,bz){
 				}else{
 					htmlStr += "<li>";
 				}
-				htmlStr += "<div class='cengButton' id='dsfjh_"+dys+"-"+roomName+"'><a href='javascript:void(0);' id='dsfj_"+roomName+"' name='dsfjName' title='"+dzmc+"' onclick='DzBuildingShow.showCalendarHouseDiv(\""+dys+"-"+roomName+"\",\""+chdz+"\");' value='"+dys+"-"+roomName+"'>"+roomName+"</a>";
+				htmlStr += "<div class='cengButton' id='dsfjh_"+dys+"-"+roomName+"'><a href='javascript:void(0);' id='dsfj_"+roomName+"' name='dsfjName' title='"+dzmc+"' onclick='DzBuildingShow.showCalendarHouseDiv(\""+dys+"-"+roomName+"\",\""+chdz+"\",\""+shbs+"\");' value='"+dys+"-"+roomName+"'>"+roomName+"</a>";
 			}
 			htmlStr += "<table cellpadding = '0' cellspacing = '0' height='100%' width='100%' style='text-align: center;'>" +
 					   "<tr><td style='width:25px;height:13px;'>";
@@ -270,9 +270,9 @@ DzBuildingShow.getHsHtml = function(cs,hs,dys,bz){
 			if(shbs!=null&&shbs!=""){
 				htmlStr += "<li style='background: #"+shbs+";'>";
 				if(chdz==chdzid){
-					htmlStr += "<div class='cengButton' id='dxfjh_"+dys+"-"+roomName+"'><a href='javascript:void(0);' id='dxfj_"+roomName+"' name='dxfjName' style='background: peachpuff;' title='"+dzmc+"' value='"+dys+"-"+cs+"-"+DzBuildingShow.jsonHsdz[t].sh+"'>"+roomName+"</a>";
+					htmlStr += "<div class='cengButton' id='dxfjh_"+dys+"-"+roomName+"'><a href='javascript:void(0);' id='dxfj_"+roomName+"' name='dxfjName' style='background: peachpuff;' title='"+dzmc+"' onclick='DzBuildingShow.showCalendarHouseDiv(\""+dys+"-"+roomName+"\",\""+chdz+"\",\""+shbs+"\");' value='"+dys+"-"+cs+"-"+DzBuildingShow.jsonHsdz[t].sh+"'>"+roomName+"</a>";
 				}else{
-					htmlStr += "<div class='cengButton' id='dxfjh_"+dys+"-"+roomName+"'><a href='javascript:void(0);' id='dxfj_"+roomName+"' name='dxfjName' title='"+dzmc+"' value='"+dys+"-"+cs+"-"+DzBuildingShow.jsonHsdz[t].sh+"'>"+roomName+"</a>";
+					htmlStr += "<div class='cengButton' id='dxfjh_"+dys+"-"+roomName+"'><a href='javascript:void(0);' id='dxfj_"+roomName+"' name='dxfjName' title='"+dzmc+"' onclick='DzBuildingShow.showCalendarHouseDiv(\""+dys+"-"+roomName+"\",\""+chdz+"\",\""+shbs+"\");' value='"+dys+"-"+cs+"-"+DzBuildingShow.jsonHsdz[t].sh+"'>"+roomName+"</a>";
 				}
 			}else{
 				if(chdz==chdzid){
@@ -280,7 +280,7 @@ DzBuildingShow.getHsHtml = function(cs,hs,dys,bz){
 				}else{
 					htmlStr += "<li>";
 				}
-				htmlStr += "<div class='cengButton' id='dxfjh_"+dys+"-"+roomName+"'><a href='javascript:void(0);' id='dxfj_"+roomName+"' name='dxfjName' title='"+dzmc+"' value='"+dys+"-"+cs+"-"+DzBuildingShow.jsonHsdz[t].sh+"'>"+roomName+"</a>";
+				htmlStr += "<div class='cengButton' id='dxfjh_"+dys+"-"+roomName+"'><a href='javascript:void(0);' id='dxfj_"+roomName+"' name='dxfjName' title='"+dzmc+"' onclick='DzBuildingShow.showCalendarHouseDiv(\""+dys+"-"+roomName+"\",\""+chdz+"\",\""+shbs+"\");' value='"+dys+"-"+cs+"-"+DzBuildingShow.jsonHsdz[t].sh+"'>"+roomName+"</a>";
 			}
 			htmlStr += "<table cellpadding = '0' cellspacing = '0' height='100%' width='100%' style='text-align: center;'>" +
 					   "<tr><td style='width:25px;height:13px;'>";
@@ -462,17 +462,17 @@ DzBuildingShow.divWidth = function(){
  * @param 
  * @date:2015-05-08 16:14:44
  */	
-DzBuildingShow.showCalendarHouseDiv = function(roomName,chdzid){
+DzBuildingShow.showCalendarHouseDiv = function(roomName,chdzid,shbs){
 	$("#winZsxx").show();
 	$("#winZsxx").window({
 		title:"房间【"+roomName+"】信息展示",
-		width:672,
-		height:600,
+		width:692,
+		height:585,
 		modal:true,
 		collapsible:false,
 		minimizable:false,
 		maximizable:false,
 		iconCls:"icon-home"
 	});
-	$("#fjZsxxFrame").attr("src",contextPath+"/dz/dzBuildingRoom?mldzid="+mldzid+"&chdzid="+chdzid);
+	$("#fjZsxxFrame").attr("src",contextPath+"/dz/dzBuildingRoom?mldzid="+mldzid+"&chdzid="+chdzid+"&shbs="+shbs);
 };

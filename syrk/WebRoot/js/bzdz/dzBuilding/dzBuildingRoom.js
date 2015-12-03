@@ -11,41 +11,7 @@ if(typeof DzBuildingRoomRoom == "undefined" || !DzBuildingRoom){
 $(function(){
 	//加载人口列表
 	DzBuildingRoom.initRyList();
-	var ry=0;
-	var dw=0;
-	$.ajax({ 
-		type:"POST",
-		url: contextPath+"/syrkGl/querySyrkCount",
-		dataType:"json",
-		async: false ,
-		data:{jzd_dzid:chdzid},
-		success:function(data) {
-				ry=data;
-					
-		}
-	});	
-	$.ajax({ 
-		type:"POST",
-		url: contextPath+"/sydwcx/queryCountDw",
-		dataType:"json",
-		async: false ,
-		data:{dz_dwdzdm:chdzid},
-		success:function(data) {
-			
-			dw=data;
-					
-			
-		}
-	});	
-	if(ry==0 && dw>0){
-		$("#roomDetail").tabs("select","单位信息");
-
-	}
-
 });
-
-
-
 /**
  * @title:initRyList
  * @description:加载人口列表
@@ -56,8 +22,8 @@ $(function(){
 DzBuildingRoom.initRyList = function(){
 	$("#ryList").datagrid({
 		url:contextPath+"/syrkGl/querySyrk",
-		delayCountUrl:contextPath+'/syrkGl/querySyrkCount',
-		queryParams:{jzd_dzid:chdzid},
+		delayCountUrl:contextPath+"/syrkGl/querySyrkCount",
+		queryParams:{jzd_dzid:chdzid,shbs:shbs},
 		singleSelect:true,
 		showFooter:true,
 		fitColumns:false,
@@ -67,13 +33,14 @@ DzBuildingRoom.initRyList = function(){
 		          {field:'syrkywlxdm',title:'人员类型',width:90,align:'center',
 		        	  formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_SYRKYWLXDM.js'
 		          },
+		          {field:'yhzgx',title:'与户主关系',width:104,align:'center'},
 		          {field:'zjhm',title:'证件号码',width:145,align:'center'},
 		          {field:'xm',title:'姓名',width:90,align:'center'},
-		          {field:'xbdm',title:'性别',width:90,align:'center',
+		          {field:'xbdm',title:'性别',width:60,align:'center',
 		        	  formatter:dictFormatter,dictName:contextPath+'/common/dict/GB_D_XBDM.js'
 		          },
-		          {field:'csrq',title:'出生日期',width:100,align:'center'},
-		          {field:'process',title:'操作',width:90,align:'center',formatter:DzBuildingRoom.datagridRk}
+		          {field:'csrq',title:'出生日期',width:90,align:'center'},
+		          {field:'process',title:'操作',width:60,align:'center',formatter:DzBuildingRoom.datagridRk}
 		]],
 		onSelect:function(rowIndex, rowData){
 			if(rowData !=undefined){
@@ -102,6 +69,27 @@ DzBuildingRoom.initRyList = function(){
 		onLoadSuccess:function(data){
 		    $("#ryList").datagrid("selectRow",0);
 		    DzBuildingRoom.querySyrkZp(data.rows);
+		    //延时加载人口列表数量
+		   if (data.rows.length > 0) {
+				if (data.total == 5) {// 满一页延时统计
+					var pager = $("#ryList").datagrid('getPager');
+					$.ajax({
+						url: contextPath+"/syrkGl/querySyrkCount",
+						type: 'POST',
+						data: {jzd_dzid:chdzid,shbs:shbs}
+					}).done(function(result) {
+						if (result) {
+							result = parseReturn(result);
+							data.total = result;
+							pager.pagination('refresh', {total: result});
+						}
+					});							
+				}
+		   }else{
+				data.total = 0;
+				var pager = $("#ryList").datagrid('getPager');
+				pager.pagination('refresh');
+		   }
 		},
 		pageSize:5,
 		pageList:[5,10,15,20],
@@ -119,7 +107,7 @@ DzBuildingRoom.initRyList = function(){
 DzBuildingRoom.querySyrkZp = function(json){
 	var htmlText = "";
 	$.each(json,function(i){
-		htmlText += "<li><img width='120'height='140' alt='' src='"+contextPath+"/zpfjPtryzp/queryPtryzpSingle.jpg?ryid="+json[i].ryid+"&zjhm="+json[i].zjhm+"&cyzjdm="+json[i].cyzjdm+"'/></li>";
+		htmlText += "<li><img width='132' height='160' alt='' src='"+contextPath+"/zpfjPtryzp/queryPtryzpSingle.jpg?ryid="+json[i].ryid+"&zjhm="+json[i].zjhm+"&cyzjdm="+json[i].cyzjdm+"'/></li>";
 	});
 	$("#xjzryzp").html(htmlText);
 };
@@ -169,4 +157,18 @@ DzBuildingRoom.doSyDwXq = function(index){
 	var rowData = rows.rows[index];
 	var editUrl = "/sydwgl/view?id="+rowData.id+"&mode=view";
 	menu_open("实有单位信息【"+rowData.dwmc+"】",editUrl);
+};
+/**
+ * @title:initDwDatagrid
+ * @description:实有单位加载完成后判断切换Tab
+ * @author: zhang_guoliang@founder.com
+ * @param 
+ * @date:2015-12-02 15:56:12
+ */
+DzBuildingRoom.initDwDatagrid = function(data,dg){
+	var ry = $("#ryList").datagrid('getData').rows.length;
+    var dw = data.rows.length
+	if(ry==0 && dw>0){
+		$("#roomDetail").tabs("select","单位信息");
+	}
 };
