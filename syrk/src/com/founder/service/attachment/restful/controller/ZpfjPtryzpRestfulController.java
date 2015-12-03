@@ -118,56 +118,13 @@ public class ZpfjPtryzpRestfulController extends BaseController {
 	 * @throws
 	 */
 	@RestfulAnnotation(serverId="33",valiField="lybm,lyid,ryid")
-	@RequestMapping(value = "/single", method = RequestMethod.GET)
+	@RequestMapping(value = "/single", method = RequestMethod.POST)
 	public @ResponseBody String queryPtryzpSingle(ZpfjPtryzpglb entity) {
-//		HttpHeaders headers = new HttpHeaders();
-//		headers.setContentType(MediaType.IMAGE_JPEG);
 		ZpfjPtryzpxxb zpfjPtryzpxxb = zpfjPtryzpService.queryPtryzpSingle(entity);
-		if (zpfjPtryzpxxb != null && zpfjPtryzpxxb.getZp() != null
-				&& zpfjPtryzpxxb.getZp().length > 0) {
-//			headers.setContentLength(zpfjPtryzpxxb.getZp().length);
+		if (zpfjPtryzpxxb != null && zpfjPtryzpxxb.getZp() != null&& zpfjPtryzpxxb.getZp().length > 0) {
 			return base64Edcoder(zpfjPtryzpxxb.getZp());
 		} else {
-//			if ("111".equals(entity.getCyzjdm()) //调用公安请求服务，暂时不用 2015-3-27
-//					|| "112".equals(entity.getCyzjdm())
-//					|| "335".equals(entity.getCyzjdm())) {
-//				SessionBean sessionBean = getSessionBean();
-//				CzrkRequestService czrkRequestService = new CzrkRequestService();
-//				CzrkResult result = czrkRequestService.selectCzrk(entity.getZjhm(), true);
-//				if (result != null && !StringUtils.isBlank(result.getXP())) {
-//					byte[] pictureByte = null;
-//					try {
-//						pictureByte = new BASE64Decoder().decodeBuffer(result
-//								.getXP());
-//					} catch (Exception ex) {
-//						byte[] empty_ryzp = SystemConfig.getByteArray("empty_ryzp");
-//						headers.setContentLength(empty_ryzp.length);
-//						return new HttpEntity(empty_ryzp, headers);
-//					}
-//					if (pictureByte != null) {
-//						ZpfjPtryzpxxb zpfjPtryzpxxb1 = new ZpfjPtryzpxxb();
-//						zpfjPtryzpxxb1.setZp(pictureByte);
-//						try {
-//							zpfjPtryzpxxb1.setZpslt(ImageUtils
-//									.convertImageSize(pictureByte, 179, 220,
-//											false));
-//						} catch (Exception e) {
-//							e.printStackTrace();
-//						}
-//						ZpfjPtryzpglb zpfjPtryzpglb = new ZpfjPtryzpglb();
-//						zpfjPtryzpglb.setRyid(entity.getRyid());
-//						zpfjPtryzpglb.setLybm("人员基本信息表");
-//						zpfjPtryzpglb.setLyid(entity.getRyid());
-//						zpfjPtryzpglb.setLyms("RK_RYJBXXB");
-//						zpfjPtryzpService.savePtryzpxxb(zpfjPtryzpglb,
-//								zpfjPtryzpxxb1, sessionBean);
-//						headers.setContentLength(pictureByte.length);
-//						return new HttpEntity(pictureByte, headers);
-//					}
-//				}
-//			}
 			byte[] empty_ryzp = SystemConfig.getByteArray("empty_ryzp");
-//			headers.setContentLength(empty_ryzp.length);
 			return base64Edcoder(empty_ryzp);
 		}
 	}
