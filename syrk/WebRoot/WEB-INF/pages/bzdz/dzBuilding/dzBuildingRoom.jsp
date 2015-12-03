@@ -6,6 +6,7 @@
 	  <title>房间信息展示</title>
 	  <script type="text/javascript">
 		 var chdzid = "${chdzid}"
+		 var shbs = "${shbs}"
 	  </script>
 	  <link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/bzdz.css"></link>
 	  <script type="text/javascript" src="<%=contextPath%>/js/bzdz/dzBuilding/dzBuildingRoom.js"></script>
@@ -48,7 +49,7 @@
 					<td id="jzdz" colspan="3"></td>
 				</tr>
 				<tr>
-				   <table style="width: 100%;height: 201px">
+				   <table style="width: 100%;height: 190px">
 				     <tr>
 				       <td>
 				          <table id="ryList"></table>
@@ -57,8 +58,8 @@
 				   </table>
 				</tr>
 				<tr>
-				   <div id="xjzryzpDiv" style="height:140;overflow:auto">
-					 <ul id="xjzryzp"></ul>
+				   <div id="xjzryzpDiv" style="height:160;overflow: hidden;">
+					 	<ul id="xjzryzp"></ul>
 				   </div>
 				</tr>
 			</table>
@@ -67,7 +68,8 @@
           <table id="dg" class="easyui-datagrid" 
            	data-options="url:'<%=basePath %>sydwcx/queryDw?flag=jsq',
 	           		delayCountUrl:'<%=basePath %>sydwcx/queryCountDw?flag=jsq',
-	           		queryParams: {dz_dwdzdm:'${chdzid}'},   		
+	           		queryParams: {dz_dwdzdm:'${chdzid}',shbs:'${shbs}'},
+	           		onLoadSuccess:function(data){DzBuildingRoom.initDwDatagrid(data,'dg');},   		
 	           		selectOnCheck:true,
 	        		checkOnSelect:true,
 	        		rownumbers:true,
@@ -78,7 +80,7 @@
 	        		nowrap:true">
 			    <thead>
 			        <tr>
-			            <th data-options="field:'dwlbdm',width:100,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_DW_DWLB.js',sortable:true">类别</th>
+			            <th data-options="field:'dwlbdm',width:100,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_DWLXDM.js',sortable:true">类别</th>
 			            <th data-options="field:'dwmc',width:170,align:'left',halign:'center'">单位名称</th>
 			            <th data-options="field:'dz_dwdzxz',width:280,align:'left',halign:'center'">单位地址</th>
 			            <th data-options="field:'process',width:60,align:'center',halign:'center',formatter:DzBuildingRoom.datagridDw">操作</th>

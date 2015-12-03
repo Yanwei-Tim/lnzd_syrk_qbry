@@ -15,8 +15,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link href="<%=contextPath%>/css/dbrw.css" rel="stylesheet" type="text/css" />
     <title>实有人口核实列表</title>
     <script type="text/javascript">
     <!--
@@ -26,19 +24,13 @@
     //-->
     </script>
     <script type="text/javascript" src="<%=contextPath%>/js/syrkgl/syrkCheck.js"></script>
-    <style type="text/css">
-     #表头样式
-     a{text-decoration:none;}
-     span.zao{font-size: 12px; color: '#007BE3'; font-weight: bold;}
-    </style>
   </head>
   <body class="easyui-layout" data-options="fit:true">
   <div data-options="region:'center',border:false">
     	<div class="easyui-layout" data-options="fit:true,border:false">
   			<div data-options="region:'center',split:true, title:'',border:false" style="height:auto">
   			<table id="dg" class="easyui-datagrid" 
-            	data-options="
-            	    url:'',
+            	data-options="url:'',
 	           		toolbar:'#datagridToolbar',
 	           		border:false,
 	           		rownumbers: true,
@@ -49,7 +41,6 @@
 	           		getAutoPageSize(180) * 2],
 	           		singleSelect:true,
 	           		fitColumns:true">
-	           		<!-- onClickRow:doOnClickRow 单击行事件 --> 
 			    <thead>
 			        <tr>
 			           	<th data-options="field:'syrkywlxdm',width:80,align:'center',halign:'center',sortable:true,formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_SYRKYWLXDM.js'">人员类型</th>
@@ -58,7 +49,6 @@
 				        <th data-options="field:'jzd_dzxz',width:120,align:'left',sortable:true,halign:'center',formatter:subjzddzxz">居住地址</th>
 				        <th data-options="field:'hs_status',width:30,align:'center',sortable:true,halign:'center',formatter:isCheck">核实状态</th>
 			            <th data-options="field:'true',width:50,align:'center',halign:'center',formatter:datagridProcessFormater">操作</th>
-			            <th data-options="field:'xt_zxbz',width:50,align:'center',halign:'center',hidden:true">xt_zxbz</th>
 			        </tr>
 			    </thead>
 			</table>
@@ -101,13 +91,6 @@
 							<input class="easyui-combobox" type="text" id="hs_status" name="hs_status" style="width:100px;" 
 								data-options="url: contextPath + '/common/dict/DZ_BZDZ_HSZT.js',valueField:'id',textField:'text'"/>
 						</td>
-						<!-- 
-						<td nowrap="nowrap" align="right">注销状态：</td>
-				    	<td>
-				    	    <input class="easyui-combobox" type="text" id="xt_zxbz" name="xt_zxbz" style="width:100px;"
-								data-options="url: contextPath + '/common/dict/D_RK_ZXBS.js',valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/>
-					    </td>
-					     -->
 						<td nowrap="nowrap" colspan="8" align="right">
 							<a class="easyui-linkbutton" iconCls="icon-search" onclick="queryButton();">查询</a>
 				    		<a class="easyui-linkbutton" iconCls="icon-reset" onclick="resetButton()">重置</a>
