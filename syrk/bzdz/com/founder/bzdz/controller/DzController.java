@@ -767,7 +767,7 @@ public class DzController extends BaseController {
 	 * @描述: 获取单条层户地址详情数据_【层户地址对象表】【服务接口】
 	 * @作者: zhang_guoliang@founder.com 
 	 * @参数: chdzid 层户地址ID 或者 mldzid 进行查询多条
-	 * @日期： 2015-3-3 下午2:09:10 
+	 * @日期： 2015-12-02 下午2:13:10 
 	 * @返回值: List<BzdzxxbVO>    返回类型 
 	 * @throws
 	 */
@@ -908,7 +908,6 @@ public class DzController extends BaseController {
 	 * @返回值: List<DzBuildingVO>    返回类型 
 	 * @throws
 	 */
-	@RestfulAnnotation(valiField="mldzid,",serverId="3")
 	@RequestMapping(value = "/queryChdzdxbShow/{mldzid}",method = RequestMethod.GET)
 	public @ResponseBody List<DzBuildingVO> queryChdzdxbShow(@PathVariable(value = "mldzid") String mldzid) throws RestException{
 		return dzService.queryChdzdxbShow(mldzid);
