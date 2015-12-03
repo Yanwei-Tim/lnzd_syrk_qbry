@@ -62,6 +62,8 @@ public interface ZdryDtjsService {
 	public ZdryDtjsXsxxb queryXsjbxxById(String xsid);
 	
 	public List<ZdryDtjsXsxxb> queryByZdryid(String zdryid);
+	
+	public void deleteDtjsXsjbxx(ZdryDtjsXsxxb entity,SessionBean sessionBean);
 
 	
 	public String updateDtjs(ZdryDtjsXsxxb entity,SessionBean sessionBean);

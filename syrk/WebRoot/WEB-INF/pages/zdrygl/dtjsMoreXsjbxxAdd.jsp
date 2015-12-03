@@ -17,13 +17,13 @@ String userOrgName = userInfo.getUserOrgName();
 <div class="easyui-layout" data-options="fit:true">
     <form action="<%=basePath%>zdryDtjs/saveDtjs" id="dataForm" name="dataForm" method="post" >
     	<input type="hidden" id="zdryid" name="zdryid" value="${entity.zdryid}" />
-        <input type="hidden" id="rylbxx" name="rylbxx" value="${entity.rylbxx}" />
-    	
     	<input type="hidden" id="pk" name="id" value="${entity.id}" />
+    	<input type="hidden" id="zdry_zjhm" name="zdry_zjhm" value="${entity.zdry_zjhm}" />
     	
 	    <div data-options="region:'center', split:true" style="width:500px; border-width: 0px;">
 			<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center">
 			<tr>
+			
 			<td width="20%" class="dialogTd" align="right">核实时间：</td>
 		    <td width="30%" class="dialogTd"><input type="text" name="hssj" id="hssj" class="easyui-validatebox" style="width: 200px;" value="${entity.hssj}"
 					data-options="validType:['date[\'yyyy-MM-dd\']'],required:true,tipPosition:'left'" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'})"/>
@@ -159,7 +159,6 @@ String userOrgName = userInfo.getUserOrgName();
 		       </td>	      
 			      
 		    </tr>
-		    
 		     <tr class="dialogTr">
 		     <td width="20%" class="dialogTd" align="right">在控类型：</td>
 		         <td width="30%" class="dialogTd">

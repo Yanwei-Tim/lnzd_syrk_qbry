@@ -125,9 +125,11 @@ public class ZdryDtjsController extends BaseController {
 		entity.setTxrdwmc(sessionBean.getUserOrgName());
 		try {
 			if(StringUtils.isBlank(entity.getId())){
-				ZdryZdryzb zb=(ZdryZdryzb)this.zdryZdryzbService.queryById(entity.getZdryid());
-				RyRyjbxxb ryjbxxb=this.ryRyjbxxbService.queryById(zb.getRyid());
-				entity.setZdry_zjhm(ryjbxxb.getZjhm());
+				if(StringUtils.isBlank(entity.getZdry_zjhm())){
+					ZdryZdryzb zb=(ZdryZdryzb)this.zdryZdryzbService.queryById(entity.getZdryid());
+					RyRyjbxxb ryjbxxb=this.ryRyjbxxbService.queryById(zb.getRyid());
+					entity.setZdry_zjhm(ryjbxxb.getZjhm());
+				}				
 				entity.setTxrsfzh(sessionBean.getUserId());
 				String id =zdryDtjsService.saveDtjs(entity,sessionBean);		
 				model.put(AppConst.MESSAGES, getAddSuccess());
@@ -149,6 +151,15 @@ public class ZdryDtjsController extends BaseController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "/dtjsMore", method = RequestMethod.POST)
+	public @ResponseBody
+	ModelAndView dtjsMore(String dtjsXsxxid) {
+		ModelAndView mv = new ModelAndView("zdrygl/dtjsMore");
+		Map<String, Object> model = new HashMap<String, Object>();
+	    ZdryDtjsXsxxb xsxxb=this.zdryDtjsService.queryXsjbxxById(dtjsXsxxid);
+		mv.addObject("zdryZjhm",xsxxb.getZdry_zjhm());
+		return mv;
+	}
 		
 	
 	@RequestMapping(value = "/saveDtjsZtxxb", method = RequestMethod.POST)

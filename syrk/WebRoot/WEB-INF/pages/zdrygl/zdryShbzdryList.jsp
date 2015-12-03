@@ -104,7 +104,6 @@
 
  function doUpdateAndXq(linkObject, index){
 	// 阻止冒泡，不然要执行onClickRow
-	debugger;
 	cancelBubble();
 	var rows = $('#dg').datagrid('getData');
 	var rowData = rows.rows[index];

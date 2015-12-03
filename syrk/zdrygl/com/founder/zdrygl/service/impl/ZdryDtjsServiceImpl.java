@@ -63,15 +63,8 @@ public class ZdryDtjsServiceImpl extends BaseService implements ZdryDtjsService 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("begin", page.getBegin());
 		map.put("end", page.getEnd());
-		String sort = page.getSort();
-		String order = page.getOrder();
-		if (StringUtils.isBlank(sort)) { // 默认排序
-			sort = "cjsj";
-			order = "desc";
-		}
-		map.put("sort", sort);
-		map.put("order", order);
-		map.put("zdryDtjsXsxxb", entity);
+
+		map.put("entity", entity);
 		List<?> list = zdryDtjsXsDao.queryRyxsList(page, map);
 		int count = (int) zdryDtjsXsDao.queryRyxsListCount(map);
 		page.setTotal(count);
@@ -465,5 +458,11 @@ public class ZdryDtjsServiceImpl extends BaseService implements ZdryDtjsService 
 	public List<ZdryDtjsXsxxb> queryByZdryid(String zdryid) {
 		
 		return null;
+	}
+
+	@Override
+	public void deleteDtjsXsjbxx(ZdryDtjsXsxxb entity, SessionBean sessionBean) {
+	    this.setCrossoutProperties(entity, sessionBean);
+		this.zdryDtjsXsDao.deleteDtjsXsjbxx(entity);	
 	}
 }

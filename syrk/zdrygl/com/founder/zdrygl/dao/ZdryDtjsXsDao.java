@@ -55,6 +55,11 @@ public class ZdryDtjsXsDao extends BaseDaoImpl {
 
 	}
 	
+	public void deleteDtjsXsjbxx(ZdryDtjsXsxxb entity){
+		update("ZdryDtjsXs.deleteZdryDtjsXsxxb", entity); 
+
+	}
+	
 	
 	public void updateGxdw(ZdryDtjsGxbgxxb entity) {
 		update("ZdryDtjsXs.updateGxdw",entity);		
@@ -81,7 +86,7 @@ public class ZdryDtjsXsDao extends BaseDaoImpl {
 	 * @throws
 	 */
 	public List<?> queryRyxsList(EasyUIPage page, Map<String, Object> map) {
-		return queryForList("ZdryDtjsXs.queryRyxsList", map);
+		return queryForList("ZdryDtjsXs.queryXsjbxxPageByZdryZjhm", map);
 	}
 	public List<?> queryGxbgList(EasyUIPage page, Map<String, Object> map) {
 		return queryForList("ZdryDtjsXs.queryGxbgList", map);
@@ -105,7 +110,7 @@ public class ZdryDtjsXsDao extends BaseDaoImpl {
 	 * @throws
 	 */
 	public long queryRyxsListCount(Map<String, Object> map) {
-		Integer count = (Integer) queryForObject("ZdryDtjsXs.queryRyxsListCount", map);
+		Integer count = (Integer) queryForObject("ZdryDtjsXs.queryXsjbxxCountByZdryZjhm", map);
 		return count.longValue();
 	}	
 	
