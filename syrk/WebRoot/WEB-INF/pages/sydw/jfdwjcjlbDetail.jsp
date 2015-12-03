@@ -133,17 +133,11 @@
 </body>
 </html>
 <script type="text/javascript">
-	var mainTabID = "${mainTabID}";
-	function doInit(paramArray) {
-		$('input').each(function(i,elment){
-			$(elment).attr("readonly","readonly");
-		});
-		
-	}
-	function beforeSubmit() {
-	}
-	function afterSubmit(arr) {
-	}
+	$(function(){
+		if('${printAble}' == null || '${printAble}' == ''){
+			$('#printButton').hide();
+		}
+	});
 	//打印
 	$('#printButton').click(function(){
 		window.print();

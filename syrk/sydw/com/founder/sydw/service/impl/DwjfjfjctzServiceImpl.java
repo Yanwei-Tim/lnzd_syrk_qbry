@@ -160,16 +160,6 @@ public class DwjfjfjctzServiceImpl extends BaseService implements DwjfjfjctzServ
 		setSaveProperties(entity, sessionBean);
 		this.dwjffctzscgDao.saveEntity(entity);
 		
-		//后续操作不为空，更新对应的检查记录状态
-		if(!StringUtils.isBlank(entity.getOperation())){
-			if ("0".equals(entity.getOperation())) {
-				//复查合格
-				this.dwjcxxbService.updateZt(entity.getJcid(), "5", sessionBean);
-			}else if ("1".equals(entity.getOperation())) {
-				//转行政案件
-				this.dwjcxxbService.updateZt(entity.getJcid(), "100", sessionBean);
-			}
-		}
 	}
 
 	@Override
@@ -177,16 +167,6 @@ public class DwjfjfjctzServiceImpl extends BaseService implements DwjfjfjctzServ
 		setUpdateProperties(entity, sessionBean);
 		this.dwjffctzscgDao.update(entity);
 		
-		//后续操作不为空，更新对应的检查记录状态
-		if(!StringUtils.isBlank(entity.getOperation())){
-			if ("0".equals(entity.getOperation())) {
-				//复查合格
-				this.dwjcxxbService.updateZt(entity.getJcid(), "5", sessionBean);
-			}else if ("1".equals(entity.getOperation())) {
-				//转行政案件
-				this.dwjcxxbService.updateZt(entity.getJcid(), "100", sessionBean);
-			}
-		}
 	}
 	
 	private SysMessageRemind buildMessage(String bt,String nr, SessionBean sessionBean){

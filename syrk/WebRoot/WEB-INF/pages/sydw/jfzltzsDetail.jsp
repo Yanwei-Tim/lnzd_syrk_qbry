@@ -12,33 +12,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>技防检查通知书</title>
-<style>
-	td{
-	  font-size:15px;
-	  word-break : break-all;
-	  vertical-align: top;
-	}
-	.date{
-		font-size:15px;
-		width: 500px;
-		text-align:left;
-		border-top: 0px;
-		border-left: 0px;
-		border-right: 0px;
-		border-color: #333333;
-		text-indent:5px;
-	}
-	.text{
-		font-size:15px;
-		width: 500px;
-		text-align:left;
-		border-top: 0px;
-		border-left: 0px;
-		border-right: 0px;
-		border-color: #333333;
-		text-indent:5px;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/sydw/sydwWord.css"><link/>
 </head>
 <body>
 	<div class="easyui-layout" data-options="fit:true" >
@@ -148,16 +122,12 @@
 </body>
 </html>
 <script type="text/javascript">
-	var mainTabID = "${mainTabID}";
-	function doInit(paramArray) {
-		
-	}
-	function beforeSubmit() {
-	}
-	function afterSubmit(arr) {
-	}
-	
 	$(function(){
+		
+		if('${printAble}' == null || '${printAble}' == ''){
+			$('#printButton').hide();
+		}
+		
 		var defaultVal = '${entity.gzfs}';
 		
 		if( defaultVal == null || defaultVal == ""){

@@ -28,7 +28,9 @@ public interface DwjcxxbService {
 	 * @param entity
 	 */
 	@MethodAnnotation(value = "修改", type = logType.update)
-	public void update(Dwjcxxb entity, SessionBean sessionBean);	
+	public void update(Dwjcxxb entity, SessionBean sessionBean);
+	
+	public void updateBaseInfo(Dwjcxxb entity, SessionBean sessionBean);	
 	
 	public void updateZt(String id,String zt, SessionBean sessionBean);
 	

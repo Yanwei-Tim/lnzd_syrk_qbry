@@ -12,31 +12,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>技防检查通知书存根</title>
-<style>
-	td{
-	  font-size:13px;
-	}
-	.date{
-		width: 600px;
-		line-height: 20px;
-		text-align:left;
-		border-top: 0px;
-		border-left: 0px;
-		border-right: 0px;
-		border-color: #333333;
-		text-indent:5px;
-	}
-	.text{
-		width: 400px;
-		line-height: 20px;
-		text-align:left;
-		border-top: 0px;
-		border-left: 0px;
-		border-right: 0px;
-		border-color: #333333;
-		text-indent:5px;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/sydw/sydwWord.css"><link/>
 </head>
 <body>
 	<div class="easyui-layout" data-options="fit:true">

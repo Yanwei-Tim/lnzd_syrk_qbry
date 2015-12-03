@@ -274,8 +274,6 @@ public class DwjcxxbController extends BaseController{
 		
 		SessionBean sessionBean = getSessionBean();
 		entity.setJcry(sessionBean.getUserName());
-		entity.setJcdw(sessionBean.getExtendValue("ssFsxName"));
-		entity.setJcdwid(sessionBean.getExtendValue("ssFsxCode"));
 		
 		Dwjbxxb dw = new Dwjbxxb();
 		dw.setId(dwid);

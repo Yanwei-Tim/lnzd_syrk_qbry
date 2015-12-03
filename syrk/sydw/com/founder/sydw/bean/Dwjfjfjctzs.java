@@ -42,6 +42,15 @@ public class Dwjfjfjctzs extends BaseEntity implements Serializable {
 	private String qt;
 	@FieldDesc("函告日期")
 	private String hgrq;
+	@FieldDesc("条数")
+	private String ts;
+	
+	public String getTs() {
+		return ts;
+	}
+	public void setTs(String ts) {
+		this.ts = ts;
+	}
 	public String getId() {
 		return id;
 	}
