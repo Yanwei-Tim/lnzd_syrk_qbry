@@ -12,6 +12,7 @@ import com.founder.framework.base.entity.BaseEntity;
  * @日期: 2015-11-22 下午4:10:43
  */
 public class PcryVO extends BaseEntity implements Serializable {
+	
 	private static final long serialVersionUID = 6458346650098513819L;
 	@FieldDesc("人员id")
 	private String ryid;
