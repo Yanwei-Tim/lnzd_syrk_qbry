@@ -1,10 +1,16 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page import="com.founder.framework.base.entity.SessionBean"%>
 <%@ include file="/WEB-INF/pages/commonInclude.jsp"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%
+	SessionBean userInfo = (SessionBean) session
+			.getAttribute("userSession");
+	String userOrgCode = userInfo.getUserOrgCode();	
+	%>
 <html>
 	<head>
 	  <title>动态纪实详细</title>
-	    <script type="text/javascript" src="<%=contextPath%>/js/zdry/dtjsMore.js"></script>
+	    <script type="text/javascript" src="<%=contextPath%>/js/zdrygl/dtjsMore.js"></script>
 	  <link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/bzdz.css"></link>
 </head>
 <body style="overflow: hidden;">
@@ -21,7 +27,7 @@
 						</tr>
 					</tbody>
 		 </table> 
-          <table id="dg" class="easyui-datagrid"  style="height:400px"
+          <table id="xsjbxx" class="easyui-datagrid"  style="height:400px"
            	data-options="url:'<%=basePath %>dtjsMore/moreDtjsXsjbxx?zdryZjhm=${zdryZjhm}',
 	           		selectOnCheck:true,
 	        		checkOnSelect:true,
@@ -53,7 +59,7 @@
 			        	<th data-options="field:'zklx',width:50,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_ZKLX.js'">在控类型</th>
 			        	<th data-options="field:'yjzq',width:90,align:'left',halign:'center'">约见周期</th>
 			        	<th data-options="field:'hsd_dzxz',width:100,align:'left',halign:'center'">核实地址</th>
-			        	<th data-options="field:'process',align:'center',width:100,halign:'center',formatter:datagridProcessFormater">操作</th>
+			        	<th data-options="field:'process',align:'center',width:100,halign:'center',formatter:xsjbxxFormater">操作</th>
 			        
 			        
 			        </tr>
@@ -61,11 +67,9 @@
 		   </table>
 		  
 		</div>
-		<div title="在逃属性" id="dwxx" style="height: 535px;">
-          <table id="dg" class="easyui-datagrid" 
-           	data-options="url:'<%=basePath %>sydwcx/queryDw?flag=jsq',
-	           		delayCountUrl:'<%=basePath %>sydwcx/queryCountDw?flag=jsq',
-	           		queryParams: {dz_dwdzdm:'${chdzid}'},   		
+		<div title="在逃属性" id="dwxx" style="height: 435px;">
+          <table id="ztxx" class="easyui-datagrid"  style="height:400px"
+           	data-options="url:'<%=basePath %>dtjsMore/moreDtjsZtxxb?zdryZjhm=${zdryZjhm}',
 	           		selectOnCheck:true,
 	        		checkOnSelect:true,
 	        		rownumbers:true,
@@ -75,14 +79,31 @@
 	        		nowrap:true">
 			    <thead>
 			        <tr>
-			            <th data-options="field:'dwlbdm',width:100,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_DW_DWLB.js',sortable:true">类别</th>
-			            <th data-options="field:'dwmc',width:170,align:'left',halign:'center'">单位名称</th>
-			            <th data-options="field:'dz_dwdzxz',width:280,align:'left',halign:'center'">单位地址</th>
-			            <th data-options="field:'process',width:60,align:'center',halign:'center'">操作</th>
+			            <th data-options="field:'sslb',width:80,align:'left',halign:'center',sortable:false,formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_ZDRYLBDM.js'">所属类别</th>
+			            <th data-options="field:'ztlx',width:80,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_ZJZT.js'">在逃类型</th>
+			            <th data-options="field:'lasj',width:80,align:'left',halign:'center'">立案时间</th>
+			            <th data-options="field:'ladwmc',width:120,align:'left',halign:'center'">立案单位</th>			         
+			            <th data-options="field:'tpsj',width:80,align:'center',halign:'center'">逃跑时间</th>
+			        	<th data-options="field:'tpfx',width:100,align:'left',halign:'center'">逃跑方向</th>
+			        	<th data-options="field:'ltrq',width:80,align:'left',halign:'center'">立逃日期</th>
+			        	<th data-options="field:'ltdwmc',width:100,align:'left',halign:'center'">立逃单位</th>
+			        	<th data-options="field:'ajlbdm',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_AJLB.js'">案件类别</th>
+			            <th data-options="field:'dbjb',width:100,align:'left',halign:'center'">督捕级别</th>
+			        	<th data-options="field:'aqms',width:150,align:'left',halign:'center'">案情描述</th>			        
 			        </tr>
 			    </thead>
 		   </table>
+		  
+		</div>
+    </form>
+</div>
+          
 		</div>
 	</div> 
 </body>
+<script type="text/javascript">
+var userOrgCode="<%=userOrgCode%>";
+
+
+</script>
 </html>

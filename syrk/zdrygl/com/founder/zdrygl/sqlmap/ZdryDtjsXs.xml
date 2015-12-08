@@ -4,12 +4,6 @@
 <sqlMap namespace="ZdryDtjsXs">
 
 	<typeAlias alias="zdryDtjsXsxxb" type="com.founder.zdrygl.bean.ZdryDtjsXsxxb" />
-	<typeAlias alias="DtjsGxbg" type="com.founder.zdrygl.bean.ZdryDtjsGxbgxxb" />
-	<typeAlias alias="DtjsShgxr" type="com.founder.zdrygl.bean.ZdryDtjsShgxrxxb" />
-	<typeAlias alias="DtjsSaxx" type="com.founder.zdrygl.bean.ZdryDtjsSaxxb" />
-	<typeAlias alias="DtjsClxx" type="com.founder.zdrygl.bean.ZdryDtjsClxxb" />
-	
-	
 
     <select id="queryZdryDtjsXsxxbById" parameterClass="String" resultClass="zdryDtjsXsxxb">
 		<![CDATA[ select * from ZDRY_DTJS_XSXXB t where ID = #id#  and rownum = 1  ]]>

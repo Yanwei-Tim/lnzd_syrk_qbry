@@ -203,7 +203,32 @@ function doInit(paramArray) {
 	initAddressSearch("jzd1", {zrqdm:'#jzd_zrqdm'}, "jzd_mlpdm", "jzd_mlpxz", "jzd2", {text:"jzd_dzxz",dzxzqh:"jzd_xzqhdm",id:"jzd_dzid"}, null, null);
 	initAddressSearch("hsd1", {zrqdm:'#hsd_zrqdm'}, "hsd_mlpdm", "hsd_mlpxz", "hsd2", {text:"hsd_dzxz",dzxzqh:"hsd_xzqhdm",id:"hsd_dzid"}, null, null);
 	initDepartmentSearch('gzdw_dwmc', {glpcsid: ''}, 'gzdwid', 'gzdwmc', null, null);
-
+    if("${type}"=="view"){
+    	setInputReadonly("hssj", true);
+    	setInputReadonly("hsd1", true);
+    	setInputReadonly("hsd2", true);
+    	setInputReadonly("zkzt", true);
+    	setInputReadonly("zjzt", true);
+    	setInputReadonly("lksj", true);
+    	setInputReadonly("qwss", true);
+    	setInputReadonly("wxjb", true);
+    	setInputReadonly("zyyx", true);
+    	setInputReadonly("zy", true);
+    	setInputReadonly("sjsr", true);
+    	setInputReadonly("jjly", true);
+    	setInputReadonly("gzdw_dwmc", true);
+    	setInputReadonly("gzdwxz", true);
+    	setInputReadonly("jzd1", true);
+    	setInputReadonly("jzd2", true);
+    	setInputReadonly("gxdwmc", true);
+    	setInputReadonly("sfjdbr", true);
+    	setInputReadonly("zklx", true);
+    	setInputReadonly("yjzq", true);
+    	setInputReadonly("zxqsxx", true);
+    	setInputReadonly("xnsfxx", true);
+    	setInputReadonly("hsqkms", true);
+    	
+    }
 }
 
 function beforeSubmit() {

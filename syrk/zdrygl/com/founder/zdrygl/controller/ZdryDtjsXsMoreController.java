@@ -26,7 +26,7 @@ import com.founder.zdrygl.service.ZdryDtjsService;
 import com.google.gson.Gson;
 @Controller
 @RequestMapping("dtjsMore")
-public class ZdryDtjsMoreController extends BaseController {
+public class ZdryDtjsXsMoreController extends BaseController {
 	@Resource(name = "zdryDtjsService")
 	private ZdryDtjsService zdryDtjsService;
 	
@@ -66,12 +66,13 @@ public class ZdryDtjsMoreController extends BaseController {
 	}
 	
 	@RequestMapping(value = "/editDtjsXsjbxx", method = RequestMethod.GET)
-	public ModelAndView editDtjsXsjbxx( String id,
+	public ModelAndView editDtjsXsjbxx( String id,String type,
 			SessionBean sessionBean) throws BussinessException {
 		    sessionBean = getSessionBean(sessionBean);
 			ModelAndView mv = new ModelAndView("zdrygl/dtjsMoreXsjbxxAdd");		
 			ZdryDtjsXsxxb entity=this.zdryDtjsService.queryXsjbxxById(id);
 			mv.addObject("entity", entity);
+			mv.addObject("type", type);
 			return mv;
 		
 	}
