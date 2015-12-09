@@ -215,6 +215,18 @@
 			   <isNotEmpty prepend="AND" property="entity.age">
 				     SUBSTR(T.CSRQ, 0, 4) = #entity.age#
 			   </isNotEmpty>
+			   <isNotEmpty prepend="and" property="entity.csrqB">
+				   <![CDATA[ T.CSRQ >= #entity.csrqB#  ]]> 
+			   </isNotEmpty>
+			   <isNotEmpty prepend="and" property="entity.csrqE">
+				   <![CDATA[ T.CSRQ <= #entity.csrqE# ]]> 
+			   </isNotEmpty>
+			   <isNotEmpty prepend="and" property="entity.jgssxdm">
+				   <![CDATA[ T.JGSSXDM = #entity.jgssxdm# ]]> 
+			   </isNotEmpty>
+			   <isNotEmpty prepend="and" property="entity.hjd_xzqhdm">
+				   <![CDATA[ T.HJD_XZQHDM = #entity.hjd_xzqhdm# ]]> 
+			   </isNotEmpty>
 		       	  ORDER BY T.$sort$ $order$) M 
 		  <![CDATA[WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
 	</select>
@@ -259,6 +271,18 @@
 		   </isNotEmpty>
 		   <isNotEmpty prepend="AND" property="entity.age">
 			     SUBSTR(T.CSRQ, 0, 4) = #entity.age#
+		   </isNotEmpty>
+		   <isNotEmpty prepend="and" property="entity.csrqB">
+		   <![CDATA[ T.CSRQ >= #entity.csrqB#  ]]> 
+		   </isNotEmpty>
+		   <isNotEmpty prepend="and" property="entity.csrqE">
+			   <![CDATA[ T.CSRQ <= #entity.csrqE# ]]> 
+		   </isNotEmpty>
+		   <isNotEmpty prepend="and" property="entity.jgssxdm">
+			   <![CDATA[ T.JGSSXDM = #entity.jgssxdm# ]]> 
+		   </isNotEmpty>
+		   <isNotEmpty prepend="and" property="entity.hjd_xzqhdm">
+			   <![CDATA[ T.HJD_XZQHDM = #entity.hjd_xzqhdm# ]]> 
 		   </isNotEmpty>
 	</select>
 
