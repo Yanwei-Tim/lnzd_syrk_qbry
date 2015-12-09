@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.founder.zdrygl.dao.*;
 import org.apache.commons.fileupload.FileItem;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,22 +34,6 @@ import com.founder.zdrygl.bean.ZdryZdrkxxb;
 import com.founder.zdrygl.bean.ZdryZdryzb;
 import com.founder.zdrygl.bean.ZdryZszhjsbrxxb;
 import com.founder.zdrygl.bean.Zdrylxylbdyb;
-import com.founder.zdrygl.dao.ZdryDtjsXsDao;
-import com.founder.zdrygl.dao.ZdryEditDao;
-import com.founder.zdrygl.dao.ZdryFzcsfryxxbDao;
-import com.founder.zdrygl.dao.ZdryGzbDao;
-import com.founder.zdrygl.dao.ZdryJgdxqxjdjbDao;
-import com.founder.zdrygl.dao.ZdryJgdxxxbDao;
-import com.founder.zdrygl.dao.ZdryJkbjllxxbDao;
-import com.founder.zdrygl.dao.ZdryPsjdbDao;
-import com.founder.zdrygl.dao.ZdrySgafzdryxxbDao;
-import com.founder.zdrygl.dao.ZdryShbzdryxxbDao;
-import com.founder.zdrygl.dao.ZdrySqjzryxxbDao;
-import com.founder.zdrygl.dao.ZdrySqsbzdryxxbDao;
-import com.founder.zdrygl.dao.ZdryZdrkxxbDao;
-import com.founder.zdrygl.dao.ZdryZdryzbDao;
-import com.founder.zdrygl.dao.ZdryZszhjsbrxxbDao;
-import com.founder.zdrygl.dao.ZdrylxylbdybDao;
 import com.founder.zdrygl.service.ZdryEditService;
 import com.founder.zdrygl.until.ZdryUntil;
 import com.founder.zdrygl.vo.ZdryVO;
@@ -107,6 +92,13 @@ public class ZdryEditServiceImpl extends BaseService implements ZdryEditService 
 	private ZdryJgdxqxjdjbDao zdryJgdxqxjdjbDao;
 	@Resource(name = "zdryPsjdbDao")
 	private ZdryPsjdbDao zdryPsjdbDao;
+	@Resource
+	private ZdryZdrykcxxbDao zdryZdrykcxxbDao;
+	@Resource
+	private ZdryWffzjlxxbDao zdryWffzjlxxbDao;
+
+	@Resource
+	private ZdryZagltdxxbDao zdryZagltdxxbDao;
 
 	@Resource(name = "zpfjFjxxbService")
 	private ZpfjFjxxbService zpfjFjxxbService;
@@ -134,7 +126,7 @@ public class ZdryEditServiceImpl extends BaseService implements ZdryEditService 
 		for (Map<String,String> zdrkMap : list) {
 			map.remove("dlbh");
 			map.put("zdryid",zdrkMap.get("zdryid"));
-			map.put("isEdit",zdrkMap.get("isEdit"));
+			map.put("isEdit",zdrkMap.get("isEdit")==null?"1":"0");
 			map.put("zdrylx",zdrkMap.get("fz"));//由于各个区域的重点人员类型代码不一样，所以改用分组来区分用什么界面显示
 			map.put("gxzrq",zdrkMap.get("GXZRQ"));			
 			map.put("xxdxlxdm","1");
@@ -258,7 +250,25 @@ public class ZdryEditServiceImpl extends BaseService implements ZdryEditService 
 		map.put("maxNum", "10");
 		return zdryPsjdbDao.queryViewList(map);
 	}
-	
+
+	@Override
+	public List zdrykcxxb_query(Map<String, Object> map){
+		map.put("maxNum", "10");
+		return zdryZdrykcxxbDao.queryViewList(map);
+	}
+
+	@Override
+	public List zdrywffzjlxxb_query(Map<String, Object> map){
+		map.put("maxNum", "10");
+		return zdryWffzjlxxbDao.queryViewList(map);
+	}
+
+	@Override
+	public List zdryzagltdxxb_query(Map<String, Object> map){
+		map.put("maxNum", "10");
+		return zdryZagltdxxbDao.queryViewList(map);
+	}
+
 	@Override
 	public ZdryVO queryZdryAllInfo(String zdryid) {
 		ZdryVO zdryVO =new ZdryVO();

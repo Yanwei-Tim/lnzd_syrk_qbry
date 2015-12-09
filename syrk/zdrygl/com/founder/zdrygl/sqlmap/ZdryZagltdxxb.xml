@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+				"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<sqlMap namespace="ZdryZagltdxxb">
+
+    <typeAlias alias="zdryZagltdxxb" type="com.founder.zdrygl.bean.ZdryZagltdxxb" />
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+	    <![CDATA[
+		ID,ZDRYID,AJLBDM,XZDXDM,XZWPDM,ZASDDM,ZAGJDM,XYRXZFSDM,ZATDDM,XZSJDM,XZCSDM,BZ,XT_CJSJ,XT_LRSJ,XT_LRRXM,XT_LRRID,XT_LRRBM,XT_LRRBMID,XT_LRIP,XT_ZHXGSJ,XT_ZHXGRXM,XT_ZHXGRID,XT_ZHXGRBM,XT_ZHXGRBMID,XT_ZHXGIP,XT_ZXBZ,XT_ZXYY
+	    ]]>
+	</sql>
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+
+
+    <sql id="insertColumns">
+		    <isNotEmpty property="id">ID</isNotEmpty>
+		    <isNotEmpty prepend="," property="zdryid">ZDRYID</isNotEmpty>
+		    <isNotEmpty prepend="," property="ajlbdm">AJLBDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="xzdxdm">XZDXDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="xzwpdm">XZWPDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="zasddm">ZASDDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="zagjdm">ZAGJDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="xyrxzfsdm">XYRXZFSDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="zatddm">ZATDDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="xzsjdm">XZSJDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="xzcsdm">XZCSDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="bz">BZ</isNotEmpty>
+		    ,
+			<include refid="insertXtzd"/>
+	</sql>
+
+	<sql id="insertColumnsValues">
+			<isNotEmpty property="id">#id#</isNotEmpty>
+			<isNotEmpty prepend="," property="zdryid">#zdryid#</isNotEmpty>
+			<isNotEmpty prepend="," property="ajlbdm">#ajlbdm#</isNotEmpty>
+			<isNotEmpty prepend="," property="xzdxdm">#xzdxdm#</isNotEmpty>
+			<isNotEmpty prepend="," property="xzwpdm">#xzwpdm#</isNotEmpty>
+			<isNotEmpty prepend="," property="zasddm">#zasddm#</isNotEmpty>
+			<isNotEmpty prepend="," property="zagjdm">#zagjdm#</isNotEmpty>
+			<isNotEmpty prepend="," property="xyrxzfsdm">#xyrxzfsdm#</isNotEmpty>
+			<isNotEmpty prepend="," property="zatddm">#zatddm#</isNotEmpty>
+			<isNotEmpty prepend="," property="xzsjdm">#xzsjdm#</isNotEmpty>
+			<isNotEmpty prepend="," property="xzcsdm">#xzcsdm#</isNotEmpty>
+			<isNotEmpty prepend="," property="bz">#bz#</isNotEmpty>
+			,
+			<include refid="insertXtzdVal"/>
+	</sql>
+
+	<insert id="save" parameterClass="zdryZagltdxxb">
+		INSERT INTO ZDRY_ZAGLTDXXB (
+		<include refid="insertColumns"/>
+		) VALUES (
+		<include refid="insertColumnsValues"/>
+		)
+	</insert>
+
+
+	<sql id="updateColumns">
+		<dynamic prepend="set">
+	       <isNotNull prepend="," property="id">ID = #id#</isNotNull>
+	       <isNotNull prepend="," property="zdryid">ZDRYID = #zdryid#</isNotNull>
+	       <isNotNull prepend="," property="ajlbdm">AJLBDM = #ajlbdm#</isNotNull>
+	       <isNotNull prepend="," property="xzdxdm">XZDXDM = #xzdxdm#</isNotNull>
+	       <isNotNull prepend="," property="xzwpdm">XZWPDM = #xzwpdm#</isNotNull>
+	       <isNotNull prepend="," property="zasddm">ZASDDM = #zasddm#</isNotNull>
+	       <isNotNull prepend="," property="zagjdm">ZAGJDM = #zagjdm#</isNotNull>
+	       <isNotNull prepend="," property="xyrxzfsdm">XYRXZFSDM = #xyrxzfsdm#</isNotNull>
+	       <isNotNull prepend="," property="zatddm">ZATDDM = #zatddm#</isNotNull>
+	       <isNotNull prepend="," property="xzsjdm">XZSJDM = #xzsjdm#</isNotNull>
+	       <isNotNull prepend="," property="xzcsdm">XZCSDM = #xzcsdm#</isNotNull>
+	       <isNotNull prepend="," property="bz">BZ = #bz#</isNotNull>
+			,
+			<include refid="updateXtzd"/>
+		</dynamic>
+	</sql>
+
+
+	<update id="update" >
+		UPDATE ZDRY_ZAGLTDXXB
+		<include refid="updateColumns"/>
+		WHERE
+		ID = #id#
+	</update>
+
+		<!-- 注销 -->
+    <update id="delete" parameterClass="zdryZagltdxxb">
+       <![CDATA[ update ZDRY_ZAGLTDXXB set ]]><include refid="deleteXtzd"/><![CDATA[ where ID = #id# ]]>
+    </update>
+    
+    <select id="queryById" resultClass="zdryZagltdxxb">
+		SELECT <include refid="columns" />
+	    <![CDATA[
+		    FROM ZDRY_ZAGLTDXXB 
+	        WHERE 
+		        ID = #id# 
+	    ]]>
+	</select>
+	
+	<sql id="queryWhere">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<dynamic prepend="where">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.id">
+				AND ID = #zdryZagltdxxbVO.id#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.zdryid">
+				AND ZDRYID = #zdryZagltdxxbVO.zdryid#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.ajlbdm">
+				AND AJLBDM = #zdryZagltdxxbVO.ajlbdm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xzdxdm">
+				AND XZDXDM = #zdryZagltdxxbVO.xzdxdm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xzwpdm">
+				AND XZWPDM = #zdryZagltdxxbVO.xzwpdm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.zasddm">
+				AND ZASDDM = #zdryZagltdxxbVO.zasddm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.zagjdm">
+				AND ZAGJDM = #zdryZagltdxxbVO.zagjdm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xyrxzfsdm">
+				AND XYRXZFSDM = #zdryZagltdxxbVO.xyrxzfsdm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.zatddm">
+				AND ZATDDM = #zdryZagltdxxbVO.zatddm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xzsjdm">
+				AND XZSJDM = #zdryZagltdxxbVO.xzsjdm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xzcsdm">
+				AND XZCSDM = #zdryZagltdxxbVO.xzcsdm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.bz">
+				AND BZ = #zdryZagltdxxbVO.bz#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_cjsj">
+				AND XT_CJSJ = #zdryZagltdxxbVO.xt_cjsj#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_lrsj">
+				AND XT_LRSJ = #zdryZagltdxxbVO.xt_lrsj#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_lrrxm">
+				AND XT_LRRXM = #zdryZagltdxxbVO.xt_lrrxm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_lrrid">
+				AND XT_LRRID = #zdryZagltdxxbVO.xt_lrrid#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_lrrbm">
+				AND XT_LRRBM = #zdryZagltdxxbVO.xt_lrrbm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_lrrbmid">
+				AND XT_LRRBMID = #zdryZagltdxxbVO.xt_lrrbmid#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_lrip">
+				AND XT_LRIP = #zdryZagltdxxbVO.xt_lrip#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_zhxgsj">
+				AND XT_ZHXGSJ = #zdryZagltdxxbVO.xt_zhxgsj#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_zhxgrxm">
+				AND XT_ZHXGRXM = #zdryZagltdxxbVO.xt_zhxgrxm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_zhxgrid">
+				AND XT_ZHXGRID = #zdryZagltdxxbVO.xt_zhxgrid#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_zhxgrbm">
+				AND XT_ZHXGRBM = #zdryZagltdxxbVO.xt_zhxgrbm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_zhxgrbmid">
+				AND XT_ZHXGRBMID = #zdryZagltdxxbVO.xt_zhxgrbmid#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_zhxgip">
+				AND XT_ZHXGIP = #zdryZagltdxxbVO.xt_zhxgip#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_zxbz">
+				AND XT_ZXBZ = #zdryZagltdxxbVO.xt_zxbz#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_zxyy">
+				AND XT_ZXYY = #zdryZagltdxxbVO.xt_zxyy#
+			</isNotEmpty>
+		</dynamic>
+	</sql>
+		
+    <select id="queryCount" resultClass="Integer">
+        SELECT count(*) FROM ZDRY_ZAGLTDXXB 
+		<include refid="queryWhere"/>
+    </select>
+    
+    <!--
+    	分页查询已经使用Dialect进行分页,也可以不使用Dialect直接编写分页
+    	因为分页查询将传 offset,pageSize,lastRows 三个参数,不同的数据库可以根于此三个参数属性应用不同的分页实现
+    -->
+    <select id="query" resultClass="zdryZagltdxxb">
+    	SELECT <include refid="columns" />
+	    FROM ZDRY_ZAGLTDXXB 
+		<include refid="queryWhere"/>
+		
+		<isNotEmpty prepend="and" property="page.sort">
+			ORDER BY '$sort$'
+		</isNotEmpty>
+    </select>
+
+	<!-- 查询显示列表 -->
+	<select id="queryViewList" parameterClass="Map" resultClass="zdryZagltdxxb">
+		<![CDATA[ select * from (
+			select * from ZDRY_ZAGLTDXXB t where t.XT_ZXBZ = '0' and ZDRYID = #zdryid# ]]>
+		<![CDATA[ order by xt_cjsj desc) m where rownum <= #maxNum# ]]>
+	</select>
+
+</sqlMap>
+
