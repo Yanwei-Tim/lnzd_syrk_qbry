@@ -31,7 +31,9 @@ public class ZdryDtjsSwxxb extends BaseEntity implements Serializable {
 	@FieldDesc("所属类别细类")
 	private String sslbxl;
 	@FieldDesc("所属组织")
-	private String sszz;
+	private String sszzdm;	
+	@FieldDesc("所属组织名称")
+	private String sszzmc;
 	@FieldDesc("情况概述")
 	private String qkgs;
 	@FieldDesc("重点人证件号码")
@@ -54,11 +56,18 @@ public class ZdryDtjsSwxxb extends BaseEntity implements Serializable {
 	public void setSslbxl(String sslbxl) {
 		this.sslbxl = sslbxl;
 	}
-	public String getSszz() {
-		return sszz;
+	public String getSszzdm() {
+		return sszzdm;
 	}
-	public void setSszz(String sszz) {
-		this.sszz = sszz;
+	public void setSszzdm(String sszz) {
+		this.sszzdm = sszz;
+	}
+	
+	public String getSszzmc() {
+		return sszzmc;
+	}
+	public void setSszzmc(String sszzmc) {
+		this.sszzmc = sszzmc;
 	}
 	public String getQkgs() {
 		return qkgs;

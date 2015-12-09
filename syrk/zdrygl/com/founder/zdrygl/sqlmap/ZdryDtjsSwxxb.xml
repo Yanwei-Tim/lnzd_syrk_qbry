@@ -31,7 +31,8 @@
 				 <isNotNull prepend="," property="id"><![CDATA[ ID=#id# ]]></isNotNull>
 				 <isNotNull prepend="," property="sslb"><![CDATA[ SSLB=#sslb# ]]></isNotNull>
 				 <isNotNull prepend="," property="sslbxl"><![CDATA[ SSLBXL=#sslbxl# ]]></isNotNull>
-				 <isNotNull prepend="," property="sszz"><![CDATA[ SSZZ=#sszz# ]]></isNotNull>
+				 <isNotNull prepend="," property="sszzdm"><![CDATA[ SSZZDM=#sszzdm# ]]></isNotNull>
+				 <isNotNull prepend="," property="sszzmc"><![CDATA[ SSZZMC=#sszzmc# ]]></isNotNull>				 
 				 <isNotNull prepend="," property="qkgs"><![CDATA[ QKGS=#qkgs# ]]></isNotNull>
 				 <isNotNull prepend="," property="zdryzjhm"><![CDATA[ ZDRYZJHM=#zdryzjhm# ]]></isNotNull>
 				
@@ -43,8 +44,8 @@
      
     <!-- 插入人员写实表 -->
     <insert id="save" parameterClass="zdryDtjsSwxxb">
-        <![CDATA[ insert into ZDRY_DTJS_SWXXB (ID,SSLB,SSLBXL,SSZZ,QKGS,ZDRYZJHM,]]><include refid="insertXtzd"/>)
-		<![CDATA[ values (#id#,#sslb#,#sslbxl#,#sszz#,#qkgs#,#zdryzjhm#,]]>
+        <![CDATA[ insert into ZDRY_DTJS_SWXXB (ID,SSLB,SSLBXL,SSZZDM,SSZZMC,QKGS,ZDRYZJHM,]]><include refid="insertXtzd"/>)
+		<![CDATA[ values (#id#,#sslb#,#sslbxl#,#sszzdm#,#sszzmc#,#qkgs#,#zdryzjhm#,]]>
 		<include refid="insertXtzdVal"/>)
     </insert>
     

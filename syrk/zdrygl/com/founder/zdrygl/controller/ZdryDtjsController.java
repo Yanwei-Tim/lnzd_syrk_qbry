@@ -73,7 +73,7 @@ public class ZdryDtjsController extends BaseController {
 	
 	
 	@RequestMapping(value="/dtjsMain",method = RequestMethod.GET)
-	public ModelAndView zdryDtjsZtxxAddPre(String ryid){
+	public ModelAndView zdryDtjsXsjbxxAddPre(String ryid){
 		ModelAndView mv = new ModelAndView("zdrygl/dtjs/dtjsMain");
 		
 		RyRyjbxxb ryRyjbxxb = ryRyjbxxbService.queryById(ryid);//人员基本信息
