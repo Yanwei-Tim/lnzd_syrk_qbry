@@ -3,6 +3,8 @@ package com.founder.zdrygl.controller;
 import javax.annotation.Resource;
 
 import com.founder.framework.utils.EasyUIPage;
+import com.founder.syrkgl.bean.RyRyjbxxb;
+import com.founder.syrkgl.service.RyRyjbxxbService;
 import com.founder.zdrygl.bean.ZdryWffzjlxxb;
 import com.founder.zdrygl.bean.ZdryZdrykcxxb;
 import org.apache.commons.beanutils.MethodUtils;
@@ -55,6 +57,8 @@ public class ZdryZagltdxxbController extends BaseController{
 
 	@Resource
 	private ZdryZagltdxxbService zdryZagltdxxbService;
+	@Resource
+	private RyRyjbxxbService ryRyjbxxbService;
 
 	/**
 	 *
@@ -67,11 +71,15 @@ public class ZdryZagltdxxbController extends BaseController{
 	 * @throws
 	 */
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public ModelAndView add(String zdryid) throws BussinessException {
+	public ModelAndView add(String zdryid,String ryid) throws BussinessException {
 		ModelAndView mv = new ModelAndView("/zdrygl/edit/zdryZagltdxxb");
 		SessionBean sessionBean = getSessionBean();
 		ZdryZagltdxxb entity = new ZdryZagltdxxb();
 		entity.setZdryid(zdryid);
+		RyRyjbxxb ryRyjbxxb=ryRyjbxxbService.queryById(ryid);
+		if (ryRyjbxxb!=null){
+			entity.setSfzh( ryRyjbxxb.getZjhm());
+		}
 		mv.addObject("entity", entity);
 		return mv;
 	}

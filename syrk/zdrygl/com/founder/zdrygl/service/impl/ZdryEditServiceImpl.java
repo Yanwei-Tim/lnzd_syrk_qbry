@@ -260,12 +260,22 @@ public class ZdryEditServiceImpl extends BaseService implements ZdryEditService 
 	@Override
 	public List zdrywffzjlxxb_query(Map<String, Object> map){
 		map.put("maxNum", "10");
+		RyRyjbxxb ryRyjbxxb=ryRyjbxxbService.queryById(String.valueOf(map.get("ryid")));
+		if (ryRyjbxxb==null){
+			return new ArrayList();
+		}
+		map.put("sfzh",ryRyjbxxb.getZjhm());
 		return zdryWffzjlxxbDao.queryViewList(map);
 	}
 
 	@Override
 	public List zdryzagltdxxb_query(Map<String, Object> map){
 		map.put("maxNum", "10");
+		RyRyjbxxb ryRyjbxxb=ryRyjbxxbService.queryById(String.valueOf(map.get("ryid")));
+		if (ryRyjbxxb==null){
+			return new ArrayList();
+		}
+		map.put("sfzh",ryRyjbxxb.getZjhm());
 		return zdryZagltdxxbDao.queryViewList(map);
 	}
 
@@ -370,7 +380,7 @@ public class ZdryEditServiceImpl extends BaseService implements ZdryEditService 
 						FileItem fileItem = multipartFile.getFileItem();
 						ZpfjFjxxb entity = new ZpfjFjxxb();
 						entity.setLybm("ZDRY_ZDRYZB");
-						entity.setLyid(zdryVO.getZdryZdryzb().getId());
+						entity.setLyid(zdryVO.getZdryZdryzb().getRyid());
 						entity.setLyms("社区矫正人员-判决书");
 						String wjmc = fileItem.getName();
 						if (wjmc.indexOf("\\") != -1) { // 去除完整路径

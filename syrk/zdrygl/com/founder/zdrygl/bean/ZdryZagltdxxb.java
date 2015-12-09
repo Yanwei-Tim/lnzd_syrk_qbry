@@ -25,6 +25,7 @@ import com.founder.framework.base.entity.BaseEntity;
 public class ZdryZagltdxxb extends BaseEntity implements Serializable{
    @FieldDesc("作案规律特点ID") private String id;
    @FieldDesc("重点人员ID") private String zdryid;
+   @FieldDesc("身份证号 ") private String sfzh;
    @FieldDesc("案件类别代码") private String ajlbdm;
    @FieldDesc("选择对象代码") private String xzdxdm;
    @FieldDesc("选择物品代码") private String xzwpdm;
@@ -59,6 +60,15 @@ public class ZdryZagltdxxb extends BaseEntity implements Serializable{
 	public String getZdryid() {
 		return this.zdryid;
 	}
+
+	public String getSfzh() {
+		return sfzh;
+	}
+
+	public void setSfzh(String sfzh) {
+		this.sfzh = sfzh;
+	}
+
 	public void setAjlbdm(String value) {
 		this.ajlbdm = value;
 	}

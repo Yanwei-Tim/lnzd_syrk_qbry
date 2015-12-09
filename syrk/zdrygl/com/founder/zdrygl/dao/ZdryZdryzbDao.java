@@ -171,7 +171,7 @@ public class ZdryZdryzbDao extends BaseDaoImpl {
 	
 	public List<ZpfjFjxxb> fjxx_query(Map<String, Object> map){
 		map.put("lybm","ZDRY_ZDRYZB");
-		map.put("id",map.get("zdryid"));
+		map.put("id",map.get("ryid"));
 		return queryForList("ZpfjFjxxb.fjxx_query", map);
 	}
 	

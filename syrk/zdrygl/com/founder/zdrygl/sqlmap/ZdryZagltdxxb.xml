@@ -11,7 +11,7 @@
 	<!-- 用于select查询公用抽取的列 -->
 	<sql id="columns">
 	    <![CDATA[
-		ID,ZDRYID,AJLBDM,XZDXDM,XZWPDM,ZASDDM,ZAGJDM,XYRXZFSDM,ZATDDM,XZSJDM,XZCSDM,BZ,XT_CJSJ,XT_LRSJ,XT_LRRXM,XT_LRRID,XT_LRRBM,XT_LRRBMID,XT_LRIP,XT_ZHXGSJ,XT_ZHXGRXM,XT_ZHXGRID,XT_ZHXGRBM,XT_ZHXGRBMID,XT_ZHXGIP,XT_ZXBZ,XT_ZXYY
+		ID,ZDRYID,SFZH,AJLBDM,XZDXDM,XZWPDM,ZASDDM,ZAGJDM,XYRXZFSDM,ZATDDM,XZSJDM,XZCSDM,BZ,XT_CJSJ,XT_LRSJ,XT_LRRXM,XT_LRRID,XT_LRRBM,XT_LRRBMID,XT_LRIP,XT_ZHXGSJ,XT_ZHXGRXM,XT_ZHXGRID,XT_ZHXGRBM,XT_ZHXGRBMID,XT_ZHXGIP,XT_ZXBZ,XT_ZXYY
 	    ]]>
 	</sql>
 
@@ -21,6 +21,7 @@
     <sql id="insertColumns">
 		    <isNotEmpty property="id">ID</isNotEmpty>
 		    <isNotEmpty prepend="," property="zdryid">ZDRYID</isNotEmpty>
+		    <isNotEmpty prepend="," property="sfzh">SFZH</isNotEmpty>
 		    <isNotEmpty prepend="," property="ajlbdm">AJLBDM</isNotEmpty>
 		    <isNotEmpty prepend="," property="xzdxdm">XZDXDM</isNotEmpty>
 		    <isNotEmpty prepend="," property="xzwpdm">XZWPDM</isNotEmpty>
@@ -38,6 +39,7 @@
 	<sql id="insertColumnsValues">
 			<isNotEmpty property="id">#id#</isNotEmpty>
 			<isNotEmpty prepend="," property="zdryid">#zdryid#</isNotEmpty>
+			<isNotEmpty prepend="," property="sfzh">#sfzh#</isNotEmpty>
 			<isNotEmpty prepend="," property="ajlbdm">#ajlbdm#</isNotEmpty>
 			<isNotEmpty prepend="," property="xzdxdm">#xzdxdm#</isNotEmpty>
 			<isNotEmpty prepend="," property="xzwpdm">#xzwpdm#</isNotEmpty>
@@ -105,85 +107,88 @@
 	<sql id="queryWhere">
 		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
 		<dynamic prepend="where">
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.id">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.id">
 				AND ID = #zdryZagltdxxbVO.id#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.zdryid">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.zdryid">
 				AND ZDRYID = #zdryZagltdxxbVO.zdryid#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.ajlbdm">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.sfzh">
+				AND SFZH = #zdryZagltdxxbVO.sfzh#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.ajlbdm">
 				AND AJLBDM = #zdryZagltdxxbVO.ajlbdm#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xzdxdm">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xzdxdm">
 				AND XZDXDM = #zdryZagltdxxbVO.xzdxdm#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xzwpdm">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xzwpdm">
 				AND XZWPDM = #zdryZagltdxxbVO.xzwpdm#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.zasddm">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.zasddm">
 				AND ZASDDM = #zdryZagltdxxbVO.zasddm#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.zagjdm">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.zagjdm">
 				AND ZAGJDM = #zdryZagltdxxbVO.zagjdm#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xyrxzfsdm">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xyrxzfsdm">
 				AND XYRXZFSDM = #zdryZagltdxxbVO.xyrxzfsdm#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.zatddm">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.zatddm">
 				AND ZATDDM = #zdryZagltdxxbVO.zatddm#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xzsjdm">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xzsjdm">
 				AND XZSJDM = #zdryZagltdxxbVO.xzsjdm#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xzcsdm">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xzcsdm">
 				AND XZCSDM = #zdryZagltdxxbVO.xzcsdm#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.bz">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.bz">
 				AND BZ = #zdryZagltdxxbVO.bz#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_cjsj">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xt_cjsj">
 				AND XT_CJSJ = #zdryZagltdxxbVO.xt_cjsj#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_lrsj">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xt_lrsj">
 				AND XT_LRSJ = #zdryZagltdxxbVO.xt_lrsj#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_lrrxm">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xt_lrrxm">
 				AND XT_LRRXM = #zdryZagltdxxbVO.xt_lrrxm#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_lrrid">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xt_lrrid">
 				AND XT_LRRID = #zdryZagltdxxbVO.xt_lrrid#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_lrrbm">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xt_lrrbm">
 				AND XT_LRRBM = #zdryZagltdxxbVO.xt_lrrbm#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_lrrbmid">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xt_lrrbmid">
 				AND XT_LRRBMID = #zdryZagltdxxbVO.xt_lrrbmid#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_lrip">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xt_lrip">
 				AND XT_LRIP = #zdryZagltdxxbVO.xt_lrip#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_zhxgsj">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xt_zhxgsj">
 				AND XT_ZHXGSJ = #zdryZagltdxxbVO.xt_zhxgsj#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_zhxgrxm">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xt_zhxgrxm">
 				AND XT_ZHXGRXM = #zdryZagltdxxbVO.xt_zhxgrxm#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_zhxgrid">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xt_zhxgrid">
 				AND XT_ZHXGRID = #zdryZagltdxxbVO.xt_zhxgrid#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_zhxgrbm">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xt_zhxgrbm">
 				AND XT_ZHXGRBM = #zdryZagltdxxbVO.xt_zhxgrbm#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_zhxgrbmid">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xt_zhxgrbmid">
 				AND XT_ZHXGRBMID = #zdryZagltdxxbVO.xt_zhxgrbmid#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_zhxgip">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xt_zhxgip">
 				AND XT_ZHXGIP = #zdryZagltdxxbVO.xt_zhxgip#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_zxbz">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xt_zxbz">
 				AND XT_ZXBZ = #zdryZagltdxxbVO.xt_zxbz#
 			</isNotEmpty>
-	       <isNotEmpty prepend="and" property="zdryZagltdxxb.xt_zxyy">
+	       <isNotEmpty prepend="and" property="zdryZagltdxxbVO.xt_zxyy">
 				AND XT_ZXYY = #zdryZagltdxxbVO.xt_zxyy#
 			</isNotEmpty>
 		</dynamic>
@@ -211,7 +216,7 @@
 	<!-- 查询显示列表 -->
 	<select id="queryViewList" parameterClass="Map" resultClass="zdryZagltdxxb">
 		<![CDATA[ select * from (
-			select * from ZDRY_ZAGLTDXXB t where t.XT_ZXBZ = '0' and ZDRYID = #zdryid# ]]>
+			select * from ZDRY_ZAGLTDXXB t where t.XT_ZXBZ = '0' and SFZH = #sfzh# ]]>
 		<![CDATA[ order by xt_cjsj desc) m where rownum <= #maxNum# ]]>
 	</select>
 

@@ -22,6 +22,7 @@ public class ZdryWffzjlxxbVO  implements Serializable {
 
     @FieldDesc("违法犯罪记录ID ") private String id;
     @FieldDesc("重点人员ID ") private String zdryid;
+	@FieldDesc("身份证号 ") private String sfzh;
     @FieldDesc("案件编号 ") private String ajbh;
     @FieldDesc("案件名称 ") private String ajmc;
     @FieldDesc("案件类型代码 ") private String ajlxdm;
@@ -84,7 +85,15 @@ public class ZdryWffzjlxxbVO  implements Serializable {
 	public void setZdryid(String value) {
 		this.zdryid = value;
 	}
-	
+
+	public String getSfzh() {
+		return sfzh;
+	}
+
+	public void setSfzh(String sfzh) {
+		this.sfzh = sfzh;
+	}
+
 	public String getAjbh() {
 		return this.ajbh;
 	}

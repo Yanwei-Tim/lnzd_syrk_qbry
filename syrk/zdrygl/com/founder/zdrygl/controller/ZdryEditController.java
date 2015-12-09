@@ -330,11 +330,11 @@ public class ZdryEditController extends BaseController {
 	 * @throws
 	 */
 	@RequestMapping(value = "/zdryFjUploadPre", method = RequestMethod.GET)
-	public ModelAndView zdryFjUploadPre( String zdryid,
+	public ModelAndView zdryFjUploadPre( String zdryid,String ryid,
 			SessionBean sessionBean) throws BussinessException {
 			ModelAndView mv = new ModelAndView("zdrygl/edit/zdryFjUploadPre");
 			mv.addObject("lybm", "ZDRY_ZDRYZB");
-			mv.addObject("lyid", zdryid);
+			mv.addObject("lyid", ryid);
 			mv.addObject("lyms", "重点人员-附件");
 			mv.addObject("fileType", "");
 			mv.addObject("fileOnly", 0);			

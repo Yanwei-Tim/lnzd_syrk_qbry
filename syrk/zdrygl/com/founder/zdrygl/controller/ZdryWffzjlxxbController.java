@@ -6,7 +6,9 @@ import com.founder.framework.annotation.FieldDesc;
 import com.founder.framework.base.service.BaseService;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.qbld.service.ZdryService;
+import com.founder.syrkgl.bean.RyRyjbxxb;
 import com.founder.syrkgl.bean.SyrkSyrkxxzb;
+import com.founder.syrkgl.service.RyRyjbxxbService;
 import com.founder.syrkgl.service.SyrkSyrkxxzbService;
 import com.founder.zdrygl.bean.ZdryZdryzb;
 import com.founder.zdrygl.service.ZdryZdryzbService;
@@ -34,6 +36,7 @@ import com.founder.zdrygl.bean.ZdryWffzjlxxb;
 import com.google.gson.Gson;
 import org.apache.log4j.Logger;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,10 +64,7 @@ public class ZdryWffzjlxxbController extends BaseController {
     @Resource
     private ZdryWffzjlxxbService zdryWffzjlxxbService;
     @Resource
-    private ZdryZdryzbService zdryZdryzbService;
-    @Resource
-    private SyrkSyrkxxzbService syrkSyrkxxzbService;
-
+    private RyRyjbxxbService ryRyjbxxbService;
 
     /**
      * @param @param  zdryid
@@ -76,7 +76,7 @@ public class ZdryWffzjlxxbController extends BaseController {
      * @Description: 跳转添加页面
      */
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public ModelAndView add(String zdryid) throws BussinessException {
+    public ModelAndView add(String zdryid,String ryid) throws BussinessException {
         ModelAndView mv = new ModelAndView("/zdrygl/edit/zdryWffzjlxxb");
         SessionBean sessionBean = getSessionBean();
         ZdryWffzjlxxb entity = new ZdryWffzjlxxb();
@@ -86,6 +86,11 @@ public class ZdryWffzjlxxbController extends BaseController {
         entity.setDjr(sessionBean.getUserId());
         entity.setDjrmc(sessionBean.getUserName());
         entity.setDjsj(DateUtils.getSystemDateTimeString());
+        RyRyjbxxb ryRyjbxxb=ryRyjbxxbService.queryById(ryid);
+        if (ryRyjbxxb!=null){
+            entity.setSfzh( ryRyjbxxb.getZjhm());
+        }
+
         mv.addObject("entity", entity);
         return mv;
     }
