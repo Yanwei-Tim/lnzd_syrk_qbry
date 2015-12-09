@@ -298,6 +298,18 @@
 		<isNotEmpty prepend="AND" property="entity.jzd_dzid">
 			T.JZD_DZID IN ($entity.jzd_dzid$)
 		</isNotEmpty>
+	   <isNotEmpty prepend="and" property="entity.csrqB">
+		   <![CDATA[ T.CSRQ >= #entity.csrqB#  ]]> 
+	   </isNotEmpty>
+	   <isNotEmpty prepend="and" property="entity.csrqE">
+		   <![CDATA[ T.CSRQ <= #entity.csrqE# ]]> 
+	   </isNotEmpty>
+	   <isNotEmpty prepend="and" property="entity.jgssxdm">
+		   <![CDATA[ T.JGSSXDM = #entity.jgssxdm# ]]> 
+	   </isNotEmpty>
+	   <isNotEmpty prepend="and" property="entity.hjd_xzqhdm">
+		   <![CDATA[ T.HJD_XZQHDM = #entity.hjd_xzqhdm# ]]> 
+	   </isNotEmpty>
 		<!-- 以下空间查询条件 开始 -->
 		<isNotEmpty prepend="AND" property="entity.drawType">
 			T.JZD_MLPDM = P.MLDZID
@@ -354,6 +366,18 @@
 		<isNotEmpty prepend="AND" property="entity.jzd_dzid">
 			T.JZD_DZID IN ($entity.jzd_dzid$)
 		</isNotEmpty>
+		<isNotEmpty prepend="and" property="entity.csrqB">
+		   <![CDATA[ T.CSRQ >= #entity.csrqB#  ]]> 
+	   </isNotEmpty>
+	   <isNotEmpty prepend="and" property="entity.csrqE">
+		   <![CDATA[ T.CSRQ <= #entity.csrqE# ]]> 
+	   </isNotEmpty>
+	   <isNotEmpty prepend="and" property="entity.jgssxdm">
+		   <![CDATA[ T.JGSSXDM = #entity.jgssxdm# ]]> 
+	   </isNotEmpty>
+	   <isNotEmpty prepend="and" property="entity.hjd_xzqhdm">
+		   <![CDATA[ T.HJD_XZQHDM = #entity.hjd_xzqhdm# ]]> 
+	   </isNotEmpty>
 		<!-- 以下空间查询条件 开始 -->
 		<isNotEmpty prepend="AND" property="entity.drawType">
 			T.JZD_MLPDM = P.MLDZID

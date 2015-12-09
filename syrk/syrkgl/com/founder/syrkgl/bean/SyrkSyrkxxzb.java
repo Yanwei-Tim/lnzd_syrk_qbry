@@ -88,6 +88,26 @@ public class SyrkSyrkxxzb extends BaseEntity implements Serializable {
 	private String hs_sj;
 
 	// gem end
+	
+	private String csrqB;
+	private String csrqE;
+	
+	public String getCsrqB() {
+		return csrqB;
+	}
+
+	public void setCsrqB(String csrqB) {
+		this.csrqB = csrqB;
+	}
+
+	public String getCsrqE() {
+		return csrqE;
+	}
+
+	public void setCsrqE(String csrqE) {
+		this.csrqE = csrqE;
+	}
+
 	public String getShbs() {
 		return shbs;
 	}
