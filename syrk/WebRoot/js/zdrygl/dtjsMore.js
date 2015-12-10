@@ -221,3 +221,76 @@ function xsjbxxDelete(linkObject, index){
 		});
 	}
 
+	//===============以下是刑事犯罪前科信息js方法
+	function zdxsfzqkxxbFormater(val,row,index){
+		 var html="";
+		 if(row.xt_lrrbmid==userOrgCode){
+			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="zdxsfzqkxxbedit(this, '+index+')">编辑</a>&nbsp;'
+			 +'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="zdxsfzqkxxbDelete(this, '+index+')">删除</a>&nbsp;'	 
+		 }else{		 
+			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="zdxsfzqkxxbview(this, '+index+')">查看</a>&nbsp;'
+		 }	
+		return html ;
+	}
+	function zdxsfzqkxxbAdd() {
+		
+		var zdryZjhm=$("#zdry_zjhm").val();
+		var url=contextPath+'/dtjsMore/addDtjsZdxsfzqkxxb?zdryZjhm='+zdryZjhm;
+		window.top.openWindowWithSave(false, null, window, {'_p':$('dtjsMore')},
+				{title: '刑事犯罪前科信息新增',url: url,width: 880,inline:true,height:500}, 
+			   		null, "zdxsfzqkxxbquery",null);
+		
+		
+	}
+
+	function zdxsfzqkxxbedit(linkObject, index){
+
+		cancelBubble();
+		var rows = $('#zdxsfzqkxxbtable').datagrid('getData');
+		var rowData = rows.rows[index];
+		var url=contextPath+'/dtjsMore/editDtjsZdxsfzqkxxb?id='+rowData.id +"&type=edit";
+		window.top.openWindowWithSave(false, null, window, {'_p':$('dtjsMore')},
+				{title: '刑事犯罪前科信息编辑',url: url,width: 880,inline:true,height:500}, 
+			   		null, "zdxsfzqkxxbquery",null
+			   	);
+		
+	}
+	function zdxsfzqkxxbview(linkObject, index){
+
+		cancelBubble();
+		var rows = $('#dg').datagrid('getData');
+		var rowData = rows.rows[index];
+		var url=contextPath+'/dtjsMore/editDtjsZdxsfzqkxxb?id='+rowData.id +"&type=view";
+
+		openWindow(false,null,url,null,{title:'刑事犯罪前科信息查看',width:880,height:500});
+
+		
+	}
+
+	function zdxsfzqkxxbDelete(linkObject, index){
+		cancelBubble(); // 阻止冒泡，不然要执行onClickRow
+		var deleteUrl = contextPath + '/dtjsMore/deleteDtjsZdxsfzqkxxb';
+		var datagrid_ID = getDatagrid_ID(0, linkObject);
+		topMessager.confirm('','您确认要删除数据吗？',function(r) {    
+			if (r) {	
+				var opts = $('#' + datagrid_ID).datagrid("options");
+				var rows = $('#' + datagrid_ID).datagrid('getData');
+				var rowData = rows.rows[index];
+				$.ajax({
+					url: deleteUrl,
+					type: 'POST',
+					data: {id:rowData.id}
+				}).done(function(result) {
+					zdxsfzqkxxbquery();
+				});
+			}
+		});
+	}
+	function zdxsfzqkxxbquery(){
+		var zdryZjhm=$("#zdry_zjhm").val();
+		$('#zdxsfzqkxxbtable').datagrid('load',{    
+			
+			'zdryzjhm':zdryZjhm
+		});
+	}
+

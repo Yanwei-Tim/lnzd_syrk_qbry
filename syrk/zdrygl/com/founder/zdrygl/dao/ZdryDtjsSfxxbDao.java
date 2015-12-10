@@ -8,13 +8,12 @@ import org.springframework.stereotype.Repository;
 import com.founder.framework.base.dao.BaseDaoImpl;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.zdrygl.bean.ZdryDtjsSfxxb;
-import com.founder.zdrygl.bean.ZdryDtjsSwxxb;
 
 /**
  * ****************************************************************************
  * @Package:      [com.founder.qbld.dao.RyxsDao.java]  
  * @ClassName:    [RyxsDao]   
- * @Description:  [動態紀實 涉稳信息]   
+ * @Description:  [动态纪实 上访信息]   
  * @Author:       [cong_rihong@founder.com.cn]  
  * @CreateDate:   [2015-12-9 上午9:30:05]   
  * @UpdateUser:   [founder(如多次修改保留历史记录，增加修改记录)]   

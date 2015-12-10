@@ -71,6 +71,7 @@
 		<%@include file="/WEB-INF/pages/zdrygl/dtjsZtxxList.jsp"%>
 		<%@include file="/WEB-INF/pages/zdrygl/dtjsSwxxList.jsp"%>
 		<%@include file="/WEB-INF/pages/zdrygl/dtjsSfxxList.jsp"%>
+		<%@include file="/WEB-INF/pages/zdrygl/dtjsZdxsfzqkList.jsp"%>
 		
 
           

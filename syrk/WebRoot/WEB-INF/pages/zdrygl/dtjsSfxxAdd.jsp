@@ -12,7 +12,7 @@ String userOrgName = userInfo.getUserOrgName();
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/syrk.css"></link>
-<title>维稳信息</title>
+<title>上访信息</title>
 </head>
 <div class="easyui-layout" data-options="fit:true">
     <form action="<%=basePath%>dtjsMore/saveDtjsSfxx" id="dataForm" name="dataForm" method="post" >
