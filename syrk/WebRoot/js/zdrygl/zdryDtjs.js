@@ -1242,7 +1242,7 @@ ZdryDtjs.openZtTab = function(){
     			width:'100%'
     		});
     		$("#zdssfzqk_xzwp").combobox({
-    			url: contextPath + '/common/dict/D_BZ_XZWP.js',
+    			url: contextPath + '/common/dict/XZ_D_XZWP.js',
     			valueField:'id',
     			multiple:true,
     			textField:'text',
