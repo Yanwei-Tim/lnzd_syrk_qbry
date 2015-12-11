@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.founder.bzdz.bean.DzContextCombo;
 import com.founder.bzdz.bean.DzContextCondition;
+import com.founder.bzdz.bean.DzContextReturn;
 import com.founder.bzdz.vo.BzdzxxbVO;
 import com.founder.bzdz.vo.DzBuildingVO;
 import com.founder.bzdz.vo.DzTjVO;
@@ -561,7 +562,7 @@ public class DzDao extends BaseDaoImpl {
 
 	/**
 	 * @Title: queryChdzdxb
-	 * @描述: 获取层户地址_【层户地址对象表】
+	 * @描述: 获取单条层户地址详情数据_【层户地址对象表】
 	 * @作者: zhang_guoliang@founder.com
 	 * @参数: 传入参数定义
 	 * @日期： 2015-3-3 下午2:11:12
@@ -571,6 +572,20 @@ public class DzDao extends BaseDaoImpl {
 	@SuppressWarnings("unchecked")
 	public List<BzdzxxbVO> queryChdzdxb(BzdzxxbVO entity) {
 		return queryForList("com.founder.bzdz.sqlmap.Dz.queryChdzdxb", entity);
+	}
+	
+	/**
+	 * @Title: queryChdzDx
+	 * @描述: 获取层户详细地址_【层户地址对象表】
+	 * @作者: zhang_guoliang@founder.com
+	 * @参数: 传入参数定义
+	 * @日期： 2015-11-30 下午2:44:23 
+	 * @返回值: List<DzContextReturn> 返回类型
+	 * @throws
+	 */
+	@SuppressWarnings("unchecked")
+	public List<DzContextReturn> queryChdzDx(DzContextReturn entity) {
+		return queryForList("com.founder.bzdz.sqlmap.Dz.queryChdzDx", entity);
 	}
 
 	/**

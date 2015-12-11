@@ -12,42 +12,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>技防检查通知书</title>
-<style>
-	td{
-	  font-size:15px;
-	  word-break : break-all;
-	  vertical-align: top;
-	}
-	.date{
-		font-size:15px;
-		width: 500px;
-		line-height: 20px;
-		text-align:left;
-		border-top: 0px;
-		border-left: 0px;
-		border-right: 0px;
-		border-color: #333333;
-		text-indent:5px;
-	}
-	.text{
-		font-size:15px;
-		width: 500px;
-		line-height: 20px;
-		text-align:left;
-		border-top: 0px;
-		border-left: 0px;
-		border-right: 0px;
-		border-color: #333333;
-		text-indent:5px;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/sydw/sydwWord.css"><link/>
 </head>
 <body>
 	<div class="easyui-layout" data-options="fit:true" >
 		<form action="" id="dataForm" name="dataForm" method="post">
 			<div data-options="region:'center'" align="center" style="padding: 50px">
 			<div style="width:694px;height:978px; border:1px solid #000000;padding: 20px">
-				<table border="0" cellpadding="0" cellspacing="6" width="100%" align="center" style="font-size: 26px;">
+				<table border="0" cellpadding="0" cellspacing="6" width="100%" align="center" >
 					<tr class="dialogTr">
 						<td>
 							<div align="center" style="width: 100%;padding: 15px 0 0 0"><span style="font-size: 18px;font: bolder;">${entity.zzjgmc}公安（分）局</span></div>
@@ -65,7 +37,7 @@
 					</tr>
 					<tr class="dialogTr">
 						<td>
-						&nbsp;&nbsp;&nbsp;&nbsp;复查意见书文号<input type="text" name="fcyjswh"   value="${entity.fcyjswh}"  class="easyui-validatebox text" style="width: 450px" />
+						&nbsp;&nbsp;&nbsp;&nbsp;《复查意见书文号》<input type="text" name="fcyjswh"   value="${entity.fcyjswh}"  class="easyui-validatebox text" style="width: 450px" />
 						</td>
 					</tr>
 					<tr class="dialogTr">
@@ -108,7 +80,7 @@
 								onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日'})"/>
 						</td>
 					</tr>
-					<tr class="dialogTr">
+					<%-- <tr class="dialogTr">
 						<td>
 						&nbsp;&nbsp;&nbsp;&nbsp;填发人<input type="text" id="tfr" name="tfr"   value="${entity.tfr}"  class="easyui-validatebox text"/>
 						</td>
@@ -119,7 +91,7 @@
 								data-options="validType:['date[\'yyyy年MM月dd日\']'],tipPosition:'left'"
 								onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日'})"/>
 						</td>
-					</tr>
+					</tr> --%>
 					<tr class="dialogTr">
 						<td>
 						&nbsp;&nbsp;&nbsp;&nbsp;送达时间<input type="text" name="sdrq" value="${entity.sdrq}" class="easyui-validatebox date" 
@@ -127,9 +99,14 @@
 								onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日'})"/>
 						</td>
 					</tr>
-					<tr class="dialogTr">
+					<tr >
 						<td>
-						&nbsp;&nbsp;&nbsp;&nbsp;抄送单位<input type="text" name="csdw" class="easyui-validatebox text" value="${entity.csdw}"/>
+							<table>
+								<tr>
+									<td style="padding-left: 24px;">&nbsp;抄送单位</td>
+									<td style="text-decoration:underline;width:500px;">${entity.csdw}</td>
+								</tr>
+							</table>
 						</td>
 					</tr>
 				</table>
@@ -152,16 +129,11 @@
 </body>
 </html>
 <script type="text/javascript">
-	var mainTabID = "${mainTabID}";
-	function doInit(paramArray) {
-		$('input').each(function(i,elment){
-			$(elment).attr("readonly","readonly");
-		});
-	}
-	function beforeSubmit() {
-	}
-	function afterSubmit(arr) {
-	}
+	$(function(){
+		if('${printAble}' == null || '${printAble}' == ''){
+			$('#printButton').hide();
+		}
+	});
 	//打印
 	$('#printButton').click(function(){
 		window.print();

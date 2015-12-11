@@ -12,31 +12,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>技防检查通知书存根</title>
-<style>
-	td{
-	  font-size:13px;
-	}
-	.date{
-		width: 600px;
-		line-height: 20px;
-		text-align:left;
-		border-top: 0px;
-		border-left: 0px;
-		border-right: 0px;
-		border-color: #333333;
-		text-indent:5px;
-	}
-	.text{
-		width: 400px;
-		line-height: 20px;
-		text-align:left;
-		border-top: 0px;
-		border-left: 0px;
-		border-right: 0px;
-		border-color: #333333;
-		text-indent:5px;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/sydw/sydwWord.css"><link/>
 </head>
 <body>
 	<div class="easyui-layout" data-options="fit:true">
@@ -66,7 +42,7 @@
 					</tr>
 					<tr class="dialogTr">
 						<td>
-						&nbsp;&nbsp;&nbsp;&nbsp;复查意见书文号<input type="text" name="fcyjswh"   value="${entity.fcyjswh}"  class="easyui-validatebox text"  />
+						&nbsp;&nbsp;&nbsp;&nbsp;《复查意见书文号》<input type="text" name="fcyjswh"   value="${entity.fcyjswh}"  class="easyui-validatebox text"  />
 						</td>
 					</tr>
 					<tr class="dialogTr">
@@ -109,7 +85,7 @@
 								onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日'})"/>
 						</td>
 					</tr>
-					<tr class="dialogTr">
+					<%-- <tr class="dialogTr">
 						<td>
 						&nbsp;&nbsp;&nbsp;&nbsp;填发人<input type="text" id="tfr" name="tfr"   value="${entity.tfr}"  class="easyui-validatebox text"/>
 						</td>
@@ -120,7 +96,7 @@
 								data-options="validType:['date[\'yyyy年MM月dd日\']'],tipPosition:'left'"
 								onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日'})"/>
 						</td>
-					</tr>
+					</tr> --%>
 					<tr class="dialogTr">
 						<td>
 						&nbsp;&nbsp;&nbsp;&nbsp;送达时间<input type="text" name="sdrq" value="${entity.sdrq}" class="easyui-validatebox date" 

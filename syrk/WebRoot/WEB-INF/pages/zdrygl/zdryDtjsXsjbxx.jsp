@@ -29,22 +29,19 @@ String userOrgName = userInfo.getUserOrgName();
 					data-options="validType:['date[\'yyyy-MM-dd\']'],required:true,tipPosition:'left'" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'})"/>
 		    </td>
 			
-			<td width="20%" class="dialogTd" align="right">核实地点区划：</td>
-		    <td width="30%" class="dialogTd">
-		    	<input class="easyui-combotree" type="text"  id="hsddqh" name="hsddqh"   style="width:200px;" value="${entity.hsddqh}"
-	    			data-options="mode:'remote',required:true,tipPosition:'right',url: contextPath + '/common/dict/D_BZ_XZQH_MUNICIPAL.js',onlyLeaf:true,panelWidth:280,multiple:false,method:'get',editable:true,lines:true"/>
-		    </td>
 	        </tr>
-		     <tr class="dialogTr">
-		        <td width="20%" class="dialogTd" align="right">核实地点名称：</td>
-		    	<td width="30%" class="dialogTd">
-		    		<input class="easyui-validatebox" type="text" id="hsddmc" name="hsddmc" value="${entity.hsddmc}" style="width:200px;" data-options="required:true,validType:['maxLength[100]'],invalidMessage:'核实地点名称不能超过100个汉字，请重新输入！',tipPosition:'left'"/>
-		    	</td>
-			      <td width="20%" class="dialogTd" align="right">核实地点详址：</td>
-		    	<td width="30%" class="dialogTd">
-		    		<input class="easyui-validatebox" type="text" id="hsddxz" name="hsddxz" value="${entity.hsddxz}" style="width:200px;" data-options="required:true,validType:['maxLength[200]'],invalidMessage:'核实地点详址不能超过200个汉字，请重新输入！',tipPosition:'left'"/>
-		    	</td>
-		    </tr>
+		     	<td width="20%" class="dialogTd" align="right">核实地点：</td>
+				    	<td width="50%" class="dialogTd" colspan="2">
+					    	<input class="easyui-combobox" id="hsd1" style="width:380px;" value="${entity.hsd_mlpxz}" data-options="required:false,mode:'remote',method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false">
+					    	<input type="hidden" id="hsd_mlpdm" name="hsd_mlpdm" value="${entity.hsd_mlpdm}"/>
+					    	<input type="hidden" id="hsd_mlpxz" name="hsd_mlpxz" value="${entity.hsd_mlpxz}"/>
+				    	</td>
+				    	<td width="30%" class="dialogTd" align="left">
+					    	<input class="easyui-combobox" id="hsd2" style="width:200px;" value="${fn:replace(entity.hsd_dzxz, entity.hsd_mlpxz, '')}" data-options="required:false,mode:'remote',method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false">
+					    	<input type="hidden" id="hsd_dzid" name="hsd_dzid" value="${entity.hsd_dzid}"/>
+					    	<input type="hidden" id="hsd_xzqhdm" name="hsd_xzqhdm" value="${entity.hsd_xzqhdm}"/>
+					    	<input type="hidden" id="hsd_dzxz" name="hsd_dzxz" value="${entity.hsd_dzxz}"/>
+				</td>
 
 		     <tr class="dialogTr">
 		      <td width="20%" class="dialogTd" align="right">在控状态：</td>
@@ -118,25 +115,32 @@ String userOrgName = userInfo.getUserOrgName();
 		    </tr>
 		   <tr class="dialogTr">
 		        <td width="20%" class="dialogTd" align="right">工作单位：</td>
-		    	<td width="30%" class="dialogTd">
-		    		<input class="easyui-validatebox" type="text" id="gzdw" name="gzdw" value="${entity.gzdw}" style="width:200px;" data-options="validType:['maxLength[100]'],invalidMessage:'工作单位不能超过100个汉字，请重新输入！',tipPosition:'left'"/>
-		    	</td>
+			<td width="30%" class="dialogTd" colspan="1">
+				    	<input type="hidden" id="gzdwid" name="gzdwid" value="${entity.gzdwid}" />
+				    	<input type="hidden" id="gzdwmc" name="gzdwmc" value="${entity.gzdwmc}" />				         
+						<input class="easyui-combobox" type="text" id="gzdw_dwmc" data-options="required:false,tipPosition:'left',mode:'remote',method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false" value="${entity.gzdwmc}" maxlength="50" style="width:200px;"/>
+             </td>
+		       
 			      <td width="20%" class="dialogTd" align="right">工作单位详址：</td>
 		    	<td width="30%" class="dialogTd">
 		    		<input class="easyui-validatebox" type="text" id="gzdwxz" name="gzdwxz" value="${entity.gzdwxz}" style="width:200px;" data-options="validType:['maxLength[200]'],invalidMessage:'工作单位详址不能超过200个汉字，请重新输入！',tipPosition:'left'"/>
 		    	</td>
 		    </tr>
 		    <tr class="dialogTr">
-		       <td width="20%" class="dialogTd" align="right">现住地区划：</td>
-		    	<td width="30%" class="dialogTd">
-		    	<input class="easyui-combobox" type="text"  id="jzdqh" name="jzdqh"   style="width:200px;" value="${entity.jzdqh}"
-	    			 data-options="mode:'remote',
-					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"
-		   		 </td>
-			      <td width="20%" class="dialogTd" align="right">现住地详址：</td>
-		    	<td width="30%" class="dialogTd">
-		    		<input class="easyui-validatebox" type="text" id="jzdxz" name="jzdxz" value="${entity.jzdxz}" style="width:200px;" data-options="validType:['maxLength[200]'],invalidMessage:'职务名称不能超过200个汉字，请重新输入！',tipPosition:'left'"/>
-		    	</td>
+		
+		    	<td width="20%" class="dialogTd" align="right">现住地：</td>
+				    	<td width="50%" class="dialogTd" colspan="2">
+					    	<input class="easyui-combobox" id="jzd1" style="width:380px;" value="${entity.jzd_mlpxz}" data-options="required:false,mode:'remote',method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false">
+					    	<input type="hidden" id="jzd_mlpdm" name="jzd_mlpdm" value="${entity.jzd_mlpdm}"/>
+					    	<input type="hidden" id="jzd_mlpxz" name="jzd_mlpxz" value="${entity.jzd_mlpxz}"/>
+				    	</td>
+				    	<td width="30%" class="dialogTd" align="left">
+					    	<input class="easyui-combobox" id="jzd2" style="width:200px;" value="${fn:replace(entity.jzd_dzxz, entity.jzd_mlpxz, '')}" data-options="required:false,mode:'remote',method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false">
+					    	<input type="hidden" id="jzd_dzid" name="jzd_dzid" value="${entity.jzd_dzid}"/>
+					    	<input type="hidden" id="jzd_xzqhdm" name="jzd_xzqhdm" value="${entity.jzd_xzqhdm}"/>
+					    	<input type="hidden" id="jzd_dzxz" name="jzd_dzxz" value="${entity.jzd_dzxz}"/>
+				</td>
+		    	
 		    </tr>
 		    <tr class="dialogTr">
 		       <td width="20%" class="dialogTd" align="right">管辖单位：</td>
@@ -153,6 +157,20 @@ String userOrgName = userInfo.getUserOrgName();
 	    			data-options="url: contextPath +  '/common/dict/D_QBLD_SF.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
 		       </td>	      
+			      
+		    </tr>
+		    
+		     <tr class="dialogTr">
+		     <td width="20%" class="dialogTd" align="right">在控类型：</td>
+		         <td width="30%" class="dialogTd">
+		           <input class="easyui-combobox" type="text"  id="zklx" name="zklx"   style="width:200px;" value="${entity.zklx}"
+	    			data-options="url: contextPath +  '/common/dict/D_QBLD_ZKLX.js',
+					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:false,tipPosition:'right'"/>
+		       </td>	
+			  <td width="20%" class="dialogTd" align="right">约见周期：</td>
+		    	<td width="30%" class="dialogTd">
+		    		<input class="easyui-validatebox" type="text" id="yjzq" name="yjzq" value="${entity.yjzq}" style="width:200px;" data-options="validType:['maxLength[10]'],invalidMessage:'约见周期不能超过10个汉字，请重新输入！',tipPosition:'left'"/>
+		    	</td>	      
 			      
 		    </tr>
 		    <tr class="dialogTr">
@@ -183,7 +201,10 @@ function doInit(paramArray) {
 	
 	initComboBox("qwss", contextPath + "/common/dict/GB_D_XZQHDMLIST.js"); 
 	initComboBox("jzdqh", contextPath + "/common/dict/GB_D_XZQHDMLIST.js"); 
-	
+	initAddressSearch("jzd1", {zrqdm:'#jzd_zrqdm'}, "jzd_mlpdm", "jzd_mlpxz", "jzd2", {text:"jzd_dzxz",dzxzqh:"jzd_xzqhdm",id:"jzd_dzid"}, null, null);
+	initAddressSearch("hsd1", {zrqdm:'#hsd_zrqdm'}, "hsd_mlpdm", "hsd_mlpxz", "hsd2", {text:"hsd_dzxz",dzxzqh:"hsd_xzqhdm",id:"hsd_dzid"}, null, null);
+	initDepartmentSearch('gzdw_dwmc', {glpcsid: ''}, 'gzdwid', 'gzdwmc', null, null);
+
 }
 
 function beforeSubmit() {

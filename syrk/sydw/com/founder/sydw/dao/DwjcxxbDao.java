@@ -157,7 +157,7 @@ public class DwjcxxbDao extends BaseDaoImpl {
 		String order = page.getOrder();
 		if (StringUtils.isBlank(sort)) { // 默认排序
 			sort = "a.jcsj";
-			order = "desc";
+			order = "asc nulls first";//时间为空的，最前面
 		}
 		map.put("sort", sort);
 		map.put("order", order);

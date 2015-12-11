@@ -54,7 +54,7 @@
 </head>
 <body>
 	<div class="easyui-layout" data-options="fit:true">
-		<table cellpadding="0" cellspacing="6" width="100%" style="margin-top: 50px">
+		<table cellpadding="0" cellspacing="6" width="100%" style="margin-top: 20px">
 			<tr class="dialogTr">
 				<td id="td_jctz" class="workflow_yet" onMouseOver="showMenu('jctz',0,0)" >
 					检查通知
@@ -92,8 +92,26 @@
 				<td></td>
 				<td></td>
 			</tr>
-			
 		</table>
+		
+		<br><br>
+		<span style="margin-top:60px;padding-left:10px;font-size: 16px;font-weight:bold;">流程状态说明:</span>
+		
+		<div style="padding: 20px;width: 100px;float: left;" align="center">
+			<img src="/syrk/images/sydw/workflow_status_done.png" style="width: 40px;height: 40px;">
+			<br>已完成流程
+		</div>
+		
+		<div style="padding: 20px;width: 100px;float: left;" align="center">
+			<img src="/syrk/images/sydw/workflow_status_next.png" style="width: 40px;height: 40px;">
+			<br>当前流程
+		</div>
+		
+		<div style="padding: 20px;width: 100px;" align="center">
+			<img src="/syrk/images/sydw/workflow_status_yet.png" style="width: 40px;height: 40px;">
+			<br>未执行流程
+		</div>
+		
 	</div>
 	
 	
@@ -193,7 +211,7 @@
 				text: '预览检查通知',
 				onclick: function(){
 					
-					var editUrl = basePath+"jfjfjctz/showPrintView?mainTabID="+mainTabID+"&jcid="+jcid+"&type=jfjfjctzs";
+					var editUrl = basePath+"jfjfjctz/showPrintView?printAble=print&jcid="+jcid+"&type=jfjfjctzs";
 					window.open(editUrl,"详情","height=1054,width=924,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no");;
 					
 					closeWin();
@@ -203,7 +221,7 @@
 				text: '预览通知书存根',
 				onclick: function(){
 					
-					var editUrl = basePath+"jfjfjctz/showPrintView?mainTabID="+mainTabID+"&jcid="+jcid+"&type=jfjfjctzscg";
+					var editUrl = basePath+"jfjfjctz/showPrintView?printAble=print&jcid="+jcid+"&type=jfjfjctzscg";
 					window.open(editUrl,"详情","height=1054,width=924,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no");;
 					
 					closeWin();
@@ -238,7 +256,7 @@
 			$('#m_kzjc').menu('appendItem', {
 				text: '预览检查记录',
 				onclick: function(){
-					var editUrl = basePath+"jfjfjctz/showPrintView?mainTabID="+mainTabID+"&jcid="+jcid+"&type=jfdwjcjl";
+					var editUrl = basePath+"jfjfjctz/showPrintView?printAble=print&jcid="+jcid+"&type=jfdwjcjl";
 					window.open(editUrl,"详情","height=1054,width=924,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no");;
 					closeWin();
 				}
@@ -246,7 +264,7 @@
 			$('#m_kzjc').menu('appendItem', {
 				text: '预览检查记录表',
 				onclick: function(){
-					var editUrl = basePath+"jfjfjctz/showPrintView?mainTabID="+mainTabID+"&jcid="+jcid+"&type=jfdwjcjlb";
+					var editUrl = basePath+"jfjfjctz/showPrintView?printAble=print&jcid="+jcid+"&type=jfdwjcjlb";
 					window.open(editUrl,"详情","height=1054,width=924,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no");;
 					closeWin();
 				}
@@ -270,7 +288,7 @@
 			$('#m_zlzg').menu('appendItem', {
 				text: '预览整改通知',
 				onclick: function(){
-					var editUrl = basePath+"jfjfjctz/showPrintView?mainTabID="+mainTabID+"&jcid="+jcid+"&type=jfzltzs";
+					var editUrl = basePath+"jfjfjctz/showPrintView?printAble=print&jcid="+jcid+"&type=jfzltzs";
 					window.open(editUrl,"详情","height=1054,width=924,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no");;
 					closeWin();
 				}
@@ -305,7 +323,7 @@
 			$('#m_fc').menu('appendItem', {
 				text: '预览复查意见书',
 				onclick: function(){
-					var editUrl = basePath+"jfjfjctz/showPrintView?mainTabID="+mainTabID+"&jcid="+jcid+"&type=jffctzs";
+					var editUrl = basePath+"jfjfjctz/showPrintView?printAble=print&jcid="+jcid+"&type=jffctzs";
 					window.open(editUrl,"详情","height=1054,width=924,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no");;
 					closeWin();
 				}
@@ -313,7 +331,7 @@
 			$('#m_fc').menu('appendItem', {
 				text: '预览意见书存根',
 				onclick: function(){
-					var editUrl = basePath+"jfjfjctz/showPrintView?mainTabID="+mainTabID+"&jcid="+jcid+"&type=jffctzscg";
+					var editUrl = basePath+"jfjfjctz/showPrintView?printAble=print&jcid="+jcid+"&type=jffctzscg";
 					window.open(editUrl,"详情","height=1054,width=924,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no");;
 					closeWin();
 				}
@@ -325,7 +343,7 @@
 			$('#m_jcyj').menu('appendItem', {
 				text: '预览检查记录',
 				onclick: function(){
-					var editUrl = basePath+"jfjfjctz/showPrintView?mainTabID="+mainTabID+"&jcid="+jcid+"&type=jfdwjcjl";
+					var editUrl = basePath+"jfjfjctz/showPrintView?printAble=print&jcid="+jcid+"&type=jfdwjcjl";
 					window.open(editUrl,"详情","height=1054,width=924,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no");;
 					closeWin();
 				}
@@ -333,7 +351,7 @@
 			$('#m_jcyj').menu('appendItem', {
 				text: '预览检查记录表',
 				onclick: function(){
-					var editUrl = basePath+"jfjfjctz/showPrintView?mainTabID="+mainTabID+"&jcid="+jcid+"&type=jfdwjcjlb";
+					var editUrl = basePath+"jfjfjctz/showPrintView?printAble=print&jcid="+jcid+"&type=jfdwjcjlb";
 					window.open(editUrl,"详情","height=1054,width=924,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no");;
 					closeWin();
 				}
@@ -345,7 +363,7 @@
 			$('#m_fcjcyj').menu('appendItem', {
 				text: '预览复查意见书',
 				onclick: function(){
-					var editUrl = basePath+"jfjfjctz/showPrintView?mainTabID="+mainTabID+"&jcid="+jcid+"&type=jffctzs";
+					var editUrl = basePath+"jfjfjctz/showPrintView?printAble=print&jcid="+jcid+"&type=jffctzs";
 					window.open(editUrl,"详情","height=1054,width=924,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no");;
 					closeWin();
 				}
@@ -353,7 +371,7 @@
 			$('#m_fcjcyj').menu('appendItem', {
 				text: '预览意见书存根',
 				onclick: function(){
-					var editUrl = basePath+"jfjfjctz/showPrintView?mainTabID="+mainTabID+"&jcid="+jcid+"&type=jffctzscg";
+					var editUrl = basePath+"jfjfjctz/showPrintView?printAble=print&jcid="+jcid+"&type=jffctzscg";
 					window.open(editUrl,"详情","height=1054,width=924,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no");;
 					closeWin();
 				}

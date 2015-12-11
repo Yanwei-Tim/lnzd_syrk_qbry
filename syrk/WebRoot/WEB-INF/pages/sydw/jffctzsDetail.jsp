@@ -12,35 +12,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>技防检查通知书</title>
-<style>
-	td{
-	  font-size:15px;
-	  word-break : break-all;
-	  vertical-align: top;
-	}
-	.date{
-		font-size:15px;
-		width: 500px;
-		line-height: 20px;
-		text-align:left;
-		border-top: 0px;
-		border-left: 0px;
-		border-right: 0px;
-		border-color: #333333;
-		text-indent:5px;
-	}
-	.text{
-		font-size:15px;
-		width: 500px;
-		line-height: 20px;
-		text-align:left;
-		border-top: 0px;
-		border-left: 0px;
-		border-right: 0px;
-		border-color: #333333;
-		text-indent:5px;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/sydw/sydwWord.css"><link/>
 </head>
 <body>
 	<div class="easyui-layout" data-options="fit:true" >
@@ -68,7 +40,7 @@
 						　　根据  ${entity.jctzswh} 责令通知书，我局（分局）于
 								<input type="text" name="fcrq" value="${entity.fcrq}" class="easyui-validatebox" style="line-height: 20px;text-align:center;border-top: 0px;border-left: 0px;border-right: 0px;width: 100px;border-color: #333333;"
 								data-options="validType:['date[\'yyyy年MM月dd日\']'],tipPosition:'left'"
-								onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日'})"/>对你（单位）进行了复查。复查意见如下：
+								onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日'})"/>日派员对你单位整改情况进行了复查。复查意见如下：
 						</td>
 					</tr>
 					<tr class="dialogTr">
@@ -118,16 +90,11 @@
 </body>
 </html>
 <script type="text/javascript">
-	var mainTabID = "${mainTabID}";
-	function doInit(paramArray) {
-		$('input').each(function(i,elment){
-			$(elment).attr("readonly","readonly");
-		});
-	}
-	function beforeSubmit() {
-	}
-	function afterSubmit(arr) {
-	}
+	$(function(){
+		if('${printAble}' == null || '${printAble}' == ''){
+			$('#printButton').hide();
+		}
+	});
 	//打印
 	$('#printButton').click(function(){
 		window.print();

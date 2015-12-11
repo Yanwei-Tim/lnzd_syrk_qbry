@@ -12,36 +12,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>技防检查通知书</title>
-<style>
-	td{
-	  font-size:15px;
-	  word-break : break-all;
-	  vertical-align: top;
-	}
-	.date{
-		font-size:15px;
-		width: 500px;
-		text-align:left;
-		border-top: 0px;
-		border-left: 0px;
-		border-right: 0px;
-		border-color: #333333;
-		text-indent:5px;
-	}
-	.text{
-		font-size:15px;
-		width: 500px;
-		text-align:left;
-		border-top: 0px;
-		border-left: 0px;
-		border-right: 0px;
-		border-color: #333333;
-		text-indent:5px;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/sydw/sydwWord.css"><link/>
 </head>
 <body>
-	<div class="easyui-layout" data-options="fit:true" style="background: yellow">
+	<div class="easyui-layout" data-options="fit:true" >
 		<form action="" id="dataForm" name="dataForm" method="post">
 			<div data-options="region:'center'" align="center" style="padding: 50px">
 			<div style="width:694px;height:978px; border:1px solid #000000;padding: 20px">
@@ -78,22 +52,22 @@
 					</tr>
 					<tr class="dialogTr">
 						<td >
-						&nbsp;&nbsp;&nbsp;&nbsp;根据 <input type="text" name="fg" value="${entity.fg}" class="easyui-validatebox text" style="width: 400px;"/>之规定，责令你（单位）
+						&nbsp;&nbsp;&nbsp;&nbsp;根据 <input type="text" name="fg" value="${entity.fg}" class="easyui-validatebox text" style="width: 400px;"/>之规定，现责令你（单位）
 						</td>
 					</tr>
 					<tr class="dialogTr">
 						<td >
-						&nbsp;&nbsp;&nbsp;&nbsp;<input name="gzfsCheck" type="checkbox" value="0"/>立即予以改正 
+						&nbsp;&nbsp;&nbsp;&nbsp;<input name="gzfsCheck" disabled="disabled" type="checkbox" value="0"/>立即予以改正 
 						</td>
 					</tr>
 					<tr class="dialogTr">
 						<td >
-						&nbsp;&nbsp;&nbsp;&nbsp;<input name="gzfsCheck" type="checkbox" value="1"/>立即<input type="text" name="gznr" value="${entity.gznr}" class="easyui-validatebox text" style="width: 550px;"/>.
+						&nbsp;&nbsp;&nbsp;&nbsp;<input name="gzfsCheck" disabled="disabled" type="checkbox" value="1"/>立即<input type="text" name="gznr" value="${entity.gznr}" class="easyui-validatebox text" style="width: 550px;"/>.
 						</td>
 					</tr>
 					<tr class="dialogTr">
 						<td >
-						&nbsp;&nbsp;&nbsp;&nbsp;<input name="gzfsCheck" type="checkbox" value="2" />在<input type="text" name="gzsj" value="${entity.gzsj}" style="width:100px" class="easyui-validatebox date" 
+						&nbsp;&nbsp;&nbsp;&nbsp;<input name="gzfsCheck" disabled="disabled" type="checkbox" value="2" />在<input type="text" name="gzsj" value="${entity.gzsj}" style="width:100px" class="easyui-validatebox date" 
 								data-options="validType:['date[\'yyyy年MM月dd日\']'],tipPosition:'left'" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日'})"/>
 								前改正或者整改完毕，并将结果函告我单位。在期限届满之前，你（单位）必须<input type="text" name="zgsx" value="${entity.zgsx}" class="easyui-validatebox text" style="width: 400px;"/>。
 						</td>
@@ -148,16 +122,28 @@
 </body>
 </html>
 <script type="text/javascript">
-	var mainTabID = "${mainTabID}";
-	function doInit(paramArray) {
-		$('input').each(function(i,elment){
-			$(elment).attr("readonly",true);
+	$(function(){
+		
+		if('${printAble}' == null || '${printAble}' == ''){
+			$('#printButton').hide();
+		}
+		
+		var defaultVal = '${entity.gzfs}';
+		
+		if( defaultVal == null || defaultVal == ""){
+			defaultVal = 2;
+		}
+		
+		$('input[name=gzfsCheck]').each(function(i,o){
+			var elment = $(o);
+			if(elment.val() == defaultVal){
+				elment.attr('checked',true);
+			}else{
+				elment.attr('checked',false);
+			}
 		});
-	}
-	function beforeSubmit() {
-	}
-	function afterSubmit(arr) {
-	}
+	});
+	
 	//打印
 	$('#printButton').click(function(){
 		window.print();

@@ -21,17 +21,6 @@ import com.founder.framework.base.entity.BaseEntity;
 public class SyrkSyrkxxzb extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	//gem
-	private String age;
-	
-	//gem check
-	private String isCheck;
-	private String hs_status;
-	private String hs_person;
-	private String hs_sj;
-	//gem end
-	
 	@FieldDesc("实有人口ID")
 	private String id;
 	@FieldDesc("人员ID")
@@ -88,7 +77,45 @@ public class SyrkSyrkxxzb extends BaseEntity implements Serializable {
 	private String gxzrqdm;
 	@FieldDesc("管辖责任区名称")
 	private String gxzrqmc;
+	@FieldDesc("房间合并")
+	private String shbs;
+	// gem
+	private String age;
+	// gem check
+	private String isCheck;
+	private String hs_status;
+	private String hs_person;
+	private String hs_sj;
+
+	// gem end
 	
+	private String csrqB;
+	private String csrqE;
+	
+	public String getCsrqB() {
+		return csrqB;
+	}
+
+	public void setCsrqB(String csrqB) {
+		this.csrqB = csrqB;
+	}
+
+	public String getCsrqE() {
+		return csrqE;
+	}
+
+	public void setCsrqE(String csrqE) {
+		this.csrqE = csrqE;
+	}
+
+	public String getShbs() {
+		return shbs;
+	}
+
+	public void setShbs(String shbs) {
+		this.shbs = shbs;
+	}
+
 	public String getIsCheck() {
 		return isCheck;
 	}
@@ -406,5 +433,5 @@ public class SyrkSyrkxxzb extends BaseEntity implements Serializable {
 	public void setGxzrqmc(String gxzrqmc) {
 		this.gxzrqmc = gxzrqmc;
 	}
-	
+
 }

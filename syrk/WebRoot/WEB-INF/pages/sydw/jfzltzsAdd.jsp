@@ -12,32 +12,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>技防责令通知书</title>
-<style>
-	td{
-	  font-size:13px;
-	}
-	
-	.text{
-		width: 400px;
-		line-height: 20px;
-		text-align:left;
-		border-top: 0px;
-		border-left: 0px;
-		border-right: 0px;
-		border-color: #333333;
-	}
-	
-	.date{
-		width: 600px;
-		line-height: 20px;
-		text-align:left;
-		border-top: 0px;
-		border-left: 0px;
-		border-right: 0px;
-		border-color: #333333;
-		text-indent:5px;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/sydw/sydwWord.css"><link/>
 </head>
 <body>
 	<div class="easyui-layout" data-options="fit:true">
@@ -83,7 +58,7 @@
 					</tr>
 					<tr class="dialogTr">
 						<td >
-						&nbsp;&nbsp;&nbsp;&nbsp;根据 <input type="text" name="fg" value="${entity.fg}" class="easyui-validatebox text" style="width: 400px;"/>之规定，责令你（单位）
+						&nbsp;&nbsp;&nbsp;&nbsp;根据 <input type="text" name="fg" value="${entity.fg}" class="easyui-validatebox text" style="width: 400px;"/>之规定，现责令你（单位）
 						</td>
 					</tr>
 					<tr class="dialogTr">
@@ -244,6 +219,7 @@
 			var elment = $(o);
 			if(elment.val() == defaultVal){
 				elment.attr('checked',true);
+				$('#gzfs').val(2);
 			}else{
 				elment.attr('checked',false);
 			}

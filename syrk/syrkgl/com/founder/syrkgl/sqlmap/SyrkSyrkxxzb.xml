@@ -215,6 +215,18 @@
 			   <isNotEmpty prepend="AND" property="entity.age">
 				     SUBSTR(T.CSRQ, 0, 4) = #entity.age#
 			   </isNotEmpty>
+			   <isNotEmpty prepend="and" property="entity.csrqB">
+				   <![CDATA[ T.CSRQ >= #entity.csrqB#  ]]> 
+			   </isNotEmpty>
+			   <isNotEmpty prepend="and" property="entity.csrqE">
+				   <![CDATA[ T.CSRQ <= #entity.csrqE# ]]> 
+			   </isNotEmpty>
+			   <isNotEmpty prepend="and" property="entity.jgssxdm">
+				   <![CDATA[ T.JGSSXDM = #entity.jgssxdm# ]]> 
+			   </isNotEmpty>
+			   <isNotEmpty prepend="and" property="entity.hjd_xzqhdm">
+				   <![CDATA[ T.HJD_XZQHDM = #entity.hjd_xzqhdm# ]]> 
+			   </isNotEmpty>
 		       	  ORDER BY T.$sort$ $order$) M 
 		  <![CDATA[WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
 	</select>
@@ -260,6 +272,18 @@
 		   <isNotEmpty prepend="AND" property="entity.age">
 			     SUBSTR(T.CSRQ, 0, 4) = #entity.age#
 		   </isNotEmpty>
+		   <isNotEmpty prepend="and" property="entity.csrqB">
+		   <![CDATA[ T.CSRQ >= #entity.csrqB#  ]]> 
+		   </isNotEmpty>
+		   <isNotEmpty prepend="and" property="entity.csrqE">
+			   <![CDATA[ T.CSRQ <= #entity.csrqE# ]]> 
+		   </isNotEmpty>
+		   <isNotEmpty prepend="and" property="entity.jgssxdm">
+			   <![CDATA[ T.JGSSXDM = #entity.jgssxdm# ]]> 
+		   </isNotEmpty>
+		   <isNotEmpty prepend="and" property="entity.hjd_xzqhdm">
+			   <![CDATA[ T.HJD_XZQHDM = #entity.hjd_xzqhdm# ]]> 
+		   </isNotEmpty>
 	</select>
 
 	<!-- 实有人口查询列表数据 -->
@@ -296,8 +320,20 @@
 			T.CYZJDM = #entity.cyzjdm#
 		</isNotEmpty>
 		<isNotEmpty prepend="AND" property="entity.jzd_dzid">
-			T.JZD_DZID = #entity.jzd_dzid#
+			T.JZD_DZID IN ($entity.jzd_dzid$)
 		</isNotEmpty>
+	   <isNotEmpty prepend="and" property="entity.csrqB">
+		   <![CDATA[ T.CSRQ >= #entity.csrqB#  ]]> 
+	   </isNotEmpty>
+	   <isNotEmpty prepend="and" property="entity.csrqE">
+		   <![CDATA[ T.CSRQ <= #entity.csrqE# ]]> 
+	   </isNotEmpty>
+	   <isNotEmpty prepend="and" property="entity.jgssxdm">
+		   <![CDATA[ T.JGSSXDM = #entity.jgssxdm# ]]> 
+	   </isNotEmpty>
+	   <isNotEmpty prepend="and" property="entity.hjd_xzqhdm">
+		   <![CDATA[ T.HJD_XZQHDM = #entity.hjd_xzqhdm# ]]> 
+	   </isNotEmpty>
 		<!-- 以下空间查询条件 开始 -->
 		<isNotEmpty prepend="AND" property="entity.drawType">
 			T.JZD_MLPDM = P.MLDZID
@@ -352,8 +388,20 @@
 			T.CYZJDM = #entity.cyzjdm#
 		</isNotEmpty>
 		<isNotEmpty prepend="AND" property="entity.jzd_dzid">
-			T.JZD_DZID = #entity.jzd_dzid#
+			T.JZD_DZID IN ($entity.jzd_dzid$)
 		</isNotEmpty>
+		<isNotEmpty prepend="and" property="entity.csrqB">
+		   <![CDATA[ T.CSRQ >= #entity.csrqB#  ]]> 
+	   </isNotEmpty>
+	   <isNotEmpty prepend="and" property="entity.csrqE">
+		   <![CDATA[ T.CSRQ <= #entity.csrqE# ]]> 
+	   </isNotEmpty>
+	   <isNotEmpty prepend="and" property="entity.jgssxdm">
+		   <![CDATA[ T.JGSSXDM = #entity.jgssxdm# ]]> 
+	   </isNotEmpty>
+	   <isNotEmpty prepend="and" property="entity.hjd_xzqhdm">
+		   <![CDATA[ T.HJD_XZQHDM = #entity.hjd_xzqhdm# ]]> 
+	   </isNotEmpty>
 		<!-- 以下空间查询条件 开始 -->
 		<isNotEmpty prepend="AND" property="entity.drawType">
 			T.JZD_MLPDM = P.MLDZID
@@ -519,4 +567,17 @@
 			<include refid="deleteXtzd" />
 		<![CDATA[ WHERE ID = #id# ]]>
 	</update>
+	<!-- 根据ZJHM、JZD_DZID条件，查询实有人口详细信息【服务接口】 -->
+	<select id="querySyrkxxzb" parameterClass="syrkSyrkxxzb" resultClass="syrkSyrkxxzb">
+	   SELECT * 
+	  	 FROM SYRK_SYRKXXZB T 
+	   WHERE T.XT_ZXBZ = '0' 
+	   	   <isNotEmpty prepend="AND" property="zjhm">
+	          T.ZJHM = #zjhm#
+	       </isNotEmpty>
+	       <isNotEmpty prepend="AND" property="jzd_dzid">
+	          T.JZD_DZID = #jzd_dzid#
+	       </isNotEmpty>
+	   AND ROWNUM = 1
+	</select>
 </sqlMap>

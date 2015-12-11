@@ -67,26 +67,26 @@
 																<c:choose>
 																	<c:when test="${dwjcdata.def == '1'}">
 																		<td style="width:10px;" class="tdbr">
-																			<input id="ch_${dwjcdata.id}" type="checkbox" checked value="1" />
+																			<input id="ch_${dwjcdata.id}" type="checkbox" disabled="disabled"  checked value="1" />
 																		</td>
 																		<td style="width:10px;" class="tdbr">
-																			<input id="ch_${dwjcdata.id}" type="checkbox" value="0"/>
+																			<input id="ch_${dwjcdata.id}" type="checkbox" disabled="disabled" value="0"/>
 																		</td>
 																	</c:when>
 																	<c:when test="${dwjcdata.def == '0'}">
 																		<td style="width:10px;" class="tdbr">
-																			<input id="ch_${dwjcdata.id}" type="checkbox" value="1"/>
+																			<input id="ch_${dwjcdata.id}" type="checkbox" disabled="disabled" value="1"/>
 																		</td>
 																		<td style="width:10px;" class="tdbr">
-																			<input id="ch_${dwjcdata.id}" type="checkbox" checked value="0" />
+																			<input id="ch_${dwjcdata.id}" type="checkbox" disabled="disabled" checked value="0" />
 																		</td>
 																	</c:when>
 																	<c:otherwise>
 																		<td style="width:10px;" class="tdbr">
-																			<input id="ch_${dwjcdata.id}" type="checkbox" value="1" />
+																			<input id="ch_${dwjcdata.id}" type="checkbox" disabled="disabled" value="1" />
 																		</td>
 																		<td style="width:10px;" class="tdbr">
-																			<input id="ch_${dwjcdata.id}" type="checkbox" value="0" />
+																			<input id="ch_${dwjcdata.id}" type="checkbox" disabled="disabled" value="0" />
 																		</td>
 																	</c:otherwise>
 																</c:choose>
@@ -133,16 +133,11 @@
 </body>
 </html>
 <script type="text/javascript">
-	var mainTabID = "${mainTabID}";
-	function doInit(paramArray) {
-		$('input').each(function(i,elment){
-			$(elment).attr("readonly","readonly");
-		});
-	}
-	function beforeSubmit() {
-	}
-	function afterSubmit(arr) {
-	}
+	$(function(){
+		if('${printAble}' == null || '${printAble}' == ''){
+			$('#printButton').hide();
+		}
+	});
 	//打印
 	$('#printButton').click(function(){
 		window.print();

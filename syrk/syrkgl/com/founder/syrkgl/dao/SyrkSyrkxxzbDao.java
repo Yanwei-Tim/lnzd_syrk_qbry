@@ -1,16 +1,12 @@
 package com.founder.syrkgl.dao;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.stereotype.Repository;
-
 import com.founder.framework.base.dao.BaseDaoImpl;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
 import com.founder.syrkgl.bean.SyrkSyrkxxzb;
-
 /**
  * ****************************************************************************
  * 
@@ -32,7 +28,7 @@ public class SyrkSyrkxxzbDao extends BaseDaoImpl {
 	}
 
 	public void update(SyrkSyrkxxzb entity) {
-		if(!"".equals(entity.getIsCheck())){
+		if(!StringUtils.isBlank(entity.getIsCheck())){
 			update("SyrkSyrkxxzb.updateHs", entity);
 		}else{
 			update("SyrkSyrkxxzb.update", entity);
@@ -49,7 +45,7 @@ public class SyrkSyrkxxzbDao extends BaseDaoImpl {
 	 * @throws
 	 */
 	public void delete(SyrkSyrkxxzb entity) {
-		if(!"".equals(entity.getIsCheck())&&entity.getIsCheck()!=null){
+		if(!StringUtils.isBlank(entity.getIsCheck())){
 			update("SyrkSyrkxxzb.deleteHs", entity);
 		}else{
 			update("SyrkSyrkxxzb.delete", entity);
@@ -161,9 +157,7 @@ public class SyrkSyrkxxzbDao extends BaseDaoImpl {
 		map.put("sort", sort);
 		map.put("order", order);
 		map.put("entity", entity);
-		//修改人 wuchunhui@founder.com，需求变更redmine #2520
 		if(!StringUtils.isBlank(entity.getIsCheck())){
-			//核实列表数据
 			page.setRows(queryForList("SyrkSyrkxxzb.queryHs", map));
 			page.setTotal((Integer) queryForObject("SyrkSyrkxxzb.queryHsCount", map));
 		}else{
@@ -288,15 +282,26 @@ public class SyrkSyrkxxzbDao extends BaseDaoImpl {
 		map.put("begin", page.getBegin());
 		map.put("end", page.getEnd());
 		map.put("entity", entity);
+		if(entity.getShbs()!=null&&!"".equals(entity.getShbs())){
+			String[] jzd_dzid = entity.getJzd_dzid().split(",");
+			String chdzid = "";
+			for(int i=0;i<jzd_dzid.length;i++){
+				chdzid += "'"+ jzd_dzid[i] +"',";
+			}
+			chdzid = chdzid.substring(0, chdzid.length()-1);
+			entity.setJzd_dzid(chdzid);
+		}else{
+			if(entity.getJzd_dzid()!=null&&!"".equals(entity.getJzd_dzid())){
+				entity.setJzd_dzid("'"+entity.getJzd_dzid()+"'");
+			}
+		}
 		if(!StringUtils.isBlank(entity.getDrawType())&&!StringUtils.isBlank(entity.getDrawZbz())){
 			map.put("tableName", "SYRK_SYRKXXZB T, BZDZ_ADD_MLDZDXB_PT P");
 		}else{
 			map.put("tableName", "SYRK_SYRKXXZB T");
 		}
 		List<?> list = queryForList("SyrkSyrkxxzb.querySyrk", map);
-		int count=(Integer)queryForObject("SyrkSyrkxxzb.querySyrkCount",map);
-		page.setTotal(count);
-		/*if (page.getBegin() == 0) {
+		if (page.getBegin() == 0) {
 			if (list != null && list.size() > 0) {
 				page.setTotal(list.size());
 			} else {
@@ -308,7 +313,7 @@ public class SyrkSyrkxxzbDao extends BaseDaoImpl {
 					page.setTotal(list.size());
 				}
 			}
-		}*/
+		}
 		page.setRows(list);
 		return page;
 	}
@@ -325,6 +330,19 @@ public class SyrkSyrkxxzbDao extends BaseDaoImpl {
 	public long querySyrkCount(SyrkSyrkxxzb entity) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("entity", entity);
+		if(entity.getShbs()!=null&&!"".equals(entity.getShbs())){
+			String[] jzd_dzid = entity.getJzd_dzid().split(",");
+			String chdzid = "";
+			for(int i=0;i<jzd_dzid.length;i++){
+				chdzid += "'"+ jzd_dzid[i] +"',";
+			}
+			chdzid = chdzid.substring(0, chdzid.length()-1);
+			entity.setJzd_dzid(chdzid);
+		}else{
+			if(entity.getJzd_dzid()!=null&&!"".equals(entity.getJzd_dzid())){
+				entity.setJzd_dzid("'"+entity.getJzd_dzid()+"'");
+			}
+		}
 		if(!StringUtils.isBlank(entity.getDrawType())&&!StringUtils.isBlank(entity.getDrawZbz())){
 			map.put("tableName", "SYRK_SYRKXXZB T, BZDZ_ADD_MLDZDXB_PT P");
 		}else{
@@ -349,5 +367,17 @@ public class SyrkSyrkxxzbDao extends BaseDaoImpl {
 		map.put("zjhm", zjhm);
 		map.put("syrkywlxdm", syrkywlxdm);
 		return queryForList("SyrkSyrkxxzb.dataApply", map);
+	}
+	/**
+	 * @Title: querySyrkxxzb 
+	 * @描述: 根据ZJHM、JZD_DZID条件，查询实有人口详细信息【服务接口】
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @日期：  2015-12-01 下午12:40:32
+	 * @返回值: SyrkSyrkxxzb 返回类型 
+	 * @throws
+	 */
+	public SyrkSyrkxxzb querySyrkxxzb(SyrkSyrkxxzb entity) {
+		return (SyrkSyrkxxzb) queryForObject("SyrkSyrkxxzb.querySyrkxxzb",entity);
 	}
 }

@@ -12,35 +12,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>技防检查通知书</title>
-<style>
-	td{
-	  font-size:15px;
-	  word-break : break-all;
-	  vertical-align: top;
-	}
-	.date{
-		font-size:15px;
-		width: 500px;
-		line-height: 20px;
-		text-align:left;
-		border-top: 0px;
-		border-left: 0px;
-		border-right: 0px;
-		border-color: #333333;
-		text-indent:5px;
-	}
-	.text{
-		font-size:15px;
-		width: 500px;
-		line-height: 20px;
-		text-align:left;
-		border-top: 0px;
-		border-left: 0px;
-		border-right: 0px;
-		border-color: #333333;
-		text-indent:5px;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/sydw/sydwWord.css"><link/>
 </head>
 <body>
 	<div class="easyui-layout" data-options="fit:true" >
@@ -75,7 +47,7 @@
 					</tr>
 					<tr class="dialogTr">
 						<td >
-						&nbsp;&nbsp;&nbsp;&nbsp;地址：<input class="easyui-validatebox text" readonly="readonly" type="text" style="width:400px" value="${entity.entity.dz_dwdzxz}" />
+						&nbsp;&nbsp;&nbsp;&nbsp;地址：<input class="easyui-validatebox text" readonly="readonly" type="text" style="width:400px" value="${entity.dz_dwdzxz}" />
 						</td>
 					</tr>
 					<tr class="dialogTr">
@@ -151,16 +123,12 @@
 </body>
 </html>
 <script type="text/javascript">
-	var mainTabID = "${mainTabID}";
-	function doInit(paramArray) {
-		$('input').each(function(i,elment){
-			$(elment).attr("readonly","readonly");
-		});
-	}
-	function beforeSubmit() {
-	}
-	function afterSubmit(arr) {
-	}
+	$(function(){
+		if('${printAble}' == null || '${printAble}' == ''){
+			$('#printButton').hide();
+		}
+	});
+	
 	//打印
 	$('#printButton').click(function(){
 		window.print();

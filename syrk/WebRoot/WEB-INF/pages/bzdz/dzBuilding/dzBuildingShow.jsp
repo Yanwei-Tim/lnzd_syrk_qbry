@@ -16,7 +16,7 @@
   <body class="easyui-layout" data-options="fit:true,border:false">
      <div data-options="region:'north',border:false">
          <table border='0' cellpadding="0" cellspacing="0">
-              <tr style="width:100%;height:80px" bgColor="#68C4F3">
+              <tr style="width:100%;height:80px" bgColor="#69C9F9">
                   <td style="width:100px;height:80px" align="right">
 	             		<img src="<%=contextPath%>/images/bzdz/building/buildbg.png" style="width:80px;height:80px">
 		          </td>

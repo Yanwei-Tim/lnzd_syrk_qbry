@@ -133,10 +133,10 @@ public class DwjcxxbController extends BaseController{
 	@RequestMapping(value = "/queryList", method = RequestMethod.POST)
 	public @ResponseBody EasyUIPage queryDw(EasyUIPage page, @RequestParam(value = "rows")Integer rows,Dwjcxxb entity) {
 		page.setPagePara(rows);
-		SessionBean sessionBean = getSessionBean();
-		entity.setGlfxjid(sessionBean.getExtendValue("ssFsxCode"));
-		entity.setGlpcsid(sessionBean.getExtendValue("ssPcsCode"));
-		entity.setGlbmid(sessionBean.getUserOrgCode());
+//		SessionBean sessionBean = getSessionBean();
+//		entity.setGlfxjid(sessionBean.getExtendValue("ssFsxCode"));
+//		entity.setGlpcsid(sessionBean.getExtendValue("ssPcsCode"));
+//		entity.setGlbmid(sessionBean.getUserOrgCode());
 		if(StringUtils.isBlank(entity.getYwlbdm())){
 			entity.setYwlbdm("04");
 		}
@@ -274,8 +274,6 @@ public class DwjcxxbController extends BaseController{
 		
 		SessionBean sessionBean = getSessionBean();
 		entity.setJcry(sessionBean.getUserName());
-		entity.setJcdw(sessionBean.getExtendValue("ssFsxName"));
-		entity.setJcdwid(sessionBean.getExtendValue("ssFsxCode"));
 		
 		Dwjbxxb dw = new Dwjbxxb();
 		dw.setId(dwid);

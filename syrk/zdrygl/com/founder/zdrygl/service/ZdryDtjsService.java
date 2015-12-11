@@ -61,48 +61,14 @@ public interface ZdryDtjsService {
 	
 	public ZdryDtjsXsxxb queryXsjbxxById(String xsid);
 	
-	public List<ZdryDtjsXsxxb> queryByZdryid(String zdryid);
+	
+	public void deleteDtjsXsjbxx(ZdryDtjsXsxxb entity,SessionBean sessionBean);
 
 	
 	public String updateDtjs(ZdryDtjsXsxxb entity,SessionBean sessionBean);
 
-	public void saveSwxxb(ZdryDtjsSwxxb entity);
+
+
 	
-	public void saveZtxxb(ZdryDtjsZtxxb entity);
-	
-	public void saveSfxxb(ZdryDtjsSfxxb entity);
-	
-	public void saveSdxdxxb(ZdryDtjsSdxdxxb entity);
-	
-	public void saveSdfdxxb(ZdryDtjsSdfdxxb entity);
-	
-	public void saveSdzdxxb(ZdryDtjsSdzdxxb entity);
-	
-	public void saveZdxsfzqkxxb(ZdryDtjsZdxsfzqkxxb entity) ;
-	
-	public void saveZszhjsbrxxb(ZdryDtjsZszhjsbrxxb entity);
-	public void saveZszhjsbrZdjlxxb(ZdryDtjsZszhjsbrZdjlxxb entity);
-	public void saveZszhjsbrZszhjlxxb(ZdryDtjsZszhjsbrZszhjlxxb entity);
-	
-	public void updateGxbg(ZdryDtjsGxbgxxb entity);
-	public String saveShgxr(ZdryDtjsShgxrxxb entity);
-	public String saveSaxx(ZdryDtjsSaxxb entity);
-	public String saveClxx(ZdryDtjsClxxb entity);
-	
-	public EasyUIPage queryDtjsZtxxList(EasyUIPage page, ZdryDtjsZtxxb entity);
-	public EasyUIPage queryDtjsSwxxList(EasyUIPage page, ZdryDtjsSwxxb entity);
-	public EasyUIPage queryDtjsSfxxList(EasyUIPage page, ZdryDtjsSfxxb entity);
-	public EasyUIPage queryDtjsSdxdxxList(EasyUIPage page, ZdryDtjsSdxdxxb entity);
-	public EasyUIPage queryDtjsSdfdxxList(EasyUIPage page, ZdryDtjsSdfdxxb entity);
-	public EasyUIPage queryDtjsSdzdxxList(EasyUIPage page, ZdryDtjsSdzdxxb entity);
-	public EasyUIPage queryDtjsZdxsfzqkxxList(EasyUIPage page, ZdryDtjsZdxsfzqkxxb entity);
-	public EasyUIPage queryDtjsZszhjsbrxxList(EasyUIPage page, ZdryDtjsZszhjsbrxxb entity);	
-	public EasyUIPage queryDtjsZszhjsbrZdjlxxList(EasyUIPage page, ZdryDtjsZszhjsbrZdjlxxb entity);
-	public EasyUIPage queryDtjsZszhjsbrZszhjlxxList(EasyUIPage page,ZdryDtjsZszhjsbrZszhjlxxb entity);
-	
-	public EasyUIPage queryGxbgList(EasyUIPage page, ZdryDtjsGxbgxxb entity);
-	public EasyUIPage queryShgxrList(EasyUIPage page, ZdryDtjsShgxrxxb entity);
-	public EasyUIPage querySaxxList(EasyUIPage page, ZdryDtjsSaxxb entity);
-	public EasyUIPage queryClxxList(EasyUIPage page, ZdryDtjsClxxb entity);
-	
+
 }

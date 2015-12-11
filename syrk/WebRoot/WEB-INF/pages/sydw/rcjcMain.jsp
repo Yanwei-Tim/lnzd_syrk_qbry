@@ -15,7 +15,6 @@
             		toolbar:'#datagridToolbar',queryParams:getInitQuery(),
             		singleSelect:true,selectOnCheck:true,
             		checkOnSelect:true,border:false,
-            		sortName:'a.xt_cjsj',sortOrder:'desc',
             		idField:'id',pageSize:getAutoPageSize(),
             		pageList:[getAutoPageSize(),getAutoPageSize() * 2]">
 				    <thead>
@@ -66,12 +65,12 @@
 									<td class="toolbarTd" style="width:10%;white-space: nowrap;" align="right">检查时间：</td>
 									<td class="toolbarTd" style="width:40%;">
 										<input type="text" name="jcsj" id="jcsj" class="easyui-validatebox " style="width:140px;"
-										data-options="validType:['date[\'yyyy-MM-dd\']'],tipPosition:'right'" 
-										onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd',maxDate:'#F{$dp.$D(\'jcsjz\') }'})" />
+										data-options="validType:['date[\'yyyy年MM月dd日\']'],tipPosition:'right'" 
+										onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日',maxDate:'#F{$dp.$D(\'jcsjz\') }'})" />
 										至
 										<input type="text" name="jcsjz" id="jcsjz" class="easyui-validatebox " style="width:140px;"
-										data-options="validType:['date[\'yyyy-MM-dd\']'],tipPosition:'right'" 
-										onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'jcsj\') }'})" />
+										data-options="validType:['date[\'yyyy年MM月dd日\']'],tipPosition:'right'" 
+										onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日',minDate:'#F{$dp.$D(\'jcsj\') }'})" />
 									</td>
 									<td class="toolbarTd" style="width:10%;white-space: nowrap;"></td>
 									<td class="toolbarTd" style="width:40%;">
@@ -352,9 +351,9 @@ function clearCase(){
 	  	 $("#dwlbdm").combotree("setValue","");
 	 	 $("#dwmc").val("");
 	  }
-	  if('${ywlbdm}' == null || '${ywlbdm}' == '' || typeof('${ywlbdm}') == 'undefined'){
-		  $("#ywlbdm").combobox("setValue",'');
-	  }
+	  //if('${ywlbdm}' == null || '${ywlbdm}' == '' || typeof('${ywlbdm}') == 'undefined'){
+	//	  $("#ywlbdm").combobox("setValue",'');
+	  //}
 	  $("#jcsj").val("");
 	  $("#jcsjz").val("");
 };

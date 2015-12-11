@@ -40,7 +40,7 @@ public class Dwjffctzs extends BaseEntity implements Serializable {
 	private String hgrq;
 
 	private String jctzswh;
-
+	
 	public String getId() {
 		return id;
 	}

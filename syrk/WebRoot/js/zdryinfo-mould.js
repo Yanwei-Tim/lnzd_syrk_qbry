@@ -229,17 +229,21 @@ function info_dtjs_(){
 	sb.append(refresh+"</li>");
 	sb.append("<input type='hidden' name='id' /><input type='hidden' name='method2' value='dtjsxsjbxx' /><input type='hidden' name='openUrl' value='/zdryDtjs/addDtjsXsjbxx' /><input type='hidden' name='editUrl' value='/zdryDtjs/{id}' /></ul></ul>");
 	sb.append("<div class='clear'></div>");
-
+	sb.append("<a href='javascript:void(0)' onclick='more()'>更多...</a>");	
+	sb.append("<input type='hidden' name='method' value=''/><input type='hidden' name='dg' value='true' />")
 	return sb.toString();
+}
+function more(){
+	var id=$(".dtjsclass").val();
+	var url=contextPath+'/dtjsMore/dtjsMorePage?dtjsXsxxid='+id;
+	openWindow(false,null,url,null,{title:'动态纪实详细',width:1000,height:600});
 }
 
 function info_dtjsxsjbxx_(){
 	var sb = new StringBuffer();
 	sb.append("<ul>");
 	sb.append("<li><span class='spantitle'>核实时间：</span><span name='hssj' class='edit_word input_w2'></span></li>");
-	sb.append("<li><span class='spantitle'>核实地点区划：</span><span name='hsddqh' dict='/common/dict/D_BZ_XZQH_MUNICIPAL'   class='edit_word input_w2'></span></li>"); 
-	sb.append("<li><span class='spantitle'>核实地点名称：</span><span name='hsddmc' class='edit_word input_w2'></span></li>"); 
-	sb.append("<li><span class='spantitle'>核实地点详址：</span><span name='hsddxz' class='edit_word input_w2'></span></li>"); 
+	sb.append("<li><span class='spantitle'>核实地点详址：</span><span name='hsd_dzxz' class='edit_word input_w2'></span></li>"); 
 	sb.append("<li><span class='spantitle'>在控状态：</span><span name='zkzt' dict='/common/dict/D_QBLD_ZKZT' class='edit_word input_w1'></span></li>");
 	sb.append("<li><span class='spantitle'>在籍状态：</span><span name='zjzt' dict='/common/dict/D_QBLD_ZJZT' class='edit_word input_w2'></span></li>");
 	sb.append("<li><span class='spantitle'>离开时间：</span><span name='lksj' class='edit_word input_w2'></span></li>");
@@ -252,7 +256,7 @@ function info_dtjsxsjbxx_(){
 	sb.append("<li><span class='spantitle'>工作单位：</span><span name='gzdw' class='edit_word input_w2'></span></li>");
 	sb.append("<li><span class='spantitle'>工作单位详址：</span><span name='gzdwxz' class='edit_word input_w2'></span></li>");
 	sb.append("<li><span class='spantitle'>现住地区划：</span><span name='jzdqh' dict='/common/dict/D_BZ_XZQH' class='edit_word input_w2'></span></li>");
-	sb.append("<li><span class='spantitle'>现住地详址：</span><span name='jzdxz' dict='/common/dict/D_BZ_XZQH' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>现住地详址：</span><span name='jzd_dzxz'  class='edit_word input_w2'></span></li>");
 	sb.append("<li><span class='spantitle'>管辖单位：</span><span name='gxdwmc' class='edit_word input_w2'></span></li>");
 	sb.append("<li><span class='spantitle'>是否见到本人：</span><span name='sfjdbr' dict='/common/dict/D_QBLD_SF' class='edit_word input_w2'></span></li>");
 	sb.append("<li><span class='spantitle'>直系亲属信息：</span><span name='zxqsxx'  class='edit_word input_w2'></span></li>");
@@ -260,7 +264,8 @@ function info_dtjsxsjbxx_(){
 	sb.append("<li><span class='spantitle'>情况描述：</span><span name='hsqkms' class='edit_word input_w2'></span></li>");
 
 	sb.append("<li class='uline2'><a class='delfw_btn ulrt_btn' href='javascript:void(0);'></a><a class='editfw_btn ulrt_btn' href='javascript:void(0);'></a></li>");
-	sb.append("<input type='hidden' name='id' />");
+	sb.append("<input type='hidden' class='dtjsclass'  name='id' />");
+
 	sb.append("</ul>");
 	return sb.toString();
 };

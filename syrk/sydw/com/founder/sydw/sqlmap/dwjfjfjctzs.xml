@@ -6,9 +6,9 @@
 	
 	<!-- 新增责令整改通知书 -->
 	<insert id="save" parameterClass="dwjfjfjctzs">
-		<![CDATA[INSERT INTO DW_JFJFJCTZS(ID,JCID,DWID,DWMC,ZZJGMC,ZZJGID,WH,JCRQ,QT,HGRQ,]]>
+		<![CDATA[INSERT INTO DW_JFJFJCTZS(ID,JCID,TS,DWID,DWMC,ZZJGMC,ZZJGID,WH,JCRQ,QT,HGRQ,]]>
 		<include refid="insertXtzd"/>)
-		<![CDATA[values(#id#,#jcid#,#dwid#,#dwmc#,#zzjgmc#,#zzjgid#,#wh#,#jcrq#,#qt#,#hgrq#,]]>
+		<![CDATA[values(#id#,#jcid#,#ts#,#dwid#,#dwmc#,#zzjgmc#,#zzjgid#,#wh#,#jcrq#,#qt#,#hgrq#,]]>
 		<include refid="insertXtzdVal"/>)
 	</insert>
 	
@@ -20,7 +20,7 @@
 	<update id="update" parameterClass="dwjfjfjctzs">
 		<![CDATA[ UPDATE DW_JFJFJCTZS ]]>	
 			<dynamic prepend="set">
-				 <isNotNull prepend="," property="id"><![CDATA[ ID=#id# ]]></isNotNull>
+				<isNotNull prepend="," property="ts"><![CDATA[ TS=#ts# ]]></isNotNull>
 				 <isNotNull prepend="," property="jcid"><![CDATA[ JCID=#jcid# ]]></isNotNull>
 		 		 <isNotNull prepend="," property="dwid"><![CDATA[ DWID=#dwid# ]]></isNotNull>
 				 <isNotNull prepend="," property="zzjgmc"><![CDATA[ ZZJGMC=#zzjgmc# ]]></isNotNull>

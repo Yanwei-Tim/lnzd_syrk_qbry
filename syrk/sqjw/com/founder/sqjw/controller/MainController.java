@@ -11,11 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.founder.framework.annotation.RestfulAnnotation;
 import com.founder.framework.base.controller.BaseController;
+import com.founder.framework.base.entity.SessionBean;
+import com.founder.framework.organization.department.bean.OrgOrganization;
+import com.founder.framework.organization.department.service.OrgOrganizationService;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.sqjw.service.MainService;
 import com.founder.sqjw.vo.CountMapVO;
 import com.founder.sqjw.vo.MainVo;
+import com.founder.sqjw.vo.YdjwBbrwVO;
+import com.founder.sqjw.vo.YdjwCountVO;
 import com.founder.syfw.vo.SyfwListVo;
 import com.founder.syrkgl.bean.SyrkSyrkxxzb;
 /**
@@ -29,6 +35,8 @@ import com.founder.syrkgl.bean.SyrkSyrkxxzb;
 public class MainController extends BaseController{
 	@Resource(name = "mainService")
 	private MainService mainService;
+	@Resource(name = "orgOrganizationService")
+	private OrgOrganizationService orgOrganizationService;
 	/**
 	 * @Title: queryPcsXqgkTj
 	 * @描述: 查询派出所辖区组织机构概况统计
@@ -114,8 +122,6 @@ public class MainController extends BaseController{
 		param.put("zdrydm", zdrybm);
 		listVo = mainService.queryListzdry(param);
 		return listVo;
-	
-		
 	}
 	/**
 	 * @Title: queryczf 
@@ -127,7 +133,6 @@ public class MainController extends BaseController{
 	 */
 	@RequestMapping(value = "/queryczf",method = RequestMethod.POST)
 	public @ResponseBody List<MainVo> queryczf(MainVo entity){
-		
 		return mainService.queryPcsXqgkXq(entity);
 	}
 	
@@ -188,14 +193,8 @@ public class MainController extends BaseController{
 			param.put("zdrydm", zdrybm);
 			listVo = mainService.queryListzdry(param);
 		}
-		
 		return listVo;
-	
-		
 	}
-	
-	
-	
 	/**
 	 * @Title: countPcs
 	 * @描述: 查询人员派出所首页统计
@@ -208,7 +207,6 @@ public class MainController extends BaseController{
 	public @ResponseBody Map<String,Object> countPcs(String orgid){
 		Map<String,Object> paramMap=new HashMap<String, Object>();
 		Map<String,Object> resMap = new HashMap<String,Object>();
-		String level = getSessionBean().getUserOrgLevel();
 		if(!orgid.equals("XT")){
 			 if(orgid.substring(8, orgid.length()).equals("0000")){
 			    	paramMap.put("lx", 14);
@@ -224,8 +222,6 @@ public class MainController extends BaseController{
 			    	resMap = mainService.querypcstj(paramMap);
 			    }
 		}
-	   
-	   
 		return resMap;
 	}
 	/**
@@ -243,7 +239,60 @@ public class MainController extends BaseController{
 		paramMap.put("ryid", ryid);
 		resMap = mainService.zdryDetails(paramMap);
 		return resMap;
-		
+	}
+	/**
+	 * @Title: queryEntityCount
+	 * @描述: 获取辖区统计信息-提供给两实移动端调用【服务接口】
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值: YdjwCountVO 返回类型 
+	 * @throws
+	 */
+	@RestfulAnnotation(serverId="3")
+	@RequestMapping(value = "/queryEntityCount", method = RequestMethod.POST)
+	public @ResponseBody YdjwCountVO queryEntityCount(SessionBean sessionBean) {
+		Map<String,Object> paramMap=new HashMap<String, Object>();
+		sessionBean = getSessionBean(sessionBean);
+		if(null != sessionBean){
+			OrgOrganization userOrg = orgOrganizationService.queryById(sessionBean.getUserOrgId());
+			String orglevel = userOrg.getOrglevel();
+			if(("21").equals(orglevel)){
+				paramMap.put("fxjdm", sessionBean.getUserOrgCode());
+			}else if("32".equals(orglevel)){
+				paramMap.put("pcsdm", sessionBean.getUserOrgCode());
+			}else if("50".equals(orglevel)){
+				paramMap.put("zrqdm", sessionBean.getUserOrgCode());
+			}
+		}
+		YdjwCountVO returnVO = mainService.queryEntityCount(paramMap);
+		return returnVO;
 	}
 	
+	/**
+	 * @Title: queryBbrw
+	 * @描述: 报备任务-提供给两实移动端调用【服务接口】
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: 传入参数定义 
+	 * @返回值: YdjwCountVO 返回类型 
+	 * @throws
+	 */
+	@RestfulAnnotation(serverId="3")
+	@RequestMapping(value = "/queryBbrw", method = RequestMethod.POST)
+	public @ResponseBody List<YdjwBbrwVO> queryBbrw(SessionBean sessionBean) {
+		Map<String,Object> paramMap=new HashMap<String, Object>();
+		sessionBean = getSessionBean(sessionBean);
+		if(null != sessionBean){
+			OrgOrganization userOrg = orgOrganizationService.queryById(sessionBean.getUserOrgId());
+			String orglevel = userOrg.getOrglevel();
+			if(("21").equals(orglevel)){
+				paramMap.put("fxjdm", sessionBean.getUserOrgCode());
+			}else if("32".equals(orglevel)){
+				paramMap.put("pcsdm", sessionBean.getUserOrgCode());
+			}else if("50".equals(orglevel)){
+				paramMap.put("zrqdm", sessionBean.getUserOrgCode());
+			}
+		}
+		List<YdjwBbrwVO> returnVO = mainService.queryBbrw(paramMap);
+		return returnVO;
+	}
 }

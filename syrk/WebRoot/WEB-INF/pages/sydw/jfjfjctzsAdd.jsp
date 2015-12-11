@@ -12,11 +12,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>技防检查通知书</title>
-<style>
-	td{
-	  font-size:13px;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/sydw/sydwWord.css"><link/>
 </head>
 <body>
 	<div class="easyui-layout" data-options="fit:true">
@@ -45,20 +41,20 @@
 					</tr>
 					<tr class="dialogTr">
 						<td>
-							<input type="text" id="dwmc" name="dwmc" value="${entity.dwmc}"  class="easyui-validatebox"  style="line-height: 20px;border-top: 0px;border-left: 0px;border-right: 0px;width: 200px;border-color: #333333;"/>：
+							<input type="text" id="dwmc" name="dwmc" value="${entity.dwmc}"  class="easyui-validatebox text"  style="width: 200px;"/>：
 						</td>
 					</tr>
 					<tr class="dialogTr">
 						<td style="line-height: 2em;">
-						　　根据《辽宁省公共安全技术防范条例》，第&nbsp;&nbsp;条之规定，我局（分局）于
-								<input type="text"  id="jcrq" name="jcrq" value="${entity.jcrq}" class="easyui-validatebox" style="line-height: 20px;text-align:center;border-top: 0px;border-left: 0px;border-right: 0px;width: 100px;border-color: #333333;"
+						　　根据《辽宁省公共安全技术防范条例》，第<input type="text" name="ts" value="${entity.ts}"  class="easyui-validatebox text" style="width: 100px;text-align: center;" />条之规定，我局（分局）于
+								<input type="text"  id="jcrq" name="jcrq" value="${entity.jcrq}" class="easyui-validatebox date" style="width: 150px;"
 								data-options="validType:['date[\'yyyy年MM月dd日\']'],tipPosition:'left'"
 								onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日'})"/>对你（单位）进行检查。
 							<br/>检查内容如下：
-							<br/>1. 公共安全技术防范系统工作落实情况
+							<br/>1. 公共安全技术防范系统工作制度落实情况
 							<br/>2. 公共安全技术防范系统防范效能
 							<br/>3. 公共安全技术防范系统操作人员使用熟练度
-							<br/>4. 其他：
+							<br/>4. 其它：
 						</td>
 					</tr>
 					<tr class="dialogTr">
@@ -78,7 +74,7 @@
 					</tr>
 					<tr class="dialogTr" align="right">
 						<td>
-						　　<input type="text" name="hgrq" value="${entity.hgrq}" class="easyui-validatebox" style="line-height: 20px;text-align:center;border-top: 0px;border-left: 0px;border-right: 0px;width: 100px;border-color: #333333;"
+						　　<input type="text" name="hgrq" value="${entity.hgrq}" class="easyui-validatebox date" style="width: 150px;"
 								data-options="validType:['date[\'yyyy年MM月dd日\']'],tipPosition:'left'"
 								onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日'})"/>
 						</td>

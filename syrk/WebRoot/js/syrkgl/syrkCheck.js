@@ -1,11 +1,9 @@
 $(function(){
 	$('#hs_status').combobox('setValue', '01');
-	//$('#xt_zxbz').combobox('setValue', '0');
 	$('#dg').datagrid({
          url: contextPath + '/syrkGl/queryList?isCheck=check&hs_status=0&xt_zxbz=0'
 	 });
 });
-
 //居住地址截取
 subjzddzxz = function(val, row, index){
   	var xzqhmc = window.top.getDictName(contextPath+'/common/dict/D_BZ_XZQHLIST_MUNICIPAL.js',row.jzd_xzqhdm);

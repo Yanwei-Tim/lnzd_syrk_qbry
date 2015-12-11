@@ -3,6 +3,8 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="Main">
 	<typeAlias alias="mainvo" type="com.founder.sqjw.vo.MainVo" />
+	<typeAlias alias="ydjwcountvo" type="com.founder.sqjw.vo.YdjwCountVO" />
+	<typeAlias alias="ydjwbbrwvo" type="com.founder.sqjw.vo.YdjwBbrwVO" />
 	<!-- 查询派出所辖区概况统计 -->
 	<select id="queryPcsXqgkTj" parameterClass="mainvo" resultClass="mainvo">
 		SELECT Z.ORGCODE,
@@ -266,5 +268,51 @@
 		WHERE T.XT_ZXBZ = '0'
 		AND T.SYRKYWLXDM = #syrkywlxdm#
 		AND (T.GXZRQDM = #gxzrqdm# OR T.GXPCSDM = #gxpcsdm#)
+	</select>
+	<!-- 获取辖区统计信息-提供给两实移动端调用【服务接口】 -->
+	<select id="queryEntityCount" parameterClass="Map" resultClass="ydjwcountvo">
+	   	SELECT DECODE(M.MLPSL, NULL, 0, M.MLPSL) AS BZDZSL,
+	   	  	   '0' AS SYJZWSL,
+	   	       DECODE(S.SYRKSL, NULL, 0, S.SYRKSL) AS SYRKSL,
+	   	       DECODE(F.SYFWSL, NULL, 0, F.SYFWSL) AS SYFWSL,
+	   	       DECODE(D.SYDWSL, NULL, 0, D.SYDWSL) AS SYDWSL
+		  FROM (SELECT O.ORGCODE, O.ORGNAME
+		          FROM ORG_ORGANIZATION O
+		         WHERE O.XT_ZXBZ = '0'
+		           AND O.ORGCODE = #zrqdm#) O
+		  LEFT JOIN (SELECT COUNT(T.MLDZID) MLPSL, T.ZRQDM
+		               FROM BZDZ_ADD_MLDZDXB T
+		              WHERE T.XT_ZXBZ = '0'
+		              GROUP BY T.ZRQDM) M
+		    ON M.ZRQDM = O.ORGCODE
+		  LEFT JOIN (SELECT COUNT(T.ID) SYRKSL, T.GXZRQDM
+		               FROM SYRK_SYRKXXZB T
+		              WHERE T.XT_ZXBZ = '0'
+		              GROUP BY T.GXZRQDM) S
+		    ON S.GXZRQDM = O.ORGCODE
+		  LEFT JOIN (SELECT COUNT(T.ID) SYFWSL, T.SS4JBMDM
+		               FROM SYFW_FWJBXXB T
+		              WHERE T.XT_ZXBZ = '0'
+		              GROUP BY T.SS4JBMDM) F
+		    ON F.SS4JBMDM = O.ORGCODE
+		  LEFT JOIN (SELECT COUNT(T.ID) SYDWSL, T.GLBMID
+		               FROM DW_DWJBXXB T
+		              WHERE T.XT_ZXBZ = ' 0'
+		              GROUP BY T.GLBMID) D
+		    ON D.GLBMID = O.ORGCODE
+	</select>
+	<!-- 报备任务-提供给两实移动端调用【服务接口】 -->
+	<select id="queryBbrw" parameterClass="Map" resultClass="ydjwbbrwvo">
+	   	SELECT C.MLDZID, C.CHDZID, C.DZMC, C.ZBX, C.ZBY
+		  FROM BZDZ_ADD_CHDZDXB C, BZDZ_ADD_MLDZDXB M
+		 WHERE C.XT_ZXBZ = '0'
+		   AND M.XT_ZXBZ = '0'
+		   AND C.MLDZID = M.MLDZID
+		   AND C.DZJB = '4'
+		   AND M.ZRQDM = #zrqdm#
+		   AND C.CHDZID NOT IN (SELECT T.JZD_DZID
+		                          FROM SYRK_SYRKXXZB T
+		                         WHERE T.XT_ZXBZ = '0'
+		                           AND T.GXZRQDM = #zrqdm#)
 	</select>
 </sqlMap>	

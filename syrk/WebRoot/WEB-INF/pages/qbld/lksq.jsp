@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/qbld/yjxx.css" />
     <link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/qbld/lksq.css" />
     <script type="text/javascript" src="<%=contextPath%>/js/qbld/main.js" ></script>
+    <script type="text/javascript" src="<%=contextPath%>/js/qbld/yjxx.js" ></script>
     <script type="text/javascript" src="<%=contextPath%>/js/qbld/lksq.js" ></script>
     <script type="text/javascript">
     	var userOrgName = "<%=userOrgName%>";

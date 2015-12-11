@@ -31,11 +31,23 @@ public class SydwQueryDao extends BaseDaoImpl {
 		String sort = page.getSort();
 		String order = page.getOrder();
 		if (StringUtils.isBlank(sort)) { // 默认排序
-			// sort = "id";
 			order = "asc";
 		}
 		map.put("sort", sort);
 		map.put("order", order);
+		if(entity.getShbs()!=null&&!"".equals(entity.getShbs())){
+			String[] dz_dwdzdm = entity.getDz_dwdzdm().split(",");
+			String chdzid = "";
+			for(int i=0;i<dz_dwdzdm.length;i++){
+				chdzid += "'"+ dz_dwdzdm[i] +"',";
+			}
+			chdzid = chdzid.substring(0, chdzid.length()-1);
+			entity.setDz_dwdzdm(chdzid);
+		}else{
+			if(entity.getDz_dwdzdm()!=null&&!"".equals(entity.getDz_dwdzdm())){
+				entity.setDz_dwdzdm("'"+entity.getDz_dwdzdm()+"'");
+			}
+		}
 		entity.setZagldwbm(StringUtils.getSqlExpression(entity.getZagldwbm()));
 		entity.setDwmc(StringUtils.getSqlExpression(entity.getDwmc()));
 
@@ -73,6 +85,19 @@ public class SydwQueryDao extends BaseDaoImpl {
 	public long queryCountDw(Dwjbxxb entity) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("dwjbxxb", entity);
+		if(entity.getShbs()!=null&&!"".equals(entity.getShbs())){
+			String[] dz_dwdzdm = entity.getDz_dwdzdm().split(",");
+			String chdzid = "";
+			for(int i=0;i<dz_dwdzdm.length;i++){
+				chdzid += "'"+ dz_dwdzdm[i] +"',";
+			}
+			chdzid = chdzid.substring(0, chdzid.length()-1);
+			entity.setDz_dwdzdm(chdzid);
+		}else{
+			if(entity.getDz_dwdzdm()!=null&&!"".equals(entity.getDz_dwdzdm())){
+				entity.setDz_dwdzdm("'"+entity.getDz_dwdzdm()+"'");
+			}
+		}
 		Integer count = (Integer) queryForObject("SydwQuery.queryCountDw", map);
 		return count.longValue();
 	}

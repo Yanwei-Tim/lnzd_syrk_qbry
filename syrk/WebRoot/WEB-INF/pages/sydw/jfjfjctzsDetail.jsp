@@ -12,35 +12,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>技防检查通知书</title>
-<style>
-	td{
-	  font-size:15px;
-	  word-break : break-all;
-	  vertical-align: top;
-	}
-	.date{
-		font-size:15px;
-		width: 500px;
-		line-height: 20px;
-		text-align:left;
-		border-top: 0px;
-		border-left: 0px;
-		border-right: 0px;
-		border-color: #333333;
-		text-indent:5px;
-	}
-	.text{
-		font-size:15px;
-		width: 500px;
-		line-height: 20px;
-		text-align:left;
-		border-top: 0px;
-		border-left: 0px;
-		border-right: 0px;
-		border-color: #333333;
-		text-indent:5px;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/sydw/sydwWord.css"><link/>
 </head>
 <body>
 	<div class="easyui-layout" data-options="fit:true" >
@@ -65,13 +37,13 @@
 					</tr>
 					<tr class="dialogTr">
 						<td>
-							<input type="text" id="dwmc" name="dwmc" value="${entity.dwmc}"  class="easyui-validatebox"  style="line-height: 20px;border-top: 0px;border-left: 0px;border-right: 0px;width: 200px;border-color: #333333;"/>：
+							<input type="text" id="dwmc" name="dwmc" value="${entity.dwmc}"  class="easyui-validatebox text"  style="width: 200px;"/>：
 						</td>
 					</tr>
 					<tr class="dialogTr">
-						<td style="line-height: 2em;">
-						　　根据《辽宁省公共安全技术防范条例》，第&nbsp;&nbsp;条之规定，我局（分局）于
-								<input type="text"  id="jcrq" name="jcrq" value="${entity.jcrq}" class="easyui-validatebox" style="line-height: 20px;text-align:center;border-top: 0px;border-left: 0px;border-right: 0px;width: 100px;border-color: #333333;"
+						<td >
+						　　根据《辽宁省公共安全技术防范条例》，第<input type="text" name="ts" value="${entity.ts}"  class="easyui-validatebox text" style="width: 100px;text-align: center;" />条之规定，我局（分局）于
+								<input type="text"  id="jcrq" name="jcrq" value="${entity.jcrq}" class="easyui-validatebox date" style="width: 150px;"
 								data-options="validType:['date[\'yyyy年MM月dd日\']'],tipPosition:'left'"
 								onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日'})"/>对你（单位）进行检查。
 							<br/>检查内容如下：
@@ -87,7 +59,7 @@
 						</td>
 					</tr>
 					<tr class="dialogTr">
-						<td style="line-height: 2em;">
+						<td >
 						　　请你单位派员协助检查。
 						</td>
 					</tr>
@@ -98,7 +70,7 @@
 					</tr>
 					<tr class="dialogTr" align="right">
 						<td>
-						　　<input type="text" name="hgrq" value="${entity.hgrq}" class="easyui-validatebox" style="line-height: 20px;text-align:center;border-top: 0px;border-left: 0px;border-right: 0px;width: 100px;border-color: #333333;"
+						　　<input type="text" name="hgrq" value="${entity.hgrq}" class="easyui-validatebox date" style="width: 150px;"
 								data-options="validType:['date[\'yyyy年MM月dd日\']'],tipPosition:'left'"
 								onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy年MM月dd日'})"/>
 						</td>
@@ -128,16 +100,11 @@
 </body>
 </html>
 <script type="text/javascript">
-	var mainTabID = "${mainTabID}";
-	function doInit(paramArray) {
-		$('input').each(function(i,elment){
-			$(elment).attr("readonly","readonly");
-		});
-	}
-	function beforeSubmit() {
-	}
-	function afterSubmit(arr) {
-	}
+	$(function(){
+		if('${printAble}' == null || '${printAble}' == ''){
+			$('#printButton').hide();
+		}
+	});
 	//打印
 	$('#printButton').click(function(){
 		window.print();
