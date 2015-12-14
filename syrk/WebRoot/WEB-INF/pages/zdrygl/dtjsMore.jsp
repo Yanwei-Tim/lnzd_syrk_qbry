@@ -15,6 +15,7 @@
 </head>
 <body style="overflow: hidden;">
 <input type="hidden" id="zdry_zjhm"  value="${zdryZjhm}"/>
+<input type="hidden" id="zdryid"  value="${zdryid}"/>
  <div id="dtjsMore" class="easyui-tabs" data-options="border:false">
 	   <div title="写实基本信息" id="dwxx" style="height: 435px;">
  	   <table cellspacing="0" cellpadding="0" border="0" style="height:35px">
@@ -72,7 +73,7 @@
 		<%@include file="/WEB-INF/pages/zdrygl/dtjsSwxxList.jsp"%>
 		<%@include file="/WEB-INF/pages/zdrygl/dtjsSfxxList.jsp"%>
 		<%@include file="/WEB-INF/pages/zdrygl/dtjsZdxsfzqkList.jsp"%>
-		
+		<%@include file="/WEB-INF/pages/zdrygl/dtjsShgxrxxbList.jsp"%>
 
           
 	</div> 

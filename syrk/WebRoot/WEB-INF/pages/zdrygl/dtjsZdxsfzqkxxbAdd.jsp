@@ -26,12 +26,12 @@ String userOrgName = userInfo.getUserOrgName();
 	        </tr>
 		     	<td width="20%" class="dialogTd" align="right">重点人员所属类型：</td>
 	    		<td width="30%" class="dialogTd">
-					<input class="easyui-combobox" type="text"  id="sslb" name="sslb"   style="width:200px;" value="07"
+					<input class="easyui-combobox" type="text"  id="sslb" name="sslb"   style="width:200px;" value="${entity.sslb}"
 					data-options="url: contextPath +  '/common/dict/BD_D_ZDRYLBDMLIST_MUNICIPAL.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right',readonly:true"/>
 				</td>
 				<td width="20%" class="dialogTd" align="right">重点人员所属细类：</td>
-	    		<td width="30%" class="dialogTd" ><input type="text" name="sslbxl" id="sslbxl" value="07"  class="easyui-combotree" style="width:200px;"
+	    		<td width="30%" class="dialogTd" ><input type="text" name="sslbxl" id="sslbxl" value="${entity.sslbxl}"  class="easyui-combotree" style="width:200px;"
 	    			data-options="url: contextPath + '/common/dict/BD_D_ZDRYLBDM.js',onlyLeaf:true,
 	    			multiple:false,required:true,panelWidth:613,method:'get',lines:true,tipPosition:'left'" >
 		    	</td>

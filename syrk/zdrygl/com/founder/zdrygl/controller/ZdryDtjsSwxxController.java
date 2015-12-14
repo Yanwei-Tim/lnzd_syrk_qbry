@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,18 +18,18 @@ import com.founder.framework.components.AppConst;
 import com.founder.framework.exception.BussinessException;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
-import com.founder.syrkgl.bean.RyRyjbxxb;
 import com.founder.zdrygl.bean.ZdryDtjsSwxxb;
-import com.founder.zdrygl.bean.ZdryDtjsXsxxb;
 import com.founder.zdrygl.bean.ZdryZdryzb;
-import com.founder.zdrygl.service.ZdryDtjsService;
 import com.founder.zdrygl.service.ZdryDtjsSwxxbService;
+import com.founder.zdrygl.service.ZdryZdryzbService;
 import com.google.gson.Gson;
 @Controller
 @RequestMapping("dtjsMore")
 public class ZdryDtjsSwxxController extends BaseController {
 	@Resource
 	private ZdryDtjsSwxxbService zdryDtjsSwxxbService;
+	@Resource
+	private ZdryZdryzbService zdryZdryzbService;
 	
 
 	@RequestMapping(value = "/moreDtjsSwxx", method = RequestMethod.POST)	
@@ -47,12 +46,15 @@ public class ZdryDtjsSwxxController extends BaseController {
 	
 
 	@RequestMapping(value = "/addDtjsSwxx", method = RequestMethod.GET)
-	public ModelAndView addDtjsSwjbxx( String zdryZjhm,
+	public ModelAndView addDtjsSwjbxx( String zdryZjhm,String zdryid,
 			SessionBean sessionBean) throws BussinessException {
 		    sessionBean = getSessionBean(sessionBean);
 			ModelAndView mv = new ModelAndView("zdrygl/dtjsSwxxAdd");		
+			ZdryZdryzb zdryzb = zdryZdryzbService.queryById(zdryid);
 			ZdryDtjsSwxxb entity=new ZdryDtjsSwxxb();
 			entity.setZdryzjhm(zdryZjhm);
+			entity.setSslb(zdryzb.getZdrygllxdm());
+			entity.setSslbxl(zdryzb.getZdrylb());
 			mv.addObject("entity", entity);
 			return mv;
 		
