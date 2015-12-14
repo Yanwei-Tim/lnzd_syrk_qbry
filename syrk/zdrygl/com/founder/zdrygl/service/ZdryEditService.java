@@ -115,6 +115,10 @@ public interface ZdryEditService {
 
 	public List zdryzagltdxxb_query(Map<String, Object> map);
 
+	public List zdryxdrynjxxb_query(Map<String, Object> map);
+
+	public List zdryxdryxdqkxxb_query(Map<String, Object> map);
+
 	/**
 	 * 
 	 * @Title: zdryZl

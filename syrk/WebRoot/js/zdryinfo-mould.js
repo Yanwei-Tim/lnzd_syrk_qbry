@@ -379,3 +379,76 @@ function info_zdryzagltdxxb_(){
 	sb.append("</ul>");
 	return sb.toString();
 }
+
+
+//吸毒人员尿检信息表
+function info_xdrynjxxbMenu_(){
+	var sb = new StringBuffer();
+	sb.append("<ul url='info_zdryxdrynjxxb' level='2'><li class='uline' ><span>吸毒人员尿检信息表</span><a href='javascript:void(0);' class='addfw_btn' >");
+	sb.append(refresh+"</li>");
+	sb.append("<input type='hidden' name='method2' value='zdryxdrynjxxb' /><input type='hidden' name='openUrl' value='/zdryXdrynjxxb/add' /><input type='hidden' name='editUrl' value='/zdryXdrynjxxb/edit' /></ul>");
+	sb.append("<div class='clear'></div>");
+	return sb.toString();
+}
+//吸毒人员尿检信息表
+function info_zdryxdrynjxxb_(){
+	var sb = new StringBuffer();
+	sb.append("<ul>");
+	sb.append("<li><span class='spantitle'>尿检_日期：</span><span name='nj_rq'  class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>尿检结果：</span><span name='njjgdm'  dict='/common/dict/JD_D_NJJGDM' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>签到_日期：</span><span name='qd_rq'  class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>备注：</span><span name='bz'  class='edit_word input_w2'></span></li>");
+	sb.append("<li class='uline2'></li>");
+	sb.append("<li class='uline2'><a class='delfw_btn ulrt_btn' href='javascript:void(0);'></a><a class='editfw_btn ulrt_btn' href='javascript:void(0);'></a></li>");
+	sb.append("<input type='hidden' name='id' />");
+	sb.append("</ul>");
+	return sb.toString();
+}
+
+
+
+//吸毒人员吸毒情况信息
+
+function info_xdryxdqkMenu_(){
+	var sb = new StringBuffer();
+	sb.append("<ul url='info_zdryxdryxdqkxxb' level='2'><li class='uline' ><span>吸毒人员吸毒情况信息</span><a href='javascript:void(0);' class='addfw_btn' >");
+	sb.append(refresh+"</li>");
+	sb.append("<input type='hidden' name='method2' value='zdryxdryxdqkxxb' /><input type='hidden' name='openUrl' value='/zdryXdryxdqkxxb/add' /><input type='hidden' name='editUrl' value='/zdryXdryxdqkxxb/edit' /></ul>");
+	sb.append("<div class='clear'></div>");
+	return sb.toString();
+}
+//吸毒人员吸毒情况信息
+
+function info_zdryxdryxdqkxxb_(){
+	var sb = new StringBuffer();
+	sb.append("<ul>");
+	sb.append("<li><span class='spantitle'>吸食情况：</span><span name='xsqkdm' dict='/common/dict/JD_D_DPZLDM' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>初次吸毒种类：</span><span name='ccxdzldm' dict='/common/dict/JD_D_DPZLDM' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>吸毒原因：</span><span name='xdyydm' dict='/common/dict/JD_D_XDYYDM' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>吸毒方式：</span><span name='xdfsdm' dict='/common/dict/JD_D_XDFSDM' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>毒品来源：</span><span name='dplydm' dict='/common/dict/JD_D_XDFSDM' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>毒资来源：</span><span name='dzlydm' dict='/common/dict/JD_D_DZLYDM' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>危害社会后果：</span><span name='whshhg'  class='edit_word input_w1'></span></li>");
+	sb.append("<li><span class='spantitle'>初次吸毒_日期：</span><span name='ccxd_rq'  class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>初次查获_日期：</span><span name='ccch_rq'  class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>初次查获详址：</span><span name='ccchxz'  class='edit_word input_w1'></span></li>");
+	sb.append("<li><span class='spantitle'>查获机构名称：</span><span name='chjgmc'  class='edit_word input_w1'></span></li>");
+	sb.append("<li><span class='spantitle'>初次查获处置情况：</span><span name='ccchczqkdm' dict='/common/dict/BD_D_CHCZQKDM' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>吸毒人员现状：</span><span name='xdryxzdm' dict='/common/dict/BD_D_XDRYXZDM' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>共同吸毒情况：</span><span name='gtxdqk'  class='edit_word input_w1'></span></li>");
+	sb.append("<li><span class='spantitle'>戒毒情况：</span><span name='jdqk'  class='edit_word input_w1'></span></li>");
+	sb.append("<li><span class='spantitle'>复吸_日期：</span><span name='fxrq'  class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>复吸次数：</span><span name='fxcs'  class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>复吸查获处置情况：</span><span name='fxchczqkdm' dict='/common/dict/BD_D_CHCZQKDM' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>复吸查获处置单位：</span><span name='fxchczdwdm'  class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>复吸查获处置单位名称：</span><span name='fxchczdwmc'  class='edit_word input_w1'></span></li>");
+	sb.append("<li><span class='spantitle'>复吸_毒品种类代码：</span><span name='fxdpzldm'  dict='/common/dict/JD_D_DPZLDM' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>复吸查获详址：</span><span name='fxchxz'  class='edit_word input_w1'></span></li>");
+	sb.append("<li><span class='spantitle'>备注：</span><span name='bz'  class='edit_word input_w1'></span></li>");
+	sb.append("<li class='uline2'></li>");
+	sb.append("<li class='uline2'><a class='delfw_btn ulrt_btn' href='javascript:void(0);'></a><a class='editfw_btn ulrt_btn' href='javascript:void(0);'></a></li>");
+	sb.append("<input type='hidden' name='id' />");
+	sb.append("</ul>");
+	return sb.toString();
+}
+

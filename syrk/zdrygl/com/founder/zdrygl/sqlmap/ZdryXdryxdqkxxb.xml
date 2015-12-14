@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+				"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<!-- 不使用namespace的话sql搜索定位会比较方便 -->
+<sqlMap namespace="ZdryXdryxdqkxxb">
+
+    <typeAlias alias="zdryXdryxdqkxxb" type="com.founder.zdrygl.bean.ZdryXdryxdqkxxb" />
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+	    <![CDATA[
+		ID,ZDRYID,XSQKDM,CCXDZLDM,XDYYDM,XDFSDM,DPLYDM,DZLYDM,WHSHHG,CCXD_RQ,CCCH_RQ,CCCHXZ,CHJGMC,CCCHCZQKDM,XDRYXZDM,GTXDQK,JDQK,FXRQ,FXCS,FXCHCZQKDM,FXCHCZDWDM,FXCHCZDWMC,FXDPZLDM,FXCHXZ,BZ,XT_CJSJ,XT_LRSJ,XT_LRRXM,XT_LRRID,XT_LRRBM,XT_LRRBMID,XT_LRIP,XT_ZHXGSJ,XT_ZHXGRXM,XT_ZHXGRID,XT_ZHXGRBM,XT_ZHXGRBMID,XT_ZHXGIP,XT_ZXBZ,XT_ZXYY
+	    ]]>
+	</sql>
+
+
+
+
+    <sql id="insertColumns">
+		     <isNotEmpty  property="id">ID</isNotEmpty>
+		    <isNotEmpty prepend="," property="zdryid">ZDRYID</isNotEmpty>
+		    <isNotEmpty prepend="," property="xsqkdm">XSQKDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="ccxdzldm">CCXDZLDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="xdyydm">XDYYDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="xdfsdm">XDFSDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="dplydm">DPLYDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="dzlydm">DZLYDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="whshhg">WHSHHG</isNotEmpty>
+		    <isNotEmpty prepend="," property="ccxd_rq">CCXD_RQ</isNotEmpty>
+		    <isNotEmpty prepend="," property="ccch_rq">CCCH_RQ</isNotEmpty>
+		    <isNotEmpty prepend="," property="ccchxz">CCCHXZ</isNotEmpty>
+		    <isNotEmpty prepend="," property="chjgmc">CHJGMC</isNotEmpty>
+		    <isNotEmpty prepend="," property="ccchczqkdm">CCCHCZQKDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="xdryxzdm">XDRYXZDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="gtxdqk">GTXDQK</isNotEmpty>
+		    <isNotEmpty prepend="," property="jdqk">JDQK</isNotEmpty>
+		    <isNotEmpty prepend="," property="fxrq">FXRQ</isNotEmpty>
+		    <isNotEmpty prepend="," property="fxcs">FXCS</isNotEmpty>
+		    <isNotEmpty prepend="," property="fxchczqkdm">FXCHCZQKDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="fxchczdwdm">FXCHCZDWDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="fxchczdwmc">FXCHCZDWMC</isNotEmpty>
+		    <isNotEmpty prepend="," property="fxdpzldm">FXDPZLDM</isNotEmpty>
+		    <isNotEmpty prepend="," property="fxchxz">FXCHXZ</isNotEmpty>
+		    <isNotEmpty prepend="," property="bz">BZ</isNotEmpty>
+		    ,
+			<include refid="insertXtzd"/>
+	</sql>
+
+	<sql id="insertColumnsValues">
+			<isNotEmpty  property="id">#id#</isNotEmpty>
+			<isNotEmpty prepend="," property="zdryid">#zdryid#</isNotEmpty>
+			<isNotEmpty prepend="," property="xsqkdm">#xsqkdm#</isNotEmpty>
+			<isNotEmpty prepend="," property="ccxdzldm">#ccxdzldm#</isNotEmpty>
+			<isNotEmpty prepend="," property="xdyydm">#xdyydm#</isNotEmpty>
+			<isNotEmpty prepend="," property="xdfsdm">#xdfsdm#</isNotEmpty>
+			<isNotEmpty prepend="," property="dplydm">#dplydm#</isNotEmpty>
+			<isNotEmpty prepend="," property="dzlydm">#dzlydm#</isNotEmpty>
+			<isNotEmpty prepend="," property="whshhg">#whshhg#</isNotEmpty>
+			<isNotEmpty prepend="," property="ccxd_rq">#ccxd_rq#</isNotEmpty>
+			<isNotEmpty prepend="," property="ccch_rq">#ccch_rq#</isNotEmpty>
+			<isNotEmpty prepend="," property="ccchxz">#ccchxz#</isNotEmpty>
+			<isNotEmpty prepend="," property="chjgmc">#chjgmc#</isNotEmpty>
+			<isNotEmpty prepend="," property="ccchczqkdm">#ccchczqkdm#</isNotEmpty>
+			<isNotEmpty prepend="," property="xdryxzdm">#xdryxzdm#</isNotEmpty>
+			<isNotEmpty prepend="," property="gtxdqk">#gtxdqk#</isNotEmpty>
+			<isNotEmpty prepend="," property="jdqk">#jdqk#</isNotEmpty>
+			<isNotEmpty prepend="," property="fxrq">#fxrq#</isNotEmpty>
+			<isNotEmpty prepend="," property="fxcs">#fxcs#</isNotEmpty>
+			<isNotEmpty prepend="," property="fxchczqkdm">#fxchczqkdm#</isNotEmpty>
+			<isNotEmpty prepend="," property="fxchczdwdm">#fxchczdwdm#</isNotEmpty>
+			<isNotEmpty prepend="," property="fxchczdwmc">#fxchczdwmc#</isNotEmpty>
+			<isNotEmpty prepend="," property="fxdpzldm">#fxdpzldm#</isNotEmpty>
+			<isNotEmpty prepend="," property="fxchxz">#fxchxz#</isNotEmpty>
+			<isNotEmpty prepend="," property="bz">#bz#</isNotEmpty>
+			,
+			<include refid="insertXtzdVal"/>
+	</sql>
+
+		<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="insert" >
+		INSERT INTO ZDRY_XDRYXDQKXXB (
+		<include refid="insertColumns"/>
+		) VALUES (
+		<include refid="insertColumnsValues"/>
+		)
+	</insert>
+
+	<sql id="updateColumns">
+		<dynamic prepend="set">
+	       <isNotNull prepend="," property="zdryid">ZDRYID = #zdryid#</isNotNull>
+	       <isNotNull prepend="," property="xsqkdm">XSQKDM = #xsqkdm#</isNotNull>
+	       <isNotNull prepend="," property="ccxdzldm">CCXDZLDM = #ccxdzldm#</isNotNull>
+	       <isNotNull prepend="," property="xdyydm">XDYYDM = #xdyydm#</isNotNull>
+	       <isNotNull prepend="," property="xdfsdm">XDFSDM = #xdfsdm#</isNotNull>
+	       <isNotNull prepend="," property="dplydm">DPLYDM = #dplydm#</isNotNull>
+	       <isNotNull prepend="," property="dzlydm">DZLYDM = #dzlydm#</isNotNull>
+	       <isNotNull prepend="," property="whshhg">WHSHHG = #whshhg#</isNotNull>
+	       <isNotNull prepend="," property="ccxd_rq">CCXD_RQ = #ccxd_rq#</isNotNull>
+	       <isNotNull prepend="," property="ccch_rq">CCCH_RQ = #ccch_rq#</isNotNull>
+	       <isNotNull prepend="," property="ccchxz">CCCHXZ = #ccchxz#</isNotNull>
+	       <isNotNull prepend="," property="chjgmc">CHJGMC = #chjgmc#</isNotNull>
+	       <isNotNull prepend="," property="ccchczqkdm">CCCHCZQKDM = #ccchczqkdm#</isNotNull>
+	       <isNotNull prepend="," property="xdryxzdm">XDRYXZDM = #xdryxzdm#</isNotNull>
+	       <isNotNull prepend="," property="gtxdqk">GTXDQK = #gtxdqk#</isNotNull>
+	       <isNotNull prepend="," property="jdqk">JDQK = #jdqk#</isNotNull>
+	       <isNotNull prepend="," property="fxrq">FXRQ = #fxrq#</isNotNull>
+	       <isNotNull prepend="," property="fxcs">FXCS = #fxcs#</isNotNull>
+	       <isNotNull prepend="," property="fxchczqkdm">FXCHCZQKDM = #fxchczqkdm#</isNotNull>
+	       <isNotNull prepend="," property="fxchczdwdm">FXCHCZDWDM = #fxchczdwdm#</isNotNull>
+	       <isNotNull prepend="," property="fxchczdwmc">FXCHCZDWMC = #fxchczdwmc#</isNotNull>
+	       <isNotNull prepend="," property="fxdpzldm">FXDPZLDM = #fxdpzldm#</isNotNull>
+	       <isNotNull prepend="," property="fxchxz">FXCHXZ = #fxchxz#</isNotNull>
+	       <isNotNull prepend="," property="bz">BZ = #bz#</isNotNull>
+			,
+			<include refid="updateXtzd"/>
+		</dynamic>
+	</sql>
+
+	<update id="update" >
+		UPDATE ZDRY_XDRYXDQKXXB
+		<include refid="updateColumns"/>
+		WHERE
+		ID = #id# 
+	</update>
+
+		<!-- 注销 -->
+    <update id="delete" parameterClass="zdryXdryxdqkxxb">
+       <![CDATA[ update ZDRY_XDRYXDQKXXB set ]]><include refid="deleteXtzd"/><![CDATA[ where ID = #id# ]]>
+    </update>
+    
+    <select id="queryById" resultClass="zdryXdryxdqkxxb">
+		SELECT <include refid="columns" />
+	    <![CDATA[
+		    FROM ZDRY_XDRYXDQKXXB 
+	        WHERE 
+		        ID = #id# 
+	    ]]>
+	</select>
+	
+	<sql id="queryWhere">
+		<!-- ognl访问静态方法的表达式 为@class@method(args),以下为调用rapid中的Ognl.isNotEmpty()方法,还有其它方法如isNotBlank()可以使用，具体请查看Ognl类 -->
+		<dynamic prepend="where">
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.id">
+				AND ID = #zdryXdryxdqkxxbVO.id#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.zdryid">
+				AND ZDRYID = #zdryXdryxdqkxxbVO.zdryid#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.xsqkdm">
+				AND XSQKDM = #zdryXdryxdqkxxbVO.xsqkdm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.ccxdzldm">
+				AND CCXDZLDM = #zdryXdryxdqkxxbVO.ccxdzldm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.xdyydm">
+				AND XDYYDM = #zdryXdryxdqkxxbVO.xdyydm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.xdfsdm">
+				AND XDFSDM = #zdryXdryxdqkxxbVO.xdfsdm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.dplydm">
+				AND DPLYDM = #zdryXdryxdqkxxbVO.dplydm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.dzlydm">
+				AND DZLYDM = #zdryXdryxdqkxxbVO.dzlydm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.whshhg">
+				AND WHSHHG = #zdryXdryxdqkxxbVO.whshhg#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.ccxd_rq">
+				AND CCXD_RQ = #zdryXdryxdqkxxbVO.ccxd_rq#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.ccch_rq">
+				AND CCCH_RQ = #zdryXdryxdqkxxbVO.ccch_rq#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.ccchxz">
+				AND CCCHXZ = #zdryXdryxdqkxxbVO.ccchxz#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.chjgmc">
+				AND CHJGMC = #zdryXdryxdqkxxbVO.chjgmc#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.ccchczqkdm">
+				AND CCCHCZQKDM = #zdryXdryxdqkxxbVO.ccchczqkdm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.xdryxzdm">
+				AND XDRYXZDM = #zdryXdryxdqkxxbVO.xdryxzdm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.gtxdqk">
+				AND GTXDQK = #zdryXdryxdqkxxbVO.gtxdqk#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.jdqk">
+				AND JDQK = #zdryXdryxdqkxxbVO.jdqk#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.fxrq">
+				AND FXRQ = #zdryXdryxdqkxxbVO.fxrq#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.fxcs">
+				AND FXCS = #zdryXdryxdqkxxbVO.fxcs#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.fxchczqkdm">
+				AND FXCHCZQKDM = #zdryXdryxdqkxxbVO.fxchczqkdm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.fxchczdwdm">
+				AND FXCHCZDWDM = #zdryXdryxdqkxxbVO.fxchczdwdm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.fxchczdwmc">
+				AND FXCHCZDWMC = #zdryXdryxdqkxxbVO.fxchczdwmc#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.fxdpzldm">
+				AND FXDPZLDM = #zdryXdryxdqkxxbVO.fxdpzldm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.fxchxz">
+				AND FXCHXZ = #zdryXdryxdqkxxbVO.fxchxz#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.bz">
+				AND BZ = #zdryXdryxdqkxxbVO.bz#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.xt_cjsj">
+				AND XT_CJSJ = #zdryXdryxdqkxxbVO.xt_cjsj#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.xt_lrsj">
+				AND XT_LRSJ = #zdryXdryxdqkxxbVO.xt_lrsj#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.xt_lrrxm">
+				AND XT_LRRXM = #zdryXdryxdqkxxbVO.xt_lrrxm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.xt_lrrid">
+				AND XT_LRRID = #zdryXdryxdqkxxbVO.xt_lrrid#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.xt_lrrbm">
+				AND XT_LRRBM = #zdryXdryxdqkxxbVO.xt_lrrbm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.xt_lrrbmid">
+				AND XT_LRRBMID = #zdryXdryxdqkxxbVO.xt_lrrbmid#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.xt_lrip">
+				AND XT_LRIP = #zdryXdryxdqkxxbVO.xt_lrip#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.xt_zhxgsj">
+				AND XT_ZHXGSJ = #zdryXdryxdqkxxbVO.xt_zhxgsj#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.xt_zhxgrxm">
+				AND XT_ZHXGRXM = #zdryXdryxdqkxxbVO.xt_zhxgrxm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.xt_zhxgrid">
+				AND XT_ZHXGRID = #zdryXdryxdqkxxbVO.xt_zhxgrid#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.xt_zhxgrbm">
+				AND XT_ZHXGRBM = #zdryXdryxdqkxxbVO.xt_zhxgrbm#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.xt_zhxgrbmid">
+				AND XT_ZHXGRBMID = #zdryXdryxdqkxxbVO.xt_zhxgrbmid#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.xt_zhxgip">
+				AND XT_ZHXGIP = #zdryXdryxdqkxxbVO.xt_zhxgip#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.xt_zxbz">
+				AND XT_ZXBZ = #zdryXdryxdqkxxbVO.xt_zxbz#
+			</isNotEmpty>
+	       <isNotEmpty prepend="and" property="zdryXdryxdqkxxbVO.xt_zxyy">
+				AND XT_ZXYY = #zdryXdryxdqkxxbVO.xt_zxyy#
+			</isNotEmpty>
+		</dynamic>
+	</sql>
+		
+    <select id="queryCount" resultClass="Integer">
+        SELECT count(*) FROM ZDRY_XDRYXDQKXXB 
+		<include refid="queryWhere"/>
+    </select>
+    
+    <!--
+    	分页查询已经使用Dialect进行分页,也可以不使用Dialect直接编写分页
+    	因为分页查询将传 offset,pageSize,lastRows 三个参数,不同的数据库可以根于此三个参数属性应用不同的分页实现
+    -->
+    <select id="query" resultClass="zdryXdryxdqkxxb">
+    	SELECT <include refid="columns" />
+	    FROM ZDRY_XDRYXDQKXXB 
+		<include refid="queryWhere"/>
+		
+		<isNotEmpty prepend="and" property="page.sort">
+			ORDER BY '$sort$'
+		</isNotEmpty>
+    </select>
+
+	<select id="queryViewList" parameterClass="Map" resultClass="zdryXdryxdqkxxb">
+		<![CDATA[ select * from (
+			select * from ZDRY_XDRYXDQKXXB t where t.XT_ZXBZ = '0' and zdryid = #zdryid# ]]>
+		<![CDATA[ order by xt_cjsj desc) m where rownum <= #maxNum# ]]>
+	</select>
+</sqlMap>
+
