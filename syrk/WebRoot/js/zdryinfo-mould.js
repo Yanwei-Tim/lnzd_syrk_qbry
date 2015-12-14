@@ -227,15 +227,24 @@ function info_dtjs_(){
 
 	sb.append("<ul url='info_dtjsxsjbxx' level='2'><li class='uline' ><span>写实基本信息</span><a href='javascript:void(0);' class='addfw_btn' ></a>");
 	sb.append(refresh+"</li>");
-	sb.append("<input type='hidden' name='id' /><input type='hidden' name='method2' value='dtjsxsjbxx' /><input type='hidden' name='openUrl' value='/zdryDtjs/addDtjsXsjbxx' /><input type='hidden' name='editUrl' value='/zdryDtjs/{id}' /></ul></ul>");
-	sb.append("<div class='clear'></div>");
-	sb.append("<a href='javascript:void(0)' onclick='more()'>更多...</a>");	
+	sb.append("<input type='hidden' name='id' /><input type='hidden' name='method2' value='dtjsxsjbxx' /><input type='hidden' name='openUrl' value='/zdryDtjs/addDtjsXsjbxx' /><input type='hidden' name='editUrl' value='/zdryDtjs/{id}' /></ul>");
+	sb.append("<div class='clear' ></div>");
+	sb.append("<a href='javascript:void(0)' onclick='more()' style='float:right;position:relative; top:-15px;left:-10px;font-size:16px;'>更多...</a>");	
 	sb.append("<input type='hidden' name='method' value=''/><input type='hidden' name='dg' value='true' />")
 	return sb.toString();
 }
 function more(){
+	var zdryid = '';
+	$("div.lf_conta").each(function(i,elment){
+		if($(elment).attr('zdryid') != null && $(elment).attr('zdryid') != '' && typeof($(elment).attr('zdryid')) != 'undefined'){
+			zdryid = $(elment).attr('zdryid');
+			return;
+		}
+	});
+	
+	
 	var id=$(".dtjsclass").val();
-	var url=contextPath+'/dtjsMore/dtjsMorePage?dtjsXsxxid='+id;
+	var url=contextPath+'/dtjsMore/dtjsMorePage?zdryid='+zdryid;
 	openWindow(false,null,url,null,{title:'动态纪实详细',width:1000,height:600});
 }
 

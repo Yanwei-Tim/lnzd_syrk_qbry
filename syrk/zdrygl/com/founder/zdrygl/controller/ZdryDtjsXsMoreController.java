@@ -12,31 +12,38 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.founder.framework.annotation.RestfulAnnotation;
 import com.founder.framework.base.controller.BaseController;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.components.AppConst;
 import com.founder.framework.exception.BussinessException;
 import com.founder.framework.utils.EasyUIPage;
-import com.founder.qbld.utils.QbldUtil;
+import com.founder.syrkgl.bean.RyRyjbxxb;
+import com.founder.syrkgl.service.RyRyjbxxbService;
 import com.founder.zdrygl.bean.ZdryDtjsXsxxb;
-import com.founder.zdrygl.bean.ZdryDtjsZtxxb;
 import com.founder.zdrygl.bean.ZdryZdryzb;
 import com.founder.zdrygl.service.ZdryDtjsService;
+import com.founder.zdrygl.service.ZdryZdryzbService;
 import com.google.gson.Gson;
 @Controller
 @RequestMapping("dtjsMore")
 public class ZdryDtjsXsMoreController extends BaseController {
 	@Resource(name = "zdryDtjsService")
 	private ZdryDtjsService zdryDtjsService;
+	@Resource
+	private ZdryZdryzbService zdryZdryzbService;
+	@Resource
+	private RyRyjbxxbService ryRyjbxxbService;
 	
 	@RequestMapping(value = "/dtjsMorePage", method = RequestMethod.GET)
 	public @ResponseBody
-	ModelAndView dtjsMorePage(String dtjsXsxxid) {
+	ModelAndView dtjsMorePage(String zdryid) {
 		ModelAndView mv = new ModelAndView("zdrygl/dtjsMore");
 		Map<String, Object> model = new HashMap<String, Object>();
-	    ZdryDtjsXsxxb xsxxb=this.zdryDtjsService.queryXsjbxxById(dtjsXsxxid);
-		mv.addObject("zdryZjhm",xsxxb.getZdry_zjhm());
+	    ZdryZdryzb zb=this.zdryZdryzbService.queryById(zdryid);
+	    RyRyjbxxb ryjbxxb=this.ryRyjbxxbService.queryById(zb.getRyid());
+		mv.addObject("zdryZjhm",ryjbxxb.getZjhm());
+		mv.addObject("zdryid",zb.getId());
+		
 		return mv;
 	}
 	

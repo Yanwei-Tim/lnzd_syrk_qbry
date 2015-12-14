@@ -19,7 +19,9 @@ import com.founder.framework.exception.BussinessException;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
 import com.founder.zdrygl.bean.ZdryDtjsSfxxb;
+import com.founder.zdrygl.bean.ZdryZdryzb;
 import com.founder.zdrygl.service.ZdryDtjsSfxxbService;
+import com.founder.zdrygl.service.ZdryZdryzbService;
 import com.google.gson.Gson;
 @Controller
 @RequestMapping("dtjsMore")
@@ -27,7 +29,9 @@ public class ZdryDtjsSfxxController extends BaseController {
 	@Resource
 	private ZdryDtjsSfxxbService zdryDtjsSfxxbService;
 	
-
+	@Resource
+	private ZdryZdryzbService zdryZdryzbService;
+	
 	@RequestMapping(value = "/moreDtjsSfxx", method = RequestMethod.POST)	
 	public @ResponseBody EasyUIPage queryDtjsSfList(EasyUIPage page,
 			@RequestParam(value = "rows", required=false) Integer rows, 
@@ -42,11 +46,14 @@ public class ZdryDtjsSfxxController extends BaseController {
 	
 
 	@RequestMapping(value = "/addDtjsSfxx", method = RequestMethod.GET)
-	public ModelAndView addDtjsSfjbxx( String zdryZjhm,
+	public ModelAndView addDtjsSfjbxx( String zdryZjhm,String zdryid,
 			SessionBean sessionBean) throws BussinessException {
 		    sessionBean = getSessionBean(sessionBean);
 			ModelAndView mv = new ModelAndView("zdrygl/dtjsSfxxAdd");		
 			ZdryDtjsSfxxb entity=new ZdryDtjsSfxxb();
+			ZdryZdryzb zdryzb = zdryZdryzbService.queryById(zdryid);
+			entity.setSslb(zdryzb.getZdrygllxdm());
+			entity.setSslbxl(zdryzb.getZdrylb());
 			entity.setZdryzjhm(zdryZjhm);
 			mv.addObject("entity", entity);
 			return mv;
