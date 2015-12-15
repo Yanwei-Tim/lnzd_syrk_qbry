@@ -397,7 +397,7 @@ FrameTools.Map.showMap = function(bz,mapName,zs){
  * @returns 
  * @date：2014-07-08 20:20:32
  */
-FrameTools.Map.prototype.initPolyline = function(linezbz,color,lineWidth,type){
+FrameTools.Map.prototype.initPolyline = function(linezbz,color,lineWidth,type,arrow,LineStyle){
 	var polyline = null;
 	if(this.verify(linezbz)){
 		$.messager.show({title:'系统提示',msg:'坐标串格式错误！',timeout:3000});
@@ -412,11 +412,19 @@ FrameTools.Map.prototype.initPolyline = function(linezbz,color,lineWidth,type){
 	if(type==null||type==""){
 		type = 1;
 	}
+	if(arrow==null||arrow==""){
+		arrow = 0;
+	}
 	if(linezbz.indexOf("|") == -1){
 		var lineArr = linezbz.split("|");
-		polyline = new Polyline(lineArr[0], color, lineWidth, type);
+		polyline = new Polyline(lineArr[0], color, lineWidth, type,arrow);
 	}else{
-		polyline = new Polyline(linezbz, color, lineWidth, type);
+		polyline = new Polyline(linezbz, color, lineWidth, type,arrow);
+	}
+	if(LineStyle==null||LineStyle==""){
+		polyline.setLineStyle("none");
+	}else{
+		polyline.setLineStyle(LineStyle);
 	}
 	return polyline;
 };
@@ -428,9 +436,10 @@ FrameTools.Map.prototype.initPolyline = function(linezbz,color,lineWidth,type){
  * @date：2014-07-08 20:27:14
  */
 FrameTools.Map.prototype.verify = function(linezbz){
-	if(!linezbz || linezbz.split(",").length<=4){
+	/*alert(linezbz.split(",").length);
+	if(linezbz.split(",").length<=4){
 		return true;
-	}
+	}*/
 	return false;
 };
 /**
@@ -572,7 +581,7 @@ FrameTools.Map.prototype.moveMapToBjzbz = function(bjzbz){
 		for(var j=0;j<bjnum;j++){
 			var gArr = bj[j];
 			/*创建边界图元素*/
-			var polyline = FrameTools.Map.prototype.initPolyline(gArr,"blue");
+			var polyline = FrameTools.Map.prototype.initPolyline(gArr,"blue",4,0.7);
 			/*图元素添加到地图上*/
 			if(polyline){
 				this._MapApp.addOverlay(polyline);
