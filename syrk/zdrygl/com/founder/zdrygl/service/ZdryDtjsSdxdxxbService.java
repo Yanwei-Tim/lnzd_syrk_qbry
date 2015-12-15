@@ -3,12 +3,12 @@ package com.founder.zdrygl.service;
 import com.founder.framework.annotation.TypeAnnotation;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.utils.EasyUIPage;
-import com.founder.zdrygl.bean.ZdryDtjsSdfdxxb;
+import com.founder.zdrygl.bean.ZdryDtjsSdxdxxb;
 
 /**
  * ****************************************************************************
- * @Package:      [com.founder.zdrylb.service.ZdryDtjsSdfdxxbService.java]  
- * @ClassName:    [ZdryDtjsSdfdxxbService]   
+ * @Package:      [com.founder.zdrylb.service.ZdryDtjsSdxdxxbService.java]  
+ * @ClassName:    [ZdryDtjsSdxdxxbService]   
  * @Description:  [动态纪实涉毒贩毒信息]   
  * @Author:       [cong_rihong@founder.com.cn]  
  * @CreateDate:   [2015-12-15 上午9:44:29]   
@@ -18,7 +18,7 @@ import com.founder.zdrygl.bean.ZdryDtjsSdfdxxb;
  * @Version:      [v1.0]
  */
 @TypeAnnotation("动态纪实涉毒贩毒信息服务")
-public interface ZdryDtjsSdfdxxbService {
+public interface ZdryDtjsSdxdxxbService {
 
 
 	/**
@@ -30,19 +30,19 @@ public interface ZdryDtjsSdfdxxbService {
 	 * @return EasyUIPage    返回类型
 	 * @throws
 	 */
-	public EasyUIPage queryList(EasyUIPage page, ZdryDtjsSdfdxxb entity);	
+	public EasyUIPage queryList(EasyUIPage page, ZdryDtjsSdxdxxb entity);	
 	
+	
+	public String save(ZdryDtjsSdxdxxb entity,SessionBean sessionBean);
+	
+	
+	public ZdryDtjsSdxdxxb queryById(String id);
+	
+	
+	public void delete(ZdryDtjsSdxdxxb entity,SessionBean sessionBean);
 
-	public String save(ZdryDtjsSdfdxxb entity,SessionBean sessionBean);
 	
-	
-	public ZdryDtjsSdfdxxb queryById(String id);
-	
-	
-	public void delete(ZdryDtjsSdfdxxb entity,SessionBean sessionBean);
-
-	
-	public String update(ZdryDtjsSdfdxxb entity,SessionBean sessionBean);
+	public String update(ZdryDtjsSdxdxxb entity,SessionBean sessionBean);
 
 
 

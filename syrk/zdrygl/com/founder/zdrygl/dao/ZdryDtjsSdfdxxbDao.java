@@ -11,7 +11,7 @@ import com.founder.zdrygl.bean.ZdryDtjsSdfdxxb;
 
 /**
  * ****************************************************************************
- * @Package:      [com.founder.qbld.dao.ZdryDtjsSdfdxxb.java]  
+ * @Package:      [com.founder.zdrygl.dao.ZdryDtjsSdfdxxb.java]  
  * @ClassName:    [ZdryDtjsSdfdxxb]   
  * @Description:  [动态纪实 涉毒贩毒信息]   
  * @Author:       [cong_rihong@founder.com.cn]  
@@ -21,7 +21,7 @@ import com.founder.zdrygl.bean.ZdryDtjsSdfdxxb;
  * @UpdateRemark: [说明本次修改内容,(如多次修改保留历史记录，增加修改记录)]  
  * @Version:      [v1.0]
  */
-@Repository("zdryDtjsSdfdxxb") 
+@Repository("zdryDtjsSdfdxxbDao") 
 public class ZdryDtjsSdfdxxbDao extends BaseDaoImpl {
 
 	
@@ -47,28 +47,13 @@ public class ZdryDtjsSdfdxxbDao extends BaseDaoImpl {
 	}
 	
 
-	/**
-	 * @Title: queryList
-	 * @Description: TODO(人员写实列表查询)
-	 * @param @param page
-	 * @param @param entity
-	 * @param @return    设定文件
-	 * @return EasyUIPage    返回类型
-	 * @throws
-	 */
+	
 	public List<?> queryList(EasyUIPage page, Map<String, Object> map) {
 		return queryForList("ZdryDtjsSdfdxxb.queryByZdryZjhm", map);
 	}
 
 	
-	/**
-	 * @Title: queryCount
-	 * @Description: TODO(人员写实条数查询)
-	 * @param @param entity
-	 * @param @return    设定文件
-	 * @return long    返回类型
-	 * @throws
-	 */
+
 	public long queryCount(Map<String, Object> map) {
 		Integer count = (Integer) queryForObject("ZdryDtjsSdfdxxb.queryCountByZdryZjhm", map);
 		return count.longValue();

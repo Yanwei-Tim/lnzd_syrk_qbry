@@ -18,71 +18,71 @@ import com.founder.framework.components.AppConst;
 import com.founder.framework.exception.BussinessException;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
-import com.founder.zdrygl.bean.ZdryDtjsSdfdxxb;
-import com.founder.zdrygl.service.ZdryDtjsSdfdxxbService;
+import com.founder.zdrygl.bean.ZdryDtjsSdxdxxb;
+import com.founder.zdrygl.service.ZdryDtjsSdxdxxbService;
 import com.founder.zdrygl.service.ZdryZdryzbService;
 import com.google.gson.Gson;
 @Controller
 @RequestMapping("dtjsMore")
-public class ZdryDtjsSdfdxxbController extends BaseController {
+public class ZdryDtjsSdxdxxbController extends BaseController {
 	@Resource
-	private ZdryDtjsSdfdxxbService zdryDtjsSdfdxxbService;
+	private ZdryDtjsSdxdxxbService zdryDtjsSdxdxxbService;
 	
 	@Resource
 	private ZdryZdryzbService zdryZdryzbService;
 	
-	@RequestMapping(value = "/moreDtjsSdfdxxb", method = RequestMethod.POST)	
-	public @ResponseBody EasyUIPage queryDtjsSdfdList(EasyUIPage page,
+	@RequestMapping(value = "/moreDtjsSdxdxxb", method = RequestMethod.POST)	
+	public @ResponseBody EasyUIPage queryDtjsSdxdList(EasyUIPage page,
 			@RequestParam(value = "rows", required=false) Integer rows, 
 			String zdryZjhm,
 			SessionBean sessionBean){
 		page.setPagePara(rows);
 		sessionBean = getSessionBean(sessionBean);
-		ZdryDtjsSdfdxxb entity=new ZdryDtjsSdfdxxb();
+		ZdryDtjsSdxdxxb entity=new ZdryDtjsSdxdxxb();
 		entity.setZdryzjhm(zdryZjhm);
-		return zdryDtjsSdfdxxbService.queryList(page, entity);
+		return zdryDtjsSdxdxxbService.queryList(page, entity);
 	}
 	
 
-	@RequestMapping(value = "/addDtjsSdfdxxb", method = RequestMethod.GET)
-	public ModelAndView addDtjsSdfdxxb( String zdryZjhm,String zdryid,
+	@RequestMapping(value = "/addDtjsSdxdxxb", method = RequestMethod.GET)
+	public ModelAndView addDtjsSdxdxxb( String zdryZjhm,String zdryid,
 			SessionBean sessionBean) throws BussinessException {
 		    sessionBean = getSessionBean(sessionBean);
-			ModelAndView mv = new ModelAndView("zdrygl/dtjsSdfdxxbAdd");		
-			ZdryDtjsSdfdxxb entity=new ZdryDtjsSdfdxxb();
+			ModelAndView mv = new ModelAndView("zdrygl/dtjsSdxdxxbAdd");		
+			ZdryDtjsSdxdxxb entity=new ZdryDtjsSdxdxxb();
 			entity.setZdryzjhm(zdryZjhm);
 			mv.addObject("entity", entity);
 			return mv;
 		
 	}
 	
-	@RequestMapping(value = "/editDtjsSdfdxxb", method = RequestMethod.GET)
-	public ModelAndView editDtjsSdfdxxb( String id,String type,
+	@RequestMapping(value = "/editDtjsSdxdxxb", method = RequestMethod.GET)
+	public ModelAndView editDtjsSdxdxxb( String id,String type,
 			SessionBean sessionBean) throws BussinessException {
 		    sessionBean = getSessionBean(sessionBean);
-			ModelAndView mv = new ModelAndView("zdrygl/dtjsSdfdxxbAdd");		
-			ZdryDtjsSdfdxxb entity=this.zdryDtjsSdfdxxbService.queryById(id);
+			ModelAndView mv = new ModelAndView("zdrygl/dtjsSdxdxxbAdd");		
+			ZdryDtjsSdxdxxb entity=this.zdryDtjsSdxdxxbService.queryById(id);
 			mv.addObject("entity", entity);
 			mv.addObject("type", type);
 			return mv;
 		
 	}
-	@RequestMapping(value = "/saveDtjsSdfdxxb", method = RequestMethod.POST)
+	@RequestMapping(value = "/saveDtjsSdxdxxb", method = RequestMethod.POST)
 	public @ResponseBody
-	ModelAndView saveDtjsSdfdxxb(ZdryDtjsSdfdxxb entity, SessionBean sessionBean) {
+	ModelAndView saveDtjsSdxdxxb(ZdryDtjsSdxdxxb entity, SessionBean sessionBean) {
 		ModelAndView mv = new ModelAndView(getViewName(sessionBean));
 		Map<String, Object> model = new HashMap<String, Object>();
 		sessionBean = getSessionBean(sessionBean);
 		try {
 			if(StringUtils.isBlank(entity.getId())){
 						
-				String id =this.zdryDtjsSdfdxxbService.save(entity,sessionBean);		
+				String id =this.zdryDtjsSdxdxxbService.save(entity,sessionBean);		
 				model.put(AppConst.MESSAGES, getAddSuccess());
 				model.put(AppConst.STATUS, AppConst.SUCCESS);
 				model.put(AppConst.SAVE_ID, "" + id); // 返回主键
 
 			}else{
-				zdryDtjsSdfdxxbService.update(entity, sessionBean);
+				zdryDtjsSdxdxxbService.update(entity, sessionBean);
 				
 				model.put(AppConst.STATUS, AppConst.SUCCESS);
 				model.put(AppConst.MESSAGES, getUpdateSuccess());
@@ -97,14 +97,14 @@ public class ZdryDtjsSdfdxxbController extends BaseController {
 	}
 	
 	
-	@RequestMapping(value = "/deleteDtjsSdfdxxb", method = RequestMethod.POST)
-	public ModelAndView deleteDtjsSdfdxxb(ZdryDtjsSdfdxxb entity,
+	@RequestMapping(value = "/deleteDtjsSdxdxxb", method = RequestMethod.POST)
+	public ModelAndView deleteDtjsSdxdxxb(ZdryDtjsSdxdxxb entity,
 			SessionBean sessionBean) throws BussinessException {
 		    sessionBean = getSessionBean(sessionBean);
 			ModelAndView mv = new ModelAndView(getViewName(sessionBean));		
 			Map<String, Object> map = new HashMap<String, Object>();
 		    try {
-			    this.zdryDtjsSdfdxxbService.delete(entity, sessionBean);;
+			    this.zdryDtjsSdxdxxbService.delete(entity, sessionBean);;
 				map.put(AppConst.STATUS, AppConst.SUCCESS);
 				map.put(AppConst.MESSAGES, getDeleteSuccess());
 			} catch (Exception e) {
