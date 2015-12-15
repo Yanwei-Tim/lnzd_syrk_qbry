@@ -76,12 +76,43 @@
 		<%@include file="/WEB-INF/pages/zdrygl/dtjsShgxrxxbList.jsp"%>
 		<%@include file="/WEB-INF/pages/zdrygl/dtjsSaxxList.jsp"%>
 
+		<div title="涉毒信息" id="sdxx" >
+			<input type="radio" name="sdlx" value="xd" checked="checked"> 吸毒信息 </input>
+			<input type="radio" name="sdlx" value="fd"> 贩毒信息 </input>
+			<input type="radio" name="sdlx" value="zd"> 制毒信息 </input>
+			
+			<!-- 引入具体的框架信息 -->
+			<iframe id="sdxxFrame" src="<%=contextPath%>/forward/zdrygl|dtjsXdxxList" 
+				border="0" frameborder="0" scrolling="no" 
+				style="width:100%;height:400px;" > </iframe>
+				
+		</div>
           
 	</div> 
 </body>
 <script type="text/javascript">
 var userOrgCode="<%=userOrgCode%>";
 
+$(function(){
+	$("input[name=sdlx]").each(function(i,o){
+		$(o).click(function(){
+			turnToSdDetail($(this).val());
+		});
+	});
+});
+
+function turnToSdDetail(sdType){
+	
+	var src = contextPath + "/forward/zdrygl|";
+	if(sdType == 'xd'){
+		src += "dtjsXdxxList";
+	}else if(sdType == 'fd'){
+		src += "dtjsFdxxList";
+	}else{
+		src += "dtjsZdxxList";
+	}
+	$("#sdxxFrame").attr('src',src);
+}
 
 </script>
 </html>
