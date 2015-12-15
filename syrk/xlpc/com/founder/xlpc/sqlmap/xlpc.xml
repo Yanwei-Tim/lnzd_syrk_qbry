@@ -4,12 +4,13 @@
 <sqlMap namespace="com.founder.xlpc.sqlmap.xlpc">
 	<typeAlias alias="pcryvo" type="com.founder.xlpc.vo.PcryVO"/>
 	<typeAlias alias="pcrwvo" type="com.founder.xlpc.vo.PcrwVO"/>
+	<typeAlias alias="pcclvo" type="com.founder.xlpc.vo.PcclVO"/>
  	<!-- 盘查人员列表 -->
     <select id="queryPcryList" parameterClass="Map" resultClass="pcryvo">
       SELECT * FROM ( SELECT ROWNUM R ,M.* FROM (
 		SELECT T.RYID,T.RYXM,T.XB,T.SFZH,T.MZ,T.CSRQ,T.XJZD,T.JG,T.ZZZQK,
 		       T.SFZT,T.SFFA,T.SFPCDX,T.GLPCID,T.PCYY,
-		       P.FSSJ, P.CLZT, P.CJR, P.XPOINT, P.YPOINT
+		       TO_CHAR(P.FSSJ, 'YYYY-MM-DD HH24:MI:SS') FSSJ, P.CLZT, P.CJR, P.XPOINT, P.YPOINT
 			FROM SM_YDJW_XLPC_RY T,SM_YDJW_XLPC_PC P
 		WHERE T.GLPCID = P.PCID
 	  	<isNotEmpty prepend="and" property="pcryvo.ryxm">
@@ -54,16 +55,14 @@
     <!-- 盘查任务列表 -->
     <select id="queryPcrwList" parameterClass="Map" resultClass="pcrwvo">
       SELECT * FROM ( SELECT ROWNUM R ,M.* FROM (
-		SELECT T.GZXXBH,T.KSSJ,T.JSSJ,T.XFFS,T.GZDD,T.GZDDMS,T.GZDDDM,T.ZBX,T.ZBY,T.XLMC,
+		SELECT T.GZXXBH,TO_CHAR(T.KSSJ, 'YYYY-MM-DD HH24:MI:SS') KSSJ,TO_CHAR(T.JSSJ, 'YYYY-MM-DD HH24:MI:SS') JSSJ,T.XFFS,T.GZDD,T.GZDDMS,T.GZDDDM,T.ZBX,T.ZBY,T.XLMC,
 		       T.JYXM,T.JYBH,T.XJRS,T.STMJXM,T.STMJBH,T.BZ,T.DJR,T.DJSJ,T.DJDW,T.XGR,T.XGDW,
-		       T.XGSJ,T.XLDM
- 			FROM SM_YDJW_XLPC_PCRW T
- 		WHERE 1=1
+		       T.XGSJ,T.XLDM,
+		       TO_CHAR(P.FSSJ, 'YYYY-MM-DD HH24:MI:SS') FSSJ, P.CLZT, P.CJR, P.XPOINT, P.YPOINT,P.PCID
+ 			FROM SM_YDJW_XLPC_PCRW T,SM_YDJW_XLPC_PC P
+        WHERE T.GZXXBH = P.GZXXBH
  		<isNotEmpty prepend="and" property="pcrwvo.gzdd">
-		     T.GZDD LIKE '%'||#pcrwvo.gzdd#||'%'
-	  	</isNotEmpty>
-	  	<isNotEmpty prepend="and" property="pcrwvo.xlmc">
-		     T.XLMC LIKE '%'||#pcrwvo.xlmc#||'%'
+		     T.GZDD||T.XLMC LIKE '%$pcrwvo.gzdd$%' 
 	  	</isNotEmpty>
 	 ORDER BY #order#)M
      <![CDATA[WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
@@ -71,13 +70,86 @@
     <!-- 盘查任务列表总数 -->
     <select id="queryPcrwCount" parameterClass="Map" resultClass="Integer">
     	SELECT COUNT(T.GZXXBH)
- 			FROM SM_YDJW_XLPC_PCRW T
- 		WHERE 1=1
+ 			FROM SM_YDJW_XLPC_PCRW T,SM_YDJW_XLPC_PC P
+        WHERE T.GZXXBH = P.GZXXBH
  		<isNotEmpty prepend="and" property="pcrwvo.gzdd">
-		     T.GZDD LIKE '%'||#pcrwvo.gzdd#||'%'
+		     T.GZDD||T.XLMC LIKE '%$pcrwvo.gzdd$%' 
 	  	</isNotEmpty>
-	  	<isNotEmpty prepend="and" property="pcrwvo.xlmc">
-		     T.XLMC LIKE '%'||#pcrwvo.xlmc#||'%'
+    </select>
+    <!-- 盘查车辆列表 -->
+    <select id="queryPcclList" parameterClass="Map" resultClass="pcclvo">
+      SELECT * FROM ( SELECT ROWNUM R ,M.* FROM (
+		SELECT T.CLID, T.SYRXM, T.SYRSFZH, T.CPHM, T.CLPP, T.GLPCID, T.PCYY,
+		  	   TO_CHAR(P.FSSJ, 'YYYY-MM-DD HH24:MI:SS') FSSJ, P.CLZT, P.CJR, P.XPOINT, P.YPOINT
+ 		  FROM YDJW.SM_YDJW_XLPC_CL T,SM_YDJW_XLPC_PC P
+ 		WHERE T.GLPCID = P.PCID
+ 		<isNotEmpty prepend="and" property="pcclvo.syrxm">
+		     T.SYRXM LIKE '%'||#pcclvo.syrxm#||'%'
 	  	</isNotEmpty>
+	  	<isNotEmpty prepend="and" property="pcclvo.syrsfzh">
+		     T.SYRSFZH LIKE '%'||#pcclvo.syrsfzh#||'%'
+	  	</isNotEmpty>
+	  	<isNotEmpty prepend="and" property="pcclvo.cphm">
+		     T.CPHM LIKE '%'||#pcclvo.cphm#||'%'
+	  	</isNotEmpty>
+	  	<isNotEmpty prepend="and" property="pcclvo.pcyy">
+		     T.PCYY LIKE '%'||#pcclvo.pcyy#||'%'
+	  	</isNotEmpty>
+	 ORDER BY #order#)M
+     <![CDATA[WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
+    </select>
+    <!-- 盘查车辆列表总数 -->
+    <select id="queryPcclCount" parameterClass="Map" resultClass="Integer">
+    	SELECT COUNT(T.CLID)
+ 			FROM SM_YDJW_XLPC_CL T,SM_YDJW_XLPC_PC P
+ 		WHERE T.GLPCID = P.PCID
+ 		<isNotEmpty prepend="and" property="pcclvo.syrxm">
+		     T.SYRXM LIKE '%'||#pcclvo.syrxm#||'%'
+	  	</isNotEmpty>
+	  	<isNotEmpty prepend="and" property="pcclvo.syrsfzh">
+		     T.SYRSFZH LIKE '%'||#pcclvo.syrsfzh#||'%'
+	  	</isNotEmpty>
+	  	<isNotEmpty prepend="and" property="pcclvo.cphm">
+		     T.CPHM LIKE '%'||#pcclvo.cphm#||'%'
+	  	</isNotEmpty>
+	  	<isNotEmpty prepend="and" property="pcclvo.pcyy">
+		     T.PCYY LIKE '%'||#pcclvo.pcyy#||'%'
+	  	</isNotEmpty>
+    </select>
+    <!-- 根据盘查任务查询盘查人员 -->
+    <select id="queryPcry" parameterClass="pcryvo" resultClass="pcryvo">
+       SELECT T.RYID,T.RYXM,T.XB,T.SFZH,T.MZ,T.CSRQ,T.XJZD,T.JG,T.ZZZQK,
+              T.SFZT,T.SFFA,T.SFPCDX,T.GLPCID,T.PCYY,
+              TO_CHAR(P.FSSJ, 'YYYY-MM-DD HH24:MI:SS') FSSJ, P.CLZT, P.CJR, P.XPOINT, P.YPOINT
+         FROM SM_YDJW_XLPC_RY T,SM_YDJW_XLPC_PC P
+       WHERE T.GLPCID = P.PCID
+       	 AND P.XPOINT IS NOT NULL
+         AND P.YPOINT IS NOT NULL
+       <isNotEmpty prepend="AND" property="pcid">
+		     P.PCID = #pcid#
+	   </isNotEmpty>
+	   <isNotEmpty prepend="AND" property="ryxm">
+		     T.RYXM = #ryxm#
+	   </isNotEmpty>
+	   <isNotEmpty prepend="AND" property="sfzh">
+		     T.SFZH = #sfzh#
+	   </isNotEmpty>
+	   <isNotEmpty prepend="and" property="kssj">
+		   <![CDATA[TO_CHAR(P.FSSJ, 'YYYY-MM-DD') >= #kssj#]]> 
+	   </isNotEmpty>
+	   <isNotEmpty prepend="and" property="jssj">
+		   <![CDATA[TO_CHAR(P.FSSJ, 'YYYY-MM-DD') <= #jssj#]]> 
+	   </isNotEmpty>
+	   ORDER BY P.FSSJ ASC
+    </select>
+    <!-- 根据盘查任务查询盘查车辆 -->
+    <select id="queryPccl" parameterClass="pcclvo" resultClass="pcclvo">
+       SELECT T.CLID, T.SYRXM, T.SYRSFZH, T.CPHM, T.CLPP, T.GLPCID, T.PCYY,
+		  	  TO_CHAR(P.FSSJ, 'YYYY-MM-DD HH24:MI:SS') FSSJ, P.CLZT, P.CJR, P.XPOINT, P.YPOINT
+ 		  FROM YDJW.SM_YDJW_XLPC_CL T,SM_YDJW_XLPC_PC P
+ 		WHERE T.GLPCID = P.PCID
+       <isNotEmpty prepend="AND" property="pcid">
+		     P.PCID = #pcid#
+	   </isNotEmpty>
     </select>
 </sqlMap>
