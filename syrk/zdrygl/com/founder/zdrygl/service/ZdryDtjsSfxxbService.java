@@ -4,11 +4,10 @@ import com.founder.framework.annotation.TypeAnnotation;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.zdrygl.bean.ZdryDtjsSfxxb;
-import com.founder.zdrygl.bean.ZdryDtjsSwxxb;
 
 /**
  * ****************************************************************************
- * @Package:      [com.founder.qbld.service.ZdryService.java]  
+ * @Package:      [com.founder.zdrygl.service.ZdryService.java]  
  * @ClassName:    [ZdryService]   
  * @Description:  [重点人员上访信息]   
  * @Author:       [cong_rihong@founder.com.cn]  
@@ -22,25 +21,10 @@ import com.founder.zdrygl.bean.ZdryDtjsSwxxb;
 public interface ZdryDtjsSfxxbService {
 
 
-	/**
-	 * @Title: queryList
-	 * @Description: TODO(涉稳信息查询)
-	 * @param @param page
-	 * @param @param entity
-	 * @param @return    设定文件
-	 * @return EasyUIPage    返回类型
-	 * @throws
-	 */
+
 	public EasyUIPage queryList(EasyUIPage page, ZdryDtjsSfxxb entity);	
 	
-	/**
-	 * @Title: save
-	 * @Description: TODO(人员写实表)
-	 * @param @param entity
-	 * @param @return    设定文件
-	 * @return String    返回类型
-	 * @throws
-	 */
+	
 	public String save(ZdryDtjsSfxxb entity,SessionBean sessionBean);
 	
 	

@@ -11,7 +11,7 @@ import com.founder.zdrygl.bean.ZdryDtjsSfxxb;
 
 /**
  * ****************************************************************************
- * @Package:      [com.founder.qbld.dao.ZdryDtjsSfxxbDao.java]  
+ * @Package:      [com.founder.zdrygl.dao.ZdryDtjsSfxxbDao.java]  
  * @ClassName:    [ZdryDtjsSfxxbDao]   
  * @Description:  [动态纪实 上访信息]   
  * @Author:       [cong_rihong@founder.com.cn]  
@@ -47,28 +47,13 @@ public class ZdryDtjsSfxxbDao extends BaseDaoImpl {
 	}
 	
 
-	/**
-	 * @Title: queryList
-	 * @Description: TODO(人员写实列表查询)
-	 * @param @param page
-	 * @param @param entity
-	 * @param @return    设定文件
-	 * @return EasyUIPage    返回类型
-	 * @throws
-	 */
+
 	public List<?> queryList(EasyUIPage page, Map<String, Object> map) {
 		return queryForList("ZdryDtjsSfxxb.queryByZdryZjhm", map);
 	}
 
 	
-	/**
-	 * @Title: queryCount
-	 * @Description: TODO(人员写实条数查询)
-	 * @param @param entity
-	 * @param @return    设定文件
-	 * @return long    返回类型
-	 * @throws
-	 */
+
 	public long queryCount(Map<String, Object> map) {
 		Integer count = (Integer) queryForObject("ZdryDtjsSfxxb.queryCountByZdryZjhm", map);
 		return count.longValue();
