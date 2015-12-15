@@ -20,6 +20,7 @@ public class DateTimeUtils {
 	 */
 	public static void main(String[] args) {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		System.out.println("获得三天时间："+formatter.format(getStAft()));
 		System.out.println("当天0点时间："+formatter.format(getTimesmorning()));
 		System.out.println("当天24点时间："+formatter.format(getTimesnight()));
 		System.out.println("获得本周一0点时间："+formatter.format(getTimesWeekmorning()));
@@ -30,6 +31,23 @@ public class DateTimeUtils {
 		System.out.println("获得本季度末："+formatter.format(getTimesQuarternight()));
 		System.out.println("获得本年第一天："+formatter.format(getTimesYearmorning()));
 		System.out.println("获得本年最后一天："+formatter.format(getTimesYearnight()));
+	}
+	/**
+     * @Title: getStAft 
+     * @描述: 获得三天时间
+     * @作者: zhang_guoliang@founder.com 
+     * @参数: 传入参数定义 
+     * @日期： 2015-12-11 下午4:50:32 
+     * @返回值: Date    返回类型 
+     * @throws
+     */
+	public static Date getStAft(){
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.HOUR_OF_DAY, -72);
+		cal.set(Calendar.SECOND, 0);
+		cal.set(Calendar.MINUTE, 0);
+		cal.set(Calendar.MILLISECOND, 0);
+		return cal.getTime();
 	}
     /**
      * @Title: getTimesmorning 
