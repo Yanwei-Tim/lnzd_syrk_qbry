@@ -41,8 +41,6 @@
 					 <isNotNull prepend="," property="dpzlqt"><![CDATA[ DPZLQT=#dpzlqt# ]]></isNotNull>
 					 <isNotNull prepend="," property="dplyqt"><![CDATA[ DPLYQT=#dplyqt# ]]></isNotNull>
 					 <isNotNull prepend="," property="dzlyqt"><![CDATA[ DZLYQT=#dzlyqt# ]]></isNotNull>
-					 <isNotNull prepend="," property="gxrq"><![CDATA[ GXRQ=#gxrq# ]]></isNotNull>
-					 <isNotNull prepend="," property="cjsj"><![CDATA[ CJSJ=#cjsj# ]]></isNotNull>
 					 <isNotNull prepend="," property="sfjd"><![CDATA[ SFJD=#sfjd# ]]></isNotNull>
 					 <isNotNull prepend="," property="zdryzjhm"><![CDATA[ ZDRYZJHM=#zdryzjhm# ]]></isNotNull>
 
@@ -54,8 +52,8 @@
     </update> 	
 
     <insert id="save" parameterClass="zdryDtjsSdxdxxb">
-        <![CDATA[ insert into ZDRY_DTJS_SDXDXXB (ID,DPZL,DPLY,DZLY,SFFX,XSCS,JDSJ,XSYY,RYXZ,WHHG,XSBH,DPZLQT,DPLYQT,DZLYQT,GXRQ,CJSJ,SFJD,ZDRYZJHM,]]><include refid="insertXtzd"/>)
-		<![CDATA[ values (#id#,#dpzl#,#dply#,#dzly#,#sffx#,#xscs#,#jdsj#,#xsyy#,#ryxz#,#whhg#,#xsbh#,#dpzlqt#,#dplyqt#,#dzlyqt#,#gxrq#,#cjsj#,#sfjd#,#zdryzjhm#,]]>
+        <![CDATA[ insert into ZDRY_DTJS_SDXDXXB (ID,DPZL,DPLY,DZLY,SFFX,XSCS,JDSJ,XSYY,RYXZ,WHHG,XSBH,DPZLQT,DPLYQT,DZLYQT,SFJD,ZDRYZJHM,]]><include refid="insertXtzd"/>)
+		<![CDATA[ values (#id#,#dpzl#,#dply#,#dzly#,#sffx#,#xscs#,#jdsj#,#xsyy#,#ryxz#,#whhg#,#xsbh#,#dpzlqt#,#dplyqt#,#dzlyqt#,#sfjd#,#zdryzjhm#,]]>
 		<include refid="insertXtzdVal"/>)
     </insert>
     

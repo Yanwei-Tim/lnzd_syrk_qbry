@@ -53,10 +53,6 @@ public class ZdryDtjsSdxdxxb extends BaseEntity implements Serializable {
 		private String dplyqt;
 		@FieldDesc("毒资来源其他")
 		private String dzlyqt;
-		@FieldDesc("更新日期")
-		private String gxrq;
-		@FieldDesc("采集日期")
-		private String cjsj;
 		@FieldDesc("是否戒断")
 		private String sfjd;
 		@FieldDesc("重点人员身份证号")
@@ -144,18 +140,6 @@ public class ZdryDtjsSdxdxxb extends BaseEntity implements Serializable {
 		}
 		public void setDzlyqt(String dzlyqt) {
 			this.dzlyqt = dzlyqt;
-		}
-		public String getGxrq() {
-			return gxrq;
-		}
-		public void setGxrq(String gxrq) {
-			this.gxrq = gxrq;
-		}
-		public String getCjsj() {
-			return cjsj;
-		}
-		public void setCjsj(String cjsj) {
-			this.cjsj = cjsj;
 		}
 		public String getSfjd() {
 			return sfjd;
