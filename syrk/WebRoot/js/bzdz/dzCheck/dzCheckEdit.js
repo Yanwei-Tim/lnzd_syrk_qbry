@@ -62,24 +62,12 @@ DzCheckEdit.onloadReadonly = function(){
 	setInputReadonly('xzqhdm', true);
 	//地名【只读】
 	setInputReadonly('dmmc', true);
-	//门楼牌前缀【只读】
-	setInputReadonly('mlphqz', true);
 	//门楼牌号【只读】
 	setInputReadonly('mlph', true);
-	//门楼牌后缀【只读】
-	setInputReadonly('mlphhz', true);
 	//门楼牌全称【只读】
 	setInputReadonly('mlphqc', true);
-	//地址别名【只读】
-	for(var i=0;i<dzbmArr.length;i++){
-		setInputReadonly('dzbm'+i, true);
-	}
 	//责任区【只读】
 	setInputReadonly('zrqmc', true);
-	//社区【只读】
-	setInputReadonly('sqmc', true);
-	//地图错误反馈【只读】
-	setInputReadonly('dtcwfk', true);
 	if(type=="1"){
 		document.getElementById("hgButton").style.display = "none";
 		document.getElementById("dtbdButton").style.display = "none";
@@ -173,11 +161,22 @@ DzCheckEdit.onloadButton = function(){
     		  }
     	  });
 	});
+    if(type=="0"){
+    	 document.getElementById("whchButton").style.display = "";
+    	 document.getElementById("ckchButton").style.display = "none";
+    }else{
+    	 document.getElementById("whchButton").style.display = "none";
+    	 document.getElementById("ckchButton").style.display = "";
+    }
     //标点
     $('#dtbdButton').click(function(){
     	$('#tt').tabs("select", "地图");
     	//设置当前地图操作状态为获取地图坐标的状态
     	DzCheckEdit.moveMapToDrawPoint();
+	});
+    //维护层户
+    $('#whchButton').click(function(){
+    	$('#tt').tabs("select", "层户");
 	});
     //查看层户
     $('#ckchButton').click(function(){
@@ -224,9 +223,63 @@ DzCheckEdit.moveMapToDrawPoint = function(){
  * @date:2015-03-02 14:50:32
  */
 DzCheckEdit.onloadChjg = function(){
+	var ch = "0"
+	if(type=="1"){
+		ch = "1";
+	}
 	//层户结构URL
-	var src = contextPath+"/dz/dzBuilding?mldzid="+mldzid+"&type="+type+"&dzChb=2&chType=2&mainTabID="+mainTabID;
+	var src = contextPath+"/dz/dzBuilding?mldzid="+mldzid+"&type="+type+"&dzChb=2&chType="+ch+"&mainTabID="+mainTabID;
 	//Iframe页面加载，解决加载页面先出输入框在加载样式问题
 	var chjgHtml = "<iframe id='chjgid' style='width: 100%;height: 100%;' frameborder='no' src='"+src+"'></iframe>";
 	$("#chDivId").html(chjgHtml);
+	
+};
+/**
+ * @title:addDzBm
+ * @description:增加一个地址别名
+ * @author: zhang_guoliang@founder.com
+ * @param   
+ * @date:2015-01-06 19:02:54
+ */	
+DzCheckEdit.addDzBm = function(){
+	 var tr1 = $('<tr id="dzBmTr1'+ dzBmCount +'"><td height="5"></td></tr>');
+	 var tr2 = $('<tr class="dialogTr" id="dzBmTr2'+dzBmCount+'"></tr>');
+     var td1 = $('<td width="30%" class="dialogTd" align="right">地址别名：</td>'); 	  
+     var td2 = $('<td width="70%" class="dialogTd" id="dzbmTd'+ dzBmCount +'"></td>'); 
+     var td2Html = new StringBuffer();
+     td2Html.append("<input class='easyui-validatebox' type='text' id='dzbm_"+dzBmCount+"' name='dzBmArray["+dzBmCount+"].dzbm' style='width:215px;'/>");
+     td2Html.append("&nbsp;<a class='delLine_btn' href='javascript:void(0);' onclick='DzCheckEdit.delDzBm("+ dzBmCount +")' title='注销当前地址别名'></a>");
+     td2.html(td2Html.toString());
+     tr2.append(td1);
+     tr2.append(td2);
+     $('#dzBmTable').append(tr1);
+     $('#dzBmTable').append(tr2);
+ 	 $.parser.parse('#dzbmTd' + dzBmCount);
+     dzBmCount++;
+};
+/**
+ * @title:delDzBm
+ * @description:注销当前地址别名
+ * @author: zhang_guoliang@founder.com
+ * @param   
+ * @date:2015-01-06 19:03:32
+ */	
+DzCheckEdit.delDzBm = function(No){
+	 $("#dzBmTr1" + No).remove();
+	 $("#dzBmTr2" + No).remove();
+};
+/**
+ * @title:setMlpqc
+ * @description:地址全称
+ * @author: zhang_guoliang@founder.com
+ * @param   
+ * @date:2015-01-07 14:35:05
+ */	
+DzCheckEdit.setMlpqc = function(temp){
+	var dmmc = $('#dmmc').val();
+	var mlphqzmc = $('#mlphqzmc').val();
+	var mlph = $('#mlph').val();
+	var mlphhzmc = $('#mlphhzmc').val();
+	var mlphqc = dmmc+mlphqzmc+mlph+mlphhzmc;
+	$('#mlphqc').val(mlphqc);
 };

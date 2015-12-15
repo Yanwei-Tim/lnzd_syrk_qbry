@@ -303,10 +303,10 @@ $(document).ready(function(){
 	}
 	//判断
 	if(dz_dwdzdm!=""){
-		document.getElementById("dwbzdzRadio").disabled = "disabled";
-		document.getElementById("dwdzmsRadio").disabled = "disabled";
-		setInputReadonly('jzd1', true);
-		setInputReadonly('jzd2', true);
+		//document.getElementById("dwbzdzRadio").disabled = "disabled";
+		//document.getElementById("dwdzmsRadio").disabled = "disabled";
+		//setInputReadonly('jzd1', true);
+		//setInputReadonly('jzd2', true);
 	}
 	//新增页面作为修改界面时显示图片
 	if(id!=""){
