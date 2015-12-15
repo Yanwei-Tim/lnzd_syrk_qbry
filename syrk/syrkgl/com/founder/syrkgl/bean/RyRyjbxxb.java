@@ -21,11 +21,6 @@ import com.founder.framework.base.entity.BaseEntity;
 public class RyRyjbxxb extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
-	//gem 核实
-	private String icCheck;
-	//gem
-	
 	@FieldDesc("人员ID")
 	private String id;
 	@FieldDesc("实有人口标识")
@@ -105,8 +100,21 @@ public class RyRyjbxxb extends BaseEntity implements Serializable {
 	@FieldDesc("备注")
 	private String bz;
 
+	// gem 核实
+	private String icCheck;
+	private String ryid;
+	// gem
+
 	public String getIcCheck() {
 		return icCheck;
+	}
+
+	public String getRyid() {
+		return ryid;
+	}
+
+	public void setRyid(String ryid) {
+		this.ryid = ryid;
 	}
 
 	public void setIcCheck(String icCheck) {

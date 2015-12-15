@@ -215,18 +215,6 @@
 			   <isNotEmpty prepend="AND" property="entity.age">
 				     SUBSTR(T.CSRQ, 0, 4) = #entity.age#
 			   </isNotEmpty>
-			   <isNotEmpty prepend="and" property="entity.csrqB">
-				   <![CDATA[ T.CSRQ >= #entity.csrqB#  ]]> 
-			   </isNotEmpty>
-			   <isNotEmpty prepend="and" property="entity.csrqE">
-				   <![CDATA[ T.CSRQ <= #entity.csrqE# ]]> 
-			   </isNotEmpty>
-			   <isNotEmpty prepend="and" property="entity.jgssxdm">
-				   <![CDATA[ T.JGSSXDM = #entity.jgssxdm# ]]> 
-			   </isNotEmpty>
-			   <isNotEmpty prepend="and" property="entity.hjd_xzqhdm">
-				   <![CDATA[ T.HJD_XZQHDM = #entity.hjd_xzqhdm# ]]> 
-			   </isNotEmpty>
 		       	  ORDER BY T.$sort$ $order$) M 
 		  <![CDATA[WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
 	</select>
@@ -272,18 +260,6 @@
 		   <isNotEmpty prepend="AND" property="entity.age">
 			     SUBSTR(T.CSRQ, 0, 4) = #entity.age#
 		   </isNotEmpty>
-		   <isNotEmpty prepend="and" property="entity.csrqB">
-		   <![CDATA[ T.CSRQ >= #entity.csrqB#  ]]> 
-		   </isNotEmpty>
-		   <isNotEmpty prepend="and" property="entity.csrqE">
-			   <![CDATA[ T.CSRQ <= #entity.csrqE# ]]> 
-		   </isNotEmpty>
-		   <isNotEmpty prepend="and" property="entity.jgssxdm">
-			   <![CDATA[ T.JGSSXDM = #entity.jgssxdm# ]]> 
-		   </isNotEmpty>
-		   <isNotEmpty prepend="and" property="entity.hjd_xzqhdm">
-			   <![CDATA[ T.HJD_XZQHDM = #entity.hjd_xzqhdm# ]]> 
-		   </isNotEmpty>
 	</select>
 
 	<!-- 实有人口查询列表数据 -->
@@ -322,18 +298,6 @@
 		<isNotEmpty prepend="AND" property="entity.jzd_dzid">
 			T.JZD_DZID IN ($entity.jzd_dzid$)
 		</isNotEmpty>
-	   <isNotEmpty prepend="and" property="entity.csrqB">
-		   <![CDATA[ T.CSRQ >= #entity.csrqB#  ]]> 
-	   </isNotEmpty>
-	   <isNotEmpty prepend="and" property="entity.csrqE">
-		   <![CDATA[ T.CSRQ <= #entity.csrqE# ]]> 
-	   </isNotEmpty>
-	   <isNotEmpty prepend="and" property="entity.jgssxdm">
-		   <![CDATA[ T.JGSSXDM = #entity.jgssxdm# ]]> 
-	   </isNotEmpty>
-	   <isNotEmpty prepend="and" property="entity.hjd_xzqhdm">
-		   <![CDATA[ T.HJD_XZQHDM = #entity.hjd_xzqhdm# ]]> 
-	   </isNotEmpty>
 		<!-- 以下空间查询条件 开始 -->
 		<isNotEmpty prepend="AND" property="entity.drawType">
 			T.JZD_MLPDM = P.MLDZID
@@ -390,18 +354,6 @@
 		<isNotEmpty prepend="AND" property="entity.jzd_dzid">
 			T.JZD_DZID IN ($entity.jzd_dzid$)
 		</isNotEmpty>
-		<isNotEmpty prepend="and" property="entity.csrqB">
-		   <![CDATA[ T.CSRQ >= #entity.csrqB#  ]]> 
-	   </isNotEmpty>
-	   <isNotEmpty prepend="and" property="entity.csrqE">
-		   <![CDATA[ T.CSRQ <= #entity.csrqE# ]]> 
-	   </isNotEmpty>
-	   <isNotEmpty prepend="and" property="entity.jgssxdm">
-		   <![CDATA[ T.JGSSXDM = #entity.jgssxdm# ]]> 
-	   </isNotEmpty>
-	   <isNotEmpty prepend="and" property="entity.hjd_xzqhdm">
-		   <![CDATA[ T.HJD_XZQHDM = #entity.hjd_xzqhdm# ]]> 
-	   </isNotEmpty>
 		<!-- 以下空间查询条件 开始 -->
 		<isNotEmpty prepend="AND" property="entity.drawType">
 			T.JZD_MLPDM = P.MLDZID
@@ -450,9 +402,17 @@
 		       SELECT * 
 		          FROM SYRK_SYRKXXHSB T
 			   WHERE 1=1
-	           <isNotEmpty prepend="AND" property="entity.xt_zxbz">
-		             T.XT_ZXBZ = #entity.xt_zxbz#
-		       </isNotEmpty>
+			   <isEqual prepend="AND" property="entity.hs_status" compareValue="01">
+	           	    T.XT_ZXBZ = '0'
+	            	AND T.HS_STATUS = #entity.hs_status#
+			   </isEqual>
+			   <isEqual prepend="AND" property="entity.hs_status" compareValue="02">
+		            T.XT_ZXBZ = '0'
+		            AND T.HS_STATUS = #entity.hs_status#
+		  	   </isEqual>
+			   <isEqual prepend="AND" property="entity.hs_status" compareValue="03">
+		            T.XT_ZXBZ = '1'
+			   </isEqual>
 		       <isNotEmpty prepend="AND" property="entity.syrkywlxdm">
 		             T.SYRKYWLXDM = #entity.syrkywlxdm#
 		       </isNotEmpty>
@@ -489,10 +449,7 @@
 			   <isNotEmpty prepend="AND" property="entity.age">
 				     Substr(T.CSRQ, 0, 4) = #entity.age#
 			   </isNotEmpty>
-			   <isNotEmpty prepend="AND" property="entity.hs_status">
-				     T.HS_STATUS = #entity.hs_status#
-			   </isNotEmpty>
-		       	  ORDER BY T.$sort$ $order$) M 
+		       ORDER BY T.$sort$ $order$) M 
 		  <![CDATA[WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
 	</select>
 
@@ -501,9 +458,17 @@
 		   SELECT COUNT(T.ID) 
 	          FROM SYRK_SYRKXXHSB T
 		   WHERE 1=1
-           <isNotEmpty prepend="AND" property="entity.xt_zxbz">
-	             T.XT_ZXBZ = #entity.xt_zxbz#
-	       </isNotEmpty>
+           <isEqual prepend="AND" property="entity.hs_status" compareValue="01">
+           	    T.XT_ZXBZ = '0'
+            	AND T.HS_STATUS = #entity.hs_status#
+		   </isEqual>
+		   <isEqual prepend="AND" property="entity.hs_status" compareValue="02">
+	            T.XT_ZXBZ = '0'
+	            AND T.HS_STATUS = #entity.hs_status#
+	  	   </isEqual>
+		   <isEqual prepend="AND" property="entity.hs_status" compareValue="03">
+	            T.XT_ZXBZ = '1'
+		   </isEqual>
 	       <isNotEmpty prepend="AND" property="entity.syrkywlxdm">
 	             T.SYRKYWLXDM = #entity.syrkywlxdm#
 	       </isNotEmpty>
@@ -539,9 +504,6 @@
 		   </isNotEmpty>
 		   <isNotEmpty prepend="AND" property="entity.age">
 			     Substr(T.CSRQ, 0, 4) = #entity.age#
-		   </isNotEmpty>
-		   <isNotEmpty prepend="AND" property="entity.hs_status">
-			     T.HS_STATUS = #entity.hs_status#
 		   </isNotEmpty>
 	</select>
 	<!-- 更新人口核实 -->
