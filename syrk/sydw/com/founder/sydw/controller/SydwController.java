@@ -24,7 +24,6 @@ import com.founder.framework.base.controller.BaseController;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.components.AppConst;
 import com.founder.framework.exception.BussinessException;
-import com.founder.framework.utils.DateUtils;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
 import com.founder.service.attachment.bean.ZpfjFjxxb;
@@ -36,7 +35,6 @@ import com.founder.sydw.service.DwjbxxbService;
 import com.founder.sydw.service.FrfzrllrbService;
 import com.founder.sydw.service.SydwQueryService;
 import com.founder.sydw.vo.DwjbxxbSaveVO;
-import com.founder.syrkgl.bean.SyrkSyrkxxzb;
 
 /**
  * ****************************************************************************
@@ -103,9 +101,7 @@ public class SydwController extends BaseController {
 			//实有单位核实修改状态
 			if ("check".equals(isCheck)) {
 				dwjbxxb.setId(hsid);
-				dwjbxxb.setHs_status("1");
-				dwjbxxb.setHs_person(sessionBean.getUserName());
-				dwjbxxb.setHs_sj(DateUtils.getSystemDateTimeString());
+				dwjbxxb.setHs_status("02");
 				dwjbxxb.setIsCheck("check");
 				dwjbxxbService.updateHs(dwjbxxb, dwbmxxbArray,sessionBean);
 			}

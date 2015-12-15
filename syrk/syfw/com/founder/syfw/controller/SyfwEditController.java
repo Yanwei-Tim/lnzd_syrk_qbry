@@ -151,6 +151,7 @@ public class SyfwEditController extends BaseController {
 		//增加查询条件 begin
 		if(StringUtils.isBlank(flag) && null != sessionBean){
 			entity.setSs4jbmdm(sessionBean.getUserOrgCode());
+			entity.setSs3jbmdm(sessionBean.getExtendValue("ssPcsCode"));
 		} 
 		//增加查询条件 end
 		EasyUIPage uipage =  syfwQueryService.queryFw(page, entity);
@@ -158,7 +159,7 @@ public class SyfwEditController extends BaseController {
 		for(int i=0;i<syfws.size();i++){
 			SyfwListVo syfw= (SyfwListVo) syfws.get(i);
 			String sfczw = syfw.getSfczfw();
-			if(sfczw.equals("1")){
+			if("1".equals(sfczw)){
 				Czfwxxb entity1 = new Czfwxxb();
 				String id = syfw.getId();
 				entity1.setFwid(id);
@@ -239,7 +240,7 @@ public class SyfwEditController extends BaseController {
 			if ("check".equals(vo.getIsCheck())) {
 				SyfwListVo SyfwListVo = new SyfwListVo();
 				SyfwListVo.setId(vo.getHsid());
-				SyfwListVo.setHs_status("1");
+				SyfwListVo.setHs_status("02");
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
 				Calendar cal = Calendar.getInstance();
 				String now = format.format(cal.getTime());

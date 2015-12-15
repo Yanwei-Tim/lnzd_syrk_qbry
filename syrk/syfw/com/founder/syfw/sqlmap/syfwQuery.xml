@@ -91,70 +91,78 @@
 
 	<!-- 实有房屋核实的查询 v3 -->
 	<select id="queryFwHs" parameterClass="Map" resultClass="syfwquery">
-		<![CDATA[
-		select * from (
-				SELECT ROWNUM R ,M.* FROM(
-				 SELECT f.* FROM syfw_fwjbxxhs F 
-				 WHERE 1=1 ]]>
-		<isNotEmpty prepend="AND" property="fwjbxxb.xt_zxbz">
-             F.XT_ZXBZ = #fwjbxxb.xt_zxbz#
-        </isNotEmpty>
+		SELECT * FROM (SELECT ROWNUM R ,M.* FROM(
+		    SELECT F.* FROM SYFW_FWJBXXHS F 
+		      WHERE 1=1
+	    <isEqual prepend="AND" property="fwjbxxb.hs_status" compareValue="01">
+            F.XT_ZXBZ = '0'
+            AND F.HS_STATUS = #fwjbxxb.hs_status#
+		</isEqual>
+		<isEqual prepend="AND" property="fwjbxxb.hs_status" compareValue="02">
+            F.XT_ZXBZ = '0'
+            AND F.HS_STATUS = #fwjbxxb.hs_status#
+		</isEqual>
+	    <isEqual prepend="AND" property="fwjbxxb.hs_status" compareValue="03">
+            F.XT_ZXBZ = '1'
+		</isEqual>
+		<isNotEmpty prepend="and" property="fwjbxxb.ss3jbmdm">
+			F.SS3JBMDM = #fwjbxxb.ss3jbmdm#
+		</isNotEmpty>
 		<isNotEmpty prepend="and" property="fwjbxxb.fwdz_dzxz">
-			     <![CDATA[F.fwdz_dzxz like '%' || #fwjbxxb.fwdz_dzxz# ||'%']]>
+			<![CDATA[F.fwdz_dzxz like '%' || #fwjbxxb.fwdz_dzxz# ||'%']]>
 		</isNotEmpty>
 		<isNotEmpty prepend="and" property="fwjbxxb.fwlbdm">
-			   	 <![CDATA[F.fwlbdm = #fwjbxxb.fwlbdm# ]]>
+			<![CDATA[F.fwlbdm = #fwjbxxb.fwlbdm# ]]>
 		</isNotEmpty>
 		<isNotEmpty prepend="and" property="fwjbxxb.fz_xm">
-			   	 <![CDATA[F.fz_xm like '%' || #fwjbxxb.fz_xm# ||'%' ]]>
+			<![CDATA[F.fz_xm like '%' || #fwjbxxb.fz_xm# ||'%' ]]>
 		</isNotEmpty>
 		<isNotEmpty prepend="and" property="fwjbxxb.sfczfw">
-			     <![CDATA[F.sfczfw = #fwjbxxb.sfczfw#]]>
+			<![CDATA[F.sfczfw = #fwjbxxb.sfczfw#]]>
 		</isNotEmpty>
 		<isNotEmpty prepend="and" property="fwjbxxb.condition">
-				  <![CDATA[ f.fwdz_dzxz || f.fz_xm  like '%' || #fwjbxxb.condition#|| '%']]>
+			<![CDATA[ f.fwdz_dzxz || f.fz_xm  like '%' || #fwjbxxb.condition#|| '%']]>
 		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="fwjbxxb.hs_status">
-		     f.hs_status = #fwjbxxb.hs_status#
-	    </isNotEmpty>
-	    <isNotEmpty prepend="AND" property="fwjbxxb.ss4jbmdm">
-		     f.ss4jbmdm = #fwjbxxb.ss4jbmdm#
-	    </isNotEmpty>
 		<isNotEmpty property="sort">
-		   		<![CDATA[ order by $sort$ $order$ ]]>
+		   	<![CDATA[ order by $sort$ $order$ ]]>
 		</isNotEmpty>
 		   <![CDATA[) m 
-		     where rownum <= #end# ) 
+		where rownum <= #end# ) 
 		     	where r > #begin# ]]>
 	</select>
 	
 	<!-- 统计实有房屋核实数量 v3 -->
 	<select id="queryHsCountFw" parameterClass="Map" resultClass="Integer">
-		<![CDATA[SELECT COUNT(1) FROM syfw_fwjbxxhs F where 1=1]]>
-		<isNotEmpty prepend="AND" property="fwjbxxb.xt_zxbz">
-             F.XT_ZXBZ = #fwjbxxb.xt_zxbz#
-        </isNotEmpty>
-		<isNotEmpty prepend="and" property="fwjbxxb.fwdz_dzxz">
-			     <![CDATA[F.fwdz_dzxz like '%' || #fwjbxxb.fwdz_dzxz# ||'%']]>
-		</isNotEmpty>
-		<isNotEmpty prepend="and" property="fwjbxxb.fwlbdm">
-			   	 <![CDATA[F.fwlbdm = #fwjbxxb.fwlbdm# ]]>
-		</isNotEmpty>
-		<isNotEmpty prepend="and" property="fwjbxxb.fz_xm">
-			   	 <![CDATA[F.fz_xm like '%' || #fwjbxxb.fz_xm# ||'%' ]]>
-		</isNotEmpty>
-		<isNotEmpty prepend="and" property="fwjbxxb.sfczfw">
-			     <![CDATA[F.sfczfw = #fwjbxxb.sfczfw#]]>
-		</isNotEmpty>
-		<isNotEmpty prepend="and" property="fwjbxxb.condition">
-				  <![CDATA[ f.fwdz_dzxz || f.fz_xm  like '%' || #fwjbxxb.condition#|| '%']]>
-		</isNotEmpty>
-		<isNotEmpty prepend="AND" property="fwjbxxb.hs_status">
-		     f.hs_status = #fwjbxxb.hs_status#
-	    </isNotEmpty>
-	    <isNotEmpty prepend="AND" property="fwjbxxb.ss4jbmdm">
-		     f.ss4jbmdm = #fwjbxxb.ss4jbmdm#
-	    </isNotEmpty>
+		SELECT COUNT(1) FROM SYFW_FWJBXXHS F WHERE 1=1
+			<isEqual prepend="AND" property="fwjbxxb.hs_status" compareValue="01">
+	            F.XT_ZXBZ = '0'
+	            AND F.HS_STATUS = #fwjbxxb.hs_status#
+			</isEqual>
+			<isEqual prepend="AND" property="fwjbxxb.hs_status" compareValue="02">
+	            F.XT_ZXBZ = '0'
+	            AND F.HS_STATUS = #fwjbxxb.hs_status#
+			</isEqual>
+		    <isEqual prepend="AND" property="fwjbxxb.hs_status" compareValue="03">
+	            F.XT_ZXBZ = '1'
+			</isEqual>
+			<isNotEmpty prepend="and" property="fwjbxxb.ss3jbmdm">
+				F.SS3JBMDM = #fwjbxxb.ss3jbmdm#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="fwjbxxb.fwdz_dzxz">
+				     <![CDATA[F.fwdz_dzxz like '%' || #fwjbxxb.fwdz_dzxz# ||'%']]>
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="fwjbxxb.fwlbdm">
+				   	 <![CDATA[F.fwlbdm = #fwjbxxb.fwlbdm# ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="fwjbxxb.fz_xm">
+				   	 <![CDATA[F.fz_xm like '%' || #fwjbxxb.fz_xm# ||'%' ]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="fwjbxxb.sfczfw">
+				     <![CDATA[F.sfczfw = #fwjbxxb.sfczfw#]]>
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="fwjbxxb.condition">
+					  <![CDATA[ f.fwdz_dzxz || f.fz_xm  like '%' || #fwjbxxb.condition#|| '%']]>
+			</isNotEmpty>
 	</select>
 	
 	<!-- 实有房屋的查询 v3 -->

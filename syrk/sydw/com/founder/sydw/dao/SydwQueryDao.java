@@ -1,5 +1,4 @@
 package com.founder.sydw.dao;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,8 +12,6 @@ import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
 import com.founder.sydw.bean.Dwjbxxb;
 import com.founder.sydw.vo.SydwxxzsVO;
-import com.founder.syrkgl.bean.SyrkSyrkxxzb;
-
 @Repository("sydwQueryDao")
 public class SydwQueryDao extends BaseDaoImpl {
 	/**
@@ -104,10 +101,10 @@ public class SydwQueryDao extends BaseDaoImpl {
 
 	/**
 	 * 根据单位id查询坐标列表
-	 * 
 	 * @param dwid
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	public List<Dwjbxxb> queryZbByDzId(String dwid) {
 		List<Dwjbxxb> list = null;
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -119,54 +116,13 @@ public class SydwQueryDao extends BaseDaoImpl {
 		return list;
 	}
 
-	/**
-	 * 实有单位核实列表
-	 * 
-	 * @param page
-	 * @param entity
-	 * @return
-	 */
-//	public EasyUIPage queryDwHs(EasyUIPage page, Dwjbxxb entity) {
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("begin", page.getBegin());
-//		map.put("end", page.getEnd());
-//		String sort = page.getSort();
-//		String order = page.getOrder();
-//		if (StringUtils.isBlank(sort)) { // 默认排序
-//			// sort = "id";
-//			order = "asc";
-//		}
-//		map.put("sort", StringUtils.nullToStr(sort));
-//		map.put("order", StringUtils.nullToStr(order));
-//		entity.setZagldwbm(StringUtils.getSqlExpression(entity.getZagldwbm()));
-//		entity.setDwmc(StringUtils.getSqlExpression(entity.getDwmc()));
-//		map.put("dwjbxxb", entity);
-//		// page.setTotal((Integer) queryForObject("SydwQuery.queryCountDwHs",
-//		// map));
-//		// page.setRows(queryForList("SydwQuery.queryDwHs", map));
-//		// 后期修改增加延时加载
-//		List<?> list = queryForList("SydwQuery.queryDwHs", map);
-//		if (page.getBegin() == 0) {
-//			if (list != null && list.size() > 0) {
-//				page.setTotal(list.size());
-//			} else {
-//				page.setTotal(0);
-//			}
-//		} else {
-//			if (page.getTotal() == 0) {
-//				if (list != null && list.size() > 0) {
-//					page.setTotal(list.size());
-//				}
-//			}
-//		}
-//		page.setRows(list);
-//		return page;
-//	}
-	
 	public EasyUIPage queryDwHs(EasyUIPage page, Dwjbxxb entity) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("begin", page.getBegin());
 		map.put("end", page.getEnd());
+		if(StringUtils.isBlank(entity.getHs_status())){
+			entity.setHs_status("01");
+		}
 		String sort = page.getSort();
 		String order = page.getOrder();
 		if (StringUtils.isBlank(sort)) {
@@ -182,20 +138,6 @@ public class SydwQueryDao extends BaseDaoImpl {
 	}
 
 	/**
-	 * 延时实有单位核实列表统计列表记录数<br>
-	 * 
-	 * @param page
-	 * @param entity
-	 * @return
-	 */
-//	public long queryCountSydwHs(Dwjbxxb entity) {
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("dwjbxxb", entity);
-//		Integer count = (Integer) queryForObject("SydwQuery.queryCountDwHs",map);
-//		return count.longValue();
-//	}
-
-	/**
 	 * 更新单位表
 	 * 
 	 * @param entity
@@ -206,8 +148,6 @@ public class SydwQueryDao extends BaseDaoImpl {
 		map.put("dwjbxxb", entity);
 		return update("SydwQuery.updateDwhsById", map);
 	}
-
-
 
 	/**
 	 * 实有单位在地图上查询
@@ -306,11 +246,10 @@ public class SydwQueryDao extends BaseDaoImpl {
 	public int getCountByCol(Map<String, Object> map) {
 		return (Integer) queryForObject("Sydwglpz.getCountByCol", map);
 	}
-
+	@SuppressWarnings("unchecked")
 	public int delete_xxzsnrb(Map<String, Object> map) {
 		int returnNum = 0;
-		List<SydwxxzsVO> list = queryForList("Sydwglpz.queryxxzsnrbByxxdybm",
-				map.get("url"));
+		List<SydwxxzsVO> list = queryForList("Sydwglpz.queryxxzsnrbByxxdybm",map.get("url"));
 		SydwxxzsVO infovo = null;
 		if (list.size() > 0) {
 			infovo = list.get(0);
@@ -348,6 +287,7 @@ public class SydwQueryDao extends BaseDaoImpl {
 				childCloumn = childTableAndCloumn[1];
 				map.put("childTable", childTable);
 				map.put("childCloumn", childCloumn);
+				
 				List<String> idList = queryForList(
 						"Sydwglpz.queryChildTableId", map);
 				childIdList.addAll(idList);

@@ -100,7 +100,9 @@ public class DwjbxxbServiceImpl implements DwjbxxbService {
 	 */
 	public void save(Dwjbxxb entity,  Dwbmxxb [] dwbmxxbArray,
 			String hsrwid, SessionBean sessionBean) {
-		entity.setId(UUID.create()); // 生成主键
+		if(StringUtils.isBlank(entity.getId())){
+			entity.setId(UUID.create()); // 生成主键
+		}
 		BaseService.setSaveProperties(entity, sessionBean);
 		entity.setGlbmid(sessionBean.getUserOrgCode());
 		entity.setZagldwbm(CreateDWbh(sessionBean.getUserOrgCode()));
@@ -244,6 +246,7 @@ public class DwjbxxbServiceImpl implements DwjbxxbService {
 	
 	public void updateHs(Dwjbxxb entity,  Dwbmxxb [] dwbmxxbArray,SessionBean sessionBean) {
 		BaseService.setUpdateProperties(entity, sessionBean);
+		entity.setGlbmid((String)sessionBean.getUserOrgCode());
 		dwjbxxbDao.updateHs(entity, sessionBean);
 		//另存为到DW_DWXZXXB表数据更新
 		DwxzxxVO dwxzvo = new DwxzxxVO();

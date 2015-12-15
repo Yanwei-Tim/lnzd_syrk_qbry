@@ -38,10 +38,12 @@ public class SyfwQueryDao extends BaseDaoImpl {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("begin", page.getBegin());
 		map.put("end", page.getEnd());
+		if(StringUtils.isBlank(entity.getHs_status())){
+			entity.setHs_status("01");
+		}
 		String sort = page.getSort();
 		String order = page.getOrder();
 		if (StringUtils.isBlank(sort)) { // 默认排序
-			//sort = "id";
 			order = "asc";
 		}
 		map.put("sort", sort);
