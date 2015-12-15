@@ -358,3 +358,73 @@ function xsjbxxDelete(linkObject, index){
 			'zdryzjhm':zdryZjhm
 		});
 	}
+	
+	//=====车辆信息js方法
+	function clxxFormater(val,row,index){
+		 var html="";
+		 if(row.xt_lrrbmid==userOrgCode){
+			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="clxxedit(this, '+index+')">编辑</a>&nbsp;'
+			 +'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="clxxDelete(this, '+index+')">删除</a>&nbsp;'	 
+		 }else{		 
+			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="clxxview(this, '+index+')">查看</a>&nbsp;'
+		 }	
+		return html ;
+	}
+	function clxxAdd() {
+		var url=contextPath+'/dtjsMore/addDtjsClxx?zdryZjhm='+zdryZjhm+'&zdryid='+zdryid;
+		window.top.openWindowWithSave(false, null, window, {'_p':$('dtjsMore')},
+				{title: '车辆信息新增',url: url,width: 780,inline:true,height:400}, 
+			   		null, "clxxquery",null);
+		
+		
+	}
+
+	function clxxedit(linkObject, index){
+
+		cancelBubble();
+		var rows = $('#clxxtable').datagrid('getData');
+		var rowData = rows.rows[index];
+		var url=contextPath+'/dtjsMore/editDtjsClxx?id='+rowData.id +"&type=edit";
+		window.top.openWindowWithSave(false, null, window, {'_p':$('dtjsMore')},
+				{title: '车辆信息编辑',url: url,width: 780,inline:true,height:400}, 
+			   		null, "clxxquery",null
+			   	);
+		
+	}
+	function clxxview(linkObject, index){
+
+		cancelBubble();
+		var rows = $('#dg').datagrid('getData');
+		var rowData = rows.rows[index];
+		var url=contextPath+'/dtjsMore/editDtjsClxx?id='+rowData.id +"&type=view";
+
+		openWindow(false,null,url,null,{title:'车辆信息查看',width:880,height:500});
+
+		
+	}
+
+	function clxxDelete(linkObject, index){
+		cancelBubble(); // 阻止冒泡，不然要执行onClickRow
+		var deleteUrl = contextPath + '/dtjsMore/deleteDtjsClxx';
+		var datagrid_ID = getDatagrid_ID(0, linkObject);
+		topMessager.confirm('','您确认要删除数据吗？',function(r) {    
+			if (r) {	
+				var opts = $('#' + datagrid_ID).datagrid("options");
+				var rows = $('#' + datagrid_ID).datagrid('getData');
+				var rowData = rows.rows[index];
+				$.ajax({
+					url: deleteUrl,
+					type: 'POST',
+					data: {id:rowData.id}
+				}).done(function(result) {
+					clxxquery();
+				});
+			}
+		});
+	}
+	function clxxquery(){
+		$('#clxxtable').datagrid('load',{    
+			
+			'zdryzjhm':zdryZjhm
+		});
+	}

@@ -1,19 +1,20 @@
 package com.founder.zdrygl.bean;
 
 import java.io.Serializable;
+
 import com.founder.framework.annotation.DBInfoAnnotation;
 import com.founder.framework.annotation.FieldDesc;
 import com.founder.framework.base.entity.BaseEntity;
 
 /**
  * ****************************************************************************
- * @Package:      [com.founder.qbld.bean.Clxxb.java]  
- * @ClassName:    [Clxxb]   
+ * @Package:      [com.founder.qbld.bean.ZdryDtjsClxxb.java]  
+ * @ClassName:    [ZdryDtjsClxxb]   
  * @Description:  [车辆信息表]   
- * @Author:       [yu_sun@founder.com.cn]  
- * @CreateDate:   [2015-6-8 上午9:39:28]   
+ * @Author:       [cong_rihong@founder.com.cn]  
+ * @CreateDate:   [2015-12-14 上午9:39:28]   
  * @UpdateUser:   [founder(如多次修改保留历史记录，增加修改记录)]   
- * @UpdateDate:   [2015-6-8 上午9:39:28，(如多次修改保留历史记录，增加修改记录)]   
+ * @UpdateDate:   [2015-12-14 上午9:39:28，(如多次修改保留历史记录，增加修改记录)]   
  * @UpdateRemark: [说明本次修改内容,(如多次修改保留历史记录，增加修改记录)]  
  * @Version:      [v1.0]
  */
@@ -24,29 +25,22 @@ public class ZdryDtjsClxxb extends BaseEntity implements Serializable {
 
 	@FieldDesc("ID")
 	private String id;
-	@FieldDesc("ZJHM")
+	@FieldDesc("重点人证件号码")
 	private String zjhm;
-	@FieldDesc("CLPP")
+	@FieldDesc("车辆品牌")
 	private String clpp;
-	@FieldDesc("CLLX")
+	@FieldDesc("车辆类型")
 	private String cllx;
-	@FieldDesc("CLYS")
+	@FieldDesc("车辆颜色")
 	private String clys;
-	@FieldDesc("CLHM")
+	@FieldDesc("车辆号码")
 	private String clhm;
-	@FieldDesc("CLLY")
+	@FieldDesc("车辆来源")
 	private String clly;
-	@FieldDesc("GSR")
+	@FieldDesc("归属人")
 	private String gsr;
-	@FieldDesc("CJSJ")
-	private String cjsj;
-	@FieldDesc("XGSJ")
-	private String xgsj;
-	@FieldDesc("ZXBS")
-	private String zxbs;
-	@FieldDesc("CLXXBH")
+	@FieldDesc("车辆信息编号")
 	private String clxxbh;
-	
 	public String getId() {
 		return id;
 	}
@@ -95,24 +89,6 @@ public class ZdryDtjsClxxb extends BaseEntity implements Serializable {
 	public void setGsr(String gsr) {
 		this.gsr = gsr;
 	}
-	public String getCjsj() {
-		return cjsj;
-	}
-	public void setCjsj(String cjsj) {
-		this.cjsj = cjsj;
-	}
-	public String getXgsj() {
-		return xgsj;
-	}
-	public void setXgsj(String xgsj) {
-		this.xgsj = xgsj;
-	}
-	public String getZxbs() {
-		return zxbs;
-	}
-	public void setZxbs(String zxbs) {
-		this.zxbs = zxbs;
-	}
 	public String getClxxbh() {
 		return clxxbh;
 	}
@@ -120,4 +96,6 @@ public class ZdryDtjsClxxb extends BaseEntity implements Serializable {
 		this.clxxbh = clxxbh;
 	}
 
+	
+	
 }

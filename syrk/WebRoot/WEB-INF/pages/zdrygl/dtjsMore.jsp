@@ -75,6 +75,7 @@
 		<%@include file="/WEB-INF/pages/zdrygl/dtjsZdxsfzqkList.jsp"%>
 		<%@include file="/WEB-INF/pages/zdrygl/dtjsShgxrxxbList.jsp"%>
 		<%@include file="/WEB-INF/pages/zdrygl/dtjsSaxxList.jsp"%>
+		<%@include file="/WEB-INF/pages/zdrygl/dtjsClxxList.jsp"%>
 
 		<div title="涉毒信息" id="sdxx" >
 			<input type="radio" name="sdlx" value="xd" checked="checked"> 吸毒信息 </input>
