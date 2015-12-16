@@ -444,7 +444,7 @@ function xsjbxxDelete(linkObject, index){
 	function sdxdxxbAdd() {
 		var url=contextPath+'/dtjsMore/addDtjsSdxdxxb?zdryZjhm='+zdryZjhm+'&zdryid='+zdryid;
 		window.top.openWindowWithSave(false, null, window, {'_p':$('dtjsMore')},
-				{title: '吸毒信息新增',url: url,width: 780,inline:true,height:400}, 
+				{title: '吸毒信息新增',url: url,width: 800,inline:true,height:400}, 
 			   		null, "sdxdxxbquery",null);
 		
 		
