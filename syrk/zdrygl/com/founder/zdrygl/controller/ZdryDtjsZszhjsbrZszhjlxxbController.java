@@ -34,7 +34,7 @@ public class ZdryDtjsZszhjsbrZszhjlxxbController extends BaseController {
 	private ZdryZdryzbService zdryZdryzbService;
 	
 	@RequestMapping(value = "/moreDtjsZszhjsbrZszhjlxxb", method = RequestMethod.POST)	
-	public @ResponseBody EasyUIPage queryDtjsSfList(EasyUIPage page,
+	public @ResponseBody EasyUIPage queryZszhjsbrZszhjlList(EasyUIPage page,
 			@RequestParam(value = "rows", required=false) Integer rows, 
 			String zdryZjhm,
 			SessionBean sessionBean){
@@ -47,7 +47,7 @@ public class ZdryDtjsZszhjsbrZszhjlxxbController extends BaseController {
 	
 
 	@RequestMapping(value = "/addDtjsZszhjsbrZszhjlxxb", method = RequestMethod.GET)
-	public ModelAndView addDtjsSfjbxx( String zdryZjhm,String zdryid,
+	public ModelAndView addDtjsZszhjsbrZszhjl( String zdryZjhm,String zdryid,
 			SessionBean sessionBean) throws BussinessException {
 		    sessionBean = getSessionBean(sessionBean);
 			ModelAndView mv = new ModelAndView("zdrygl/dtjsZszhjsbrZszhjlxxbAdd");		
