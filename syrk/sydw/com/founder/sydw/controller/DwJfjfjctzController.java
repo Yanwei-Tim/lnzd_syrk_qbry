@@ -145,6 +145,13 @@ public class DwJfjfjctzController extends BaseController{
 			Dwjffctzs dwjffctzs = new Dwjffctzs();
 			dwjffctzs.setJcid(jcid);
 			dwjffctzs = this.dwjffctzsDao.query(dwjffctzs);
+			
+//			//设置整改时间
+//			Dwjfzltzs zltzs = new Dwjfzltzs();
+//			zltzs.setJcid(dwjffctzs.getJcid());
+//			zltzs = this.dwjfzltzsDao.query(zltzs);
+//			dwjffctzs.setZgtzsj(zltzs.getGzsj());
+			
 			entity = dwjffctzs;
 		}else if("jffctzscg".equals(type)){
 			//复查意见书存根
@@ -210,6 +217,14 @@ public class DwJfjfjctzController extends BaseController{
 		}
 		mv.addObject(AppConst.MESSAGES, new Gson().toJson(model));
 		return mv;
+	}
+	
+	@RequestMapping(value = "/createAjxxid", method = RequestMethod.POST)
+	public @ResponseBody Dwjcxxb createAjxxid(Dwjcxxb entity) {
+		SessionBean sessionBean = getSessionBean();
+		String ajxxid = this.dwjfjfjctzService.createAjxxid(entity.getId(), sessionBean);
+		entity.setAjxxid(ajxxid);
+		return entity;
 	}
 	
 	@RequestMapping(value = "/saveJfdwjcjl", method = RequestMethod.POST)
@@ -411,7 +426,14 @@ public class DwJfjfjctzController extends BaseController{
 				dwjfjfjctzs = this.dwjfjfjctzsDao.query(dwjfjfjctzs);
 				entity.setJctzswh(dwjfjfjctzs.getWh());
 			}
+			
 		}
+		
+		//设置整改时间
+		Dwjfzltzs zltzs = new Dwjfzltzs();
+		zltzs.setJcid(entity.getJcid());
+		zltzs = this.dwjfzltzsDao.query(zltzs);
+		entity.setZgtzsj(zltzs.getGzsj());
 		
 		mv.addObject("entity", entity);
 		mv.addObject("mainTabID", mainTabID);

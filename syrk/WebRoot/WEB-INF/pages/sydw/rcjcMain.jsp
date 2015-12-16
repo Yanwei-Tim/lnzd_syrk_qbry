@@ -139,8 +139,15 @@ function processFormaterJf(val, row, index) {
 	}else if(row.zt=="40"){
 		//复查
 		zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="Workflow.createJffctzs('+index+')">复查通知</a>&nbsp;';
-	}else if(row.zt=="110"){
+	}else if(row.zt=="100"){
+		//转行政案件
+		if(row.ajxxid == null || row.ajxxid == ''){
+			zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="Workflow.createAjxxid('+index+')">转行政案件</a>&nbsp;';
+		}else{
+			zghtml = '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="Workflow.showAjxx('+index+')">查看案件进度</a>&nbsp;';
+		}
 	}else if(row.zt=="120"){
+		
 	}else{
 	}
 	

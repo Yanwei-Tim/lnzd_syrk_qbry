@@ -52,10 +52,38 @@ Workflow.createJffctzs = function(index){
    	);
 }
 
-Workflow.printTest = function(index){
+Workflow.showAjxx = function(index){
 	var row = $('#dg').datagrid('getRows')[index];
-	var editUrl = basePath+"jfjfjctz/showPrintView?mainTabID="+getMainTabID()+"&jcid="+row.id+"&type=jffctzscg";
-	window.open(editUrl,"详情","height=1054,width=1024,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no");
+	window.open("http://10.79.188.144:8080/lnxjz/zfba/index.jsp?jqxh="+row.ajxxid+"&cslx=saxx");
+}
+
+Workflow.createAjxxid = function(index){
+	
+	$('#dg').datagrid('loading');
+	
+	var row = $('#dg').datagrid('getRows')[index];
+	$.ajax({
+		type:"POST",
+		sync:true,
+		url:basePath+"jfjfjctz/createAjxxid",
+		data:{id:row.id},
+		dataType:'json',
+		success:function(json){
+			$('#dg').datagrid('loaded');
+			
+			var dwlbdm = $("#dwlbdm").combotree("getValue");
+			var dwmc = $("#dwmc").val();
+			var jcsj = $("#jcsj").val();
+			var jcsjz = $("#jcsjz").val();
+			var ywlbdm =  $("#ywlbdm").combobox("getValue");
+			//设置后续数据状态
+			var status = $("input[name=checkStatus]:checked ").val();
+			$('#dg').datagrid('reload',{'dwlbdm':dwlbdm,'dwmc':dwmc,'jcsj':jcsj,'jcsjz':jcsjz,'ywlbdm':ywlbdm,'status':status});
+		},
+		error:function(e){
+			$('#dg').datagrid('loaded');
+		}
+	});
 }
 
 function createWindowId(){

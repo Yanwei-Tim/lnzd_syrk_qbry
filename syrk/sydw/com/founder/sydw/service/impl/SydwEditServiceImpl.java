@@ -61,6 +61,7 @@ import com.founder.sydw.dao.DwJfdwxxbDao;
 import com.founder.sydw.dao.DwOwnsydwDao;
 import com.founder.sydw.dao.DwhbxxbDao;
 import com.founder.sydw.dao.DwjbxxbDao;
+import com.founder.sydw.dao.DwjcxxbDao;
 import com.founder.sydw.dao.DwxyaqDao;
 import com.founder.sydw.dao.DwxyaqxxbBayDao;
 import com.founder.sydw.dao.DwzjxxzbDao;
@@ -153,6 +154,9 @@ public class SydwEditServiceImpl extends BaseService implements SydwEditService 
 	
 	@Resource(name = "dwJfdwxxbDao")
 	private DwJfdwxxbDao dwJfdwxxbDao;
+	
+	@Resource(name = "dwjcxxbDao")
+	private DwjcxxbDao dwjcxxbDao;
 	
 	@Override
 	public List<DwjbxxbBay> dwxyaqxxbBay_query(Map<String, Object> map) {
@@ -732,6 +736,15 @@ public class SydwEditServiceImpl extends BaseService implements SydwEditService 
 	 */
 	@Override
 	public Dwjfdwxxb jfdwxxb_query(Map<String, Object> map){
-		return (Dwjfdwxxb)dwJfdwxxbDao.jfdwxxb_query(map);
+		
+		Dwjfdwxxb jfdwxxb = (Dwjfdwxxb)dwJfdwxxbDao.jfdwxxb_query(map);
+		if(jfdwxxb == null){
+			jfdwxxb = new Dwjfdwxxb();
+		}
+		Dwjcxxb dwjcxxb = this.dwjcxxbDao.queryScjcsj((String)map.get("dwid"));
+		if(dwjcxxb != null){
+			jfdwxxb.setScjcrq(dwjcxxb.getJcsj());
+		}
+		return jfdwxxb;
 	}
 }

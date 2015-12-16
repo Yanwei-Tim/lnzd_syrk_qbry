@@ -41,6 +41,16 @@ public class Dwjffctzs extends BaseEntity implements Serializable {
 
 	private String jctzswh;
 	
+	private String zgtzsj;
+
+	public String getZgtzsj() {
+		return zgtzsj;
+	}
+
+	public void setZgtzsj(String zgtzsj) {
+		this.zgtzsj = zgtzsj;
+	}
+
 	public String getId() {
 		return id;
 	}

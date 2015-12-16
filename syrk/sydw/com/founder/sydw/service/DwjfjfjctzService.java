@@ -35,4 +35,7 @@ public interface DwjfjfjctzService {
 	public String getWhHead(SessionBean sessionBean);
 	
 	public String getGzsjStrArray(String jcsj);
+	
+	public String createAjxxid(String jcid,SessionBean sessionBean);
+	
 }
