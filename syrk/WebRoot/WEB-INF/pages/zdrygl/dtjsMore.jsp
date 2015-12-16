@@ -115,5 +115,9 @@ function turnToSdDetail(sdType){
 	$("#sdxxFrame").attr('src',src);
 }
 
+function getZdryzjhm(){
+	return '${zdryZjhm}';
+}
+
 </script>
 </html>
