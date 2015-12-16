@@ -499,4 +499,144 @@ function xsjbxxDelete(linkObject, index){
 			'zdryzjhm':zdryZjhm
 		});
 	}
+	//=====涉毒贩毒js方法
+	function sdfdxxbFormater(val,row,index){
+		 var html="";
+		 if(row.xt_lrrbmid==userOrgCode){
+			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="sdfdxxbedit(this, '+index+')">编辑</a>&nbsp;'
+			 +'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="sdfdxxbDelete(this, '+index+')">删除</a>&nbsp;'	 
+		 }else{		 
+			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="sdfdxxbview(this, '+index+')">查看</a>&nbsp;'
+		 }	
+		return html ;
+	}
+	function sdfdxxbAdd() {
+		var url=contextPath+'/dtjsMore/addDtjsSdfdxxb?zdryZjhm='+zdryZjhm+'&zdryid='+zdryid;
+		window.top.openWindowWithSave(false, null, window, {'_p':$('dtjsMore')},
+				{title: '贩毒信息新增',url: url,width: 800,inline:true,height:400}, 
+			   		null, "sdfdxxbquery",null);
+		
+		
+	}
+
+	function sdfdxxbedit(linkObject, index){
+
+		cancelBubble();
+		var rows = $('#sdfdxxbtable').datagrid('getData');
+		var rowData = rows.rows[index];
+		var url=contextPath+'/dtjsMore/editDtjsSdfdxxb?id='+rowData.id +"&type=edit";
+		window.top.openWindowWithSave(false, null, window, {'_p':$('dtjsMore')},
+				{title: '贩毒信息编辑',url: url,width: 780,inline:true,height:400}, 
+			   		null, "sdfdxxbquery",null
+			   	);
+		
+	}
+	function sdfdxxbview(linkObject, index){
+
+		cancelBubble();
+		var rows = $('#dg').datagrid('getData');
+		var rowData = rows.rows[index];
+		var url=contextPath+'/dtjsMore/editDtjsSdfdxxb?id='+rowData.id +"&type=view";
+
+		openWindow(false,null,url,null,{title:'贩毒信息查看',width:880,height:500});
+
+		
+	}
+
+	function sdfdxxbDelete(linkObject, index){
+		cancelBubble(); // 阻止冒泡，不然要执行onClickRow
+		var deleteUrl = contextPath + '/dtjsMore/deleteDtjsSdfdxxb';
+		var datagrid_ID = getDatagrid_ID(0, linkObject);
+		topMessager.confirm('','您确认要删除数据吗？',function(r) {    
+			if (r) {	
+				var opts = $('#' + datagrid_ID).datagrid("options");
+				var rows = $('#' + datagrid_ID).datagrid('getData');
+				var rowData = rows.rows[index];
+				$.ajax({
+					url: deleteUrl,
+					type: 'POST',
+					data: {id:rowData.id}
+				}).done(function(result) {
+					sdfdxxbquery();
+				});
+			}
+		});
+	}
+	function sdfdxxbquery(){
+		$('#sdfdxxbtable').datagrid('load',{    
+			
+			'zdryzjhm':zdryZjhm
+		});
+	}
 	
+	
+	
+	//=====涉毒制毒js方法
+	function sdzdxxbFormater(val,row,index){
+		 var html="";
+		 if(row.xt_lrrbmid==userOrgCode){
+			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="sdzdxxbedit(this, '+index+')">编辑</a>&nbsp;'
+			 +'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="sdzdxxbDelete(this, '+index+')">删除</a>&nbsp;'	 
+		 }else{		 
+			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="sdzdxxbview(this, '+index+')">查看</a>&nbsp;'
+		 }	
+		return html ;
+	}
+	function sdzdxxbAdd() {
+		var url=contextPath+'/dtjsMore/addDtjsSdzdxxb?zdryZjhm='+zdryZjhm+'&zdryid='+zdryid;
+		window.top.openWindowWithSave(false, null, window, {'_p':$('dtjsMore')},
+				{title: '制毒信息新增',url: url,width: 800,inline:true,height:400}, 
+			   		null, "sdzdxxbquery",null);
+		
+		
+	}
+
+	function sdzdxxbedit(linkObject, index){
+
+		cancelBubble();
+		var rows = $('#sdzdxxbtable').datagrid('getData');
+		var rowData = rows.rows[index];
+		var url=contextPath+'/dtjsMore/editDtjsSdzdxxb?id='+rowData.id +"&type=edit";
+		window.top.openWindowWithSave(false, null, window, {'_p':$('dtjsMore')},
+				{title: '制毒信息编辑',url: url,width: 780,inline:true,height:400}, 
+			   		null, "sdzdxxbquery",null
+			   	);
+		
+	}
+	function sdzdxxbview(linkObject, index){
+
+		cancelBubble();
+		var rows = $('#dg').datagrid('getData');
+		var rowData = rows.rows[index];
+		var url=contextPath+'/dtjsMore/editDtjsSdzdxxb?id='+rowData.id +"&type=view";
+
+		openWindow(false,null,url,null,{title:'制毒信息查看',width:880,height:500});
+
+		
+	}
+
+	function sdzdxxbDelete(linkObject, index){
+		cancelBubble(); // 阻止冒泡，不然要执行onClickRow
+		var deleteUrl = contextPath + '/dtjsMore/deleteDtjsSdzdxxb';
+		var datagrid_ID = getDatagrid_ID(0, linkObject);
+		topMessager.confirm('','您确认要删除数据吗？',function(r) {    
+			if (r) {	
+				var opts = $('#' + datagrid_ID).datagrid("options");
+				var rows = $('#' + datagrid_ID).datagrid('getData');
+				var rowData = rows.rows[index];
+				$.ajax({
+					url: deleteUrl,
+					type: 'POST',
+					data: {id:rowData.id}
+				}).done(function(result) {
+					sdzdxxbquery();
+				});
+			}
+		});
+	}
+	function sdzdxxbquery(){
+		$('#sdzdxxbtable').datagrid('load',{    
+			
+			'zdryzjhm':zdryZjhm
+		});
+	}
