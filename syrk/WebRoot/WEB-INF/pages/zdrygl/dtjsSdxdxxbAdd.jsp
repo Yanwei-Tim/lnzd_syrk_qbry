@@ -12,10 +12,10 @@ String userOrgName = userInfo.getUserOrgName();
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/syrk.css"></link>
-<title>上访信息</title>
+<title>吸毒 信息</title>
 </head>
 <div class="easyui-layout" data-options="fit:true">
-    <form action="<%=basePath%>dtjsMore/saveDtjsSfxx" id="dataForm" name="dataForm" method="post" >
+    <form action="<%=basePath%>dtjsMore/saveDtjsSdxdxxb" id="dataForm" name="dataForm" method="post" >
     	<input type="hidden" id="pk" name="id" value="${entity.id}" />
     	<input type="hidden" id="zdryzjhm" name="zdryzjhm" value="${entity.zdryzjhm}" />
     	
@@ -25,30 +25,30 @@ String userOrgName = userInfo.getUserOrgName();
 			
 	        </tr>
 		     	<td width="20%" class="dialogTd" align="right">毒品种类：</td>
-	    		<td width="30%" class="dialogTd">
-					<input class="easyui-combobox" type="text"  id="dpzl" name="dpzl"   style="width:200px;" value="${entity.dpzl}"
-					data-options="url: contextPath +  '/common/dict/D_QBLB_DPZL.js',
-					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right',readonly:true"/>
-				</td>
+		        <td width="30%" class="dialogTd">
+		           <input class="easyui-combobox" type="text"  id="dpzl" name="dpzl"   style="width:200px;" value="${entity.dpzl}"
+	    			data-options="url: contextPath +  '/common/dict/D_QBLD_DPZL.js',
+					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
+		       </td>
 				<td width="20%" class="dialogTd" align="right">毒品来源：</td>
 	    		<td width="30%" class="dialogTd">
 					<input class="easyui-combobox" type="text"  id="dply" name="dply"   style="width:200px;" value="${entity.dply}"
-					data-options="url: contextPath +  '/common/dict/D_QBLB_XDDPLY.js',
-					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right',readonly:true"/>
+					data-options="url: contextPath +  '/common/dict/D_QBLD_XDDPLY.js',
+				valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
 				</td>
 
 		     <tr class="dialogTr">
 		  	    <td width="20%" class="dialogTd" align="right">毒资来源：</td>
 	    		<td width="30%" class="dialogTd">
 					<input class="easyui-combobox" type="text"  id="dzly" name="dzly"   style="width:200px;" value="${entity.dzly}"
-					data-options="url: contextPath +  '/common/dict/D_QBLB_DZLY.js',
-					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right',readonly:true"/>
+					data-options="url: contextPath +  '/common/dict/D_QBLD_DZLY.js',
+					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
 				</td>
 		        <td width="20%" class="dialogTd" align="right">是否复吸：</td>
 	    		<td width="30%" class="dialogTd">
 					<input class="easyui-combobox" type="text"  id="sffx" name="sffx"   style="width:200px;" value="${entity.sffx}"
 					data-options="url: contextPath +  '/common/dict/BD_D_SFDM.js',
-					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right',readonly:true"/>
+					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
 				</td>
 		    </tr>	
 
@@ -64,23 +64,23 @@ String userOrgName = userInfo.getUserOrgName();
 		    <tr>
 		       <td width="20%" class="dialogTd" align="right">吸食原因：</td>
 		       <td width="30%" class="dialogTd">		          	
-		           <input class="easyui-validatebox" type="text" id="bbld" name="xsyy" value="${entity.xsyy}" 
-		           data-options="url: contextPath +  '/common/dict/Q_QBLB_XSYY.js',
-					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right',readonly:true"/>
+		           <input class="easyui-combobox" type="text" id="xsyy" name="xsyy"  style="width:200px;" value="${entity.xsyy}" 
+		           data-options="url: contextPath +  '/common/dict/D_QBLD_XSYY.js',
+					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
 		      </td>
 		      <td width="20%" class="dialogTd" align="right">人员现状：</td>
 		      <td width="30%" class="dialogTd">
 					<input class="easyui-combobox" type="text"  id="ryxz" name="ryxz"   style="width:200px;" value="${entity.ryxz}"
-					data-options="url: contextPath +  '/common/dict/D_QBLB_RYXZ.js',
-					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right',readonly:true"/>
+					data-options="url: contextPath +  '/common/dict/D_QBLD_RYXZ.js',
+					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
 				</td>
     	    </tr>  
     	        <tr>
     	         <td width="20%" class="dialogTd" align="right">危害后果：</td>
 		       <td width="30%" class="dialogTd">
 		           <input class="easyui-combobox" type="text"  id="whhg" name="whhg"   style="width:200px;" value="${entity.whhg}"
-	    			data-options="url: contextPath +  '/common/dict/D_QBLB_WHHG.js',
-					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:false,tipPosition:'right'"/>
+	    			data-options="url: contextPath +  '/common/dict/D_QBLD_WHHG.js',
+					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
 		       </td>
 		      <td width="20%" class="dialogTd" align="right">毒品种类其他：</td>
 		       <td width="30%" class="dialogTd">
@@ -107,8 +107,7 @@ String userOrgName = userInfo.getUserOrgName();
     	         <td width="20%" class="dialogTd" align="right">是否戒断：</td>
 		       <td width="30%" class="dialogTd">
 		           <input class="easyui-combobox" type="text"  id="sfjd" name="sfjd"   style="width:200px;" value="${entity.sfjd}"
-	    			data-options="url: contextPath +  '/common/dict/BD_D_SFDM.js',
-					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:false,tipPosition:'right'"/>
+	    			data-options="url: contextPath +  '/common/dict/BD_D_SFDM.js',valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
 		       </td>
 		     
 		     	
