@@ -115,17 +115,17 @@ String userOrgName = userInfo.getUserOrgName();
     	    <tr>
 		        <td width="20%" class="dialogTd" align="right">主要原因：</td>
 		    	<td width="80%" class="dialogTd" colspan="3"><textarea name="zyyy" id="zyyy" class="easyui-validatebox" style="width: 627px; height:48px;"
-					data-options="required:true,validType:['maxLength[500]'],invalidMessage:'主要原因不超过1000个汉字，请重新输入！',tipPosition:'left'">${entity.zyyy}</textarea></td>
+					data-options="required:true,validType:['maxLength[1000]'],invalidMessage:'主要原因不超过1000个汉字，请重新输入！',tipPosition:'left'">${entity.zyyy}</textarea></td>
     	    </tr>
     	    <tr>
 		        <td width="20%" class="dialogTd" align="right">主要事情：</td>
 		    	<td width="80%" class="dialogTd" colspan="3"><textarea name="zysq" id="zysq" class="easyui-validatebox" style="width: 627px; height:48px;"
-					data-options="required:true,validType:['maxLength[500]'],invalidMessage:'主要事情不超过1000个汉字，请重新输入！',tipPosition:'left'">${entity.zysq}</textarea></td>
+					data-options="required:true,validType:['maxLength[1000]'],invalidMessage:'主要事情不超过1000个汉字，请重新输入！',tipPosition:'left'">${entity.zysq}</textarea></td>
     	    </tr>
     	    <tr>
 		        <td width="20%" class="dialogTd" align="right">上访过程描述：</td>
 		    	<td width="80%" class="dialogTd" colspan="3"><textarea name="sfgcms" id="sfgcms" class="easyui-validatebox" style="width: 627px; height:48px;"
-					data-options="required:false,validType:['maxLength[500]'],invalidMessage:'上访过程描述不超过1000个汉字，请重新输入！',tipPosition:'left'">${entity.sfgcms}</textarea></td>
+					data-options="required:false,validType:['maxLength[1000]'],invalidMessage:'上访过程描述不超过1000个汉字，请重新输入！',tipPosition:'left'">${entity.sfgcms}</textarea></td>
     	    </tr>  
 	    	</table>
 	    </div>
