@@ -132,7 +132,6 @@ function doInit(paramArray) {
     	setInputReadonly("xsyy", true);
     	setInputReadonly("ryxz", true);
     	setInputReadonly("whhg", true);
-    	setInputReadonly("xsbh", true);
     	setInputReadonly("dpzlqt", true);
     	setInputReadonly("dplyqt", true);
     	setInputReadonly("dzlyqt", true);
