@@ -27,10 +27,10 @@ function xsjbxxquery(){
 function xsjbxxFormater(val,row,index){
 	 var html="";
 	 if(row.gxdwdm==userOrgCode){
-		 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="xsjbxxedit(this, '+index+')">编辑</a>&nbsp;'
-		 +'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="xsjbxxDelete(this, '+index+')">删除</a>&nbsp;'	 
+		 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="xsjbxxedit(this, '+index+')">编辑</a>&nbsp;'
+		 +'&nbsp;<a class="link" href="javascript:void(0)" onclick="xsjbxxDelete(this, '+index+')">删除</a>&nbsp;'	 
 	 }else{		 
-		 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="xsjbxxview(this, '+index+')">查看</a>&nbsp;'
+		 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="xsjbxxview(this, '+index+')">查看</a>&nbsp;'
 	 }	
 	return html ;
 };
@@ -82,10 +82,10 @@ function xsjbxxDelete(linkObject, index){
 	function swxxFormater(val,row,index){
 		 var html="";
 		 if(row.xt_lrrbmid==userOrgCode){
-			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="swxxedit(this, '+index+')">编辑</a>&nbsp;'
-			 +'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="swxxDelete(this, '+index+')">删除</a>&nbsp;'	 
+			 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="swxxedit(this, '+index+')">编辑</a>&nbsp;'
+			 +'&nbsp;<a class="link" href="javascript:void(0)" onclick="swxxDelete(this, '+index+')">删除</a>&nbsp;'	 
 		 }else{		 
-			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="swxxview(this, '+index+')">查看</a>&nbsp;'
+			 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="swxxview(this, '+index+')">查看</a>&nbsp;'
 		 }	
 		return html ;
 	}
@@ -152,10 +152,10 @@ function xsjbxxDelete(linkObject, index){
 	function sfxxFormater(val,row,index){
 		 var html="";
 		 if(row.xt_lrrbmid==userOrgCode){
-			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="sfxxedit(this, '+index+')">编辑</a>&nbsp;'
-			 +'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="sfxxDelete(this, '+index+')">删除</a>&nbsp;'	 
+			 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="sfxxedit(this, '+index+')">编辑</a>&nbsp;'
+			 +'&nbsp;<a class="link" href="javascript:void(0)" onclick="sfxxDelete(this, '+index+')">删除</a>&nbsp;'	 
 		 }else{		 
-			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="sfxxview(this, '+index+')">查看</a>&nbsp;'
+			 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="sfxxview(this, '+index+')">查看</a>&nbsp;'
 		 }	
 		return html ;
 	}
@@ -223,10 +223,10 @@ function xsjbxxDelete(linkObject, index){
 	function zdxsfzqkxxbFormater(val,row,index){
 		 var html="";
 		 if(row.xt_lrrbmid==userOrgCode){
-			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="zdxsfzqkxxbedit(this, '+index+')">编辑</a>&nbsp;'
-			 +'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="zdxsfzqkxxbDelete(this, '+index+')">删除</a>&nbsp;'	 
+			 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="zdxsfzqkxxbedit(this, '+index+')">编辑</a>&nbsp;'
+			 +'&nbsp;<a class="link" href="javascript:void(0)" onclick="zdxsfzqkxxbDelete(this, '+index+')">删除</a>&nbsp;'	 
 		 }else{		 
-			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="zdxsfzqkxxbview(this, '+index+')">查看</a>&nbsp;'
+			 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="zdxsfzqkxxbview(this, '+index+')">查看</a>&nbsp;'
 		 }	
 		return html ;
 	}
@@ -293,10 +293,10 @@ function xsjbxxDelete(linkObject, index){
 	function shgxrxxbFormater(val,row,index){
 		 var html="";
 		 if(row.xt_lrrbmid==userOrgCode){
-			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="shgxrxxbedit(this, '+index+')">编辑</a>&nbsp;'
-			 +'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="shgxrxxbDelete(this, '+index+')">删除</a>&nbsp;'	 
+			 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="shgxrxxbedit(this, '+index+')">编辑</a>&nbsp;'
+			 +'&nbsp;<a class="link" href="javascript:void(0)" onclick="shgxrxxbDelete(this, '+index+')">删除</a>&nbsp;'	 
 		 }else{		 
-			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="shgxrxxbview(this, '+index+')">查看</a>&nbsp;'
+			 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="shgxrxxbview(this, '+index+')">查看</a>&nbsp;'
 		 }	
 		return html ;
 	}
@@ -363,10 +363,10 @@ function xsjbxxDelete(linkObject, index){
 	function clxxFormater(val,row,index){
 		 var html="";
 		 if(row.xt_lrrbmid==userOrgCode){
-			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="clxxedit(this, '+index+')">编辑</a>&nbsp;'
-			 +'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="clxxDelete(this, '+index+')">删除</a>&nbsp;'	 
+			 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="clxxedit(this, '+index+')">编辑</a>&nbsp;'
+			 +'&nbsp;<a class="link" href="javascript:void(0)" onclick="clxxDelete(this, '+index+')">删除</a>&nbsp;'	 
 		 }else{		 
-			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="clxxview(this, '+index+')">查看</a>&nbsp;'
+			 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="clxxview(this, '+index+')">查看</a>&nbsp;'
 		 }	
 		return html ;
 	}
@@ -431,82 +431,16 @@ function xsjbxxDelete(linkObject, index){
 	
 	
 	//=====涉毒吸毒js方法
-	function sdxdxxbFormater(val,row,index){
-		 var html="";
-		 if(row.xt_lrrbmid==userOrgCode){
-			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="sdxdxxbedit(this, '+index+')">编辑</a>&nbsp;'
-			 +'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="sdxdxxbDelete(this, '+index+')">删除</a>&nbsp;'	 
-		 }else{		 
-			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="sdxdxxbview(this, '+index+')">查看</a>&nbsp;'
-		 }	
-		return html ;
-	}
-	function sdxdxxbAdd() {
-		var url=contextPath+'/dtjsMore/addDtjsSdxdxxb?zdryZjhm='+zdryZjhm+'&zdryid='+zdryid;
-		window.top.openWindowWithSave(false, null, window, {'_p':$('dtjsMore')},
-				{title: '吸毒信息新增',url: url,width: 800,inline:true,height:400}, 
-			   		null, "sdxdxxbquery",null);
-		
-		
-	}
-
-	function sdxdxxbedit(linkObject, index){
-
-		cancelBubble();
-		var rows = $('#sdxdxxbtable').datagrid('getData');
-		var rowData = rows.rows[index];
-		var url=contextPath+'/dtjsMore/editDtjsSdxdxxb?id='+rowData.id +"&type=edit";
-		window.top.openWindowWithSave(false, null, window, {'_p':$('dtjsMore')},
-				{title: '吸毒信息编辑',url: url,width: 780,inline:true,height:400}, 
-			   		null, "sdxdxxbquery",null
-			   	);
-		
-	}
-	function sdxdxxbview(linkObject, index){
-
-		cancelBubble();
-		var rows = $('#dg').datagrid('getData');
-		var rowData = rows.rows[index];
-		var url=contextPath+'/dtjsMore/editDtjsSdxdxxb?id='+rowData.id +"&type=view";
-
-		openWindow(false,null,url,null,{title:'吸毒信息查看',width:880,height:500});
-
-		
-	}
-
-	function sdxdxxbDelete(linkObject, index){
-		cancelBubble(); // 阻止冒泡，不然要执行onClickRow
-		var deleteUrl = contextPath + '/dtjsMore/deleteDtjsSdxdxxb';
-		var datagrid_ID = getDatagrid_ID(0, linkObject);
-		topMessager.confirm('','您确认要删除数据吗？',function(r) {    
-			if (r) {	
-				var opts = $('#' + datagrid_ID).datagrid("options");
-				var rows = $('#' + datagrid_ID).datagrid('getData');
-				var rowData = rows.rows[index];
-				$.ajax({
-					url: deleteUrl,
-					type: 'POST',
-					data: {id:rowData.id}
-				}).done(function(result) {
-					sdxdxxbquery();
-				});
-			}
-		});
-	}
-	function sdxdxxbquery(){
-		$('#sdxdxxbtable').datagrid('load',{    
-			
-			'zdryzjhm':zdryZjhm
-		});
-	}
+	
+	
 	//=====涉毒贩毒js方法
 	function sdfdxxbFormater(val,row,index){
 		 var html="";
 		 if(row.xt_lrrbmid==userOrgCode){
-			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="sdfdxxbedit(this, '+index+')">编辑</a>&nbsp;'
-			 +'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="sdfdxxbDelete(this, '+index+')">删除</a>&nbsp;'	 
+			 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="sdfdxxbedit(this, '+index+')">编辑</a>&nbsp;'
+			 +'&nbsp;<a class="link" href="javascript:void(0)" onclick="sdfdxxbDelete(this, '+index+')">删除</a>&nbsp;'	 
 		 }else{		 
-			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="sdfdxxbview(this, '+index+')">查看</a>&nbsp;'
+			 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="sdfdxxbview(this, '+index+')">查看</a>&nbsp;'
 		 }	
 		return html ;
 	}
@@ -575,10 +509,10 @@ function xsjbxxDelete(linkObject, index){
 	function sdzdxxbFormater(val,row,index){
 		 var html="";
 		 if(row.xt_lrrbmid==userOrgCode){
-			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="sdzdxxbedit(this, '+index+')">编辑</a>&nbsp;'
-			 +'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="sdzdxxbDelete(this, '+index+')">删除</a>&nbsp;'	 
+			 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="sdzdxxbedit(this, '+index+')">编辑</a>&nbsp;'
+			 +'&nbsp;<a class="link" href="javascript:void(0)" onclick="sdzdxxbDelete(this, '+index+')">删除</a>&nbsp;'	 
 		 }else{		 
-			 html='&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="sdzdxxbview(this, '+index+')">查看</a>&nbsp;'
+			 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="sdzdxxbview(this, '+index+')">查看</a>&nbsp;'
 		 }	
 		return html ;
 	}

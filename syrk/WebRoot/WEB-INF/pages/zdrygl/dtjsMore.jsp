@@ -74,7 +74,7 @@
 			<input type="radio" name="sdlx" value="zd"> 制毒信息 </input>
 			
 			<!-- 引入具体的框架信息 -->
-			<iframe id="sdxxFrame" src="<%=contextPath%>/forward/zdrygl|dtjsXdxxList" 
+			<iframe id="sdxxFrame" name="sdxxFrame" src="<%=contextPath%>/forward/zdrygl|dtjsXdxxList" 
 				border="0" frameborder="0" scrolling="no" 
 				style="width:100%;height:400px;" > </iframe>
 				
@@ -106,8 +106,16 @@ function turnToSdDetail(sdType){
 	$("#sdxxFrame").attr('src',src);
 }
 
+function getUserOrgCode(){
+	return userOrgCode;
+}
+
 function getZdryzjhm(){
 	return '${zdryZjhm}';
+}
+
+function getZdryid(){
+	return '${zdryid}';
 }
 
 </script>

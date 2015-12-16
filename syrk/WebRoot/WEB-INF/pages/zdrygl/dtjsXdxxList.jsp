@@ -14,6 +14,76 @@
 		function getQueryParams(){
 			return {zdryZjhm:window.parent.getZdryzjhm()};
 		}
+		
+		function sdxdxxbedit(linkObject, index){
+
+			cancelBubble();
+			var rows = $('#sdxdxxbtable').datagrid('getData');
+			var rowData = rows.rows[index];
+			var url=contextPath+'/dtjsMore/editDtjsSdxdxxb?id='+rowData.id +"&type=edit";
+			window.top.openWindowWithSave(false, null, window, {'_p':$('dtjsMore')},
+					{title: '吸毒信息编辑',url: url,width: 780,inline:true,height:400}, 
+				   		null, "sdxdxxbquery",null
+				   	);
+			
+		}
+		function sdxdxxbview(linkObject, index){
+
+			cancelBubble();
+			var rows = $('#sdxdxxbtable').datagrid('getData');
+			var rowData = rows.rows[index];
+			var url=contextPath+'/dtjsMore/editDtjsSdxdxxb?id='+rowData.id +"&type=view";
+
+			openWindow(false,null,url,null,{title:'吸毒信息查看',width:880,height:500});
+
+			
+		}
+
+		function sdxdxxbDelete(linkObject, index){
+			cancelBubble(); // 阻止冒泡，不然要执行onClickRow
+			var deleteUrl = contextPath + '/dtjsMore/deleteDtjsSdxdxxb';
+			var datagrid_ID = getDatagrid_ID(0, linkObject);
+			topMessager.confirm('','您确认要删除数据吗？',function(r) {    
+				if (r) {	
+					var opts = $('#' + datagrid_ID).datagrid("options");
+					var rows = $('#' + datagrid_ID).datagrid('getData');
+					var rowData = rows.rows[index];
+					$.ajax({
+						url: deleteUrl,
+						type: 'POST',
+						data: {id:rowData.id}
+					}).done(function(result) {
+						sdxdxxbquery();
+					});
+				}
+			});
+		}
+		
+		function sdxdxxbquery(){
+			$('#sdxdxxbtable').datagrid('load',{    
+				
+				'zdryzjhm':window.parent.getZdryzjhm()
+			});
+		}
+		
+		function sdxdxxbFormater(val,row,index){
+			 var html="";
+			 if(row.xt_lrrbmid== window.parent.getUserOrgCode()){
+				 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="sdxdxxbedit(this, '+index+')">编辑</a>&nbsp;'
+				 +'&nbsp;<a class="link" href="javascript:void(0)" onclick="sdxdxxbDelete(this, '+index+')">删除</a>&nbsp;'	 
+			 }else{		 
+				 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="sdxdxxbview(this, '+index+')">查看</a>&nbsp;'
+			 }	
+			return html ;
+		}
+		function sdxdxxbAdd() {
+			var url=contextPath+'/dtjsMore/addDtjsSdxdxxb?zdryZjhm='+window.parent.getZdryzjhm()+'&zdryid='+window.parent.getZdryid();
+			window.top.openWindowWithSave(false, null, window, {'_p':$('dtjsMore')},
+					{title: '吸毒信息新增',url: url,width: 800,inline:true,height:400}, 
+				   		null, "sdxdxxbquery",null);
+			
+			
+		}
 	</script>
 </head>
 <body >
@@ -22,7 +92,7 @@
 		     <tr class="dialogTr">
 
 				<td class="toolbarTd" style="width: 100%;" align="right"> 
-					<a id="sdxdxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="window.parent.sdxdxxbAdd();">新增</a>
+					<a id="sdxdxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="sdxdxxbAdd();">新增</a>
 			    </td>
 			</tr>
 		</tbody>
@@ -48,7 +118,7 @@
 			            <th data-options="field:'whhg',width:80,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_WHHG.js'">危害后果</th>
 			            <th data-options="field:'sffx',width:80,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_SFDM.js'">是否复吸</th>
 			            <th data-options="field:'ryxz',width:80,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_RYXZ.js'">人员现状</th>
-			            <th data-options="field:'process',align:'center',align:'center',formatter:window.parent.sdxdxxbFormater">操作</th>
+			            <th data-options="field:'process',width:80,align:'center',formatter:sdxdxxbFormater">操作</th>
 			        </tr>
 			    </thead>
 		   </table>
