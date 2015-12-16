@@ -306,7 +306,7 @@ public class DwjfjfjctzServiceImpl extends BaseService implements DwjfjfjctzServ
 
 		// -------------案件基本信息
 		// TODO 警情发生地详址(责任区???????)
-		sb.append("<filed label=\"JQFSDXZ\">辽宁省抚顺市新抚区</filed>");
+		sb.append("<filed label=\"JQFSDXZ\">"+this.dwjbxxbDao.queryXzqhNamebyXzqhdm(dw.getDz_dwdzssxdm())+"</filed>");
 		// 简要警情
 		sb.append("<filed label=\"JYJQ\">检查不合格</filed>");
 		// 街景时间
@@ -1594,13 +1594,8 @@ public class DwjfjfjctzServiceImpl extends BaseService implements DwjfjfjctzServ
 		} catch (Exception e) {
 			return null;
 		}
-
-		byte[] testB = new byte[40];
-		for(int i = 0;i<testB.length;i++){
-			testB[i] = imageBuff[i];
-		}
 		
-		return Base64.getBase64(testB);
+		return Base64.getBase64(imageBuff);
 	}
 
 }

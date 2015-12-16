@@ -15,6 +15,11 @@
 	<typeAlias alias="number" type="oracle.jdbc.OracleTypes.NUMBER"/>
 	<typeAlias alias="logInfo" type="com.founder.framework.entity.OperationLog"/>
 	
+	<!-- 查询行政区划名称 -->
+	<select id="queryXzqhNamebyXzqhdm" parameterClass="String" resultClass="String">
+		<![CDATA[ select zdmc from sys_dict2 where XT_ZXBZ = '0' and zdbh = 'GB_D_XZQHDM' and dm = #xzqhdm# and rownum = 1]]>
+	</select>
+	
 	<!-- 查询列表 -->
 	<select id="queryCount" parameterClass="Map" resultClass="Integer">
 		<![CDATA[ select count(*) from DW_DWJBXXB t where t.XT_ZXBZ = '0' ]]>
