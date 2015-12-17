@@ -70,7 +70,7 @@
 		
 		function sdzdxxbquery(){
 			$('#sdzdxxbtable').datagrid('load',{    
-				'zdryzjhm':window.parent.getZdryzjhm()
+				zdryZjhm:window.parent.getZdryzjhm()
 			});
 		}
 		
@@ -80,20 +80,13 @@
 	</script>
 </head>
 <body >
-	<table cellspacing="0" cellpadding="0" border="0" style="height:35px">
-		<tbody>
-		     <tr class="dialogTr">
-
-				<td class="toolbarTd" style="width: 100%;" align="right"> 
-					<a id="sdzdxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="sdzdxxbAdd();">新增</a>
-			    </td>
-			</tr>
-		</tbody>
- 	</table> 
-	
-	<table id="sdzdxxbtable" class="easyui-datagrid"  style="height:400px"
+	<div id="toolbar">
+		<a id="sdzdxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="sdzdxxbAdd();">新增</a>
+	</div>
+	<table id="sdzdxxbtable" class="easyui-datagrid"
            	data-options="url:'<%=basePath %>dtjsMore/moreDtjsSdzdxxb',
            			queryParams:getQueryParams(),
+           			toolbar:'#toolbar',
 	           		selectOnCheck:true,
 	        		checkOnSelect:true,
 	        		rownumbers:true,

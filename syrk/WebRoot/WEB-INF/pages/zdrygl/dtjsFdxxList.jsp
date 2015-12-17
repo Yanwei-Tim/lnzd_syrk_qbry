@@ -80,20 +80,13 @@
 	</script>
 </head>
 <body >
-	<table cellspacing="0" cellpadding="0" border="0" style="height:35px">
-		<tbody>
-		     <tr class="dialogTr">
-
-				<td class="toolbarTd" style="width: 100%;" align="right"> 
-					<a id="sdfdxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="sdfdxxbAdd();">新增</a>
-			    </td>
-			</tr>
-		</tbody>
- 	</table> 
-	
-	<table id="sdfdxxbtable" class="easyui-datagrid"  style="height:400px"
+	<div id="toolbar">
+		<a id="sdfdxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="sdfdxxbAdd();">新增</a>
+	</div>
+	<table id="sdfdxxbtable" class="easyui-datagrid"
            	data-options="url:'<%=basePath %>dtjsMore/moreDtjsSdfdxxb',
            			queryParams:getQueryParams(),
+           			toolbar:'#toolbar',
 	           		selectOnCheck:true,
 	        		checkOnSelect:true,
 	        		rownumbers:true,

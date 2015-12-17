@@ -16,7 +16,6 @@
 		}
 		
 		function sdxdxxbedit(linkObject, index){
-
 			cancelBubble();
 			var rows = $('#sdxdxxbtable').datagrid('getData');
 			var rowData = rows.rows[index];
@@ -25,7 +24,6 @@
 					{title: '吸毒信息编辑',url: url,width: 780,inline:true,height:400}, 
 				   		null, "sdxdxxbquery",null
 				   	);
-			
 		}
 		function sdxdxxbview(linkObject, index){
 
@@ -35,8 +33,6 @@
 			var url=contextPath+'/dtjsMore/editDtjsSdxdxxb?id='+rowData.id +"&type=view";
 
 			openWindow(false,null,url,null,{title:'吸毒信息查看',width:880,height:500});
-
-			
 		}
 
 		function sdxdxxbDelete(linkObject, index){
@@ -61,8 +57,7 @@
 		
 		function sdxdxxbquery(){
 			$('#sdxdxxbtable').datagrid('load',{    
-				
-				'zdryzjhm':window.parent.getZdryzjhm()
+				'zdryZjhm':window.parent.getZdryzjhm()
 			});
 		}
 		
@@ -87,20 +82,14 @@
 	</script>
 </head>
 <body >
-	<table cellspacing="0" cellpadding="0" border="0" style="height:35px">
-		<tbody>
-		     <tr class="dialogTr">
-
-				<td class="toolbarTd" style="width: 100%;" align="right"> 
-					<a id="sdxdxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="sdxdxxbAdd();">新增</a>
-			    </td>
-			</tr>
-		</tbody>
- 	</table> 
+	<div id="toolbar">
+		<a id="sdxdxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="sdxdxxbAdd();">新增</a>
+	</div>
 	
-	<table id="sdxdxxbtable" class="easyui-datagrid"  style="height:400px"
+	<table id="sdxdxxbtable" class="easyui-datagrid" 
            	data-options="url:'<%=basePath %>dtjsMore/moreDtjsSdxdxxb',
            			queryParams:getQueryParams(),
+           			toolbar:'#toolbar',
 	           		selectOnCheck:true,
 	        		checkOnSelect:true,
 	        		rownumbers:true,
