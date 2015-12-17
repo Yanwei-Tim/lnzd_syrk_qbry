@@ -49,7 +49,7 @@ public class ZdryDtjsZszhjsbrxxbController extends BaseController {
 	public ModelAndView addDtjsZszhjsbrjbxx( String zdryZjhm,String zdryid,
 			SessionBean sessionBean) throws BussinessException {
 		    sessionBean = getSessionBean(sessionBean);
-			ModelAndView mv = new ModelAndView("zdrygl/dtjsZszhjsbrxxAdd");		
+			ModelAndView mv = new ModelAndView("zdrygl/dtjsZszhjsbrxxbAdd");		
 			ZdryDtjsZszhjsbrxxb entity=new ZdryDtjsZszhjsbrxxb();
 			ZdryZdryzb zdryzb = zdryZdryzbService.queryById(zdryid);
 			entity.setSslb(zdryzb.getZdrygllxdm());
@@ -64,7 +64,7 @@ public class ZdryDtjsZszhjsbrxxbController extends BaseController {
 	public ModelAndView editDtjsZszhjsbrxx( String id,String type,
 			SessionBean sessionBean) throws BussinessException {
 		    sessionBean = getSessionBean(sessionBean);
-			ModelAndView mv = new ModelAndView("zdrygl/dtjsZszhjsbrxxAdd");		
+			ModelAndView mv = new ModelAndView("zdrygl/dtjsZszhjsbrxxbAdd");		
 			ZdryDtjsZszhjsbrxxb entity=this.zdryDtjsZszhjsbrxxbService.queryById(id);
 			mv.addObject("entity", entity);
 			mv.addObject("type", type);

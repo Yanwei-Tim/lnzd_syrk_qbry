@@ -26,12 +26,12 @@ public class ZdryDtjsZszhjsbrzdjlxxbDao extends BaseDaoImpl {
 
 	
 	public void save(ZdryDtjsZszhjsbrZdjlxxb entity) {
-		insert("ZdryDtjsZszhjsbrzdjlxxb.save", entity); 
+		insert("ZdryDtjsZszhjsbrZdjlxxb.save", entity); 
 	
 	}
 	
 	public String update(ZdryDtjsZszhjsbrZdjlxxb entity) {
-		update("ZdryDtjsZszhjsbrzdjlxxb.update", entity); 
+		update("ZdryDtjsZszhjsbrZdjlxxb.update", entity); 
 		return entity.getId();
 	}
 	

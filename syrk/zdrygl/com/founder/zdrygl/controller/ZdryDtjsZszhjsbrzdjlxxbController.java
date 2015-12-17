@@ -18,9 +18,7 @@ import com.founder.framework.components.AppConst;
 import com.founder.framework.exception.BussinessException;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
-import com.founder.zdrygl.bean.ZdryDtjsSfxxb;
 import com.founder.zdrygl.bean.ZdryDtjsZszhjsbrZdjlxxb;
-import com.founder.zdrygl.bean.ZdryZdryzb;
 import com.founder.zdrygl.service.ZdryDtjsZszhjsbrzdjlxxbService;
 import com.founder.zdrygl.service.ZdryZdryzbService;
 import com.google.gson.Gson;
@@ -47,11 +45,12 @@ public class ZdryDtjsZszhjsbrzdjlxxbController extends BaseController {
 	
 
 	@RequestMapping(value = "/addDtjsZszhjsbrzdjlxxb", method = RequestMethod.GET)
-	public ModelAndView addDtjsSfjbxx( String zdryZjhm,String zdryid,
+	public ModelAndView addDtjsZszhjsbrzdjlxxb( String zdryZjhm,String zdryid,
 			SessionBean sessionBean) throws BussinessException {
 		    sessionBean = getSessionBean(sessionBean);
 			ModelAndView mv = new ModelAndView("zdrygl/dtjsZszhjsbrzdjlxxbAdd");		
 			ZdryDtjsZszhjsbrZdjlxxb entity=new ZdryDtjsZszhjsbrZdjlxxb();
+			entity.setZdryzjhm(zdryZjhm);
 			mv.addObject("entity", entity);
 			return mv;
 		

@@ -18,10 +18,8 @@ import com.founder.framework.components.AppConst;
 import com.founder.framework.exception.BussinessException;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
-import com.founder.zdrygl.bean.ZdryDtjsZszhjsbrZdjlxxb;
 import com.founder.zdrygl.bean.ZdryDtjsZszhjsbrZszhjlxxb;
 import com.founder.zdrygl.service.ZdryDtjsZszhjsbrZszhjlxxbService;
-import com.founder.zdrygl.service.ZdryDtjsZszhjsbrzdjlxxbService;
 import com.founder.zdrygl.service.ZdryZdryzbService;
 import com.google.gson.Gson;
 @Controller
@@ -50,8 +48,9 @@ public class ZdryDtjsZszhjsbrZszhjlxxbController extends BaseController {
 	public ModelAndView addDtjsZszhjsbrZszhjl( String zdryZjhm,String zdryid,
 			SessionBean sessionBean) throws BussinessException {
 		    sessionBean = getSessionBean(sessionBean);
-			ModelAndView mv = new ModelAndView("zdrygl/dtjsZszhjsbrZszhjlxxbAdd");		
+			ModelAndView mv = new ModelAndView("zdrygl/dtjsZszhjsbrzszhjlxxbAdd");		
 			ZdryDtjsZszhjsbrZszhjlxxb entity=new ZdryDtjsZszhjsbrZszhjlxxb();
+			entity.setZdryzjhm(zdryZjhm);
 			mv.addObject("entity", entity);
 			return mv;
 		
@@ -61,7 +60,7 @@ public class ZdryDtjsZszhjsbrZszhjlxxbController extends BaseController {
 	public ModelAndView editDtjsZszhjsbrzdjlxxb( String id,String type,
 			SessionBean sessionBean) throws BussinessException {
 		    sessionBean = getSessionBean(sessionBean);
-			ModelAndView mv = new ModelAndView("zdrygl/dtjsZszhjsbrZszhjlxxbAdd");		
+			ModelAndView mv = new ModelAndView("zdrygl/dtjsZszhjsbrzszhjlxxbAdd");		
 			ZdryDtjsZszhjsbrZszhjlxxb entity=this.zdryDtjsZszhjsbrZszhjlxxbService.queryById(id);
 			mv.addObject("entity", entity);
 			mv.addObject("type", type);

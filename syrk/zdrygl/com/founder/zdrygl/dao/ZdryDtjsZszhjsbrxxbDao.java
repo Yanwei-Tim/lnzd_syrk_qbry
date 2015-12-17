@@ -57,7 +57,7 @@ public class ZdryDtjsZszhjsbrxxbDao extends BaseDaoImpl {
 	 * @throws
 	 */
 	public List<?> queryList(EasyUIPage page, Map<String, Object> map) {
-		return queryForList("ZdryDtjsSfxxb.queryByZdryZjhm", map);
+		return queryForList("ZdryDtjsZszhjsbrxxb.queryByZdryZjhm", map);
 	}
 
 	
@@ -70,7 +70,7 @@ public class ZdryDtjsZszhjsbrxxbDao extends BaseDaoImpl {
 	 * @throws
 	 */
 	public long queryCount(Map<String, Object> map) {
-		Integer count = (Integer) queryForObject("ZdryDtjsSfxxb.queryCountByZdryZjhm", map);
+		Integer count = (Integer) queryForObject("ZdryDtjsZszhjsbrxxb.queryCountByZdryZjhm", map);
 		return count.longValue();
 	}	
 	

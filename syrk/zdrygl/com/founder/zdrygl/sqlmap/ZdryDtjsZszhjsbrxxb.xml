@@ -5,7 +5,7 @@
 
 	<typeAlias alias="zdryDtjsZszhjsbrxxb" type="com.founder.zdrygl.bean.ZdryDtjsZszhjsbrxxb" />
 
-    <select id="queryById" parameterClass="String" resultClass="zdryDtjsSfxxb">
+    <select id="queryById" parameterClass="String" resultClass="zdryDtjsZszhjsbrxxb">
 		<![CDATA[ select * from ZDRY_DTJS_ZSZHJSBRXXB t where ID = #id#  and rownum = 1  ]]>
 	</select>
 
