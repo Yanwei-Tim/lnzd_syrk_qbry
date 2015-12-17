@@ -109,7 +109,7 @@
 			            <th data-options="field:'dpqx',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_DPQX.js'">毒品去向</th>
 			            <th data-options="field:'shdzqx',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_DZQX.js'">毒资去向</th>
 			            <th data-options="field:'fmdd',width:120,align:'left',halign:'center'">贩卖地点</th>
-			            <th data-options="field:'process',width:120,align:'center',align:'center',formatter:sdxdxxbFormater">操作</th>
+			            <th data-options="field:'process',width:120,align:'center',align:'center',formatter:sdzdxxbFormater">操作</th>
 			        </tr>
 			    </thead>
 		   </table>
