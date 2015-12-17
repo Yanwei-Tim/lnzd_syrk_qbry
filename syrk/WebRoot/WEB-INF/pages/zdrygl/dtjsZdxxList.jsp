@@ -11,6 +11,69 @@
 			
 		});
 		
+		function sdzdxxbFormater(val,row,index){
+			 var html="";
+			 if(row.xt_lrrbmid==window.parent.getUserOrgCode()){
+				 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="sdzdxxbedit(this, '+index+')">编辑</a>&nbsp;'
+				 +'&nbsp;<a class="link" href="javascript:void(0)" onclick="sdzdxxbDelete(this, '+index+')">删除</a>&nbsp;'	 
+			 }else{		 
+				 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="sdzdxxbview(this, '+index+')">查看</a>&nbsp;'
+			 }	
+			return html ;
+		}
+		
+		function sdzdxxbAdd() {
+			var url=contextPath+'/dtjsMore/addDtjsSdzdxxb?zdryZjhm='+window.parent.getZdryzjhm()+'&zdryid='+window.parent.getZdryid();
+			window.top.openWindowWithSave(false, null, window, {'_p':$('dtjsMore')},
+					{title: '制毒信息新增',url: url,width: 800,inline:true,height:400}, 
+				   		null, "sdzdxxbquery",null);
+		}
+
+		function sdzdxxbedit(linkObject, index){
+			cancelBubble();
+			var rows = $('#sdzdxxbtable').datagrid('getData');
+			var rowData = rows.rows[index];
+			var url=contextPath+'/dtjsMore/editDtjsSdzdxxb?id='+rowData.id +"&type=edit";
+			window.top.openWindowWithSave(false, null, window, {'_p':$('dtjsMore')},
+					{title: '制毒信息编辑',url: url,width: 780,inline:true,height:400}, 
+				   		null, "sdzdxxbquery",null
+				   	);
+		}
+		
+		function sdzdxxbview(linkObject, index){
+			cancelBubble();
+			var rows = $('#sdzdxxbtable').datagrid('getData');
+			var rowData = rows.rows[index];
+			var url=contextPath+'/dtjsMore/editDtjsSdzdxxb?id='+rowData.id +"&type=view";
+			openWindow(false,null,url,null,{title:'制毒信息查看',width:880,height:500});
+		}
+
+		function sdzdxxbDelete(linkObject, index){
+			cancelBubble(); // 阻止冒泡，不然要执行onClickRow
+			var deleteUrl = contextPath + '/dtjsMore/deleteDtjsSdzdxxb';
+			var datagrid_ID = getDatagrid_ID(0, linkObject);
+			topMessager.confirm('','您确认要删除数据吗？',function(r) {    
+				if (r) {	
+					var opts = $('#' + datagrid_ID).datagrid("options");
+					var rows = $('#' + datagrid_ID).datagrid('getData');
+					var rowData = rows.rows[index];
+					$.ajax({
+						url: deleteUrl,
+						type: 'POST',
+						data: {id:rowData.id}
+					}).done(function(result) {
+						sdzdxxbquery();
+					});
+				}
+			});
+		}
+		
+		function sdzdxxbquery(){
+			$('#sdzdxxbtable').datagrid('load',{    
+				'zdryzjhm':window.parent.getZdryzjhm()
+			});
+		}
+		
 		function getQueryParams(){
 			return {zdryZjhm:window.parent.getZdryzjhm()};
 		}
@@ -22,7 +85,7 @@
 		     <tr class="dialogTr">
 
 				<td class="toolbarTd" style="width: 100%;" align="right"> 
-					<a id="sdzdxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="window.parent.sdzdxxbAdd();">新增</a>
+					<a id="sdzdxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="sdzdxxbAdd();">新增</a>
 			    </td>
 			</tr>
 		</tbody>
@@ -46,7 +109,7 @@
 			            <th data-options="field:'dpqx',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_DPQX.js'">毒品去向</th>
 			            <th data-options="field:'shdzqx',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_DZQX.js'">毒资去向</th>
 			            <th data-options="field:'fmdd',width:120,align:'left',halign:'center'">贩卖地点</th>
-			            <th data-options="field:'process',width:120,align:'center',align:'center',formatter:window.parent.sdxdxxbFormater">操作</th>
+			            <th data-options="field:'process',width:120,align:'center',align:'center',formatter:sdxdxxbFormater">操作</th>
 			        </tr>
 			    </thead>
 		   </table>

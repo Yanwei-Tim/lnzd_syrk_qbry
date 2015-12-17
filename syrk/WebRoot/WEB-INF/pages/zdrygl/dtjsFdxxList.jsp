@@ -14,6 +14,69 @@
 		function getQueryParams(){
 			return {zdryZjhm:window.parent.getZdryzjhm()};
 		}
+		
+		function sdfdxxbFormater(val,row,index){
+			 var html="";
+			 if(row.xt_lrrbmid==window.parent.getUserOrgCode()){
+				 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="sdfdxxbedit(this, '+index+')">编辑</a>&nbsp;'
+				 +'&nbsp;<a class="link" href="javascript:void(0)" onclick="sdfdxxbDelete(this, '+index+')">删除</a>&nbsp;'	 
+			 }else{		 
+				 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="sdfdxxbview(this, '+index+')">查看</a>&nbsp;'
+			 }	
+			return html ;
+		}
+		function sdfdxxbAdd() {
+			var url=contextPath+'/dtjsMore/addDtjsSdfdxxb?zdryZjhm='+window.parent.getZdryzjhm()+'&zdryid='+window.parent.getZdryid();
+			window.top.openWindowWithSave(false, null, window, {'_p':$('dtjsMore')},
+					{title: '贩毒信息新增',url: url,width: 800,inline:true,height:400}, 
+				   		null, "sdfdxxbquery",null);
+		}
+
+		function sdfdxxbedit(linkObject, index){
+			cancelBubble();
+			var rows = $('#sdfdxxbtable').datagrid('getData');
+			var rowData = rows.rows[index];
+			var url=contextPath+'/dtjsMore/editDtjsSdfdxxb?id='+rowData.id +"&type=edit";
+			window.top.openWindowWithSave(false, null, window, {'_p':$('dtjsMore')},
+					{title: '贩毒信息编辑',url: url,width: 780,inline:true,height:400}, 
+				   		null, "sdfdxxbquery",null
+				   	);
+		}
+		
+		function sdfdxxbview(linkObject, index){
+			cancelBubble();
+			var rows = $('#sdfdxxbtable').datagrid('getData');
+			var rowData = rows.rows[index];
+			var url=contextPath+'/dtjsMore/editDtjsSdfdxxb?id='+rowData.id +"&type=view";
+			openWindow(false,null,url,null,{title:'贩毒信息查看',width:880,height:500});
+		}
+
+		function sdfdxxbDelete(linkObject, index){
+			cancelBubble(); // 阻止冒泡，不然要执行onClickRow
+			var deleteUrl = contextPath + '/dtjsMore/deleteDtjsSdfdxxb';
+			var datagrid_ID = getDatagrid_ID(0, linkObject);
+			topMessager.confirm('','您确认要删除数据吗？',function(r) {    
+				if (r) {	
+					var opts = $('#' + datagrid_ID).datagrid("options");
+					var rows = $('#' + datagrid_ID).datagrid('getData');
+					var rowData = rows.rows[index];
+					$.ajax({
+						url: deleteUrl,
+						type: 'POST',
+						data: {id:rowData.id}
+					}).done(function(result) {
+						sdfdxxbquery();
+					});
+				}
+			});
+		}
+		
+		function sdfdxxbquery(){
+			$('#sdfdxxbtable').datagrid('load',{    
+				'zdryzjhm':window.parent.getZdryzjhm()
+			});
+		}
+		
 	</script>
 </head>
 <body >
@@ -22,7 +85,7 @@
 		     <tr class="dialogTr">
 
 				<td class="toolbarTd" style="width: 100%;" align="right"> 
-					<a id="sdfdxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="window.parent.sdfdxxbAdd();">新增</a>
+					<a id="sdfdxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="sdfdxxbAdd();">新增</a>
 			    </td>
 			</tr>
 		</tbody>
@@ -46,8 +109,7 @@
 			            <th data-options="field:'fmdpqd',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_FDQD.js'">贩卖毒品渠道</th>
 			            <th data-options="field:'shdzqx',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_DZQX.js'">毒资去向</th>
 			            <th data-options="field:'lyd',width:150,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/GB_D_XZQHDMLIST.js'">来源地</th>
-
-			            <th data-options="field:'process',width:120,align:'center',align:'center',formatter:window.parent.sdxdxxbFormater">操作</th>
+			            <th data-options="field:'process',width:120,align:'center',align:'center',formatter:sdxdxxbFormater">操作</th>
 			        </tr>
 			    </thead>
 		   </table>
