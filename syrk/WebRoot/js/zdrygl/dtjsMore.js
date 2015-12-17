@@ -20,7 +20,7 @@ function xsjbxxAdd() {
 function xsjbxxquery(){
 	$('#xsjbxx').datagrid('load',{    
 		
-		'zdry_zjhm':zdryZjhm
+		'zdryZjhm':zdryZjhm
 	});
 };
 
@@ -145,7 +145,7 @@ function xsjbxxDelete(linkObject, index){
 	function swxxquery(){
 		$('#swxxtable').datagrid('load',{    
 			
-			'zdryzjhm':zdryZjhm
+			'zdryZjhm':zdryZjhm
 		});
 	}
 //===============以下是上访信息js方法
@@ -215,7 +215,7 @@ function xsjbxxDelete(linkObject, index){
 	function sfxxquery(){
 		$('#sfxxtable').datagrid('load',{    
 			
-			'zdryzjhm':zdryZjhm
+			'zdryZjhm':zdryZjhm
 		});
 	}
 
@@ -286,7 +286,7 @@ function xsjbxxDelete(linkObject, index){
 	function zdxsfzqkxxbquery(){
 		$('#zdxsfzqkxxbtable').datagrid('load',{    
 			
-			'zdryzjhm':zdryZjhm
+			'zdryZjhm':zdryZjhm
 		});
 	}
 //=====社会关系人js方法
@@ -355,7 +355,7 @@ function xsjbxxDelete(linkObject, index){
 	function shgxrxxbquery(){
 		$('#shgxrxxbtable').datagrid('load',{    
 			
-			'zdryzjhm':zdryZjhm
+			'zdryZjhm':zdryZjhm
 		});
 	}
 	
@@ -425,7 +425,7 @@ function xsjbxxDelete(linkObject, index){
 	function clxxquery(){
 		$('#clxxtable').datagrid('load',{    
 			
-			'zdryzjhm':zdryZjhm
+			'zdryZjhm':zdryZjhm
 		});
 	}
 	
