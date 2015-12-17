@@ -20,7 +20,6 @@ function xsjbxxAdd() {
 function xsjbxxquery(){
 	$('#xsjbxx').datagrid('load',{    
 		
-		'zdryZjhm':zdryZjhm
 	});
 };
 
@@ -145,7 +144,6 @@ function xsjbxxDelete(linkObject, index){
 	function swxxquery(){
 		$('#swxxtable').datagrid('load',{    
 			
-			'zdryZjhm':zdryZjhm
 		});
 	}
 //===============以下是上访信息js方法
@@ -170,7 +168,7 @@ function xsjbxxDelete(linkObject, index){
 	}
 
 	function sfxxedit(linkObject, index){
-
+        
 		cancelBubble();
 		var rows = $('#sfxxtable').datagrid('getData');
 		var rowData = rows.rows[index];
@@ -213,10 +211,7 @@ function xsjbxxDelete(linkObject, index){
 		});
 	}
 	function sfxxquery(){
-		$('#sfxxtable').datagrid('load',{    
-			
-			'zdryZjhm':zdryZjhm
-		});
+		$('#sfxxtable').datagrid('load');
 	}
 
 	//===============以下是刑事犯罪前科信息js方法
@@ -286,7 +281,6 @@ function xsjbxxDelete(linkObject, index){
 	function zdxsfzqkxxbquery(){
 		$('#zdxsfzqkxxbtable').datagrid('load',{    
 			
-			'zdryZjhm':zdryZjhm
 		});
 	}
 //=====社会关系人js方法
@@ -355,7 +349,6 @@ function xsjbxxDelete(linkObject, index){
 	function shgxrxxbquery(){
 		$('#shgxrxxbtable').datagrid('load',{    
 			
-			'zdryZjhm':zdryZjhm
 		});
 	}
 	
@@ -425,7 +418,6 @@ function xsjbxxDelete(linkObject, index){
 	function clxxquery(){
 		$('#clxxtable').datagrid('load',{    
 			
-			'zdryZjhm':zdryZjhm
 		});
 	}
 	
