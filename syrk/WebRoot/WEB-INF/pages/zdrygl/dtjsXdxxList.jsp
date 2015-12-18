@@ -8,7 +8,9 @@
 <title>Insert title here</title>
 	<script type="text/javascript">
 		$(function(){
-			
+			if(!window.parent.getPageEditAble()){
+				$('#sdxdxxbAdd').hide();
+			}
 		});
 		
 		function getQueryParams(){
@@ -82,11 +84,9 @@
 	</script>
 </head>
 <body >
-	<c:if test="window.parent.getPageEditAble()">
 		<div id="toolbar">
 			<a id="sdxdxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="sdxdxxbAdd();">新增</a>
 		</div>
-	</c:if>
 	
 	<table id="sdxdxxbtable" class="easyui-datagrid" 
            	data-options="url:'<%=basePath %>dtjsMore/moreDtjsSdxdxxb',

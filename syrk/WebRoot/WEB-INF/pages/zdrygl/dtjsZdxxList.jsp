@@ -8,7 +8,9 @@
 <title>制毒信息</title>
 	<script type="text/javascript">
 		$(function(){
-			
+			if(!window.parent.getPageEditAble()){
+				$('#sdzdxxbAdd').hide();
+			}
 		});
 		
 		function sdzdxxbFormater(val,row,index){
@@ -80,11 +82,9 @@
 	</script>
 </head>
 <body >
-	<c:if test="window.parent.getPageEditAble()">
 		<div id="toolbar">
 			<a id="sdzdxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="sdzdxxbAdd();">新增</a>
 		</div>
-	</c:if>
 	
 	<table id="sdzdxxbtable" class="easyui-datagrid"
            	data-options="url:'<%=basePath %>dtjsMore/moreDtjsSdzdxxb',

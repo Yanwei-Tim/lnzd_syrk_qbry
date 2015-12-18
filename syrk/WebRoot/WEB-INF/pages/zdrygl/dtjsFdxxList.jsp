@@ -8,7 +8,9 @@
 <title>贩毒信息</title>
 	<script type="text/javascript">
 		$(function(){
-			
+			if(!window.parent.getPageEditAble()){
+				$('#sdfdxxbAdd').hide();
+			}
 		});
 		
 		function getQueryParams(){
@@ -80,11 +82,9 @@
 	</script>
 </head>
 <body >
-	<c:if test="window.parent.getPageEditAble()">
-		<div id="toolbar">
-			<a id="sdfdxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="sdfdxxbAdd();">新增</a>
-		</div>
-	</c:if>
+	<div id="toolbar">
+		<a id="sdfdxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="sdfdxxbAdd();">新增</a>
+	</div>
 	
 	<table id="sdfdxxbtable" class="easyui-datagrid"
            	data-options="url:'<%=basePath %>dtjsMore/moreDtjsSdfdxxb',

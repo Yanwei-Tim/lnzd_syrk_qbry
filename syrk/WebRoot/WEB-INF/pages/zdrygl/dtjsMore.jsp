@@ -395,7 +395,8 @@
 	}
 	
 	function getPageEditAble(){
-		if('${mdel}' != 'view'){
+		console.log('${mode}');
+		if('${mode}' != 'view'){
 			return true;
 		}else{
 			return false;
