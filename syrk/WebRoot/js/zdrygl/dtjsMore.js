@@ -49,7 +49,7 @@ function xsjbxxedit(linkObject, index){
 function xsjbxxview(linkObject, index){
 
 	cancelBubble();
-	var rows = $('#dg').datagrid('getData');
+	var rows = $('#xsjbxx').datagrid('getData');
 	var rowData = rows.rows[index];
 	var url=contextPath+'/dtjsMore/editDtjsXsjbxx?id='+rowData.id +"&type=view";
 
@@ -113,7 +113,7 @@ function xsjbxxDelete(linkObject, index){
 	function swxxview(linkObject, index){
 
 		cancelBubble();
-		var rows = $('#dg').datagrid('getData');
+		var rows = $('#swxxtable').datagrid('getData');
 		var rowData = rows.rows[index];
 		var url=contextPath+'/dtjsMore/editDtjsSwxx?id='+rowData.id +"&type=view";
 
@@ -182,7 +182,7 @@ function xsjbxxDelete(linkObject, index){
 	function sfxxview(linkObject, index){
 
 		cancelBubble();
-		var rows = $('#dg').datagrid('getData');
+		var rows = $('#sfxxtable').datagrid('getData');
 		var rowData = rows.rows[index];
 		var url=contextPath+'/dtjsMore/editDtjsSfxx?id='+rowData.id +"&type=view";
 
@@ -250,7 +250,7 @@ function xsjbxxDelete(linkObject, index){
 	function zdxsfzqkxxbview(linkObject, index){
 
 		cancelBubble();
-		var rows = $('#dg').datagrid('getData');
+		var rows = $('#zdxsfzqkxxbtable').datagrid('getData');
 		var rowData = rows.rows[index];
 		var url=contextPath+'/dtjsMore/editDtjsZdxsfzqkxxb?id='+rowData.id +"&type=view";
 
@@ -318,7 +318,7 @@ function xsjbxxDelete(linkObject, index){
 	function shgxrxxbview(linkObject, index){
 
 		cancelBubble();
-		var rows = $('#dg').datagrid('getData');
+		var rows = $('#shgxrxxbtable').datagrid('getData');
 		var rowData = rows.rows[index];
 		var url=contextPath+'/dtjsMore/editDtjsShgxrxxb?id='+rowData.id +"&type=view";
 
@@ -387,7 +387,7 @@ function xsjbxxDelete(linkObject, index){
 	function clxxview(linkObject, index){
 
 		cancelBubble();
-		var rows = $('#dg').datagrid('getData');
+		var rows = $('#clxxtable').datagrid('getData');
 		var rowData = rows.rows[index];
 		var url=contextPath+'/dtjsMore/editDtjsClxx?id='+rowData.id +"&type=view";
 
