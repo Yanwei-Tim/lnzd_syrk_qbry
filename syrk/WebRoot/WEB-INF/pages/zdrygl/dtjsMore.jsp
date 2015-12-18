@@ -223,7 +223,7 @@
 			var url = basePath+'dtjsMore/moreDtjsZdxsfzqkxx?zdryZjhm='+'${zdryZjhm}';
 			$('#zdxsfzqkxxbtable').datagrid({    
 				url:url,
-				toolbar:'#toolbar_3',
+				toolbar:'#toolbar_4',
            		selectOnCheck:true,
         		checkOnSelect:true,
         		rownumbers:true,

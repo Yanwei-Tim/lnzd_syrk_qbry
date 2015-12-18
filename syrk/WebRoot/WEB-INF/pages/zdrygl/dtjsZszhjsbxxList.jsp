@@ -87,16 +87,9 @@
 	</script>
 </head>
 <body >
-	<table cellspacing="0" cellpadding="0" border="0" style="height:35px">
-		<tbody>
-		     <tr class="dialogTr">
-
-				<td class="toolbarTd" style="width: 100%;" align="right"> 
-					<a id="zszhjsbrxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="zszhjsbrxxbAdd();">新增</a>
-			    </td>
-			</tr>
-		</tbody>
- 	</table> 
+	<div id="toolbar">
+		<a id="zszhjsbrxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="zszhjsbrxxbAdd();">新增</a>
+    </div>
 	
 	<table id="zszhjsbrxxbtable" class="easyui-datagrid"  style="height:400px"
            	data-options="url:'<%=basePath %>dtjsMore/moreDtjsZszhjsbrxxb',
@@ -104,6 +97,7 @@
 	           		selectOnCheck:true,
 	        		checkOnSelect:true,
 	        		rownumbers:true,
+	        		toolbar:'#toolbar',
 	        		border:false,
 	        		singleSelect:true,
 	        		fitColumns:false,

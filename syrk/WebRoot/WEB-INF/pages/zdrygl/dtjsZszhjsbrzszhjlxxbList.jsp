@@ -87,22 +87,16 @@
 	</script>
 </head>
 <body >
-	<table cellspacing="0" cellpadding="0" border="0" style="height:35px">
-		<tbody>
-		     <tr class="dialogTr">
-
-				<td class="toolbarTd" style="width: 100%;" align="right"> 
-					<a id="zszhjsbrZszhjlxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="zszhjsbrZszhjlxxbAdd();">新增</a>
-			    </td>
-			</tr>
-		</tbody>
- 	</table> 
+	<div id="toolbar">
+		<a id="zszhjsbrZszhjlxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="zszhjsbrZszhjlxxbAdd();">新增</a>
+   	</div>
 	
 	<table id="zszhjsbrZszhjlxxbtable" class="easyui-datagrid"  style="height:400px"
            	data-options="url:'<%=basePath %>dtjsMore/moreDtjsZszhjsbrZszhjlxxb',
            			queryParams:getQueryParams(),
 	           		selectOnCheck:true,
 	        		checkOnSelect:true,
+	        		toolbar:'#toolbar',
 	        		rownumbers:true,
 	        		border:false,
 	        		singleSelect:true,
