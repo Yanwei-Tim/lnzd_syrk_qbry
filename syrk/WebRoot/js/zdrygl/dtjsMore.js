@@ -37,7 +37,7 @@ function xsjbxxFormater(val,row,index){
 function xsjbxxedit(linkObject, index){
 
 	cancelBubble();
-	var rows = $('#dg').datagrid('getData');
+	var rows = $('#xsjbxx').datagrid('getData');
 	var rowData = rows.rows[index];
 	var url=contextPath+'/dtjsMore/editDtjsXsjbxx?id='+rowData.id +"&type=edit";
 	window.top.openWindowWithSave(false, null, window, {'_p':$('dtjsMore')},

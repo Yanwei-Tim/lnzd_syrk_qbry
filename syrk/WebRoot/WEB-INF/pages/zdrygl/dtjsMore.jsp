@@ -19,10 +19,12 @@
 	<input type="hidden" id="zdryid" value="${zdryid}" />
 	<div id="dtjsMore" class="easyui-tabs" data-options="border:false,onSelect:onTabSelect" style="height: 560px;width: 980px;">
 		<div title="写实基本信息" id="dwxx" >
-			<div id="toolbar_0">
-				<a id="xsjbxxAdd" class="easyui-linkbutton" iconCls="icon-add"
-						onclick="xsjbxxAdd();">新增</a>
-			</div>
+			<c:if test="${mode != 'view'}">
+				<div id="toolbar_0">
+					<a id="xsjbxxAdd" class="easyui-linkbutton" iconCls="icon-add"
+							onclick="xsjbxxAdd();">新增</a>
+				</div>
+			</c:if>
 			<table id="xsjbxx" style="height: 200px;"></table>
 		</div>
 
@@ -31,30 +33,38 @@
 		</div>
 		
 		<div title="维稳信息" id="swxx" >
-			<div id="toolbar_2">
-				<a id='swxxAdd' class="easyui-linkbutton" iconCls="icon-add" onclick="swxxAdd();">新增</a>
-			</div>
+			<c:if test="${mode != 'view'}">
+				<div id="toolbar_2">
+					<a id='swxxAdd' class="easyui-linkbutton" iconCls="icon-add" onclick="swxxAdd();">新增</a>
+				</div>
+			</c:if>
 			<table id="swxxtable" ></table>
 		</div>
 		
 		<div title="上访信息" id="sfxx" >
-			<div id="toolbar_3">
-				<a id='sfxxAdd' class="easyui-linkbutton" iconCls="icon-add" onclick="sfxxAdd();">新增</a>
-			</div>
+			<c:if test="${mode != 'view'}">
+				<div id="toolbar_3">
+					<a id='sfxxAdd' class="easyui-linkbutton" iconCls="icon-add" onclick="sfxxAdd();">新增</a>
+				</div>
+			</c:if>
 			<table id="sfxxtable" ></table>
 		</div>
 		
 		<div title="刑事犯罪前科信息" id="zdxsfzqkxxb" >
-			<div id="toolbar_4">
-				<a id='zdxsfzqkxxbAdd' class="easyui-linkbutton" iconCls="icon-add" onclick="zdxsfzqkxxbAdd();">新增</a>
-			</div>
+			<c:if test="${mode != 'view'}">
+				<div id="toolbar_4">
+					<a id='zdxsfzqkxxbAdd' class="easyui-linkbutton" iconCls="icon-add" onclick="zdxsfzqkxxbAdd();">新增</a>
+				</div>
+			</c:if>
 			<table id="zdxsfzqkxxbtable"></table>
 		</div>
 
 		<div title="社会关系人信息" id="shgxrxxb">
-			<div id="toolbar_5">
-				<a id='shgxrxxbAdd' class="easyui-linkbutton" iconCls="icon-add" onclick="shgxrxxbAdd();">新增</a>
-			</div>
+			<c:if test="${mode != 'view'}">
+				<div id="toolbar_5">
+					<a id='shgxrxxbAdd' class="easyui-linkbutton" iconCls="icon-add" onclick="shgxrxxbAdd();">新增</a>
+				</div>
+			</c:if>
 			<table id="shgxrxxbtable"></table>
 		</div>
 		
@@ -63,9 +73,11 @@
 		</div>
 
 		<div title="车辆信息" id="sfxx">
-			<div id="toolbar_7">
-				<a id='clxxAdd' class="easyui-linkbutton" iconCls="icon-add" onclick="clxxAdd();">新增</a>
-			</div>
+			<c:if test="${mode != 'view'}">
+				<div id="toolbar_7">
+					<a id='clxxAdd' class="easyui-linkbutton" iconCls="icon-add" onclick="clxxAdd();">新增</a>
+				</div>
+			</c:if>
 			<table id="clxxtable"></table>
 		</div>
 
@@ -380,6 +392,14 @@
 
 	function getZdryid() {
 		return '${zdryid}';
+	}
+	
+	function getPageEditAble(){
+		if('${mdel}' != 'view'){
+			return true;
+		}else{
+			return false;
+		}
 	}
 </script>
 </html>

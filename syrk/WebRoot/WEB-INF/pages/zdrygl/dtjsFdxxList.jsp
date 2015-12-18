@@ -80,9 +80,12 @@
 	</script>
 </head>
 <body >
-	<div id="toolbar">
-		<a id="sdfdxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="sdfdxxbAdd();">新增</a>
-	</div>
+	<c:if test="window.parent.getPageEditAble()">
+		<div id="toolbar">
+			<a id="sdfdxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="sdfdxxbAdd();">新增</a>
+		</div>
+	</c:if>
+	
 	<table id="sdfdxxbtable" class="easyui-datagrid"
            	data-options="url:'<%=basePath %>dtjsMore/moreDtjsSdfdxxb',
            			queryParams:getQueryParams(),

@@ -87,9 +87,11 @@
 	</script>
 </head>
 <body >
-	<div id="toolbar">
-		<a id="zszhjsbrZszhjlxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="zszhjsbrZszhjlxxbAdd();">新增</a>
-   	</div>
+	<c:if test="window.parent.getPageEditAble()">
+		<div id="toolbar">
+			<a id="zszhjsbrZszhjlxxbAdd" class="easyui-linkbutton" iconCls="icon-add" onclick="zszhjsbrZszhjlxxbAdd();">新增</a>
+	   	</div>
+	</c:if>
 	
 	<table id="zszhjsbrZszhjlxxbtable" class="easyui-datagrid"  style="height:400px"
            	data-options="url:'<%=basePath %>dtjsMore/moreDtjsZszhjsbrZszhjlxxb',

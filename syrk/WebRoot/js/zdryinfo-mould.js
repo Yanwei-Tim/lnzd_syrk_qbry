@@ -223,6 +223,7 @@ function info_psjdb_(){
 }
 
 function info_dtjs_(){
+	
 	var sb = new StringBuffer();
 
 	sb.append("<ul url='info_dtjsxsjbxx' level='2'><li class='uline' ><span>写实基本信息</span><a href='javascript:void(0);' class='addfw_btn' ></a>");
@@ -242,9 +243,8 @@ function more(){
 		}
 	});
 	
-	
 	var id=$(".dtjsclass").val();
-	var url=contextPath+'/dtjsMore/dtjsMorePage?zdryid='+zdryid;
+	var url=contextPath+'/dtjsMore/dtjsMorePage?zdryid='+zdryid+'&mode='+$('#mode_').val();
 	openWindow(false,null,url,null,{title:'动态纪实详细',width:1000,height:600});
 }
 

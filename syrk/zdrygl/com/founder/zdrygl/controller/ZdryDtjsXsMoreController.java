@@ -36,14 +36,14 @@ public class ZdryDtjsXsMoreController extends BaseController {
 	
 	@RequestMapping(value = "/dtjsMorePage", method = RequestMethod.GET)
 	public @ResponseBody
-	ModelAndView dtjsMorePage(String zdryid) {
+	ModelAndView dtjsMorePage(String zdryid,String mode) {
 		ModelAndView mv = new ModelAndView("zdrygl/dtjsMore");
 		Map<String, Object> model = new HashMap<String, Object>();
 	    ZdryZdryzb zb=this.zdryZdryzbService.queryById(zdryid);
 	    RyRyjbxxb ryjbxxb=this.ryRyjbxxbService.queryById(zb.getRyid());
 		mv.addObject("zdryZjhm",ryjbxxb.getZjhm());
 		mv.addObject("zdryid",zb.getId());
-		
+		mv.addObject("mode",mode);
 		return mv;
 	}
 	
