@@ -80,6 +80,17 @@
 			</iframe>
 		</div>
 
+		 <div title="肇事肇祸精神病信息" id="zszhjsbxx" >
+			<input type="radio" name="zszhjsblx" value="zszhjsbrxx" checked="checked"> 肇事肇祸精神病信息 </input>
+			<input type="radio" name="zszhjsblx" value="zszhjsbrzdjl">诊断记录</input>
+			<input type="radio" name="zszhjsblx" value="zszhjsbrzszhjl"> 肇事肇祸记录 </input>
+			
+			<!-- 引入具体的框架信息 -->
+			<iframe id="zszhjsbFrame" name="zszhjsbFrame" src="" 
+				border="0" frameborder="0" scrolling="no" 
+				style="width:100%;height:510px;" > </iframe>
+		</div>  
+
 	</div>
 </body>
 <script type="text/javascript">
@@ -320,6 +331,16 @@
 			
 			//初始化框架
 			$("#sdxxFrame").attr('src', '<%=contextPath%>/forward/zdrygl|dtjsXdxxList');
+		}else if(index == 9 && initPages[index] != index){
+			//初始化 单选
+			$("input[name=zszhjsblx]").each(function(i, o) {
+				$(o).click(function() {
+					turnToZszhjsbDetail($(this).val());
+				});
+			});
+			
+			//初始化框架
+			$("#zszhjsbFrame").attr('src', '<%=contextPath%>/forward/zdrygl|dtjsZszhjsbxxList');
 		}
 	}
 	
@@ -334,6 +355,19 @@
 			src += "dtjsZdxxList";
 		}
 		$("#sdxxFrame").attr('src', src);
+	}
+	
+	function turnToZszhjsbDetail(zszhjsbType){
+		
+		var src = contextPath + "/forward/zdrygl|";
+		if(zszhjsbType == 'zszhjsbrxx'){
+			src += "dtjsZszhjsbxxList";
+		}else if(zszhjsbType == 'zszhjsbrzdjl'){
+			src += "dtjsZszhjsbrzdjlxxbList";
+		}else{
+			src += "dtjsZszhjsbrzszhjlxxbList";
+		}
+		$("#zszhjsbFrame").attr('src',src);
 	}
 
 	function getUserOrgCode() {
