@@ -21,11 +21,11 @@
 	        		nowrap:true">
 			    <thead>
 			        <tr>
-			           	<th data-options="field:'zjlx',width:140,align:'center',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/KX_D_CYZJDM.js'">证件类型</th>			           
+			           	<th data-options="field:'zjlx',width:120,align:'center',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/KX_D_CYZJDM.js'">证件类型</th>			           
 			            <th data-options="field:'zjhm',width:120,align:'center',halign:'center',sortable:true">证件号码</th>
-			            <th data-options="field:'xm',width:120,align:'center',halign:'center'">姓名</th>
-			            <th data-options="field:'mz',width:120,align:'center',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/GB_D_MZDM.js'">民族</th>
-			            <th data-options="field:'xb',width:200,align:'center',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/GB_D_XBDM.js'">性别</th>			         			        	
+			            <th data-options="field:'xm',width:80,align:'center',halign:'center'">姓名</th>
+			            <th data-options="field:'mz',width:80,align:'center',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/GB_D_MZDM.js'">民族</th>
+			            <th data-options="field:'xb',width:80,align:'center',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/GB_D_XBDM.js'">性别</th>			         			        	
 			        	<th data-options="field:'gx',align:'center',width:100,halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/XZ_D_RYGXDM.js'">关系</th>			        
 			            <th data-options="field:'hjdxz',width:200,align:'center',halign:'center'">户籍地详址</th>			         			        	
 			        	<th data-options="field:'xzdxz',width:200,align:'center',halign:'center'">现住地详址</th>			         			        	
