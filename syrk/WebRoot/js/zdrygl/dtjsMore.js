@@ -25,10 +25,10 @@ function xsjbxxquery(){
 
 function xsjbxxFormater(val,row,index){
 	 var html="";
-	 if(row.gxdwdm==userOrgCode){
+	 if(row.gxdwdm==userOrgCode && getPageEditAble()){
 		 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="xsjbxxedit(this, '+index+')">编辑</a>&nbsp;'
 		 +'&nbsp;<a class="link" href="javascript:void(0)" onclick="xsjbxxDelete(this, '+index+')">删除</a>&nbsp;'	 
-	 }else{		 
+	 }else {		 
 		 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="xsjbxxview(this, '+index+')">查看</a>&nbsp;'
 	 }	
 	return html ;
@@ -80,7 +80,7 @@ function xsjbxxDelete(linkObject, index){
 	//以下是维稳信息js方法
 	function swxxFormater(val,row,index){
 		 var html="";
-		 if(row.xt_lrrbmid==userOrgCode){
+		 if(row.xt_lrrbmid==userOrgCode  && getPageEditAble()){
 			 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="swxxedit(this, '+index+')">编辑</a>&nbsp;'
 			 +'&nbsp;<a class="link" href="javascript:void(0)" onclick="swxxDelete(this, '+index+')">删除</a>&nbsp;'	 
 		 }else{		 
@@ -149,7 +149,7 @@ function xsjbxxDelete(linkObject, index){
 //===============以下是上访信息js方法
 	function sfxxFormater(val,row,index){
 		 var html="";
-		 if(row.xt_lrrbmid==userOrgCode){
+		 if(row.xt_lrrbmid==userOrgCode && getPageEditAble()){
 			 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="sfxxedit(this, '+index+')">编辑</a>&nbsp;'
 			 +'&nbsp;<a class="link" href="javascript:void(0)" onclick="sfxxDelete(this, '+index+')">删除</a>&nbsp;'	 
 		 }else{		 
@@ -217,7 +217,7 @@ function xsjbxxDelete(linkObject, index){
 	//===============以下是刑事犯罪前科信息js方法
 	function zdxsfzqkxxbFormater(val,row,index){
 		 var html="";
-		 if(row.xt_lrrbmid==userOrgCode){
+		 if(row.xt_lrrbmid==userOrgCode && getPageEditAble()){
 			 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="zdxsfzqkxxbedit(this, '+index+')">编辑</a>&nbsp;'
 			 +'&nbsp;<a class="link" href="javascript:void(0)" onclick="zdxsfzqkxxbDelete(this, '+index+')">删除</a>&nbsp;'	 
 		 }else{		 
@@ -286,7 +286,7 @@ function xsjbxxDelete(linkObject, index){
 //=====社会关系人js方法
 	function shgxrxxbFormater(val,row,index){
 		 var html="";
-		 if(row.xt_lrrbmid==userOrgCode){
+		 if(row.xt_lrrbmid==userOrgCode && getPageEditAble()){
 			 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="shgxrxxbedit(this, '+index+')">编辑</a>&nbsp;'
 			 +'&nbsp;<a class="link" href="javascript:void(0)" onclick="shgxrxxbDelete(this, '+index+')">删除</a>&nbsp;'	 
 		 }else{		 
@@ -355,7 +355,7 @@ function xsjbxxDelete(linkObject, index){
 	//=====车辆信息js方法
 	function clxxFormater(val,row,index){
 		 var html="";
-		 if(row.xt_lrrbmid==userOrgCode){
+		 if(row.xt_lrrbmid==userOrgCode && getPageEditAble()){
 			 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="clxxedit(this, '+index+')">编辑</a>&nbsp;'
 			 +'&nbsp;<a class="link" href="javascript:void(0)" onclick="clxxDelete(this, '+index+')">删除</a>&nbsp;'	 
 		 }else{		 

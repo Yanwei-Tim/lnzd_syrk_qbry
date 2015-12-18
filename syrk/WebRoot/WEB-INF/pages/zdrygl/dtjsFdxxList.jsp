@@ -19,7 +19,7 @@
 		
 		function sdfdxxbFormater(val,row,index){
 			 var html="";
-			 if(row.xt_lrrbmid==window.parent.getUserOrgCode()){
+			 if(row.xt_lrrbmid==window.parent.getUserOrgCode() && window.parent.getPageEditAble()){
 				 html='&nbsp;<a class="link" href="javascript:void(0)" onclick="sdfdxxbedit(this, '+index+')">编辑</a>&nbsp;'
 				 +'&nbsp;<a class="link" href="javascript:void(0)" onclick="sdfdxxbDelete(this, '+index+')">删除</a>&nbsp;'	 
 			 }else{		 
