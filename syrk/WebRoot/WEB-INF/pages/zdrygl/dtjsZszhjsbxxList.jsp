@@ -34,7 +34,7 @@
 			cancelBubble();
 			var rows = $('#zszhjsbrxxbtable').datagrid('getData');
 			var rowData = rows.rows[index];
-			var url=contextPath+'/dtjsMore/editZszhjsbrxxb?id='+rowData.id +"&type=view";
+			var url=contextPath+'/dtjsMore/editDtjsZszhjsbrxxb?id='+rowData.id +"&type=view";
 
 			openWindow(false,null,url,null,{title:'肇事肇祸精神病信息查看',width:880,height:500});
 

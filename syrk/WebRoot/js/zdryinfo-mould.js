@@ -231,7 +231,7 @@ function info_dtjs_(){
 	sb.append("<input type='hidden' name='id' /><input type='hidden' name='method2' value='dtjsxsjbxx' /><input type='hidden' name='openUrl' value='/zdryDtjs/addDtjsXsjbxx' /><input type='hidden' name='editUrl' value='/zdryDtjs/{id}' /></ul>");
 	sb.append("<div class='clear' ></div>");
 	sb.append("<a href='javascript:void(0)' onclick='more()' style='float:right;position:relative; top:-15px;left:-10px;font-size:16px;'>更多...</a>");	
-	sb.append("<input type='hidden' name='method' value=''/><input type='hidden' name='dg' value='true' />")
+	sb.append("<input type='hidden' name='dg' value='true' />")
 	return sb.toString();
 }
 function more(){

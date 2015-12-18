@@ -34,7 +34,7 @@
 			cancelBubble();
 			var rows = $('#zszhjsbrZszhjlxxbtable').datagrid('getData');
 			var rowData = rows.rows[index];
-			var url=contextPath+'/dtjsMore/editzsZhjsbrZszhjlxxb?id='+rowData.id +"&type=view";
+			var url=contextPath+'/dtjsMore/editDtjsZszhjsbrZszhjlxxb?id='+rowData.id +"&type=view";
 
 			openWindow(false,null,url,null,{title:'肇事肇祸精神病肇事肇祸记录查看',width:880,height:500});
 
