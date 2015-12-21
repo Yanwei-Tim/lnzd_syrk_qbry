@@ -51,9 +51,9 @@ public class ZdryDtjsSfxxController extends BaseController {
 		    sessionBean = getSessionBean(sessionBean);
 			ModelAndView mv = new ModelAndView("zdrygl/dtjsSfxxAdd");		
 			ZdryDtjsSfxxb entity=new ZdryDtjsSfxxb();
-			ZdryZdryzb zdryzb = zdryZdryzbService.queryById(zdryid);
-			entity.setSslb(zdryzb.getZdrygllxdm());
-			entity.setSslbxl(zdryzb.getZdrylb());
+			//ZdryZdryzb zdryzb = zdryZdryzbService.queryById(zdryid);
+			//entity.setSslb(zdryzb.getZdrygllxdm());
+			//entity.setSslbxl(zdryzb.getZdrylb());
 			entity.setZdryzjhm(zdryZjhm);
 			mv.addObject("entity", entity);
 			return mv;

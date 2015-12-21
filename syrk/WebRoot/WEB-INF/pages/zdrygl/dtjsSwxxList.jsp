@@ -23,7 +23,7 @@
 			        <tr>
 			           	<th data-options="field:'zdryzjhm',width:140,align:'center',halign:'center'">重点人员证件号码</th>			           
 			            <th data-options="field:'sslb',width:120,align:'left',halign:'center',sortable:true,formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_ZDRYLBDM.js'">所属类别</th>
-			            <th data-options="field:'sslbxl',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_ZDRYLBDM.js'">所属类别细类</th>
+			            <th data-options="field:'sslbxl',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_QBZDRYXLDM.js'">所属类别细类</th>
 			            <th data-options="field:'sszzmc',width:120,align:'left',halign:'center'">所属组织名称</th>
 			            <th data-options="field:'qkgs',width:200,align:'left',halign:'center'">情况概述</th>			         			        	
 			        	<th data-options="field:'process',align:'center',width:100,halign:'center',formatter:swxxFormater">操作</th>			        

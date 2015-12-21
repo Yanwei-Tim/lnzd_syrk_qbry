@@ -188,7 +188,7 @@
 			    columns:[[    
 			        {field:'zdryzjhm',title:'重点人员证件号码',width:140,align:'center',halign:'center'},
 			        {field:'sslb',title:'所属类别',width:120,align:'left',halign:'center',sortable:true,formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_ZDRYLBDM.js'},
-			        {field:'sslbxl',title:'所属类别细类',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_ZDRYLBDM.js'},
+			        {field:'sslbxl',title:'所属类别细类',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_QBZDRYXLDM.js'},
 			        {field:'sszzmc',title:'所属组织名称',width:120,align:'left',halign:'center'},
 			        {field:'qkgs',title:'情况概述',width:200,align:'left',halign:'center'},
 			        {field:'process',title:'操作',align:'center',width:100,halign:'center',formatter:swxxFormater}
@@ -212,11 +212,11 @@
 			        {field:'zdryzjhm',title:'重点人员证件号码',width:140,align:'center',halign:'center'},
 			        {field:'sslb',title:'所属类别',width:120,align:'left',halign:'center',sortable:true,formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_ZDRYLBDM.js'},
 			        {field:'sslbxl',title:'所属类别细类',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_ZDRYLBDM.js'},
-			        {field:'ssqt',title:'所属群体',width:120,align:'left',halign:'center'},
+			        {field:'ssqt',title:'所属群体',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_QBZDRYQTDM.js'},
 			        {field:'sfdd',title:'上访地点',width:200,align:'left',halign:'center'},
 			        {field:'bbdwmc',title:'包保单位名称',width:200,align:'left',halign:'center'},
 			        {field:'bbld',title:'包保领导',width:200,align:'left',halign:'center'},
-			        {field:'sffs',title:'上访方式',width:80,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_SFFS.js'},
+			        {field:'sffs',title:'上访方式',width:80,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_SFFSDM.js'},
 			        {field:'czjg',title:'处置结果',width:200,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_CZJG.js'},
 			        {field:'czry',title:'处置人员',width:200,align:'left',halign:'center'},
 			        {field:'sqjb',title:'诉求级别',width:200,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_SQJB.js'},

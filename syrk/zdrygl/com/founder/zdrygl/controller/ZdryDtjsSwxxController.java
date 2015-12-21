@@ -50,11 +50,11 @@ public class ZdryDtjsSwxxController extends BaseController {
 			SessionBean sessionBean) throws BussinessException {
 		    sessionBean = getSessionBean(sessionBean);
 			ModelAndView mv = new ModelAndView("zdrygl/dtjsSwxxAdd");		
-			ZdryZdryzb zdryzb = zdryZdryzbService.queryById(zdryid);
+			//ZdryZdryzb zdryzb = zdryZdryzbService.queryById(zdryid);
 			ZdryDtjsSwxxb entity=new ZdryDtjsSwxxb();
 			entity.setZdryzjhm(zdryZjhm);
-			entity.setSslb(zdryzb.getZdrygllxdm());
-			entity.setSslbxl(zdryzb.getZdrylb());
+			//entity.setSslb(zdryzb.getZdrygllxdm());
+			//entity.setSslbxl(zdryzb.getZdrylb());
 			mv.addObject("entity", entity);
 			return mv;
 		
