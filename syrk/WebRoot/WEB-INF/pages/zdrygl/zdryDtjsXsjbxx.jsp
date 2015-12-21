@@ -77,7 +77,7 @@ String userOrgName = userInfo.getUserOrgName();
 		     	<td width="20%" class="dialogTd" align="right">危险级别（提示）：</td>	     
 			    <td width="30%" class="dialogTd">
 		           <input class="easyui-combobox" type="text"  id="wxjb" name="wxjb"   style="width:200px;" value="${entity.wxjb}"
-					data-options="url: contextPath +  '/common/dict/D_QBLD_WXJB.js',
+					data-options="url: contextPath +  '/common/dict/BD_D_QBZDRYWXJBDM.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"
 	    			/>
 		       </td>

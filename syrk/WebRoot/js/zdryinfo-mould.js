@@ -253,12 +253,12 @@ function info_dtjsxsjbxx_(){
 	sb.append("<ul>");
 	sb.append("<li><span class='spantitle'>核实时间：</span><span name='hssj' class='edit_word input_w2'></span></li>");
 	sb.append("<li><span class='spantitle'>核实地点详址：</span><span name='hsd_dzxz' class='edit_word input_w2'></span></li>"); 
-	sb.append("<li><span class='spantitle'>在控状态：</span><span name='zkzt' dict='/common/dict/D_QBLD_ZKZT' class='edit_word input_w1'></span></li>");
-	sb.append("<li><span class='spantitle'>在籍状态：</span><span name='zjzt' dict='/common/dict/D_QBLD_ZJZT' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>在控状态：</span><span name='zkzt' dict='/common/dict/BD_D_QBZDRYZKZTDM' class='edit_word input_w1'></span></li>");
+	sb.append("<li><span class='spantitle'>在籍状态：</span><span name='zjzt' dict='/common/dict/QB_D_ZDRYYJSNZTDM' class='edit_word input_w2'></span></li>");
 	sb.append("<li><span class='spantitle'>离开时间：</span><span name='lksj' class='edit_word input_w2'></span></li>");
 	sb.append("<li><span class='spantitle'>去往省市：</span><span name='qwss' dict='/common/dict/D_BZ_XZQH'  class='edit_word input_w2'></span></li>");
-	sb.append("<li><span class='spantitle'>危险级别（提示）：</span><span name='wxjb' dict='/common/dict/D_QBLD_WXJB'  class='edit_word input_w2'></span></li>");
-	sb.append("<li><span class='spantitle'>主要意向：</span><span name='zyyx' class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>危险级别（提示）：</span><span name='wxjb' dict='/common/dict/BD_D_QBZDRYWXJBDM'  class='edit_word input_w2'></span></li>");
+	sb.append("<li><span class='spantitle'>主要意向：</span><span name='zyyx' dict='/common/dict/BD_D_QBZDRYZYYXDM' class='edit_word input_w2'></span></li>");
 	sb.append("<li><span class='spantitle'>职业：</span><span name='zy' dict='/common/dict/GB_D_ZYFLYDM'  class='edit_word input_w2'></span></li>");
 	sb.append("<li><span class='spantitle'>实际收入：</span><span name='sjsr' dict='/common/dict/D_QBLD_SJSR' class='edit_word input_w2'></span></li>");
 	sb.append("<li><span class='spantitle'>经济来源：</span><span name='jjly'  dict='/common/dict/D_QBLD_JJLY' class='edit_word input_w2'></span></li>");
