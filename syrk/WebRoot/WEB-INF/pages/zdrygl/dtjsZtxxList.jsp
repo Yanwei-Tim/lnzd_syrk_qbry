@@ -12,7 +12,7 @@
 			    <thead>
 			        <tr>
 			            <th data-options="field:'sslb',width:80,align:'left',halign:'center',sortable:false,formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_ZDRYLBDM.js'">所属类别</th>
-			            <th data-options="field:'ztlx',width:80,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_ZJZT.js'">在逃类型</th>
+			            <th data-options="field:'ztlx',width:80,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/XZ_D_ZTRYLBDM.js'">在逃类型</th>
 			            <th data-options="field:'lasj',width:80,align:'left',halign:'center'">立案时间</th>
 			            <th data-options="field:'ladwmc',width:120,align:'left',halign:'center'">立案单位</th>			         
 			            <th data-options="field:'tpsj',width:80,align:'center',halign:'center'">逃跑时间</th>

@@ -47,14 +47,14 @@ String userOrgName = userInfo.getUserOrgName();
 		      <td width="20%" class="dialogTd" align="right">在控状态：</td>
 		       <td width="30%" class="dialogTd">
 		           <input class="easyui-combobox" type="text"  id="zkzt" name="zkzt"   style="width:200px;" value="${entity.zkzt}"
-	    			data-options="url: contextPath +  '/common/dict/D_QBLD_ZKZT.js',
+	    			data-options="url: contextPath +  '/common/dict/BD_D_QBZDRYZKZTDM.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"
 	    			"/>
 		       </td>
 			    <td width="20%" class="dialogTd" align="right">在籍状态：</td>
 		        <td width="30%" class="dialogTd">
 		           <input class="easyui-combobox" type="text"  id="zjzt" name="zjzt"   style="width:200px;" value="${entity.zjzt}"
-					data-options="url: contextPath +  '/common/dict/D_QBLD_ZJZT.js',
+					data-options="url: contextPath +  '/common/dict/QB_D_ZDRYYJSNZTDM.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"
 	    			/>
 		       </td>
@@ -83,9 +83,12 @@ String userOrgName = userInfo.getUserOrgName();
 		       </td>
 			
 			  <td width="20%" class="dialogTd" align="right">主要意向：</td>
-		    	<td width="30%" class="dialogTd">
-		    		<input class="easyui-validatebox" type="text" id="zyyx" name="zyyx" value="${entity.zyyx}" style="width:200px;" data-options="validType:['maxLength[100]'],invalidMessage:'主要意向不能超过100个汉字，请重新输入！',tipPosition:'left'"/>
-		    	</td>
+		    	  <td width="30%" class="dialogTd">
+		           <input class="easyui-combobox" type="text"  id="zyyx" name="zyyx"   style="width:200px;" value="${entity.zyyx}"
+					data-options="url: contextPath +  '/common/dict/BD_D_QBZDRYZYYXDM.js',
+					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:false,tipPosition:'right'"
+	    			/>
+		       </td>
 	        </tr>	
 	        
 	        	    	
@@ -111,7 +114,12 @@ String userOrgName = userInfo.getUserOrgName();
 					data-options="url: contextPath +  '/common/dict/D_QBLD_JJLY.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:false,tipPosition:'right'"/>
 		       </td>
-		        
+		       <td width="20%" class="dialogTd" align="right">属性信息类别：</td>
+		         <td width="30%" class="dialogTd">
+		           <input class="easyui-combobox" type="text"  id="rylbxx" name="rylbxx"   style="width:200px;" value="${entity.rylbxx}"
+					data-options="url: contextPath +  '/common/dict/BD_D_QBZDRYLBDM.js',
+					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:false,tipPosition:'right'"/>
+		       </td>
 		    </tr>
 		   <tr class="dialogTr">
 		        <td width="20%" class="dialogTd" align="right">工作单位：</td>
@@ -163,7 +171,7 @@ String userOrgName = userInfo.getUserOrgName();
 		     <td width="20%" class="dialogTd" align="right">在控类型：</td>
 		         <td width="30%" class="dialogTd">
 		           <input class="easyui-combobox" type="text"  id="zklx" name="zklx"   style="width:200px;" value="${entity.zklx}"
-	    			data-options="url: contextPath +  '/common/dict/D_QBLD_ZKLX.js',
+	    			data-options="url: contextPath +  '/common/dict/BD_D_QBZDRYZKZTDM.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:false,tipPosition:'right'"/>
 		       </td>	
 			  <td width="20%" class="dialogTd" align="right">约见周期：</td>
