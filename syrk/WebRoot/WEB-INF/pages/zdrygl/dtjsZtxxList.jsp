@@ -19,7 +19,7 @@
 			        	<th data-options="field:'tpfx',width:100,align:'left',halign:'center'">逃跑方向</th>
 			        	<th data-options="field:'ltrq',width:80,align:'left',halign:'center'">立逃日期</th>
 			        	<th data-options="field:'ltdwmc',width:100,align:'left',halign:'center'">立逃单位</th>
-			        	<th data-options="field:'ajlbdm',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_AJLB.js'">案件类别</th>
+			        	<th data-options="field:'ajlbdm',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/XZ_D_AJLBDM.js'">案件类别</th>
 			            <th data-options="field:'dbjb',width:100,align:'left',halign:'center'">督捕级别</th>
 			        	<th data-options="field:'aqms',width:150,align:'left',halign:'center'">案情描述</th>			        
 			        </tr>

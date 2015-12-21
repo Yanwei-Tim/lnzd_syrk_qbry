@@ -166,7 +166,7 @@
 			        {field:'tpfx',title:'逃跑方向',width:100,align:'left',halign:'center'},
 			        {field:'ltrq',title:'立逃日期',width:80,align:'left',halign:'center'},
 			        {field:'ltdwmc',title:'立逃单位',width:100,align:'left',halign:'center'},
-			        {field:'ajlbdm',title:'案件类别',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_AJLB.js'},
+			        {field:'ajlbdm',title:'案件类别',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/XZ_D_AJLBDM.js'},
 			        {field:'dbjb',title:'督捕级别',width:100,align:'left',halign:'center'},
 			        {field:'aqms',title:'案情描述',width:150,align:'left',halign:'center'}
 			   	]]    
