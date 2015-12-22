@@ -27,12 +27,12 @@ String userOrgName = userInfo.getUserOrgName();
 		     	<td width="20%" class="dialogTd" align="right">重点人员所属类型：</td>
 	    		<td width="30%" class="dialogTd">
 					<input class="easyui-combobox" type="text"  id="zdrylbbj" name="zdrylbbj"   style="width:200px;" value="${entity.zdrylbbj}"
-					data-options="url: contextPath +  '/common/dict/BD_D_ZDRYLBDMLIST_MUNICIPAL.js',
+					data-options="url: contextPath +  '/common/dict/BD_D_QBZDRYLBDM.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right',readonly:true"/>
 				</td>
 				<td width="20%" class="dialogTd" align="right">重点人员所属细类：</td>
 	    		<td width="30%" class="dialogTd" ><input type="text" name="zdryxl" id="zdryxl" value="${entity.zdryxl}"  class="easyui-combotree" style="width:200px;"
-	    			data-options="url: contextPath + '/common/dict/BD_D_ZDRYLBDM.js',onlyLeaf:true,
+	    			data-options="url: contextPath + '/common/dict/BD_D_QBZDRYXLDM.js',onlyLeaf:true,
 	    			multiple:false,required:true,panelWidth:613,method:'get',lines:true,tipPosition:'left'" >
 		    	</td>
             </tr>
@@ -100,7 +100,7 @@ String userOrgName = userInfo.getUserOrgName();
 		             data-options="mode:'remote',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"
 	    			/>
-	    		  <input type="hidden" id="hjdpcsdm" name="hjdpcsdm" value="${ entity.hjdpcsdm}"
+	    		  <input type="hidden" id="hjdpcsdm" name="hjdpcsdm" value="${ entity.hjdpcsdm}" />
     	        </td>
 		     	  <td width="20%" class="dialogTd" align="right">户籍地详址：</td>
 		            <td width="80%" class="dialogTd" colspan="3">		          	
@@ -114,7 +114,7 @@ String userOrgName = userInfo.getUserOrgName();
 		             data-options="mode:'remote',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"
 	    			/>
-	    		  <input type="hidden" id="hjdpcsdm" name="hjdpcsdm" value="${ entity.hjdpcsdm}"
+	    		  <input type="hidden" id="hjdpcsdm" name="hjdpcsdm" value="${ entity.hjdpcsdm}" />
 		     	</td>
 		     	 <td width="20%" class="dialogTd" align="right">现住地详址：</td>
 		            <td width="30%" class="dialogTd" colspan="3">		          	
@@ -227,13 +227,13 @@ String userOrgName = userInfo.getUserOrgName();
 		                  <td width="20%" class="dialogTd" align="right">实际收入：</td>	     
 			    <td width="30%" class="dialogTd">
 		           <input class="easyui-combobox" type="text"  id="sjsr" name="sjsr"   style="width:200px;" value="${entity.sjsr}"
-					data-options="url: contextPath +  '/common/dict/D_QBLD_SJSR.js',
+					data-options="url: contextPath +  '/common/dict/BD_D_SJSRDM.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:false,tipPosition:'right'"/>
 		       </td>
 			      <td width="20%" class="dialogTd" align="right">经济来源：</td>
 		         <td width="30%" class="dialogTd">
 		           <input class="easyui-combobox" type="text"  id="jjly" name="jjly"   style="width:200px;" value="${entity.jjly}"
-					data-options="url: contextPath +  '/common/dict/D_QBLD_JJLY.js',
+					data-options="url: contextPath +  '/common/dict/BD_D_JJLYDM.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:false,tipPosition:'right'"/>
 		       </td>      
 				

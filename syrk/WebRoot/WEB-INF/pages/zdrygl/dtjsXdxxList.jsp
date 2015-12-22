@@ -102,13 +102,13 @@
 			    <thead>
 			        <tr>
 			        	<th data-options="field:'zdryzjhm',width:80,align:'left',halign:'center'">证件号码</th>
-			            <th data-options="field:'dpzl',width:80,align:'left',halign:'center',sortable:false,formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_DPZL.js'">毒品种类</th>
-			            <th data-options="field:'dply',width:80,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_XDDPLY.js'">毒品来源</th>
-			            <th data-options="field:'dzly',width:80,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_DZLY.js'">毒资来源</th>
+			            <th data-options="field:'dpzl',width:80,align:'left',halign:'center',sortable:false,formatter:dictFormatter,dictName:contextPath+'/common/dict/JD_D_DPZLDM.js'">毒品种类</th>
+			            <th data-options="field:'dply',width:80,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/JD_D_DPLYDM.js'">毒品来源</th>
+			            <th data-options="field:'dzly',width:80,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/JD_D_DZLYDM.js'">毒资来源</th>
 			            <th data-options="field:'xscs',width:80,align:'left',halign:'center'">吸食次数</th>
 			            <th data-options="field:'whhg',width:80,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_WHHG.js'">危害后果</th>
 			            <th data-options="field:'sffx',width:80,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_SFDM.js'">是否复吸</th>
-			            <th data-options="field:'ryxz',width:80,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_RYXZ.js'">人员现状</th>
+			            <th data-options="field:'ryxz',width:80,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_XDRYXZDM.js'">人员现状</th>
 			            <th data-options="field:'process',width:80,align:'center',formatter:sdxdxxbFormater">操作</th>
 			        </tr>
 			    </thead>

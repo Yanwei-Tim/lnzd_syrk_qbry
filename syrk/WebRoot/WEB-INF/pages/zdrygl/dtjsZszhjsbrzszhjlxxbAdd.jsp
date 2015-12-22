@@ -28,7 +28,7 @@ String userOrgName = userInfo.getUserOrgName();
 		     	<td width="20%" class="dialogTd" align="right">肇事肇祸类别：</td>
 	    		<td width="30%" class="dialogTd">
 					<input class="easyui-combobox" type="text"  id="zszhlb" name="zszhlb"   style="width:200px;" value="${entity.zszhlb}"
-					data-options="url: contextPath +  '/common/dict/D_QBLD_ZSZHLB.js',
+					data-options="url: contextPath +  '/common/dict/BD_D_JSBZSZHLBDM.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
 				</td>
 				<td width="20%" class="dialogTd" align="right">事发时间：</td>
@@ -45,7 +45,7 @@ String userOrgName = userInfo.getUserOrgName();
 		    <td width="20%" class="dialogTd" align="right">处理结果：</td>
 	    		<td width="30%" class="dialogTd">
 					<input class="easyui-combobox" type="text"  id="cljg" name="cljg"   style="width:200px;" value="${entity.cljg}"
-					data-options="url: contextPath +  '/common/dict/D_QBLD_CLJG.js',
+					data-options="url: contextPath +  '/common/dict/BD_D_JSBZSCLJG.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
 				</td>
 		    
@@ -55,7 +55,7 @@ String userOrgName = userInfo.getUserOrgName();
     	    <td width="20%" class="dialogTd" align="right">鉴定结果：</td>
 	    		<td width="30%" class="dialogTd">
 					<input class="easyui-combobox" type="text"  id="jdjg" name="jdjg"   style="width:200px;" value="${entity.jdjg}"
-					data-options="url: contextPath +  '/common/dict/D_QBLD_JDJG.js',
+					data-options="url: contextPath +  '/common/dict/BD_D_JSBZSJDJG.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
 				</td>
     	     <td width="20%" class="dialogTd" align="right">鉴定结果编号：</td>

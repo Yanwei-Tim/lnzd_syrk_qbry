@@ -100,7 +100,7 @@
 			    <thead>
 			        <tr>
 			        	<th data-options="field:'zdryzjhm',width:150,align:'left',halign:'center'">证件号码</th>
-			            <th data-options="field:'dpzl',width:120,align:'left',halign:'center',sortable:false,formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_DPZL.js'">制毒种类</th>
+			            <th data-options="field:'dpzl',width:120,align:'left',halign:'center',sortable:false,formatter:dictFormatter,dictName:contextPath+'/common/dict/JD_D_DPZLDM.js'">制毒种类</th>
 			            <th data-options="field:'zdhxp',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_ZDHXP.js'">制毒化学品</th>
 			            <th data-options="field:'dpqx',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_DPQX.js'">毒品去向</th>
 			            <th data-options="field:'shdzqx',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_DZQX.js'">毒资去向</th>

@@ -27,13 +27,13 @@ String userOrgName = userInfo.getUserOrgName();
 		     	<td width="20%" class="dialogTd" align="right">毒品种类：</td>
 		        <td width="30%" class="dialogTd">
 		           <input class="easyui-combobox" type="text"  id="dpzl" name="dpzl"   style="width:200px;" value="${entity.dpzl}"
-	    			data-options="url: contextPath +  '/common/dict/D_QBLD_DPZL.js',
+	    			data-options="url: contextPath +  '/common/dict/JD_D_DPZLDM.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
 		       </td>
 				<td width="20%" class="dialogTd" align="right">毒品来源：</td>
 	    		<td width="30%" class="dialogTd">
 					<input class="easyui-combobox" type="text"  id="dply" name="dply"   style="width:200px;" value="${entity.dply}"
-					data-options="url: contextPath +  '/common/dict/D_QBLD_XDDPLY.js',
+					data-options="url: contextPath +  '/common/dict/JD_D_DPLYDM.js',
 				valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
 				</td>
 
@@ -41,7 +41,7 @@ String userOrgName = userInfo.getUserOrgName();
 		  	    <td width="20%" class="dialogTd" align="right">毒资来源：</td>
 	    		<td width="30%" class="dialogTd">
 					<input class="easyui-combobox" type="text"  id="dzly" name="dzly"   style="width:200px;" value="${entity.dzly}"
-					data-options="url: contextPath +  '/common/dict/D_QBLD_DZLY.js',
+					data-options="url: contextPath +  '/common/dict/JD_D_DZLYDM.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
 				</td>
 		        <td width="20%" class="dialogTd" align="right">是否复吸：</td>
@@ -71,7 +71,7 @@ String userOrgName = userInfo.getUserOrgName();
 		      <td width="20%" class="dialogTd" align="right">人员现状：</td>
 		      <td width="30%" class="dialogTd">
 					<input class="easyui-combobox" type="text"  id="ryxz" name="ryxz"   style="width:200px;" value="${entity.ryxz}"
-					data-options="url: contextPath +  '/common/dict/D_QBLD_RYXZ.js',
+					data-options="url: contextPath +  '/common/dict/BD_D_XDRYXZDM.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
 				</td>
     	    </tr>  

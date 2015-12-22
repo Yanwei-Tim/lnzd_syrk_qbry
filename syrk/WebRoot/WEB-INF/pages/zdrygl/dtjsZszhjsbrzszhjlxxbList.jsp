@@ -107,11 +107,11 @@
 			    <thead>
 			        <tr>
 			        	<th data-options="field:'zdryzjhm',width:120,align:'left',halign:'center'">证件号码</th>
-			            <th data-options="field:'zszhlb',width:120,align:'left',halign:'center',sortable:false,formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_ZSZHLB.js'">肇事肇祸类别</th>
+			            <th data-options="field:'zszhlb',width:120,align:'left',halign:'center',sortable:false,formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_JSBZSZHLBDM.js'">肇事肇祸类别</th>
 			            <th data-options="field:'sfsj',width:150,align:'left',halign:'center'">事发时间</th>
 			            <th data-options="field:'sfdd',width:150,align:'left',halign:'center'">事发地点</th>	  
-			            <th data-options="field:'cljg',width:140,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_CLJG.js'">处理结果</th>
-			            <th data-options="field:'jdjg',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_JDJG.js'">鉴定结果</th>
+			            <th data-options="field:'cljg',width:140,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_JSBZSCLJG.js'">处理结果</th>
+			            <th data-options="field:'jdjg',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_JSBZSJDJG.js'">鉴定结果</th>
                         <th data-options="field:'jdr',width:150,align:'left',halign:'center'">鉴定人</th>
 			            <th data-options="field:'bamj',width:150,align:'left',halign:'center'">办案民警</th>	
 			            <th data-options="field:'ssgajgmc',width:150,align:'left',halign:'center'">所属公安机关</th>	

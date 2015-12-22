@@ -100,8 +100,8 @@
 			    <thead>
 			        <tr>
 			        	<th data-options="field:'zdryzjhm',width:150,align:'left',halign:'center'">证件号码</th>
-			            <th data-options="field:'fmdpzl',width:120,align:'left',halign:'center',sortable:false,formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_DPZL.js'">贩卖毒品种类</th>
-			            <th data-options="field:'dply',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_XDDPLY.js'">毒品来源</th>
+			            <th data-options="field:'fmdpzl',width:120,align:'left',halign:'center',sortable:false,formatter:dictFormatter,dictName:contextPath+'/common/dict/JD_D_DPZLDM.js'">贩卖毒品种类</th>
+			            <th data-options="field:'dply',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/JD_D_DPLYDM.js'">毒品来源</th>
 			            <th data-options="field:'fmdpqd',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_FDQD.js'">贩卖毒品渠道</th>
 			            <th data-options="field:'shdzqx',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_DZQX.js'">毒资去向</th>
 			            <th data-options="field:'lyd',width:150,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/GB_D_XZQHDMLIST.js'">来源地</th>

@@ -107,9 +107,9 @@
 			    <thead>
 			        <tr>
 			        	<th data-options="field:'zdryzjhm',width:120,align:'left',halign:'center'">证件号码</th>
-			            <th data-options="field:'sslb',width:120,align:'left',halign:'center',sortable:false,formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_ZDRYLBDM.js'">所属类别</th>
-			            <th data-options="field:'brlb',width:140,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_BRLB.js'">病人类别</th>
-			            <th data-options="field:'xszk',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_XSZK.js'">现实状况</th>
+			            <th data-options="field:'sslb',width:120,align:'left',halign:'center',sortable:false,formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_QBZDRYLBDM.js'">所属类别</th>
+			            <th data-options="field:'brlb',width:140,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_JSBRLBDM.js'">病人类别</th>
+			            <th data-options="field:'xszk',width:120,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_JSBXSZTDM.js'">现实状况</th>
 			            <th data-options="field:'bqms',width:150,align:'left',halign:'center'">病情描述</th>
 			            <th data-options="field:'zyby',width:150,align:'left',halign:'center'">主要病因</th>	         
 			            <th data-options="field:'process',width:100,align:'center',formatter:zszhjsbrxxbFormater">操作</th>

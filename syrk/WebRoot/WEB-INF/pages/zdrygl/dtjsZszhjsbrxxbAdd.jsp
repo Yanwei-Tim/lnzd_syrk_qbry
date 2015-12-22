@@ -28,13 +28,13 @@ String userOrgName = userInfo.getUserOrgName();
 		     	<td width="20%" class="dialogTd" align="right">所属类别：</td>
 	    		<td width="30%" class="dialogTd">
 					<input class="easyui-combobox" type="text"  id="sslb" name="sslb"   style="width:200px;" value="${entity.sslb}"
-					data-options="url: contextPath +  '/common/dict/BD_D_ZDRYLBDMLIST_MUNICIPAL.js',
+					data-options="url: contextPath +  '/common/dict/BD_D_QBZDRYLBDM.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right',readonly:true"/>
 				</td>
 				<td width="20%" class="dialogTd" align="right">病人类别代码：</td>
 	    		<td width="30%" class="dialogTd" >
 	    		<input type="text" name="brlb" id="brlb" value="${entity.brlb}"  class="easyui-combobox" style="width:200px;"
-	    				data-options="url: contextPath +  '/common/dict/D_QBLD_BRLB.js',
+	    				data-options="url: contextPath +  '/common/dict/BD_D_JSBRLBDM.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:false,tipPosition:'right'"/>
 		    	</td>
               </tr>
@@ -43,7 +43,7 @@ String userOrgName = userInfo.getUserOrgName();
 		  	    <td width="20%" class="dialogTd" align="right">现实状况：</td>
 	    		<td width="30%" class="dialogTd">
 					<input class="easyui-combobox" type="text"  id="xszk" name="xszk"   style="width:200px;" value="${entity.xszk}"
-					data-options="url: contextPath +  '/common/dict/D_QBLD_XSZK.js',
+					data-options="url: contextPath +  '/common/dict/BD_D_JSBXSZTDM.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:false,tipPosition:'right'"/>
 				</td>
 		    
