@@ -313,7 +313,7 @@
 			var url = basePath+'dtjsMore/moreDtjsClxx?zdryZjhm='+'${zdryZjhm}';
 			$('#clxxtable').datagrid({    
 				url:url,
-				toolbar:'toolbar_7',
+				toolbar:'#toolbar_7',
            		selectOnCheck:true,
         		checkOnSelect:true,
         		rownumbers:true,
