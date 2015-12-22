@@ -366,7 +366,7 @@ function xsjbxxDelete(linkObject, index){
 	function clxxAdd() {
 		var url=contextPath+'/dtjsMore/addDtjsClxx?zdryZjhm='+zdryZjhm+'&zdryid='+zdryid;
 		window.top.openWindowWithSave(false, null, window, {'_p':$('dtjsMore')},
-				{title: '车辆信息新增',url: url,width: 780,inline:true,height:400}, 
+				{title: '车辆信息新增',url: url,width: 810,inline:true,height:400}, 
 			   		null, "clxxquery",null);
 		
 		

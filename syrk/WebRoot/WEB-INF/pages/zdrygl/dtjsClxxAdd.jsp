@@ -16,7 +16,8 @@ String userOrgName = userInfo.getUserOrgName();
 </head>
 <div class="easyui-layout" data-options="fit:true">
     <form action="<%=basePath%>dtjsMore/saveDtjsClxx" id="dataForm" name="dataForm" method="post" >
-    	<input type="hidden" id="pk" name="id" value="${entity.id}" />
+    	 	<input type="hidden" id="pk" name="id" value="${entity.id}" />
+    	    <input type="hidden" id="zjhm" name="zjhm" value="${entity.zjhm}" />
     	
 	    <div data-options="region:'center', split:true" style="width:500px; border-width: 0px;">
 			<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center">

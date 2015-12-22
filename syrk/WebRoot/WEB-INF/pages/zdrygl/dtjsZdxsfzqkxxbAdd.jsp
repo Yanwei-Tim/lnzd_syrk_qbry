@@ -31,21 +31,21 @@ String userOrgName = userInfo.getUserOrgName();
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right',readonly:true"/>
 				</td>
 				<td width="20%" class="dialogTd" align="right">重点人员所属细类：</td>
-	    		<td width="30%" class="dialogTd" ><input type="text" name="sslbxl" id="sslbxl" value="${entity.sslbxl}"  class="easyui-combotree" style="width:200px;"
-	    			data-options="url: contextPath + '/common/dict/BD_D_QBZDRYXLDM.js',onlyLeaf:true,
-	    			multiple:false,required:true,panelWidth:613,method:'get',lines:true,tipPosition:'left'" />
-		    	</td>
+		       	 <td width="30%" class="dialogTd"><input class="easyui-combotree" type="text" id="sslbxl" name="sslbxl" value="${entity.sslbxl}" style="width:200px;" 
+							data-options="url: contextPath + '/common/dict/BD_D_QBZDRYXLDM.js',onlyLeaf:true,multiple:false,panelWidth:200,method:'get',editable:true,lines:true"/></td>
+		       </td>
              </tr>
 		     <tr class="dialogTr">
 		      
 		        <td width="20%" class="dialogTd" align="right">作案手段：</td>
-		       <td width="30%" class="dialogTd">
-		           <input class="easyui-combotree" type="text" id="zasd" name="zasd" value="${entity.zasd}" style="width:200px;" 
-							data-options="url: contextPath + '/common/dict/XZ_D_ZASDFLHSDDM.js',onlyLeaf:true,multiple:false,panelWidth:410,method:'get',editable:true,lines:true"/>
+		       <td width="30%" class="dialogTd">					
+				  <input class="easyui-combobox" type="text"  id="zasd" name="zasd"   style="width:200px;" value="${entity.zasd}"
+					data-options="url: contextPath +  '/common/dict/XZ_D_ZASDFLHSDDM.js',
+					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
 		       </td>	
 		      <td width="20%" class="dialogTd" align="right">作案工具：</td>
 		       	 <td width="30%" class="dialogTd"><input class="easyui-combotree" type="text" id="zagj" name="zagj" value="${entity.zagj}" style="width:200px;" 
-							data-options="url: contextPath + '/common/dict/XZ_D_SAWPFLHDM.js',onlyLeaf:true,multiple:false,panelWidth:410,method:'get',editable:true,lines:true"/></td>
+							data-options="url: contextPath + '/common/dict/XZ_D_SAWPFLHDM.js',onlyLeaf:true,multiple:false,panelWidth:200,method:'get',editable:true,lines:true"/></td>
 		       </td>
     	    </tr>  
 		    <tr>
@@ -121,7 +121,7 @@ String userOrgName = userInfo.getUserOrgName();
 		       </td>
     	          <td width="20%" class="dialogTd" align="right">结伙方式：</td>
 		      <td width="30%" class="dialogTd">
-		          	<input class="easyui-validatebox" type="text" id="jhfs" name="jhfs" value="${entity.jhfs}" data-options="required:true,validType:['maxLength[16]'],invalidMessage:'结伙方式不能超过16个汉字，请重新输入！',tipPosition:'left'" style="width: 200px;" />		       
+		          	<input class="easyui-validatebox" type="text" id="jhfs" name="jhfs" value="${entity.jhfs}" data-options="required:false,validType:['maxLength[16]'],invalidMessage:'结伙方式不能超过16个汉字，请重新输入！',tipPosition:'left'" style="width: 200px;" />		       
 		          
 		       </td>
     	    </tr>

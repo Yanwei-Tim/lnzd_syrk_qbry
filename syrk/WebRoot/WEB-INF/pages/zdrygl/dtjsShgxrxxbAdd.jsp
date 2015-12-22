@@ -30,11 +30,10 @@ String userOrgName = userInfo.getUserOrgName();
 					data-options="url: contextPath +  '/common/dict/BD_D_QBZDRYLBDM.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right',readonly:true"/>
 				</td>
-				<td width="20%" class="dialogTd" align="right">重点人员所属细类：</td>
-	    		<td width="30%" class="dialogTd" ><input type="text" name="zdryxl" id="zdryxl" value="${entity.zdryxl}"  class="easyui-combotree" style="width:200px;"
-	    			data-options="url: contextPath + '/common/dict/BD_D_QBZDRYXLDM.js',onlyLeaf:true,
-	    			multiple:false,required:true,panelWidth:613,method:'get',lines:true,tipPosition:'left'" >
-		    	</td>
+		    			<td width="20%" class="dialogTd" align="right">重点人员所属细类：</td>
+		       	 <td width="30%" class="dialogTd"><input class="easyui-combotree" type="text" id="zdryxl" name="zdryxl" value="${entity.zdryxl}" style="width:200px;" 
+							data-options="url: contextPath + '/common/dict/BD_D_QBZDRYXLDM.js',onlyLeaf:true,multiple:false,panelWidth:200,method:'get',editable:true,lines:true"/></td>
+		       </td>
             </tr>
 		     <tr class="dialogTr">
 		        <td width="20%" class="dialogTd" align="right" id="jbxx_zjzlId">证件种类：</td>
