@@ -33,7 +33,7 @@ String userOrgName = userInfo.getUserOrgName();
 				<td width="20%" class="dialogTd" align="right">重点人员所属细类：</td>
 	    		<td width="30%" class="dialogTd" ><input type="text" name="sslbxl" id="sslbxl" value="${entity.sslbxl}"  class="easyui-combotree" style="width:200px;"
 	    			data-options="url: contextPath + '/common/dict/BD_D_QBZDRYXLDM.js',onlyLeaf:true,
-	    			multiple:false,required:true,panelWidth:613,method:'get',lines:true,tipPosition:'left'" >
+	    			multiple:false,required:true,panelWidth:613,method:'get',lines:true,tipPosition:'left'" />
 		    	</td>
              </tr>
 		     <tr class="dialogTr">
@@ -41,11 +41,11 @@ String userOrgName = userInfo.getUserOrgName();
 		        <td width="20%" class="dialogTd" align="right">作案手段：</td>
 		       <td width="30%" class="dialogTd">
 		           <input class="easyui-combotree" type="text" id="zasd" name="zasd" value="${entity.zasd}" style="width:200px;" 
-							data-options="url: contextPath + '/common/dict/XZ_D_ZASDFLHSDDM.js',onlyLeaf:true,multiple:false,panelWidth:410,method:'get',editable:true,lines:true">
+							data-options="url: contextPath + '/common/dict/XZ_D_ZASDFLHSDDM.js',onlyLeaf:true,multiple:false,panelWidth:410,method:'get',editable:true,lines:true"/>
 		       </td>	
 		      <td width="20%" class="dialogTd" align="right">作案工具：</td>
 		       	 <td width="30%" class="dialogTd"><input class="easyui-combotree" type="text" id="zagj" name="zagj" value="${entity.zagj}" style="width:200px;" 
-							data-options="url: contextPath + '/common/dict/XZ_D_SAWPFLHDM.js',onlyLeaf:true,multiple:false,panelWidth:410,method:'get',editable:true,lines:true"></td>
+							data-options="url: contextPath + '/common/dict/XZ_D_SAWPFLHDM.js',onlyLeaf:true,multiple:false,panelWidth:410,method:'get',editable:true,lines:true"/></td>
 		       </td>
     	    </tr>  
 		    <tr>
@@ -63,11 +63,11 @@ String userOrgName = userInfo.getUserOrgName();
     	    <tr>
     	      <td width="20%" class="dialogTd" align="right">选择对象：</td>
 			 <td width="30%" class="dialogTd"><input class="easyui-combotree" type="text" id="xzdx" name="xzdx" value="${entity.xzdx}" style="width:200px;" 
-							data-options="url: contextPath + '/common/dict/XZ_D_XZDXDM.js',onlyLeaf:true,multiple:false,panelWidth:410,method:'get',editable:true,lines:true"></td>
+							data-options="url: contextPath + '/common/dict/XZ_D_XZDXDM.js',onlyLeaf:true,multiple:false,panelWidth:410,method:'get',editable:true,lines:true"/></td>
 		       </td>
 		      <td width="20%" class="dialogTd" align="right">选择物品：</td>
 		     	 <td width="30%" class="dialogTd"><input class="easyui-combotree" type="text" id="xzwp" name="xzwp" value="${entity.xzwp}" style="width:200px;" 
-							data-options="url: contextPath + '/common/dict/XZ_D_XZWPDM.js',onlyLeaf:true,multiple:false,panelWidth:410,method:'get',editable:true,lines:true"></td>
+							data-options="url: contextPath + '/common/dict/XZ_D_XZWPDM.js',onlyLeaf:true,multiple:false,panelWidth:410,method:'get',editable:true,lines:true"/></td>
 		       </td>
     	    </tr>  
     	    <tr>
@@ -95,7 +95,7 @@ String userOrgName = userInfo.getUserOrgName();
 		       </td>
     	          <td width="20%" class="dialogTd" align="right">销赃方式：</td>
 		        <td width="30%" class="dialogTd"><input class="easyui-combotree" type="text" id="xzfs" name="xzfs" value="${entity.xzfs}" style="width:200px;" 
-							data-options="url: contextPath + '/common/dict/XZ_D_XZFSFLHDM.js',onlyLeaf:true,multiple:false,panelWidth:410,method:'get',editable:true,lines:true"></td>
+							data-options="url: contextPath + '/common/dict/XZ_D_XZFSFLHDM.js',onlyLeaf:true,multiple:false,panelWidth:410,method:'get',editable:true,lines:true"/></td>
 		       </td>
     	    </tr> 
     	    <tr>
