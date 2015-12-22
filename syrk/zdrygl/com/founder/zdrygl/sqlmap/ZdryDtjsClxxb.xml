@@ -31,11 +31,14 @@
 				 <isNotNull prepend="," property="zjhm"><![CDATA[ ZJHM=#zjhm# ]]></isNotNull>
 				 <isNotNull prepend="," property="clpp"><![CDATA[ CLPP=#clpp# ]]></isNotNull>
 				 <isNotNull prepend="," property="cllx"><![CDATA[ CLLX=#cllx# ]]></isNotNull>
-				 <isNotNull prepend="," property="clys"><![CDATA[ CLYS=#clys# ]]></isNotNull>
-				 <isNotNull prepend="," property="clhm"><![CDATA[ CLHM=#clhm# ]]></isNotNull>
+				 <isNotNull prepend="," property="csys"><![CDATA[ CSYS=#csys# ]]></isNotNull>
+				 <isNotNull prepend="," property="jdchphm"><![CDATA[ JDCHPHM=#jdchphm# ]]></isNotNull>
 				 <isNotNull prepend="," property="clly"><![CDATA[ CLLY=#clly# ]]></isNotNull>
 				 <isNotNull prepend="," property="gsr"><![CDATA[ GSR=#gsr# ]]></isNotNull>
 				 <isNotNull prepend="," property="clxxbh"><![CDATA[ CLXXBH=#clxxbh# ]]></isNotNull>
+				 <isNotNull prepend="," property="cz_cyzjdm"><![CDATA[ CZ_CYZJDM=#cz_cyzjdm# ]]></isNotNull>
+				 <isNotNull prepend="," property="cz_zjhm"><![CDATA[ CZ_ZJHM=#cz_zjhm# ]]></isNotNull>
+				 <isNotNull prepend="," property="cz_xm"><![CDATA[ CZ_XM=#cz_xm# ]]></isNotNull>
 
 								
 			,<include refid="updateXtzd"/>	
@@ -46,8 +49,8 @@
      
     <!-- 插入人员写实表 -->
     <insert id="save" parameterClass="zdryDtjsClxxb">
-        <![CDATA[ insert into ZDRY_DTJS_CLXX (ID,ZJHM,CLPP,CLLX,CLYS,CLHM,CLLY,GSR,CLXXBH,]]><include refid="insertXtzd"/>)
-		<![CDATA[ values (#id#,#zjhm#,#clpp#,#cllx#,#clys#,#clhm#,#clly#,#gsr#,#clxxbh#,]]>
+        <![CDATA[ insert into ZDRY_DTJS_CLXX (ID,ZJHM,CLPP,CLLX,CSYS,JDCHPHM,CLLY,GSR,CLXXBH,CZ_CYZJDM,CZ_ZJHM,CZ_XM,]]><include refid="insertXtzd"/>)
+		<![CDATA[ values (#id#,#zjhm#,#clpp#,#cllx#,#csys#,#jdchphm#,#clly#,#gsr#,#clxxbh#,#cz_cyzjdm#,#cz_zjhm#,#cz_xm#,]]>
 		<include refid="insertXtzdVal"/>)
     </insert>
     

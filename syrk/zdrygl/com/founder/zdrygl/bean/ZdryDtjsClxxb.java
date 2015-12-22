@@ -32,15 +32,21 @@ public class ZdryDtjsClxxb extends BaseEntity implements Serializable {
 	@FieldDesc("车辆类型")
 	private String cllx;
 	@FieldDesc("车辆颜色")
-	private String clys;
+	private String csys;
 	@FieldDesc("车辆号码")
-	private String clhm;
+	private String jdchphm;
 	@FieldDesc("车辆来源")
 	private String clly;
 	@FieldDesc("归属人")
 	private String gsr;
 	@FieldDesc("车辆信息编号")
 	private String clxxbh;
+	@FieldDesc("车主常用证件类型")
+	private String cz_cyzjdm;
+	@FieldDesc("车主证件号码")
+	private String cz_zjhm;
+	@FieldDesc("车主姓名")
+	private String cz_xm;
 	public String getId() {
 		return id;
 	}
@@ -65,17 +71,17 @@ public class ZdryDtjsClxxb extends BaseEntity implements Serializable {
 	public void setCllx(String cllx) {
 		this.cllx = cllx;
 	}
-	public String getClys() {
-		return clys;
+	public String getCsys() {
+		return csys;
 	}
-	public void setClys(String clys) {
-		this.clys = clys;
+	public void setCsys(String csys) {
+		this.csys = csys;
 	}
-	public String getClhm() {
-		return clhm;
+	public String getJdchphm() {
+		return jdchphm;
 	}
-	public void setClhm(String clhm) {
-		this.clhm = clhm;
+	public void setJdchphm(String jdchphm) {
+		this.jdchphm = jdchphm;
 	}
 	public String getClly() {
 		return clly;
@@ -94,6 +100,24 @@ public class ZdryDtjsClxxb extends BaseEntity implements Serializable {
 	}
 	public void setClxxbh(String clxxbh) {
 		this.clxxbh = clxxbh;
+	}
+	public String getCz_cyzjdm() {
+		return cz_cyzjdm;
+	}
+	public void setCz_cyzjdm(String cz_cyzjdm) {
+		this.cz_cyzjdm = cz_cyzjdm;
+	}
+	public String getCz_zjhm() {
+		return cz_zjhm;
+	}
+	public void setCz_zjhm(String cz_zjhm) {
+		this.cz_zjhm = cz_zjhm;
+	}
+	public String getCz_xm() {
+		return cz_xm;
+	}
+	public void setCz_xm(String cz_xm) {
+		this.cz_xm = cz_xm;
 	}
 
 	

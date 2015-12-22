@@ -36,13 +36,13 @@ String userOrgName = userInfo.getUserOrgName();
 		    <tr>
 		         <td width="20%" class="dialogTd" align="right">车辆颜色：</td>
 		       <td width="30%" class="dialogTd">
-		           <input class="easyui-combobox" type="text"  id="clys" name="clys"   style="width:200px;" value="${entity.clys}"
+		           <input class="easyui-combobox" type="text"  id="csys" name="csys"   style="width:200px;" value="${entity.csys}"
 	    			data-options="url: contextPath +  '/common/dict/D_CL_CSYS.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
 		       </td>
 		      <td width="20%" class="dialogTd" align="right">车辆号码：</td>
 		       <td width="30%" class="dialogTd">		          	
-		           <input class="easyui-validatebox" type="text" id="clhm" name="clhm" value="${entity.clhm}" data-options="validType:['maxLength[10]'],invalidMessage:'车辆号码不能超过10，请重新输入！',tipPosition:'left'" style="width: 200px;" />		       
+		           <input class="easyui-validatebox" type="text" id="jdchphm" name="jdchphm" value="${entity.jdchphm}" data-options="validType:['maxLength[10]'],invalidMessage:'车辆号码不能超过10，请重新输入！',tipPosition:'left'" style="width: 200px;" />		       
 		      </td>
     	    </tr>
 		    <tr>
@@ -79,8 +79,8 @@ function doInit(paramArray) {
     if("${type}"=="view"){
     	setInputReadonly("clpp", true);
     	setInputReadonly("cllx", true);
-    	setInputReadonly("clys", true);
-    	setInputReadonly("clhm", true);
+    	setInputReadonly("csys", true);
+    	setInputReadonly("jdchphm", true);
     	setInputReadonly("clly", true);
     	setInputReadonly("gsr", true);
     	setInputReadonly("clxxbh", true);
