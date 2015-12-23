@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.founder.framework.base.dao.BaseDaoImpl;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.zdrygl.bean.ZdryDtjsClxxb;
-import com.founder.zdrygl.bean.ZdryDtjsGxbgxxb;
 import com.founder.zdrygl.bean.ZdryDtjsSaxxb;
 import com.founder.zdrygl.bean.ZdryDtjsShgxrxxb;
 import com.founder.zdrygl.bean.ZdryDtjsXsxxb;

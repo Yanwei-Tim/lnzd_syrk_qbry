@@ -26,7 +26,6 @@ import com.founder.qbld.utils.QbldUtil;
 import com.founder.syrkgl.bean.RyRyjbxxb;
 import com.founder.syrkgl.service.RyRyjbxxbService;
 import com.founder.zdrygl.bean.ZdryDtjsClxxb;
-import com.founder.zdrygl.bean.ZdryDtjsGxbgxxb;
 import com.founder.zdrygl.bean.ZdryDtjsSaxxb;
 import com.founder.zdrygl.bean.ZdryDtjsSdfdxxb;
 import com.founder.zdrygl.bean.ZdryDtjsSdxdxxb;
@@ -70,25 +69,14 @@ public class ZdryDtjsController extends BaseController {
 	
 	@Resource(name="zdryZdryzbService")
 	private ZdryZdryzbService zdryZdryzbService;
-	
-	
-	@RequestMapping(value="/dtjsMain",method = RequestMethod.GET)
-	public ModelAndView zdryDtjsXsjbxxAddPre(String ryid){
-		ModelAndView mv = new ModelAndView("zdrygl/dtjs/dtjsMain");
 		
-		RyRyjbxxb ryRyjbxxb = ryRyjbxxbService.queryById(ryid);//人员基本信息
-		List zdryList =zdryZdryzbService.queryList(ryid);
-		mv.addObject("ryRyjbxxb",ryRyjbxxb);
-		mv.addObject("zdryList",zdryList);
-		return mv;
-	}		
 	@RestfulAnnotation(serverId = "3")
 	@RequestMapping(value = "/addDtjsXsjbxx", method = RequestMethod.GET)
 	public ModelAndView addDtjsXsjbxx( String zdryid,
 			SessionBean sessionBean) throws BussinessException {
 
 		    sessionBean = getSessionBean(sessionBean);
-			ModelAndView mv = new ModelAndView("zdrygl/zdryDtjsXsjbxx");
+			ModelAndView mv = new ModelAndView("zdrygl/dtjsXsjbxxAdd");
 			
 			ZdryZdryzb zdryzb=this.zdryZdryzbService.queryById(zdryid);
 			
@@ -103,7 +91,7 @@ public class ZdryDtjsController extends BaseController {
 	public ModelAndView editDtjsXsjbxx(@PathVariable(value = "id") String id,
 			SessionBean sessionBean) throws BussinessException {
 		    sessionBean = getSessionBean(sessionBean);
-			ModelAndView mv = new ModelAndView("zdrygl/zdryDtjsXsjbxx");
+			ModelAndView mv = new ModelAndView("zdrygl/dtjsXsjbxxAdd");
 			ZdryDtjsXsxxb entity = this.zdryDtjsService.queryXsjbxxById(id);
 			if (entity == null) {
 				throw new BussinessException("查询无数据！");

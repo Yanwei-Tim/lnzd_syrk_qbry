@@ -22,6 +22,10 @@ import com.founder.framework.base.entity.BaseEntity;
 public class ZdryDtjsZdxsfzqkxxb extends BaseEntity implements Serializable {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2182933894699278318L;
 	@FieldDesc("id")
 	private String id;
 	@FieldDesc("所属类别")

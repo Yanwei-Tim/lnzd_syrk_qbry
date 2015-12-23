@@ -1,25 +1,8 @@
 package com.founder.zdrygl.service;
 
-import java.util.List;
-
 import com.founder.framework.annotation.TypeAnnotation;
-import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.utils.EasyUIPage;
-import com.founder.zdrygl.bean.ZdryDtjsClxxb;
-import com.founder.zdrygl.bean.ZdryDtjsGxbgxxb;
-import com.founder.zdrygl.bean.ZdryDtjsSaxxb;
-import com.founder.zdrygl.bean.ZdryDtjsSdfdxxb;
-import com.founder.zdrygl.bean.ZdryDtjsSdxdxxb;
-import com.founder.zdrygl.bean.ZdryDtjsSdzdxxb;
-import com.founder.zdrygl.bean.ZdryDtjsSfxxb;
-import com.founder.zdrygl.bean.ZdryDtjsShgxrxxb;
-import com.founder.zdrygl.bean.ZdryDtjsSwxxb;
-import com.founder.zdrygl.bean.ZdryDtjsXsxxb;
-import com.founder.zdrygl.bean.ZdryDtjsZdxsfzqkxxb;
-import com.founder.zdrygl.bean.ZdryDtjsZszhjsbrxxb;
 import com.founder.zdrygl.bean.ZdryDtjsZtxxb;
-import com.founder.zdrygl.bean.ZdryDtjsZszhjsbrZdjlxxb;
-import com.founder.zdrygl.bean.ZdryDtjsZszhjsbrZszhjlxxb;
 
 /**
  * ****************************************************************************
