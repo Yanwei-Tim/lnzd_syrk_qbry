@@ -38,7 +38,7 @@
        <div data-options="region:'west',border:false" style="width:538px;">
            <!-- 地址管理列表 -->
            <table id="dg" class="easyui-datagrid"
-	              	data-options="url:'<%=contextPath%>/zdryzb/list',
+	              	data-options="url:'<%=contextPath%>/zdryzb/getManageList',
 						onLoadSuccess:function(data){ZdryManage.loadPoint(data,'dg');},
 						selectOnCheck:true,
 		        		checkOnSelect:true,
@@ -55,15 +55,15 @@
 						onClickRow:ZdryManage.onClickRow">
 			        <thead>
 			          <tr>
-				            <th data-options="field:'zdrygllxmc',width:70,align:'left',halign:'center',sortable:true">类型</th>
+				            <th data-options="field:'zdrygllxdm',width:70,align:'left',halign:'center',sortable:true,formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_ZDRYGLLX.js'">类型</th>
 				            <th data-options="field:'zjhm',width:120,align:'left',sortable:true,halign:'center'">身份证号码</th>
 				            <th data-options="field:'xm',width:70,align:'left',sortable:true,halign:'center'">姓名</th>
-				            <th  data-options="field:'dz_jzdzxz',width:200,align:'right',halign:'center',sortable:true">居住地址</th>
+				            <th  data-options="field:'jzd_dzxz',width:200,align:'right',halign:'center',sortable:true">居住地址</th>
 				             <th  data-options="field:'ryid',hidden:true"></th>
 				             <th  data-options="field:'dz_jzdzmlpdm',hidden:true"></th>
 				             <th  data-options="field:'syrkid',hidden:true"></th>
-				            <th data-options="field:'zbx',hidden:true"></th>
-				            <th data-options="field:'zby',hidden:true"></th>
+				            <th data-options="field:'jzd_zbx',hidden:true"></th>
+				            <th data-options="field:'jzd_zby',hidden:true"></th>
 				            <th data-options="field:'process',align:'center',width:100,halign:'center',formatter:ZdryManage.datagridProcessFormater">操作</th>
 				        </tr>
 			       </thead>
@@ -111,7 +111,7 @@
 						    	<td width="30%" class="dialogTd" align="right">重点人员类型：</td>
 						    	<td width="70%" class="dialogTd">
 									<input class="easyui-combobox" type="text" id="zdrygllxdm" name="zdrygllxdm" style="width:150px;"
-									data-options="url: contextPath +'/zdryzb/queryZdryTopLbList',valueField:'lbdm',textField:'bz',selectOnNavigation:false,method:'get'"/>
+									data-options="url: contextPath +'/common/dict/BD_D_ZDRYGLLX.js',valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/>
 									</td>
 					   	</tr>	
 				        <tr class="dialogTr">
@@ -129,7 +129,7 @@
 					    </tr>	  
 					    <tr class="dialogTr">
 						    	<td width="30%" class="dialogTd" align="right">居住地址：</td>
-						    	<td width="70%" class="dialogTd"><input type="text" name="dz_jzdzxz" id ="dz_jzdzxz" class="easyui-validatebox" data-options="required:false,validType:'maxLength[30]'"  style="width:150px;" /></td>
+						    	<td width="70%" class="dialogTd"><input type="text" name="jzd_dzxz" id ="jzd_dzxz" class="easyui-validatebox" data-options="required:false,validType:'maxLength[30]'"  style="width:150px;" /></td>
 					    </tr>	
 					    <tr class="dialogTr" style="padding-bottom:0px;margin-bottom:0px;">
 						    	<td width="100%" colspan="2" align="right">
@@ -166,13 +166,9 @@ function searchMain(){
 	var condition = document.getElementById("condition").value;
 	if(condition=="请输入重点人员证件号码、姓名或居住地址"){
 		condition="";
-	}
-	//parent.frames["main_bottom"].searchMain(condition);
-	var reloadUrl  = contextPath + '/zdryzb/list';
-	var opt = $('#dg').datagrid('options');
-	opt.url = reloadUrl;
+	}	
 	
-	$('#dg').datagrid('load',{condition:condition});  
+	$('#dg').datagrid('load',{"bz":condition});  
 	$('#dg').datagrid("clearSelections");
 }
 //查询按钮
@@ -182,7 +178,7 @@ function queryButton(){
 	//var syrkgllbdm = document.getElementById("syrkgllbdm").value;
 	//var mzdm = document.getElementById("mzdm").value;
 	var xbdm = document.getElementById("xbdm").value;
-	var dz_jzdzxz = document.getElementById("dz_jzdzxz").value;
+	var jzd_dzxz = document.getElementById("jzd_dzxz").value;
 	var zdrygllxdm = $("#zdrygllxdm").combobox("getValue");
 	if($("#zdrygllxdm").combobox("getText")==""){
 		zdrygllxdm="";
@@ -190,7 +186,7 @@ function queryButton(){
 	
 	xm= $.trim(xm);
 	sfzh= $.trim(sfzh);
-	dz_jzdzxz= $.trim(dz_jzdzxz);
+	jzd_dzxz= $.trim(jzd_dzxz);
 	
 	$('#dg').datagrid(
 			'load',
@@ -201,7 +197,7 @@ function queryButton(){
 				'zjhm': sfzh ,
 				//'mzdm':mzdm,
 				'xbdm':xbdm,
-				'dz_jzdzxz':dz_jzdzxz
+				'jzd_dzxz':jzd_dzxz
 			});
 	closeWindow("win");
 }

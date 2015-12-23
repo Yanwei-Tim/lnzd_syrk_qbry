@@ -1,10 +1,12 @@
 package com.founder.zdrygl.workflow;
 
-import javax.annotation.Resource;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.JavaDelegate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -12,11 +14,12 @@ import org.springframework.web.util.WebUtils;
 
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.components.AppConst;
-import com.founder.zdrygl.bean.ZdryGzb;
-import com.founder.zdrygl.bean.ZdryZdryzb;
-import com.founder.zdrygl.dao.ZdryGzbDao;
-import com.founder.zdrygl.service.ZdryZdryzbService;
-import com.founder.zdrygl.until.ZdryUntil;
+import com.founder.workflow.bean.BaseWorkFlowBean;
+import com.founder.workflow.service.activiti.lisener.WorkflowDelegate;
+import com.founder.zdrygl.base.model.ZdryZb;
+import com.founder.zdrygl.core.factory.ZdryAbstractFactory;
+import com.founder.zdrygl.core.inteface.ZdryService;
+import com.founder.zdrygl.core.model.Zdry;
 
 
 
@@ -34,32 +37,29 @@ import com.founder.zdrygl.until.ZdryUntil;
  */
 
 @Component
-public class ZlFail implements JavaDelegate{
-
-	@Resource(name="ZdryUntil")
-	private ZdryUntil zdryUntil;
+public class ZlFail extends WorkflowDelegate {
 
 
-	@Resource(name = "zdryZdryzbService")
-	private ZdryZdryzbService zdryZdryzbService;
-	 
-	
+	@Autowired
+	public ZdryAbstractFactory zdryFactory;
 	@Override
-	public void execute(DelegateExecution arg0) throws Exception {
-		// TODO Auto-generated method stub
-				
-		
+	public void doBusiness(BaseWorkFlowBean arg0) {
+		Map<String,Object> variables = arg0.getProcessVariables();
+		String zdrylx = (String) variables.get("zdrylx");
+		ZdryZb zdryzb = (ZdryZb) variables.get("zdryzb");
+		Zdry zdrylbdx = (Zdry) variables.get("zdrylbdx");
+		zdryzb.setZdrylb( (String) variables.get("yzdrylb"));
+		ZdryService zdryService = zdryFactory.createZdryService(zdrylx, zdryzb, zdrylbdx);
 		
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 		SessionBean sessionBean=(SessionBean)WebUtils.getSessionAttribute(request, AppConst.USER_SESSION);
 		
-		
-		String zdryId = (String) arg0.getVariable("zdryId");
+		//String zdryId = (String) variables.get("zdryId");
 	
-		ZdryZdryzb zdryZdryzb =zdryZdryzbService.queryById(zdryId);
-		zdryZdryzb.setGlzt("2");
-		zdryZdryzbService.update(zdryZdryzb, sessionBean);
-		//	zdryUntil.zdFail(syrkid, zdryxm, ywsqrId, spr, spbm, ywsqr, sfcj, yglbm, xglbm);
+//		ZdryZdryzb zdryZdryzb =zdryZdryzbService.queryById(zdryId);
+//		zdryZdryzb.setGlzt("2");
+//		zdryZdryzbService.update(zdryZdryzb, sessionBean);
+		zdryService.zdFail(sessionBean);
 	}
 	
 	

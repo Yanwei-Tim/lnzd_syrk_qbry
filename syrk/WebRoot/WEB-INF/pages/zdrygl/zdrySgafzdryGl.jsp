@@ -21,7 +21,20 @@
        var bjzbz = "<%=bjzbz%>";
        var orglevel = "<%=orglevel%>";
     </script>
-
+    <style type="text/css">
+    	.item_title{
+    		font-size: 15px;
+    		font-family: Microsoft YaHei;
+    		text-align: right;
+    		width: 110px;
+    	}
+    	.item_context{
+    		font-size: 15px;
+    		font-family: Microsoft YaHei;
+    		text-align: left;
+    		width: 155px;
+    	}
+    </style>
     <script type="text/javascript" src="<%=contextPath%>/js/zdrygl/zdrySgafzdryGl.js"></script>
     <script type="text/javascript">
 
@@ -55,7 +68,157 @@
     	
     })
     
+	function initPage(){
+		
+		initXiaFaForm();
+		
+		initCombobox();
+		
+		initOrgUserSelect();
+	}
 	
+	function initXiaFaForm(){
+		$("#xiaFaForm").form({    
+		    url:basePath+'zdrySgafzdryGl/zdryXiaFa',    
+		    onSubmit: function(){    
+		    	if($("#xiaFaForm").form("validate")){
+		    		return true;
+		    	}else{
+		    		return false;
+		    	}
+		    },    
+		    success:function(data){
+		    	var returnData = jQuery.parseJSON(data);
+		    	if(returnData.status == "error"){
+		    		$.messager.alert('下发失败',returnData.message);
+		    	}else{
+		    		$('#dg').datagrid('reload');
+		    		SgafzdryGl.closeWindow("ddtest");
+		    	}
+		    }
+		}); 
+	}
+	
+	function onOrgUserSelect(orgLevel,inputId,title){
+		var orgCode = '';
+		var textInputId = 'text_'+inputId;
+		//var valueInputId = 'value_'+inputId;
+		if(orgLevel == '10'){
+			orgCode = $('#orgList11').val();
+			if(!orgCode || orgCode == ''){
+				alert("请先选择所属市局");
+				return;
+			}
+		}else if(orgLevel == '21'){
+			orgCode = $('#orgList21').val();
+			if(!orgCode || orgCode == ''){
+				alert("请先选择所属分局");
+				return;
+			}
+		}else if(orgLevel == '32'){
+			orgCode = $('#orgList22').val();
+			if(!orgCode || orgCode == ''){
+				alert("请先选择所属派出所");
+				return;
+			}
+		}else {
+			orgCode = $('#orgList23').val();
+			if(!orgCode || orgCode == ''){
+				alert("请先选择所属责任区");
+				return;
+			}
+		}
+		
+		public_singleSelectOrgUser(orgCode, null, orgLevel, null      , null         , orgCode, null         , textInputId    , null              , null          , null          , null        , false  , ''      , window      , ''        , title);
+	//  public_singleSelectOrgUser(null   , '01', orgLevel, orgBizType, userPositions, orgCode, userIDInputID, userNameInputID, userTableIDInputID, orgCodeInputID, orgNameInputID, orgIDInputID, isCache, windowID, parentWindow, onOkMethod, dialogTitle);
+	}
+	
+	function initCombobox(){
+		orgList11_onChange(); // 二级级联选择例子初始化
+		orgList21_onChange(); // 三级级联选择例子初始化
+		orgList22_onChange(); // 三级级联选择例子初始化
+		
+		if(orglevel=="10"){//市局
+			unuseCombobox("orgList11");
+			unuseCombobox("orgList22");
+			unuseCombobox("orgList23");
+		}else if(orglevel=="21"){//分县局
+			unuseCombobox("orgList11");
+			unuseCombobox("orgList21");
+			unuseCombobox("orgList23");
+		}else if(orglevel=="32"){//派出所
+			unuseCombobox("orgList11");
+			unuseCombobox("orgList21");
+			unuseCombobox("orgList22");
+		}
+	}
+	
+	function initOrgUserSelect(){
+		if(orglevel=="10"){//市局
+			unuseOrgUserSelect("sjzrld");
+			unuseOrgUserSelect("pcszrld");
+			unuseOrgUserSelect("zrqmj");
+		}else if(orglevel=="21"){//分县局
+			unuseOrgUserSelect("sjzrld");
+			unuseOrgUserSelect("fjszrld");
+			unuseOrgUserSelect("zrqmj");
+		}else if(orglevel=="32"){//派出所
+			unuseOrgUserSelect("sjzrld");
+			unuseOrgUserSelect("fjszrld");
+			unuseOrgUserSelect("pcszrld");
+		}
+	}
+	
+	function unuseOrgUserSelect(inputId){
+		//text只读
+		setInputReadonly("text_"+inputId, true);
+		//选择按钮disable
+		$("#userSelect_"+inputId).hide();
+		 
+	}
+	
+	//禁用下拉列表	
+	function unuseCombobox(boxId){
+		setInputReadonly(boxId, true); 
+		$('#'+ boxId).combobox({required:false,editable:false});
+	}
+	
+	//市局下拉列表
+	function orgList11_onChange(newValue, oldValue) {
+		var parentOrgCode = $('#orgList11').combobox('getValue');
+		if (parentOrgCode == "") {
+			$('#orgList21').combobox('loadData', []);
+		}
+		else {
+			var url = contextPath + '/orgPublicSelect/queryComboBoxList?orgLevel=21&parentOrgCode=' + parentOrgCode;    
+		    $('#orgList21').combobox('reload', url);
+		}
+	}
+	
+	//分局下拉列表
+	function orgList21_onChange(newValue, oldValue) {
+		var parentOrgCode = $('#orgList21').combobox('getValue');
+		if (parentOrgCode == "") {
+			$('#orgList22').combobox('loadData', []);
+			$('#orgList23').combobox('loadData', []);
+		}
+		else {
+			var url = contextPath + '/orgPublicSelect/queryComboBoxList?orgLevel=32&parentOrgCode=' + parentOrgCode;    
+		    $('#orgList22').combobox('reload', url);
+		}
+	}
+
+	//派出所下拉列表
+	function orgList22_onChange(newValue, oldValue) {
+		var parentOrgCode = $('#orgList22').combobox('getValue');
+		if (parentOrgCode == "") {
+			$('#orgList23').combobox('loadData', []);
+		}
+		else {
+			var url = contextPath + '/orgPublicSelect/queryComboBoxList?orgLevel=50&parentOrgCode=' + parentOrgCode;    
+		    $('#orgList23').combobox('reload', url);
+		}
+	}
     </script>
   </head>
   <body class="easyui-layout" data-options="fit:true,border:false">
@@ -112,7 +275,7 @@
 					</tbody>
 				</table>
            </div>
-           <div id="win" class="easyui-window" title="涉公安访重点人员精确查询"  data-options="iconCls:'icon-search',
+           <div id="win" class="easyui-window" title="实有人口精确查询"  data-options="iconCls:'icon-search',
                 collapsible:false,minimizable:false,maximizable:false,
 		        modal:true,closed:true,width:380,height:300">
 		        <form id ="queryForm" >
@@ -122,7 +285,7 @@
 					    	<td width="70%" class="dialogTd">
 								<input class="easyui-combobox" id = "query_searchStatus" name ="searchStatus" 
 								data-options="required:true,selectOnNavigation:false,isTopLoad:false,
-									valueField: 'id',textField: 'text'"  style="width:180px;"/>
+									valueField: 'id',textField: 'text'" />
 							</td>
 					   	</tr>	
 				        <tr class="dialogTr">

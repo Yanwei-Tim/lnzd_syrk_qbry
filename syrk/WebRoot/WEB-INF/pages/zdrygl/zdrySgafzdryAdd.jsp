@@ -1,23 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/pages/commonInclude.jsp"%>
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>新增涉公安访重点人员</title>
 <script type="text/javascript"
 	src="<%=contextPath%>/js/zdrygl/zdrySgafzdryAdd.js"></script>
-<title>新增涉公安访重点人员</title>
 </head>
 
-<body style="margin-top:20px" class="bodybg">
+<body style="margin-top: 20px; margin-bottom: 10px" class="bodybg">
+	<div data-options="region:'center',split:true" style="border-width: 0px; margin: 0 0 0; text-align: center;"
+		class="bodybg">
 
-<div data-options="region:'center', split:true" style="border-width: 0px;margin:0 0 0;text-align:center;" class="bodybg">
-    	<table height="100%" style="margin:0 auto;"><tr><td height="100%" valign="top" align="center">
-		<div class="pop_conta">
-		<div class="pop_contb">
-		<div class="pop_contc">
-		<div data-options="region:'center', split:true" style="width:800px; border-width: 0px;">
-		  <form id="dataForm" action="<%=basePath%>zdrySgafzdryGl/saveAdd" method="post" enctype="multipart/form-data">
+		<form id="dataForm" action="<%=basePath%>zdrySgafzdryGl/saveAdd" method="post" enctype="multipart/form-data">
 			
 			<input type="hidden" id="jbxx_hjd_dzms" name="ryRyjbxxb.hjd_dzms"  value="${addVO.ryRyjbxxb.hjd_dzms}"  /> 
 			<input type="hidden" id="jbxx_hjd_xzqhdm" name="ryRyjbxxb.hjd_xzqhdm" value="${addVO.ryRyjbxxb.hjd_xzqhdm}" /> 
@@ -45,7 +41,7 @@
 					<td width="20%" class="dialogTd" align="right" id="jbxx_xm_td">姓名：</td>
 					<td width="30%" class="dialogTd">
 						<input class="easyui-validatebox" type="text" id="jbxx_xm" name="ryRyjbxxb.xm"
-							value="${addVO.ryRyjbxxb.xm}" style="width: 200px;" maxlength="20"
+							value="${addVO.ryRyjbxxb.xm}" style="width: 200px;" maxlength="50"
 							data-options="tipPosition:'left',required:true" />
 					</td>
 				</tr>
@@ -62,11 +58,11 @@
 					<tr class="dialogTr">
 				    	<td width="20%" class="dialogTd" align="right">居住地：</td>
 				    	<td width="50%" class="dialogTd" colspan="3">
-					    	<input class="easyui-combobox" id="czrk_jzd1" style="width:380px;" value="${addVO.ryRyjbxxb.jzd_mlpxz}" data-options="required:true,mode:'remote',method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false">
+					    	<input class="easyui-combobox" id="czrk_jzd1" style="width:380px;" value="${addVO.ryRyjbxxb.jzd_mlpxz}" data-options="required:false,mode:'remote',method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false">
 					    	<input type="hidden" id="czrk_jzd_mlpdm" name="ryRyjbxxb.jzd_mlpdm" value="${addVO.ryRyjbxxb.jzd_mlpdm}"/>
 					    	<input type="hidden" id="czrk_jzd_mlpxz" name="ryRyjbxxb.jzd_mlpxz" value="${addVO.ryRyjbxxb.jzd_mlpxz}"/>
-
-					    	<input class="easyui-combobox" id="czrk_jzd2" style="width:200px;" value="${fn:replace(addVO.ryRyjbxxb.jzd_dzxz, addVO.ryRyjbxxb.jzd_mlpxz, '')}" data-options="required:true,mode:'remote',method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false">
+					    	&nbsp;&nbsp;
+					    	<input class="easyui-combobox" id="czrk_jzd2" style="width:200px;" value="${fn:replace(addVO.ryRyjbxxb.jzd_dzxz, addVO.ryRyjbxxb.jzd_mlpxz, '')}" data-options="required:false,mode:'remote',method:'post',panelHeight: 22,valueField:'id',textField:'text',selectOnNavigation:false">
 					    	<input type="hidden" id="czrk_jzd_dzid" name="ryRyjbxxb.jzd_dzid" value="${addVO.ryRyjbxxb.jzd_dzid}"/>
 					    	<input type="hidden" id="czrk_jzd_xzqhdm" name="ryRyjbxxb.jzd_xzqhdm" value="${addVO.ryRyjbxxb.jzd_xzqhdm}"/>
 					    	<input type="hidden" id="czrk_jzd_dzxz" name="ryRyjbxxb.jzd_dzxz" value="${addVO.ryRyjbxxb.jzd_dzxz}"/>
@@ -95,15 +91,6 @@
 					</tr>
 				</tbody>
 		</form>
-		</div>
-		<div style="height:6px;font-size:1px;"></div>
-
-
-		</div>
-	    </div>
-	    </div>
-    	</td></tr></table>
-</div>
+	</div>
 </body>
-
 </html>

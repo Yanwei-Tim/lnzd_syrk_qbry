@@ -1,24 +1,22 @@
 package com.founder.service.provinceservice.service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.xml.namespace.QName;
 
+import net.sf.json.JSONObject;
+
 import org.apache.axis2.addressing.EndpointReference;
 import org.apache.axis2.client.Options;
 import org.apache.axis2.rpc.client.RPCServiceClient;
 
-import net.sf.json.JSONObject;
 import com.founder.framework.config.SystemConfig;
-import com.founder.framework.httpService.CCSHttpClient;
+import com.founder.framework.httpService.BaseHttpClient;
 import com.founder.framework.httpService.HttpClientResultBean;
 import com.founder.framework.utils.StringUtils;
-import com.founder.qbld.bean.CkyjxxQsb;
-import com.founder.qbld.utils.QbldUtil;
 import com.founder.service.provinceservice.bean.ServiceLdyBean;
 import com.founder.service.provinceservice.bean.ServiceLkxxBean;
 import com.founder.service.provinceservice.bean.ServiceResult;
@@ -38,7 +36,7 @@ import com.founder.service.provinceservice.bean.ServiceZtryBean;
  * @UpdateRemark: [说明本次修改内容,(如多次修改保留历史记录，增加修改记录)]
  * @Version: [v1.0]
  */
-public class ServiceHttpClient extends CCSHttpClient {
+public class ServiceHttpClient extends BaseHttpClient {
 
 	private static Map<String, String> map = new HashMap<String, String>();
 	static {

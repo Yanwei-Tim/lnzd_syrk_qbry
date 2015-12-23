@@ -3,9 +3,12 @@ package com.founder.service.activitytrace.service;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+
 import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.founder.framework.utils.StringUtils;
 import com.founder.service.activitytrace.bean.RkRyhdgjb;
 import com.founder.service.activitytrace.dao.RkRyhdgjbDao;
@@ -14,7 +17,7 @@ import com.founder.service.provinceservice.service.ServiceHttpClient;
 import com.founder.syrkgl.bean.RyRyjbxxb;
 import com.founder.syrkgl.dao.RyRyjbxxbDao;
 import com.founder.syrkgl.service.RyRylxfsxxbService;
-import com.founder.zdrygl.dao.ZdryTrailJkbDao;
+import com.founder.zdrygl.base.dao.ZdryTrailJkbDao;
 
 @Service("rkRyhdgjbService")
 @Transactional

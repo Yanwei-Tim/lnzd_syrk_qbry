@@ -1,10 +1,10 @@
 package com.founder.zdrygl.workflow;
 
-import javax.annotation.Resource;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
-import org.activiti.engine.delegate.DelegateExecution;
-import org.activiti.engine.delegate.JavaDelegate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -12,11 +12,13 @@ import org.springframework.web.util.WebUtils;
 
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.components.AppConst;
-import com.founder.zdrygl.bean.ZdryGzb;
-import com.founder.zdrygl.bean.ZdryZdryzb;
-import com.founder.zdrygl.dao.ZdryGzbDao;
-import com.founder.zdrygl.service.ZdryZdryzbService;
-import com.founder.zdrygl.until.ZdryUntil;
+import com.founder.workflow.bean.BaseWorkFlowBean;
+import com.founder.workflow.service.activiti.lisener.WorkflowDelegate;
+import com.founder.zdrygl.base.model.ZdryZb;
+import com.founder.zdrygl.core.factory.ZdryAbstractFactory;
+import com.founder.zdrygl.core.inteface.ZdryService;
+import com.founder.zdrygl.core.model.ZOBean;
+import com.founder.zdrygl.core.model.Zdry;
 
 
 
@@ -34,43 +36,37 @@ import com.founder.zdrygl.until.ZdryUntil;
  */
 
 @Component
-public class WorkReject implements JavaDelegate{
+public class WorkReject extends WorkflowDelegate {
+	@Autowired
+	public ZdryAbstractFactory zdryFactory;
 
-	@Resource(name="ZdryUntil")
-	private ZdryUntil zdryUntil;
-
-	
-	
 	@Override
-	public void execute(DelegateExecution arg0) throws Exception {
-		// TODO Auto-generated method stub
-				
+	public void doBusiness(BaseWorkFlowBean arg0) {
+		Map<String,Object> variables = arg0.getProcessVariables();
 		
+		String zdrylx = (String) variables.get("zdrylx");
+		ZdryZb zdryzb = (ZdryZb) variables.get("zdryZb");
+		Zdry zdrylbdx = (Zdry) variables.get("zdrylbdx");
+		ZdryService zdryService = zdryFactory.createZdryService(zdrylx);
 		
-	
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 		SessionBean sessionBean=(SessionBean)WebUtils.getSessionAttribute(request, AppConst.USER_SESSION);
 		
-		String sqlxdm=(String) arg0.getVariable("sqlxdm");//申请类型
-		String zdryId=(String) arg0.getVariable("zdryId");
+		String sqlxdm=(String) variables.get("sqlxdm");//申请类型
+		/*String zdryId=(String) arg0.getVariable("zdryId");
 		String zdryxm=(String) arg0.getVariable("xm");
 		String ywsqrId=(String) arg0.getVariable("applyUserId");
 		String cghZdryId=(String) arg0.getVariable("cghZdryId");
 		String spyj=(String) arg0.getVariable("spyj");
 		String spr=sessionBean.getUserId();
-		String spbm=sessionBean.getUserOrgCode();
+		String spbm=sessionBean.getUserOrgCode();*/
 		
 		if(sqlxdm.equals("01")){//列管
-			zdryUntil.lgFail(zdryId, zdryxm, ywsqrId, spr, spbm, cghZdryId,sessionBean);
+			zdryService.lgFail(sessionBean , new ZOBean(zdryzb, zdrylbdx));
+		}else if(sqlxdm.equals("02")){//撤管
+			zdryService.cgFail(sessionBean , new ZOBean(zdryzb, zdrylbdx));
+		}else if(sqlxdm.equals("04")){//请假
 		}
-		if(sqlxdm.equals("02")){//撤管
-			zdryUntil.cgFail(zdryId, zdryxm, ywsqrId, spr, spbm, cghZdryId,sessionBean);
-		}
-		if(sqlxdm.equals("04")){//请假
-			String qjId=(String) arg0.getVariable("qjId");			
-			zdryUntil.qjFail(qjId,sessionBean.getUserName(),spr,spyj,sessionBean);
-		}
-		
 	}
 	
 	

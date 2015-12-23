@@ -121,7 +121,7 @@
 		<property name="jobExecutorActivate" value="false" />
 	</bean>
 
-	<bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
+	<!-- <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
 		<property name="processEngineConfiguration" ref="processEngineConfiguration" />
 	</bean>
 
@@ -135,7 +135,21 @@
 	
 	<bean id="processDefinitionService" class="com.founder.workflow.service.ActivitiProcessDefinitionService" />
 	<bean id="processManageService" class="com.founder.workflow.service.ActivitiProcessManageService" />
-	<bean id="tasksService" class="com.founder.workflow.service.ActivitiTaskService" />
+	<bean id="tasksService" class="com.founder.workflow.service.ActivitiTaskService" /> -->
 	<import resource="spring-source.xml" />
 	
+	<!-- 规则引擎  连接池配置-->
+	<bean id="droolsRequest" class="com.founder.drools.core.request.DroolsRequest">
+		<property name="serverIp" value="192.168.1.247"></property>
+		<property name="serverPort" value="8081"></property>
+		<property name="connectTimeout" value="30000"></property>
+		<property name="connectionRequestTimeout" value="3000"></property>
+		<property name="socketTimeout" value="3000" />
+		
+		<property name="maxCon" value="20" />
+		<property name="minCon" value="10" />
+		<property name="releaseTime" value="60000" /><!-- 每分钟 -->
+		<property name="releaseTimeOut" value="10000" /><!-- 清楚超过10秒的连接 -->
+		<property name="useConPool" value="0" /><!-- 使用连接池 -->
+	</bean>
 </beans>

@@ -35,8 +35,8 @@ import com.founder.syrkgl.service.SyrkJwryxxbService;
 import com.founder.syrkgl.service.SyrkSyrkxxzbService;
 import com.founder.syrkgl.vo.SyrkgnVo;
 import com.founder.syrkgl.vo.SyrkxxzsVo;
-import com.founder.zdrygl.bean.ZdryZdryzb;
-import com.founder.zdrygl.service.ZdryZdryzbService;
+import com.founder.zdrygl.base.model.ZdryZb;
+import com.founder.zdrygl.base.service.ZdryInfoQueryService;
 import com.google.gson.Gson;
 
 /***
@@ -60,8 +60,9 @@ public class SyrkEditController extends BaseController {
 	private SyrkEditService syrkEditService;
 	@Resource(name = "syrkSyrkxxzbService")
 	private SyrkSyrkxxzbService syrkSyrkxxzbService;
-	@Resource(name = "zdryZdryzbService")
-	private ZdryZdryzbService zdryZdryzbService;
+
+	@Resource(name = "zdryQueryService")
+	private ZdryInfoQueryService zdryQueryService;
 	@Resource(name = "ryRyjbxxbService")
 	private RyRyjbxxbService ryRyjbxxbService;
 	@Resource(name = "ryRylxfsxxbService")
@@ -108,17 +109,18 @@ public class SyrkEditController extends BaseController {
 		}
 		String lxdh =ryRylxfsxxbService.queryLastLxfs(ryid);
 		//查询本辖区重口信息,等待需求确认
-		List<ZdryZdryzb> zdryList = zdryZdryzbService.queryZdryBySyrkid(syrkid);
+		List<?> zdryList = zdryQueryService.queryListBySyrkId(syrkid);		
 		if(!zdryList.isEmpty()){
-			ZdryZdryzb temp; 
+			ZdryZb temp; 
 			for (int i = 0; i < zdryList.size(); i++) {
-				temp = zdryList.get(i);
+				temp = (ZdryZb)zdryList.get(i);
 				if("1".equals(temp.getGlzt())){
 					zdryList.remove(i);
 					i--;
 				}
 			}
 		}
+		
 		SyrkSyrkxxzb temp = null;
 		String syrklx="";
 		List<Map<String, String>> syrkList = new ArrayList<Map<String, String>>();
@@ -148,7 +150,7 @@ public class SyrkEditController extends BaseController {
 		
 		String zdry = "" ;
 		for (int i = 0; i < zdryList.size(); i++) {
-			zdry += zdryList.get(i).getZdrygllxdm()+",";
+			zdry += ((ZdryZb)zdryList.get(i)).getZdrygllxdm()+",";
 		}
 		zdry = zdry.lastIndexOf(",") == zdry.length() ?zdry.substring(0, zdry.length()-1):zdry;
 		mv.addObject("zdry", zdry);

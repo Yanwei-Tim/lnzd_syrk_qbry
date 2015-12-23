@@ -7,9 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>重点人员档案</title>
-<script type="text/javascript" src="<%=contextPath%>/js/zdryinfo-mould.js"></script>
+<script type="text/javascript" src="<%=contextPath%>/js/zdrygl/zdryinfo-mould.js"></script>
 <script type="text/javascript" src="<%=contextPath%>/js/infoEdit.js"></script>
-
 <link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/trace.css"></link>
 <style>
 .nameTable{ width:420px;height:auto;overflow:hidden;}
@@ -41,13 +40,13 @@
 </div>
 <table >
 	<tr>
-		<td colspan="2" align="left"><strong><span id="dwmc_dw">${zdry.xm }</span><span>&nbsp;&nbsp;<a id="syrkid" href="javascript:void(0);" onclick="openSyrk('${zdry.xm }','${zdry.ryid}','${zdry.syrkid}')">实有人口管理</a></span></strong></td>
+		<td colspan="2" align="left"><strong><span id="dwmc_dw">${zdry.xm }</span><span>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="openSyrk('${zdry.xm }','${zdry.ryid}','${zdry.syrkid}')">实有人口管理</a></span></strong></td>
 	</tr>
 	<tr>
 		<td>
 				<table cellpadding="0" cellspacing="0" class="nameTable" >
 					<tr>
-						<th  align="right" width="130">管理类型：</th>
+						<th  align="right" width="130">已列管类型：</th>
 						<td width="270" colspan="3">
 							<span id="zdrylxTag">
 								${zdrylx }
@@ -75,14 +74,13 @@
 							<td width="80"><script type="text/javascript">document.write(window.top.getDictName(contextPath + '/common/dict/GB_D_MZDM.js', "${zdry.mzdm}"));</script></td>
 					</tr>
 					<tr>
-						<th  align="right" width="130">出生日期：</th> <td width="90">${zdry.csrq }</td> 
-						<th  align="right" width="100">联系电话：</th> <td width="80"> ${zdry.lxdh }</td>
+						<th  align="right" width="130">出生日期：</th> <td width="270" colspan="3">${zdry.csrq }</td> 						
 					</tr>
 					<tr>
-						<th  align="right" width="130">户籍地址：</th> <td width="270" colspan="3">${zdry.dz_hjdzxz }</td>
+						<th  align="right" width="130">户籍地址：</th> <td width="270" colspan="3">${zdry.hjd_dzxz }</td>
 					</tr>
 					<tr>
-						<th  align="right" width="130">居住地址：</th> <td width="270" colspan="3">${zdry.dz_jzdzxz }</td>
+						<th  align="right" width="130">居住地址：</th> <td width="270" colspan="3">${zdry.jzd_dzxz }</td>
 					</tr>
 					<tr>
 						<th  align="right" width="130">主要问题及现实表现：</th> <td width="270" colspan="3">${zdry.zywtjxsbx }</td>
@@ -94,7 +92,7 @@
 </div>
 	<!-- 页面打开模式 -->
 	<input type="hidden" id="mode_"  value="${mode}" />	
-	<input type="hidden" id="formPara" value='"xt_jkbz":"${zdry.xt_jkbz}", "lxdh":"${zdry.lxdh}", "xm":"${zdry.xm}","sfzh":"${zdry.zjhm}"' /><!-- 表单提交附加参数 -->
+	<input type="hidden" id="formPara" value='"xm":"${zdry.xm}","sfzh":"${zdry.zjhm}"' /><!-- 表单提交附加参数 -->
 	<input type="hidden" id="serverListPara" value="rylbdm=${zdry.zdrygllxdm}" /><!-- 业务功能获取参数 -->
 	<input type="hidden" id="serverPara" value="ryid=${zdry.ryid}&syrkid=${zdry.syrkid}&id=${zdry.id}" /><!-- 业务办理附加参数  -->
 	<input type="hidden" id="queryPara" value="ryid=${zdry.ryid}&id=${zdry.id}" /><!-- 表单查询附加参数 -->
@@ -102,9 +100,6 @@
 	<input type="hidden" id="sfzh" value="${zdry.zjhm}" />
 	<input type="hidden"  id="ryid_main" value="${zdry.ryid}" />
 	<input type="hidden"  id="zdryId" value="${zdry.id}" />
-	
-	<input type="hidden" id="xt_jkbz"  value="${zdry.xt_jkbz}" />	
-	<input type="hidden" id="lxdh"  value="${zdry.lxdh}" />
 	
 <div class="clear"></div>
 <div class="editdiv"><a href="javascript:void(0);" class="savebtn">档案编辑完成</a><a href="javascript:void(0);" class="editbtn"  style="display:none">编辑档案信息</a></div>
@@ -132,13 +127,7 @@
 <div class="rttitle" >关联信息</div>
 <ul class="rtul" id="relationMessage" style="text-align:center">
 </ul>
-<!-- 
 <div class="rttitle" >活动轨迹</div>
-<div class="rtshow" style="background-color: #B5CBDE;">
-	<input type="checkbox" id="trailFlag" onclick="isTrail()" />
-	<font color="black">是否车辆监管</font>
-</div>
- -->
 <div class="rtshow"><div class="timelinebody"><div class="timeliall"></div></div><div class="clear"></div></div>
 </c:if>
 </div>
@@ -160,6 +149,7 @@
 <script type="text/javascript">
 //重点人员类型
 var zdrylxJson='${zdrylxJson}';
+
 var infoPara = {
 		mainUrl:"/zdryEdit/queryRyzsxx",
 		mainPara:"zdrylxJson="+zdrylxJson,
@@ -179,11 +169,6 @@ var infoPara = {
 		del_childInfo:"/zdryEdit/delete_xxzsnrb"
 	};
 $(document).ready(function(){
-	var syrkid='${zdry.syrkid}';
-
-	if(!syrkid){
-		$("#syrkid").hide();
-	}
 	var mode_ = $("#mode_").val();
  	if(mode_=="view"){
  		$("#server_Menu").hide();
@@ -325,11 +310,10 @@ function loadRelationMessage() { // 显示关联信息
 	});
 }
 
-//ry_type参数解决《实有人口编辑页面，业务办理区域不应该有重点人员转类的按钮》所填加
 function openSyrk(xm,ryid,syrkid){
-	var editUrl = "/syrkEdit/"+ryid+"/"+syrkid+"/view?ry_type=1";
+	var editUrl = "/syrkEdit/"+ryid+"/"+syrkid+"/view";
 	if($("#mode_").val()=="view"){
-		editUrl += "&mode=view";
+		editUrl += "?mode=view";
 	}
 	menu_open("实有人口【"+xm+"】",editUrl);
 }
