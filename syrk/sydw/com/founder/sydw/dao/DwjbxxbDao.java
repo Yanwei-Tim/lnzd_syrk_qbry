@@ -31,6 +31,11 @@ import com.founder.sydw.vo.SydwxxzsVO;
 @Repository("dwjbxxbDao")
 public class DwjbxxbDao extends BaseDaoImpl {
 
+	
+	public String queryXzqhNamebyXzqhdm(String xzqhdm){
+		return (String) queryForObject("Dwjbxxb.queryXzqhNamebyXzqhdm", xzqhdm);
+	}
+	
 	public Dwjbxxb queryDwjbxxbById(String id) {
 		return (Dwjbxxb) queryForObject("Dwjbxxb.queryById", id);
 	}

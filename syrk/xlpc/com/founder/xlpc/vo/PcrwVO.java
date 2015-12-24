@@ -11,7 +11,6 @@ import com.founder.framework.base.entity.BaseEntity;
  * @日期: 2015-11-24 上午11:00:21
  */
 public class PcrwVO extends BaseEntity implements Serializable {
-	
 	private static final long serialVersionUID = 6458346650098513321L;
 	@FieldDesc("GZXXBH")
 	private String gzxxbh;
@@ -59,6 +58,66 @@ public class PcrwVO extends BaseEntity implements Serializable {
 	private String xgdw;
 	@FieldDesc("巡逻路线代码")
 	private String xldm;
+	@FieldDesc("盘查id")
+	private String pcid;
+	@FieldDesc("发生时间")
+	private String fssj;
+	@FieldDesc("处理状态")
+	private String clzt;
+	@FieldDesc("采集人")
+	private String cjr;
+	@FieldDesc("x坐标点")
+	private String xpoint;
+	@FieldDesc("y坐标点")
+	private String ypoint;
+
+	public String getPcid() {
+		return pcid;
+	}
+
+	public void setPcid(String pcid) {
+		this.pcid = pcid;
+	}
+
+	public String getFssj() {
+		return fssj;
+	}
+
+	public void setFssj(String fssj) {
+		this.fssj = fssj;
+	}
+
+	public String getClzt() {
+		return clzt;
+	}
+
+	public void setClzt(String clzt) {
+		this.clzt = clzt;
+	}
+
+	public String getCjr() {
+		return cjr;
+	}
+
+	public void setCjr(String cjr) {
+		this.cjr = cjr;
+	}
+
+	public String getXpoint() {
+		return xpoint;
+	}
+
+	public void setXpoint(String xpoint) {
+		this.xpoint = xpoint;
+	}
+
+	public String getYpoint() {
+		return ypoint;
+	}
+
+	public void setYpoint(String ypoint) {
+		this.ypoint = ypoint;
+	}
 
 	public String getGzxxbh() {
 		return gzxxbh;

@@ -71,6 +71,7 @@ public class SydwQueryController extends BaseController{
 	 * @param entity
 	 * @return
 	 */
+	@SuppressWarnings("rawtypes")
 	@RequestMapping(value = "/queryDwByDzDm",method = RequestMethod.GET)
 	public @ResponseBody List queryDwByDzDm(Dwjbxxb entity){
 		SessionBean sessionBean = getSessionBean();
@@ -80,7 +81,6 @@ public class SydwQueryController extends BaseController{
 		}
 		return sydwQueryService.queryDwByDzDm(entity);
 	}
-	
 	/**
 	 * 单位核实列表
 	 * @param page
@@ -95,24 +95,10 @@ public class SydwQueryController extends BaseController{
 		page.setPagePara(rows);
 		SessionBean sessionBean = getSessionBean();
 		if(null != sessionBean){
-			//entity.setGlbmid(sessionBean.getUserOrgCode());
-			//entity.setGlpcsid((String)sessionBean.getExtendMap().get("ssPcsCode"));
+			entity.setGlpcsid((String)sessionBean.getExtendMap().get("ssPcsCode"));
 		}
 		return sydwQueryService.queryDwHs(page, entity);
 	}
-	
-	
-//	//实有单位核实列表统计列表记录数;
-//	@RequestMapping(value = "/queryCountSydwHs", method = RequestMethod.POST)
-//	public @ResponseBody
-//		long queryCountSydwHs(Dwjbxxb entity) {
-//			SessionBean sessionBean = getSessionBean();
-//		if(null != sessionBean){
-//			//	entity.setGlpcsid((String)sessionBean.getExtendMap().get("ssPcsCode"));
-//		}
-//		return sydwQueryService.queryCountSydwHs(entity);
-//	}
-	
 	/**
 	 * 只查询单位基本信息表
 	 * @param page
@@ -170,7 +156,6 @@ public class SydwQueryController extends BaseController{
 	@RequestMapping(value = "/updateHs",method = RequestMethod.GET)
 	public @ResponseBody int updateHs(Dwjbxxb entity){
 		SessionBean sessionBean = getSessionBean();
-		
 		return sydwQueryService.updateHs(entity,sessionBean);
 	}
 	

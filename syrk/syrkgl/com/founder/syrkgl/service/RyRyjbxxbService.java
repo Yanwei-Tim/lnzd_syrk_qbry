@@ -74,6 +74,17 @@ public interface RyRyjbxxbService {
 	@MethodAnnotation(value = "新增或更新", type = logType.insert)
 	public void saveOrUpdate(RyRyjbxxb entity, SessionBean sessionBean)
 			throws Exception;
+	/**
+	 * @Title: saveHsJbxxb
+	 * @Description: TODO(核实新增)
+	 * @param entity
+	 * @param sessionBean 设定文件
+	 * @return void 返回类型
+	 * @throws
+	 */
+	@MethodAnnotation(value = "新增", type = logType.insert)
+	public void saveHsJbxxb(RyRyjbxxb entity, SessionBean sessionBean)
+			throws Exception;
 
 	/**
 	 * @Title: delete

@@ -15,9 +15,6 @@
 <script type="text/javascript">
    var orglevel = "<%=orglevel%>";
 </script>
-<style type="text/css">
-	.pphoto_1{margin:0 0 0 0;width:auto; float:center;text-align:center;}
-</style>
 <script type="text/javascript" src="<%=contextPath%>/js/syrkgl/syrkGlAdd.js"></script>
 
 </head>
@@ -149,7 +146,7 @@
    				<!-- 实有人口业务类型分类 -->
    				<form action="<%=basePath%>syrkGl/save" id="czrkForm" name="czrkForm" method="post">
    				<input type="hidden" name="isCheck" value="${isCheck }">
-   				<input type="hidden" name="zbid" value="${ryRyjbxxb.id}"/>
+   				<input type="hidden" name="zbid" value="${ryRyjbxxb.ryid}"/>
 				<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center" style="display: none;" id="czrkTable" delayParse="true">
     				<tbody>
     				<input type="hidden" id="czrk_id" name="czrk.id" value="${czrk.id}"/>
@@ -267,7 +264,7 @@
 
    				<form action="<%=basePath%>syrkGl/save" id="jzrkForm" name="jzrkForm" method="post">
 				<input type="hidden" name="isCheck" value="${isCheck }">
-				<input type="hidden" name="zbid" value="${ryRyjbxxb.id}"/>
+				<input type="hidden" name="zbid" value="${ryRyjbxxb.ryid}"/>
 				<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center" style="display: none;" id="jzrkTable" delayParse="true">
     				<tbody>
     				<input type="hidden" id="jzrk_id" name="jzrk.id" value="${jzrk.id}"/>
@@ -363,7 +360,7 @@
 
    				<form action="<%=basePath%>syrkGl/save" id="ldrkForm" name="ldrkForm" method="post">
 				<input type="hidden" name="isCheck" value="${isCheck }">
-				<input type="hidden" name="zbid" value="${ryRyjbxxb.id}"/>
+				<input type="hidden" name="zbid" value="${ryRyjbxxb.ryid}"/>
 				<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center" style="display: none;" id="ldrkTable" delayParse="true">
     				<tbody>
     				<input type="hidden" id="ldrk_id" name="ldrk.id" value="${ldrk.id}"/>
@@ -484,9 +481,9 @@
 				</table>
     			</form>
 
-   				<form action="<%=basePath%>syrkGl/save" id="jwryForm" name="jwryForm" method="post" enctype="multipart/form-data">
+   				<form action="<%=basePath%>syrkGl/save" id="jwryForm" name="jwryForm" method="post">
 				<input type="hidden" name="isCheck" value="${isCheck }">
-				<input type="hidden" name="zbid" value="${ryRyjbxxb.id}"/>
+				<input type="hidden" name="zbid" value="${ryRyjbxxb.ryid}"/>
 				<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center" style="display: none;" id="jwryTable" delayParse="true">
     				<tbody>
     				<input type="hidden" id="jwry_id" name="jwry.id" value="${jwry.id}"/>
@@ -498,22 +495,9 @@
 					    <td width="20%" class="dialogTd" align="right">国籍（地区）：</td>
 				    	<td width="30%" class="dialogTd"><input class="easyui-combobox-delay" type="text" id="jwry_gjdm" name="jwry.gjdm" value="${jwry.gjdm}" style="width:200px;" 
 							data-options="required:true,url: contextPath + '/common/dict/GB_D_GJHDQDM.js',valueField:'id',textField:'text',selectOnNavigation:false,method:'get',tipPosition:'right',onChange:jwry_gjdm_onChange"/></td> 
-					    <!--  
 					    <td width="50%" class="dialogTd" rowspan="9" colspan="2" align="center" style="border: 1px solid #dedfe3;">
 					       <img src="<%=contextPath%>/common/skin/images/empty_ryzp.jpg" style="width:162px;height:200px;"/>
 					    </td>
-					    -->
-					    <td width="50%" class="dialogTd" colspan="2" rowspan="9" style="vertical-align: top;" >
-						<div class="pphoto_1">
-							<div id="topPhotoid" style="width:210px;height:260px;border:solid 1px #e2e2e2;text-align:center;">
-								<img id="imgHeadPhoto" src="<%=contextPath%>/common/skin/images/empty_ryzp.jpg" style="width:210px;height:260px;" alt="" />
-							</div>
-							<input onchange="PreviewImage(this,'imgHeadPhoto','topPhotoid');" type="file" name="uploadFile" id="upload" style="width:5px;" 
-							style="position:absolute;z-index:10;right:310px;filter:alpha(opacity=0);opacity=0;"
-						    class="easyui-validatebox" data-options="validType:['imgFile'],tipPosition:'left',invalidMessage:'请选择图片格式的文件！'" />
-								<span info="ryid_main,RY_RYJBXXB,人员基本信息表" style="position:absolute;margin-top: 0px;right:305px;" class="addphoto"></span>
-			    	    </div>
-			    	    </td>
 					</tr>
 					<tr class="dialogTr">
 					    <td width="20%" class="dialogTd" align="right">证件种类：</td>
@@ -533,12 +517,12 @@
 					<tr class="dialogTr">
 					    <td width="20%" class="dialogTd" align="right">外文姓：</td>
 		    	        <td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="jwry_wwx" name="jwry.wwx" value="${jwry.wwx}" style="width:200px;" maxlength="40"
-		    	        	data-options="required:true,validType:['letter'],charSet:'half',tipPosition:'right'"/></td>
+		    	        	data-options="required:true,validType:['letterOrSpace'],charSet:'half',tipPosition:'right'"/></td>
 					</tr>
 					<tr class="dialogTr">
 					    <td width="20%" class="dialogTd" align="right">外文名：</td>
 		    	        <td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="jwry_wwm" name="jwry.wwm" value="${jwry.wwm}" style="width:200px;" maxlength="40"
-		    	        	data-options="required:true,validType:['letter'],charSet:'half',tipPosition:'right'"/></td>
+		    	        	data-options="required:true,validType:['letterOrSpace'],charSet:'half',tipPosition:'right'"/></td>
 					</tr>
 					<tr class="dialogTr">
 					    <td width="20%" class="dialogTd" align="right">性别：</td>
@@ -722,7 +706,7 @@
     			
     			<form action="<%=basePath%>syrkGl/save" id="wlrkForm" name="wlrkForm" method="post">
 				<input type="hidden" name="isCheck" value="${isCheck }">
-				<input type="hidden" name="zbid" value="${ryRyjbxxb.id}"/>
+				<input type="hidden" name="zbid" value="${ryRyjbxxb.ryid}"/>
 				<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center" style="display: none;" id="wlrkTable" delayParse="true">
     				<tbody>
     				<input type="hidden" id="wlrk_id" name="wlrk.id" value="${wlrk.id}"/>

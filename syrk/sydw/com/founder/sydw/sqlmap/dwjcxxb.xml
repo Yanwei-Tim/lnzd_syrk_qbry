@@ -19,6 +19,7 @@
 	<update id ="updateDwjcxxb" parameterClass="dwjcxxb">
 		 <![CDATA[update  DW_DWJCXXB ]]>	
 		 <dynamic prepend="set">
+		 	<isNotNull prepend="," property="ajxxid"><![CDATA[ AJXXID=#ajxxid# ]]></isNotNull>
 		 	<isNotNull prepend="," property="cjry"><![CDATA[ CJRY=#cjry# ]]></isNotNull>
 			 <isNotNull prepend="," property="dwid"><![CDATA[ DWID=#dwid# ]]></isNotNull>
 			 <isNotNull prepend="," property="jcsj"><![CDATA[ JCSJ=#jcsj# ]]></isNotNull>
@@ -66,7 +67,7 @@
 	
 	<!-- 查询上传检查时间 -->
 	<select id="queryScjcsj" parameterClass="String" resultClass="dwjcxxb">
-		select * from (select * from DW_DWJCXXB where xt_zxbz = '0' and dwid =#dwid# and zt not in ('0','1') order by jcsj desc)m
+		select * from (select * from DW_DWJCXXB where xt_zxbz = '0' and dwid =#dwid# and zt not in ('0','1','99') order by jcsj desc)m
 		where rownum = 1
 	</select>
 	

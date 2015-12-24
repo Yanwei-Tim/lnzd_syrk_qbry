@@ -1,11 +1,13 @@
 package com.founder.xlpc.dao;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
 import com.founder.framework.base.dao.BaseDaoImpl;
 import com.founder.framework.utils.EasyUIPage;
+import com.founder.xlpc.vo.PcclVO;
 import com.founder.xlpc.vo.PcrwVO;
 import com.founder.xlpc.vo.PcryVO;
 /**
@@ -16,6 +18,24 @@ import com.founder.xlpc.vo.PcryVO;
  */
 @Repository("xlpcDao")
 public class XlpcDao extends BaseDaoImpl{
+	/**
+	 * @Title: queryPcrwList
+	 * @描述: 盘查任务列表
+	 * @作者: zhang_guoliang@founder.com
+	 * @参数: 传入参数定义
+	 * @日期： 2015-11-24 下午2:12:35 
+	 * @返回值: EasyUIPage 返回类型
+	 * @throws
+	 */
+	public EasyUIPage queryPcrwList(EasyUIPage page, PcrwVO entity) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("begin", page.getBegin());
+		map.put("end", page.getEnd());
+		map.put("pcrwvo", entity);
+		page.setTotal((Integer) queryForObject("com.founder.xlpc.sqlmap.xlpc.queryPcrwCount", map));
+		page.setRows(queryForList("com.founder.xlpc.sqlmap.xlpc.queryPcrwList", map));
+		return page;
+	}
 	/**
 	 * @Title: queryPcryList
 	 * @描述: 盘查人员列表
@@ -35,21 +55,44 @@ public class XlpcDao extends BaseDaoImpl{
 		return page;
 	}
 	/**
-	 * @Title: queryPcrwList
-	 * @描述: 盘查任务列表
+	 * @Title: queryPcclList
+	 * @描述: 盘查车辆列表
 	 * @作者: zhang_guoliang@founder.com
 	 * @参数: 传入参数定义
-	 * @日期： 2015-11-24 下午2:12:35 
+	 * @日期： 2015-12-08 下午2:44:54 
 	 * @返回值: EasyUIPage 返回类型
 	 * @throws
 	 */
-	public EasyUIPage queryPcrwList(EasyUIPage page, PcrwVO entity) {
+	public EasyUIPage queryPcclList(EasyUIPage page, PcclVO entity) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("begin", page.getBegin());
 		map.put("end", page.getEnd());
-		map.put("pcrwvo", entity);
-		page.setTotal((Integer) queryForObject("com.founder.xlpc.sqlmap.xlpc.queryPcrwCount", map));
-		page.setRows(queryForList("com.founder.xlpc.sqlmap.xlpc.queryPcrwList", map));
+		map.put("pcclvo", entity);
+		page.setTotal((Integer) queryForObject("com.founder.xlpc.sqlmap.xlpc.queryPcclCount", map));
+		page.setRows(queryForList("com.founder.xlpc.sqlmap.xlpc.queryPcclList", map));
 		return page;
+	}
+	/**
+	 * @Title: queryPcry
+	 * @描述: 根据盘查任务查询盘查人员
+	 * @作者: zhang_guoliang@founder.com
+	 * @参数: 传入参数定义
+	 * @throws
+	 */
+	@SuppressWarnings("unchecked")
+	public List<PcryVO> queryPcry(PcryVO entity) {
+		return queryForList("com.founder.xlpc.sqlmap.xlpc.queryPcry", entity);
+	}
+	/**
+	 * @Title: queryPccl
+	 * @描述: 根据盘查任务查询盘查车辆
+	 * @作者: zhang_guoliang@founder.com
+	 * @参数: 传入参数定义
+	 * @返回值: List<PcclVO> 返回类型
+	 * @throws
+	 */
+	@SuppressWarnings("unchecked")
+	public List<PcclVO> queryPccl(PcclVO entity) {
+		return queryForList("com.founder.xlpc.sqlmap.xlpc.queryPccl", entity);
 	}
 }

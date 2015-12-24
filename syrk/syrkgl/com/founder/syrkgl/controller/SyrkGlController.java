@@ -247,7 +247,7 @@ public class SyrkGlController extends BaseController {
 			if ("check".equals(syrkAddVO.getIsCheck())) {
 				SyrkSyrkxxzb zb = new SyrkSyrkxxzb();
 				zb.setId(syrkAddVO.getZbid());
-				zb.setHs_status("1");
+				zb.setHs_status("02");
 				zb.setIsCheck("check");
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
 				Calendar cal = Calendar.getInstance();
@@ -487,14 +487,6 @@ public class SyrkGlController extends BaseController {
 	@RequestMapping(value = "/addHs", method = RequestMethod.GET)
 	public ModelAndView addHs(String cyzjdm, String zjhm, String mainTabID, String isCheck,
 			String syrkywlxdm, String invokeJSMethod, SessionBean sessionBean, String messageid) {
-		// 这里修改兼容通过message打开
-		/*try {
-			SysMessage sysmessage = new SysMessage();
-			sysmessage.setId(Long.valueOf(messageid));
-			sysMessageDao.upadate(sysmessage);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}*/
 		ModelAndView mv = new ModelAndView("syrkgl/syrkGlAdd");
 		sessionBean = getSessionBean(sessionBean);
 		RyRyjbxxb ryRyjbxxb = null;

@@ -104,12 +104,15 @@ public class Dwjcxxb extends BaseEntity implements Serializable {
 	private String dwfgfzrlxdh;
 	@FieldDesc("参检人员")
 	private String cjry;
+	@FieldDesc("案件信息id")
+	private String ajxxid;
 	
 	private String statusFlag;
 	
 	private String status;
 	
 	private List<Dwjctype> list = new ArrayList<Dwjctype>();
+	
 	
 	public String getStatus() {
 		return status;
@@ -405,6 +408,12 @@ public class Dwjcxxb extends BaseEntity implements Serializable {
 	}
 	public void setDwfgfzrlxdh(String dwfgfzrlxdh) {
 		this.dwfgfzrlxdh = dwfgfzrlxdh;
+	}
+	public String getAjxxid() {
+		return ajxxid;
+	}
+	public void setAjxxid(String ajxxid) {
+		this.ajxxid = ajxxid;
 	}
 	
 }

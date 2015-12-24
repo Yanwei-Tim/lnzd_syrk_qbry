@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.founder.framework.annotation.MethodAnnotation;
 import com.founder.framework.annotation.MethodAnnotation.logType;
-import com.founder.framework.annotation.TypeAnnotation;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.base.service.BaseService;
 import com.founder.framework.message.bean.SysMessage;
@@ -24,9 +23,7 @@ import com.founder.framework.utils.EasyUIPage;
  * 
  */
 @Service("sysMessageService")
-@TypeAnnotation("系统消息表")
 @Transactional
-@Resource(name = "sysMessageService")
 public class SysMessageServiceImpl extends BaseService implements 
 		SysMessageService {
 

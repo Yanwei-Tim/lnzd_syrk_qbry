@@ -143,12 +143,35 @@ public class RyRyjbxxbServiceImpl implements RyRyjbxxbService {
 					}
 				}
 			} else { // 更新
-				BaseService.setUpdateProperties(entity, sessionBean);
-				ryRyjbxxbDao.update(entity, sessionBean);
+					BaseService.setUpdateProperties(entity, sessionBean);
+					ryRyjbxxbDao.update(entity, sessionBean);
 			}
 		}
 	}
-
+	/**
+	 * @Title: saveHsJbxxb
+	 * @Description: TODO(核实新增)
+	 * @param entity
+	 * @param sessionBean 设定文件
+	 * @return void 返回类型
+	 * @throws
+	 */
+	public void saveHsJbxxb(RyRyjbxxb entity, SessionBean sessionBean) throws Exception {
+		if (entity != null) {
+			entity.setSyrkbz("1"); // 设置实有人口标识
+			String cyzjdm = entity.getCyzjdm();
+			String zjhm = entity.getZjhm();
+			RyRyjbxxb entityDb = ryRyjbxxbDao.queryByCyzjdmZjhm(cyzjdm,zjhm);
+			if (entityDb == null) {
+				BaseService.setSaveProperties(entity, sessionBean);
+				ryRyjbxxbDao.save(entity, sessionBean);
+			} else {
+				BeanUtils.mergeObjectProperties(entity, entityDb);
+				BaseService.setUpdateProperties(entityDb, sessionBean);
+				ryRyjbxxbDao.update(entityDb, sessionBean);
+			}
+		}
+	}
 	/**
 	 * @Title: delete
 	 * @Description: TODO(注销)
@@ -800,7 +823,8 @@ public class RyRyjbxxbServiceImpl implements RyRyjbxxbService {
 		SyrkSyrkxxzb zb = null;
 		if (!StringUtils.isBlank(zjhm)) {
 			zb = ryRyjbxxbDao.queryByCyzjdmZjhmHs(cyzjdm, zjhm, isCheck, syrkywlxdm);
-			ryRyjbxxb.setId(zb.getId());
+			ryRyjbxxb.setId(zb.getRyid());
+			ryRyjbxxb.setRyid(zb.getId());
 			ryRyjbxxb.setSyrkbz("0");
 			ryRyjbxxb.setCyzjdm(zb.getCyzjdm());
 			ryRyjbxxb.setZjhm(zjhm);
@@ -816,6 +840,11 @@ public class RyRyjbxxbServiceImpl implements RyRyjbxxbService {
 			ryRyjbxxb.setGjdm("156");
 			ryRyjbxxb.setJggjdqdm("156");
 			ryRyjbxxb.setHjd_xzqhdm(zb.getHjd_xzqhdm());
+			ryRyjbxxb.setHjd_mlpdm(zb.getHjd_mlpdm());
+			ryRyjbxxb.setHjd_mlpxz(zb.getHjd_mlpxz());
+			ryRyjbxxb.setHjd_dzid(zb.getHjd_dzid());
+			ryRyjbxxb.setHjd_dzxz(zb.getHjd_dzxz());
+			ryRyjbxxb.setHjd_dzms(zb.getHjd_dzxz());
 		}
 		return ryRyjbxxb;
 	}

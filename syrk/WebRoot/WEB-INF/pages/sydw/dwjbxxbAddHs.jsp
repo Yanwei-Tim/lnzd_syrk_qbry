@@ -14,16 +14,12 @@
 	    		   <input type='hidden' id="pcsdmFilter" value="${pcsdm}"/>
 	    		   <input type='hidden' id="_method" name="_method" />
 		    	   <input type='hidden' id="zrqdmFilter" value="${zrqdm}"/>
-    	       	   <input type='hidden' name='dwjbxxb.glbmid' id="dwjbxxb_glbmid" value="${zrqdm}"/>
-		    	   <input type='hidden' name='dwjbxxb.glpcsid' id="dwjbxxb_glpcsid" value="${pcsdm}"/>
-		    	   <input type='hidden' name='dwjbxxb.glfxjid' id="dwjbxxb_glfxjid" value="${fsxdm}"/>
 	    		   <input type='hidden' name='hsid' id="dwjbxxb_id" value="${dwjbxxb.id}"/>
 	    		   <input type="hidden" name="isCheck" value="${isCheck}">
 	    		   <input type='hidden' id="dwidString" value="${dwidString}"/>
 	    		   <input type='hidden' id="nextDwid" value="${nextDwid}"/>
 	    		   <input type='hidden' name='hsrwid' id="hsrwid" value="${hsrwid}"/>
 	    		   <input type='hidden' id='hslx' name='hslx'/>
-	    		   <input type='hidden' name='dwjbxxb.xt_zxbz' id='dwjbxxb.xt_zxbz' value="0"/>
 	    		   <div class="easyui-accordion" data-options="multiple:true" id="dwjbxx">
     			   <div title="基本信息" id="baseInfoTypeDiv" data-options="selected:true" style="overflow:auto;padding:10px;">   
 	    			   <table border="0" cellpadding="0" cellspacing="3" style="width: 100%;" align="center">

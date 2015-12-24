@@ -1,13 +1,12 @@
-$(function(){
-	$('#hs_status').combobox('setValue', '01');
-	$('#dg').datagrid({
-         url: contextPath + '/syrkGl/queryList?isCheck=check&hs_status=0&xt_zxbz=0'
-	 });
-});
 //居住地址截取
 subjzddzxz = function(val, row, index){
-  	var xzqhmc = window.top.getDictName(contextPath+'/common/dict/D_BZ_XZQHLIST_MUNICIPAL.js',row.jzd_xzqhdm);
-	return val.replace(xzqhmc, "");
+	var xzqhmc = "";
+	if(row.jzd_dzxz==null||row.jzd_dzxz==""){
+		xzqhmc = row.jzd_mlpxz;
+	}else{
+		xzqhmc = row.jzd_dzxz;
+	}
+	return xzqhmc;
 };
 
 //重置按钮
@@ -23,14 +22,14 @@ datagridProcessFormater = function(val,row,index){
 	var xt_zxbz = rowData.xt_zxbz;
 	if ("1" == xt_zxbz) {
 		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" disabled="disabled">核实</a>&nbsp;'+
-		'&nbsp;<a class="link" href="javascript:javascript:void(0)" disabled="disabled">注销</a>&nbsp;';
+			   '&nbsp;<a class="link" href="javascript:javascript:void(0)" disabled="disabled">注销</a>&nbsp;';
 	} else {
-		if ("0" == hs_status) {
+		if ("01" == hs_status) {
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="syrkCheck(this, '+index+')">核实</a>&nbsp;'+
-			'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doCancel(this, '+index+')">注销</a>&nbsp;';
-		} else if ("1" == hs_status) {
+				   '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doCancel(this, '+index+')">注销</a>&nbsp;';
+		} else if ("02" == hs_status) {
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" disabled="disabled">核实</a>&nbsp;'+
-			'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doCancel(this, '+index+')">注销</a>&nbsp;';
+				   '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doCancel(this, '+index+')">注销</a>&nbsp;';
 		}
 	}
 };
@@ -47,19 +46,6 @@ syrkCheck = function(linkObject,index){
 			 + '&zjhm=' + rowData.zjhm
 			 + '&syrkywlxdm=' + rowData.syrkywlxdm);
 };
-
-//列表显示是否核实
-function isCheck(val,row,index){
-	var hsStatus = row["hs_status"];
-	var xt_zxbz = row["xt_zxbz"];
-	if(xt_zxbz == '1'){
-		return "<div>已注销</div>";
-	} if (hsStatus == '0') {
-		return "<div>待核实</div>";
-	} else if(hsStatus == '1') {
-		return "<div>已核实</div>";
-	} 
-}
 
 //注销panel
 doCancel = function(linkObject,index){
@@ -127,27 +113,15 @@ function queryButton(){
 	var hs_status = document.getElementById("hs_status").value;
 	var reloadUrl = contextPath + '/syrkGl/queryList?isCheck=check';
 	var opt = $('#dg').datagrid('options');
-	var xt_zxbz = "";
-	if("03" == hs_status){
-		hs_status = "";
-		xt_zxbz = "1";
-	} else if("01" == hs_status){
-		hs_status = "0";
-		xt_zxbz = "0";
-	} else if("02" == hs_status){
-		hs_status = "1";
-		xt_zxbz = "0";
-	}  
 	opt.url = reloadUrl;
-	$('#dg').datagrid('load',{    
+	$('#dg').datagrid('load',{  
 		'syrkywlxdm':syrkywlxdm,
 		'xm':xm,
 		'zjhm':zjhm,
 		'xbdm':xbdm,
 		'mzdm':mzdm,
 		'jzd_dzxz':jzd_dzxz,
-		'hs_status':hs_status,
-		'xt_zxbz':xt_zxbz
+		'hs_status':hs_status
 	});
 }
 

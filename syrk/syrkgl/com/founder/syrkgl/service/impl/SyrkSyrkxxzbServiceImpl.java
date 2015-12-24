@@ -194,7 +194,12 @@ public class SyrkSyrkxxzbServiceImpl extends BaseService implements
 		RyRyjbxxb jbxx = syrkAddVO.getJbxx();
 		String syrkywlxdm = syrkAddVO.getSyrkywlxdm();
 		SyrkSyrkxxzb syrk = new SyrkSyrkxxzb();
-		String syrkid = UUID.create();
+		String syrkid = "";
+		if ("check".equals(syrkAddVO.getIsCheck())) {
+			syrkid = syrkAddVO.getZbid();
+		}else{
+			syrkid = UUID.create();
+		}
 		String ryid="";
 		if ("1".equals(syrkywlxdm)) { // 新增常住人口
 			SyrkCzrkxxb czrk = syrkAddVO.getCzrk();
@@ -210,7 +215,11 @@ public class SyrkSyrkxxzbServiceImpl extends BaseService implements
 			jbxx.setJzd_mlpdm(czrk.getJzd_mlpdm());
 			jbxx.setJzd_mlpxz(czrk.getJzd_mlpxz());
 			jbxx.setJzd_xzqhdm(czrk.getJzd_xzqhdm());
-			ryRyjbxxbService.saveOrUpdate(jbxx, sessionBean);
+			if ("check".equals(syrkAddVO.getIsCheck())) {
+				ryRyjbxxbService.saveHsJbxxb(jbxx, sessionBean);
+			}else{
+				ryRyjbxxbService.saveOrUpdate(jbxx, sessionBean);
+			}
 			//因为ryjbxxb的id有可能为空，所以保存完重新查一遍
 			RyRyjbxxb savejbxx =this.ryRyjbxxbService.queryByCyzjdmZjhm(jbxx.getCyzjdm(), jbxx.getZjhm());
 		    ryid = savejbxx.getId();
@@ -245,9 +254,13 @@ public class SyrkSyrkxxzbServiceImpl extends BaseService implements
 			czrk.setZylbdm(jbxx.getZylbdm());
 			czrk.setGzdw(syrkAddVO.getGzdw());
 			czrk.setGzdwid(syrkAddVO.getGzdwid());
-
-			setSaveProperties(czrk, sessionBean);
-			syrkCzrkxxbDao.insert(czrk);
+			if ("check".equals(syrkAddVO.getIsCheck())) {
+				setUpdateProperties(czrk, sessionBean);
+				syrkCzrkxxbDao.update(czrk);
+			}else{
+				setSaveProperties(czrk, sessionBean);
+				syrkCzrkxxbDao.insert(czrk);
+			}
 		} else if ("2".equals(syrkywlxdm)) { // 新增寄住人口
 			SyrkJzrkxxb jzrk = syrkAddVO.getJzrk();
 			jbxx.setSyrkbz("1");
@@ -256,7 +269,11 @@ public class SyrkSyrkxxzbServiceImpl extends BaseService implements
 			jbxx.setJzd_mlpdm(jzrk.getJzd_mlpdm());
 			jbxx.setJzd_mlpxz(jzrk.getJzd_mlpxz());
 			jbxx.setJzd_xzqhdm(jzrk.getJzd_xzqhdm());
-			ryRyjbxxbService.saveOrUpdate(jbxx, sessionBean);
+			if("check".equals(syrkAddVO.getIsCheck())) {
+				ryRyjbxxbService.saveHsJbxxb(jbxx, sessionBean);
+			}else{
+				ryRyjbxxbService.saveOrUpdate(jbxx, sessionBean);
+			}
 			//因为ryjbxxb的id有可能为空，所以保存完重新查一遍
 			RyRyjbxxb savejbxx =this.ryRyjbxxbService.queryByCyzjdmZjhm(jbxx.getCyzjdm(), jbxx.getZjhm());
 			ryid = savejbxx.getId();
@@ -287,9 +304,13 @@ public class SyrkSyrkxxzbServiceImpl extends BaseService implements
 			jzrk.setZylbdm(jbxx.getZylbdm());
 			jzrk.setGzdw(syrkAddVO.getGzdw());
 			jzrk.setGzdwid(syrkAddVO.getGzdwid());
-
-			setSaveProperties(jzrk, sessionBean);
-			syrkJzrkxxbDao.insert(jzrk);
+			if ("check".equals(syrkAddVO.getIsCheck())) {
+				setUpdateProperties(jzrk, sessionBean);
+				syrkJzrkxxbDao.update(jzrk);
+			}else{
+				setSaveProperties(jzrk, sessionBean);
+				syrkJzrkxxbDao.insert(jzrk);
+			}
 		} else if ("3".equals(syrkywlxdm)) { // 新增暂住人口
 			SyrkLdrkxxb ldrk = syrkAddVO.getLdrk();
 			jbxx.setSyrkbz("1");
@@ -298,7 +319,11 @@ public class SyrkSyrkxxzbServiceImpl extends BaseService implements
 			jbxx.setJzd_mlpdm(ldrk.getJzd_mlpdm());
 			jbxx.setJzd_mlpxz(ldrk.getJzd_mlpxz());
 			jbxx.setJzd_xzqhdm(ldrk.getJzd_xzqhdm());
-			ryRyjbxxbService.saveOrUpdate(jbxx, sessionBean);
+			if ("check".equals(syrkAddVO.getIsCheck())) {
+				ryRyjbxxbService.saveHsJbxxb(jbxx, sessionBean);
+			}else{
+				ryRyjbxxbService.saveOrUpdate(jbxx, sessionBean);
+			}
 			//因为ryjbxxb的id有可能为空，所以保存完重新查一遍
 			RyRyjbxxb savejbxx =this.ryRyjbxxbService.queryByCyzjdmZjhm(jbxx.getCyzjdm(), jbxx.getZjhm());
 			ryid = savejbxx.getId();
@@ -333,9 +358,13 @@ public class SyrkSyrkxxzbServiceImpl extends BaseService implements
 			ldrk.setZylbdm(jbxx.getZylbdm());
 			ldrk.setGzdw(syrkAddVO.getGzdw());
 			ldrk.setGzdwid(syrkAddVO.getGzdwid());
-
-			setSaveProperties(ldrk, sessionBean);
-			syrkLdrkxxbDao.insert(ldrk);
+			if ("check".equals(syrkAddVO.getIsCheck())) {
+				setUpdateProperties(ldrk, sessionBean);
+				syrkLdrkxxbDao.update(ldrk);
+			}else{
+				setSaveProperties(ldrk, sessionBean);
+				syrkLdrkxxbDao.insert(ldrk);
+			}
 		} else if ("4".equals(syrkywlxdm)) { // 新增境外人员
 			SyrkJwryxxb jwry = syrkAddVO.getJwry();
 			jbxx.setSyrkbz("1");
@@ -350,7 +379,11 @@ public class SyrkSyrkxxzbServiceImpl extends BaseService implements
 			jbxx.setCsrq(jwry.getCsrq());
 			jbxx.setXbdm(jwry.getXbdm());
 			jbxx.setLxdh(jwry.getLxdh());
-			ryRyjbxxbService.saveOrUpdate(jbxx, sessionBean);
+			if("check".equals(syrkAddVO.getIsCheck())) {
+				ryRyjbxxbService.saveHsJbxxb(jbxx, sessionBean);
+			}else{
+				ryRyjbxxbService.saveOrUpdate(jbxx, sessionBean);
+			}
 			//因为ryjbxxb的id有可能为空，所以保存完重新查一遍
 			RyRyjbxxb savejbxx  =this.ryRyjbxxbService.queryByCyzjdmZjhm(jbxx.getCyzjdm(), jbxx.getZjhm());
 			ryid = savejbxx.getId();
@@ -428,8 +461,13 @@ public class SyrkSyrkxxzbServiceImpl extends BaseService implements
 				syrk.setJzd_mlpxz(jwry.getDzms_mldz());
 				syrk.setJzd_dzxz(jwry.getDzms());
 			}
-			setSaveProperties(jwry, sessionBean);
-			syrkJwryxxbDao.insert(jwry);
+			if ("check".equals(syrkAddVO.getIsCheck())) {
+				setUpdateProperties(jwry, sessionBean);
+				syrkJwryxxbDao.update(jwry);
+			}else{
+				setSaveProperties(jwry, sessionBean);
+				syrkJwryxxbDao.insert(jwry);
+			}
 		} else if ("5".equals(syrkywlxdm)) { // 新增未落户人员
 			SyrkWlhryxxb wlrk = syrkAddVO.getWlrk();
 			jbxx.setSyrkbz("1");
@@ -438,7 +476,11 @@ public class SyrkSyrkxxzbServiceImpl extends BaseService implements
 			jbxx.setJzd_mlpdm(wlrk.getJzd_mlpdm());
 			jbxx.setJzd_mlpxz(wlrk.getJzd_mlpxz());
 			jbxx.setJzd_xzqhdm(wlrk.getJzd_xzqhdm());
-			ryRyjbxxbService.saveOrUpdate(jbxx, sessionBean);
+			if("check".equals(syrkAddVO.getIsCheck())) {
+				ryRyjbxxbService.saveHsJbxxb(jbxx, sessionBean);
+			}else{
+				ryRyjbxxbService.saveOrUpdate(jbxx, sessionBean);
+			}
 			//因为ryjbxxb的id有可能为空，所以保存完重新查一遍
 			RyRyjbxxb savejbxx  =this.ryRyjbxxbService.queryByCyzjdmZjhm(jbxx.getCyzjdm(), jbxx.getZjhm());
 			ryid = savejbxx.getId();
@@ -473,11 +515,13 @@ public class SyrkSyrkxxzbServiceImpl extends BaseService implements
 			wlrk.setZylbdm(jbxx.getZylbdm());
 			wlrk.setGzdw(syrkAddVO.getGzdw());
 			wlrk.setGzdwid(syrkAddVO.getGzdwid());
-
-			setSaveProperties(wlrk, sessionBean);
-			
-			syrkWlhryxxbDao.insert(wlrk);
-
+			if ("check".equals(syrkAddVO.getIsCheck())) {
+				setUpdateProperties(wlrk, sessionBean);
+				syrkWlhryxxbDao.update(wlrk);
+			}else{
+				setSaveProperties(wlrk, sessionBean);
+				syrkWlhryxxbDao.insert(wlrk);
+			}
 			if (!StringUtils.isBlank(wlrk.getQtcyzjdm())
 					&& !StringUtils.isBlank(wlrk.getQtzjhm())) { // 其他常用证件不为空
 				RyRyzjxxb ryRyzjxxb = new RyRyzjxxb();

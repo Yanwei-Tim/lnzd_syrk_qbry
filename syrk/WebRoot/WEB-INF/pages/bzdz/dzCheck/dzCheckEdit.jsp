@@ -1,13 +1,23 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page import="com.founder.framework.base.entity.SessionBean"%>
 <%@ include file="/WEB-INF/pages/commonInclude.jsp"%>
 <%@ include file="/WEB-INF/pages/commonMap.jsp"%>
+<%
+    SessionBean userInfo = (SessionBean)session.getAttribute("userSession");
+    String userOrgCode = "";
+    String bjzbz = "";
+    if(userInfo!=null){
+        userOrgCode = userInfo.getUserOrgCode();
+        bjzbz = userInfo.getBjzbz();
+    }
+%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <title>地址核实和详情页面</title>
     <script type="text/javascript">
+   	  var bjzbz = "<%=bjzbz%>";
       //以下参数主要是地图以及点气泡框用
-      var bjzbz = "${entity.bjzbz}";
       var zbx = "${entity.zbx}";
 	  var zby = "${entity.zby}";
 	  var dzmc = "${entity.dzmc}";
@@ -17,6 +27,7 @@
 	  var zrqmc = "${entity.zrqmc}";
 	  var pcsmc = "${entity.pcsmc}";
 	  var dzbmArr = "${dzBmArray}";
+	  var dzBmCount = parseInt("${dzBmArrayLength}");
 	  var mlphqc = "${entity.mlphqc}";
 	  var mldzid = "${entity.mldzid}";
 	  var mainTabID = "${mainTabID}";
@@ -53,10 +64,13 @@
                <tr class="dialogTr">
                    <td width="30%" class="dialogTd" align="right">门楼牌前缀：</td>
 		    	   <td width="70%" class="dialogTd">
-		    	       <input type="text" id="mlphqz" name="mlphqz" class="easyui-combobox"
+		    	       <input type="hidden" name="mlphqzmc" id="mlphqzmc" value="">
+		    	       <input type="text" id="mlphqz" name="mlphqz" class="easyui-combobox" value="${entity.mlphqz}"
 							data-options="url: contextPath + '/common/dict/DZ_BZDZ_MLPHQZ.js',valueField:'id',textField:'text',
 							              selectOnNavigation:false,method:'get',tipPosition:'left',
-							              onLoadSuccess:function(){$('#mlphqz').combobox('setValue','${entity.mlphqz}');}" style="width:215px;"/>
+							              onLoadSuccess:function(){$('#mlphqz').combobox('setValue','${entity.mlphqz}');$('#mlphqzmc').val($('#mlphqz').combobox('getText'));},
+							              onChange:function(rec,oldValue){$('#mlphqzmc').val($('#mlphqz').combobox('getText'));DzCheckEdit.setMlpqc();},
+							              onSelect:function(rec){$('#mlphqzmc').val(rec.text);DzCheckEdit.setMlpqc();}" style="width:215px;"/>
 		    	   </td>
                </tr>
                <tr class="dialogTr">
@@ -68,10 +82,13 @@
                <tr class="dialogTr">
                    <td width="30%" class="dialogTd" align="right">门楼牌后缀：</td>
 		    	   <td width="70%" class="dialogTd">
-		    	       <input type="text" id="mlphhz" name="mlphhz" class="easyui-combobox"
+		    	       <input type="hidden" name="mlphhzmc" id="mlphhzmc">
+		    	       <input type="text" id="mlphhz" name="mlphhz" class="easyui-combobox" value="${entity.mlphhz}"
 							data-options="required:true,url: contextPath + '/common/dict/D_BZDZ_MLPHHZ.js',valueField:'id',textField:'text',
 							              selectOnNavigation:false,method:'get',tipPosition:'left',
-							              onLoadSuccess:function(){$('#mlphhz').combobox('setValue','${entity.mlphhz}');}" style="width:215px;"/>
+							              onLoadSuccess:function(){$('#mlphhz').combobox('setValue','${entity.mlphhz}');$('#mlphhzmc').val($('#mlphhz').combobox('getText'));},
+							              onChange:function(rec,oldValue){$('#mlphhzmc').val($('#mlphhz').combobox('getText'));DzCheckEdit.setMlpqc();},
+							              onSelect:function(rec){$('#mlphhzmc').val(rec.text);DzCheckEdit.setMlpqc();}" style="width:215px;"/>
 		    	   </td>
                </tr>
                <tr class="dialogTr">
@@ -88,7 +105,11 @@
 				                 <tr class="dialogTr" id="dzBmTr2${status.index}">
 				                     <td width="30%" class="dialogTd" align="right">地址别名：</td>
 				                     <td width="70%" class="dialogTd">
-				                         <input class="easyui-validatebox" type="text" id="dzbm${status.index}" name="dzbm" style="width:215px;" value="${dzbmb.dzbm}" />
+				                         <input class="easyui-validatebox" type="text" id="dzbm_${status.index}" name="dzBmArray[${status.index}].dzbm" style="width:215px;" value="${dzbmb.dzbm}"/>
+				                         <c:choose>
+			                              	<c:when test="${status.index == 0}"><a class="addLine_btn" href="javascript:void(0);" title="增加一个地址别名" onclick="DzCheckEdit.addDzBm();"></a></c:when>
+			                              	<c:otherwise><a class="delLine_btn" href="javascript:void(0);" title="注销当前地址别名" onclick="DzCheckEdit.delDzBm('${status.index}')"></a></c:otherwise>
+			                             </c:choose>
 				                     </td>
 				                 </tr>
                        	    </c:forEach>
@@ -137,12 +158,18 @@
 						<span class="l-btn-icon icon-biaodian"></span>
 					</span>
 				</a>
-				<a id="ckchButton" class="l-btn l-btn-small" href="javascript:void(0)" group="" style="margin-left: 10px;">
+				<a id="whchButton" class="l-btn l-btn-small" href="javascript:void(0)" group="" style="margin-left: 10px;">
 					<span class="l-btn-left l-btn-icon-left">
-						<span class="l-btn-text">查看层户</span>
+						<span class="l-btn-text">维护层户</span>
 						<span class="l-btn-icon icon-home"></span>
 					</span>
 				</a>
+				<a id="ckchButton" class="l-btn l-btn-small" href="javascript:void(0)" group="" style="margin-left: 10px;">
+				<span class="l-btn-left l-btn-icon-left">
+					<span class="l-btn-text">查看层户</span>
+					<span class="l-btn-icon icon-home"></span>
+				</span>
+			</a>
 			</div>
       </div>
       <div data-options="region:'center',border:false">

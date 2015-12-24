@@ -1,22 +1,17 @@
-$(function(){
-	$('#hs_status').combobox('setValue', '01');
-	//$('#xt_zxbz').combobox('setValue', '0');
-	$('#dg').datagrid({
-         url: contextPath + '/syfw/list?isCheck=check&xt_zxbz=0&hs_status=0'
-	 });
-});
-
 //居住地址截取
 subjzddzxz = function(val, row, index){
-  	var xzqhmc = window.top.getDictName(contextPath+'/common/dict/D_BZ_XZQHLIST_MUNICIPAL.js',row.jzd_xzqhdm);
-	return val.replace(xzqhmc, "");
+	var xzqhmc = "";
+	if(row.fwdz_dzxz==null||row.fwdz_dzxz==""){
+		xzqhmc = row.fwdz_mlpxz;
+	}else{
+		xzqhmc = row.fwdz_dzxz;
+	}
+	return xzqhmc;
 };
-
 //重置按钮
 function resetButton(){
 	$("#queryForm").form("reset");
 }
-
 //列表格式化[显示核实/注销]
 datagridProcessFormater = function(val,row,index){
 	var rows = $('#dg').datagrid('getData');
@@ -27,16 +22,15 @@ datagridProcessFormater = function(val,row,index){
 		return '&nbsp;<a class="link" href="javascript:javascript:void(0)" disabled="disabled">核实</a>&nbsp;'+
 		'&nbsp;<a class="link" href="javascript:javascript:void(0)" disabled="disabled">注销</a>&nbsp;';
 	} else {
-		if ("0" == hs_status) {
+		if ("01" == hs_status) {
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="syrkCheck(this, '+index+')">核实</a>&nbsp;'+
 			'&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doCancel(this, '+index+')">注销</a>&nbsp;';
-		} else if ("1" == hs_status) {
+		} else if ("02" == hs_status) {
 			return '&nbsp;<a class="link" href="javascript:javascript:void(0)" disabled="disabled">核实</a>&nbsp;'+
 			'&nbsp;<a class="link" href="javascript:javascript:void(0)" disabled="disabled">注销</a>&nbsp;';
 		}
 	}
 };
-
 //实有房屋核实
 syrkCheck = function(linkObject,index){
 	var datagrid_ID = getDatagrid_ID(0, linkObject);
@@ -48,20 +42,6 @@ syrkCheck = function(linkObject,index){
 			 + '&isCheck=check'
 			 + '&id=' + rowData.id);
 };
-
-//列表显示是否核实
-function isCheck(val,row,index){
-	var hsStatus = row["hs_status"];
-	var xt_zxbz = row["xt_zxbz"];
-	if(xt_zxbz == '1'){
-		return "<div>已注销</div>";
-	} if (hsStatus == '0') {
-		return "<div>待核实</div>";
-	} else if(hsStatus == '1') {
-		return "<div>已核实</div>";
-	} 
-}
-
 //注销panel
 doCancel = function(linkObject,index){
 		var datagrid_ID = getDatagrid_ID(0, linkObject);
@@ -72,7 +52,6 @@ doCancel = function(linkObject,index){
 		document.getElementById("id").value =rowData.id;
 		$("#win").window("open"); 
 };
-
 //关闭注销窗口	  
 function closeWindow(){
 	var zxyy = document.getElementById("xt_zxyy").value;
@@ -83,8 +62,7 @@ function closeWindow(){
 	}else{
 		$("#win").window("close");
 	}
-}
-
+};
 //注销后台操作
 function updateHs(){
 	var id = document.getElementById("id").value;
@@ -116,7 +94,6 @@ function updateHs(){
 		$.messager.alert("提示","请输入注销原因","info");
 	}
 }
-
 //查询按钮
 function queryButton(){
 	var fz_xm = document.getElementById("fz_xm").value;
@@ -124,36 +101,21 @@ function queryButton(){
 	var fwdz_dzxz = document.getElementById("fwdz_dzxz").value;
 	var sfczfw = document.getElementById("sfczfw").value;
 	var hs_status = document.getElementById("hs_status").value;
-	//var xt_zxbz = document.getElementById("xt_zxbz").value;
 	var reloadUrl = contextPath + '/syfw/list?isCheck=check';
 	var opt = $('#dg').datagrid('options');
-	var xt_zxbz = "";
-	if("03" == hs_status){
-		hs_status = "";
-		xt_zxbz = "1";
-	} else if("01" == hs_status){
-		hs_status = "0";
-		xt_zxbz = "0";
-	} else if("02" == hs_status){
-		hs_status = "1";
-		xt_zxbz = "0";
-	}  
 	opt.url = reloadUrl;
 	$('#dg').datagrid('load',{    
 		'fz_xm':fz_xm,
 		'fwlbdm':fwlbdm,
 		'fwdz_dzxz':fwdz_dzxz,
 		'sfczfw':sfczfw,
-		'hs_status':hs_status,
-		'xt_zxbz':xt_zxbz
+		'hs_status':hs_status
 	});
-}
-
+};
 //列表表头样式
 function dbrwStyler(value, rowData, index){
 	return "<font style='font-weight:bold;'>"+value+"</font>";
 }
-
 //格式化列表日期格式
 function formatDate(value, rowData, index){
 	return value.substring(0, 10);

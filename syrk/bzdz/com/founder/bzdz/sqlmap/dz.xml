@@ -886,6 +886,15 @@
     <update id="updateHsMldz" parameterClass="bzdzxxbvo">
       UPDATE BZDZ_ADD_MLDZDHSB
        <dynamic prepend="set">
+            <isNotEmpty prepend="," property="mlphqz">
+		      mlphqz = #mlphqz#
+		    </isNotEmpty>
+		    <isNotEmpty prepend="," property="mlphhz">
+		      mlphhz = #mlphhz#
+		    </isNotEmpty>
+       		<isNotEmpty prepend="," property="zrqdm">
+		      zrqdm = #zrqdm#
+		    </isNotEmpty>
             <isNotEmpty prepend="," property="zbx">
 		      ZBX = #zbx#
 		    </isNotEmpty>
@@ -894,6 +903,9 @@
 		    </isNotEmpty>
 		    <isNotEmpty prepend="," property="xt_zxbz">
 		      XT_ZXBZ = #xt_zxbz#
+		    </isNotEmpty>
+		    <isNotEmpty prepend="," property="dtcwfk">
+		      dtcwfk = #dtcwfk#
 		    </isNotEmpty>
 		    ,
 			<include refid="updateXtzd"/>

@@ -10,7 +10,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.founder.bzdz.bean.DzContextCombo;
 import com.founder.bzdz.bean.DzContextCondition;
 import com.founder.bzdz.bean.DzContextReturn;
@@ -567,6 +566,7 @@ public class DzServiceImpl extends BaseService implements DzService {
 	 */
 	public void updateHs(BzdzxxbVO entity, SessionBean sessionBean){
 		setUpdateProperties(entity,sessionBean);
+		entity.setZrqdm(entity.getXt_zhxgrbmid());
 		entity.setXt_zxbz("0");
 		dzDao.updateHs(entity);
 		//如果核实通过将数据插入到门楼地址、层户地址对象表里
