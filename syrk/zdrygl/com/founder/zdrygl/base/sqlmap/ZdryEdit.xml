@@ -5,6 +5,7 @@
 	
 	<typeAlias alias="zdryxxzsvo" type="com.founder.zdrygl.base.vo.ZdryxxzsVO" />
 	<typeAlias alias="zdrygnVO" type="com.founder.zdrygl.base.vo.ZdrygnVO" />
+	<typeAlias alias="zdrylgxxVO" type="com.founder.zdrygl.base.vo.ZdrylgxxVO" />
 	
 	<!-- 业务办理菜单查询  -->
 	<select id="queryYwglgn" parameterClass="String" resultClass="zdrygnVO">

@@ -24,18 +24,11 @@ import com.founder.zdrygl.core.model.Zdry;
  */
 public class ZdryZszhjsbrService  extends ZdryServiceDecorator{
 
-	private ZdryZszhjsbrxxb  zdry;
-	
 	@Resource(name="zdryZszhjsbrxxbDao")
 	private ZdryZszhjsbrxxbDao ZdryZszhjsbrxxxbDao;
 
 	public ZdryZszhjsbrService(ZdryService zdryService) {
 		super(zdryService);
-	}
-
-	@Override
-	public void setZdry(Zdry entity) {
-		this.zdry = (ZdryZszhjsbrxxb) entity;
 	}
 
 	/**
@@ -58,21 +51,21 @@ public class ZdryZszhjsbrService  extends ZdryServiceDecorator{
 		insert(sessionBean, zdrylbdx);
 	}
 	
+	@Override
+	protected void cgFail_(SessionBean sessionBean, Zdry zdrylbdx) {
+		ZdryZszhjsbrxxb zdryZszhjsbrxxb = (ZdryZszhjsbrxxb) zdrylbdx;
+		BaseService.setCrossoutProperties(zdryZszhjsbrxxb, sessionBean);
+		ZdryZszhjsbrxxxbDao.delete(zdryZszhjsbrxxb);
+	}
+	
 	/**
 	 * 
 	 * @Title: update_
-	 * @Description: TODO(子表（重点人口）修改)
+	 * @Description: (子表（重点人口）修改)
 	 * @param @param sessionBean    设定文件
 	 * @return void    返回类型
 	 * @throw
 	 */
-	@Override
-	protected void update_(SessionBean sessionBean) {
-		BaseService.setUpdateProperties(zdry, sessionBean);
-		zdry.setId(this.getZdryId());
-		ZdryZszhjsbrxxxbDao.update(zdry);
-	}
-	
 	@Override
 	protected void update_(SessionBean sessionBean, Zdry zdrylbdx) {
 		ZdryZszhjsbrxxb zdryZszhjsbrxxb = (ZdryZszhjsbrxxb) zdrylbdx;

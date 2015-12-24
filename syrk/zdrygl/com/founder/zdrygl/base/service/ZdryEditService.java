@@ -26,7 +26,10 @@ import com.founder.zdrygl.base.dao.ZdrySgafzdryxxbDao;
 import com.founder.zdrygl.base.dao.ZdryShbzdryxxbDao;
 import com.founder.zdrygl.base.dao.ZdrySqjzryxxbDao;
 import com.founder.zdrygl.base.dao.ZdrySqsbzdryxxbDao;
+import com.founder.zdrygl.base.dao.ZdryWffzjlxxbDao;
+import com.founder.zdrygl.base.dao.ZdryZagltdxxbDao;
 import com.founder.zdrygl.base.dao.ZdryZdrkxxbDao;
+import com.founder.zdrygl.base.dao.ZdryZdrykcxxbDao;
 import com.founder.zdrygl.base.dao.ZdryZszhjsbrxxbDao;
 import com.founder.zdrygl.base.model.ZdryFzcsfryxxb;
 import com.founder.zdrygl.base.model.ZdryJgdxqxjdjb;
@@ -37,7 +40,10 @@ import com.founder.zdrygl.base.model.ZdryPsjdb;
 import com.founder.zdrygl.base.model.ZdrySgafzdryxxb;
 import com.founder.zdrygl.base.model.ZdrySqjzryxxb;
 import com.founder.zdrygl.base.model.ZdrySqsbzdryxxb;
+import com.founder.zdrygl.base.model.ZdryWffzjlxxb;
+import com.founder.zdrygl.base.model.ZdryZagltdxxb;
 import com.founder.zdrygl.base.model.ZdryZdrkxxb;
+import com.founder.zdrygl.base.model.ZdryZdrykcxxb;
 import com.founder.zdrygl.base.model.ZdryZszhjsbrxxb;
 import com.founder.zdrygl.base.vo.ZdrygnVO;
 import com.founder.zdrygl.base.vo.ZdryxxzsVO;
@@ -95,6 +101,12 @@ public class ZdryEditService extends BaseService {
 	private ZdryNrsxdxxxbDao zdryNrsxdxxxbDao;
 	@Resource(name = "zdryJgdxxxbDao")
 	private ZdryJgdxxxbDao zdryJgdxxxbDao;
+	@Resource(name = "zdryZagltdxxbDao")
+	private ZdryZagltdxxbDao zdryZagltdxxbDao;
+	@Resource(name = "zdryWffzjlxxbDao")
+	private ZdryWffzjlxxbDao zdryWffzjlxxbDao;
+	@Resource(name = "zdryZdrykcxxbDao")
+	private ZdryZdrykcxxbDao zdryZdrykcxxbDao;
 	
 	/**
 	 * 
@@ -331,10 +343,78 @@ public class ZdryEditService extends BaseService {
 		return zdryPsjdbDao.queryViewList(map);
 	}
 	
+	/**
+	 * 
+	 * @Title: nrsxdxxxb_query
+	 * @Description: TODO(纳入实现对象查询)
+	 * @param @param map
+	 * @param @return    设定文件
+	 * @return ZdryNrsxdxxxb    返回类型
+	 * @throw
+	 */
 	public ZdryNrsxdxxxb nrsxdxxxb_query(Map<String, Object> map){
 		ZdryNrsxdxxxb entity = (ZdryNrsxdxxxb)zdryNrsxdxxxbDao.queryViewByMap(map);
 		entity.setBz(zdryConstant.zdryDict().get(entity.getBz()));
 		return entity;
 	}
-				
+
+	/**
+	 * 
+	 * @Title: zagltdb_query
+	 * @Description: TODO(作案规律特点 查询)
+	 * @param @param map
+	 * @param @return    设定文件
+	 * @return List<ZdryZagltdxxb>    返回类型
+	 * @throw
+	 */
+	public List<ZdryZagltdxxb> zagltdb_query(Map<String, Object> map) {
+		return zdryZagltdxxbDao.queryViewList(map);
+	}
+
+	/**
+	 * 
+	 * @Title: wffzjlb_query
+	 * @Description: TODO(违法犯罪记录信息查询)
+	 * @param @param map
+	 * @param @return    设定文件
+	 * @return List<ZdryWffzjlxxb>    返回类型
+	 * @throw
+	 */
+	public List<ZdryWffzjlxxb> wffzjlb_query(Map<String, Object> map) {
+		return zdryWffzjlxxbDao.queryViewList(map);
+	}
+
+	/**
+	 * 
+	 * @Title: zdrykcb_query
+	 * @Description: TODO(重点人员考察)
+	 * @param @param map
+	 * @param @return    设定文件
+	 * @return List<ZdryZdrykcxxb>    返回类型
+	 * @throw
+	 */
+	public List<ZdryZdrykcxxb> zdrykcb_query(Map<String, Object> map) {
+		return zdryZdrykcxxbDao.queryViewList(map);
+	}
+
+	/*
+	
+	public ZdryShbzdryxxb shbzdry_query (Map<String,Object> map){
+		return zdryShbzdryxxbDao.queryZsxxById((String) map.get("zdryid"));
+	}
+
+	
+	public List<ZdryXdryxxb> zdryXdryxxb_query(Map<String, Object> map) {
+		List<ZdryXdryxxb> list=zdryXdryxxbDao.queryList((String) map.get("zdryid"));
+
+		return list;
+	}
+
+	
+	public List<ZdryXdrynjxxb> zdryXdrynjxx_query(Map<String, Object> map) {
+		
+		return (List<ZdryXdrynjxxb>)zdryXdrynjxxbDao.queryList((String) map.get("zdryid"));
+	}
+
+				*/
 }

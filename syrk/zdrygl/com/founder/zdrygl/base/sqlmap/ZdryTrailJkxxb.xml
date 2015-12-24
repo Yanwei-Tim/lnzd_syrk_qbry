@@ -3,8 +3,26 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="ZdryTrailJkxxb">
 	
+	<typeAlias alias="zdryTrailJkxxb" type="com.founder.zdrygl.base.model.ZdryTrailJkxxb" />
 	
 	<select id="queryTrailJkb" parameterClass="String" resultClass="String">
 		<![CDATA[ select sfzh from ZDRY_TRAIL_JKB t where sfzh = #sfzh# and rownum = 1 ]]>
 	</select>
+
+	<insert id="saveTrailJkb" parameterClass="zdryTrailJkxxb">
+		<![CDATA[ insert into ZDRY_TRAIL_JKB (ID, sfzh) values (#id#, #sfzh#)]]>
+	</insert>
+		
+	<delete id="deleteTrailJkb" parameterClass="String">
+	<![CDATA[ delete ZDRY_TRAIL_JKB where sfzh = #sfzh# ]]>
+	</delete>
+	
+	<update id="uptTrailJkb" parameterClass="zdryTrailJkxxb">
+		<![CDATA[ update ZDRY_TRAIL_JKB ]]>	
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="sfzh"><![CDATA[ sfzh = #sfzh#]]></isNotNull>
+		</dynamic>
+		<![CDATA[ where ID = #id#]]>	
+	</update>
+	
 </sqlMap>

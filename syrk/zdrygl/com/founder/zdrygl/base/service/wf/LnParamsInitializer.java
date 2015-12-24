@@ -8,7 +8,6 @@ import java.util.Map;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.workflow.bean.StartProcessInstance;
 import com.founder.zdrygl.base.model.ZdryZb;
-import com.founder.zdrygl.base.model.Zdrylxylbdyb;
 import com.founder.zdrygl.base.service.ZdryInfoQueryService;
 import com.founder.zdrygl.base.vo.ZdryVO;
 import com.founder.zdrygl.base.vo.ZdryZdryzbVO;
@@ -102,9 +101,7 @@ public class LnParamsInitializer implements IfParamInitializer {
 	}
 	private void prepareCg(StartProcessInstance spi, SessionBean sessionBean, ZdryVO zdryVO, Map<String, Object> variables) {
 		String zdryxm = zdryVO.getZdryZdryzb().getXm();
-		Zdrylxylbdyb zdrylxylbdyb = new Zdrylxylbdyb();
 		ZdryZb zdryZdryzb = zdryVO.getZdryZdryzb();
-		zdrylxylbdyb.setLbdm(zdryZdryzb.getZdrygllxdm());
 		String zdrylxmc = zdryConstant.getValueOfZdryDict(zdryZdryzb.getZdrygllxdm());
 		
 
@@ -175,9 +172,7 @@ public class LnParamsInitializer implements IfParamInitializer {
 
 	private void prepareLg(StartProcessInstance spi, SessionBean sessionBean, ZdryVO zdryVO, Map<String, Object> variables) {
 		String zdryxm = zdryVO.getZdryZdryzb().getXm();
-		Zdrylxylbdyb zdrylxylbdyb = new Zdrylxylbdyb();
 		ZdryZb zdryZdryzb = zdryVO.getZdryZdryzb();
-		zdrylxylbdyb.setLbdm(zdryZdryzb.getZdrygllxdm());
 		String zdrylxmc = zdryConstant.getValueOfZdryDict(zdryZdryzb.getZdrygllxdm());
 		
 

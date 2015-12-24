@@ -45,10 +45,10 @@ public class ZdryDtjsXsDao extends BaseDaoImpl {
 	public void updateGxdw(ZdryDtjsGxbgxxb entity) {
 		update("ZdryDtjsXs.updateGxdw",entity);		
 	}
-	public String saveShgxr(ZdryDtjsShgxrxxb entity) {
-		insert("ZdryDtjsXs.saveShgxrb", entity); 
-		return entity.getObjectid();
-	}
+//	public String saveShgxr(ZdryDtjsShgxrxxb entity) {
+//		insert("ZdryDtjsXs.saveShgxrb", entity); 
+//		return entity.getObjectid();
+//	}
 	public String saveSaxx(ZdryDtjsSaxxb entity) {
 		insert("ZdryDtjsXs.saveSaxxb", entity); 
 		return entity.getId();

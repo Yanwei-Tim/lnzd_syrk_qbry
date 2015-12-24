@@ -12,6 +12,7 @@ import com.founder.drools.core.request.DroolsRequest;
 import com.founder.drools.core.request.RuleBean;
 import com.founder.framework.components.AppConst;
 import com.founder.framework.config.SystemConfig;
+import com.founder.framework.exception.RuleException;
 
 /**
  * ****************************************************************************
@@ -191,9 +192,28 @@ public class ZdryRuleService {
 		
 		RuleBean ruleBean = droolsRequest.requestDroolsServer(SystemConfig.getString(AppConst.XZQH)+"_ZDRY_MESSAGE", xxlx, param);
 		if(ruleBean.getResStatus()==1){
-			throw new RuntimeException("Drools Exception:"+ruleBean.getResponse());			
+			throw new RuleException((String)ruleBean.getResponse());			
 		}
 		Map<String,Object> resMap=(Map) ruleBean.getResponse();
+		return resMap;
+	}
+	
+	/**
+	 * 
+	 * @Title: getZdryLxJgbmMap
+	 * @Description: TODO(获取重点人员类型的监管部门Map)
+	 * @param @return    设定文件
+	 * @return Map<String,String>    返回类型
+	 * @throws Exception 
+	 * @throw
+	 */
+	public Map<String,String> getZdryLxJgbmMap() throws Exception{
+		RuleBean ruleBean = droolsRequest.requestDroolsServer(SystemConfig.getString(AppConst.XZQH)+"_ZDRYJGBM","GETJGBM",null);
+		if(ruleBean.getResStatus()==1){
+			throw new RuntimeException("Drools Exception:"+ruleBean.getResponse());			
+		}
+		
+		Map<String,String> resMap=(Map) ruleBean.getResponse();
 		return resMap;
 	}
 	
