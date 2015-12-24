@@ -218,7 +218,10 @@
 			     <![CDATA[ r.ZJHM || r.XM|| r.Jzd_dzxz   like '%' || #zdryZdryzbVO.condition# || '%']]>
 			</isNotEmpty>
 
-			<![CDATA[ and  (b.mldzid=r.Jzd_mlpdm or ((r.Hjd_mlpdm = b.mldzid and  r.Jzd_mlpdm is null))) and r.ID=z.RYID and z.glzt in (2,3,5,7)  and  z.XT_ZXBZ = '0' and b.xt_zxbz='0' order by z.$sort$ $order$) m  left join  ZDRY_ZDRYLXYLBDYB L on (L.LBDM=m.ZDRYGLLXDM and L.QYDM=#QYDM#) where rownum <= #end# ) where r > #begin# ]]>
+			<![CDATA[ and  (b.mldzid=r.Jzd_mlpdm or ((r.Hjd_mlpdm = b.mldzid and  r.Jzd_mlpdm is null))) and r.ID=z.RYID and z.glzt in (2,3,5,7)  and  z.XT_ZXBZ = '0' and b.xt_zxbz='0' ) m  left join  ZDRY_ZDRYLXYLBDYB L on (L.LBDM=m.ZDRYGLLXDM and L.QYDM=#QYDM#) 
+			where rownum <= #end# ) where r > #begin# 
+			]]>
+			order by $sort$ $order$
 	</select>
 	
 	
@@ -284,12 +287,11 @@
 			</isNotEmpty>
 			
 			<![CDATA[ 
-				order by z.$sort$ $order$
-				
 				) m  				
 				where rownum <= #end# 
 			) where r > #begin# 
 			]]>			
+			order by $sort$ $order$
 	</select>
 	<select id="queryCountZdryOnPT" parameterClass="Map" resultClass="Integer">
 		<![CDATA[ select count(*) from (
