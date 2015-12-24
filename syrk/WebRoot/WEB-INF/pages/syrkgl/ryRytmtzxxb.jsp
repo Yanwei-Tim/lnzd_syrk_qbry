@@ -66,6 +66,15 @@ function doInit(paramArray){
 }
 
 function beforeSubmit() {
+	//gem 验证鞋号和足长
+	var xh = $("#xh").val();
+	var zc = $("#zc").val();
+	if(xh < zc){
+		$.messager.alert("系统提示", "鞋号不能比足长小！");
+		return false;
+	}
+	// end
+	
 	if($("#xxdm").val() == "" && $("#sg").val() == "" && $("#tz").val() == "" && $("#txdm").val() == "" && $("#lxdm").val() == "" && $("#zc").val() == "" && $("#xh").val() == "" && $("#tmtzms").val() == ""){
 		return false;
 	}
