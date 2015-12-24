@@ -25,7 +25,9 @@
 							$('#lxfs').validatebox({validType:['phone']});
 						} else if(record.id==3){
 							$('#lxfs').validatebox({validType:['numeric[\'i\']']});
-						}else {
+						} else if(record.id==5){
+							$('#lxfs').validatebox({validType:['email']});
+						} else {
 							$('#lxfs').validatebox({validType:['maxLength[100]']});
 						}
 					}" />
