@@ -517,12 +517,12 @@
 					<tr class="dialogTr">
 					    <td width="20%" class="dialogTd" align="right">外文姓：</td>
 		    	        <td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="jwry_wwx" name="jwry.wwx" value="${jwry.wwx}" style="width:200px;" maxlength="40"
-		    	        	data-options="required:true,validType:['letter'],charSet:'half',tipPosition:'right'"/></td>
+		    	        	data-options="required:true,validType:['letterOrSpace'],charSet:'half',tipPosition:'right'"/></td>
 					</tr>
 					<tr class="dialogTr">
 					    <td width="20%" class="dialogTd" align="right">外文名：</td>
 		    	        <td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="jwry_wwm" name="jwry.wwm" value="${jwry.wwm}" style="width:200px;" maxlength="40"
-		    	        	data-options="required:true,validType:['letter'],charSet:'half',tipPosition:'right'"/></td>
+		    	        	data-options="required:true,validType:['letterOrSpace'],charSet:'half',tipPosition:'right'"/></td>
 					</tr>
 					<tr class="dialogTr">
 					    <td width="20%" class="dialogTd" align="right">性别：</td>
