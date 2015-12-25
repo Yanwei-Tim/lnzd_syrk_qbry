@@ -114,14 +114,14 @@
     	<property name="basename" value="messages"></property> 
 	</bean> 
 	
-	<!-- <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
+	<bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
 		<property name="dataSource" ref="dataSource" />
 		<property name="transactionManager" ref="transactionManager" />
-		<property name="databaseSchemaUpdate" value="true" />  
+		<property name="databaseSchemaUpdate" value="false" />  <!-- 是否更新数据库结构，如果表不存在，启动时会自动创建 -->
 		<property name="jobExecutorActivate" value="false" />
 	</bean>
- -->
-	<!-- <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
+
+	<bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
 		<property name="processEngineConfiguration" ref="processEngineConfiguration" />
 	</bean>
 
@@ -135,7 +135,8 @@
 	
 	<bean id="processDefinitionService" class="com.founder.workflow.service.ActivitiProcessDefinitionService" />
 	<bean id="processManageService" class="com.founder.workflow.service.ActivitiProcessManageService" />
-	<bean id="tasksService" class="com.founder.workflow.service.ActivitiTaskService" /> -->
+	<bean id="tasksService" class="com.founder.workflow.service.ActivitiTaskService" />
 	<import resource="spring-source.xml" />
+	
 	
 </beans>
