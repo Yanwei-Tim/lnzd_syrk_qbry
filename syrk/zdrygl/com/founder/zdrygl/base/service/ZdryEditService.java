@@ -112,13 +112,14 @@ public class ZdryEditService extends BaseService {
 	 * 
 	 * @Title: queryYwglgn
 	 * @Description: TODO(业务办理菜单查询)
-	 * @param @param gnlxdm
+	 * @param @param gnlxdm 
+	 * @param @param rylbdm 人员类别代码，重点人员管理类型代码
 	 * @param @return    设定文件
 	 * @return List<ZdrygnVO>    返回类型
 	 * @throw
 	 */
-	public List<ZdrygnVO> queryYwglgn(String gnlxdm) {
-		return zdryEditDao.queryYwglgn(gnlxdm);
+	public List<ZdrygnVO> queryYwglgn(String gnlxdm,String rylbdm) {
+		return zdryEditDao.queryYwglgn(gnlxdm,rylbdm);
 	}
 
 	/**
