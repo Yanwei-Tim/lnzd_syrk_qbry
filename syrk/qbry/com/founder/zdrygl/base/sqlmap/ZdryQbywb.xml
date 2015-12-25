@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="ZdryQbywb">
+	
+	<typeAlias alias="zdryQbywb" type="com.founder.zdrygl.base.model.ZdryQbywb" />
+
+	<!-- 新增 -->
+	<insert id="save" parameterClass="zdryQbywb">
+		insert into ZDRY_QBRYYWB (id
+		<isNotEmpty prepend="," property="gmsfhm"><![CDATA[ gmsfhm]]></isNotEmpty>
+		<isNotEmpty prepend="," property="czlb"><![CDATA[ czlb]]></isNotEmpty>
+		<isNotEmpty prepend="," property="czyj"><![CDATA[ czyj]]></isNotEmpty>
+		<isNotEmpty prepend="," property="mbbmdm"><![CDATA[ mbbmdm]]></isNotEmpty>
+		<isNotEmpty prepend="," property="mbbmmc"><![CDATA[ mbbmmc]]></isNotEmpty>
+		<isNotEmpty prepend="," property="bz"><![CDATA[ bz]]></isNotEmpty>
+		,
+		<include refid="insertXtzd" />
+		) values (#id#
+		<isNotEmpty prepend="," property="gmsfhm"><![CDATA[#gmsfhm#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="czlb"><![CDATA[#czlb#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="czyj"><![CDATA[#czyj#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="mbbmdm"><![CDATA[#mbbmdm#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="mbbmmc"><![CDATA[#mbbmmc#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="bz"><![CDATA[#bz#]]></isNotEmpty>
+		,
+		<include refid="insertXtzdVal" />
+		)
+	</insert>
+
+	
+	<!-- 根据证件号码查询记录列表，按时间倒序排列 -->
+	<select id="queryListByZjhm" parameterClass="String" resultClass="zdryQbywb">
+		<![CDATA[ select * from ZDRY_QBRYYWB where GMSFHM= #zjhm# and  xt_zxbz = '0' ORDER BY XT_CJSJ DESC]]>
+	</select>
+</sqlMap>
