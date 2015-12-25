@@ -32,7 +32,8 @@ import com.founder.framework.utils.StringUtils;
 import com.founder.framework.utils.UUID;
 import com.founder.ggfw.bean.Ywxtgzrwb;
 import com.founder.ggfw.dao.YwxtgzrwbDao;
-@Repository
+
+@Repository("sysMessageDao")
 public class SysMessageDao extends BaseDaoImpl {
 
 	private Logger logger = Logger.getLogger(this.getClass());

@@ -97,8 +97,8 @@ public class ZdryDtjsController extends BaseController {
 		try {
 			if(StringUtils.isBlank(entity.getId())){
 				if(StringUtils.isBlank(entity.getZdry_zjhm())){
-					ZdryZb zdryzb = (ZdryZb) zdryQueryService.queryById(entity.getZdryid());
-					RyRyjbxxb ryjbxxb=this.ryRyjbxxbService.queryById(zdryzb.getRyid());
+					ZdryZb zb = (ZdryZb)zdryQueryService.queryById(entity.getZdryid());
+					RyRyjbxxb ryjbxxb = ryRyjbxxbService.queryById(zb.getRyid());
 					entity.setZdry_zjhm(ryjbxxb.getZjhm());
 				}				
 				entity.setTxrsfzh(sessionBean.getUserId());

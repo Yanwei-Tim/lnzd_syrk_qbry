@@ -1,25 +1,13 @@
 package com.founder.zdrygl.base.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import com.founder.framework.exception.RestException;
-import com.founder.framework.utils.DateUtils;
-import com.founder.framework.utils.EasyUIPage;
-import com.founder.framework.utils.StringUtils;
-import com.founder.syrkgl.bean.RyRyjbxxb;
-import com.founder.syrkgl.bean.SyrkSyrkxxzb;
-import com.founder.syrkgl.dao.SyrkSyrkxxzbDao;
-import com.founder.syrkgl.service.RyRyjbxxbService;
-import com.founder.zdrygl.base.model.ZdryZb;
-import com.founder.zdrygl.base.service.ZdryInfoQueryService;
-import com.founder.zdrygl.base.vo.ZdryVO;
-import com.founder.zdrygl.base.vo.ZdryZdryhsbVO;
-import com.founder.zdrygl.base.vo.ZdryZdryzbVO;
-import com.founder.zdrygl.core.factory.ZdryAbstractFactory;
-import com.founder.zdrygl.core.inteface.ZdryService;
-import org.apache.commons.collections.CollectionUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,16 +21,24 @@ import com.founder.framework.base.controller.BaseController;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.components.AppConst;
 import com.founder.framework.exception.BussinessException;
-
-import com.founder.zdrygl.base.service.ZdryZdryhsbService;
+import com.founder.framework.exception.RestException;
+import com.founder.framework.utils.DateUtils;
+import com.founder.framework.utils.EasyUIPage;
+import com.founder.framework.utils.StringUtils;
+import com.founder.syrkgl.bean.RyRyjbxxb;
+import com.founder.syrkgl.bean.SyrkSyrkxxzb;
+import com.founder.syrkgl.dao.SyrkSyrkxxzbDao;
+import com.founder.syrkgl.service.RyRyjbxxbService;
+import com.founder.zdrygl.base.model.ZdryZb;
 import com.founder.zdrygl.base.model.ZdryZdryhsb;
+import com.founder.zdrygl.base.service.ZdryInfoQueryService;
+import com.founder.zdrygl.base.service.ZdryZdryhsbService;
+import com.founder.zdrygl.base.vo.ZdryVO;
+import com.founder.zdrygl.base.vo.ZdryZdryhsbVO;
+import com.founder.zdrygl.base.vo.ZdryZdryzbVO;
+import com.founder.zdrygl.core.factory.ZdryAbstractFactory;
+import com.founder.zdrygl.core.inteface.ZdryService;
 import com.google.gson.Gson;
-import org.apache.log4j.Logger;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 /***
  * ****************************************************************************
  *
@@ -91,7 +87,18 @@ public class ZdryhsbController extends BaseController{
 		sessionBean = this.getSessionBean(sessionBean);
 		page.setPagePara(rows);
 		entity.setSspcs(sessionBean.getExtendMap().get("ssPcsCode"));
-
+		if ("".equals(entity.getXm())){
+			entity.setXm(null);
+		}
+		if ("".equals(entity.getZjhm())){
+			entity.setZjhm(null);
+		}
+		if (null==entity.getHszt()){
+			entity.setHszt("0");
+		}
+		if (null==entity.getXfbmdm()){
+			entity.setXfbmdm("ZA");
+		}
 		EasyUIPage easyUIPage = zdryZdryhsbService.queryList(page, entity);
 		List zdryHsbList = easyUIPage.getRows();
 
@@ -122,18 +129,17 @@ public class ZdryhsbController extends BaseController{
 	/**
 	 * 准备核实撤管
 	 * @param zdryHsbId
-	 * @param zdrygllxdm
      * @return
      */
 	@RequestMapping(value = "/createHsCg",method =RequestMethod.GET)
-	public ModelAndView createHsLg(String zdryHsbId,  String zdrygllxdm) {
+	public ModelAndView createHsLg(String zdryHsbId) {
 		SessionBean sessionBean = this.getSessionBean();
 		ModelAndView mv = new ModelAndView("zdry/zdryHsbCg");
 		ZdryZdryhsb zdryHsb = zdryZdryhsbService.queryById(zdryHsbId);
 		mv.addObject("zdryHsb", zdryHsb);
-		mv.addObject("Sqsj", DateUtils.getSystemDateString());
-		mv.addObject("Sqr_xm", sessionBean.getUserName());
-		mv.addObject("zdrygllxdm", zdrygllxdm);
+		mv.addObject("sqsj", DateUtils.getSystemDateString());
+		mv.addObject("sqr_xm", sessionBean.getUserName());
+		mv.addObject("zdrygllxdm", zdryHsb.getZdrygllxdm());
 		return mv;
 	}
 
@@ -145,14 +151,14 @@ public class ZdryhsbController extends BaseController{
      * @return
      */
 	@RequestMapping(value = "/saveHsCg",method = RequestMethod.POST)
-	public ModelAndView saveHsCg(String zdryHsbId,  SessionBean sessionBean) {
+	public ModelAndView saveHsCg(String zdryHsbId, String sqyj,SessionBean sessionBean) {
 		ModelAndView mv = new ModelAndView("redirect:/forward/forword");
 		HashMap model = new HashMap();
 		sessionBean = this.getSessionBean(sessionBean);
 
 		try {
 			ZdryZdryhsb e = zdryZdryhsbService.queryById(zdryHsbId);
-			zdryZdryhsbService.saveHsCg(e,sessionBean);
+			zdryZdryhsbService.saveHsCg(e,sqyj,sessionBean);
 			model.put("status", "success");
 			model.put("message", "申请发起成功");
 		} catch (Exception var7) {
@@ -197,6 +203,7 @@ public class ZdryhsbController extends BaseController{
 				mv.addObject("zdrylbdm", zdryLczywblb2.getZdrylbdm());
 				mv.addObject("glffdm", zdryLczywblb2.getZdrk_glffdm());
 				mv.addObject("lglydm", zdryLczywblb2.getZdrk_lglydm());
+				mv.addObject("xfbmdm", zdryLczywblb2.getXfbmdm());
 			}
 		}
 
@@ -306,32 +313,5 @@ public class ZdryhsbController extends BaseController{
 		return mv;
 	}
 
-
-	@RequestMapping(value ="/saveCg",method = RequestMethod.POST)
-	public ModelAndView saveCg(ZdryVO zdryVO, SessionBean sessionBean) {
-		ModelAndView mv = new ModelAndView(this.getViewName(sessionBean));
-		HashMap model = new HashMap();
-		sessionBean = this.getSessionBean(sessionBean);
-
-		try {
-			zdryZdryhsbService.saveCg(zdryVO,sessionBean, zdryVO.getCglxdm());
-			model.put("status", "success");
-			model.put("message", getAddSuccess());
-		} catch (BussinessException var6) {
-			var6.printStackTrace();
-			new RestException(var6.getLocalizedMessage());
-			this.logger.error(var6.getLocalizedMessage(), var6);
-			model.put("status", "error");
-			model.put("message", var6.getLocalizedMessage());
-		} catch (Exception var7) {
-			var7.printStackTrace();
-			this.logger.error(var7.getLocalizedMessage(), var7);
-			model.put("status", "error");
-			model.put("message", getAddFail());
-		}
-
-		mv.addObject("message", (new Gson()).toJson(model));
-		return mv;
-	}
 }
 
