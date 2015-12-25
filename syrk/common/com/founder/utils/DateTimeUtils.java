@@ -1,7 +1,9 @@
 package com.founder.utils;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 /**
  * @类名: DateTimeUtils 
  * @描述: 时间DateTime公共类(lib包里DateTimeHelper类，不满足需求)
@@ -31,7 +33,164 @@ public class DateTimeUtils {
 		System.out.println("获得本季度末："+formatter.format(getTimesQuarternight()));
 		System.out.println("获得本年第一天："+formatter.format(getTimesYearmorning()));
 		System.out.println("获得本年最后一天："+formatter.format(getTimesYearnight()));
+		System.out.println("获得上季度初："+formatter.format(getSjStartTime()));
+		System.out.println("获得上季度末："+formatter.format(getSjEndTime()));
+		System.out.println("获得本季度初："+formatter.format(getBjStartTime()));
+		System.out.println("获得本季度末："+formatter.format(getBjEndTime()));
+		System.out.println("获得去年本季度度初："+formatter.format(getQnDqJdStartTime()));
+		System.out.println("获得去年本季度度末："+formatter.format(getQnDqJdEndTime()));
+		System.out.println("获得上个月第一天时间："+formatter.format(getPreviousMonthFirst()));
+		System.out.println("获得上个月最后一天时间："+formatter.format(getPreviousMonthEnd()));
+		System.out.println("获得本月第一天时间："+formatter.format(getFirstDayOfMonth()));
+		System.out.println("获得本月最后一天时间："+formatter.format(getDefaultDay()));
+		System.out.println("获得去年本月第一天时间："+formatter.format(getQnFirstDayOfMonth()));
+		System.out.println("获得去年本月最后一天时间："+formatter.format(getQnDefaultDay()));
+		System.out.println("获得去年第一天时间："+formatter.format(getQnYearmorning()));
+		System.out.println("获得去年最后一天时间："+formatter.format(getQnYearnight()));
 	}
+	
+	//获得去年第一天时间
+	public static Date getQnYearmorning(){
+		Calendar cal = Calendar.getInstance();
+		int currenYear = cal.get(Calendar.YEAR)-1;
+		return getQnCurrYearFirst(currenYear);
+	}
+
+	public static Date getQnCurrYearFirst(int year){
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat longSdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	  	SimpleDateFormat shortSdf = new SimpleDateFormat("yyyy-MM-dd");  
+	  	Date now =null;
+		cal.clear();
+		cal.set(Calendar.YEAR, year); 
+		try{  
+	      now = longSdf.parse(shortSdf.format(cal.getTime()) + " 00:00:00");
+	      } catch (Exception e) {
+	        e.printStackTrace();
+	      }
+	    return now;   
+	}
+	//获得去年最后一天时间
+	public static Date getQnYearnight(){
+		Calendar cal = Calendar.getInstance();
+		int currenYear = cal.get(Calendar.YEAR)-1;
+		return getQnCurrYearLast(currenYear);
+	}
+
+	public static Date getQnCurrYearLast(int year){
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat longSdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	  	SimpleDateFormat shortSdf = new SimpleDateFormat("yyyy-MM-dd");  
+	  	Date now =null;
+		cal.clear();
+		cal.set(Calendar.YEAR, year);
+		cal.roll(Calendar.DAY_OF_YEAR, -1);
+		try{  
+	      now = longSdf.parse(shortSdf.format(cal.getTime()) + " 23:59:59");
+	      } catch (Exception e) {
+	        e.printStackTrace();
+	      }
+	    return now;   
+	}
+	
+	//获取当月第一天  
+    public static Date getFirstDayOfMonth(){    
+       Calendar lastDate = Calendar.getInstance();  
+       SimpleDateFormat longSdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+  	   SimpleDateFormat shortSdf = new SimpleDateFormat("yyyy-MM-dd");  
+  	   Date now =null;
+       lastDate.set(Calendar.DATE,1);//设为当前月的1号  
+       try{  
+  	      now = longSdf.parse(shortSdf.format(lastDate.getTime()) + " 00:00:00");
+  	      } catch (Exception e) {
+  	        e.printStackTrace();
+  	      }
+       return now;      
+    }  
+    // 计算当前月最后一天时间  
+    public static Date getDefaultDay(){    
+       Calendar lastDate = Calendar.getInstance();  
+       SimpleDateFormat longSdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	   SimpleDateFormat shortSdf = new SimpleDateFormat("yyyy-MM-dd"); 
+	   Date now =null;
+       lastDate.set(Calendar.DATE,1);//设为当前月的1号  
+       lastDate.add(Calendar.MONTH,1);//加一个月，变为下月的1号  
+       lastDate.add(Calendar.DATE,-1);//减去一天，变为当月最后一天  
+       try{  
+ 	      now = longSdf.parse(shortSdf.format(lastDate.getTime()) + " 23:59:59");
+ 	      } catch (Exception e) {
+ 	        e.printStackTrace();
+ 	      }
+       return now;      
+    }  
+    
+    
+  //获取去年当月第一天  
+    public static Date getQnFirstDayOfMonth(){    
+       Calendar lastDate = Calendar.getInstance();  
+       SimpleDateFormat longSdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+  	   SimpleDateFormat shortSdf = new SimpleDateFormat("yyyy-MM-dd");  
+  	   Date now =null;
+       lastDate.set(Calendar.DATE,1);//设为当前月的1号  
+       lastDate.set(Calendar.YEAR, lastDate.get(Calendar.YEAR)-1);
+       try{  
+  	      now = longSdf.parse(shortSdf.format(lastDate.getTime()) + " 00:00:00");
+  	      } catch (Exception e) {
+  	        e.printStackTrace();
+  	      }
+       return now;      
+    }  
+    // 计算去年当前月最后一天时间  
+    public static Date getQnDefaultDay(){    
+       Calendar lastDate = Calendar.getInstance();  
+       SimpleDateFormat longSdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	   SimpleDateFormat shortSdf = new SimpleDateFormat("yyyy-MM-dd"); 
+	   Date now =null;
+       lastDate.set(Calendar.DATE,1);//设为当前月的1号  
+       lastDate.add(Calendar.MONTH,1);//加一个月，变为下月的1号  
+       lastDate.add(Calendar.DATE,-1);//减去一天，变为当月最后一天  
+       lastDate.set(Calendar.YEAR, lastDate.get(Calendar.YEAR)-1);
+       try{  
+ 	      now = longSdf.parse(shortSdf.format(lastDate.getTime()) + " 23:59:59");
+ 	      } catch (Exception e) {
+ 	        e.printStackTrace();
+ 	      }
+       return now;      
+    }  
+	
+	 //获得上月第一天的日期  
+	 public static Date getPreviousMonthFirst(){    
+		  Calendar cal = Calendar.getInstance();
+	      SimpleDateFormat longSdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		  SimpleDateFormat shortSdf = new SimpleDateFormat("yyyy-MM-dd"); 
+		  Date now =null;
+		  cal.set(Calendar.DATE,1);//设为当前月的1号  
+		  cal.add(Calendar.MONTH,-1);//减一个月，变为下月的1号  
+	       //lastDate.add(Calendar.DATE,-1);//减去一天，变为当月最后一天  
+	      try{  
+	      now = longSdf.parse(shortSdf.format(cal.getTime()) + " 00:00:00");
+	      } catch (Exception e) {
+	        e.printStackTrace();
+	      }
+	      return now;    
+	  }
+	
+	 //获得上月最后一天的日期  
+     public static Date getPreviousMonthEnd(){  
+		  Calendar cal = Calendar.getInstance();
+	      SimpleDateFormat longSdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		  SimpleDateFormat shortSdf = new SimpleDateFormat("yyyy-MM-dd"); 
+	      Date now =null;
+	      cal.add(Calendar.MONTH,-1);//减一个月  
+	      cal.set(Calendar.DATE, 1);//把日期设置为当月第一天   
+	      cal.roll(Calendar.DATE, -1);//日期回滚一天，也就是本月最后一天   
+	      try{
+	      now = longSdf.parse(shortSdf.format(cal.getTime()) + " 23:59:59");
+	      } catch (Exception e) {
+	          e.printStackTrace();
+	      }
+	      return now;
+     } 
 	/**
      * @Title: getStAft 
      * @描述: 获得三天时间
@@ -124,7 +283,7 @@ public class DateTimeUtils {
 	 */
 	public static Date getTimesMonthmorning(){
 		Calendar cal = Calendar.getInstance();
-		cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONDAY),cal.get(Calendar.DAY_OF_MONTH),0,0,0);
+		cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONDAY)-1,cal.get(Calendar.DAY_OF_MONTH),0,0,0);
 		cal.set(Calendar.DAY_OF_MONTH, cal.getActualMinimum(Calendar.DAY_OF_MONTH));
 		return cal.getTime();
 	}
@@ -172,6 +331,234 @@ public class DateTimeUtils {
 		cal.set(Calendar.DAY_OF_MONTH, cal.getActualMinimum(Calendar.DAY_OF_MONTH));
 		return cal.getTime();
 	}
+	/**
+	 * @Title: getSjStartTime 
+	 * @描述: 获得上一季度初
+	 * @作者: liang_lihe@founder.com 
+	 * @参数: 传入参数定义 
+	 * @日期： 2015-12-22 上午10:19:14 
+	 * @返回值: Date    返回类型 
+	 * @throws
+	 */
+	public static  Date getSjStartTime() {
+		SimpleDateFormat longSdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat shortSdf = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        int month = c.get(Calendar.MONTH);
+        Date now = null;
+        if(month>=0&&month<=2){
+        	c.set(Calendar.MONTH, 9);
+        	c.set(Calendar.DATE, 1);
+            c.set(Calendar.YEAR, c.get(Calendar.YEAR)-1);
+            try {
+            now = longSdf.parse(shortSdf.format(c.getTime()) + " 00:00:00");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else{
+        int currentMonth = c.get(Calendar.MONTH)-2;
+        try {
+            if (currentMonth >= 1 && currentMonth <= 3)
+                c.set(Calendar.MONTH, 0);
+            else if (currentMonth >= 4 && currentMonth <= 6)
+                c.set(Calendar.MONTH, 3);
+            else if (currentMonth >= 7 && currentMonth <= 9)
+                c.set(Calendar.MONTH, 5);
+            else if (currentMonth >= 10 && currentMonth <= 12)
+                c.set(Calendar.MONTH, 9);
+            c.set(Calendar.DATE, 1);
+            now = longSdf.parse(shortSdf.format(c.getTime()) + " 00:00:00");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        }
+        return now;
+    }
+	
+	/**
+	 * @Title: getSjEndTime 
+	 * @描述: 获得上一季度末
+	 * @作者: liang_lihe@founder.com 
+	 * @参数: 传入参数定义 
+	 * @日期： 2015-12-22 上午10:19:14 
+	 * @返回值: Date    返回类型 
+	 * @throws
+	 */
+	  public static  Date getSjEndTime() {
+	        Calendar c = Calendar.getInstance();
+	        SimpleDateFormat longSdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			SimpleDateFormat shortSdf = new SimpleDateFormat("yyyy-MM-dd");
+			int month = c.get(Calendar.MONTH);
+	        Date now = null;
+	        if(month>=0&&month<=2){
+	        	c.set(Calendar.MONTH, 11);
+                c.set(Calendar.DATE, 31);
+	            c.set(Calendar.YEAR, c.get(Calendar.YEAR)-1);
+	            try {
+	            now = longSdf.parse(shortSdf.format(c.getTime()) + " 00:00:00");
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	            }
+	        }else{
+	        int currentMonth = c.get(Calendar.MONTH) -2;
+	        try {
+	            if (currentMonth >= 1 && currentMonth <= 3) {
+	                c.set(Calendar.MONTH, 2);
+	                c.set(Calendar.DATE, 31);
+	            } else if (currentMonth >= 4 && currentMonth <= 6) {
+	                c.set(Calendar.MONTH, 5);
+	                c.set(Calendar.DATE, 30);
+	            } else if (currentMonth >= 7 && currentMonth <= 9) {
+	                c.set(Calendar.MONTH, 8);
+	                c.set(Calendar.DATE, 30);
+	            } else if (currentMonth >= 10 && currentMonth <= 12) {
+	                c.set(Calendar.MONTH, 11);
+	                c.set(Calendar.DATE, 31);
+	            }
+	            now = longSdf.parse(shortSdf.format(c.getTime()) + " 23:59:59");
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        }
+	        return now;
+	    }
+	  
+	/**
+	 * @Title: getBjStartTime 
+	 * @描述: 获得本季度初
+	 * @作者: liang_lihe@founder.com 
+	 * @参数: 传入参数定义 
+	 * @日期： 2015-12-22 上午10:19:14 
+	 * @返回值: Date    返回类型 
+	 * @throws
+	 */
+	  public static  Date getBjStartTime() {
+			SimpleDateFormat longSdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			SimpleDateFormat shortSdf = new SimpleDateFormat("yyyy-MM-dd");
+	        Calendar c = Calendar.getInstance();
+	        int currentMonth = c.get(Calendar.MONTH)+1;
+	        Date now = null;
+	        try {
+	            if (currentMonth >= 1 && currentMonth <= 3)
+	                c.set(Calendar.MONTH, 0);
+	            else if (currentMonth >= 4 && currentMonth <= 6)
+	                c.set(Calendar.MONTH, 3);
+	            else if (currentMonth >= 7 && currentMonth <= 9)
+	                c.set(Calendar.MONTH, 6);
+	            else if (currentMonth >= 10 && currentMonth <= 12)
+	                c.set(Calendar.MONTH, 9);
+	            c.set(Calendar.DATE, 1);
+	            now = longSdf.parse(shortSdf.format(c.getTime()) + " 00:00:00");
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return now;
+	    }
+	  
+	 /**
+	 * @Title: getBjEndTime 
+	 * @描述: 获得本季度末
+	 * @作者: liang_lihe@founder.com 
+	 * @参数: 传入参数定义 
+	 * @日期： 2015-12-22 上午10:19:14 
+	 * @返回值: Date    返回类型 
+	 * @throws
+	 */
+	  public static  Date getBjEndTime() {
+	        Calendar c = Calendar.getInstance();
+	        SimpleDateFormat longSdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			SimpleDateFormat shortSdf = new SimpleDateFormat("yyyy-MM-dd");
+	        int currentMonth = c.get(Calendar.MONTH) +1;
+	        Date now = null;
+	        try {
+	            if (currentMonth >= 1 && currentMonth <= 3) {
+	                c.set(Calendar.MONTH, 2);
+	                c.set(Calendar.DATE, 31);
+	            } else if (currentMonth >= 4 && currentMonth <= 6) {
+	                c.set(Calendar.MONTH, 5);
+	                c.set(Calendar.DATE, 30);
+	            } else if (currentMonth >= 7 && currentMonth <= 9) {
+	                c.set(Calendar.MONTH, 8);
+	                c.set(Calendar.DATE, 30);
+	            } else if (currentMonth >= 10 && currentMonth <= 12) {
+	                c.set(Calendar.MONTH, 11);
+	                c.set(Calendar.DATE, 31);
+	            }
+	            now = longSdf.parse(shortSdf.format(c.getTime()) + " 23:59:59");
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return now;
+	    }
+	 /**
+	 * @Title: getQnDqJdStartTime 
+	 * @描述: 获得去年当前季度初
+	 * @作者: liang_lihe@founder.com 
+	 * @参数: 传入参数定义 
+	 * @日期： 2015-12-22 上午10:19:14 
+	 * @返回值: Date    返回类型 
+	 * @throws
+	 */  
+	  public static  Date getQnDqJdStartTime() {
+			SimpleDateFormat longSdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			SimpleDateFormat shortSdf = new SimpleDateFormat("yyyy-MM-dd");
+	        Calendar c = Calendar.getInstance();
+	        int currentMonth = c.get(Calendar.MONTH)+1;
+	        Date now = null;
+	        try {
+	            if (currentMonth >= 1 && currentMonth <= 3)
+	                c.set(Calendar.MONTH, 0);
+	            else if (currentMonth >= 4 && currentMonth <= 6)
+	                c.set(Calendar.MONTH, 3);
+	            else if (currentMonth >= 7 && currentMonth <= 9)
+	                c.set(Calendar.MONTH, 6);
+	            else if (currentMonth >= 10 && currentMonth <= 12)
+	                c.set(Calendar.MONTH, 9);
+	            c.set(Calendar.DATE, 1);
+	            c.set(Calendar.YEAR, c.get(Calendar.YEAR)-1);
+	            now = longSdf.parse(shortSdf.format(c.getTime()) + " 00:00:00");
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return now;
+	    }
+    /**
+	 * @Title: getQnDqJdEndTime 
+	 * @描述: 获得去年当前季度末
+	 * @作者: liang_lihe@founder.com 
+	 * @参数: 传入参数定义 
+	 * @日期： 2015-12-22 上午10:19:14 
+	 * @返回值: Date    返回类型 
+	 * @throws
+	 */
+	  public static  Date getQnDqJdEndTime() {
+	        Calendar c = Calendar.getInstance();
+	        SimpleDateFormat longSdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			SimpleDateFormat shortSdf = new SimpleDateFormat("yyyy-MM-dd");
+	        int currentMonth = c.get(Calendar.MONTH) +1;
+	        Date now = null;
+	        try {
+	            if (currentMonth >= 1 && currentMonth <= 3) {
+	                c.set(Calendar.MONTH, 2);
+	                c.set(Calendar.DATE, 31);
+	            } else if (currentMonth >= 4 && currentMonth <= 6) {
+	                c.set(Calendar.MONTH, 5);
+	                c.set(Calendar.DATE, 30);
+	            } else if (currentMonth >= 7 && currentMonth <= 9) {
+	                c.set(Calendar.MONTH, 8);
+	                c.set(Calendar.DATE, 30);
+	            } else if (currentMonth >= 10 && currentMonth <= 12) {
+	                c.set(Calendar.MONTH, 11);
+	                c.set(Calendar.DATE, 31);
+	            }
+	            c.set(Calendar.YEAR, c.get(Calendar.YEAR)-1);
+	            now = longSdf.parse(shortSdf.format(c.getTime()) + " 23:59:59");
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return now;
+	    }
+	
 	/**
 	 * @Title: getTimesQuarternight 
 	 * @描述: 获得季度末
@@ -226,7 +613,7 @@ public class DateTimeUtils {
 	public static Date getCurrYearFirst(int year){
 		Calendar cal = Calendar.getInstance();
 		cal.clear();
-		cal.set(Calendar.YEAR, year);
+		cal.set(Calendar.YEAR, year); 
 		return cal.getTime();
 	}
 	/**
@@ -259,4 +646,5 @@ public class DateTimeUtils {
 		cal.roll(Calendar.DAY_OF_YEAR, -1);
 		return cal.getTime();
 	}
+	
 }
