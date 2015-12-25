@@ -1,4 +1,4 @@
-package com.founder.zdrygl.controller;
+package com.founder.zdrygl.base.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
