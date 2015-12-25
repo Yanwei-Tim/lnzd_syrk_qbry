@@ -168,4 +168,18 @@
 		<isNotEmpty prepend="and" property="glzt"> GLZT = #glzt#</isNotEmpty>
 		<isNotEmpty prepend="and" property="bz"> BZ = #bz#</isNotEmpty>
 	</select>
+	
+	<!-- 实有人口管理列表数据【总数】 -->
+	<select id="queryCount" parameterClass="Map" resultClass="Integer">
+		   <![CDATA[ SELECT COUNT(*)
+	          FROM ZDRY_QBRYXXB  ]]>
+	</select>
+	
+	<!-- 实有人口管理列表数据【信息】 -->
+	<select id="query" parameterClass="Map" resultClass="ZdryQbxxb">
+		   <![CDATA[ SELECT * FROM ZDRY_QBRYXXB  ]]>	
+	</select>
+	
+	
+	
 </sqlMap>

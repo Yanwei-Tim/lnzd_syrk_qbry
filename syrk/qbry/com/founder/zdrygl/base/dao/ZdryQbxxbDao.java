@@ -1,11 +1,15 @@
 package com.founder.zdrygl.base.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
 import com.founder.framework.base.dao.BaseDaoImpl;
+import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
+import com.founder.syrkgl.bean.SyrkSyrkxxzb;
 import com.founder.zdrygl.base.model.ZdryQbxxb;
 
 
@@ -52,4 +56,32 @@ public class ZdryQbxxbDao extends BaseDaoImpl {
 	}
 	
 	
+	public EasyUIPage queryList(ZdryQbxxb entity, EasyUIPage page) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("begin", page.getBegin());
+		map.put("end", page.getEnd());
+		
+//		if(StringUtils.isBlank(entity.getHs_status())){
+//			entity.setHs_status("01");
+//		}
+		String sort = page.getSort();
+		String order = page.getOrder();
+		if (StringUtils.isBlank(sort)) {
+			sort = "id";
+			order = "asc";
+		}
+		map.put("sort", sort);
+		map.put("order", order);
+		map.put("entity", entity);
+		page.setRows(queryForList("ZdryQbxxb.query", map));
+		page.setTotal((Integer) queryForObject("ZdryQbxxb.queryCount", map));
+//		if(!StringUtils.isBlank(entity.getIsCheck())){
+//			page.setRows(queryForList("SyrkSyrkxxzb.queryHs", map));
+//			page.setTotal((Integer) queryForObject("SyrkSyrkxxzb.queryHsCount", map));
+//		}else{
+//			page.setRows(queryForList("SyrkSyrkxxzb.query", map));
+//			page.setTotal((Integer) queryForObject("SyrkSyrkxxzb.queryCount", map));
+//		}
+		return page;
+	}
 }

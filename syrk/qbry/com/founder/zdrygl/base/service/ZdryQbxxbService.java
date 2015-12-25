@@ -3,6 +3,10 @@ package com.founder.zdrygl.base.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.founder.framework.base.service.BaseService;
+import com.founder.framework.utils.EasyUIPage;
+import com.founder.syrkgl.bean.SyrkSyrkxxzb;
+import com.founder.syrkgl.service.SyrkSyrkxxzbService;
 import com.founder.zdrygl.base.dao.ZdryQbxxbDao;
 import com.founder.zdrygl.base.model.ZdryQbxxb;
 
@@ -21,6 +25,8 @@ import com.founder.zdrygl.base.model.ZdryQbxxb;
 @Service("zdryQbxxbService")
 public class ZdryQbxxbService {
 	
+	
+	
 	@Autowired
 	private ZdryQbxxbDao zdryQbxxbDao;
 	
@@ -38,6 +44,8 @@ public class ZdryQbxxbService {
 		return zdryQbxxbDao.queryById(id);
 	}
 	
-	
+	public EasyUIPage queryList(ZdryQbxxb entity, EasyUIPage page) {
+		return zdryQbxxbDao.queryList(entity, page);
+	}
 
 }
