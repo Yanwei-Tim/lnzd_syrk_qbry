@@ -105,7 +105,7 @@ public class qbryController extends BaseController {
 		 sessionBean = getSessionBean(sessionBean);
            String  gmsfhm = qbzdrymsg.getGmsfhm();
            String xm = qbzdrymsg.getXm();
-			//验证情报人员是否已存在
+		
 		   if(validationqbryexitbygmsfhm(gmsfhm, xm)){				 
 				String erromsg="该人员已经存在！";			    			   					  			  
 				throw new RuntimeException(erromsg);
@@ -166,8 +166,7 @@ public class qbryController extends BaseController {
 			ZdryQbxxb qbxxb = zdryQbxxbService.queryById(qbryid);
 			mv.addObject("qbry",qbxxb);
 			return mv;
-	}
-
+	}	
 	/**
 	 * 
 	 * @Title: saveLg

@@ -247,6 +247,13 @@
 		<isNotEmpty prepend="and" property="bz"> BZ = #bz#</isNotEmpty>	
 	</select>
 	
-	
+	<!-- 重点人员详情页面展示用 -->
+	<select id="queryViewByMap" parameterClass="Map" resultClass="zdryQbxxb">
+		<![CDATA[ 
+			select t.ID,t.BJZDRYBH,t.XM,t.XMHYPY,t.WWXM,t.XBDM,t.CSRQ,t.GJDM,t.GMSFHM,t.QTZJHM,t.MZDM,t.JGSSXDM,t.HJD,t.XZD,t.XZDPCSMC,t.XZDPCSDM,t.JZD,t.GXDWMC,t.GXDWDM,t.LADWMC,t.LADWDM,t.LASJ,t.BJZDRYRKSJ,t.YXX,t.ETLDATE,t.SYRKID,t.QBZD,t.QBDD,t.QBPCS,t.QBZRQ,t.DQJB,t.GLZT,t.ZDRYGLLXDM, t1.ZDRYLB as BZ
+			from ZDRY_QBRYXXB t, ZDRY_ZDRYZB_NEW t1 					
+			where t.ID = #id#  and t.id=t1.id and t.XT_ZXBZ = '0' and t1.xt_zxbz='0'			
+  		]]>
+	</select>
 	
 </sqlMap>

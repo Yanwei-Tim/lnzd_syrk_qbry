@@ -1,7 +1,6 @@
 package com.founder.zdrygl.base.dao;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.founder.framework.base.dao.BaseDaoImpl;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
-import com.founder.syrkgl.bean.SyrkSyrkxxzb;
 import com.founder.zdrygl.base.model.ZdryQbxxb;
 
 
@@ -25,7 +23,7 @@ import com.founder.zdrygl.base.model.ZdryQbxxb;
  * @UpdateRemark: [说明本次修改内容,(如多次修改保留历史记录，增加修改记录)]  
  * @Version:      [v1.0]
  */
-@Repository("ZdryQbxxbDao")
+@Repository("zdryQbxxbDao")
 public class ZdryQbxxbDao extends BaseDaoImpl {
 
 	public void save(ZdryQbxxb entity) {
@@ -82,5 +80,18 @@ public class ZdryQbxxbDao extends BaseDaoImpl {
 		Integer i = (Integer) queryForObject("ZdryQbxxb.queryCount", map);
 		page.setTotal((Integer) queryForObject("ZdryQbxxb.queryCount", map));
 		return page;
+	}
+	
+	/**
+	 * 
+	 * @Title: queryViewByMap
+	 * @Description: TODO(重点人员详情页面展示用)
+	 * @param @param map
+	 * @param @return    设定文件
+	 * @return ZdryQbxxb    返回类型
+	 * @throw
+	 */
+	public ZdryQbxxb queryViewByMap(Map<String, Object> map) {
+		return (ZdryQbxxb)super.queryForObject("ZdryQbxxb.queryViewByMap", map);
 	}
 }
