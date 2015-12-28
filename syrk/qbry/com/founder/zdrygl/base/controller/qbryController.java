@@ -168,8 +168,6 @@ public class qbryController extends BaseController {
 			return mv;
 	}
 
-	
-	
 	/**
 	 * 
 	 * @Title: saveLg
