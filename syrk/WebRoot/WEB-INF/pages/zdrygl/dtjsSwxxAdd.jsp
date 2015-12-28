@@ -30,11 +30,9 @@ String userOrgName = userInfo.getUserOrgName();
 					data-options="url: contextPath +  '/common/dict/BD_D_QBZDRYLBDM.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
 				</td>
-				<td width="20%" class="dialogTd" align="right">重点人员所属细类：</td>
-	    		<td width="30%" class="dialogTd">
-		           <input class="easyui-combobox" type="text"  id="sslbxl" name="sslbxl"   style="width:200px;" value="${entity.sslbxl}"
-	    			data-options="url: contextPath +  '/common/dict/BD_D_QBZDRYXLDM.js',
-					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:false,tipPosition:'right'"/>
+							<td width="20%" class="dialogTd" align="right">重点人员所属细类：</td>
+		       	 <td width="30%" class="dialogTd"><input class="easyui-combotree" type="text" id="sslbxl" name="sslbxl" value="${entity.sslbxl}" style="width:200px;" 
+							data-options="url: contextPath + '/common/dict/BD_D_QBZDRYXLDM.js',onlyLeaf:true,multiple:false,panelWidth:200,method:'get',editable:true,lines:true"/></td>
 		       </td>
              </tr>
 		     <tr class="dialogTr">
