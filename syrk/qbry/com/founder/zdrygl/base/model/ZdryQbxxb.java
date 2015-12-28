@@ -1,9 +1,11 @@
 package com.founder.zdrygl.base.model;
 
 import java.io.Serializable;
+
 import com.founder.framework.annotation.DBInfoAnnotation;
 import com.founder.framework.annotation.FieldDesc;
 import com.founder.framework.base.entity.BaseEntity;
+import com.founder.zdrygl.core.model.Zdry;
 
 /**
  * ****************************************************************************
@@ -18,7 +20,7 @@ import com.founder.framework.base.entity.BaseEntity;
  * @Version:      [v1.0]
  */
 @DBInfoAnnotation(tableName = "ZDRY_QBRYXXB", pk = "ID")
-public class ZdryQbxxb extends BaseEntity implements Serializable {
+public class ZdryQbxxb extends BaseEntity implements Serializable, Zdry {
 
 	private static final long serialVersionUID = 1L;
 
