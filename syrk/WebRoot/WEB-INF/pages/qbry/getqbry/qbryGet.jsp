@@ -93,9 +93,7 @@
 <tr class="dialogTr">
 	<td width="20%" class="dialogTd" align="right">ETL时间：</td>
 	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="etldate" name="etldate" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-	<td width="20%" class="dialogTd" align="right">重点人员id：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="zdryid" name="zdryid" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-</tr>
+	</tr>
 <tr class="dialogTr">
 	<td width="20%" class="dialogTd" align="right">实有人口ID：</td>
 	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="syrkid" name="syrkid" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
