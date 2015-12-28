@@ -68,6 +68,7 @@
 			<input id="searchBox" type="text" class="easyui-searchbox" data-options="prompt:'请输入姓名'"/>
 			<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" onclick="SyrkGl.detailSearch()">精确查询</a>
 			<a id="dzaddid" class="easyui-linkbutton"   onclick="add()">新增</a>
+			<a id="dzaddid" class="easyui-linkbutton"   onclick="addSyrk()">新增实有人口</a>
         </div>
 	  </div>
 	  <!-- 查询条件 -->
@@ -79,5 +80,9 @@
  function add(){
 	 location.href="<%=contextPath%>/qbryManager/qbryadd";
 	 
+ }
+ 
+ function addSyrk(){
+	 menu_open('实有人口新增','/syrkGl/add?mainTabID='+getMainTabID()+'&zjhm=210211198906132911');
  }
 </script>

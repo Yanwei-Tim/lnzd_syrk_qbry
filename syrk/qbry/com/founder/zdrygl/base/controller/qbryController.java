@@ -20,6 +20,7 @@ import com.founder.framework.components.AppConst;
 import com.founder.framework.exception.BussinessException;
 import com.founder.framework.organization.department.service.OrgOrganizationService;
 import com.founder.framework.utils.EasyUIPage;
+import com.founder.framework.utils.UUID;
 import com.founder.zdrygl.base.model.ZdryQbxxb;
 import com.founder.zdrygl.base.service.ZdryQbxxbService;
 import com.google.gson.Gson;
@@ -118,6 +119,7 @@ public class qbryController extends BaseController {
 		 //不做验证直接存（目前）
 		 ModelAndView mv;
 		   try{
+			   qbzdrymsg.setId(UUID.create());			   
 			   zdryQbxxbService.save(qbzdrymsg);
 			   System.out.println("保存成功！");
 				 mv = new ModelAndView("qbry/manager/qbryManage");
