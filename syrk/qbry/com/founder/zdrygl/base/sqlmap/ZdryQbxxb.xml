@@ -41,6 +41,7 @@
 		<isNotEmpty prepend="," property="qbzrq"><![CDATA[ qbzrq]]></isNotEmpty>
 		<isNotEmpty prepend="," property="dqjb"><![CDATA[ dqjb]]></isNotEmpty>
 		<isNotEmpty prepend="," property="glzt"><![CDATA[ glzt]]></isNotEmpty>
+		<isNotEmpty prepend="," property="bz"><![CDATA[ bz]]></isNotEmpty>
 		,
 		<include refid="insertXtzd" />
 		) values (#id#
