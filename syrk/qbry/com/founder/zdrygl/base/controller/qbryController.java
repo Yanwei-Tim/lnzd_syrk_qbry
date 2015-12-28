@@ -1,5 +1,10 @@
 package com.founder.zdrygl.base.controller;
 
+import org.apache.log4j.Logger;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -11,14 +16,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.founder.framework.base.controller.BaseController;
 import com.founder.framework.base.entity.SessionBean;
+import com.founder.framework.components.AppConst;
 import com.founder.framework.exception.BussinessException;
 import com.founder.framework.organization.department.service.OrgOrganizationService;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.zdrygl.base.model.ZdryQbxxb;
 import com.founder.zdrygl.base.service.ZdryQbxxbService;
+import com.google.gson.Gson;
 @Controller
 @RequestMapping("/qbryManager")
 public class qbryController extends BaseController {
+	private Logger logger = Logger.getLogger(this.getClass());
 	
 	@Resource(name = "orgOrganizationService")
 	private OrgOrganizationService orgOrganizationService;
@@ -137,4 +145,46 @@ public class qbryController extends BaseController {
 		return false;	
 	}
 	
+	
+	/**
+	 * 
+	 * @Title: saveLg
+	 * @Description: TODO(情报人员接收，列管)
+	 * @param @param id 情报人员ID
+	 * @param @param sessionBean
+	 * @param @return    设定文件
+	 * @return ModelAndView    返回类型
+	 * @throw
+	 */
+	@RequestMapping(value = "/saveLg", method = RequestMethod.POST)
+	public ModelAndView saveLg(String id,SessionBean sessionBean) {
+		ModelAndView mv = new ModelAndView(getViewName(sessionBean));
+		
+		Map<String, Object> model = new HashMap<String, Object>();
+		sessionBean = getSessionBean(sessionBean);
+		try {
+			
+			ZdryQbxxb entity = zdryQbxxbService.queryById(id);//查询情报人员信息
+			if(entity==null){
+				throw new RuntimeException("未查询到该情报人员信息！");
+			}
+			
+			zdryQbxxbService.saveLg(entity,sessionBean);
+			
+			model.put(AppConst.STATUS, AppConst.SUCCESS);
+			model.put(AppConst.MESSAGES, getAddSuccess());
+		} catch (BussinessException e) {
+			logger.error(e.getLocalizedMessage(), e);
+			model.put(AppConst.STATUS, AppConst.FAIL);
+			model.put(AppConst.MESSAGES, e.getLocalizedMessage());
+		} catch (Exception e) {
+			logger.error(e.getLocalizedMessage(), e);
+			model.put(AppConst.STATUS, AppConst.FAIL);
+			model.put(AppConst.MESSAGES, getAddFail());
+		}
+
+		mv.addObject(AppConst.MESSAGES, new Gson().toJson(model));
+		return mv;
+
+	}
 }

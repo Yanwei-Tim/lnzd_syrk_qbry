@@ -34,7 +34,6 @@
 		<isNotEmpty prepend="," property="zdrygllxdm"><![CDATA[ zdrygllxdm]]></isNotEmpty>
 		<isNotEmpty prepend="," property="yxx"><![CDATA[ yxx]]></isNotEmpty>
 		<isNotEmpty prepend="," property="etldate"><![CDATA[ etldate]]></isNotEmpty>
-		<isNotEmpty prepend="," property="zdryid"><![CDATA[ zdryid]]></isNotEmpty>
 		<isNotEmpty prepend="," property="syrkid"><![CDATA[ syrkid]]></isNotEmpty>
 		<isNotEmpty prepend="," property="qbzd"><![CDATA[ qbzd]]></isNotEmpty>
 		<isNotEmpty prepend="," property="qbdd"><![CDATA[ qbdd]]></isNotEmpty>
@@ -71,7 +70,6 @@
 		<isNotEmpty prepend="," property="zdrygllxdm"><![CDATA[#zdrygllxdm#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="yxx"><![CDATA[#yxx#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="etldate"><![CDATA[#etldate#]]></isNotEmpty>
-		<isNotEmpty prepend="," property="zdryid"><![CDATA[#zdryid#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="syrkid"><![CDATA[#syrkid#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="qbzd"><![CDATA[#qbzd#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="qbdd"><![CDATA[#qbdd#]]></isNotEmpty>
@@ -115,7 +113,6 @@
 			<isNotNull prepend="," property="zdrygllxdm"><![CDATA[ zdrygllxdm = #zdrygllxdm#]]></isNotNull>
 			<isNotNull prepend="," property="yxx"><![CDATA[ yxx = #yxx#]]></isNotNull>
 			<isNotNull prepend="," property="etldate"><![CDATA[ etldate = #etldate#]]></isNotNull>
-			<isNotNull prepend="," property="zdryid"><![CDATA[ zdryid = #zdryid#]]></isNotNull>
 			<isNotNull prepend="," property="syrkid"><![CDATA[ syrkid = #syrkid#]]></isNotNull>
 			<isNotNull prepend="," property="qbzd"><![CDATA[ qbzd = #qbzd#]]></isNotNull>
 			<isNotNull prepend="," property="qbdd"><![CDATA[ qbdd = #qbdd#]]></isNotNull>
@@ -158,7 +155,6 @@
 		<isNotEmpty prepend="and" property="zdrygllxdm"> ZDRYGLLXDM = #zdrygllxdm#</isNotEmpty>
 		<isNotEmpty prepend="and" property="yxx"> YXX = #yxx#</isNotEmpty>
 		<isNotEmpty prepend="and" property="etldate"> ETLDATE = #etldate#</isNotEmpty>
-		<isNotEmpty prepend="and" property="zdryid"> ZDRYID = #zdryid#</isNotEmpty>
 		<isNotEmpty prepend="and" property="syrkid"> SYRKID = #syrkid#</isNotEmpty>
 		<isNotEmpty prepend="and" property="qbzd"> QBZD = #qbzd#</isNotEmpty>
 		<isNotEmpty prepend="and" property="qbdd"> QBDD = #qbdd#</isNotEmpty>
