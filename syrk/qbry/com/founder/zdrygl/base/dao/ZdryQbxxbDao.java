@@ -55,15 +55,20 @@ public class ZdryQbxxbDao extends BaseDaoImpl {
 		}
 	}
 	
-	
+	/**
+	 * 
+	 * @Title: queryList
+	 * @Description: 查询情报重点人员列表
+	 * @param @param entity
+	 * @param @param page
+	 * @param @return    设定文件
+	 * @return EasyUIPage    返回类型
+	 * @throws
+	 */
 	public EasyUIPage queryList(ZdryQbxxb entity, EasyUIPage page) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("begin", page.getBegin());
-		map.put("end", page.getEnd());
 		
-//		if(StringUtils.isBlank(entity.getHs_status())){
-//			entity.setHs_status("01");
-//		}
 		String sort = page.getSort();
 		String order = page.getOrder();
 		if (StringUtils.isBlank(sort)) {
@@ -74,14 +79,8 @@ public class ZdryQbxxbDao extends BaseDaoImpl {
 		map.put("order", order);
 		map.put("entity", entity);
 		page.setRows(queryForList("ZdryQbxxb.query", map));
+		Integer i = (Integer) queryForObject("ZdryQbxxb.queryCount", map);
 		page.setTotal((Integer) queryForObject("ZdryQbxxb.queryCount", map));
-//		if(!StringUtils.isBlank(entity.getIsCheck())){
-//			page.setRows(queryForList("SyrkSyrkxxzb.queryHs", map));
-//			page.setTotal((Integer) queryForObject("SyrkSyrkxxzb.queryHsCount", map));
-//		}else{
-//			page.setRows(queryForList("SyrkSyrkxxzb.query", map));
-//			page.setTotal((Integer) queryForObject("SyrkSyrkxxzb.queryCount", map));
-//		}
 		return page;
 	}
 }

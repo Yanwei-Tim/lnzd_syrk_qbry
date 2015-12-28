@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +23,9 @@ import com.founder.framework.organization.department.service.OrgOrganizationServ
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.UUID;
 import com.founder.zdrygl.base.model.ZdryQbxxb;
+import com.founder.zdrygl.base.model.ZdryQbywb;
 import com.founder.zdrygl.base.service.ZdryQbxxbService;
+import com.founder.zdrygl.base.service.ZdryQbywbService;
 import com.founder.zdrygl.core.utils.ZdryQbDict;
 import com.google.gson.Gson;
 @Controller
@@ -35,6 +38,9 @@ public class qbryController extends BaseController {
 	
 	@Resource(name = "zdryQbxxbService")
 	private ZdryQbxxbService zdryQbxxbService;
+	
+	@Resource(name = "zdryQbywbService")
+	private ZdryQbywbService zdryQbywbService;
 	
 	@RequestMapping(value = "/qbryManager", method = RequestMethod.GET)
 	public ModelAndView qbryManager() throws BussinessException {
@@ -50,27 +56,24 @@ public class qbryController extends BaseController {
 		
 	}
 	
+	
+	/**
+	 * 
+	 * @Title: queryList
+	 * @Description: TODO(这里用一句话描述这个方法的作用)
+	 * @param @param page
+	 * @param @param rows
+	 * @param @param entity
+	 * @param @param sessionBean
+	 * @param @return    设定文件
+	 * @return EasyUIPage    返回类型
+	 * @throws
+	 */
 	@RequestMapping(value = "/queryList", method = RequestMethod.POST)
 	public @ResponseBody
 	EasyUIPage queryList(EasyUIPage page,@RequestParam(value = "rows", required = false) Integer rows,ZdryQbxxb entity, SessionBean sessionBean) {
 		page.setPagePara(rows);
 		sessionBean = getSessionBean(sessionBean);
-		
-//		if (null != sessionBean&&StringUtils.isBlank(entity.getIsCheck())){
-//			OrgOrganization userOrg = orgOrganizationService.queryById(sessionBean.getUserOrgId());
-//			String orglevel = userOrg.getOrglevel();
-//			if (("21").equals(orglevel)) {
-//				entity.setGxfjdm((String) sessionBean.getUserOrgCode());
-//			} else if ("32".equals(orglevel)) {
-//				entity.setGxpcsdm((String) sessionBean.getUserOrgCode());
-//			} else if ("50".equals(orglevel)) {
-//				entity.setGxzrqdm((String) sessionBean.getUserOrgCode());
-//			}
-//		}else{
-////			entity.setGxpcsdm(sessionBean.getExtendValue("ssPcsCode"));
-//		}
-		
-		
 		return zdryQbxxbService.queryList(entity, page);
 	}
 	
@@ -116,6 +119,7 @@ public class qbryController extends BaseController {
 		   String  gxdwmc=qbzdrymsg.getGxdwmc();
 		   String  ladwmc=qbzdrymsg.getLadwmc();
 		   String  glzt=qbzdrymsg.getGlzt();
+		   qbzdrymsg.setXt_zxbz("0");
 		 //验证身份号码
 		if(validationqbrygmsfhm(gmsfhm)){						
 			//验证情报人员是否已存在
@@ -242,7 +246,7 @@ public class qbryController extends BaseController {
 	 * @throws
 	 */
 	public boolean valiodationqbryglzt(String glzt){
-		if( glzt==ZdryQbDict.GLZT_DXF){
+		if( ZdryQbDict.GLZT_DXF.equals(glzt)){
 			return true;	
 		}		
 		else{
@@ -250,6 +254,37 @@ public class qbryController extends BaseController {
 		}
 	}
 	
+	/**
+	 * 
+	 * @Title: ywList
+	 * @Description: 根据身份证号查询业务操作记录
+	 * @param @param gmsfhm
+	 * @param @return    设定文件
+	 * @return EasyUIPage    返回类型
+	 * @throws
+	 */
+	@RequestMapping(value = "/ywList/{gmsfhm}", method = RequestMethod.POST)
+	public @ResponseBody 
+		EasyUIPage ywList(EasyUIPage page,@PathVariable(value = "gmsfhm") String gmsfhm, SessionBean sessionBean){
+			return zdryQbywbService.queryListByZjhm(gmsfhm,page);
+	}
+	
+	/**
+	 * 
+	 * @Title: view
+	 * @Description: 跳转情报人员编辑页面
+	 * @param @param qbryid
+	 * @param @return    设定文件
+	 * @return ModelAndView    返回类型
+	 * @throws
+	 */
+	@RequestMapping(value = "/{ryid}/view", method = RequestMethod.GET)
+	public ModelAndView view(@PathVariable(value = "ryid") String qbryid){
+			ModelAndView mv = new ModelAndView("qbry/manager/qbryEdit");
+			ZdryQbxxb qbxxb = zdryQbxxbService.queryById(qbryid);
+			mv.addObject("qbry",qbxxb);
+			return mv;
+	}
 	
 	
 	/**

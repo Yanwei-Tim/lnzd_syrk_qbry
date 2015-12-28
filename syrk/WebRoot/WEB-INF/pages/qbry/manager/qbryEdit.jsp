@@ -22,8 +22,9 @@
 
 
 /*本页面自定义样式 ******/
-.operate-btns{width:400px;margin-left:270px;margin-top:20px;margin-bottom:20px;}
+.operate-btns{width:400px;margin-left:180px;margin-top:20px;margin-bottom:20px;}
 #sendBack,#syrkAdd,#accept{margin-left:25px;}
+#operate-track{height:400px;}
 /********************/
 
 </style>
@@ -75,57 +76,33 @@
 										 <tbody id="jbxxInfo">
 										 <tr>
 										      <th  align="right" width="100">姓名：</th>
-											  <td width="120"><script type="text/javascript">document.write(window.top.getDictName(contextPath + '/common/dict/KX_D_CYZJDM.js', "${ry.cyzjdm}"));</script></td>
+											  <td width="120">${qbry.xm}</td>
 											  <th  align="right" width="100">证件号码：</th>
-											  <td width="120"> ${ry.zjhm}</td>
+											  <td width="120"> ${qbry.gmsfhm}</td>
 										 </tr>
 										 <tr >
 										      <th  align="right" width="100">性别：</th>
-											  <td width="90">${ry.csrq}</td>
+											  <td width="90">${qbry.xbdm}</td>
 											  <th  align="right" width="100">国籍：</th>
-											  <td width="120"><script type="text/javascript"> document.write(window.top.getDictName(contextPath + '/common/dict/GB_D_XBDM.js', "${ry.xbdm}"));</script></td>
+											  <td width="120">${qbry.gjdm}</td>
 										 </tr>
 										 <tr>
-										      <th  align="right" width="100">参考居住地址：</th>
-											  <c:choose>
-											  <c:when test="${ry.hjd_dzxz !=null}">
-											  <td  colspan="3" width="270">${ry.hjd_dzxz }</td>	
-											  </c:when>
-											  <c:otherwise>
-											  <td  colspan="3" width="270">${ry.hjd_mlpxz}</td>	
-											  </c:otherwise>
-											  </c:choose>
-											  </td>
+										      <th  align="right" width="100">参考居住地址(居住地)：</th>
+											  <td  colspan="3" width="270">${qbry.jzd}</td>
+										 </tr>
+										 <tr>
+										      <th  align="right" width="100">实际居住地址(现住地)：</th>
+											  <td  colspan="3" width="270">${qbry.xzd}</td>
 										 </tr>
 										 <tr >
 										      <th  align="right" width="100">户籍地址：</th>
-											  <c:choose>
-											  <c:when test="${ry.hjd_dzxz !=null}">
-											  <td  colspan="3" width="270">${ry.hjd_dzxz }</td>	
-											  </c:when>
-											  <c:otherwise>
-											  <td  colspan="3" width="270">${ry.hjd_mlpxz}</td>	
-											  </c:otherwise>
-											  </c:choose>
-											  </td>
-										 </tr>
-										 <tr >
-										      <th  align="right" width="100">重点人员类别：</th>
-											  <c:choose>
-											  <c:when test="${ry.hjd_dzxz !=null}">
-											  <td  colspan="3" width="270">${ry.hjd_dzxz }</td>	
-											  </c:when>
-											  <c:otherwise>
-											  <td  colspan="3" width="270">${ry.hjd_mlpxz}</td>	
-											  </c:otherwise>
-											  </c:choose>
-											  </td>
+											  <td  colspan="3" width="270">${qbry.hjd}</td>
 										 </tr>
 										 <tr >
 										      <th  align="right" width="100">当前级别：</th>
-											  <td width="90"><script type="text/javascript">document.write(window.top.getDictName(contextPath + '/common/dict/GB_D_GJHDQDM.js', "${ry.gjdm}"));</script></td>
-											  <th  align="right" width="100">下发状态：</th>
-											  <td width="120"> ${ry.wwx}  ${ry.wwm}</td>
+											  <td width="90">${qbry.dqjb}</td>
+											  <th  align="right" width="100">下发状态(管理状态)：</th>
+											  <td width="120">${qbry.glzt}</td>
 										 </tr>
 										 <tr >
 										      <th  align="right" width="100">责任单位：</th>
@@ -137,13 +114,13 @@
 										      <th  align="right" width="100">联系电话：</th>
 											  <td width="90"><script type="text/javascript">document.write(window.top.getDictName(contextPath + '/common/dict/GB_D_XZQHDM.js', "${ry.jgssxdm}"));</script></td>
 											  <th  align="right" width="100">入部省库时间：</th>
-											  <td width="120"><script type="text/javascript"> document.write(window.top.getDictName(contextPath + '/common/dict/GB_D_GJHDQDM.js', "${ry.jggjdqdm}"));</script></td>
+											  <td width="120">${qbry.bjzdryrksj}</td>
 										 </tr>
 										 <tr >
 										      <th  align="right" width="100">立案单位：</th>
-											  <td width="90"><script type="text/javascript">document.write(window.top.getDictName(contextPath + '/common/dict/GB_D_XZQHDM.js', "${ry.jgssxdm}"));</script></td>
+											  <td width="90">${qbry.ladwmc}</td>
 											  <th  align="right" width="100">立案时间：</th>
-											  <td width="120"><script type="text/javascript"> document.write(window.top.getDictName(contextPath + '/common/dict/GB_D_GJHDQDM.js', "${ry.jggjdqdm}"));</script></td>
+											  <td width="120">${qbry.lasj}</td>
 										 </tr>
 										 
 										 </tbody>
@@ -156,22 +133,22 @@
 							</td>
 						</tr>
 					</table>
-						<!-- 业务操作记录  start -->
-					<div class="operate-track" style="margin-left:175px;">
-						<table  class="easyui-datagrid" title='业务操作记录表'
-			              	data-options="url:'<%=contextPath%>/qbryManager/queryList'
-			              	">
-					        <thead>
-					          	<tr>
-						            <th data-options="field:'czlb',width:100,align:'center',halign:'center',sortable:true">操作类别</th>
-						            <th data-options="field:'gmsfhm',width:100,align:'center',sortable:true,halign:'center'">操作时间</th>
-						            <th data-options="field:'bz',width:200,align:'center',sortable:true,halign:'center'">操作原因</th>
-						            <th  data-options="field:'mbbmmc',width:100,align:'center',halign:'center',sortable:true">操作部门</th>
-						            <th  data-options="field:'bz',width:100,align:'center',halign:'center',sortable:true">操作人</th>
-						        </tr>
-					       </thead>
-				       </table>
-					</div>
+					<!-- 业务操作记录  start -->
+					<table id="operate-track"  class="easyui-datagrid" title='业务操作记录表' style="height:auto;"
+		              	data-options="url:'<%=contextPath%>/qbryManager/ywList/${qbry.gmsfhm}',
+		              	height:'200'		
+		              	">
+				        <thead>
+				          	<tr>
+					            <th data-options="field:'czlb',width:100,align:'center',halign:'center',sortable:true">操作类别</th>
+					            <th data-options="field:'gmsfhm',width:100,align:'center',sortable:true,halign:'center'">操作时间</th>
+					            <th data-options="field:'bz',width:200,align:'center',sortable:true,halign:'center'">操作原因</th>
+					            <th  data-options="field:'mbbmmc',width:100,align:'center',halign:'center',sortable:true">操作部门</th>
+					            <th  data-options="field:'bz',width:100,align:'center',halign:'center',sortable:true">操作人</th>
+					        </tr>
+				       </thead>
+			       </table>
+					
 					<!-- 业务操作记录  end -->
 					<!-- 功能按钮 start -->
 					<div class="operate-btns">

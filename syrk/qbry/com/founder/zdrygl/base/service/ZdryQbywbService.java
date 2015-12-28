@@ -1,12 +1,11 @@
 package com.founder.zdrygl.base.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.base.service.BaseService;
+import com.founder.framework.utils.EasyUIPage;
 import com.founder.zdrygl.base.dao.ZdryQbywbDao;
 import com.founder.zdrygl.base.model.ZdryQbywb;
 
@@ -51,8 +50,8 @@ public class ZdryQbywbService {
 	 * @return List<ZdryQbywb>    返回类型
 	 * @throw
 	 */
-	public List<ZdryQbywb> queryListByZjhm(String zjhm) {
-		return zdryQbywbDao.queryListByZjhm(zjhm);
+	public EasyUIPage queryListByZjhm(String zjhm,EasyUIPage page) {
+		return zdryQbywbDao.queryListByZjhm(zjhm,page);
 	}
 	
 	
