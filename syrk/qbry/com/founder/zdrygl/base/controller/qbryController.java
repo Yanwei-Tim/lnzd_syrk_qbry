@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +23,9 @@ import com.founder.framework.organization.department.service.OrgOrganizationServ
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.UUID;
 import com.founder.zdrygl.base.model.ZdryQbxxb;
+import com.founder.zdrygl.base.model.ZdryQbywb;
 import com.founder.zdrygl.base.service.ZdryQbxxbService;
+import com.founder.zdrygl.base.service.ZdryQbywbService;
 import com.founder.zdrygl.core.utils.ZdryQbDict;
 import com.google.gson.Gson;
 @Controller
@@ -35,6 +38,9 @@ public class qbryController extends BaseController {
 	
 	@Resource(name = "zdryQbxxbService")
 	private ZdryQbxxbService zdryQbxxbService;
+	
+	@Resource(name = "zdryQbywbService")
+	private ZdryQbywbService zdryQbywbService;
 	
 	@RequestMapping(value = "/qbryManager", method = RequestMethod.GET)
 	public ModelAndView qbryManager() throws BussinessException {
@@ -50,27 +56,24 @@ public class qbryController extends BaseController {
 		
 	}
 	
+	
+	/**
+	 * 
+	 * @Title: queryList
+	 * @Description: TODO(这里用一句话描述这个方法的作用)
+	 * @param @param page
+	 * @param @param rows
+	 * @param @param entity
+	 * @param @param sessionBean
+	 * @param @return    设定文件
+	 * @return EasyUIPage    返回类型
+	 * @throws
+	 */
 	@RequestMapping(value = "/queryList", method = RequestMethod.POST)
 	public @ResponseBody
 	EasyUIPage queryList(EasyUIPage page,@RequestParam(value = "rows", required = false) Integer rows,ZdryQbxxb entity, SessionBean sessionBean) {
 		page.setPagePara(rows);
 		sessionBean = getSessionBean(sessionBean);
-		
-//		if (null != sessionBean&&StringUtils.isBlank(entity.getIsCheck())){
-//			OrgOrganization userOrg = orgOrganizationService.queryById(sessionBean.getUserOrgId());
-//			String orglevel = userOrg.getOrglevel();
-//			if (("21").equals(orglevel)) {
-//				entity.setGxfjdm((String) sessionBean.getUserOrgCode());
-//			} else if ("32".equals(orglevel)) {
-//				entity.setGxpcsdm((String) sessionBean.getUserOrgCode());
-//			} else if ("50".equals(orglevel)) {
-//				entity.setGxzrqdm((String) sessionBean.getUserOrgCode());
-//			}
-//		}else{
-////			entity.setGxpcsdm(sessionBean.getExtendValue("ssPcsCode"));
-//		}
-		
-		
 		return zdryQbxxbService.queryList(entity, page);
 	}
 	
@@ -89,81 +92,34 @@ public class qbryController extends BaseController {
  * @throws
  */
 	@RequestMapping(value ="/qbryget", method = RequestMethod.POST)
-	public ModelAndView qbryget(ZdryQbxxb qbzdrymsg){
+	public ModelAndView qbryget(ZdryQbxxb qbzdrymsg,SessionBean sessionBean){
 		 /*验证字段
 		  * 1.身份证号是否存在以及各式是否正确（18位）
 		  * 2.情报人员是否已存在
 		  * 2.管辖单位是否存在
 		  * 3.立案单位是否存在
 		  * 4.管理状态（默认为待接收、还未设置）调用字典
-		  */	
-/*		   System.out.println("保存成功！");	
-			try{								  			   
-				   zdryQbxxbService.save(qbzdrymsg);
-				   System.out.println("保存成功！");					
-		   ModelAndView	   mv = new ModelAndView("qbry/manager/qbryManage");
-			return mv;
-			   }catch(Exception e){
-				   logger.error(e.getLocalizedMessage(), e);							   
-				   System.out.println("保存失败");
-	     ModelAndView	  mv=new ModelAndView("qbry/getqbry/qbryGet");
-	  	return mv;
-			    }	*/
-			
-		  ModelAndView mv =new ModelAndView("qbry/getqbry/qbryGet");;
+		  */
+		
+		ModelAndView mv = new ModelAndView(getViewName(sessionBean));		
+		 sessionBean = getSessionBean(sessionBean);
            String  gmsfhm = qbzdrymsg.getGmsfhm();
-		   String  xm= qbzdrymsg.getXm();	
-		   String  gxdwmc=qbzdrymsg.getGxdwmc();
-		   String  ladwmc=qbzdrymsg.getLadwmc();
-		   String  glzt=qbzdrymsg.getGlzt();
-		 //验证身份号码
-		if(validationqbrygmsfhm(gmsfhm)){						
+           String xm = qbzdrymsg.getXm();
 			//验证情报人员是否已存在
 		   if(validationqbryexitbygmsfhm(gmsfhm, xm)){				 
 				String erromsg="该人员已经存在！";			    			   					  			  
 				throw new RuntimeException(erromsg);
 		     } 	
-		    else{
-		    	//不存在 ，就验证管辖单位 			
-		        if(validationqbrygxdw(gxdwmc)){
-		        	//存在，就验证立案单位 
-		          if(validationqbryladw(ladwmc)){
-		            //存在，就验证管理状态		
-		        	if(valiodationqbryglzt(glzt)){
-                       //待下发状态，才开始新增情报人员信息
-		        		try{				
-							  			   
-							   zdryQbxxbService.save(qbzdrymsg);
-							   System.out.println("保存成功！");					
-							   mv = new ModelAndView("qbry/manager/qbryManage");					 
-						   }catch(Exception e){
-							   logger.error(e.getLocalizedMessage(), e);							   
-							   System.out.println("保存失败!");
-							   							  
-						    }		        		
-		        	 }else{
-		        		 //管理状态不是带下发状态
-		        		      String erromsg="管理状态不是带下发状态";			
-		        		      throw new RuntimeException(erromsg);
-		        	  }		        			        		
-		        	 }else{
-			        	//立案单位不存在
-			        	String erromsg="立案单位不能为空";			
-			        	throw new RuntimeException(erromsg);
-			         }		        	
-		         }else{
-		        	//管辖单位不存在
-		        	String erromsg="管辖单位不能为空";			
-		        	throw new RuntimeException(erromsg);
-		        }		    	 		    		 					    					
-		    }	
-		}
-		else{			
-			//公民身份证号码各式不正确
-			String erromsg="公民身份证号码格式不正确或者为空";			
-			throw new RuntimeException(erromsg);
-		}	
-		
+		    else{		    	
+		        	try{											  			   
+						   zdryQbxxbService.save(qbzdrymsg,sessionBean);
+						   System.out.println("保存成功！");					
+						   mv = new ModelAndView("qbry/manager/qbryManage");					 
+					 }catch(Exception e){
+						   logger.error(e.getLocalizedMessage(), e);							   
+						    System.out.println("保存失败!");							   							  
+				       }		        			        			         	    	 		    		 					    					
+		         }			  
 	return mv;
 	}
 	
@@ -178,78 +134,40 @@ public class qbryController extends BaseController {
 			return true;			
 		}else{
 			return false;		
-		}	*/
-		
+		}	*/		
 		return false;	
-	}
-   /**
-    * 
-    * @Title: validationqbrygxdw
-    * @Description: TODO(验证管辖单位)
-    * @param @return    设定文件
-    * @return boolean    返回类型
-    * @throws
-    */
-	public boolean validationqbrygxdw( String  gxdwmc ){		
-      if(gxdwmc!=null){   	  
-    	  return true;	 
-      }else{
-    	  return false;	
-      }				
-	}	
+	} 	
 	/**
 	 * 
-	 * @Title: validationqbrygmsfhm
-	 * @Description: TODO(验证身份证号码)
+	 * @Title: ywList
+	 * @Description: 根据身份证号查询业务操作记录
 	 * @param @param gmsfhm
 	 * @param @return    设定文件
-	 * @return boolean    返回类型
+	 * @return EasyUIPage    返回类型
 	 * @throws
 	 */
-	public boolean validationqbrygmsfhm(String gmsfhm){		
-		if(gmsfhm.length()==18){
-			return true;	
-		}		
-		else{
-			return false;	
-		}	
-	}	
+	@RequestMapping(value = "/ywList/{gmsfhm}", method = RequestMethod.POST)
+	public @ResponseBody 
+		EasyUIPage ywList(EasyUIPage page,@PathVariable(value = "gmsfhm") String gmsfhm, SessionBean sessionBean){
+			return zdryQbywbService.queryListByZjhm(gmsfhm,page);
+	}		
 	/**
 	 * 
-	 * @Title: validationqbryladw
-	 * @Description: TODO(验证立案单位)
-	 * @param @param ladwmc
+	 * @Title: view
+	 * @Description: 跳转情报人员编辑页面
+	 * @param @param qbryid
 	 * @param @return    设定文件
-	 * @return boolean    返回类型
+	 * @return ModelAndView    返回类型
 	 * @throws
 	 */
-	public boolean validationqbryladw(String  ladwmc){
-		
-		if(ladwmc!=null){
-			return true;	
-		}		
-		else{
-			return false;	
-		}
+	@RequestMapping(value = "/{ryid}/view", method = RequestMethod.GET)
+	public ModelAndView view(@PathVariable(value = "ryid") String qbryid){
+			ModelAndView mv = new ModelAndView("qbry/manager/qbryEdit");
+			ZdryQbxxb qbxxb = zdryQbxxbService.queryById(qbryid);
+			mv.addObject("qbry",qbxxb);
+			return mv;
 	}
-	/**
-	 * 
-	 * @Title: valiodationqbryglzt
-	 * @Description: TODO(验证管理状态)
-	 * @param @param glzt
-	 * @param @return    设定文件
-	 * @return boolean    返回类型
-	 * @throws
-	 */
-	public boolean valiodationqbryglzt(String glzt){
-		if( glzt==ZdryQbDict.GLZT_DXF){
-			return true;	
-		}		
-		else{
-			return false;	
-		}
-	}
-	
+
 	
 	
 	/**

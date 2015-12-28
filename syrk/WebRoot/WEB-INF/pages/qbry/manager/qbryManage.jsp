@@ -50,7 +50,8 @@
 	.td-btns{
 		padding-top:15px;
 	}
-	#reset-btn{
+	#reset-btn,
+	#dzaddid{
 		margin-left:25px;
 	}
 	.td-value input, 
@@ -64,7 +65,7 @@
   <body class="easyui-layout" data-options="fit:true,border:false">
        <div data-options="region:'center',border:false" style="width:538px;padding:20px;">
            <!-- 地址管理列表 -->
-           <table id="dg" class="easyui-datagrid"
+           <table id="dg" class="easyui-datagrid" 
 	              	data-options="url:'<%=contextPath%>/qbryManager/queryList',
 						onLoadSuccess:function(data){ZdryManage.loadPoint(data,'dg');},
 						selectOnCheck:true,
@@ -81,11 +82,15 @@
 		        		toolbar:'#datagridToolbar'">
 			        <thead>
 			          <tr>
-				            <th data-options="field:'zdrylb',width:100,align:'center',halign:'center',sortable:true">操作类别</th>
-				            <th data-options="field:'gmsfhm',width:100,align:'center',sortable:true,halign:'center'">操作时间</th>
-				            <th data-options="field:'xm',width:70,align:'center',sortable:true,halign:'center'">操作原因</th>
-				            <th  data-options="field:'xzd',width:200,align:'center',halign:'center',sortable:true">操作部门</th>
-				            <th  data-options="field:'hjd',width:200,align:'center',halign:'center',sortable:true">操作人</th>
+				            <th data-options="field:'zdrylb',width:100,align:'center',halign:'center',sortable:true">重点人员细类</th>
+				            <th data-options="field:'xm',width:70,align:'center',sortable:true,halign:'center'">姓名</th>
+				            <th data-options="field:'gmsfhm',width:100,align:'center',sortable:true,halign:'center'">身份证号码</th>
+				            <th  data-options="field:'xbdm',width:30,align:'center',halign:'center',sortable:true">性别</th>
+				            <th  data-options="field:'gjdm',width:50,align:'center',halign:'center',sortable:true">国籍</th>
+				            <th  data-options="field:'xzd',width:100,align:'center',halign:'center',sortable:true">现居住地址</th>
+				            <th  data-options="field:'hjd',width:100,align:'center',halign:'center',sortable:true">户籍地址</th>
+				            <th  data-options="field:'bjzdryrksj',width:100,align:'center',halign:'center',sortable:true">入部省库时间</th>
+				            <th data-options="field:'process',width:80,align:'center',halign:'center',formatter:ZdryManage.datagridProcessFormater">操作</th>
 				        </tr>
 			       </thead>
 		       </table>	  
@@ -132,17 +137,15 @@
 					<td class="td-btns" colspan="2">
 						<div class="td-btns-container">
 							<a class="easyui-linkbutton" data-options="iconCls:'icon-search'" href="javascript:void(0)">查询</a>
-							<a id="reset-btn" class="easyui-linkbutton" data-options="iconCls:'icon-search'" href="#">重置</a>
+							<a id="reset-btn" class="easyui-linkbutton"  href="#">重置</a>
+							<a id="dzaddid" class="easyui-linkbutton"  data-options="iconCls:'icon-add'" onclick="add()">新增</a>
+							<a id="dzaddid" class="easyui-linkbutton" data-options="iconCls:'icon-add'"  onclick="addSyrk()">新增实有人口</a>
 						</div>
 					</td>
 				</tr>
 			</table>
-			<!-- <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" onclick="SyrkGl.detailSearch()">精确查询</a>
-			<a id="dzaddid" class="easyui-linkbutton"   onclick="SyrkGl.syrkAdd();">新增</a> -->
-			<input id="searchBox" type="text" class="easyui-searchbox" data-options="prompt:'请输入姓名'"/>
-			<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" onclick="SyrkGl.detailSearch()">精确查询</a>
-			<a id="dzaddid" class="easyui-linkbutton"   onclick="add()">新增</a>
-			<a id="dzaddid" class="easyui-linkbutton"   onclick="addSyrk()">新增实有人口</a>
+			
+			
         </div>
 	  </div>
 	  <!-- 查询条件 -->
@@ -153,10 +156,39 @@
 <script type="text/javascript">
  function add(){
 	 location.href="<%=contextPath%>/qbryManager/qbryadd";
-	 
  }
  
  function addSyrk(){
 	 menu_open('实有人口新增','/syrkGl/add?mainTabID='+getMainTabID()+'&zjhm=210211198906132911');
  }
+ 
+ /**
+  * @title:doUpdateAndXq
+  * @description:地址维护
+  * @author: zhang_guoliang@founder.com
+  * @param type
+  *            0为可编辑、1为只读，dzChb地址层户表 0为层户地址对象表、1为层户地址审核表
+  * @date:2015-02-04 18:23:35
+  */
+doUpdateAndXq = function(linkObject, index) {
+ 	// 阻止冒泡，不然要执行onClickRow
+ 	cancelBubble();
+ 	var rows = $('#dg').datagrid('getData');
+ 	var rowData = rows.rows[index];
+ 	menu_open(rowData.xm + '', '/qbryManager/' + rowData.id + '/view?mainTabID=' + getMainTabID());
+ };
+ 
+ /**
+  * @title:datagridProcessFormater
+  * @description:列表操作
+  * @author: zhang_guoliang@founder.com
+  * @param
+  * @date:2014-12-26 10:47:21
+  */
+ ZdryManage.datagridProcessFormater = function(val, row, index) {
+ 	return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateAndXq(this, '
+ 			+ index + ')">编辑</a>&nbsp;';
+ };
+ 
+ 
 </script>

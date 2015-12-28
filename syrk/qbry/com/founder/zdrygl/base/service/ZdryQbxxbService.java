@@ -2,6 +2,7 @@ package com.founder.zdrygl.base.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.base.service.BaseService;
@@ -54,6 +55,7 @@ public class ZdryQbxxbService {
 	public EasyUIPage queryList(ZdryQbxxb entity, EasyUIPage page) {
 		return zdryQbxxbDao.queryList(entity, page);
 	}
+	
 	/**
 	 * 
 	 * @Title: save
@@ -62,12 +64,118 @@ public class ZdryQbxxbService {
 	 * @return void    返回类型
 	 * @throws
 	 */
-	public void save(ZdryQbxxb entity){		
-		entity.setId(UUID.create());
-		zdryQbxxbDao.save(entity);
+	public void save(ZdryQbxxb entity,SessionBean sessionBean){	
+		  String  gmsfhm = entity.getGmsfhm();		  
+		   String  gxdwmc=entity.getGxdwmc();
+		   String  ladwmc=entity.getLadwmc();
+		   String  glzt=entity.getGlzt();
+		   //验证身份号码
+			if(validationqbrygmsfhm(gmsfhm)){						
+				//验证情报人员是否已存在
+			   
+			    	//不存在 ，就验证管辖单位 			
+			        if(validationqbrygxdw(gxdwmc)){
+			        	//存在，就验证立案单位 
+			          if(validationqbryladw(ladwmc)){
+			            //存在，就验证管理状态		
+			        	if(valiodationqbryglzt(glzt)){
+	                       //待下发状态，才开始新增情报人员信息
+			        		 entity.setId(UUID.create());
+			        		 BaseService.setSaveProperties(entity, sessionBean);
+			        		 zdryQbxxbDao.save(entity);
+			        	 }else{
+			        		 //管理状态不是带下发状态
+			        		      String erromsg="管理状态不是带下发状态";			
+			        		      throw new RuntimeException(erromsg);
+			        	  }		        			        		
+			        	 }else{
+				        	//立案单位不存在
+				        	String erromsg="立案单位不能为空";			
+				        	throw new RuntimeException(erromsg);
+				         }		        	
+			         }else{
+			        	//管辖单位不存在
+			        	String erromsg="管辖单位不能为空";			
+			        	throw new RuntimeException(erromsg);
+			        }		    	 		    		 					    								 
+			}
+			else{			
+				//公民身份证号码各式不正确
+				String erromsg="公民身份证号码格式不正确或者为空";			
+				throw new RuntimeException(erromsg);
+			}	
+			 
+		
 	}
 
-
+	 /**
+	    * 
+	    * @Title: validationqbrygxdw
+	    * @Description: TODO(验证管辖单位)
+	    * @param @return    设定文件
+	    * @return boolean    返回类型
+	    * @throws
+	    */
+		public boolean validationqbrygxdw( String  gxdwmc ){		
+	      if(gxdwmc!=null){   	  
+	    	  return true;	 
+	      }else{
+	    	  return false;	
+	      }				
+		}	
+		/**
+		 * 
+		 * @Title: validationqbrygmsfhm
+		 * @Description: TODO(验证身份证号码)
+		 * @param @param gmsfhm
+		 * @param @return    设定文件
+		 * @return boolean    返回类型
+		 * @throws
+		 */
+		public boolean validationqbrygmsfhm(String gmsfhm){		
+			if(gmsfhm.length()==18){
+				return true;	
+			}		
+			else{
+				return false;	
+			}	
+		}	
+		/**
+		 * 
+		 * @Title: validationqbryladw
+		 * @Description: TODO(验证立案单位)
+		 * @param @param ladwmc
+		 * @param @return    设定文件
+		 * @return boolean    返回类型
+		 * @throws
+		 */
+		public boolean validationqbryladw(String  ladwmc){
+			
+			if(ladwmc!=null){
+				return true;	
+			}		
+			else{
+				return false;	
+			}
+		}
+		/**
+		 * 
+		 * @Title: valiodationqbryglzt
+		 * @Description: TODO(验证管理状态)
+		 * @param @param glzt
+		 * @param @return    设定文件
+		 * @return boolean    返回类型
+		 * @throws
+		 */
+		public boolean valiodationqbryglzt(String glzt){
+			if( ZdryQbDict.GLZT_DXF.equals(glzt)){
+				return true;	
+			}		
+			else{
+				return false;	
+			}
+		}
+	
 	/**
 	 * 
 	 * @Title: saveLg
