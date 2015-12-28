@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.base.service.BaseService;
 import com.founder.framework.utils.EasyUIPage;
+import com.founder.syrkgl.bean.SyrkSyrkxxzb;
+import com.founder.syrkgl.service.SyrkSyrkxxzbService;
 import com.founder.zdrygl.base.dao.ZdryQbxxbDao;
 import com.founder.zdrygl.base.dao.ZdryZdryZbDao;
 import com.founder.zdrygl.base.model.ZdryQbxxb;
@@ -63,6 +65,7 @@ public class ZdryQbxxbService {
 		
 		zdryQbxxbDao.save(entity);
 	}
+
 
 	/**
 	 * 
