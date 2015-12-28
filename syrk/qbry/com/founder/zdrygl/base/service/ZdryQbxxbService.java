@@ -47,5 +47,17 @@ public class ZdryQbxxbService {
 	public EasyUIPage queryList(ZdryQbxxb entity, EasyUIPage page) {
 		return zdryQbxxbDao.queryList(entity, page);
 	}
+	/**
+	 * 
+	 * @Title: save
+	 * @Description: TODO(新增zdry)
+	 * @param @param entity    设定文件
+	 * @return void    返回类型
+	 * @throws
+	 */
+	public void save(ZdryQbxxb entity){
+		
+		zdryQbxxbDao.save(entity);
+	}
 
 }

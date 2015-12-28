@@ -63,5 +63,78 @@ public class qbryController extends BaseController {
 		
 		return zdryQbxxbService.queryList(entity, page);
 	}
-
+	
+	@RequestMapping(value = "/qbryadd")
+	public  ModelAndView gotoqbryadd(){			
+		ModelAndView mv = new ModelAndView("qbry/getqbry/qbryGet");		
+		return mv;
+	}
+/**
+ * 
+ * @Title: qbryget
+ * @Description: TODO(验证信息,新增人口)
+ *
+ * @param @return    设定文件
+ * @return ModelAndView    返回类型
+ * @throws
+ */
+	@RequestMapping(value = "/qbryget", method = RequestMethod.POST)
+	public ModelAndView qbryget(ZdryQbxxb qbzdrymsg){
+		//验证字段、
+		 /**
+		  * 1.实有人口是否存在？
+		  * 2.管辖部门是否包含？
+		  * 3.立案部门是否包含？
+		  * 4.管理状态？（默认为待接收、、还未设置）
+		  * 5.
+		  * */
+		//验证分两个步骤：一个是填写的东西是否包含有，一个是信息是否正确（）？
+		  // String  gmsfhm =  qbzdrymsg.getGmsfhm();
+		  // String  xm= qbzdrymsg.getXm();
+		 //  String id= qbzdrymsg.getId();
+		 //核实人口是否存在，不存在则添加信息
+/*		if(validationqbrybygmfhm( id,gmsfhm, xm)){			
+			//存在			 
+		 }
+		 else{
+		 //不存在,就添加
+			 try{
+				 zdryQbxxbService.save(qbzdrymsg);				 
+			 }catch(Exception e){
+				 e.printStackTrace();
+			 }
+			
+		   } */
+	
+		 System.out.println("部级重点人员编号:"+qbzdrymsg.getBjzdrybh());
+		 //不做验证直接存（目前）
+		 ModelAndView mv;
+		   try{
+			   zdryQbxxbService.save(qbzdrymsg);
+			   System.out.println("保存成功！");
+				 mv = new ModelAndView("qbry/manager/qbryManage");
+				 //具体化
+		   }catch(Exception e){
+			   e.printStackTrace();
+			   System.out.println("保存失败！"); 
+				 mv = new ModelAndView("qbry/getqbry/qbryGet");
+		   }		       										
+		return mv;
+	}
+	
+	/**
+	 * @Description: TODO(验证是否存在该实有人口)
+	 * */
+	public boolean  validationqbrybygmfhm(String id ,String gmsfhm,String xm){
+		
+/*		    boolean  cz=false;		
+		    ZdryQbxxb  realmsg =  zdryQbxxbService.queryById(id);		    		    
+		if(realmsg!=null){		
+			return true;			
+		}else{
+			return false;		
+		}	*/	
+		return false;	
+	}
+	
 }

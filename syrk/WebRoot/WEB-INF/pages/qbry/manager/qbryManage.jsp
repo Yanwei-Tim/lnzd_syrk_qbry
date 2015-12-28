@@ -67,7 +67,7 @@
 		<div id="datagridToolbar" style="padding:5px;height:auto;">
 			<input id="searchBox" type="text" class="easyui-searchbox" data-options="prompt:'请输入姓名'"/>
 			<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" onclick="SyrkGl.detailSearch()">精确查询</a>
-			<a id="dzaddid" class="easyui-linkbutton"   onclick="SyrkGl.syrkAdd();">新增</a>
+			<a id="dzaddid" class="easyui-linkbutton"   onclick="add()">新增</a>
         </div>
 	  </div>
 	  <!-- 查询条件 -->
@@ -76,5 +76,8 @@
    </body>
 </html>
 <script type="text/javascript">
-
+ function add(){
+	 location.href="<%=contextPath%>/qbryManager/qbryadd";
+	 
+ }
 </script>

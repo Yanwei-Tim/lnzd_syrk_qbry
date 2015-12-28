@@ -48,8 +48,7 @@ public class ZdryQbxxb extends BaseEntity implements Serializable {
 	@FieldDesc("情报人员类别（小类）") private String zdrylb;
 	@FieldDesc("情报人员管理类型代码（大类）") private String zdrygllxdm;
 	@FieldDesc("有效性") private String yxx;
-	@FieldDesc("ETL时间") private String etldate;
-	@FieldDesc("重点人员id") private String zdryid;
+	@FieldDesc("ETL时间") private String etldate;	
 	@FieldDesc("实有人口ID") private String syrkid;
 	@FieldDesc("情报人员所属支队") private String qbzd;
 	@FieldDesc("情报人员所属大队") private String qbdd;
@@ -220,12 +219,7 @@ public class ZdryQbxxb extends BaseEntity implements Serializable {
 	public void setEtldate(String etldate) {
 		this.etldate = etldate;
 	}
-	public String getZdryid() {
-		return zdryid;
-	}
-	public void setZdryid(String zdryid) {
-		this.zdryid = zdryid;
-	}
+
 	public String getSyrkid() {
 		return syrkid;
 	}
