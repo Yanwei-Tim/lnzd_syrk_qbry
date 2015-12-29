@@ -1,6 +1,6 @@
 var markerArr = new Array();
 var dz_dwdzdmArr = new Array();
-///----------查询功能页方法--------------
+//----------查询功能页方法--------------
 //精确查询
 function closeWindow(){
 	$("#win").window("close"); 
@@ -37,7 +37,7 @@ function doCheck(index,dwmc,dwlbdm){
 //所有检查管理窗口
 function doAllCheck(){
 	var editUrl = "/forward/sydw|rcjcMain";
-	menu_open("日常检查管理",editUrl);
+	menu_open("所有检查列表",editUrl);
 }
 
 //处罚管理窗口
@@ -52,7 +52,7 @@ function doPunish(index,dwmc,dwlbdm){
 //所有处罚管理窗口
 function doAllPunish(){
 	var editUrl = "/forward/sydw|punishMain";
-	menu_open("单位处罚管理",editUrl);
+	menu_open("所有处罚列表",editUrl);
 }
 //按下enter
 function passwordOnkeyPress(obj) {
@@ -66,24 +66,12 @@ function passwordOnkeyPress(obj) {
 function setDzqc(obj){
 	obj.value="";
 }
-
 //搜索功能
 function searchMain(){
-//	if (IE) {
-//		parent.frames["biz_center"].SydwMap.clearGraph();
-//	}else{
-//		var obj = parent.frames.document.getElementById("biz_center").contentWindow;
-//		obj.SydwMap.clearGraph();
-//	}
-	var condition = document.getElementById("condition").value;
-	if(condition=="请输入单位名称、地址信息"){
-		condition="";
-	}
+	var condition = $.trim($('#condition').searchbox('getValue'));
 	var reloadUrl = contextPath + '/sydwcx/queryDw';
 	var opt = $('#dg').datagrid('options');
 	opt.url = reloadUrl;
-	
-	condition= $.trim(condition);
 	$('#dg').datagrid('load',{condition:condition});
 	$('#dg').datagrid("clearSelections");
 }
@@ -98,7 +86,11 @@ function onSelectRow(rowIndex, data){
 			obj.SydwMap.centerByPoint(markerArr[data.dz_dwdzmlpdm],19,dz_dwdzdmArr[data.dz_dwdzmlpdm]);
 		}
 	}else{
-		alert("单位地址无坐标");
+		topMessager.show({
+			title: MESSAGER_TITLE,
+			msg: "单位地址无坐标。",
+			timeout:3500
+		});
 	}
 }
 //查询按钮
@@ -228,4 +220,12 @@ function queryPrint(){
 		window.open(editUrl,"检查打印预览","height=1054,width=1024,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no");
    	}
 	}
+}
+var addressPrefixArray = addressPrefix.split(",");
+//截地址字段
+function subjzdz(val, row, index){
+	for (var i = 0; i < addressPrefixArray.length; i++) {
+		val = val.replace(addressPrefixArray[i], "");
+	}
+	return val;
 }

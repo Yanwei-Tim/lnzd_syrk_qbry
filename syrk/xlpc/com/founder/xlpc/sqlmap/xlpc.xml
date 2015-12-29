@@ -13,22 +13,10 @@
 		       TO_CHAR(P.FSSJ, 'YYYY-MM-DD HH24:MI:SS') FSSJ, P.CLZT, P.CJR, P.XPOINT, P.YPOINT
 			FROM SM_YDJW_XLPC_RY T,SM_YDJW_XLPC_PC P
 		WHERE T.GLPCID = P.PCID
-	  	<isNotEmpty prepend="and" property="pcryvo.ryxm">
-		     T.RYXM LIKE '%'||#pcryvo.ryxm#||'%'
+		<isNotEmpty prepend="and" property="pcryvo.ryxm">
+		     T.RYXM||T.SFZH LIKE '%$pcryvo.ryxm$%' 
 	  	</isNotEmpty>
-	  	<isNotEmpty prepend="and" property="pcryvo.sfzh">
-		     T.SFZH LIKE '%'||#pcryvo.sfzh#||'%'
-	  	</isNotEmpty>
-	  	<isNotEmpty prepend="and" property="pcryvo.sfzt">
-		     T.SFZT = #pcryvo.sfzt#
-	  	</isNotEmpty>
-	  	<isNotEmpty prepend="and" property="pcryvo.sffa">
-		     T.SFFA = #pcryvo.sffa#
-	  	</isNotEmpty>
-	  	<isNotEmpty prepend="and" property="pcryvo.sfpcdx">
-		     T.SFPCDX = #pcryvo.sfpcdx#
-	  	</isNotEmpty>
-	  	ORDER BY #order#)M
+	  	ORDER BY $sort$ $order$)M
       <![CDATA[WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
     </select>
     <!-- 盘查人员列表总数 -->
@@ -37,19 +25,7 @@
     		FROM SM_YDJW_XLPC_RY T,SM_YDJW_XLPC_PC P
 		WHERE T.GLPCID = P.PCID
 		<isNotEmpty prepend="and" property="pcryvo.ryxm">
-		     T.RYXM LIKE '%'||#pcryvo.ryxm#||'%'
-	  	</isNotEmpty>
-	  	<isNotEmpty prepend="and" property="pcryvo.sfzh">
-		     T.SFZH LIKE '%'||#pcryvo.sfzh#||'%'
-	  	</isNotEmpty>
-	  	<isNotEmpty prepend="and" property="pcryvo.sfzt">
-		     T.SFZT = #pcryvo.sfzt#
-	  	</isNotEmpty>
-	  	<isNotEmpty prepend="and" property="pcryvo.sffa">
-		     T.SFFA = #pcryvo.sffa#
-	  	</isNotEmpty>
-	  	<isNotEmpty prepend="and" property="pcryvo.sfpcdx">
-		     T.SFPCDX = #pcryvo.sfpcdx#
+		     T.RYXM||T.SFZH LIKE '%$pcryvo.ryxm$%' 
 	  	</isNotEmpty>
     </select>
     <!-- 盘查任务列表 -->
@@ -64,7 +40,7 @@
  		<isNotEmpty prepend="and" property="pcrwvo.gzdd">
 		     T.GZDD||T.XLMC LIKE '%$pcrwvo.gzdd$%' 
 	  	</isNotEmpty>
-	 ORDER BY #order#)M
+		ORDER BY $sort$ $order$)M
      <![CDATA[WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
     </select>
     <!-- 盘查任务列表总数 -->
@@ -84,18 +60,9 @@
  		  FROM YDJW.SM_YDJW_XLPC_CL T,SM_YDJW_XLPC_PC P
  		WHERE T.GLPCID = P.PCID
  		<isNotEmpty prepend="and" property="pcclvo.syrxm">
-		     T.SYRXM LIKE '%'||#pcclvo.syrxm#||'%'
+		    T.SYRXM LIKE||T.SYRSFZH LIKE '%$pcclvo.syrxm$%'
 	  	</isNotEmpty>
-	  	<isNotEmpty prepend="and" property="pcclvo.syrsfzh">
-		     T.SYRSFZH LIKE '%'||#pcclvo.syrsfzh#||'%'
-	  	</isNotEmpty>
-	  	<isNotEmpty prepend="and" property="pcclvo.cphm">
-		     T.CPHM LIKE '%'||#pcclvo.cphm#||'%'
-	  	</isNotEmpty>
-	  	<isNotEmpty prepend="and" property="pcclvo.pcyy">
-		     T.PCYY LIKE '%'||#pcclvo.pcyy#||'%'
-	  	</isNotEmpty>
-	 ORDER BY #order#)M
+	 	ORDER BY $sort$ $order$)M
      <![CDATA[WHERE ROWNUM <= #end# ) WHERE R > #begin#]]> 
     </select>
     <!-- 盘查车辆列表总数 -->
@@ -104,16 +71,7 @@
  			FROM SM_YDJW_XLPC_CL T,SM_YDJW_XLPC_PC P
  		WHERE T.GLPCID = P.PCID
  		<isNotEmpty prepend="and" property="pcclvo.syrxm">
-		     T.SYRXM LIKE '%'||#pcclvo.syrxm#||'%'
-	  	</isNotEmpty>
-	  	<isNotEmpty prepend="and" property="pcclvo.syrsfzh">
-		     T.SYRSFZH LIKE '%'||#pcclvo.syrsfzh#||'%'
-	  	</isNotEmpty>
-	  	<isNotEmpty prepend="and" property="pcclvo.cphm">
-		     T.CPHM LIKE '%'||#pcclvo.cphm#||'%'
-	  	</isNotEmpty>
-	  	<isNotEmpty prepend="and" property="pcclvo.pcyy">
-		     T.PCYY LIKE '%'||#pcclvo.pcyy#||'%'
+		    T.SYRXM LIKE||T.SYRSFZH LIKE '%$pcclvo.syrxm$%'
 	  	</isNotEmpty>
     </select>
     <!-- 根据盘查任务查询盘查人员 -->

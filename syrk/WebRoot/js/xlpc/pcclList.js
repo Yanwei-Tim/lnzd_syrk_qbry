@@ -52,19 +52,10 @@ PcclList.onloadMap = function(){
  * @date:2015-11-23 20:30:32
  */	
 PcclList.queryButton = function(){
-	var syrxm = document.getElementById("syrxm").value;
-	var syrsfzh = document.getElementById("syrsfzh").value;
-	var cphm = document.getElementById("cphm").value;
-	var pcyy = document.getElementById("pcyy").value;
+	var syrxm = $.trim($('#syrxm').searchbox('getValue'));
 	syrxm = $.trim(syrxm);
-	syrsfzh = $.trim(syrsfzh);
-	cphm = $.trim(cphm);
-	pcyy = $.trim(pcyy);
 	$('#dg').datagrid('load',{    
-		'syrxm':syrxm,
-		'syrsfzh':syrsfzh,
-		'cphm':cphm,
-		'pcyy':pcyy
+		'syrxm':syrxm
 	});
 };
 /**
@@ -148,6 +139,12 @@ PcclList.addClickMarker = function(row){
 		PcclList.map._MapApp.addOverlay(PcclList.initMarker);
 		//鼠标移动到点上列表选中
 		$('#dg').datagrid("selectRow",row);
+	}else{
+		topMessager.show({
+			title: MESSAGER_TITLE,
+			msg: "该盘查车辆暂无坐标信息。",
+			timeout:2500
+		});
 	}
 };
 /**

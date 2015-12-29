@@ -32,11 +32,11 @@
 	       		checkOnSelect:true,
 	       		rownumbers:true,
 	       		border:false,
-	       		sortName:'',
+	       		sortName:'fssj',
 	       		sortOrder:'desc',
-	       		pageSize:getAutoPageSize(120),
-	       		pageList:[getAutoPageSize(120),
-	       		getAutoPageSize(120) * 2],
+	       		pageSize:getAutoPageSize(110),
+	       		pageList:[getAutoPageSize(110),
+	       		getAutoPageSize(110) * 2],
 	       		singleSelect:true,
 	       		fitColumns:true,
 				toolbar:'#datagridToolbar',
@@ -48,7 +48,7 @@
 			        <th data-options="field:'syrsfzh',width:120,align:'center',halign:'center'">所有人身份证号</th>
 			        <th data-options="field:'cphm',width:90,align:'center',halign:'center'">车牌号码</th>
 			        <th data-options="field:'clpp',width:80,align:'center',halign:'center',hidden:true">车辆品牌</th>
-			        <th data-options="field:'pcyy',width:90,align:'center',halign:'center'">盘查原因</th>
+			        <th data-options="field:'pcyy',width:90,align:'center',halign:'center',hidden:true">盘查原因</th>
 		       </tr>
 		    </thead>
 		</table>
@@ -57,32 +57,15 @@
 			<form id="queryForm">
 			<table cellspacing="0" cellpadding="0" border="0" id="dmTable">
 				<tbody>
-				     <tr class="dialogTr">
-						<td class="dialogTd" style="width:90px" align="right">所有人姓名：</td>
-						<td class="dialogTd" style="width:140px" align="right">
-						    <input type="text" name="syrxm" id="syrxm" class="easyui-validatebox" data-options="required:false,validType:'maxLength[20]'" style="width:140px;"/>
-						</td>
-						<td class="toolbarTd"><div class="datagrid-btn-separator"></div></td>
-						<td class="dialogTd" style="width:140px" align="right">所有人身份证号：</td>
-						<td class="dialogTd" style="width:140px" align="right">
-						    <input type="text" name="syrsfzh" id="syrsfzh" class="easyui-validatebox" data-options="required:false,validType:'maxLength[20]'" style="width:140px;"/>
-						</td>
-					</tr>
-					<tr class="dialogTr">
-						<td class="dialogTd" style="width:90px" align="right">车牌号码：</td>
-						<td class="dialogTd" style="width:140px" align="right">
-						    <input type="text" name="cphm" id="cphm" class="easyui-validatebox" data-options="required:false,validType:'maxLength[20]'" style="width:140px;"/>
-						</td>
-						<td class="toolbarTd"><div class="datagrid-btn-separator"></div></td>
-						<td class="dialogTd" style="width:140px" align="right">盘查原因：</td>
-						<td class="dialogTd" style="width:140px" align="right">
-						    <input type="text" name="pcyy" id="pcyy" class="easyui-validatebox" data-options="required:false,validType:'maxLength[20]'" style="width:140px;"/>
-						</td>
-						<td class="toolbarTd"><div class="datagrid-btn-separator"></div></td>
-						<td class="dialogTd" align="right">
+					 <tr class="dialogTr">
+					     <td class="dialogTd" style="width:508px" align="right">
+							<input type="text" name="syrxm" id="syrxm" class="easyui-searchbox" data-options="height:24,prompt:'请输入姓名、身份证号搜索',searcher:PcclList.queryButton" style="width:508px;"/>
+						 </td>
+						 <td class="toolbarTd"><div class="datagrid-btn-separator"></div></td>
+						 <td class="dialogTd">
 							<a class="easyui-linkbutton" iconCls="icon-search" onclick="PcclList.queryButton()">查询</a>
-						</td>
-					</tr>
+						 </td>
+					 </tr>
 				</tbody>
 			  </table>
 			</form>

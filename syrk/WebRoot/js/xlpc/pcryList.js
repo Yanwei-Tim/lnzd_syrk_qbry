@@ -52,17 +52,10 @@ PcryList.onloadMap = function(){
  * @date:2015-11-23 20:30:32
  */	
 PcryList.queryButton = function(){
-	var ryxm = document.getElementById("ryxm").value;
-	var sfzh = document.getElementById("sfzh").value;
-	var sfzt = document.getElementById("sfzt").value;
-	var sffa = document.getElementById("sffa").value;
+	var ryxm = $.trim($('#ryxm').searchbox('getValue'));
 	ryxm = $.trim(ryxm);
-	sfzh = $.trim(sfzh);
 	$('#dg').datagrid('load',{    
-		'ryxm':ryxm,
-		'sfzh':sfzh,
-		'sfzt':sfzt,
-		'sffa':sffa
+		'ryxm':ryxm
 	});
 };
 /**
@@ -146,6 +139,12 @@ PcryList.addClickMarker = function(row){
 		PcryList.map._MapApp.addOverlay(PcryList.initMarker);
 		//鼠标移动到点上列表选中
 		$('#dg').datagrid("selectRow",row);
+	}else{
+		topMessager.show({
+			title: MESSAGER_TITLE,
+			msg: "该盘查人员暂无坐标信息。",
+			timeout:2500
+		});
 	}
 };
 /**

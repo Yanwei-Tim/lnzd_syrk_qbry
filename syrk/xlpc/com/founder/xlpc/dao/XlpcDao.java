@@ -31,6 +31,8 @@ public class XlpcDao extends BaseDaoImpl{
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("begin", page.getBegin());
 		map.put("end", page.getEnd());
+		map.put("sort", page.getSort());
+		map.put("order", page.getOrder());
 		map.put("pcrwvo", entity);
 		page.setTotal((Integer) queryForObject("com.founder.xlpc.sqlmap.xlpc.queryPcrwCount", map));
 		page.setRows(queryForList("com.founder.xlpc.sqlmap.xlpc.queryPcrwList", map));
@@ -49,6 +51,8 @@ public class XlpcDao extends BaseDaoImpl{
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("begin", page.getBegin());
 		map.put("end", page.getEnd());
+		map.put("sort", page.getSort());
+		map.put("order", page.getOrder());
 		map.put("pcryvo", entity);
 		page.setTotal((Integer) queryForObject("com.founder.xlpc.sqlmap.xlpc.queryPcryCount", map));
 		page.setRows(queryForList("com.founder.xlpc.sqlmap.xlpc.queryPcryList", map));
@@ -67,6 +71,8 @@ public class XlpcDao extends BaseDaoImpl{
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("begin", page.getBegin());
 		map.put("end", page.getEnd());
+		map.put("sort", page.getSort());
+		map.put("order", page.getOrder());
 		map.put("pcclvo", entity);
 		page.setTotal((Integer) queryForObject("com.founder.xlpc.sqlmap.xlpc.queryPcclCount", map));
 		page.setRows(queryForList("com.founder.xlpc.sqlmap.xlpc.queryPcclList", map));
