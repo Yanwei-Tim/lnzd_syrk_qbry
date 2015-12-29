@@ -22,6 +22,7 @@ import com.founder.zdrygl.base.dao.ZdryJgdxxxbDao;
 import com.founder.zdrygl.base.dao.ZdryJkbjllxxbDao;
 import com.founder.zdrygl.base.dao.ZdryNrsxdxxxbDao;
 import com.founder.zdrygl.base.dao.ZdryPsjdbDao;
+import com.founder.zdrygl.base.dao.ZdryQbxxbDao;
 import com.founder.zdrygl.base.dao.ZdrySgafzdryxxbDao;
 import com.founder.zdrygl.base.dao.ZdryShbzdryxxbDao;
 import com.founder.zdrygl.base.dao.ZdrySqjzryxxbDao;
@@ -37,6 +38,7 @@ import com.founder.zdrygl.base.model.ZdryJgdxxxb;
 import com.founder.zdrygl.base.model.ZdryJkbjllxxb;
 import com.founder.zdrygl.base.model.ZdryNrsxdxxxb;
 import com.founder.zdrygl.base.model.ZdryPsjdb;
+import com.founder.zdrygl.base.model.ZdryQbxxb;
 import com.founder.zdrygl.base.model.ZdrySgafzdryxxb;
 import com.founder.zdrygl.base.model.ZdrySqjzryxxb;
 import com.founder.zdrygl.base.model.ZdrySqsbzdryxxb;
@@ -107,18 +109,21 @@ public class ZdryEditService extends BaseService {
 	private ZdryWffzjlxxbDao zdryWffzjlxxbDao;
 	@Resource(name = "zdryZdrykcxxbDao")
 	private ZdryZdrykcxxbDao zdryZdrykcxxbDao;
+	@Resource(name = "zdryQbxxbDao")
+	private ZdryQbxxbDao zdryQbxxbDao;
 	
 	/**
 	 * 
 	 * @Title: queryYwglgn
 	 * @Description: TODO(业务办理菜单查询)
-	 * @param @param gnlxdm
+	 * @param @param gnlxdm 
+	 * @param @param rylbdm 人员类别代码，重点人员管理类型代码
 	 * @param @return    设定文件
 	 * @return List<ZdrygnVO>    返回类型
 	 * @throw
 	 */
-	public List<ZdrygnVO> queryYwglgn(String gnlxdm) {
-		return zdryEditDao.queryYwglgn(gnlxdm);
+	public List<ZdrygnVO> queryYwglgn(String gnlxdm,String rylbdm) {
+		return zdryEditDao.queryYwglgn(gnlxdm,rylbdm);
 	}
 
 	/**
@@ -395,6 +400,21 @@ public class ZdryEditService extends BaseService {
 	 */
 	public List<ZdryZdrykcxxb> zdrykcb_query(Map<String, Object> map) {
 		return zdryZdrykcxxbDao.queryViewList(map);
+	}
+	
+	/**
+	 * 
+	 * @Title: zdryQbxxb_query
+	 * @Description: TODO(情报人员信息查询)
+	 * @param @param map
+	 * @param @return    设定文件
+	 * @return ZdryQbxxb    返回类型
+	 * @throw
+	 */
+	public ZdryQbxxb zdryQbxxb_query(Map<String, Object> map) {		
+		ZdryQbxxb entity = (ZdryQbxxb)zdryQbxxbDao.queryViewByMap(map);
+		entity.setBz(zdryConstant.zdryDict().get(entity.getBz()));
+		return entity;
 	}
 
 	/*

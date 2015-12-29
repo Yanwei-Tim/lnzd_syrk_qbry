@@ -1,9 +1,11 @@
 package com.founder.zdrygl.base.model;
 
 import java.io.Serializable;
+
 import com.founder.framework.annotation.DBInfoAnnotation;
 import com.founder.framework.annotation.FieldDesc;
 import com.founder.framework.base.entity.BaseEntity;
+import com.founder.zdrygl.core.model.Zdry;
 
 /**
  * ****************************************************************************
@@ -18,7 +20,7 @@ import com.founder.framework.base.entity.BaseEntity;
  * @Version:      [v1.0]
  */
 @DBInfoAnnotation(tableName = "ZDRY_QBRYXXB", pk = "ID")
-public class ZdryQbxxb extends BaseEntity implements Serializable {
+public class ZdryQbxxb extends BaseEntity implements Serializable, Zdry {
 
 	private static final long serialVersionUID = 1L;
 
@@ -48,8 +50,7 @@ public class ZdryQbxxb extends BaseEntity implements Serializable {
 	@FieldDesc("情报人员类别（小类）") private String zdrylb;
 	@FieldDesc("情报人员管理类型代码（大类）") private String zdrygllxdm;
 	@FieldDesc("有效性") private String yxx;
-	@FieldDesc("ETL时间") private String etldate;
-	@FieldDesc("重点人员id") private String zdryid;
+	@FieldDesc("ETL时间") private String etldate;	
 	@FieldDesc("实有人口ID") private String syrkid;
 	@FieldDesc("情报人员所属支队") private String qbzd;
 	@FieldDesc("情报人员所属大队") private String qbdd;
@@ -220,12 +221,7 @@ public class ZdryQbxxb extends BaseEntity implements Serializable {
 	public void setEtldate(String etldate) {
 		this.etldate = etldate;
 	}
-	public String getZdryid() {
-		return zdryid;
-	}
-	public void setZdryid(String zdryid) {
-		this.zdryid = zdryid;
-	}
+
 	public String getSyrkid() {
 		return syrkid;
 	}

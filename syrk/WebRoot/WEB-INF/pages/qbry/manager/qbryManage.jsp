@@ -30,15 +30,43 @@
 	   padding-top: 8px;
 	   width:200px;
 	}
-	
+	.table-toolbar{
+		width:100%;
+	}
+	.table-toolbar .td-title{
+		text-align:right;
+		padding-top:15px;
+	}
+	.table-toolbar .td-value{
+		text-align:left;
+		padding-top:15px;
+	}
+	#datagridToolbar{
+		padding-bottom:20px;
+	}
+	.td-btns-container{
+		padding-left:20%;
+	}
+	.td-btns{
+		padding-top:15px;
+	}
+	#reset-btn,
+	#dzaddid{
+		margin-left:25px;
+	}
+	.td-value input, 
+	.td-value input{
+		width:160px;
+		height:22px;
+	}
 	</style>
     <script type="text/javascript" src="<%=contextPath%>/js/zdrygl/zdryzbManage.js"></script>
   </head>
   <body class="easyui-layout" data-options="fit:true,border:false">
-       <div data-options="region:'west',border:false" style="width:538px;">
+       <div data-options="region:'center',border:false" style="width:538px;padding:20px;">
            <!-- 地址管理列表 -->
-           <table id="dg" class="easyui-datagrid"
-	              	data-options="url:'<%=contextPath%>/zdryzb/list',
+           <table id="dg" class="easyui-datagrid" 
+	              	data-options="url:'<%=contextPath%>/qbryManager/queryList',
 						onLoadSuccess:function(data){ZdryManage.loadPoint(data,'dg');},
 						selectOnCheck:true,
 		        		checkOnSelect:true,
@@ -51,168 +79,116 @@
 		        		getAutoPageSize(105) * 2],
 		        		singleSelect:true,
 		        		fitColumns:true,
-						toolbar:'#datagridToolbar',
-						onClickRow:ZdryManage.onClickRow">
+		        		toolbar:'#datagridToolbar'">
 			        <thead>
 			          <tr>
-				            <th data-options="field:'zdrygllxmc',width:70,align:'left',halign:'center',sortable:true">类型</th>
-				            <th data-options="field:'zjhm',width:120,align:'left',sortable:true,halign:'center'">身份证号码</th>
-				            <th data-options="field:'xm',width:70,align:'left',sortable:true,halign:'center'">姓名</th>
-				            <th  data-options="field:'dz_jzdzxz',width:200,align:'right',halign:'center',sortable:true">居住地址</th>
-				             <th  data-options="field:'ryid',hidden:true"></th>
-				             <th  data-options="field:'dz_jzdzmlpdm',hidden:true"></th>
-				             <th  data-options="field:'syrkid',hidden:true"></th>
-				            <th data-options="field:'zbx',hidden:true"></th>
-				            <th data-options="field:'zby',hidden:true"></th>
-				            <th data-options="field:'process',align:'center',width:100,halign:'center',formatter:ZdryManage.datagridProcessFormater">操作</th>
+				            <th data-options="field:'zdrylb',width:100,align:'center',halign:'center',sortable:true">重点人员细类</th>
+				            <th data-options="field:'xm',width:70,align:'center',sortable:true,halign:'center'">姓名</th>
+				            <th data-options="field:'gmsfhm',width:100,align:'center',sortable:true,halign:'center'">身份证号码</th>
+				            <th  data-options="field:'xbdm',width:30,align:'center',halign:'center',sortable:true">性别</th>
+				            <th  data-options="field:'gjdm',width:50,align:'center',halign:'center',sortable:true">国籍</th>
+				            <th  data-options="field:'xzd',width:100,align:'center',halign:'center',sortable:true">现居住地址</th>
+				            <th  data-options="field:'hjd',width:100,align:'center',halign:'center',sortable:true">户籍地址</th>
+				            <th  data-options="field:'bjzdryrksj',width:100,align:'center',halign:'center',sortable:true">入部省库时间</th>
+				            <th data-options="field:'process',width:80,align:'center',halign:'center',formatter:ZdryManage.datagridProcessFormater">操作</th>
 				        </tr>
 			       </thead>
-	       </table>
-	       <div id="datagridToolbar" style="padding:5px;height:auto">
-				<table border="0" cellpadding="0" cellspacing="10" width="100%"	align="center">
-					<tr>
-						<td align="right" >
-							<input type="text" class="searchText" name="condition"  id="condition" value="请输入重点人员证件号码、姓名或居住地址" 
-									style="color:gray;height:32px;font-size:13px;width:220px" charSet="halfUpper" onclick="setDzqc(this)" onkeydown="passwordOnkeyPress(this)" />
-						</td>
-						<td align="left">
-							<img src ="<%=contextPath%>/images/search_btn_sousuo_01.png" style="cursor: pointer;height:32px" onclick="searchMain();"/>
-						</td>
-						<td  width="200px;">
-							<a href="javascript:void(0)" class="easyui-linkbutton" 
-								 iconCls="icon-search" onclick="detailSearch()">精确查询</a>
-						</td>						
-						<td width="100px;">
-							<a href="javascript:void(0)" class="easyui-linkbutton"  iconCls="icon-add"  onclick="addLg();">新增</a>
-						</td>						 
-					</tr>
-				</table>
-			</div>
-	        
+		       </table>	  
+		<div id="datagridToolbar" style="padding:5px;height:auto;">
+			<!-- <input id="searchBox" type="text" class="easyui-searchbox" data-options="prompt:'请输入姓名'"/> -->
+			<table cellspacing = "0" cellpadding="0" class="table-toolbar">
+				<tr>
+					<td class="td-title">重点人员大类:</td>
+					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+					<td class="td-title">重点人员大细类:</td>
+					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+					<td class="td-title">姓名：</td>
+					<td class="td-value"><input type="text" class="easyui-validatebox"/></td>
+				</tr>
+				<tr>
+					<td class="td-title">证件号码:</td>
+					<td class="td-value"><input type="text" class="easyui-validatebox"/></td>
+					<td class="td-title">性别:</td>
+					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+					<td class="td-title">国籍：</td>
+					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+				</tr>
+				<tr>
+					<td class="td-title">现居住地址:</td>
+					<td class="td-value"><input type="text" class="easyui-validatebox"/></td>
+					<td class="td-title">户籍地址:</td>
+					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+					<td class="td-title">责任单位：</td>
+					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+				</tr>
+				<tr>
+					<td class="td-title">当前级别:</td>
+					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+					<td class="td-title">下发状态:</td>
+					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+					<td class="td-title">纪实时间:</td>
+					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+				</tr>
+				<tr>
+					<td class="td-title">入部省库时间-开始:</td>
+					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+					<td class="td-title">入部省库时间-截止:</td>
+					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+					<td class="td-btns" colspan="2">
+						<div class="td-btns-container">
+							<a class="easyui-linkbutton" data-options="iconCls:'icon-search'" href="javascript:void(0)">查询</a>
+							<a id="reset-btn" class="easyui-linkbutton"  href="#">重置</a>
+							<a id="dzaddid" class="easyui-linkbutton"  data-options="iconCls:'icon-add'" onclick="add()">新增</a>
+							<a id="dzaddid" class="easyui-linkbutton" data-options="iconCls:'icon-add'"  onclick="addSyrk()">新增实有人口</a>
+						</div>
+					</td>
+				</tr>
+			</table>
+			
+			
+        </div>
 	  </div>
+	  <!-- 查询条件 -->
 	  
-	  <div id="win" class="easyui-window" title="重点人口精确查询" style="width:400px;height:300px;top:20px"   
-        data-options="iconCls:'icon-search',
-        collapsible:false,
-        minimizable:false,
-        maximizable:false,
-        modal:true,
-        closed:true,
-        top:100,
-        width:400,
-        height:260,
-        left:50">   
-	   
-	          <div data-options="region:'left'">  
-		        <form id ="queryForm" >
-			        <table border="0" cellpadding="0" cellspacing="10" width="100%" height="100%" align="center">
-		      
-				       <tr class="dialogTr">
-						    	<td width="30%" class="dialogTd" align="right">重点人员类型：</td>
-						    	<td width="70%" class="dialogTd">
-									<input class="easyui-combobox" type="text" id="zdrygllxdm" name="zdrygllxdm" style="width:150px;"
-									data-options="url: contextPath +'/zdryzb/queryZdryTopLbList',valueField:'lbdm',textField:'bz',selectOnNavigation:false,method:'get'"/>
-									</td>
-					   	</tr>	
-				        <tr class="dialogTr">
-						    	<td width="30%" class="dialogTd" align="right">姓名：</td>
-						    	<td width="70%" class="dialogTd"><input type="text" name="xm" id ="xm" class="easyui-validatebox" data-options="required:false,validType:'maxLength[20]'"  style="width:150px;" /></td>
-					    </tr>
-					    <tr class="dialogTr">
-						    	<td width="30%" class="dialogTd" align="right">身份证号码：</td>
-						    	<td width="70%" class="dialogTd"><input type="text" id="sfzh" name="sfzh" class="easyui-validatebox" data-options="required:false,validType:'maxLength[30]'"  style="width:150px;" /></td>
-					    </tr>	
-					    <tr class="dialogTr">
-						    	<td width="30%" class="dialogTd" align="right">性别：</td>
-						    	<td width="70%" class="dialogTd"><input class="easyui-combobox" type="text" id="xbdm" name="xbdm" style="width:150px;"
-									data-options="url: contextPath + '/common/dict/GB_D_XBDM.js',valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/></td>
-					    </tr>	  
-					    <tr class="dialogTr">
-						    	<td width="30%" class="dialogTd" align="right">居住地址：</td>
-						    	<td width="70%" class="dialogTd"><input type="text" name="dz_jzdzxz" id ="dz_jzdzxz" class="easyui-validatebox" data-options="required:false,validType:'maxLength[30]'"  style="width:150px;" /></td>
-					    </tr>	
-					    <tr class="dialogTr" style="padding-bottom:0px;margin-bottom:0px;">
-						    	<td width="100%" colspan="2" align="right">
-						    		<a class="easyui-linkbutton" iconCls="icon-ok" onclick="queryButton();">确定</a>
-						    		<a class="easyui-linkbutton" iconCls="icon-reset" onclick="resetButton()">重置</a>
-						    		<a class="easyui-linkbutton" iconCls="icon-cancel" onclick="closeWindow();">关闭</a>
-						    	</td>
-					    </tr>
-			         </table>
-			       </form>
-	        </div> 
-	    
-	   </div>
-	  
-	  <div data-options="region:'center',border:false">
-	       <div id="mapDiv"></div>
-	       <div id="toolDiv" style="position:absolute;left:0px;top:0px;height:20px;filter:alpha(opacity=90);"></div>
-	  </div>
+        
    </body>
 </html>
 <script type="text/javascript">
-function passwordOnkeyPress(obj) {
-	   obj.style.color = "black";
-	   var keycode = event.keyCode;
-	   if (keycode == 13) {
-		   searchMain();
-	   }
-	}
-
-function setDzqc(obj){
-	   obj.value="";
-	}
-function searchMain(){
-	var condition = document.getElementById("condition").value;
-	if(condition=="请输入重点人员证件号码、姓名或居住地址"){
-		condition="";
-	}
-	//parent.frames["main_bottom"].searchMain(condition);
-	var reloadUrl  = contextPath + '/zdryzb/list';
-	var opt = $('#dg').datagrid('options');
-	opt.url = reloadUrl;
-	
-	$('#dg').datagrid('load',{condition:condition});  
-	$('#dg').datagrid("clearSelections");
-}
-//查询按钮
-function queryButton(){
-	var xm = document.getElementById("xm").value;
-	var sfzh = document.getElementById("sfzh").value;
-	//var syrkgllbdm = document.getElementById("syrkgllbdm").value;
-	//var mzdm = document.getElementById("mzdm").value;
-	var xbdm = document.getElementById("xbdm").value;
-	var dz_jzdzxz = document.getElementById("dz_jzdzxz").value;
-	var zdrygllxdm = $("#zdrygllxdm").combobox("getValue");
-	if($("#zdrygllxdm").combobox("getText")==""){
-		zdrygllxdm="";
-	}
-	
-	xm= $.trim(xm);
-	sfzh= $.trim(sfzh);
-	dz_jzdzxz= $.trim(dz_jzdzxz);
-	
-	$('#dg').datagrid(
-			'load',
-			{    
-				'zdrygllxdm':zdrygllxdm,
-				//'syrkgllbdm':syrkgllbdm,
-				'xm': xm,   
-				'zjhm': sfzh ,
-				//'mzdm':mzdm,
-				'xbdm':xbdm,
-				'dz_jzdzxz':dz_jzdzxz
-			});
-	closeWindow("win");
-}
-
-//重置按钮
-function resetButton(){
-	$("#queryForm").form("reset");
-}
-//新增列管
-function addLg(){
-	menu_open("重点人员新增","/zdryzb/zdryAddPre");
-	
-}
+ function add(){
+	 location.href="<%=contextPath%>/qbryManager/qbryadd";
+ }
+ 
+ function addSyrk(){
+	 menu_open('实有人口新增','/syrkGl/add?mainTabID='+getMainTabID()+'&zjhm=210211198906132911');
+ }
+ 
+ /**
+  * @title:doUpdateAndXq
+  * @description:地址维护
+  * @author: zhang_guoliang@founder.com
+  * @param type
+  *            0为可编辑、1为只读，dzChb地址层户表 0为层户地址对象表、1为层户地址审核表
+  * @date:2015-02-04 18:23:35
+  */
+doUpdateAndXq = function(linkObject, index) {
+ 	// 阻止冒泡，不然要执行onClickRow
+ 	cancelBubble();
+ 	var rows = $('#dg').datagrid('getData');
+ 	var rowData = rows.rows[index];
+ 	menu_open(rowData.xm + '', '/qbryManager/' + rowData.id + '/view?mainTabID=' + getMainTabID());
+ };
+ 
+ /**
+  * @title:datagridProcessFormater
+  * @description:列表操作
+  * @author: zhang_guoliang@founder.com
+  * @param
+  * @date:2014-12-26 10:47:21
+  */
+ ZdryManage.datagridProcessFormater = function(val, row, index) {
+ 	return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateAndXq(this, '
+ 			+ index + ')">编辑</a>&nbsp;';
+ };
+ 
+ 
 </script>

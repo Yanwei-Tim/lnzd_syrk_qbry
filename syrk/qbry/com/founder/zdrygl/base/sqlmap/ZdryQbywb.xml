@@ -33,4 +33,8 @@
 	<select id="queryListByZjhm" parameterClass="String" resultClass="zdryQbywb">
 		<![CDATA[ select * from ZDRY_QBRYYWB where GMSFHM= #zjhm# and  xt_zxbz = '0' ORDER BY XT_CJSJ DESC]]>
 	</select>
+	
+	<select id="queryListCountByZjhm" parameterClass="String" resultClass="Integer">
+		<![CDATA[ select COUNT(*) from ZDRY_QBRYYWB where GMSFHM= #zjhm# and  xt_zxbz = '0' ORDER BY XT_CJSJ DESC]]>
+	</select>
 </sqlMap>

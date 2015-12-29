@@ -34,7 +34,6 @@
 		<isNotEmpty prepend="," property="zdrygllxdm"><![CDATA[ zdrygllxdm]]></isNotEmpty>
 		<isNotEmpty prepend="," property="yxx"><![CDATA[ yxx]]></isNotEmpty>
 		<isNotEmpty prepend="," property="etldate"><![CDATA[ etldate]]></isNotEmpty>
-		<isNotEmpty prepend="," property="zdryid"><![CDATA[ zdryid]]></isNotEmpty>
 		<isNotEmpty prepend="," property="syrkid"><![CDATA[ syrkid]]></isNotEmpty>
 		<isNotEmpty prepend="," property="qbzd"><![CDATA[ qbzd]]></isNotEmpty>
 		<isNotEmpty prepend="," property="qbdd"><![CDATA[ qbdd]]></isNotEmpty>
@@ -42,6 +41,7 @@
 		<isNotEmpty prepend="," property="qbzrq"><![CDATA[ qbzrq]]></isNotEmpty>
 		<isNotEmpty prepend="," property="dqjb"><![CDATA[ dqjb]]></isNotEmpty>
 		<isNotEmpty prepend="," property="glzt"><![CDATA[ glzt]]></isNotEmpty>
+		<isNotEmpty prepend="," property="bz"><![CDATA[ bz]]></isNotEmpty>
 		,
 		<include refid="insertXtzd" />
 		) values (#id#
@@ -71,7 +71,6 @@
 		<isNotEmpty prepend="," property="zdrygllxdm"><![CDATA[#zdrygllxdm#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="yxx"><![CDATA[#yxx#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="etldate"><![CDATA[#etldate#]]></isNotEmpty>
-		<isNotEmpty prepend="," property="zdryid"><![CDATA[#zdryid#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="syrkid"><![CDATA[#syrkid#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="qbzd"><![CDATA[#qbzd#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="qbdd"><![CDATA[#qbdd#]]></isNotEmpty>
@@ -115,7 +114,6 @@
 			<isNotNull prepend="," property="zdrygllxdm"><![CDATA[ zdrygllxdm = #zdrygllxdm#]]></isNotNull>
 			<isNotNull prepend="," property="yxx"><![CDATA[ yxx = #yxx#]]></isNotNull>
 			<isNotNull prepend="," property="etldate"><![CDATA[ etldate = #etldate#]]></isNotNull>
-			<isNotNull prepend="," property="zdryid"><![CDATA[ zdryid = #zdryid#]]></isNotNull>
 			<isNotNull prepend="," property="syrkid"><![CDATA[ syrkid = #syrkid#]]></isNotNull>
 			<isNotNull prepend="," property="qbzd"><![CDATA[ qbzd = #qbzd#]]></isNotNull>
 			<isNotNull prepend="," property="qbdd"><![CDATA[ qbdd = #qbdd#]]></isNotNull>
@@ -158,7 +156,6 @@
 		<isNotEmpty prepend="and" property="zdrygllxdm"> ZDRYGLLXDM = #zdrygllxdm#</isNotEmpty>
 		<isNotEmpty prepend="and" property="yxx"> YXX = #yxx#</isNotEmpty>
 		<isNotEmpty prepend="and" property="etldate"> ETLDATE = #etldate#</isNotEmpty>
-		<isNotEmpty prepend="and" property="zdryid"> ZDRYID = #zdryid#</isNotEmpty>
 		<isNotEmpty prepend="and" property="syrkid"> SYRKID = #syrkid#</isNotEmpty>
 		<isNotEmpty prepend="and" property="qbzd"> QBZD = #qbzd#</isNotEmpty>
 		<isNotEmpty prepend="and" property="qbdd"> QBDD = #qbdd#</isNotEmpty>
@@ -168,4 +165,95 @@
 		<isNotEmpty prepend="and" property="glzt"> GLZT = #glzt#</isNotEmpty>
 		<isNotEmpty prepend="and" property="bz"> BZ = #bz#</isNotEmpty>
 	</select>
+	
+	<!-- 情报人员管理列表数据【总数】 -->
+	<select id="queryCount" parameterClass="Map" resultClass="Integer">
+		<![CDATA[ SELECT COUNT(*)
+	          FROM ZDRY_QBRYXXB  ]]>
+	    <isNotEmpty prepend="and" property="id"> ID = #id#</isNotEmpty>
+		<isNotEmpty prepend="and" property="bjzdrybh"> BJZDRYBH = #bjzdrybh#</isNotEmpty>
+		<isNotEmpty prepend="and" property="xm"> XM = #xm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="xmhypy"> XMHYPY = #xmhypy#</isNotEmpty>
+		<isNotEmpty prepend="and" property="wwxm"> WWXM = #wwxm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="xbdm"> XBDM = #xbdm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="csrq"> CSRQ = #csrq#</isNotEmpty>
+		<isNotEmpty prepend="and" property="gjdm"> GJDM = #gjdm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="gmsfhm"> GMSFHM = #gmsfhm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="qtzjhm"> QTZJHM = #qtzjhm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="mzdm"> MZDM = #mzdm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="jgssxdm"> JGSSXDM = #jgssxdm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="hjd"> HJD = #hjd#</isNotEmpty>
+		<isNotEmpty prepend="and" property="xzd"> XZD = #xzd#</isNotEmpty>
+		<isNotEmpty prepend="and" property="xzdpcsmc"> XZDPCSMC = #xzdpcsmc#</isNotEmpty>
+		<isNotEmpty prepend="and" property="xzdpcsdm"> XZDPCSDM = #xzdpcsdm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="jzd"> JZD = #jzd#</isNotEmpty>
+		<isNotEmpty prepend="and" property="gxdwmc"> GXDWMC = #gxdwmc#</isNotEmpty>
+		<isNotEmpty prepend="and" property="gxdwdm"> GXDWDM = #gxdwdm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="ladwmc"> LADWMC = #ladwmc#</isNotEmpty>
+		<isNotEmpty prepend="and" property="ladwdm"> LADWDM = #ladwdm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="lasj"> LASJ = #lasj#</isNotEmpty>
+		<isNotEmpty prepend="and" property="bjzdryrksj"> BJZDRYRKSJ = #bjzdryrksj#</isNotEmpty>
+		<isNotEmpty prepend="and" property="zdrylb"> ZDRYLB = #zdrylb#</isNotEmpty>
+		<isNotEmpty prepend="and" property="zdrygllxdm"> ZDRYGLLXDM = #zdrygllxdm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="yxx"> YXX = #yxx#</isNotEmpty>
+		<isNotEmpty prepend="and" property="etldate"> ETLDATE = #etldate#</isNotEmpty>
+		<isNotEmpty prepend="and" property="syrkid"> SYRKID = #syrkid#</isNotEmpty>
+		<isNotEmpty prepend="and" property="qbzd"> QBZD = #qbzd#</isNotEmpty>
+		<isNotEmpty prepend="and" property="qbdd"> QBDD = #qbdd#</isNotEmpty>
+		<isNotEmpty prepend="and" property="qbpcs"> QBPCS = #qbpcs#</isNotEmpty>
+		<isNotEmpty prepend="and" property="qbzrq"> QBZRQ = #qbzrq#</isNotEmpty>
+		<isNotEmpty prepend="and" property="dqjb"> DQJB = #dqjb#</isNotEmpty>
+		<isNotEmpty prepend="and" property="glzt"> GLZT = #glzt#</isNotEmpty>
+		<isNotEmpty prepend="and" property="bz"> BZ = #bz#</isNotEmpty>
+	</select>
+	
+	<!-- 情报人员管理列表数据【信息】 -->
+	<select id="query" parameterClass="Map" resultClass="ZdryQbxxb">
+		   <![CDATA[ SELECT * FROM ZDRY_QBRYXXB  ]]>
+		   <isNotEmpty prepend="and" property="id"> ID = #id#</isNotEmpty>
+		<isNotEmpty prepend="and" property="bjzdrybh"> BJZDRYBH = #bjzdrybh#</isNotEmpty>
+		<isNotEmpty prepend="and" property="xm"> XM = #xm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="xmhypy"> XMHYPY = #xmhypy#</isNotEmpty>
+		<isNotEmpty prepend="and" property="wwxm"> WWXM = #wwxm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="xbdm"> XBDM = #xbdm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="csrq"> CSRQ = #csrq#</isNotEmpty>
+		<isNotEmpty prepend="and" property="gjdm"> GJDM = #gjdm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="gmsfhm"> GMSFHM = #gmsfhm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="qtzjhm"> QTZJHM = #qtzjhm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="mzdm"> MZDM = #mzdm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="jgssxdm"> JGSSXDM = #jgssxdm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="hjd"> HJD = #hjd#</isNotEmpty>
+		<isNotEmpty prepend="and" property="xzd"> XZD = #xzd#</isNotEmpty>
+		<isNotEmpty prepend="and" property="xzdpcsmc"> XZDPCSMC = #xzdpcsmc#</isNotEmpty>
+		<isNotEmpty prepend="and" property="xzdpcsdm"> XZDPCSDM = #xzdpcsdm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="jzd"> JZD = #jzd#</isNotEmpty>
+		<isNotEmpty prepend="and" property="gxdwmc"> GXDWMC = #gxdwmc#</isNotEmpty>
+		<isNotEmpty prepend="and" property="gxdwdm"> GXDWDM = #gxdwdm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="ladwmc"> LADWMC = #ladwmc#</isNotEmpty>
+		<isNotEmpty prepend="and" property="ladwdm"> LADWDM = #ladwdm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="lasj"> LASJ = #lasj#</isNotEmpty>
+		<isNotEmpty prepend="and" property="bjzdryrksj"> BJZDRYRKSJ = #bjzdryrksj#</isNotEmpty>
+		<isNotEmpty prepend="and" property="zdrylb"> ZDRYLB = #zdrylb#</isNotEmpty>
+		<isNotEmpty prepend="and" property="zdrygllxdm"> ZDRYGLLXDM = #zdrygllxdm#</isNotEmpty>
+		<isNotEmpty prepend="and" property="yxx"> YXX = #yxx#</isNotEmpty>
+		<isNotEmpty prepend="and" property="etldate"> ETLDATE = #etldate#</isNotEmpty>
+		<isNotEmpty prepend="and" property="syrkid"> SYRKID = #syrkid#</isNotEmpty>
+		<isNotEmpty prepend="and" property="qbzd"> QBZD = #qbzd#</isNotEmpty>
+		<isNotEmpty prepend="and" property="qbdd"> QBDD = #qbdd#</isNotEmpty>
+		<isNotEmpty prepend="and" property="qbpcs"> QBPCS = #qbpcs#</isNotEmpty>
+		<isNotEmpty prepend="and" property="qbzrq"> QBZRQ = #qbzrq#</isNotEmpty>
+		<isNotEmpty prepend="and" property="dqjb"> DQJB = #dqjb#</isNotEmpty>
+		<isNotEmpty prepend="and" property="glzt"> GLZT = #glzt#</isNotEmpty>
+		<isNotEmpty prepend="and" property="bz"> BZ = #bz#</isNotEmpty>	
+	</select>
+	
+	<!-- 重点人员详情页面展示用 -->
+	<select id="queryViewByMap" parameterClass="Map" resultClass="zdryQbxxb">
+		<![CDATA[ 
+			select t.ID,t.BJZDRYBH,t.XM,t.XMHYPY,t.WWXM,t.XBDM,t.CSRQ,t.GJDM,t.GMSFHM,t.QTZJHM,t.MZDM,t.JGSSXDM,t.HJD,t.XZD,t.XZDPCSMC,t.XZDPCSDM,t.JZD,t.GXDWMC,t.GXDWDM,t.LADWMC,t.LADWDM,t.LASJ,t.BJZDRYRKSJ,t.YXX,t.ETLDATE,t.SYRKID,t.QBZD,t.QBDD,t.QBPCS,t.QBZRQ,t.DQJB,t.GLZT,t.ZDRYGLLXDM, t1.ZDRYLB as BZ
+			from ZDRY_QBRYXXB t, ZDRY_ZDRYZB_NEW t1 					
+			where t.ID = #id#  and t.id=t1.id and t.XT_ZXBZ = '0' and t1.xt_zxbz='0'			
+  		]]>
+	</select>
+	
 </sqlMap>

@@ -34,7 +34,7 @@ import com.founder.syrkgl.bean.SyrkSyrkxxzb;
 import com.founder.syrkgl.service.RyRyjbxxbService;
 import com.founder.syrkgl.service.SyrkSyrkxxzbService;
 import com.founder.syrkgl.vo.SyrkAddVO;
-
+import com.founder.zdrygl.base.service.DataApplyService;
 import com.google.gson.Gson;
 
 /******************************************************************************
@@ -68,6 +68,9 @@ public class SyrkGlController extends BaseController {
 	
 	@Resource(name = "sysMessageDao")
 	private SysMessageDao sysMessageDao;
+	
+	@Resource(name="dataApplyService")
+	private DataApplyService dataApplyService;//开发测试用，人员信息复用
 	/**
 	 * @Title: query
 	 * @Description: TODO(实有人口管理列表页面跳转)
@@ -198,7 +201,9 @@ public class SyrkGlController extends BaseController {
 			if (StringUtils.isBlank(cyzjdm)) { // 有身份证号码传入，证件种类为空时默认为居民身份证
 				cyzjdm = "111";
 			}
-			ryRyjbxxb = ryRyjbxxbService.dataApply(cyzjdm, zjhm, sessionBean);
+			//全国人员信息连不上，开发测试的时候用本地人员基本信息表
+			//ryRyjbxxb = ryRyjbxxbService.dataApply(cyzjdm, zjhm, sessionBean);
+			ryRyjbxxb = dataApplyService.ryjbxxApply("111", zjhm);
 			if (ryRyjbxxb == null) { // 复用无数据
 				ryRyjbxxb = new RyRyjbxxb();
 				ryRyjbxxb.setCyzjdm(cyzjdm);

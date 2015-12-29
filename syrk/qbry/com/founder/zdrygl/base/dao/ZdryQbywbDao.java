@@ -1,11 +1,15 @@
 package com.founder.zdrygl.base.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
 import com.founder.framework.base.dao.BaseDaoImpl;
+import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
+import com.founder.zdrygl.base.model.ZdryQbxxb;
 import com.founder.zdrygl.base.model.ZdryQbywb;
 
 
@@ -37,12 +41,10 @@ public class ZdryQbywbDao extends BaseDaoImpl {
 	 * @return List<ZdryQbywb>    返回类型
 	 * @throw
 	 */
-	public List<ZdryQbywb> queryListByZjhm(String zjhm) {
-		if (StringUtils.isBlank(zjhm)) {
-			return null;
-		} else {
-			return (List<ZdryQbywb>) queryForObject("ZdryQbywb.queryListByZjhm", zjhm);
-		}
+	public EasyUIPage queryListByZjhm(String zjhm,EasyUIPage page) {
+			page.setRows(queryForList("ZdryQbywb.queryListByZjhm",zjhm));
+			page.setTotal((Integer) queryForObject("ZdryQbywb.queryListCountByZjhm", zjhm));
+			return page;
 	}
 	
 	
