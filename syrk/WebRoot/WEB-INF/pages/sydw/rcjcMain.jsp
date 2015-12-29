@@ -9,7 +9,7 @@
 <body class="easyui-layout" data-options="fit:true">  
     <div data-options="region:'center',border:false">
     	<div class="easyui-layout" data-options="fit:true,border:false">   
-            <div data-options="region:'center',split:true,title:'日常检查管理',border:true" style="height:auto">
+            <div data-options="region:'center',split:true,title:'',border:true" style="height:auto">
             	<input type="hidden" id="mode" value="select">
             	<table id="dg" class="easyui-datagrid" data-options="url: contextPath +'/dwjcxxb/queryList',
             		toolbar:'#datagridToolbar',queryParams:getInitQuery(),
