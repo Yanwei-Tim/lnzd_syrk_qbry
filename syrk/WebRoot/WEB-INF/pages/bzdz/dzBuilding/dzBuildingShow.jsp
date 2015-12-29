@@ -41,8 +41,9 @@
          </table>
      </div>
      <div data-options="region:'center',border:false" align="center">
-         <div id="chjgAddDsDiv" style="margin-top: 10px;"></div>
-	     <div id="chjgAddDxDiv" style="margin-top: 10px;margin-bottom: 10px;"></div>
+         <div id="chjgAddDsDiv" style="text-align: center;margin-top: 10px;"></div>
+         <div id="chjgAddMsDiv" style="text-align: center;margin-top: 10px;"></div>
+	     <div id="chjgAddDxDiv" style="text-align: center;margin-top: 10px;margin-bottom: 10px;"></div>
 	     <!-- 展示信息 -->
       	 <div id="winZsxx" style="display: none;">
 		 	 <iframe id="fjZsxxFrame" style="width: 100%; height: 100%;" frameborder="0" src=""></iframe>

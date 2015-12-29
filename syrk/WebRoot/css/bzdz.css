@@ -48,6 +48,27 @@ body {
 	display: inline;
 }
 
+.ms_title {
+	width: 213px;
+	background: url(../images/bzdz/building/ds.png) no-repeat left center;
+	border-bottom: 1px solid #ccc9da;
+	float: left;
+	line-height: 30px;
+	margin: 10px 0 0 10px;
+	display: inline;
+}
+
+.ms_titleGray {
+	width: 213px;
+	background: url(../images/bzdz/building/ds_gray.png) no-repeat left
+		center;
+	border-bottom: 1px solid #ccc9da;
+	float: left;
+	line-height: 30px;
+	margin: 10px 0 0 10px;
+	display: inline;
+}
+
 .ds_text {
 	width: 100px;
 	float: left;
@@ -569,6 +590,29 @@ body {
 	float: left;
 }
 
+.t_listMs {
+	height: auto;
+	overflow: hidden;
+	float: left;
+	width: 100%;
+}
+
+.t_listMs dl {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	height: auto;
+	overflow: hidden;
+	width: 100%;
+}
+
+.t_listMs dl dt {
+	list-style: none;
+	height: auto;
+	overflow: hidden;
+	float: left;
+}
+
 .lou_table {
 	width: 180px;
 	background-color: #f5f5f5;
@@ -727,6 +771,8 @@ body {
 
 #xjzryzpDiv ul li {
 	float: left;
+	margin-left: 5px;
+	margin-right: 5px;
 	border: 1px solid #D8EBF9;
 }
 

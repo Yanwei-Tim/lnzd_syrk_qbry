@@ -190,12 +190,12 @@ DzAdd.onloadButton = function(){
 	    			}
 	    			//地下单元信息
 	    			if(DzBuildingAdd.dxcheckBox){
-	    				var dszddys = document.getElementById("dszddys").value;
-	    				var dslcs = document.getElementById("dslcs").value;
-	    				var dshs = document.getElementById("dshs").value;
-	    				document.getElementById("dxdys").value = dszddys;
-	    				document.getElementById("dxzdcs").value = dslcs;
-	    				document.getElementById("dxzdhs").value = dshs;
+	    				var dxzddys = document.getElementById("dxzddys").value;
+	    				var dxlcs = document.getElementById("dxlcs").value;
+	    				var dxhs = document.getElementById("dxhs").value;
+	    				document.getElementById("dxdys").value = dxzddys;
+	    				document.getElementById("dxzdcs").value = dxlcs;
+	    				document.getElementById("dxzdhs").value = dxhs;
 	    				var dxdyjbxx = new Array();  
 	    				var dxdy = document.getElementsByName("dxdyName");
 	    				for(var i=0;i<dxdy.length;i++){
@@ -214,6 +214,33 @@ DzAdd.onloadButton = function(){
 	    				document.getElementById("dxdyjbxx").value = dxdyjbxx;
 	    				document.getElementById("dxlcjbxx").value = dxlcjbxx;
 	    				document.getElementById("dxfjjbxx").value = dxfjjbxx ;
+	    			}
+	    			//门市单元信息
+	    			if(DzBuildingAdd.mscheckBox){
+	    				var mszddys = document.getElementById("mszddys").value;
+	    				var mslcs = document.getElementById("mslcs").value;
+	    				var mshs = document.getElementById("mshs").value;
+	    				document.getElementById("msdys").value = mszddys;
+	    				document.getElementById("mszdcs").value = mslcs;
+	    				document.getElementById("mszdhs").value = mshs;
+	    				var msdyjbxx = new Array();  
+	    				var msdy = document.getElementsByName("msdyName");
+	    				for(var i=0;i<msdy.length;i++){
+	    					msdyjbxx[i] = msdy[i].value;
+	    				}
+	    				var mslcjbxx = new Array();  
+	    				var mslc = document.getElementsByName("mslcName");
+	    				for(var i=0;i<mslc.length;i++){
+	    					mslcjbxx[i] = mslc[i].value;
+	    				}
+	    				var msfjjbxx = new Array();  
+	    				var msfj = document.getElementsByName("msfjName");
+	    				for(var i=0;i<msfj.length;i++){
+	    					msfjjbxx[i] = msfj[i].value;
+	    				}
+	    				document.getElementById("msdyjbxx").value = msdyjbxx;
+	    				document.getElementById("mslcjbxx").value = mslcjbxx;
+	    				document.getElementById("msfjjbxx").value = msfjjbxx ;
 	    			}
 	    			//提交保存
 	    			$("#dataForm").form('submit',{

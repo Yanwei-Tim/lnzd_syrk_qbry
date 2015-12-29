@@ -68,6 +68,13 @@ public class BzdzxxbVO extends BaseEntity implements Serializable{
 	private String dxdyjbxx[];
 	private String dxlcjbxx[];
 	private String dxfjjbxx[];
+	//门市单元信息
+	private String msdys;
+	private String mszdcs;
+	private String mszdhs;
+	private String msdyjbxx[];
+	private String mslcjbxx[];
+	private String msfjjbxx[];
 	//建筑物关联表
 	private String glid;
 	//层户地址对象表
@@ -594,5 +601,53 @@ public class BzdzxxbVO extends BaseEntity implements Serializable{
 	}
 	public void setDzjb(String dzjb) {
 		this.dzjb = dzjb;
+	}
+
+	public String getMsdys() {
+		return msdys;
+	}
+
+	public void setMsdys(String msdys) {
+		this.msdys = msdys;
+	}
+
+	public String getMszdcs() {
+		return mszdcs;
+	}
+
+	public void setMszdcs(String mszdcs) {
+		this.mszdcs = mszdcs;
+	}
+
+	public String getMszdhs() {
+		return mszdhs;
+	}
+
+	public void setMszdhs(String mszdhs) {
+		this.mszdhs = mszdhs;
+	}
+
+	public String[] getMsdyjbxx() {
+		return msdyjbxx;
+	}
+
+	public void setMsdyjbxx(String[] msdyjbxx) {
+		this.msdyjbxx = msdyjbxx;
+	}
+
+	public String[] getMslcjbxx() {
+		return mslcjbxx;
+	}
+
+	public void setMslcjbxx(String[] mslcjbxx) {
+		this.mslcjbxx = mslcjbxx;
+	}
+
+	public String[] getMsfjjbxx() {
+		return msfjjbxx;
+	}
+
+	public void setMsfjjbxx(String[] msfjjbxx) {
+		this.msfjjbxx = msfjjbxx;
 	}
 }

@@ -5,8 +5,9 @@
 	<head>
 	  <title>房间信息展示</title>
 	  <script type="text/javascript">
-		 var chdzid = "${chdzid}"
-		 var shbs = "${shbs}"
+	 	 var dtchdzid = "${dtchdzid}";//单条层户地址ID
+		 var chdzid = "${chdzid}";
+		 var shbs = "${shbs}";
 	  </script>
 	  <link rel="stylesheet" type="text/css" href="<%=contextPath%>/css/bzdz.css"></link>
 	  <script type="text/javascript" src="<%=contextPath%>/js/bzdz/dzBuilding/dzBuildingRoom.js"></script>
@@ -17,9 +18,9 @@
 	        <table class="tabid" style='border-collapse: collapse; padding: 0; margin: 0 auto;'>
 				<tr>
 				    <td align='center' width="120px;" class="td" nowrap="nowrap">证件种类</td>
-					<td id="zjzl" width="150px;"></td>
+					<td id="zjzl" width="250px;"></td>
 					<td align='center' width="120px;" class="td" nowrap="nowrap">证件号码</td>
-					<td id="zjhm" width="150px;"></td>
+					<td id="zjhm" width="250px;"></td>
 					<td id="thphoto" width="132px;" height="160px;" rowspan='6'></td>
 				</tr>
 				<tr>
@@ -49,7 +50,7 @@
 					<td id="jzdz" colspan="3"></td>
 				</tr>
 				<tr>
-				   <table style="width: 100%;height: 190px">
+				   <table style="width: 100%;height: 190px;">
 				     <tr>
 				       <td>
 				          <table id="ryList"></table>
@@ -64,7 +65,7 @@
 				</tr>
 			</table>
 		</div>
-		<div title="单位信息" id="dwxx" style="height: 535px;">
+		<div title="单位信息" id="dwxx" style="height: 520px;">
           <table id="dg" class="easyui-datagrid" 
            	data-options="url:'<%=basePath %>sydwcx/queryDw?flag=jsq',
 	           		delayCountUrl:'<%=basePath %>sydwcx/queryCountDw?flag=jsq',
@@ -76,7 +77,8 @@
 	        		border:false,
 	        		sortOrder:'desc',
 	        		singleSelect:true,
-	        		fitColumns:false,
+	        		fitColumns:true,
+	        		fit:true,
 	        		nowrap:true">
 			    <thead>
 			        <tr>
@@ -87,6 +89,9 @@
 			        </tr>
 			    </thead>
 		   </table>
+		</div>
+		<div title="人员装户" id="dwxx" style="height: 535px;">
+		    <iframe id="ryzhiframe" src="" style="width: 100%;height:535px;" frameborder="0"></iframe>
 		</div>
 	</div>
 </body>

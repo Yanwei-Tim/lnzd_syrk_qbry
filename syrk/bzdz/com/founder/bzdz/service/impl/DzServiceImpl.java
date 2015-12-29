@@ -125,6 +125,8 @@ public class DzServiceImpl extends BaseService implements DzService {
 		saveDsChdzdxb(entity,bzdzSh);
 		//保存地下基本信息
 		saveDxChdzdxb(entity,bzdzSh);
+		//保存门市基本信息
+		saveMsChdzdxb(entity,bzdzSh);
 	}
 	/**
 	 * @Title: saveChDz 
@@ -217,6 +219,8 @@ public class DzServiceImpl extends BaseService implements DzService {
 		saveDsChdzdxb(entity,entity.getDzChb());
 	    //保存地下基本信息
 		saveDxChdzdxb(entity,entity.getDzChb());
+		//保存门市基本信息
+		saveMsChdzdxb(entity,entity.getDzChb());
 	}
 	/**
 	 * @Title: saveDsChdzdxb
@@ -394,6 +398,103 @@ public class DzServiceImpl extends BaseService implements DzService {
 				entity.setLch(hs[1]);
 				entity.setSh(hs[2]);
 				entity.setShmc("B"+hs[1]+"-"+hs[2]);
+				entity.setShbs("");
+				String chdzmc = entity.getDzmc()+entity.getDyh()+"-"+entity.getShmc();
+				entity.setChdzmc(chdzmc);
+				entity.setChdzmcpy(dzDao.queryPy(chdzmc));
+				entity.setChdzmcpwd(ContextSearchUtils.getPasswordString(chdzmc));
+				entity.setChdzmcpypwd(ContextSearchUtils.getPasswordString(entity.getChdzmcpy()));
+				entity.setDzjb("4");
+				//保存楼层地址信息
+				if("1".equals(bzdzSh)){
+					dzDao.saveChdz(entity);
+				}else if("2".equals(bzdzSh)){
+					dzDao.saveChdzHsb(entity);
+				}else{
+					dzDao.saveChdzDxb(entity);
+				}
+			}
+		}
+	}
+	/**
+	 * @Title: saveMsChdzdxb 
+	 * @描述: 保存门市基本信息
+	 * @作者: zhang_guoliang@founder.com 
+	 * @参数: bzdzSh 标准地址新增或维护是否审核：0为禁用（默认）、1为启用  
+	 * @日期： 2015-12-28 下午2:12:36 
+	 * @返回值: void    返回类型 
+	 * @throws
+	 */
+	public void saveMsChdzdxb(BzdzxxbVO entity,String bzdzSh){
+		if(entity.getMsdyjbxx()!=null&&!"".equals(entity.getMsdyjbxx())&&entity.getMsdys()!=null){
+			//保存门市单元地址信息
+			String msdyjbxx[] = entity.getMsdyjbxx();
+			for(int j=0;j<msdyjbxx.length;j++){
+				String dyh[] = msdyjbxx[j].split("-");
+				entity.setChdzid(UUID.create());
+				entity.setDyh(dyh[0]);
+				entity.setDyhlx("2");
+				entity.setLch("");
+				entity.setSh("");
+				entity.setShmc("");
+				entity.setShbs("");
+				String chdzmc = entity.getDzmc()+entity.getDyh();
+				entity.setChdzmc(chdzmc);
+				entity.setChdzmcpy(dzDao.queryPy(chdzmc));
+				entity.setChdzmcpwd(ContextSearchUtils.getPasswordString(chdzmc));
+				entity.setChdzmcpypwd(ContextSearchUtils.getPasswordString(entity.getChdzmcpy()));
+				entity.setDzjb("2");
+				//保存单元地址信息
+				if("1".equals(bzdzSh)){
+					dzDao.saveChdz(entity);
+				}else if("2".equals(bzdzSh)){
+					dzDao.saveChdzHsb(entity);
+				}else{
+					dzDao.saveChdzDxb(entity);
+				}
+				//保存建筑物层户结构表
+				entity.setJzwchid(UUID.create());
+				entity.setZdlcs(dyh[1]);
+				entity.setZdhs(dyh[2]);
+				entity.setDydzbs(entity.getMldzid());
+				dzDao.saveJzwChjgb(entity);
+			}
+			//保存门市楼层地址信息
+			String mslcjbxx[] = entity.getMslcjbxx();
+			for(int m=0;m<mslcjbxx.length;m++){
+				String lc[] = mslcjbxx[m].split("-");
+				entity.setChdzid(UUID.create());
+				entity.setDyh(lc[0]);
+				entity.setDyhlx("2");
+				entity.setLch(lc[1]);
+				entity.setSh("");
+				entity.setShmc("");
+				entity.setShbs("");
+				String chdzmc = entity.getDzmc()+entity.getDyh()+"-M"+lc[1];
+				entity.setChdzmc(chdzmc);
+				entity.setChdzmcpy(dzDao.queryPy(chdzmc));
+				entity.setChdzmcpwd(ContextSearchUtils.getPasswordString(chdzmc));
+				entity.setChdzmcpypwd(ContextSearchUtils.getPasswordString(entity.getChdzmcpy()));
+				entity.setDzjb("3");
+				//保存楼层地址信息
+				if("1".equals(bzdzSh)){
+					dzDao.saveChdz(entity);
+				}else if("2".equals(bzdzSh)){
+					dzDao.saveChdzHsb(entity);
+				}else{
+					dzDao.saveChdzDxb(entity);
+				}
+			}
+			//保存门市户室地址信息
+			String msfjjbxx[] = entity.getMsfjjbxx();
+			for(int n=0;n<msfjjbxx.length;n++){
+				String hs[] = msfjjbxx[n].split("-");
+				entity.setChdzid(UUID.create());
+				entity.setDyh(hs[0]);
+				entity.setDyhlx("2");
+				entity.setLch(hs[1]);
+				entity.setSh(hs[2]);
+				entity.setShmc("M"+hs[1]+"-"+hs[2]);
 				entity.setShbs("");
 				String chdzmc = entity.getDzmc()+entity.getDyh()+"-"+entity.getShmc();
 				entity.setChdzmc(chdzmc);
@@ -774,8 +875,10 @@ public class DzServiceImpl extends BaseService implements DzService {
 			}else if("3".equals(chdzlist.get(i).getDzjb())){
 				if("1".equals(entity.getDyhlx())){
 					dzmc = entity.getDzmc()+entity.getNewdyh()+"-"+chdzlist.get(i).getLch();
-				}else{
+				}else if("0".equals(entity.getDyhlx())){
 					dzmc = entity.getDzmc()+entity.getNewdyh()+"-B"+chdzlist.get(i).getLch();
+				}else if("2".equals(entity.getDyhlx())){
+					dzmc = entity.getDzmc()+entity.getNewdyh()+"-M"+chdzlist.get(i).getLch();
 				}
 			}else if("4".equals(chdzlist.get(i).getDzjb())){
 				dzmc = entity.getDzmc()+entity.getNewdyh()+"-"+chdzlist.get(i).getShmc();
@@ -819,8 +922,10 @@ public class DzServiceImpl extends BaseService implements DzService {
 				String chdzmc = "";
 				if("1".equals(entity.getDyhlx())){
 					chdzmc = entity.getDzmc()+entity.getDyh()+"-"+entity.getLch();
-				}else{
+				}else if("0".equals(entity.getDyhlx())){
 					chdzmc = entity.getDzmc()+entity.getDyh()+"-B"+entity.getLch();
+				}else if("2".equals(entity.getDyhlx())){
+					chdzmc = entity.getDzmc()+entity.getDyh()+"-M"+entity.getLch();
 				}
 				entity.setChdzmc(chdzmc);
 				entity.setChdzmcpy(dzDao.queryPy(chdzmc));
@@ -836,8 +941,10 @@ public class DzServiceImpl extends BaseService implements DzService {
 					entity.setSh(String.valueOf(n));
 					if("1".equals(entity.getDyhlx())){
 						entity.setShmc(entity.getLch()+"-"+entity.getSh());
-					}else{
+					}else if("0".equals(entity.getDyhlx())){
 						entity.setShmc("B"+entity.getLch()+"-"+entity.getSh());
+					}else if("2".equals(entity.getDyhlx())){
+						entity.setShmc("M"+entity.getLch()+"-"+entity.getSh());
 					}
 					entity.setShbs("");
 					String hsdzmc = entity.getDzmc()+entity.getDyh()+"-"+entity.getShmc();
@@ -893,8 +1000,10 @@ public class DzServiceImpl extends BaseService implements DzService {
 					entity.setSh(String.valueOf(n));
 					if("1".equals(entity.getDyhlx())){
 						entity.setShmc(entity.getLch()+"-"+entity.getSh());
-					}else{
+					}else if("0".equals(entity.getDyhlx())){
 						entity.setShmc("B"+entity.getLch()+"-"+entity.getSh());
+					}else if("2".equals(entity.getDyhlx())){
+						entity.setShmc("M"+entity.getLch()+"-"+entity.getSh());
 					}
 					entity.setShbs("");
 					String chdzmc = entity.getDzmc()+entity.getDyh()+"-"+entity.getShmc();
@@ -943,8 +1052,10 @@ public class DzServiceImpl extends BaseService implements DzService {
 				entity.setSh(String.valueOf(n));
 				if("1".equals(entity.getDyhlx())){
 					entity.setShmc(entity.getLch()+"-"+entity.getSh());
-				}else{
+				}else if("0".equals(entity.getDyhlx())){
 					entity.setShmc("B"+entity.getLch()+"-"+entity.getSh());
+				}else if("2".equals(entity.getDyhlx())){
+					entity.setShmc("M"+entity.getLch()+"-"+entity.getSh());
 				}
 				entity.setShbs("");
 				String chdzmc = entity.getDzmc()+entity.getDyh()+"-"+entity.getShmc();
@@ -978,8 +1089,10 @@ public class DzServiceImpl extends BaseService implements DzService {
 		setUpdateProperties(entity,sessionBean);
 		if("1".equals(entity.getDyhlx())){
 			entity.setShmc(entity.getLch()+"-"+entity.getNewsh());
-		}else{
+		}else if("0".equals(entity.getDyhlx())){
 			entity.setShmc("B"+entity.getLch()+"-"+entity.getNewsh());
+		}else if("2".equals(entity.getDyhlx())){
+			entity.setShmc("M"+entity.getLch()+"-"+entity.getNewsh());
 		}
 		String chdzmc = entity.getDzmc()+entity.getDyh()+"-"+entity.getShmc();
 		entity.setChdzmc(chdzmc);

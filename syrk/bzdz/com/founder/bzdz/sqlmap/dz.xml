@@ -1108,7 +1108,7 @@
 	   WHERE T.XT_ZXBZ = '0'
 		 AND T.DZJB = '4'
 	     AND T.MLDZID = #mldzid#
-	   ORDER BY T.DZMC
+	   ORDER BY T.DYH,T.LCH,T.SH
     </select>
     <!-- 获取层户地址_【层户地址对象表】 -->
     <select id="queryChdzdxb" parameterClass="bzdzxxbvo" resultClass="bzdzxxbvo">
@@ -1120,7 +1120,7 @@
 	     <isNotEmpty prepend="and" property="shbs">
 		     T.SHBS = #shbs#
 	  	 </isNotEmpty>
-	   ORDER BY T.DZMC
+	   ORDER BY T.DYH,T.LCH,T.SH
     </select>
     <!-- 注销已启用地址数据_【门楼地址对象表】  -->
     <update id="crossOutMldzdxb" parameterClass="bzdzxxbvo">
