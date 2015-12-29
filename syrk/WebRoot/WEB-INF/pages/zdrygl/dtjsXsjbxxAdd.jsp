@@ -162,7 +162,7 @@ String userOrgName = userInfo.getUserOrgName();
 			    <td width="20%" class="dialogTd" align="right">是否见到本人：</td>
 		         <td width="30%" class="dialogTd">
 		           <input class="easyui-combobox" type="text"  id="sfjdbr" name="sfjdbr"   style="width:200px;" value="${entity.sfjdbr}"
-	    			data-options="url: contextPath +  '/common/dict/D_QBLD_SF.js',
+	    			data-options="url: contextPath +  '/common/dict/BD_D_SFDM.js',
 					valueField:'id',textField:'text',selectOnNavigation:false,method:'get',required:true,tipPosition:'right'"/>
 		       </td>	      
 			      

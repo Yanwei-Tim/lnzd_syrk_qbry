@@ -138,7 +138,7 @@
 			    	{field:'wxjb',title:'危险级别',width:50,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_QBZDRYWXJBDM.js'},
 			    	{field:'zy',title:'职业',width:60,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/GB_D_ZYFLYDM.js'},
 			    	{field:'xnsfxx',title:'虚拟身份信息',width:100,align:'left',halign:'center'},
-			    	{field:'sfjdbr',title:'是否见到本人',width:40,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/D_QBLD_SF.js'},
+			    	{field:'sfjdbr',title:'是否见到本人',width:40,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_SFDM.js'},
 			    	{field:'zklx',title:'在控类型',width:50,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_QBZDRYZKZTDM.js'},
 			    	{field:'yjzq',title:'约见周期',width:90,align:'left',halign:'center'},
 			    	{field:'process',title:'操作',align:'center',width:100,halign:'center',formatter:xsjbxxFormater}
