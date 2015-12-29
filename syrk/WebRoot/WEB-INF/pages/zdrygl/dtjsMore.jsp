@@ -121,7 +121,7 @@
 				url:url,
 				toolbar:"#toolbar_0",
            		selectOnCheck:true,
-        		checkOnSelect:true,
+        		checkOnSelect:true, 
         		rownumbers:true,
         		border:false,
         		singleSelect:true,

@@ -155,7 +155,7 @@ String userOrgName = userInfo.getUserOrgName();
 		    	<td width="30%" class="dialogTd">
 		    		<span   id="gxdwmc" name="gxdwmc" style="width:200px;"><%=userOrgName %></span>
 		    		<input class="easyui-validatebox" type="hidden" id="gxdwmc" name="gxdwmc" value="<%=userOrgName %>" style="width:200px;"/>
-		    	
+		    	 
 		    		<input class="easyui-validatebox" type="hidden" id="gxdwdm" name="gxdwdm" value="<%=userOrgCode %>" style="width:200px;"/>
 		    	
 		   		 </td>

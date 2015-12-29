@@ -157,7 +157,7 @@ String userOrgName = userInfo.getUserOrgName();
 		    		<input class="easyui-validatebox" type="hidden" id="gxdwmc" name="gxdwmc" value="<%=userOrgName %>" style="width:200px;"/>
 		    	
 		    		<input class="easyui-validatebox" type="hidden" id="gxdwdm" name="gxdwdm" value="<%=userOrgCode %>" style="width:200px;"/>
-		    	
+		    	 
 		   		 </td>
 			    <td width="20%" class="dialogTd" align="right">是否见到本人：</td>
 		         <td width="30%" class="dialogTd">
