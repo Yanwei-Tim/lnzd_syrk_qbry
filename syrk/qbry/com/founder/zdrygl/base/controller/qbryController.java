@@ -109,168 +109,66 @@ public class qbryController extends BaseController {
  * @throws
  */
 	@RequestMapping(value ="/qbryget", method = RequestMethod.POST)
-	public ModelAndView qbryget(ZdryQbxxb qbzdrymsg){
+	public ModelAndView qbryget(ZdryQbxxb qbzdrymsg,SessionBean sessionBean){
 		 /*验证字段
-		  * 1.身份证号是否存在以及各式是否正确（18位）
-		  * 2.情报人员是否已存在
-		  * 2.管辖单位是否存在
-		  * 3.立案单位是否存在
-		  * 4.管理状态（默认为待接收、还未设置）调用字典
-		  */	
-/*		   System.out.println("保存成功！");	
-			try{								  			   
-				   zdryQbxxbService.save(qbzdrymsg);
-				   System.out.println("保存成功！");					
-		   ModelAndView	   mv = new ModelAndView("qbry/manager/qbryManage");
-			return mv;
-			   }catch(Exception e){
-				   logger.error(e.getLocalizedMessage(), e);							   
-				   System.out.println("保存失败");
-	     ModelAndView	  mv=new ModelAndView("qbry/getqbry/qbryGet");
-	  	return mv;
-			    }	*/
-			
-		  ModelAndView mv =new ModelAndView("qbry/getqbry/qbryGet");;
-           String  gmsfhm = qbzdrymsg.getGmsfhm();
-		   String  xm= qbzdrymsg.getXm();	
-		   String  gxdwmc=qbzdrymsg.getGxdwmc();
-		   String  ladwmc=qbzdrymsg.getLadwmc();
-		   String  glzt=qbzdrymsg.getGlzt();
-		   qbzdrymsg.setXt_zxbz("0");
-		 //验证身份号码
-		if(validationqbrygmsfhm(gmsfhm)){						
-			//验证情报人员是否已存在
-		   if(validationqbryexitbygmsfhm(gmsfhm, xm)){				 
-				String erromsg="该人员已经存在！";			    			   					  			  
-				throw new RuntimeException(erromsg);
+		  *调用别的service验证：
+		  * 1.情报人员在实有人口表里是否已存在
+		  * 自己的service里完成验证功能：
+		  * 1.身份证号是否存在以及位数是否正确（18位）	  
+		  * 2.管理状态（默认为待接收、还未设置）调用字典
+		  */		
+		ModelAndView mv = new ModelAndView(getViewName(sessionBean));		
+		 sessionBean = getSessionBean(sessionBean); 		          
+		 SyrkSyrkxxzb entity=new  SyrkSyrkxxzb();
+		  //ZJHM(证件号码)【默认身份证】、
+		 //可增加查询条件字段： JZD_DZID（居住地详细地址）、 CYZJDM（证件种类）
+		   entity.setZjhm(qbzdrymsg.getGmsfhm());		          		        		          
+		   if(validationqbryexitbygmsfhm( entity)!=null){				 	    			   					  			  
+	        	try{			        		     
+	        		   qbzdrymsg.setSyrkid(validationqbryexitbygmsfhm( entity));
+					   zdryQbxxbService.save(qbzdrymsg,sessionBean);
+					   System.out.println("保存成功！");					
+					   mv = new ModelAndView("qbry/manager/qbryManage");					 
+				 }catch(Exception e){
+					   logger.error(e.getLocalizedMessage(), e);							   
+					   System.out.println("保存失败!");							   							  
+			       }			   
 		     } 	
-		    else{
-		    	//不存在 ，就验证管辖单位 			
-		        if(validationqbrygxdw(gxdwmc)){
-		        	//存在，就验证立案单位 
-		          if(validationqbryladw(ladwmc)){
-		            //存在，就验证管理状态		
-		        	if(valiodationqbryglzt(glzt)){
-                       //待下发状态，才开始新增情报人员信息
-		        		try{				
-							  			   
-							   zdryQbxxbService.save(qbzdrymsg);
-							   System.out.println("保存成功！");					
-							   mv = new ModelAndView("qbry/manager/qbryManage");					 
-						   }catch(Exception e){
-							   logger.error(e.getLocalizedMessage(), e);							   
-							   System.out.println("保存失败!");
-							   							  
-						    }		        		
-		        	 }else{
-		        		 //管理状态不是带下发状态
-		        		      String erromsg="管理状态不是带下发状态";			
-		        		      throw new RuntimeException(erromsg);
-		        	  }		        			        		
-		        	 }else{
-			        	//立案单位不存在
-			        	String erromsg="立案单位不能为空";			
-			        	throw new RuntimeException(erromsg);
-			         }		        	
-		         }else{
-		        	//管辖单位不存在
-		        	String erromsg="管辖单位不能为空";			
-		        	throw new RuntimeException(erromsg);
-		        }		    	 		    		 					    					
-		    }	
-		}
-		else{			
-			//公民身份证号码各式不正确
-			String erromsg="公民身份证号码格式不正确或者为空";			
-			throw new RuntimeException(erromsg);
-		}	
-		
+		    else{		    	
+		        	try{											  			   
+						   zdryQbxxbService.save(qbzdrymsg,sessionBean);
+						   System.out.println("保存成功！");					
+						   mv = new ModelAndView("qbry/manager/qbryManage");					 
+					 }catch(Exception e){
+						   logger.error(e.getLocalizedMessage(), e);							   
+						    System.out.println("保存失败!");							   							  
+				       }		        			        			         	    	 		    		 					    					
+		         }			  
 	return mv;
 	}
 	
 	/**
-	 * @Description: TODO(验证是否已存在该情报人员)
-	 * */
-	public boolean  validationqbryexitbygmsfhm(String gmsfhm,String xm){
-		
-/*	    boolean  cz=false;		
-		   ZdryQbxxb  realmsg =  zdryQbxxbService.queryById(gmsfhm);		    		    
-		if(realmsg==null){		
-			return true;			
-		}else{
-			return false;		
-		}	*/
-		
-		return false;	
-	}
-   /**
-    * 
-    * @Title: validationqbrygxdw
-    * @Description: TODO(验证管辖单位)
-    * @param @return    设定文件
-    * @return boolean    返回类型
-    * @throws
-    */
-	public boolean validationqbrygxdw( String  gxdwmc ){		
-      if(gxdwmc!=null){   	  
-    	  return true;	 
-      }else{
-    	  return false;	
-      }				
-	}	
-	/**
 	 * 
-	 * @Title: validationqbrygmsfhm
-	 * @Description: TODO(验证身份证号码)
-	 * @param @param gmsfhm
+	 * @Title: validationqbryexitbygmsfhm
+	 * @Description: TODO(情报人员（根据查询条件：【默认省份证】）是否存在于实有人口总表，有返回)
+	 * @param @param syrkid
 	 * @param @return    设定文件
 	 * @return boolean    返回类型
 	 * @throws
-	 */
-	public boolean validationqbrygmsfhm(String gmsfhm){		
-		if(gmsfhm.length()==18){
-			return true;	
-		}		
-		else{
-			return false;	
-		}	
-	}	
-	/**
-	 * 
-	 * @Title: validationqbryladw
-	 * @Description: TODO(验证立案单位)
-	 * @param @param ladwmc
-	 * @param @return    设定文件
-	 * @return boolean    返回类型
-	 * @throws
-	 */
-	public boolean validationqbryladw(String  ladwmc){
+	 */ 	
+	public String  validationqbryexitbygmsfhm( SyrkSyrkxxzb entity){
 		
-		if(ladwmc!=null){
-			return true;	
-		}		
-		else{
-			return false;	
-		}
-	}
-	/**
-	 * 
-	 * @Title: valiodationqbryglzt
-	 * @Description: TODO(验证管理状态)
-	 * @param @param glzt
-	 * @param @return    设定文件
-	 * @return boolean    返回类型
-	 * @throws
-	 */
-	public boolean valiodationqbryglzt(String glzt){
-		if( ZdryQbDict.GLZT_DXF.equals(glzt)){
-			return true;	
-		}		
-		else{
-			return false;	
-		}
-	}
 	
+		   try{
+			   return syrkSyrkxxzbService.querySyrkxxzb(entity).getId();   
+		   }catch(Exception e){
+			   
+			   return null;  		  
+		   }
+		
+	}
+
+
 	/**
 	 * 
 	 * @Title: ywList
@@ -289,23 +187,7 @@ public class qbryController extends BaseController {
 			return zdryQbywbService.queryListByZjhm(gmsfhm,page,entity);
 	}
 	
-	/**
-	 * 
-	 * @Title: view
-	 * @Description: 跳转情报人员编辑页面
-	 * @param @param qbryid
-	 * @param @return    设定文件
-	 * @return ModelAndView    返回类型
-	 * @throws
-	 */
-	@RequestMapping(value = "/{ryid}/view", method = RequestMethod.GET)
-	public ModelAndView view(@PathVariable(value = "ryid") String qbryid){
-			ModelAndView mv = new ModelAndView("qbry/manager/qbryEdit");
-			ZdryQbxxb qbxxb = zdryQbxxbService.queryById(qbryid);
-			mv.addObject("qbry",qbxxb);
-			return mv;
-	}
-	
+
 	
 	/**
 	 * 
