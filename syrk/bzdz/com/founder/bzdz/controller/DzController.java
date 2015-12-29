@@ -120,7 +120,7 @@ public class DzController extends BaseController {
 			entity.setMlphqc(mlphqc);
 		}
 		//层户结构判断
-		if((entity.getDsdys()==null||"".equals(entity.getDsdys()))&&(entity.getDxdys()==null||"".equals(entity.getDsdys()))){
+		if((entity.getDsdys()==null||"".equals(entity.getDsdys()))&&(entity.getDxdys()==null||"".equals(entity.getDsdys())||"".equals(entity.getMsdys()))){
 			model.put(AppConst.STATUS, AppConst.FAIL);
 			model.put(AppConst.MESSAGES, "保存【"+entity.getMlphqc()+"】失败，层户结构信息不完整，请完善信息。");
 			mv.addObject(AppConst.MESSAGES, new Gson().toJson(model));
@@ -136,6 +136,14 @@ public class DzController extends BaseController {
 		}
 		if(entity.getDxdys()!=null&&!"".equals(entity.getDxdys())){
 			if(entity.getDxzdcs()==null||"".equals(entity.getDxzdcs())||entity.getDxzdcs()=="0"||entity.getDxzdhs()==null||"".equals(entity.getDxzdhs())||entity.getDxzdhs()=="0"){
+				model.put(AppConst.STATUS, AppConst.FAIL);
+				model.put(AppConst.MESSAGES, "保存【"+entity.getMlphqc()+"】失败，地下层户信息不完整，请完善信息。");
+				mv.addObject(AppConst.MESSAGES, new Gson().toJson(model));
+				return mv;
+			}
+		}
+		if(entity.getMsdys()!=null&&!"".equals(entity.getMsdys())){
+			if(entity.getMszdcs()==null||"".equals(entity.getMszdcs())||entity.getMszdcs()=="0"||entity.getMszdhs()==null||"".equals(entity.getMszdhs())||entity.getMszdhs()=="0"){
 				model.put(AppConst.STATUS, AppConst.FAIL);
 				model.put(AppConst.MESSAGES, "保存【"+entity.getMlphqc()+"】失败，地下层户信息不完整，请完善信息。");
 				mv.addObject(AppConst.MESSAGES, new Gson().toJson(model));
@@ -191,7 +199,7 @@ public class DzController extends BaseController {
 		if(entity.getDxdys()!=null&&!"".equals(entity.getDxdys())){
 			if(entity.getDxzdcs()==null||"".equals(entity.getDxzdcs())||entity.getDxzdcs()=="0"||entity.getDxzdhs()==null||"".equals(entity.getDxzdhs())||entity.getDxzdhs()=="0"){
 				model.put(AppConst.STATUS, AppConst.FAIL);
-				model.put(AppConst.MESSAGES, "保存【"+entity.getMlphqc()+"】失败，地下层户信息不完整，请完善信息。");
+				model.put(AppConst.MESSAGES, "保存【"+entity.getMlphqc()+"】失败，门市层户信息不完整，请完善信息。");
 				mv.addObject(AppConst.MESSAGES, new Gson().toJson(model));
 				return mv;
 			}
@@ -942,6 +950,7 @@ public class DzController extends BaseController {
 		}else{
 			mv.addObject("chdzid", chdzid);
 		}
+		mv.addObject("dtchdzid", chdzid);
 		mv.addObject("shbs", shbs);
 		return mv;
     }

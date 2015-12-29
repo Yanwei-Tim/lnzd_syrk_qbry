@@ -6,14 +6,18 @@ DzBuildingShow = function(){
 };
 DzBuildingShow.divdsMaxWidth = 0;//地上最大宽度
 DzBuildingShow.divdxMaxWidth = 0;//地下最大宽度
+DzBuildingShow.divmsMaxWidth = 0;//地下最大宽度
 DzBuildingShow.dsdyHtml = "";//地上单元HTML
 DzBuildingShow.dxdyHtml = "";//地下单元HTML
+DzBuildingShow.msdyHtml = "";//门市单元HTML
 DzBuildingShow.czrknum = 0;//常住人口
 DzBuildingShow.jzrknum = 0;//寄住人口
-DzBuildingShow.ldrynum = 0;//暂住人口
+DzBuildingShow.zzrknum = 0;//暂住人口
 DzBuildingShow.jwrynum = 0;//境外人员
 DzBuildingShow.wlhrynum = 0;//未落户人员
 DzBuildingShow.sydwnum = 0;//实有单位
+DzBuildingShow.zdrknum = 0;//重点人员
+DzBuildingShow.roomId = "";//记录打开的房间号
 /**
  * @title:Jquery
  * @description:初始化层户结构
@@ -86,10 +90,14 @@ DzBuildingShow.onloadChjg_back = function(json){
 				DzBuildingShow.dsdyHtml += DzBuildingShow.addDsDys(zddys,zdcs,zdhs);
 			}else if(dyhlx=="0"){
 				DzBuildingShow.dxdyHtml += DzBuildingShow.addDxDys(zddys,zdcs,zdhs);
+			}else if(dyhlx=="2"){
+				DzBuildingShow.msdyHtml += DzBuildingShow.addMsDys(zddys,zdcs,zdhs);
 			}
 		}
 		//加载地上单元信息
 		DzBuildingShow.onloadDsDys();
+		//加载门市单元信息
+		DzBuildingShow.onloadMsDys();
 		//加载地下单元信息
 		DzBuildingShow.onloadDxDys();
 		//设置整体宽度
@@ -106,13 +114,13 @@ DzBuildingShow.onloadChjg_back = function(json){
  * @date:2015-05-08 14:27:35
  */
 DzBuildingShow.onloadChjgJbxx = function(){
-	var zs = DzBuildingShow.czrknum + DzBuildingShow.jzrknum + DzBuildingShow.ldrynum + DzBuildingShow.jwrynum + DzBuildingShow.wlhrynum;
+	var zs = DzBuildingShow.czrknum + DzBuildingShow.jzrknum + DzBuildingShow.zzrknum + DzBuildingShow.jwrynum + DzBuildingShow.wlhrynum;
 	$("#jzwjbxxDiv").html("地址："+dzmc+"；共居住<span id='zsId' style='font-size: 16px;font-family:微软雅黑;font-weight:normal;'>"+zs+"</span>人，" +
 		"其中常住人口<span id='czrkId' style='font-size: 16px;font-family:微软雅黑; font-weight:normal;'>"+DzBuildingShow.czrknum+"</span>人、" +
-			"寄住人口<span id='zzrkId' style='font-size: 16px;font-family:微软雅黑; font-weight:normal;'>"+DzBuildingShow.jzrknum+"</span>人、" +
-		    "暂住人口<span id='jwrkId' style='font-size: 16px;font-family:微软雅黑; font-weight:normal;'>"+DzBuildingShow.ldrynum+"</span>人、" +
-			"境外人员<span id='jzrkId' style='font-size: 16px;font-family:微软雅黑; font-weight:normal;'>"+DzBuildingShow.jwrynum+"</span>人、" +
-			"未落户人员<span id='jzrkId' style='font-size: 16px;font-family:微软雅黑; font-weight:normal;'>"+DzBuildingShow.wlhrynum+"</span>人、" +
+			"寄住人口<span id='jzrkId' style='font-size: 16px;font-family:微软雅黑; font-weight:normal;'>"+DzBuildingShow.jzrknum+"</span>人、" +
+		    "暂住人口<span id='zzrkId' style='font-size: 16px;font-family:微软雅黑; font-weight:normal;'>"+DzBuildingShow.zzrknum+"</span>人、" +
+			"境外人员<span id='jwrkId' style='font-size: 16px;font-family:微软雅黑; font-weight:normal;'>"+DzBuildingShow.jwrynum+"</span>人、" +
+			"未落户人员<span id='wlhryId' style='font-size: 16px;font-family:微软雅黑; font-weight:normal;'>"+DzBuildingShow.wlhrynum+"</span>人、" +
 			"重点人口<span id='zdrkId' style='font-size: 16px;font-family:微软雅黑; font-weight:normal;'>0</span>人；" +
 			"实有单位<span id='sydwId' style='font-size: 16px;font-family:微软雅黑; font-weight:normal;'>"+DzBuildingShow.sydwnum+"</span>个；");
 }
@@ -223,35 +231,35 @@ DzBuildingShow.getHsHtml = function(cs,hs,dys,bz){
 				htmlStr += "<div class='cengButton' id='dsfjh_"+dys+"-"+roomName+"'><a href='javascript:void(0);' id='dsfj_"+roomName+"' name='dsfjName' title='"+dzmc+"' onclick='DzBuildingShow.showCalendarHouseDiv(\""+dys+"-"+roomName+"\",\""+chdz+"\",\""+shbs+"\");' value='"+dys+"-"+roomName+"'>"+roomName+"</a>";
 			}
 			htmlStr += "<table cellpadding = '0' cellspacing = '0' height='100%' width='100%' style='text-align: center;'>" +
-					   "<tr><td style='width:25px;height:13px;'>";
+					   "<tr><td style='width:25px;height:13px;' id='PopImg1_"+dys+"-"+roomName+"'>";
 			if(DzBuildingShow.jsonHsdz[t].czrknum!=0){
 			    //常住人口
 				htmlStr += "<img src='"+contextPath+"/images/bzdz/building/czrk.png' alt='常住人口共："+DzBuildingShow.jsonHsdz[t].czrknum+"人' style='width:14px;height:13px;'/>";
 				DzBuildingShow.czrknum += parseInt(DzBuildingShow.jsonHsdz[t].czrknum);
 			}
-			htmlStr += "</td><td style='width:25px;height:13px;'>";
+			htmlStr += "</td><td style='width:25px;height:13px;' id='PopImg2_"+dys+"-"+roomName+"'>";
 			if(DzBuildingShow.jsonHsdz[t].jzrknum!=0){
 				//寄住人口
 				htmlStr += "<img src='"+contextPath+"/images/bzdz/building/jzrk.png' alt='寄住人口共："+DzBuildingShow.jsonHsdz[t].jzrknum+"人' style='width:14px;height:13px;'/>";
 				DzBuildingShow.jzrknum += parseInt(DzBuildingShow.jsonHsdz[t].jzrknum);
 			}
-			htmlStr += "</td></tr><tr><td style='width:25px;height:13px;'>";
+			htmlStr += "</td></tr><tr><td style='width:25px;height:13px;' id='PopImg3_"+dys+"-"+roomName+"'>";
 			if(DzBuildingShow.jsonHsdz[t].ldrynum!=0){
 				//暂住人口
 				htmlStr += "<img src='"+contextPath+"/images/bzdz/building/zzrk.png' alt='暂住人口共："+DzBuildingShow.jsonHsdz[t].ldrynum+"人' style='width:14px;height:13px;'/>";
-				DzBuildingShow.ldrynum += parseInt(DzBuildingShow.jsonHsdz[t].ldrynum);
+				DzBuildingShow.zzrknum += parseInt(DzBuildingShow.jsonHsdz[t].ldrynum);
 			}
-			htmlStr += "</td><td style='width:25px;height:13px;'>";
+			htmlStr += "</td><td style='width:25px;height:13px;' id='PopImg4_"+dys+"-"+roomName+"'>";
 			if(DzBuildingShow.jsonHsdz[t].jwrynum!=0){
 				//境外人员
 				htmlStr += "<img src='"+contextPath+"/images/bzdz/building/jwrk.png' alt='境外人员共："+DzBuildingShow.jsonHsdz[t].jwrynum+"人' style='width:14px;height:13px;'/>";
 				DzBuildingShow.jwrynum += parseInt(DzBuildingShow.jsonHsdz[t].jwrynum);
 			}
-			htmlStr += "</td></tr><tr><td style='width:25px;height:13px;'>";
+			htmlStr += "</td></tr><tr><td style='width:25px;height:13px;' id='PopImg5_"+dys+"-"+roomName+"'>";
 			if(false){
 				htmlStr += "<img src='"+contextPath+"/images/bzdz/building/zdrk.png' style='width:14px;height:13px;'/>";
 			}
-			htmlStr += "</td><td style='width:25px;height:13px;'>";
+			htmlStr += "</td><td style='width:25px;height:13px;' id='PopImg6_"+dys+"-"+roomName+"'>";
 			if(DzBuildingShow.jsonHsdz[t].sydwnum!=0){
 				htmlStr += "<img src='"+contextPath+"/images/bzdz/building/sydw.png' alt='实有单位共："+DzBuildingShow.jsonHsdz[t].sydwnum+"个' style='width:14px;height:13px;'/>";
 				DzBuildingShow.sydwnum += parseInt(DzBuildingShow.jsonHsdz[t].sydwnum);
@@ -283,35 +291,95 @@ DzBuildingShow.getHsHtml = function(cs,hs,dys,bz){
 				htmlStr += "<div class='cengButton' id='dxfjh_"+dys+"-"+roomName+"'><a href='javascript:void(0);' id='dxfj_"+roomName+"' name='dxfjName' title='"+dzmc+"' onclick='DzBuildingShow.showCalendarHouseDiv(\""+dys+"-"+roomName+"\",\""+chdz+"\",\""+shbs+"\");' value='"+dys+"-"+cs+"-"+DzBuildingShow.jsonHsdz[t].sh+"'>"+roomName+"</a>";
 			}
 			htmlStr += "<table cellpadding = '0' cellspacing = '0' height='100%' width='100%' style='text-align: center;'>" +
-					   "<tr><td style='width:25px;height:13px;'>";
+					   "<tr><td style='width:25px;height:13px;' id='PopImg1_"+dys+"-"+roomName+"'>";
 			if(DzBuildingShow.jsonHsdz[t].czrknum!=0){
 			    //常住人口
 				htmlStr += "<img src='"+contextPath+"/images/bzdz/building/czrk.png' alt='常住人口共："+DzBuildingShow.jsonHsdz[t].czrknum+"人' style='width:14px;height:13px;'/>";
 				DzBuildingShow.czrknum += parseInt(DzBuildingShow.jsonHsdz[t].czrknum);
 			}
-			htmlStr += "</td><td style='width:25px;height:13px;'>";
+			htmlStr += "</td><td style='width:25px;height:13px;' id='PopImg2_"+dys+"-"+roomName+"'>";
 			if(DzBuildingShow.jsonHsdz[t].jzrknum!=0){
 				//寄住人口
 				htmlStr += "<img src='"+contextPath+"/images/bzdz/building/jzrk.png' alt='寄住人口共："+DzBuildingShow.jsonHsdz[t].jzrknum+"人' style='width:14px;height:13px;'/>";
 				DzBuildingShow.jzrknum += parseInt(DzBuildingShow.jsonHsdz[t].jzrknum);
 			}
-			htmlStr += "</td></tr><tr><td style='width:25px;height:13px;'>";
+			htmlStr += "</td></tr><tr><td style='width:25px;height:13px;' id='PopImg3_"+dys+"-"+roomName+"'>";
 			if(DzBuildingShow.jsonHsdz[t].ldrynum!=0){
 				//暂住人口
 				htmlStr += "<img src='"+contextPath+"/images/bzdz/building/zzrk.png' alt='暂住人口共："+DzBuildingShow.jsonHsdz[t].ldrynum+"人' style='width:14px;height:13px;'/>";
-				DzBuildingShow.ldrynum += parseInt(DzBuildingShow.jsonHsdz[t].ldrynum);
+				DzBuildingShow.zzrknum += parseInt(DzBuildingShow.jsonHsdz[t].ldrynum);
 			}
-			htmlStr += "</td><td style='width:25px;height:13px;'>";
+			htmlStr += "</td><td style='width:25px;height:13px;' id='PopImg4_"+dys+"-"+roomName+"'>";
 			if(DzBuildingShow.jsonHsdz[t].jwrynum!=0){
 				//境外人员
 				htmlStr += "<img src='"+contextPath+"/images/bzdz/building/jwrk.png' alt='境外人员共："+DzBuildingShow.jsonHsdz[t].jwrynum+"人' style='width:14px;height:13px;'/>";
 				DzBuildingShow.jwrynum += parseInt(DzBuildingShow.jsonHsdz[t].jwrynum);
 			}
-			htmlStr += "</td></tr><tr><td style='width:25px;height:13px;'>";
+			htmlStr += "</td></tr><tr><td style='width:25px;height:13px;' id='PopImg5_"+dys+"-"+roomName+"'>";
 			if(false){
 				htmlStr += "<img src='"+contextPath+"/images/bzdz/building/zdrk.png' style='width:14px;height:13px;'/>";
 			}
-			htmlStr += "</td><td style='width:25px;height:13px;'>";
+			htmlStr += "</td><td style='width:25px;height:13px;' id='PopImg6_"+dys+"-"+roomName+"'>";
+			if(DzBuildingShow.jsonHsdz[t].sydwnum!=0){
+				htmlStr += "<img src='"+contextPath+"/images/bzdz/building/sydw.png' alt='实有单位共："+DzBuildingShow.jsonHsdz[t].sydwnum+"个' style='width:14px;height:13px;'/>";
+				DzBuildingShow.sydwnum += parseInt(DzBuildingShow.jsonHsdz[t].sydwnum);
+			}
+			htmlStr += "</td></tr>" +
+					   "</table>" +
+					   "</div></li>";
+			if(DzBuildingShow.jsonHsdz[t].wlhrynum!=0){
+				//未落户人员
+				DzBuildingShow.wlhrynum += parseInt(DzBuildingShow.jsonHsdz[t].wlhrynum);
+			}
+			DzBuildingShow.jsonHsdz.splice(t,1);
+			t = t - 1;
+		}else if(dyhlx=="2"&&bz=="ms"&&lch==cs&&dys==dyh){
+			var roomName = DzBuildingShow.jsonHsdz[t].shmc;
+			if(shbs!=null&&shbs!=""){
+				htmlStr += "<li style='background: #"+shbs+";'>";
+				if(chdz==chdzid){
+					htmlStr += "<div class='cengButton' id='msfjh_"+dys+"-"+roomName+"'><a href='javascript:void(0);' id='msfj_"+roomName+"' name='msfjName' style='background: peachpuff;' title='"+dzmc+"' onclick='DzBuildingShow.showCalendarHouseDiv(\""+dys+"-"+roomName+"\",\""+chdz+"\",\""+shbs+"\");' value='"+dys+"-"+cs+"-"+DzBuildingShow.jsonHsdz[t].sh+"'>"+roomName+"</a>";
+				}else{
+					htmlStr += "<div class='cengButton' id='msfjh_"+dys+"-"+roomName+"'><a href='javascript:void(0);' id='msfj_"+roomName+"' name='msfjName' title='"+dzmc+"' onclick='DzBuildingShow.showCalendarHouseDiv(\""+dys+"-"+roomName+"\",\""+chdz+"\",\""+shbs+"\");' value='"+dys+"-"+cs+"-"+DzBuildingShow.jsonHsdz[t].sh+"'>"+roomName+"</a>";
+				}
+			}else{
+				if(chdz==chdzid){
+					htmlStr += "<li style='background: peachpuff;'>";
+				}else{
+					htmlStr += "<li>";
+				}
+				htmlStr += "<div class='cengButton' id='msfjh_"+dys+"-"+roomName+"'><a href='javascript:void(0);' id='msfj_"+roomName+"' name='msfjName' title='"+dzmc+"' onclick='DzBuildingShow.showCalendarHouseDiv(\""+dys+"-"+roomName+"\",\""+chdz+"\",\""+shbs+"\");' value='"+dys+"-"+cs+"-"+DzBuildingShow.jsonHsdz[t].sh+"'>"+roomName+"</a>";
+			}
+			htmlStr += "<table cellpadding = '0' cellspacing = '0' height='100%' width='100%' style='text-align: center;'>" +
+					   "<tr><td style='width:25px;height:13px;' id='PopImg1_"+dys+"-"+roomName+"'>";
+			if(DzBuildingShow.jsonHsdz[t].czrknum!=0){
+			    //常住人口
+				htmlStr += "<img src='"+contextPath+"/images/bzdz/building/czrk.png' alt='常住人口共："+DzBuildingShow.jsonHsdz[t].czrknum+"人' style='width:14px;height:13px;'/>";
+				DzBuildingShow.czrknum += parseInt(DzBuildingShow.jsonHsdz[t].czrknum);
+			}
+			htmlStr += "</td><td style='width:25px;height:13px;' id='PopImg2_"+dys+"-"+roomName+"'>";
+			if(DzBuildingShow.jsonHsdz[t].jzrknum!=0){
+				//寄住人口
+				htmlStr += "<img src='"+contextPath+"/images/bzdz/building/jzrk.png' alt='寄住人口共："+DzBuildingShow.jsonHsdz[t].jzrknum+"人' style='width:14px;height:13px;'/>";
+				DzBuildingShow.jzrknum += parseInt(DzBuildingShow.jsonHsdz[t].jzrknum);
+			}
+			htmlStr += "</td></tr><tr><td style='width:25px;height:13px;' id='PopImg3_"+dys+"-"+roomName+"'>";
+			if(DzBuildingShow.jsonHsdz[t].ldrynum!=0){
+				//暂住人口
+				htmlStr += "<img src='"+contextPath+"/images/bzdz/building/zzrk.png' alt='暂住人口共："+DzBuildingShow.jsonHsdz[t].ldrynum+"人' style='width:14px;height:13px;'/>";
+				DzBuildingShow.zzrknum += parseInt(DzBuildingShow.jsonHsdz[t].ldrynum);
+			}
+			htmlStr += "</td><td style='width:25px;height:13px;' id='PopImg4_"+dys+"-"+roomName+"'>";
+			if(DzBuildingShow.jsonHsdz[t].jwrynum!=0){
+				//境外人员
+				htmlStr += "<img src='"+contextPath+"/images/bzdz/building/jwrk.png' alt='境外人员共："+DzBuildingShow.jsonHsdz[t].jwrynum+"人' style='width:14px;height:13px;'/>";
+				DzBuildingShow.jwrynum += parseInt(DzBuildingShow.jsonHsdz[t].jwrynum);
+			}
+			htmlStr += "</td></tr><tr><td style='width:25px;height:13px;' id='PopImg5_"+dys+"-"+roomName+"'>";
+			if(false){
+				htmlStr += "<img src='"+contextPath+"/images/bzdz/building/zdrk.png' style='width:14px;height:13px;'/>";
+			}
+			htmlStr += "</td><td style='width:25px;height:13px;' id='PopImg6_"+dys+"-"+roomName+"'>";
 			if(DzBuildingShow.jsonHsdz[t].sydwnum!=0){
 				htmlStr += "<img src='"+contextPath+"/images/bzdz/building/sydw.png' alt='实有单位共："+DzBuildingShow.jsonHsdz[t].sydwnum+"个' style='width:14px;height:13px;'/>";
 				DzBuildingShow.sydwnum += parseInt(DzBuildingShow.jsonHsdz[t].sydwnum);
@@ -342,6 +410,8 @@ DzBuildingShow.getRoomBm = function(cs,hs,bz){
 		roomBm = cs+"-"+hs;
 	}else if(bz == "dx"){
 		roomBm = "B"+cs+"-"+hs;
+	}else if(bz == "ms"){
+		roomBm = "M"+cs+"-"+hs;
 	}
 	return roomBm;
 };
@@ -361,6 +431,21 @@ DzBuildingShow.onloadDxDys = function(){
 	$("#chjgAddDxDiv").html(chjgHtml);
 };
 /**
+ * @title:onloadMsDys
+ * @description:加载门市单元数容器
+ * @author: zhang_guoliang@founder.com
+ * @param   
+ * @date:2015-12-28 18:40:12
+ */
+DzBuildingShow.onloadMsDys = function(){
+	//层户结构容器
+	var chjgHtml = "<table cellpadding='0' cellspacing='0' class='juzhong'>";
+	//定义单元Html
+	var dyHtml = "<div class='t_listMs'><dl>"+DzBuildingShow.msdyHtml+"</dl></div>";
+	chjgHtml += "<tr><td>"+dyHtml+"</td></tr></table>";
+	$("#chjgAddMsDiv").html(chjgHtml);
+};
+/**
  * @title:addDxDys
  * @description:创建地下单元数
  * @author: zhang_guoliang@founder.com
@@ -376,6 +461,21 @@ DzBuildingShow.addDxDys = function(dys,cs,hs){
 	return dyHtml;
 };
 /**
+ * @title:addMsDys
+ * @description:创建门市单元数
+ * @author: zhang_guoliang@founder.com
+ * @param   
+ * @date:2015-12-28 18:35:21
+ */
+DzBuildingShow.addMsDys = function(dys,cs,hs){
+    var msHtml = DzBuildingShow.setMsHtml(dys,cs,hs);
+	var MsLcHtml = DzBuildingShow.setMsLcHtml(dys,cs,hs);
+	var Maxwidth = DzBuildingShow.dyWidth(hs);
+	DzBuildingShow.divmsMaxWidth += Maxwidth;
+	var dyHtml = "<dt id='dxdydt_"+dys+"' style='width:"+Maxwidth+"px;'><table cellpadding='0' cellspacing='0' width='100%'>"+msHtml+""+MsLcHtml+"</table></dt>";
+	return dyHtml;
+};
+/**
  * @title:setDownHtml
  * @description:加载地下单元数
  * @author: zhang_guoliang@founder.com
@@ -386,6 +486,17 @@ DzBuildingShow.setDownHtml = function(dxdys,cs,hs){
 	//begin:地下单元
 	var dyDownHtml = "<tr><td><div class='floot_numOnly' id='dxdyh_"+dxdys+"-"+cs+"'><input type='hidden' name='dxdymcName' value='"+dxdys+"'/><a href='javascript:void(0);' id='dxdy_"+dxdys+"-B"+cs+"-"+hs+"' name='dxdyName' value='"+dxdys+"-"+cs+"-"+hs+"'>地下"+dxdys+"</a></div></td></tr>";
 	//end:地下单元
+	return dyDownHtml;
+};
+/**
+ * @title:setMsHtml
+ * @description:加载门市单元数
+ * @author: zhang_guoliang@founder.com
+ * @param   
+ * @date:2015-01-20 15:19:47
+ */
+DzBuildingShow.setMsHtml = function(msdys,cs,hs){
+	var dyDownHtml = "<tr><td><div class='floot_numOnly' id='msdyh_"+msdys+"-"+cs+"'><input type='hidden' name='msdymcName' value='"+msdys+"'/><a href='javascript:void(0);' id='msdy_"+msdys+"-M"+cs+"-"+hs+"' name='msdyName' value='"+msdys+"-"+cs+"-"+hs+"'>门市"+msdys+"</a></div></td></tr>";
 	return dyDownHtml;
 };
 /**
@@ -404,6 +515,26 @@ DzBuildingShow.setDxLcHtml = function(i,cs,hs){
 				"<ul id='dxlchs_"+i+"-"+l+"'>" +
 				"<li class='qiang3'></li>";
 		htmlStr += "<li class='cengNumOnlyShow'><input type='hidden' name='dxzdlchs_"+i+"' value='"+hs+"'/><a href='javascript:void(0);' id='dxlc_"+i+"-"+l+"' name='dxlcName' value='"+i+"-"+l+"'>B"+l+"层</a></li>"+hsHtml+"<li class='qiang4'></li>";
+		htmlStr += "</ul></div></td></tr>";
+	}
+	return htmlStr;
+};
+/**
+ * @title:setMsLcHtml
+ * @description:加载门市楼层数
+ * @author: zhang_guoliang@founder.com
+ * @param   
+ * @date:2015-01-20 15:19:43
+ */
+DzBuildingShow.setMsLcHtml = function(i,cs,hs){
+	var htmlStr = "";
+	for(var l=1;l<=cs;l++){
+		var hsHtml = DzBuildingShow.getHsHtml(l,hs,i,"ms");
+		htmlStr += "<tr><td class='gd_line'>" +
+				"<div class='ceng_W'>" +
+				"<ul id='mslchs_"+i+"-"+l+"'>" +
+				"<li class='qiang3'></li>";
+		htmlStr += "<li class='cengNumOnlyShow'><input type='hidden' name='mszdlchs_"+i+"' value='"+hs+"'/><a href='javascript:void(0);' id='mslc_"+i+"-"+l+"' name='mslcName' value='"+i+"-"+l+"'>M"+l+"层</a></li>"+hsHtml+"<li class='qiang4'></li>";
 		htmlStr += "</ul></div></td></tr>";
 	}
 	return htmlStr;
@@ -443,16 +574,20 @@ DzBuildingShow.divWidth = function(){
 		if(DzBuildingShow.divdsMaxWidth>DzBuildingShow.divdxMaxWidth){
 			document.getElementById("chjgAddDsDiv").style.width = DzBuildingShow.divdsMaxWidth+16+"px";
 			document.getElementById("chjgAddDxDiv").style.width = DzBuildingShow.divdsMaxWidth+16+"px";
+			document.getElementById("chjgAddMsDiv").style.width = DzBuildingShow.divdsMaxWidth+16+"px";
 		}else if(DzBuildingShow.divdsMaxWidth<DzBuildingShow.divdxMaxWidth){
 			document.getElementById("chjgAddDsDiv").style.width = DzBuildingShow.divdxMaxWidth+16+"px";
 			document.getElementById("chjgAddDxDiv").style.width = DzBuildingShow.divdxMaxWidth+16+"px";
+			document.getElementById("chjgAddMsDiv").style.width = DzBuildingShow.divdxMaxWidth+16+"px";
 		}else if(DzBuildingShow.divdsMaxWidth==DzBuildingShow.divdxMaxWidth){
 			document.getElementById("chjgAddDsDiv").style.width = DzBuildingShow.divdsMaxWidth+16+"px";
 			document.getElementById("chjgAddDxDiv").style.width = DzBuildingShow.divdxMaxWidth+16+"px";
+			document.getElementById("chjgAddMsDiv").style.width = DzBuildingShow.divmsMaxWidth+16+"px";
 		}
    	}else{
    		document.getElementById("chjgAddDsDiv").style.width = "100%";
 		document.getElementById("chjgAddDxDiv").style.width = "100%";
+		document.getElementById("chjgAddMsDiv").style.width = "100%";
    	}
 };
 /**
@@ -463,10 +598,11 @@ DzBuildingShow.divWidth = function(){
  * @date:2015-05-08 16:14:44
  */	
 DzBuildingShow.showCalendarHouseDiv = function(roomName,chdzid,shbs){
+	DzBuildingShow.roomId = roomName;
 	$("#winZsxx").show();
 	$("#winZsxx").window({
 		title:"房间【"+roomName+"】信息展示",
-		width:692,
+		width:880,
 		height:585,
 		modal:true,
 		collapsible:false,
@@ -475,4 +611,101 @@ DzBuildingShow.showCalendarHouseDiv = function(roomName,chdzid,shbs){
 		iconCls:"icon-home"
 	});
 	$("#fjZsxxFrame").attr("src",contextPath+"/dz/dzBuildingRoom?mldzid="+mldzid+"&chdzid="+chdzid+"&shbs="+shbs);
+};
+/**
+ * @title:buildShowImag
+ * @description:户新增成员后展现图片
+ * @author: zhang_guoliang@founder.com
+ * @param   
+ * @date:2015-12-24 10:03:43
+ */
+DzBuildingShow.buildShowImag = function(rylb){
+	if(rylb=="1"){//常住人口
+		var p1 = document.getElementById("PopImg1_"+DzBuildingShow.roomId);
+		if(p1){
+			if(p1.childNodes.length==0){
+				var img = new Image();
+				img.style.width= "14";
+				img.style.height= "13";
+				img.alt = "常住人口";
+				img.src = contextPath+"/images/bzdz/building/czrk.png";
+				p1.appendChild(img);	
+			}
+		}
+		DzBuildingShow.czrknum++;
+		$("#czrkId").html(DzBuildingShow.czrknum);
+	}else if(rylb=="2"){//寄住人口
+		var p4 = document.getElementById("PopImg2_"+DzBuildingShow.roomId);
+		if(p4){
+			if(p4.childNodes.length==0){
+				var img = new Image();
+				img.style.width= "14";
+				img.style.height= "13";
+				img.alt = "寄住人口";
+				img.src = contextPath+"/images/bzdz/building/jzrk.png";
+				p4.appendChild(img);	
+			}
+		}
+		DzBuildingShow.jzrknum++;
+		$("#jzrkId").html(DzBuildingShow.jzrknum);
+	}else if(rylb=="3"){//暂住人口
+		var p2 = document.getElementById("PopImg3_"+DzBuildingShow.roomId);
+		if(p2){
+			if(p2.childNodes.length==0){
+				var img = new Image();
+				img.style.width= "14";
+				img.style.height= "13";
+				img.alt = "暂住人口";
+				img.src = contextPath+"/images/bzdz/building/zzrk.png";
+				p2.appendChild(img);
+			}
+		}
+		DzBuildingShow.zzrknum++;
+		$("#zzrkId").html(DzBuildingShow.zzrknum);
+	}else if(rylb=="4"){//境外人口
+		var p3 = document.getElementById("PopImg4_"+DzBuildingShow.roomId);
+		if(p3){
+			if(p3.childNodes.length==0){
+				var img = new Image();
+				img.style.width= "14";
+				img.style.height= "13";
+				img.alt = "境外人口";
+				img.src = contextPath+"/images/bzdz/building/jwrk.png";
+				p3.appendChild(img);
+			}
+		}
+		DzBuildingShow.jwrynum++;
+		$("#jwrkId").html(DzBuildingShow.jwrynum);
+	}else if(rylb=="6"){//实有单位
+		var p6 = document.getElementById("PopImg6_"+DzBuildingShow.roomId);
+		if(p6){
+			if(p6.childNodes.length==0){
+				var img = new Image();
+				img.style.width= "14";
+				img.style.height= "13";
+				img.alt = "实有单位";
+				img.src = contextPath+"/images/bzdz/building/sydw.png";
+				p6.appendChild(img);
+			}
+		}
+		DzBuildingShow.sydwnum++;
+		$("#sydwId").html(DzBuildingShow.sydwnum);
+	}else{//重点人口
+		var p5 = document.getElementById("PopImg5_"+DzBuildingShow.roomId);
+		if(p5){
+			if(p5.childNodes.length==0){
+				var img = new Image();
+				img.style.width= "14";
+				img.style.height= "13";
+				img.alt = "重点人口";
+				img.src = contextPath+"/images/bzdz/building/zdrk.png";
+				p5.appendChild(img);
+			}
+		}
+		DzBuildingShow.zdrknum++;
+		$("#zdrkId").html(DzBuildingShow.zdrknum);
+	}
+	var zs = DzBuildingShow.czrknum + DzBuildingShow.zzrknum + DzBuildingShow.jwrynum + DzBuildingShow.jzrknum + DzBuildingShow.zdrknum;
+	$("#zsId").html(zs);
+	executeTabPageMethod(mainTabID, "SyrkGl.queryButton");
 };

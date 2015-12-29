@@ -19,6 +19,7 @@
   </head>
   <body style="overflow: auto;border: 0px;text-align: center;">
      <div id="chjgAddDsDiv" style="text-align: center;margin-top: 10px;"></div>
+     <div id="chjgAddMsDiv" style="text-align: center;margin-top: 10px;"></div>
 	 <div id="chjgAddDxDiv" style="text-align: center;margin-top: 10px;margin-bottom: 10px;"></div>
 	 <div style="text-align: center;font-size: 14px;font-weight: bold;color: red;">
 	        ${entity.dzmc}
@@ -194,7 +195,97 @@
 			</tr>
 			<tr id="dxqxfjbhId" style="display: none;">
 				<td colspan="2">
-					<input id="dshbfjid" type='button' class='lou_closeBig' style='cursor:hand;' value='取消此房间合并关联' onclick="DzBuilding.changeRoomQxHb(0);">
+					<input id="dxhbfjid" type='button' class='lou_closeBig' style='cursor:hand;' value='取消此房间合并关联' onclick="DzBuilding.changeRoomQxHb(0);">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+				  <div style="width:100%;height:auto;margin-top:5px">
+	                  <input type="button" value="关闭" onClick="DzBuilding.hiddenCalendar();" class="lou_close"/>
+	              </div>
+				</td>
+			</tr>
+		</table>
+	  </div>
+	  <!-- 修改门市单元基本信息（分开写比较清晰，否则判断太多）-->
+	  <div id='showMsRightDiv' class="lou_wrap">
+		<table cellpadding="0" cellspacing="0" border="0" class="lou_table" >
+			<tr>
+				<td align="right">修改单元名称：</td>
+				<td>
+				    <input type="text" class="easyui-validatebox" style="width: 40px;background-color: #fff;font-size: 14px;
+				       font-family: Arial, Helvetica, sans-serif;height: 20px;line-height: 14px;color: #000;text-indent: 3px;" 
+				       id="xg_msdymc" name="xg_msdymc" data-options="validType:['naturalNumberRange[1,20]']" maxlength="2"/>
+					<input type='button' id='udDyBtn' class='lou_xiugai' style='cursor:hand;' value='修改' onclick="DzBuilding.sendUpdateMsDymc();">
+				</td>
+			</tr>
+			<tr>
+				<td align="right">修改门市层数：</td>
+				<td>
+					<input type="text" class="easyui-validatebox" style="width: 40px;background-color: #fff;font-size: 14px;
+				       font-family: Arial, Helvetica, sans-serif;height: 20px;line-height: 14px;color: #000;text-indent: 3px;" 
+				       id="xg_mslcs" name="xg_mslcs" data-options="validType:['naturalNumberRange[1,20]']" maxlength="2"/>
+					<input type='button' id='dInfoBtn' class='lou_xiugai' style='cursor:hand;' value='修改' onclick="DzBuilding.sendUpdateMsCS();">
+				</td>
+			</tr>
+			<tr>
+				<td align="right">修改门市户数：</td>
+				<td>
+					<input type="text" class="easyui-validatebox" style="width: 40px;background-color: #fff;font-size: 14px;
+				       font-family: Arial, Helvetica, sans-serif;height: 20px;line-height: 14px;color: #000;text-indent: 3px;" 
+				       id="xg_mshs" name="xg_mshs" data-options="validType:['naturalNumberRange[1,99]']" maxlength="2"/>
+					<input type='button' id='dInfoBtn' class='lou_xiugai' style='cursor:hand;' value='修改' onclick="DzBuilding.sendUpdateMsHs();">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+				  <div style="width:100%;height:auto;margin-top:5px">
+	                  <input type="button" value="关闭" onClick="DzBuilding.hiddenCalendar();" class="lou_close"/>
+	              </div>
+				</td>
+			</tr>
+		</table>
+	  </div>
+	  <div id='showMsRightHsDiv' class="lou_wrap">
+		<table cellpadding="0" cellspacing="0" border="0" class="lou_table" >
+			<tr>
+				<td align="right">修改楼层户数：</td>
+				<td>
+				    <input type="text" class="easyui-validatebox" style="width: 40px;background-color: #fff;font-size: 14px;
+				       font-family: Arial, Helvetica, sans-serif;height: 20px;line-height: 14px;color: #000;text-indent: 3px;" 
+				       id="xg_mslchs" name="xg_mslchs" data-options="validType:['naturalNumberRange[1,99]']" maxlength="2"/>
+					<input type='button' id='udDyBtn' class='lou_xiugai' style='cursor:hand;' value='修改' onclick="DzBuilding.sendUpdateMsClHs();">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+				  <div style="width:100%;height:auto;margin-top:5px">
+	                   <input type="button" value="关闭" onClick="DzBuilding.hiddenCalendar();" class="lou_close"/>
+	              </div>
+				</td>
+			</tr>
+		</table>
+	  </div>
+	  <div id='showMsRightHouseDiv' class="lou_wrap">
+		<table cellpadding="0" cellspacing="0" border="0" class="lou_table" >
+			<tr>
+				<td align="right">修改房间名称：</td>
+				<td>
+				    <input type="text" class="easyui-validatebox" style="width: 40px;background-color: #fff;font-size: 14px;
+				       font-family: Arial, Helvetica, sans-serif;height: 20px;line-height: 14px;color: #000;text-indent: 3px;" 
+				       id="xg_msfjmc" name="xg_msfjmc" data-options="validType:['naturalNumberRange[1,999]']" maxlength="3"/>
+					<input type='button' id='udDyBtn' class='lou_xiugai' style='cursor:hand;' value='修改' onclick="DzBuilding.sendUpdateMsFjmc();">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input id="mshbfjid" type='button' class='lou_closeBig' style='cursor:hand;' value='合并房间' onclick="DzBuilding.changeRoomHb(2);">
+					<input id="msexitid" type='button' class='lou_closeBig' style='cursor:hand;display: none;' value='退出合并' onclick="DzBuilding.changeRoomTcHb(2);">
+				</td>
+			</tr>
+			<tr id="msqxfjbhId" style="display: none;">
+				<td colspan="2">
+					<input id="mshbfjid" type='button' class='lou_closeBig' style='cursor:hand;' value='取消此房间合并关联' onclick="DzBuilding.changeRoomQxHb(2);">
 				</td>
 			</tr>
 			<tr>

@@ -30,17 +30,20 @@ DzBuildingRoom.initRyList = function(){
 		nowrap:true,
 		border:false,
 		columns:[[
-		          {field:'syrkywlxdm',title:'人员类型',width:90,align:'center',
+		          {field:'yhzgx',title:'与户主关系',width:110,align:'center',hidden:true},
+		          {field:'syrkywlxdm',title:'人员类型',width:125,align:'center',
 		        	  formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_SYRKYWLXDM.js'
 		          },
-		          {field:'yhzgx',title:'与户主关系',width:104,align:'center'},
-		          {field:'zjhm',title:'证件号码',width:145,align:'center'},
+		          {field:'cyzjdm',title:'证件种类',width:165,align:'center',
+		        	  formatter:dictFormatter,dictName:contextPath+'/common/dict/KX_D_CYZJDM.js'
+		          },
+		          {field:'zjhm',title:'证件号码',width:155,align:'center'},
 		          {field:'xm',title:'姓名',width:90,align:'center'},
-		          {field:'xbdm',title:'性别',width:60,align:'center',
+		          {field:'xbdm',title:'性别',width:90,align:'center',
 		        	  formatter:dictFormatter,dictName:contextPath+'/common/dict/GB_D_XBDM.js'
 		          },
 		          {field:'csrq',title:'出生日期',width:90,align:'center'},
-		          {field:'process',title:'操作',width:60,align:'center',formatter:DzBuildingRoom.datagridRk}
+		          {field:'process',title:'操作',width:95,align:'center',formatter:DzBuildingRoom.datagridRk}
 		]],
 		onSelect:function(rowIndex, rowData){
 			if(rowData !=undefined){
@@ -171,4 +174,23 @@ DzBuildingRoom.initDwDatagrid = function(data,dg){
 	if(ry==0 && dw>0){
 		$("#roomDetail").tabs("select","单位信息");
 	}
+    var src = $("#ryzhiframe").attr("src");
+    if(src==""){
+ 	    var url = basePath+"syrkGl/add?dtchdzid="+dtchdzid;
+ 		$("#ryzhiframe").attr("src",url);
+    }
+};
+/**
+ * @title:initSaveSyrk_back
+ * @description:保存完实有人口后操作
+ * @author: zhang_guoliang@founder.com
+ * @param 
+ * @date:2015-12-24 09:42:06
+ */
+DzBuildingRoom.initSaveSyrk_back = function(syrkywlxdmValue){
+	$("#roomDetail").tabs("select","人员信息");
+	$("#ryList").datagrid('reload');
+	var url = basePath+"syrkGl/add?dtchdzid="+dtchdzid;
+	$("#ryzhiframe").attr("src",url);
+	parent.DzBuildingShow.buildShowImag(syrkywlxdmValue);
 };

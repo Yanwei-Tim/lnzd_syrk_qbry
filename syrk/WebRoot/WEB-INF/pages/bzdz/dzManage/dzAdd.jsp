@@ -149,6 +149,13 @@
             <input type='hidden' name='dxdyjbxx' id="dxdyjbxx" value=""/>
             <input type='hidden' name='dxlcjbxx' id="dxlcjbxx" value=""/>
             <input type='hidden' name='dxfjjbxx' id="dxfjjbxx" value=""/>
+            <!-- 门市信息 -->
+            <input type='hidden' name='msdys' id="msdys" value=""/>
+            <input type='hidden' name='mszdcs' id="mszdcs" value=""/>
+            <input type='hidden' name='mszdhs' id="mszdhs" value=""/>
+            <input type='hidden' name='msdyjbxx' id="msdyjbxx" value=""/>
+            <input type='hidden' name='mslcjbxx' id="mslcjbxx" value=""/>
+            <input type='hidden' name='msfjjbxx' id="msfjjbxx" value=""/>
          </form>
          <div id="buttonDiv" style="text-align: center;">
 			<a id="backButton" class="l-btn l-btn-small" href="javascript:void(0)" group="">
@@ -233,7 +240,49 @@
 							</div>
 						</div>
 						<!--end:地上-->
-						<!--begin:地上-->
+						<!--begin:门市-->
+						<div class="ds_wrapper">
+							<div class="ds_titleGray" id="ms_class">
+								<div class="ds_text">门市</div>
+								<div class="ds_checkbox" id="msBoxDiv"></div>
+							</div>
+							<div class="ds_con">
+							 <ul>
+							  <li>
+							    <div class="text_W">单元数</div>
+							    <div class="ds_btn" id="delmsdys" disabled="disabled">-</div>
+							    <div class="ds_mid">
+							       <input type="text" class="easyui-validatebox" style="width: 39px;float: left;border: none;background-color: #fff;font-size: 14px;
+							       font-family: Arial, Helvetica, sans-serif;height: 20px;line-height: 14px;color: #000;text-indent: 3px;" 
+							       id="mszddys" name="mszddys" data-options="validType:['naturalNumberRange[1,20]']" maxlength="2" onkeyup="DzBuildingAdd.onloadDxCh();" disabled="disabled"/>
+							    </div>
+							    <div class="ds_btn" id="addmsdys" disabled="disabled">+</div>
+							  </li>
+							  <li>
+							    <div class="text_W">楼层数</div>
+							    <div class="ds_btn" id="delmslcs" disabled="disabled">-</div>
+							    <div class="ds_mid">
+							       <input type="text" class="easyui-validatebox" style="width: 39px;float: left;border: none;background-color: #fff;font-size: 14px;
+							       font-family: Arial, Helvetica, sans-serif;height: 20px;line-height: 14px;color: #000;text-indent: 3px;" 
+							       id="mslcs" name="mslcs" data-options="validType:['naturalNumberRange[1,20]']" maxlength="3" onkeyup="DzBuildingAdd.onloadDxCh();" disabled="disabled"/>
+							    </div>
+							    <div class="ds_btn" id="addmslcs" disabled="disabled">+</div>
+							  </li>
+							  <li>
+							    <div class="text_W">单层户数</div>
+							    <div class="ds_btn" id="delmshs" disabled="disabled">-</div>
+							    <div class="ds_mid">
+							       <input type="text" class="easyui-validatebox" style="width: 39px;float: left;border: none;background-color: #fff;font-size: 14px;
+							       font-family: Arial, Helvetica, sans-serif;height: 20px;line-height: 14px;color: #000;text-indent: 3px;" 
+							       id="mshs" name="mshs" data-options="validType:['naturalNumberRange[1,99]']" maxlength="3" onkeyup="DzBuildingAdd.onloadDxCh();" disabled="disabled"/>
+							    </div>
+							    <div class="ds_btn" id="addmshs" disabled="disabled">+</div>
+							  </li>
+							 </ul>
+							</div>
+						</div>
+						<!--end:门市-->
+						<!--begin:地下-->
 						<div class="ds_wrapper">
 							<div class="dx_titleGray" id="dx_class">
 								<div class="ds_text">地下</div>
@@ -274,7 +323,7 @@
 							 </ul>
 							</div>
 						</div>
-						<!--end:地上-->
+						<!--end:地下-->
 						</form>
 						<div class="btn_wrap">
 							<input type="button" class="btn1" id="qdid" value="确 定" onclick="DzBuildingAdd.qdButton(0);"/>&nbsp;
@@ -283,6 +332,7 @@
 	               </div>
 	               <div id="chjgId" data-options="region:'center',border:false">
 	                    <div id="chjgAddDsDiv" style="text-align: center;margin-top: 10px;"></div>
+	                    <div id="chjgAddMsDiv" style="text-align: center;margin-top: 10px;margin-bottom: 10px;"></div>
 	                    <div id="chjgAddDxDiv" style="text-align: center;margin-top: 10px;margin-bottom: 10px;"></div>
 	                    <!-- 修改地上单元基本信息 -->
 	                    <div id='showRightDiv' class="lou_wrap">
@@ -431,6 +481,85 @@
 									       font-family: Arial, Helvetica, sans-serif;height: 20px;line-height: 14px;color: #000;text-indent: 3px;" 
 									       id="xg_dxfjmc" name="xg_dxfjmc" data-options="validType:['naturalNumberRange[1,999]']" maxlength="3"/>
 										<input type='button' id='udDyBtn' class='lou_xiugai' style='cursor:hand;' value='修改' onclick="DzBuildingAdd.SendUpdateDxFjmc();">
+									</td>
+								</tr>
+								<tr >
+									<td colspan="2">
+									  <div style="width:100%;height:auto;margin-top:5px">
+                                      <input type="button" value="关闭" onClick="DzBuildingAdd.hiddenCalendar();" class="lou_close"/>
+                                      </div>
+									</td>
+								</tr>
+							</table>
+						  </div>
+						  <!-- 修改门市单元基本信息（分开写比较清晰，否则判断太多）-->
+						  <div id='showMsRightDiv' class="lou_wrap">
+							<table cellpadding="0" cellspacing="0" border="0" class="lou_table" >
+								<tr>
+									<td align="right">修改单元名称：</td>
+									<td>
+									    <input type="text" class="easyui-validatebox" style="width: 40px;background-color: #fff;font-size: 14px;
+									       font-family: Arial, Helvetica, sans-serif;height: 20px;line-height: 14px;color: #000;text-indent: 3px;" 
+									       id="xg_msdymc" name="xg_msdymc" data-options="validType:['naturalNumberRange[1,20]']" maxlength="2"/>
+										<input type='button' id='udDyBtn' class='lou_xiugai' style='cursor:hand;' value='修改' onclick="DzBuildingAdd.SendUpdateMsDymc();">
+									</td>
+								</tr>
+								<tr>
+									<td align="right">修改门市层数：</td>
+									<td>
+										<input type="text" class="easyui-validatebox" style="width: 40px;background-color: #fff;font-size: 14px;
+									       font-family: Arial, Helvetica, sans-serif;height: 20px;line-height: 14px;color: #000;text-indent: 3px;" 
+									       id="xg_mslcs" name="xg_mslcs" data-options="validType:['naturalNumberRange[1,20]']" maxlength="2"/>
+										<input type='button' id='dInfoBtn' class='lou_xiugai' style='cursor:hand;' value='修改' onclick="DzBuildingAdd.SendUpdateMsCS();">
+									</td>
+								</tr>
+								<tr>
+									<td align="right">修改门市户数：</td>
+									<td>
+										<input type="text" class="easyui-validatebox" style="width: 40px;background-color: #fff;font-size: 14px;
+									       font-family: Arial, Helvetica, sans-serif;height: 20px;line-height: 14px;color: #000;text-indent: 3px;" 
+									       id="xg_mshs" name="xg_mshs" data-options="validType:['naturalNumberRange[1,99]']" maxlength="2"/>
+										<input type='button' id='dInfoBtn' class='lou_xiugai' style='cursor:hand;' value='修改' onclick="DzBuildingAdd.SendUpdateMsHs();">
+									</td>
+								</tr>
+								<tr >
+									<td colspan="2">
+									  <div style="width:100%;height:auto;margin-top:5px">
+                                      <input type="button" value="关闭" onClick="DzBuildingAdd.hiddenCalendar();" class="lou_close"/>
+                                      </div>
+									</td>
+								</tr>
+							</table>
+						  </div>
+						  <div id='showMsRightHsDiv' class="lou_wrap">
+							<table cellpadding="0" cellspacing="0" border="0" class="lou_table" >
+								<tr>
+									<td align="right">修改楼层户数：</td>
+									<td>
+									    <input type="text" class="easyui-validatebox" style="width: 40px;background-color: #fff;font-size: 14px;
+									       font-family: Arial, Helvetica, sans-serif;height: 20px;line-height: 14px;color: #000;text-indent: 3px;" 
+									       id="xg_mslchs" name="xg_mslchs" data-options="validType:['naturalNumberRange[1,99]']" maxlength="2"/>
+										<input type='button' id='udDyBtn' class='lou_xiugai' style='cursor:hand;' value='修改' onclick="DzBuildingAdd.SendUpdateMsClHs();">
+									</td>
+								</tr>
+								<tr >
+									<td colspan="2">
+									  <div style="width:100%;height:auto;margin-top:5px">
+                                      <input type="button" value="关闭" onClick="DzBuildingAdd.hiddenCalendar();" class="lou_close"/>
+                                      </div>
+									</td>
+								</tr>
+							</table>
+						  </div>
+						  <div id='showMsRightHouseDiv' class="lou_wrap">
+							<table cellpadding="0" cellspacing="0" border="0" class="lou_table" >
+								<tr>
+									<td align="right">修改房间名称：</td>
+									<td>
+									    <input type="text" class="easyui-validatebox" style="width: 40px;background-color: #fff;font-size: 14px;
+									       font-family: Arial, Helvetica, sans-serif;height: 20px;line-height: 14px;color: #000;text-indent: 3px;" 
+									       id="xg_msfjmc" name="xg_msfjmc" data-options="validType:['naturalNumberRange[1,999]']" maxlength="3"/>
+										<input type='button' id='udDyBtn' class='lou_xiugai' style='cursor:hand;' value='修改' onclick="DzBuildingAdd.SendUpdateMsFjmc();">
 									</td>
 								</tr>
 								<tr >
