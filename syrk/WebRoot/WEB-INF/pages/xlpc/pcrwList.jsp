@@ -66,7 +66,7 @@
 	       		checkOnSelect:true,
 	       		rownumbers:true,
 	       		border:false,
-	       		sortName:'',
+	       		sortName:'kssj',
 	       		sortOrder:'desc',
 	       		pageSize:getAutoPageSize(115),
 	       		pageList:[getAutoPageSize(115),
@@ -78,7 +78,7 @@
 		    <thead>
 		        <tr>
 			        <th data-options="field:'kssj',width:100,align:'center',halign:'center'">盘查开始时间</th>
-			        <th data-options="field:'xffs',width:70,align:'center',halign:'center'">盘查方式</th>
+			        <th data-options="field:'xffs',width:70,align:'center',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_YDJW_PCFS.js'">盘查方式</th>
 			        <th data-options="field:'gzdd',width:150,align:'left',halign:'center'">盘查地点</th>
 			        <th data-options="field:'jssj',width:100,align:'center',halign:'center'">盘查结束时间</th>
 			        <th data-options="field:'gzddms',width:150,align:'center',halign:'center',hidden:true">盘查地点描述</th>

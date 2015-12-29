@@ -92,10 +92,7 @@ PcrwList.loadPoint = function(data){
 			var zby = rows[count].ypoint;
 			var title = rows[count].gzdd;
 			if(zbx!=""&&zby!=""){
-				var openHtml = "<div class='divwrap'><div class='oneText'>1</div><div class='title_big'>盘查人员</div>" +
-							   "</div><div class='text'>共有<span class='bold'>2</span>个责任区，面积<span class='redText'>85</span>(平方公里)</div>" +
-							   "<div class='divwrap'><div class='oneText'>2</div><div class='title_big'>盘查车辆</div></div>";
-				var initMarker = PcrwList.map.initMarker(title,zbx,zby,"jq_tj.png",openHtml,null,32,32);
+				var initMarker = PcrwList.map.initMarker(title,zbx,zby,"jq_tj.png",null,null,32,32);
 				PcrwList.map._MapApp.addOverlay(initMarker);
 				PcrwList.initMarkerArr.push(initMarker);
 				PcrwList.addMapToListFun(initMarker,count);
@@ -140,44 +137,52 @@ PcrwList.addClickMarker = function(row){
 	var title = rowData.gzdd;
 	var pcid = rowData.pcid;
 	var point = new Point(zbx,zby);
-	$.ajax({
-		type:"POST",
-		sync:true,
-		url:contextPath+"/xlpc/queryPcry",
-		dataType:'json',
-		data:{pcid:pcid},
-		success:function(json){
-			var openHtml = "<div class='divwrap'><div class='oneText'>1</div><div class='title_big'>盘查人员</div></div>";
-			var jsonlen = json.length;
-			if(jsonlen>0){
-				for(var i=0;i<jsonlen;i++){
-					openHtml += "<div class='text'>姓名："+json[i].ryxm+"  证件号码："+json[i].sfzh+"</div>";
+	if(zbx!=""&&zby!=""){
+		$.ajax({
+			type:"POST",
+			sync:true,
+			url:contextPath+"/xlpc/queryPcry",
+			dataType:'json',
+			data:{pcid:pcid},
+			success:function(json){
+				var openHtml = "<div class='divwrap'><div class='oneText'>1</div><div class='title_big'>盘查人员</div></div>";
+				var jsonlen = json.length;
+				if(jsonlen>0){
+					for(var i=0;i<jsonlen;i++){
+						openHtml += "<div class='text'>姓名："+json[i].ryxm+"  证件号码："+json[i].sfzh+"</div>";
+					}
 				}
-			}
-			$.ajax({
-				type:"POST",
-				sync:true,
-				url:contextPath+"/xlpc/queryPccl",
-				dataType:'json',
-				data:{pcid:pcid},
-				success:function(returnJson){
-					openHtml += "<div class='divwrap'><div class='oneText'>2</div><div class='title_big'>盘查车辆</div></div>";
-					var returnJsonLength = returnJson.length;
-					if(returnJsonLength>0){
-						for(var j=0;j<returnJsonLength;j++){
-							openHtml += "<div class='text'>车牌号码："+returnJson[j].cphm+"  所有人姓名："+returnJson[j].syrxm+"</div>";
+				$.ajax({
+					type:"POST",
+					sync:true,
+					url:contextPath+"/xlpc/queryPccl",
+					dataType:'json',
+					data:{pcid:pcid},
+					success:function(returnJson){
+						openHtml += "<div class='divwrap'><div class='oneText'>2</div><div class='title_big'>盘查车辆</div></div>";
+						var returnJsonLength = returnJson.length;
+						if(returnJsonLength>0){
+							for(var j=0;j<returnJsonLength;j++){
+								openHtml += "<div class='text'>车牌号码："+returnJson[j].cphm+"  所有人姓名："+returnJson[j].syrxm+"</div>";
+							}
+						}
+						if(zbx!=""&&zby!=""){
+							PcrwList.initMarker = PcrwList.map.initMarker(title,zbx,zby,'jq_xs.png',openHtml,null,32,32);
+							PcrwList.map._MapApp.addOverlay(PcrwList.initMarker);
+							$('#dg').datagrid("selectRow",row);
+							PcrwList.map._MapApp.openInfoWindow(point,openHtml,true);
 						}
 					}
-					if(zbx!=""&&zby!=""){
-						PcrwList.initMarker = PcrwList.map.initMarker(title,zbx,zby,'jq_xs.png',openHtml,null,32,32);
-						PcrwList.map._MapApp.addOverlay(PcrwList.initMarker);
-						$('#dg').datagrid("selectRow",row);
-						PcrwList.map._MapApp.openInfoWindow(point,openHtml,true);
-					}
-				}
-			})
-		}
-	})
+				})
+			}
+		})
+	}else{
+		topMessager.show({
+			title: MESSAGER_TITLE,
+			msg: "该盘查地点暂无坐标信息。",
+			timeout:2500
+		});
+	}
 };
 /**
  * @title:onClickRow

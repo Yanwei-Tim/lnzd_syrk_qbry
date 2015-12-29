@@ -32,11 +32,11 @@
 	       		checkOnSelect:true,
 	       		rownumbers:true,
 	       		border:false,
-	       		sortName:'',
+	       		sortName:'fssj',
 	       		sortOrder:'desc',
-	       		pageSize:getAutoPageSize(120),
-	       		pageList:[getAutoPageSize(120),
-	       		getAutoPageSize(120) * 2],
+	       		pageSize:getAutoPageSize(110),
+	       		pageList:[getAutoPageSize(110),
+	       		getAutoPageSize(110) * 2],
 	       		singleSelect:true,
 	       		fitColumns:true,
 				toolbar:'#datagridToolbar',
@@ -44,7 +44,7 @@
 		    <thead>
 		        <tr>
 			        <th data-options="field:'fssj',width:130,align:'center',halign:'center'">盘查时间</th>
-			        <th data-options="field:'clzt',width:80,align:'center',halign:'center'">处理状态</th>
+			        <th data-options="field:'clzt',width:80,align:'center',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_YDJW_CLZT.js'">处理状态</th>
 			        <th data-options="field:'ryxm',width:90,align:'center',halign:'center'">姓名</th>
 			        <th data-options="field:'xb',width:60,align:'center',halign:'center',hidden:true">性别</th>
 			        <th data-options="field:'sfzh',width:140,align:'center',halign:'center'">身份证号</th>
@@ -52,11 +52,11 @@
 			        <th data-options="field:'csrq',width:120,align:'center',halign:'center',hidden:true">出生日期</th>
 			        <th data-options="field:'xjzd',width:160,align:'center',halign:'center',hidden:true">现居住地</th>
 			        <th data-options="field:'cjr',width:80,align:'center',halign:'center',hidden:true">采集人</th>
-			        <th data-options="field:'pcyy',width:160,align:'center',halign:'center',hidden:true">盘查原因</th>
-			        <th data-options="field:'sfzt',width:80,align:'center',halign:'center'">是否在逃</th>
+			        <th data-options="field:'pcyy',width:80,align:'center',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_YDJW_PCYY.js'">盘查原因</th>
+			        <th data-options="field:'sfzt',width:80,align:'center',halign:'center',hidden:true">是否在逃</th>
 			        <th data-options="field:'sffa',width:80,align:'center',halign:'center',hidden:true">是否负案</th>
 			        <th data-options="field:'sfpcdx',width:80,align:'center',halign:'center',hidden:true">是否盘查对象</th>
-			        <th data-options="field:'process',width:80,align:'center',halign:'center',formatter:PcryList.datagridProcessFormater">操作</th>
+			        <th data-options="field:'process',width:60,align:'center',halign:'center',formatter:PcryList.datagridProcessFormater">操作</th>
 		       </tr>
 		    </thead>
 		</table>
@@ -65,32 +65,15 @@
 			<form id="queryForm">
 			<table cellspacing="0" cellpadding="0" border="0" id="dmTable">
 				<tbody>
-				     <tr class="dialogTr">
-						<td class="dialogTd" style="width:95px" align="right">姓&nbsp;&nbsp;&nbsp;&nbsp;名：</td>
-						<td class="dialogTd" style="width:150px" align="right">
-						    <input type="text" name="ryxm" id="ryxm" class="easyui-validatebox" data-options="required:false,validType:'maxLength[20]'" style="width:150px;"/>
-						</td>
-						<td class="toolbarTd"><div class="datagrid-btn-separator"></div></td>
-						<td class="dialogTd" style="width:95px" align="right">身份证号：</td>
-						<td class="dialogTd" style="width:150px" align="right">
-						    <input type="text" name="sfzh" id="sfzh" class="easyui-validatebox" data-options="required:false,validType:'maxLength[20]'" style="width:150px;"/>
-						</td>
-					</tr>
-					<tr class="dialogTr">
-						<td class="dialogTd" style="width:95px" align="right">是否负案：</td>
-						<td class="dialogTd" style="width:150px" align="right">
-						    <input type="text" name="sffa" id="sffa" class="easyui-validatebox" data-options="required:false,validType:'maxLength[20]'" style="width:150px;"/>
-						</td>
-						<td class="toolbarTd"><div class="datagrid-btn-separator"></div></td>
-						<td class="dialogTd" style="width:95px" align="right">是否在逃：</td>
-						<td class="dialogTd" style="width:150px" align="right">
-						    <input type="text" name="sfzt" id="sfzt" class="easyui-validatebox" data-options="required:false,validType:'maxLength[20]'" style="width:150px;"/>
-						</td>
-						<td class="toolbarTd"><div class="datagrid-btn-separator"></div></td>
-						<td class="dialogTd" align="right">
-							<a class="easyui-linkbutton" iconCls="icon-search" onclick="PcryList.queryButton()">查询</a>
-						</td>
-					</tr>
+				  <tr class="dialogTr">
+				     <td class="dialogTd" style="width:508px" align="right">
+						<input type="text" name="ryxm" id="ryxm" class="easyui-searchbox" data-options="height:24,prompt:'请输入姓名、身份证号搜索',searcher:PcryList.queryButton" style="width:508px;"/>
+					 </td>
+					 <td class="toolbarTd"><div class="datagrid-btn-separator"></div></td>
+					 <td class="dialogTd">
+						<a class="easyui-linkbutton" iconCls="icon-search" onclick="PcryList.queryButton()">查询</a>
+					 </td>
+				  </tr>
 				</tbody>
 			  </table>
 			</form>
