@@ -46,9 +46,9 @@
 				    <thead>
 				        <tr>
 				            <th data-options="field:'dwlbdm',width:80,align:'left',halign:'center',formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_SDWLXDM.js',sortable:true">类别</th>
-				            <th data-options="field:'dwmc',width:120,align:'left',halign:'center',sortable:true">单位名称</th>
-				            <th data-options="field:'dz_dwdzxz',width:200,align:'left',halign:'center',formatter:subjzdz,sortable:true">单位地址</th>
-				            <th data-options="field:'process',width:90,align:'center',halign:'center',formatter:datagridProcessFormater">操作</th>
+				            <th data-options="field:'dwmc',width:160,align:'left',halign:'center',sortable:true">单位名称</th>
+				            <th data-options="field:'dz_dwdzxz',width:160,align:'left',halign:'center',formatter:subjzdz,sortable:true">单位地址</th>
+				            <th data-options="field:'process',width:60,align:'center',halign:'center',formatter:datagridProcessFormater">操作</th>
 				        </tr>
 				    </thead>
 				</table>
