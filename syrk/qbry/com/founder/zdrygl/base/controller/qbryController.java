@@ -118,57 +118,24 @@ public class qbryController extends BaseController {
 		  * 2.管理状态（默认为待接收、还未设置）调用字典
 		  */		
 		ModelAndView mv = new ModelAndView(getViewName(sessionBean));		
-		 sessionBean = getSessionBean(sessionBean); 		          
-		 SyrkSyrkxxzb entity=new  SyrkSyrkxxzb();
+		   sessionBean = getSessionBean(sessionBean); 		          
+		   SyrkSyrkxxzb entity=new  SyrkSyrkxxzb();
 		  //ZJHM(证件号码)【默认身份证】、
 		 //可增加查询条件字段： JZD_DZID（居住地详细地址）、 CYZJDM（证件种类）
-		   entity.setZjhm(qbzdrymsg.getGmsfhm());		          		        		          
-		   if(validationqbryexitbygmsfhm( entity)!=null){				 	    			   					  			  
-	        	try{			        		     
-	        		   qbzdrymsg.setSyrkid(validationqbryexitbygmsfhm( entity));
-					   zdryQbxxbService.save(qbzdrymsg,sessionBean);
-					   System.out.println("保存成功！");					
-					   mv = new ModelAndView("qbry/manager/qbryManage");					 
-				 }catch(Exception e){
-					   logger.error(e.getLocalizedMessage(), e);							   
-					   System.out.println("保存失败!");							   							  
-			       }			   
-		     } 	
-		    else{		    	
-		        	try{											  			   
-						   zdryQbxxbService.save(qbzdrymsg,sessionBean);
-						   System.out.println("保存成功！");					
-						   mv = new ModelAndView("qbry/manager/qbryManage");					 
-					 }catch(Exception e){
-						   logger.error(e.getLocalizedMessage(), e);							   
-						    System.out.println("保存失败!");							   							  
-				       }		        			        			         	    	 		    		 					    					
-		         }			  
-	return mv;
-	}
-	
-	/**
-	 * 
-	 * @Title: validationqbryexitbygmsfhm
-	 * @Description: TODO(情报人员（根据查询条件：【默认省份证】）是否存在于实有人口总表，有返回)
-	 * @param @param syrkid
-	 * @param @return    设定文件
-	 * @return boolean    返回类型
-	 * @throws
-	 */ 	
-	public String  validationqbryexitbygmsfhm( SyrkSyrkxxzb entity){
-		
-	
-		   try{
-			   return syrkSyrkxxzbService.querySyrkxxzb(entity).getId();   
-		   }catch(Exception e){
-			   
-			   return null;  		  
-		   }
-		
-	}
-
-
+		   entity.setZjhm(qbzdrymsg.getGmsfhm());
+		   entity = syrkSyrkxxzbService.querySyrkxxzb(entity);
+		   if(entity!=null) 	    	
+		   qbzdrymsg.setSyrkid(entity.getId());
+	       try{			        		     	        	   
+		      zdryQbxxbService.save(qbzdrymsg,sessionBean);
+			  System.out.println("保存成功！");					
+			  mv = new ModelAndView("qbry/manager/qbryManage");					 
+			   }catch(Exception e){
+			  logger.error(e.getLocalizedMessage(), e);							   
+			  System.out.println("保存失败!");							   							  
+			}			   		      			  	  
+	     return mv;
+	}	
 	/**
 	 * 
 	 * @Title: ywList
