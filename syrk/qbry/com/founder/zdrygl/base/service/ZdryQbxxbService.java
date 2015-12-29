@@ -63,15 +63,12 @@ public class ZdryQbxxbService {
 	 * @throws
 	 */
 	public void save(ZdryQbxxb entity,SessionBean sessionBean){	
-		  String  gmsfhm = entity.getGmsfhm();		  		
-		  
+		  String  gmsfhm = entity.getGmsfhm();		  				  
 		   //验证身份号码
-			if(validationqbrygmsfhm(gmsfhm)){												   			    			        
-				//验证管理状态		
-	            //待下发状态，才开始新增情报人员信息
+		  if(validationqbrygmsfhm(gmsfhm)){												   			    			        		            
 			    entity.setId(UUID.create());
 			    entity.setGlzt(ZdryQbDict.GLZT_DXF);
-			    entity.setQbzd(entity.getGxdwdm());//管辖单位代码设置为当前的所属支队
+			    entity.setQbzd(entity.getGxdwdm());//当前的所属支队设置为管辖单位代码
 			    entity.setDqjb("10");//当前级别设置为 支队（市局）
 			    BaseService.setSaveProperties(entity, sessionBean);
 			    zdryQbxxbDao.save(entity);
@@ -81,7 +78,6 @@ public class ZdryQbxxbService {
 				throw new RuntimeException(erromsg);
 			}				 		
 	}
-
 		
 		/**
 		 * 
@@ -100,40 +96,7 @@ public class ZdryQbxxbService {
 				return false;	
 			}	
 		}	
-	
-		/**
-		 * 
-		 * @Title: validationqbryglzt
-		 * @Description: TODO(验证管理状态)
-		 * @param @param glzt
-		 * @param @return    设定文件
-		 * @return boolean    返回类型
-		 * @throws
-		 */
-		public boolean validationqbryglzt(String glzt){
-			if( ZdryQbDict.GLZT_DXF.equals(glzt)){
-				return true;	
-			}		
-			else{
-				return false;	
-			}
-		}	
-		
-		
-		/**
-		 * 
-		 * @Title: save
-		 * @Description: TODO(新增zdry)
-		 * @param @param entity    设定文件
-		 * @return void    返回类型
-		 * @throws
-		 */
-		public void save(ZdryQbxxb entity){
-			
-			zdryQbxxbDao.save(entity);
-		}
-
-		
+					
 	/**
 	 * 
 	 * @Title: saveLg
