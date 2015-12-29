@@ -132,7 +132,7 @@ SyfwQuery.addClickMarker = function(row){
 	var zbx = rowData.fwdz_zbx;
 	var zby = rowData.fwdz_zby;
 	if(zbx!=""&&zby!=""){
-		SyfwQuery.initMarker = SyfwQuery.map.initMarker(title,zbx,zby,'jzw3.png',null,null,43,37);
+		SyfwQuery.initMarker = SyfwQuery.map.initMarker(title,zbx,zby,'jzw1.png',null,null,43,37);
 		SyfwQuery.map._MapApp.addOverlay(SyfwQuery.initMarker);
 		//鼠标移动到点上列表选中
 		$('#dg').datagrid("selectRow",row);
@@ -153,8 +153,6 @@ SyfwQuery.openInfoWindow = function(row){
 	var rowData = rows.rows[row];
 	var point = new Point(rowData.fwdz_zbx,rowData.fwdz_zby);
 	//气泡框内容
-	
-	
 	var openHtml = "<table width='360'><tr>" +
     "<td valign='top' width='360'>" +
     "<table cellpadding='0' cellspacing='0'>" +
@@ -162,11 +160,21 @@ SyfwQuery.openInfoWindow = function(row){
     "<tr><td class='infoTable' align='right' width='125'>房&nbsp;&nbsp;主&nbsp;&nbsp;姓&nbsp;&nbsp;&nbsp;名：</td><td class='infoTable1' colspan='2'>"+rowData.fz_xm+"</td></tr>" +
     "<tr><td class='infoTable' align='right' width='125'>托管人证件号码：</td><td class='infoTable1' colspan='2'>"+rowData.tgr_zjhm+"</td></tr>" +
     "<tr><td class='infoTable' align='right' width='125'>托&nbsp;管&nbsp;人&nbsp;姓&nbsp;名：</td><td class='infoTable1' colspan='2'>"+rowData.tgr_xm+"</td></tr>" +
-    "<tr><td class='infoTable' align='right' width='125'>房屋所属单位：</td><td class='infoTable1' colspan='2'>"+rowData.fwssdw_dwmc+"</td></tr>" +
-    "<tr><td class='infoTable' align='right' width='125'>地&nbsp;&nbsp;&nbsp;址&nbsp;&nbsp;全&nbsp;&nbsp;称：</td><td class='infoTable1' colspan='2'>"+rowData.fwdz_dzxz+"</td></tr>" +
-    "</table></td>" +
-    "</tr>" +
-    "</table>";
+    "<tr><td class='infoTable' align='right' width='125'>房屋所属单位：</td><td class='infoTable1' colspan='2'>"+rowData.fwssdw_dwmc+"</td></tr>";
+    var fwdz = "";
+	if(rowData.fwdz_dzxz!=null){
+		fwdz = rowData.fwdz_dzxz;
+	}else{
+		fwdz = rowData.fwdz_mlpxz;
+	}
+	if(rowData.fwdz_mlpdm!=""&&rowData.fwdz_mlpxz!=""){
+		openHtml += "<tr><td class='infoTable' align='right' width='125'>地&nbsp;&nbsp;&nbsp;址&nbsp;&nbsp;全&nbsp;&nbsp;称：</td><td><a class='infoTable' style='text-decoration:underline;' href='javascript:void(0)' onclick='SyfwQuery.doBuildingShow("+row+")'>"+fwdz+"</a></td></tr>";
+    }else{
+    	openHtml += "<tr><td class='infoTable' align='right' width='125'>地&nbsp;&nbsp;&nbsp;址&nbsp;&nbsp;全&nbsp;&nbsp;称：</td><td>"+fwdz+"</td></tr>";
+    }
+	openHtml += "</table></td>";
+	openHtml += "</tr>";
+	openHtml += "</table>";
 	SyfwQuery.map._MapApp.openInfoWindow(point,openHtml,true);
 };
 /**
@@ -336,4 +344,28 @@ SyfwQuery.dragModeSpace_back = function(json){
 	SyfwQuery.drawType = "";
 	SyfwQuery.drawZbz = "";
 	SyfwQuery.drawRadius = "";
+};
+//层户结构【展现】
+SyfwQuery.doBuildingShow = function(index){
+	var rows = $('#dg').datagrid('getData');
+	var rowData = rows.rows[index];
+	var title = "层户结构";
+	if(rowData.fwdz_mlpdm!=""){
+		var xzqhmc = window.top.getDictName(contextPath+'/common/dict/D_BZ_XZQHLIST_MUNICIPAL.js',rowData.fwdz_ssxdm);
+		var mlpxz = rowData.fwdz_dzxz.replace(xzqhmc, "");
+		title = "【"+mlpxz+"】层户结构";
+	}
+	//层户结构URL
+	menu_open(title, "/dz/dzBuildingShow?mldzid="+rowData.fwdz_mlpdm+"&chdzid="+rowData.fwdz_dzid+"&mainTabID="+getMainTabID());
+};
+/**
+ * @title: subjzddzxz
+ * @description:地址截取
+ * @author: zhang_guoliang@founder.com
+ * @param   
+ * @date:2015-04-14 15:08:32
+ */	
+SyfwQuery.subjzddzxz = function(val, row, index){
+  	var xzqhmc = window.top.getDictName(contextPath+'/common/dict/D_BZ_XZQHLIST_MUNICIPAL.js',row.fwdz_xzqhdm);
+	return val.replace(xzqhmc, "");
 };
