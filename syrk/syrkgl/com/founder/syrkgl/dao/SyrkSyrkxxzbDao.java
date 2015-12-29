@@ -374,6 +374,7 @@ public class SyrkSyrkxxzbDao extends BaseDaoImpl {
 	/**
 	 * @Title: querySyrkxxzb 
 	 * @描述: 根据ZJHM、JZD_DZID条件，查询实有人口详细信息【服务接口】
+	 * @修改: 查询条件添加CYZJDM，可不传，不影响以前的代码
 	 * @作者: zhang_guoliang@founder.com 
 	 * @参数: 传入参数定义 
 	 * @日期：  2015-12-01 下午12:40:32
