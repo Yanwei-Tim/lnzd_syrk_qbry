@@ -45,7 +45,9 @@
 		padding-bottom:20px;
 	}
 	.td-btns-container{
-		padding-left:20%;
+		border-top:1px solid #ccc;
+		padding-top:20px;
+		padding-bottom:20px;
 	}
 	.td-btns{
 		padding-top:15px;
@@ -62,12 +64,10 @@
 	</style>
     <script type="text/javascript" src="<%=contextPath%>/js/zdrygl/zdryzbManage.js"></script>
   </head>
-  <body class="easyui-layout" data-options="fit:true,border:false">
-       <div data-options="region:'center',border:false" style="width:538px;padding:20px;">
-           <!-- 地址管理列表 -->
-           <table id="dg" class="easyui-datagrid" 
+   <body class="easyui-layout" data-options="fit:true,border:false">
+       <div data-options="region:'center',border:false" style="width:538px;">
+           <table id="dg" class="easyui-datagrid"
 	              	data-options="url:'<%=contextPath%>/qbryManager/queryList',
-						onLoadSuccess:function(data){ZdryManage.loadPoint(data,'dg');},
 						selectOnCheck:true,
 		        		checkOnSelect:true,
 		        		rownumbers:true,
@@ -79,7 +79,7 @@
 		        		getAutoPageSize(105) * 2],
 		        		singleSelect:true,
 		        		fitColumns:true,
-		        		toolbar:'#datagridToolbar'">
+						toolbar:'#datagridToolbar'">
 			        <thead>
 			          <tr>
 				            <th data-options="field:'zdrylb',width:100,align:'center',halign:'center',sortable:true">重点人员细类</th>
@@ -90,11 +90,11 @@
 				            <th  data-options="field:'xzd',width:100,align:'center',halign:'center',sortable:true">现居住地址</th>
 				            <th  data-options="field:'hjd',width:100,align:'center',halign:'center',sortable:true">户籍地址</th>
 				            <th  data-options="field:'bjzdryrksj',width:100,align:'center',halign:'center',sortable:true">入部省库时间</th>
-				            <th data-options="field:'process',width:80,align:'center',halign:'center',formatter:ZdryManage.datagridProcessFormater">操作</th>
+				            <th data-options="field:'process',align:'center',width:100,halign:'center',formatter:datagridProcessFormater">操作</th>
 				        </tr>
 			       </thead>
-		       </table>	  
-		<div id="datagridToolbar" style="padding:5px;height:auto;">
+	       </table>
+	       <div id="datagridToolbar" style="padding:5px;height:auto;">
 			<!-- <input id="searchBox" type="text" class="easyui-searchbox" data-options="prompt:'请输入姓名'"/> -->
 			<table cellspacing = "0" cellpadding="0" class="table-toolbar">
 				<tr>
@@ -133,24 +133,23 @@
 					<td class="td-title">入部省库时间-开始:</td>
 					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
 					<td class="td-title">入部省库时间-截止:</td>
-					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
-					<td class="td-btns" colspan="2">
+					<td class="td-value" colspan="3"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+				</tr>
+				<tr>
+					<td class="td-btns" colspan="6" align="center">
 						<div class="td-btns-container">
 							<a class="easyui-linkbutton" data-options="iconCls:'icon-search'" href="javascript:void(0)">查询</a>
 							<a id="reset-btn" class="easyui-linkbutton"  href="#">重置</a>
 							<a id="dzaddid" class="easyui-linkbutton"  data-options="iconCls:'icon-add'" onclick="add()">新增</a>
-							<a id="dzaddid" class="easyui-linkbutton" data-options="iconCls:'icon-add'"  onclick="addSyrk()">新增实有人口</a>
 						</div>
 					</td>
 				</tr>
 			</table>
-			
-			
         </div>
+	        
 	  </div>
-	  <!-- 查询条件 -->
 	  
-        
+	 
    </body>
 </html>
 <script type="text/javascript">
@@ -158,9 +157,7 @@
 	 location.href="<%=contextPath%>/qbryManager/qbryadd";
  }
  
- function addSyrk(){
-	 menu_open('实有人口新增','/syrkGl/add?mainTabID='+getMainTabID()+'&zjhm=210211198906132911');
- }
+
  
  /**
   * @title:doUpdateAndXq
@@ -185,7 +182,7 @@ doUpdateAndXq = function(linkObject, index) {
   * @param
   * @date:2014-12-26 10:47:21
   */
- ZdryManage.datagridProcessFormater = function(val, row, index) {
+datagridProcessFormater = function(val, row, index) {
  	return '&nbsp;<a class="link" href="javascript:javascript:void(0)" onclick="doUpdateAndXq(this, '
  			+ index + ')">编辑</a>&nbsp;';
  };

@@ -41,9 +41,26 @@ public class ZdryQbywbDao extends BaseDaoImpl {
 	 * @return List<ZdryQbywb>    返回类型
 	 * @throw
 	 */
-	public EasyUIPage queryListByZjhm(String zjhm,EasyUIPage page) {
-			page.setRows(queryForList("ZdryQbywb.queryListByZjhm",zjhm));
-			page.setTotal((Integer) queryForObject("ZdryQbywb.queryListCountByZjhm", zjhm));
+	public EasyUIPage queryListByZjhm(String zjhm,EasyUIPage page,ZdryQbywb entity) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("begin", page.getBegin());
+			map.put("end", page.getEnd());
+			
+			String sort = page.getSort();
+			String order = page.getOrder();
+			if (StringUtils.isBlank(sort)) {
+				sort = "id";
+				order = "asc";
+			}
+			map.put("sort", sort);
+			map.put("order", order);
+			map.put("entity", entity);
+			
+			//增加身份证号码 key-value
+			map.put("gmsfhm", zjhm);
+			
+			page.setRows(queryForList("ZdryQbywb.queryListByZjhm",map));
+			page.setTotal((Integer) queryForObject("ZdryQbywb.queryListCountByZjhm", map));
 			return page;
 	}
 	

@@ -122,6 +122,22 @@ public class ZdryQbxxbService {
 				return false;	
 			}
 		}	
+		
+		
+		/**
+		 * 
+		 * @Title: save
+		 * @Description: TODO(新增zdry)
+		 * @param @param entity    设定文件
+		 * @return void    返回类型
+		 * @throws
+		 */
+		public void save(ZdryQbxxb entity){
+			
+			zdryQbxxbDao.save(entity);
+		}
+
+		
 	/**
 	 * 
 	 * @Title: saveLg
