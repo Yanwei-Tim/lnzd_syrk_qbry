@@ -64,20 +64,18 @@ public class ZdryQbxxbService {
 	 */
 	public void save(ZdryQbxxb entity,SessionBean sessionBean){	
 		  String  gmsfhm = entity.getGmsfhm();		  		
-		   String  glzt=entity.getGlzt();
+		  
 		   //验证身份号码
 			if(validationqbrygmsfhm(gmsfhm)){												   			    			        
-			            //验证管理状态		
-			        	if(validationqbryglzt(glzt)){
-	                       //待下发状态，才开始新增情报人员信息
-			        		 entity.setId(UUID.create());
-			        		 BaseService.setSaveProperties(entity, sessionBean);
-			        		 zdryQbxxbDao.save(entity);
-			        	 }else{			        		 
-			        		      String erromsg="管理状态不是带下发状态";			
-			        		      throw new RuntimeException(erromsg);
-			        	 }		        			        					        	         				        	    	 		    		 					    								 
-			    }
+				//验证管理状态		
+	            //待下发状态，才开始新增情报人员信息
+			    entity.setId(UUID.create());
+			    entity.setGlzt(ZdryQbDict.GLZT_DXF);
+			    entity.setQbzd(entity.getGxdwdm());//管辖单位代码设置为当前的所属支队
+			    entity.setDqjb("10");//当前级别设置为 支队（市局）
+			    BaseService.setSaveProperties(entity, sessionBean);
+			    zdryQbxxbDao.save(entity);
+			}
 			else{						
 				String erromsg="公民身份证号码位数不正确或者为空";			
 				throw new RuntimeException(erromsg);

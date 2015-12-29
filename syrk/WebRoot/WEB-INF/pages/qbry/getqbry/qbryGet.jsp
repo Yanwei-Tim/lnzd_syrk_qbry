@@ -65,11 +65,11 @@
 	<td width="20%" class="dialogTd" align="right">居住地：</td>
 	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="jzd" name="jzd" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="大连市沙河口"/></td>
 	<td width="20%" class="dialogTd" align="right">管辖单位名称：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="gxdwmc" name="gxdwmc" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="解放责任区2 "/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="gxdwmc" name="gxdwmc" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="大连市公安局 "/></td>
 </tr>
 <tr class="dialogTr">
 	<td width="20%" class="dialogTd" align="right">管辖单位机构代码：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="gxdwdm" name="gxdwdm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="210204410102"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="gxdwdm" name="gxdwdm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="210200000000"/></td>
 	<td width="20%" class="dialogTd" align="right">立案单位名称：</td>
 	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="ladwmc" name="ladwmc" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="大连市公安局"/></td>
 </tr>
@@ -84,11 +84,11 @@
 	<td width="20%" class="dialogTd" align="right">部级重点人员入库时间：</td>
 	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="bjzdryrksj" name="bjzdryrksj" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
 	<td width="20%" class="dialogTd" align="right">情报人员类别（小类）：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="zdrylb" name="zdrylb" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="zdrylb" name="zdrylb" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="51502020205"/></td>
 </tr>
 <tr class="dialogTr">
 	<td width="20%" class="dialogTd" align="right">情报人员管理类型代码（大类）：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="zdrygllxdm" name="zdrygllxdm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="1"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="zdrygllxdm" name="zdrygllxdm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="10"/></td>
 	<td width="20%" class="dialogTd" align="right">有效性：</td>
 	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="yxx" name="yxx" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
 </tr>
@@ -96,30 +96,6 @@
 	<td width="20%" class="dialogTd" align="right">ETL时间：</td>
 	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="etldate" name="etldate" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
 	</tr>
-<tr class="dialogTr">
-	<!-- <td width="20%" class="dialogTd" align="right">实有人口ID：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="syrkid" name="syrkid" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-	 --><td width="20%" class="dialogTd" align="right">情报人员所属支队：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="qbzd" name="qbzd" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-</tr>
-<tr class="dialogTr">
-	<td width="20%" class="dialogTd" align="right">情报人员所属大队：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="qbdd" name="qbdd" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-	<td width="20%" class="dialogTd" align="right">情报人员所属派出所：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="qbpcs" name="qbpcs" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-</tr>
-<tr class="dialogTr">
-	<td width="20%" class="dialogTd" align="right">情报人员所属责任区：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="qbzrq" name="qbzrq" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-	<td width="20%" class="dialogTd" align="right">当前级别：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="dqjb" name="dqjb" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="10"/></td>
-</tr>
-<tr class="dialogTr">
-	<td width="20%" class="dialogTd" align="right">管理状态：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="glzt" name="glzt" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="1"/></td>
-	<td width="20%" class="dialogTd" align="right">备注：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="bz" name="bz" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-</tr>
 
 </table>
 <input type="submit" value="提交">

@@ -136,6 +136,24 @@ public class qbryController extends BaseController {
 			}			   		      			  	  
 	     return mv;
 	}	
+	
+	/**
+	 * 
+	 * @Title: view
+	 * @Description: 跳转情报人员编辑页面
+	 * @param @param qbryid
+	 * @param @return    设定文件
+	 * @return ModelAndView    返回类型
+	 * @throws
+	 */
+	@RequestMapping(value = "/{ryid}/view", method = RequestMethod.GET)
+	public ModelAndView view(@PathVariable(value = "ryid") String qbryid){
+			ModelAndView mv = new ModelAndView("qbry/manager/qbryEdit");
+			ZdryQbxxb qbxxb = zdryQbxxbService.queryById(qbryid);
+			mv.addObject("qbry",qbxxb);
+			return mv;
+	}
+
 	/**
 	 * 
 	 * @Title: ywList
