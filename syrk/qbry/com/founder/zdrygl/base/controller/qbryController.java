@@ -1,12 +1,11 @@
 package com.founder.zdrygl.base.controller;
 
-import org.apache.log4j.Logger;
-
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,14 +21,13 @@ import com.founder.framework.exception.BussinessException;
 import com.founder.framework.organization.department.bean.OrgOrganization;
 import com.founder.framework.organization.department.service.OrgOrganizationService;
 import com.founder.framework.utils.EasyUIPage;
-import com.founder.framework.utils.UUID;
-import com.founder.ldym.util.StringUtil;
+import com.founder.syrkgl.bean.SyrkSyrkxxzb;
+import com.founder.syrkgl.service.SyrkSyrkxxzbService;
 import com.founder.zdrygl.base.model.ZdryQbxxb;
 import com.founder.zdrygl.base.model.ZdryQbywb;
 import com.founder.zdrygl.base.service.ZdryQbxxbService;
 import com.founder.zdrygl.base.service.ZdryQbywbService;
 import com.founder.zdrygl.core.utils.ZdryQbDict;
-import com.google.gson.Gson;
 @Controller
 @RequestMapping("/qbryManager")
 public class qbryController extends BaseController {
@@ -43,6 +41,9 @@ public class qbryController extends BaseController {
 	
 	@Resource(name = "zdryQbywbService")
 	private ZdryQbywbService zdryQbywbService;
+	
+	@Resource(name = "syrkSyrkxxzbService")
+	private SyrkSyrkxxzbService syrkSyrkxxzbService;
 	
 	@RequestMapping(value = "/qbryManager", method = RequestMethod.GET)
 	public ModelAndView qbryManager() throws BussinessException {
@@ -317,21 +318,28 @@ public class qbryController extends BaseController {
 	 * @throw
 	 */
 	@RequestMapping(value = "/saveLg", method = RequestMethod.POST)
-	public ModelAndView saveLg(String id,SessionBean sessionBean) {
-		ModelAndView mv = new ModelAndView(getViewName(sessionBean));		
+	public @ResponseBody Map<String, Object> saveLg(String id,String bz,SessionBean sessionBean) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		sessionBean = getSessionBean(sessionBean);
 		try {
-			
-			ZdryQbxxb entity = zdryQbxxbService.queryById(id);//查询情报人员信息
+			ZdryQbxxb entity = zdryQbxxbService.queryById(id);//查询情报人员信息			
 			if(entity==null){
-				throw new RuntimeException("未查询到该情报人员信息！");
+				throw new BussinessException("未查询到该情报人员信息！");
+			}
+			if(entity.getSyrkid()==null){
+				throw new BussinessException("请先添加实有人口信息！");
 			}
 			
-			zdryQbxxbService.saveLg(entity,sessionBean);
+			SyrkSyrkxxzb syrkEntity = syrkSyrkxxzbService.queryById(entity.getSyrkid());
+			if(syrkEntity==null){
+				throw new BussinessException("未查询到该重点人员对应的实有人口信息！");
+			}
+			
+			entity.setBz(bz);
+			zdryQbxxbService.saveLg(entity,syrkEntity,sessionBean);
 			
 			model.put(AppConst.STATUS, AppConst.SUCCESS);
-			model.put(AppConst.MESSAGES, getAddSuccess());
+			model.put(AppConst.MESSAGES, "接收成功");
 		} catch (BussinessException e) {
 			logger.error(e.getLocalizedMessage(), e);
 			model.put(AppConst.STATUS, AppConst.FAIL);
@@ -339,11 +347,10 @@ public class qbryController extends BaseController {
 		} catch (Exception e) {
 			logger.error(e.getLocalizedMessage(), e);
 			model.put(AppConst.STATUS, AppConst.FAIL);
-			model.put(AppConst.MESSAGES, getAddFail());
+			model.put(AppConst.MESSAGES, "接收失败！");
 		}
 
-		mv.addObject(AppConst.MESSAGES, new Gson().toJson(model));
-		return mv;
+		return model;
 
 	}
 }

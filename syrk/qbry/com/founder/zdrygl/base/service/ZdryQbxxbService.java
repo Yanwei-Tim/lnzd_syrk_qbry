@@ -2,14 +2,12 @@ package com.founder.zdrygl.base.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.base.service.BaseService;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.UUID;
 import com.founder.syrkgl.bean.SyrkSyrkxxzb;
-import com.founder.syrkgl.service.SyrkSyrkxxzbService;
 import com.founder.zdrygl.base.dao.ZdryQbxxbDao;
 import com.founder.zdrygl.base.dao.ZdryZdryZbDao;
 import com.founder.zdrygl.base.model.ZdryQbxxb;
@@ -147,15 +145,19 @@ public class ZdryQbxxbService {
 	 * @return void    返回类型
 	 * @throw
 	 */
-	public void saveLg(ZdryQbxxb entity,SessionBean sessionBean){
+	public void saveLg(ZdryQbxxb entity,SyrkSyrkxxzb syrkEntity,SessionBean sessionBean){
 		ZdryZb zdryzb = new ZdryZb();
 		zdryzb.setId(entity.getId());//列管后，情报人员信息表 作为重点人员总表的子表，两者Id要保持一致
 		zdryzb.setGlzt(ZdryConstant.YLG);
 		zdryzb.setGlbm(sessionBean.getUserOrgCode());//管理部门
+		zdryzb.setRyid(syrkEntity.getRyid());
+		zdryzb.setSyrkid(syrkEntity.getId());
 		BaseService.setSaveProperties(zdryzb, sessionBean);		
 		
+		//信息用下发的信息，不用实有人口的信息
 		zdryzb.setXm(entity.getXm());
 		zdryzb.setXbdm(entity.getXbdm());
+		zdryzb.setCyzjdm("111");//身份证
 		zdryzb.setZjhm(entity.getGmsfhm());
 		zdryzb.setCsrq(entity.getCsrq());
 		zdryzb.setMzdm(entity.getMzdm());
