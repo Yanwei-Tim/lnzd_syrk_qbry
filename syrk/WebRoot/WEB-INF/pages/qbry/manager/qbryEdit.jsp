@@ -54,9 +54,9 @@
 											 </tr>
 											 <tr >
 											      <th  align="right" >性别：</th>
-												  <td width="90">${qbry.xbdm}</td>
+												  <td width="90"><script type="text/javascript">  document.write(window.top.getDictName(contextPath + '/common/dict/GB_D_XBDM.js', "${qbry.xbdm}"));</script></td>
 												  <th  align="right" >国籍：</th>
-												  <td width="120">${qbry.gjdm}</td>
+												  <td width="120"><script type="text/javascript">  document.write(window.top.getDictName(contextPath + '/common/dict/D_BZ_SJGGHDQMCDM.js', "${qbry.gjdm}"));</script></td>
 											 </tr>
 											 <tr>
 											      <th  align="right" >参考居住地址(居住地)：</th>
@@ -72,19 +72,30 @@
 											 </tr>
 											 <tr >
 											      <th  align="right" >当前级别：</th>
-												  <td width="90">${qbry.dqjb}</td>
+											      <td><script type="text/javascript">  document.write(window.top.getDictName(contextPath + '/common/dict/D_ORG_ORGLEVEL.js', "${qbry.dqjb}"));</script></td>
 												  <th  align="right" >下发状态(管理状态)：</th>
-												  <td width="120">${qbry.glzt}</td>
+												  <td><script type="text/javascript">  document.write(window.top.getDictName(contextPath + '/common/dict/BD_D_QBRYGLZT.js', "${qbry.glzt}"));</script></td>
 											 </tr>
 											 <tr >
 											      <th  align="right" >责任单位：</th>
-												  <td width="90"><script type="text/javascript">document.write(window.top.getDictName(contextPath + '/common/dict/GB_D_XZQHDM.js', "${ry.jgssxdm}"));</script></td>
+												  <c:if test="${qbry.dqjb == '10'}">
+											      	<td width="90">${qbry.qbzd}</td>
+											      </c:if>
+												  <c:if test="${qbry.dqjb == '21'}">
+											      	<td width="90">${qbry.qbdd}</td>
+											      </c:if>
+											      <c:if test="${qbry.dqjb == '32'}">
+											      	<td width="90">${qbry.qbpcs}</td>
+											      </c:if>
+											      <c:if test="${qbry.dqjb == '50'}">
+											      	<td width="90">${qbry.qbzrq}</td>
+											      </c:if>
 												  <th  align="right" >责任人：</th>
-												  <td width="120"><script type="text/javascript"> document.write(window.top.getDictName(contextPath + '/common/dict/GB_D_GJHDQDM.js', "${ry.jggjdqdm}"));</script></td>
+												  <td width="120">无字段</td>
 											 </tr>
 											 <tr >
 											      <th  align="right" >联系电话：</th>
-												  <td width="90"><script type="text/javascript">document.write(window.top.getDictName(contextPath + '/common/dict/GB_D_XZQHDM.js', "${ry.jgssxdm}"));</script></td>
+												  <td width="90">无字段</td>
 												  <th  align="right" >入部省库时间：</th>
 												  <td width="120">${qbry.bjzdryrksj}</td>
 											 </tr>
@@ -102,7 +113,7 @@
 							</td>
 						</tr>
 					</table>
-					<div style="width:600px;height:210px;margin-left:90px;border:1px solid #ccc;">
+					<div style="width:600px;height:210px;margin-left:110px;border:1px solid #ccc;">
 						<!-- 业务操作记录  start -->
 						<table id="operate-track"  class="easyui-datagrid" style="width:100%;height:200px;margin-left:20px;" title='业务操作记录表' 
 			              	data-options="url:'<%=contextPath%>/qbryManager/ywList/${qbry.gmsfhm}',

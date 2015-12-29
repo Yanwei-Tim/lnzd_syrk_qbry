@@ -27,7 +27,6 @@ import com.founder.zdrygl.base.model.ZdryQbxxb;
 import com.founder.zdrygl.base.model.ZdryQbywb;
 import com.founder.zdrygl.base.service.ZdryQbxxbService;
 import com.founder.zdrygl.base.service.ZdryQbywbService;
-import com.founder.zdrygl.core.utils.ZdryQbDict;
 @Controller
 @RequestMapping("/qbryManager")
 public class qbryController extends BaseController {
@@ -94,30 +93,36 @@ public class qbryController extends BaseController {
 		return zdryQbxxbService.queryList(entity, page);
 	}
 	
+	/**
+	 * 
+	 * @Title: gotoqbryadd
+	 * @Description: (前往新增页面)
+	 * @param @return    设定文件
+	 * @return ModelAndView    返回类型
+	 * @throws
+	 */
 	@RequestMapping(value = "/qbryadd")
 	public  ModelAndView gotoqbryadd(){			
 		ModelAndView mv = new ModelAndView("qbry/getqbry/qbryGet");		
 		return mv;
 	}
-/**
- * 
- * @Title: qbryget
- * @Description: TODO(验证信息,新增人口)
- *
- * @param @return    设定文件
- * @return ModelAndView    返回类型
- * @throws
- */
+	/**
+	 * 
+	 * @Title: qbryget
+	 * @Description: TODO(验证信息,新增人口)
+	 * @param @return    设定文件
+	 * @return ModelAndView    返回类型
+	 * @throws
+	 */
 	@RequestMapping(value ="/qbryget", method = RequestMethod.POST)
 	public ModelAndView qbryget(ZdryQbxxb qbzdrymsg,SessionBean sessionBean){
 		 /*验证字段
 		  *调用别的service验证：
 		  * 1.情报人员在实有人口表里是否已存在
 		  * 自己的service里完成验证功能：
-		  * 1.身份证号是否存在以及位数是否正确（18位）	  
-		  * 2.管理状态（默认为待接收、还未设置）调用字典
+		  * 1.身份证号是否存在以及位数是否正确（18位）	  		  
 		  */		
-		ModelAndView mv = new ModelAndView(getViewName(sessionBean));		
+		   ModelAndView mv = new ModelAndView(getViewName(sessionBean));		
 		   sessionBean = getSessionBean(sessionBean); 		          
 		   SyrkSyrkxxzb entity=new  SyrkSyrkxxzb();
 		  //ZJHM(证件号码)【默认身份证】、
@@ -133,8 +138,9 @@ public class qbryController extends BaseController {
 			   }catch(Exception e){
 			  logger.error(e.getLocalizedMessage(), e);							   
 			  System.out.println("保存失败!");							   							  
-			}			   		      			  	  
-	     return mv;
+			}	
+	       
+	       return mv;
 	}	
 	
 	/**
