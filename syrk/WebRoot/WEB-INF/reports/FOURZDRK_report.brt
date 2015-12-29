@@ -1,0 +1,3901 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<report version="5.0">
+	<head>
+		<property name="type">0</property>
+		<name><![CDATA[FOURZDRK_report]]></name>
+		<dataSets>
+			<dataSet name="ds1" type="DB_SQL" >
+				<property name="dataSource">zwjh</property>
+				<property name="desc"><![CDATA[]]></property>
+				<property name="query"><![CDATA[="with syzxl as( 
+select count(*)syzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='沈阳'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+syxxl as(
+select count(*)syxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='沈阳'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+sytezxl as(
+select count(*)sytezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='沈阳'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+syxmsfl as(
+select count(*)syxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='沈阳'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+syxdl as(
+select count(*)syxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='沈阳'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+dlzxl as( 
+select count(*)dlzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='大连'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+dlxxl as(
+select count(*)dlxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='大连'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+dltezxl as(
+select count(*)dltezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='大连'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+dlxmsfl as(
+select count(*)dlxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='大连'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+dlxdl as(
+select count(*)dlxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='大连'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+aszxl as( 
+select count(*)aszxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='鞍山'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+asxxl as(
+select count(*)asxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='鞍山'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+astezxl as(
+select count(*)astezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='鞍山'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+asxmsfl as(
+select count(*)asxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='鞍山'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+asxdl as(
+select count(*)asxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='鞍山'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+fszxl as( 
+select count(*)fszxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='抚顺'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+fsxxl as(
+select count(*)fsxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='抚顺'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+fstezxl as(
+select count(*)fstezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='抚顺'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+fsxmsfl as(
+select count(*)fsxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='抚顺'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+fsxdl as(
+select count(*)fsxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='抚顺'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+bxzxl as( 
+select count(*)bxzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='本溪'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+bxxxl as(
+select count(*)bxxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='本溪'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+bxtezxl as(
+select count(*)bxtezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='本溪'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+bxxmsfl as(
+select count(*)bxxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='本溪'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+bxxdl as(
+select count(*)bxxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='本溪'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+ddzxl as( 
+select count(*)ddzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='丹东'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+ddxxl as(
+select count(*)ddxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='丹东'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+ddtezxl as(
+select count(*)ddtezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='丹东'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+ddxmsfl as(
+select count(*)ddxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='丹东'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+ddxdl as(
+select count(*)ddxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='丹东'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+jzzxl as( 
+select count(*)jzzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='锦州'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+jzxxl as(
+select count(*)jzxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='锦州'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+jztezxl as(
+select count(*)jztezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='锦州'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+jzxmsfl as(
+select count(*)jzxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='锦州'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+jzxdl as(
+select count(*)jzxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='锦州'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+ykzxl as( 
+select count(*)ykzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='营口'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+ykxxl as(
+select count(*)ykxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='营口'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+yktezxl as(
+select count(*)yktezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='营口'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+ykxmsfl as(
+select count(*)ykxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='营口'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+ykxdl as(
+select count(*)ykxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='营口'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+fxzxl as( 
+select count(*)fxzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='阜新'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+fxxxl as(
+select count(*)fxxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='阜新'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+fxtezxl as(
+select count(*)fxtezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='阜新'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+fxxmsfl as(
+select count(*)fxxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='阜新'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+fxxdl as(
+select count(*)fxxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='阜新'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+lyzxl as( 
+select count(*)lyzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='辽阳'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+lyxxl as(
+select count(*)lyxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='辽阳'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+lytezxl as(
+select count(*)lytezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='辽阳'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+lyxmsfl as(
+select count(*)lyxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='辽阳'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+lyxdl as(
+select count(*)lyxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='辽阳'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+pjzxl as( 
+select count(*)pjzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='盘锦'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+pjxxl as(
+select count(*)pjxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='盘锦'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+pjtezxl as(
+select count(*)pjtezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='盘锦'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+pjxmsfl as(
+select count(*)pjxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='盘锦'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+pjxdl as(
+select count(*)pjxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='盘锦'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+tlzxl as( 
+select count(*)tlzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='铁岭'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+tlxxl as(
+select count(*)tlxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='铁岭'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+tltezxl as(
+select count(*)tltezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='铁岭'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+tlxmsfl as(
+select count(*)tlxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='铁岭'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+tlxdl as(
+select count(*)tlxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='铁岭'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+cyzxl as( 
+select count(*)cyzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='朝阳'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+cyxxl as(
+select count(*)cyxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='朝阳'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+cytezxl as(
+select count(*)cytezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='朝阳'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+cyxmsfl as(
+select count(*)cyxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='朝阳'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+cyxdl as(
+select count(*)cyxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='朝阳'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+hldzxl as( 
+select count(*)hldzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,3)='葫芦岛'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+hldxxl as(
+select count(*)hldxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,3)='葫芦岛'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+hldtezxl as(
+select count(*)hldtezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,3)='葫芦岛'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+hldxmsfl as(
+select count(*)hldxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,3)='葫芦岛'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+),
+hldxdl as(
+select count(*)hldxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,3)='葫芦岛'
+and z.xt_lrsj
+BETWEEN  '"+@bj_starttime+"' AND  '"+@bj_endtime+"'
+)
+select * from syzxl,syxxl,sytezxl,syxmsfl,syxdl,dlzxl,dlxxl,dltezxl,dlxmsfl,dlxdl,aszxl,asxxl,astezxl,asxmsfl,asxdl,    
+fszxl,fsxxl,fstezxl,fsxmsfl,fsxdl,bxzxl,bxxxl,bxtezxl,bxxmsfl,bxxdl,ddzxl,ddxxl,ddtezxl,ddxmsfl,ddxdl,jzzxl,jzxxl,
+jztezxl,jzxmsfl,jzxdl,ykzxl,ykxxl,yktezxl,ykxmsfl,ykxdl,fxzxl,fxxxl,fxtezxl,fxxmsfl,fxxdl,lyzxl,lyxxl,lytezxl,lyxmsfl,lyxdl,
+pjzxl,pjxxl,pjtezxl,pjxmsfl,pjxdl,tlzxl,tlxxl,tltezxl,tlxmsfl,tlxdl,cyzxl,cyxxl,cytezxl,cyxmsfl,cyxdl,hldzxl,hldxxl,hldtezxl,hldxmsfl,hldxdl"]]></property>
+				<property name="beginRow">0</property>
+				<property name="endRow">0</property>
+			</dataSet>
+			<dataSet name="ds2" type="DB_SQL" >
+				<property name="dataSource">zwjh</property>
+				<property name="desc"><![CDATA[]]></property>
+				<property name="query"><![CDATA[="with syzxl as( 
+select count(*)syzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='沈阳'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+syxxl as(
+select count(*)syxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='沈阳'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+sytezxl as(
+select count(*)sytezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='沈阳'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+syxmsfl as(
+select count(*)syxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='沈阳'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+syxdl as(
+select count(*)syxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='沈阳'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+dlzxl as( 
+select count(*)dlzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='大连'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+dlxxl as(
+select count(*)dlxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='大连'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+dltezxl as(
+select count(*)dltezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='大连'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+dlxmsfl as(
+select count(*)dlxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='大连'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+dlxdl as(
+select count(*)dlxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='大连'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+aszxl as( 
+select count(*)aszxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='鞍山'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+asxxl as(
+select count(*)asxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='鞍山'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+astezxl as(
+select count(*)astezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='鞍山'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+asxmsfl as(
+select count(*)asxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='鞍山'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+asxdl as(
+select count(*)asxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='鞍山'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+fszxl as( 
+select count(*)fszxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='抚顺'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+fsxxl as(
+select count(*)fsxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='抚顺'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+fstezxl as(
+select count(*)fstezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='抚顺'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+fsxmsfl as(
+select count(*)fsxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='抚顺'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+fsxdl as(
+select count(*)fsxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='抚顺'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+bxzxl as( 
+select count(*)bxzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='本溪'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+bxxxl as(
+select count(*)bxxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='本溪'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+bxtezxl as(
+select count(*)bxtezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='本溪'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+bxxmsfl as(
+select count(*)bxxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='本溪'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+bxxdl as(
+select count(*)bxxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='本溪'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+ddzxl as( 
+select count(*)ddzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='丹东'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+ddxxl as(
+select count(*)ddxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='丹东'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+ddtezxl as(
+select count(*)ddtezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='丹东'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+ddxmsfl as(
+select count(*)ddxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='丹东'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+ddxdl as(
+select count(*)ddxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='丹东'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+jzzxl as( 
+select count(*)jzzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='锦州'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+jzxxl as(
+select count(*)jzxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='锦州'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+jztezxl as(
+select count(*)jztezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='锦州'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+jzxmsfl as(
+select count(*)jzxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='锦州'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+jzxdl as(
+select count(*)jzxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='锦州'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+ykzxl as( 
+select count(*)ykzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='营口'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+ykxxl as(
+select count(*)ykxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='营口'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+yktezxl as(
+select count(*)yktezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='营口'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+ykxmsfl as(
+select count(*)ykxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='营口'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+ykxdl as(
+select count(*)ykxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='营口'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+fxzxl as( 
+select count(*)fxzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='阜新'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+fxxxl as(
+select count(*)fxxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='阜新'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+fxtezxl as(
+select count(*)fxtezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='阜新'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+fxxmsfl as(
+select count(*)fxxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='阜新'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+fxxdl as(
+select count(*)fxxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='阜新'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+lyzxl as( 
+select count(*)lyzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='辽阳'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+lyxxl as(
+select count(*)lyxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='辽阳'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+lytezxl as(
+select count(*)lytezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='辽阳'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+lyxmsfl as(
+select count(*)lyxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='辽阳'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+lyxdl as(
+select count(*)lyxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='辽阳'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+pjzxl as( 
+select count(*)pjzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='盘锦'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+pjxxl as(
+select count(*)pjxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='盘锦'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+pjtezxl as(
+select count(*)pjtezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='盘锦'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+pjxmsfl as(
+select count(*)pjxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='盘锦'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+pjxdl as(
+select count(*)pjxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='盘锦'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+tlzxl as( 
+select count(*)tlzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='铁岭'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+tlxxl as(
+select count(*)tlxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='铁岭'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+tltezxl as(
+select count(*)tltezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='铁岭'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+tlxmsfl as(
+select count(*)tlxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='铁岭'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+tlxdl as(
+select count(*)tlxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='铁岭'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+cyzxl as( 
+select count(*)cyzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='朝阳'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+cyxxl as(
+select count(*)cyxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='朝阳'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+cytezxl as(
+select count(*)cytezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='朝阳'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+cyxmsfl as(
+select count(*)cyxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='朝阳'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+cyxdl as(
+select count(*)cyxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='朝阳'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+hldzxl as( 
+select count(*)hldzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,3)='葫芦岛'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+hldxxl as(
+select count(*)hldxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,3)='葫芦岛'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+hldtezxl as(
+select count(*)hldtezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,3)='葫芦岛'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+hldxmsfl as(
+select count(*)hldxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,3)='葫芦岛'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+),
+hldxdl as(
+select count(*)hldxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,3)='葫芦岛'
+and z.xt_lrsj
+BETWEEN  '"+@sj_starttime+"' AND  '"+@sj_endtime+"'
+)
+select * from syzxl,syxxl,sytezxl,syxmsfl,syxdl,dlzxl,dlxxl,dltezxl,dlxmsfl,dlxdl,aszxl,asxxl,astezxl,asxmsfl,asxdl,    
+fszxl,fsxxl,fstezxl,fsxmsfl,fsxdl,bxzxl,bxxxl,bxtezxl,bxxmsfl,bxxdl,ddzxl,ddxxl,ddtezxl,ddxmsfl,ddxdl,jzzxl,jzxxl,
+jztezxl,jzxmsfl,jzxdl,ykzxl,ykxxl,yktezxl,ykxmsfl,ykxdl,fxzxl,fxxxl,fxtezxl,fxxmsfl,fxxdl,lyzxl,lyxxl,lytezxl,lyxmsfl,lyxdl,
+pjzxl,pjxxl,pjtezxl,pjxmsfl,pjxdl,tlzxl,tlxxl,tltezxl,tlxmsfl,tlxdl,cyzxl,cyxxl,cytezxl,cyxmsfl,cyxdl,hldzxl,hldxxl,hldtezxl,hldxmsfl,hldxdl"
+]]></property>
+				<property name="beginRow">0</property>
+				<property name="endRow">0</property>
+			</dataSet>
+			<dataSet name="ds3" type="DB_SQL" >
+				<property name="dataSource">zwjh</property>
+				<property name="desc"><![CDATA[]]></property>
+				<property name="query"><![CDATA[="with syzxl as( 
+select count(*)syzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='沈阳'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+syxxl as(
+select count(*)syxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='沈阳'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+sytezxl as(
+select count(*)sytezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='沈阳'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+syxmsfl as(
+select count(*)syxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='沈阳'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+syxdl as(
+select count(*)syxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='沈阳'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+dlzxl as( 
+select count(*)dlzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='大连'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+dlxxl as(
+select count(*)dlxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='大连'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+dltezxl as(
+select count(*)dltezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='大连'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+dlxmsfl as(
+select count(*)dlxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='大连'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+dlxdl as(
+select count(*)dlxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='大连'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+aszxl as( 
+select count(*)aszxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='鞍山'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+asxxl as(
+select count(*)asxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='鞍山'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+astezxl as(
+select count(*)astezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='鞍山'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+asxmsfl as(
+select count(*)asxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='鞍山'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+asxdl as(
+select count(*)asxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='鞍山'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+fszxl as( 
+select count(*)fszxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='抚顺'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+fsxxl as(
+select count(*)fsxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='抚顺'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+fstezxl as(
+select count(*)fstezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='抚顺'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+fsxmsfl as(
+select count(*)fsxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='抚顺'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+fsxdl as(
+select count(*)fsxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='抚顺'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+bxzxl as( 
+select count(*)bxzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='本溪'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+bxxxl as(
+select count(*)bxxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='本溪'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+bxtezxl as(
+select count(*)bxtezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='本溪'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+bxxmsfl as(
+select count(*)bxxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='本溪'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+bxxdl as(
+select count(*)bxxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='本溪'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+ddzxl as( 
+select count(*)ddzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='丹东'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+ddxxl as(
+select count(*)ddxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='丹东'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+ddtezxl as(
+select count(*)ddtezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='丹东'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+ddxmsfl as(
+select count(*)ddxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='丹东'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+ddxdl as(
+select count(*)ddxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='丹东'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+jzzxl as( 
+select count(*)jzzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='锦州'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+jzxxl as(
+select count(*)jzxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='锦州'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+jztezxl as(
+select count(*)jztezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='锦州'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+jzxmsfl as(
+select count(*)jzxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='锦州'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+jzxdl as(
+select count(*)jzxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='锦州'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+ykzxl as( 
+select count(*)ykzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='营口'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+ykxxl as(
+select count(*)ykxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='营口'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+yktezxl as(
+select count(*)yktezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='营口'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+ykxmsfl as(
+select count(*)ykxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='营口'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+ykxdl as(
+select count(*)ykxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='营口'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+fxzxl as( 
+select count(*)fxzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='阜新'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+fxxxl as(
+select count(*)fxxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='阜新'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+fxtezxl as(
+select count(*)fxtezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='阜新'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+fxxmsfl as(
+select count(*)fxxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='阜新'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+fxxdl as(
+select count(*)fxxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='阜新'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+lyzxl as( 
+select count(*)lyzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='辽阳'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+lyxxl as(
+select count(*)lyxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='辽阳'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+lytezxl as(
+select count(*)lytezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='辽阳'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+lyxmsfl as(
+select count(*)lyxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='辽阳'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+lyxdl as(
+select count(*)lyxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='辽阳'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+pjzxl as( 
+select count(*)pjzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='盘锦'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+pjxxl as(
+select count(*)pjxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='盘锦'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+pjtezxl as(
+select count(*)pjtezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='盘锦'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+pjxmsfl as(
+select count(*)pjxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='盘锦'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+pjxdl as(
+select count(*)pjxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='盘锦'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+tlzxl as( 
+select count(*)tlzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='铁岭'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+tlxxl as(
+select count(*)tlxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='铁岭'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+tltezxl as(
+select count(*)tltezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='铁岭'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+tlxmsfl as(
+select count(*)tlxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='铁岭'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+tlxdl as(
+select count(*)tlxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='铁岭'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+cyzxl as( 
+select count(*)cyzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,2)='朝阳'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+cyxxl as(
+select count(*)cyxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,2)='朝阳'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+cytezxl as(
+select count(*)cytezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,2)='朝阳'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+cyxmsfl as(
+select count(*)cyxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,2)='朝阳'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+cyxdl as(
+select count(*)cyxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,2)='朝阳'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+hldzxl as( 
+select count(*)hldzxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and substr(HJD_DZXZ,4,3)='葫芦岛'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+hldxxl as(
+select count(*)hldxxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and substr(HJD_DZXZ,4,3)='葫芦岛'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+hldtezxl as(
+select count(*)hldtezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and substr(HJD_DZXZ,4,3)='葫芦岛'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+hldxmsfl as(
+select count(*)hldxmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and substr(HJD_DZXZ,4,3)='葫芦岛'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+),
+hldxdl as(
+select count(*)hldxdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and substr(HJD_DZXZ,4,3)='葫芦岛'
+and z.xt_lrsj
+BETWEEN  '"+@qn_starttime+"' AND  '"+@qn_endtime+"'
+)
+select * from syzxl,syxxl,sytezxl,syxmsfl,syxdl,dlzxl,dlxxl,dltezxl,dlxmsfl,dlxdl,aszxl,asxxl,astezxl,asxmsfl,asxdl,    
+fszxl,fsxxl,fstezxl,fsxmsfl,fsxdl,bxzxl,bxxxl,bxtezxl,bxxmsfl,bxxdl,ddzxl,ddxxl,ddtezxl,ddxmsfl,ddxdl,jzzxl,jzxxl,
+jztezxl,jzxmsfl,jzxdl,ykzxl,ykxxl,yktezxl,ykxmsfl,ykxdl,fxzxl,fxxxl,fxtezxl,fxxmsfl,fxxdl,lyzxl,lyxxl,lytezxl,lyxmsfl,lyxdl,
+pjzxl,pjxxl,pjtezxl,pjxmsfl,pjxdl,tlzxl,tlxxl,tltezxl,tlxmsfl,tlxdl,cyzxl,cyxxl,cytezxl,cyxmsfl,cyxdl,hldzxl,hldxxl,hldtezxl,hldxmsfl,hldxdl"
+]]></property>
+				<property name="beginRow">0</property>
+				<property name="endRow">0</property>
+			</dataSet>
+		</dataSets>
+		<parameters>
+			<parameter name="bj_starttime" type="6">
+				<property name="dateFormat"></property>
+				<property name="default"></property>
+				<property name="desc">本季度开始时间</property>
+				<property name="valueCalc">false</property>
+			</parameter>
+			<parameter name="bj_endtime" type="6">
+				<property name="dateFormat"></property>
+				<property name="default"></property>
+				<property name="desc">本季度结束时间</property>
+				<property name="valueCalc">false</property>
+			</parameter>
+			<parameter name="sj_starttime" type="6">
+				<property name="dateFormat"></property>
+				<property name="default"></property>
+				<property name="desc">上季度开始时间</property>
+				<property name="valueCalc">false</property>
+			</parameter>
+			<parameter name="sj_endtime" type="6">
+				<property name="dateFormat"></property>
+				<property name="default"></property>
+				<property name="desc">上季度结束时间</property>
+				<property name="valueCalc">false</property>
+			</parameter>
+			<parameter name="qn_starttime" type="6">
+				<property name="dateFormat"></property>
+				<property name="default"></property>
+				<property name="desc">去年本季度开始时间</property>
+				<property name="valueCalc">false</property>
+			</parameter>
+			<parameter name="qn_endtime" type="6">
+				<property name="dateFormat"></property>
+				<property name="default"></property>
+				<property name="desc">去年本季度结束时间</property>
+				<property name="valueCalc">false</property>
+			</parameter>
+		</parameters>
+		<variables/>
+	</head>
+	<body>
+		<sheet id="sheet1">
+			<page>
+			</page>
+			<grid row="19" col="19">
+				<properties>
+				</properties>
+				<rows>
+					<row id="1">
+						<property name="height">67</property>
+					</row>
+					<row id="2">
+					</row>
+					<row id="3">
+					</row>
+					<row id="4">
+					</row>
+					<row id="5">
+					</row>
+					<row id="6">
+					</row>
+					<row id="7">
+					</row>
+					<row id="8">
+					</row>
+					<row id="9">
+					</row>
+					<row id="10">
+					</row>
+					<row id="11">
+					</row>
+					<row id="12">
+					</row>
+					<row id="13">
+					</row>
+					<row id="14">
+					</row>
+					<row id="15">
+					</row>
+					<row id="16">
+					</row>
+					<row id="17">
+					</row>
+					<row id="18">
+					</row>
+					<row id="19">
+					</row>
+				</rows>
+				<columns>
+					<column id="1">
+					</column>
+					<column id="2">
+					</column>
+					<column id="3">
+					</column>
+					<column id="4">
+					</column>
+					<column id="5">
+					</column>
+					<column id="6">
+						<property name="width">85</property>
+					</column>
+					<column id="7">
+					</column>
+					<column id="8">
+					</column>
+					<column id="9">
+					</column>
+					<column id="10">
+					</column>
+					<column id="11">
+					</column>
+					<column id="12">
+						<property name="width">83</property>
+					</column>
+					<column id="13">
+					</column>
+					<column id="14">
+					</column>
+					<column id="15">
+					</column>
+					<column id="16">
+					</column>
+					<column id="17">
+					</column>
+					<column id="18">
+						<property name="width">81</property>
+					</column>
+					<column id="19">
+					</column>
+				</columns>
+				<cells>
+					<cell id="1,1" type="0" colspan="19" >
+						<property name="value"><![CDATA[重点人口]]></property>
+						<property name="font-size">16</property>
+						<property name="bold">0</property>
+						<border type="0">1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1</border>
+						<border type="1">1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="2,1" type="0" rowspan="3" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1;1:0,0,0:1;1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="2,2" type="0" colspan="6" >
+						<property name="value"><![CDATA[="本季度录入数（"+@bj_starttime+"至"+@bj_endtime+）]]></property>
+						<border type="1">1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="2,8" type="0" colspan="6" >
+						<property name="value"><![CDATA[="上季度录入数（"+@sj_starttime+"至"+@sj_endtime+）]]></property>
+						<border type="1">1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="2,14" type="0" colspan="6" >
+						<property name="value"><![CDATA[="去年同期录入数（"+@qn_starttime+"至"+@qn_endtime+）]]></property>
+						<border type="1">1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="3,2" type="0" rowspan="2" >
+						<property name="value"><![CDATA[重点人
+口总数]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,3" type="0" rowspan="2" >
+						<property name="value"><![CDATA[政嫌类]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,4" type="0" rowspan="2" >
+						<property name="value"><![CDATA[刑嫌类]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,5" type="0" rowspan="2" >
+						<property name="value"><![CDATA[挺而走
+险类]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,6" type="0" rowspan="2" >
+						<property name="value"><![CDATA[刑满释放类]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,7" type="0" rowspan="2" >
+						<property name="value"><![CDATA[吸毒类]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,8" type="0" rowspan="2" >
+						<property name="value"><![CDATA[重点人
+口总数]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,9" type="0" rowspan="2" >
+						<property name="value"><![CDATA[政嫌类]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,10" type="0" rowspan="2" >
+						<property name="value"><![CDATA[刑嫌类]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,11" type="0" rowspan="2" >
+						<property name="value"><![CDATA[挺而走
+险类]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,12" type="0" rowspan="2" >
+						<property name="value"><![CDATA[刑满释放类]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,13" type="0" rowspan="2" >
+						<property name="value"><![CDATA[吸毒类]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,14" type="0" rowspan="2" >
+						<property name="value"><![CDATA[重点人
+口总数]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,15" type="0" rowspan="2" >
+						<property name="value"><![CDATA[政嫌类]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,16" type="0" rowspan="2" >
+						<property name="value"><![CDATA[刑嫌类]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,17" type="0" rowspan="2" >
+						<property name="value"><![CDATA[挺而走
+险类]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,18" type="0" rowspan="2" >
+						<property name="value"><![CDATA[刑满释放类]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,19" type="0" rowspan="2" >
+						<property name="value"><![CDATA[吸毒类]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="5,1" type="0" >
+						<property name="value"><![CDATA[全省]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,2" type="0" >
+						<property name="value"><![CDATA[=sum(c5:g5)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,3" type="0" >
+						<property name="value"><![CDATA[=sum(c6:c19)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,4" type="0" >
+						<property name="value"><![CDATA[=sum(d6:d19)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,5" type="0" >
+						<property name="value"><![CDATA[=sum(e6:e19)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,6" type="0" >
+						<property name="value"><![CDATA[=sum(f6:f19)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,7" type="0" >
+						<property name="value"><![CDATA[=sum(g6:g19)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,8" type="0" >
+						<property name="value"><![CDATA[=sum(i5:m5)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,9" type="0" >
+						<property name="value"><![CDATA[=sum(i6:i19)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,10" type="0" >
+						<property name="value"><![CDATA[=sum(j6:j19)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,11" type="0" >
+						<property name="value"><![CDATA[=sum(k6:k19)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,12" type="0" >
+						<property name="value"><![CDATA[=sum(l6:l19)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,13" type="0" >
+						<property name="value"><![CDATA[=sum(m6:m19)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,14" type="0" >
+						<property name="value"><![CDATA[=sum(o5:s5)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,15" type="0" >
+						<property name="value"><![CDATA[=sum(o6:o19)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,16" type="0" >
+						<property name="value"><![CDATA[=sum(p6:p19)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,17" type="0" >
+						<property name="value"><![CDATA[=sum(q6:q19)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,18" type="0" >
+						<property name="value"><![CDATA[=sum(r6:r19)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,19" type="0" >
+						<property name="value"><![CDATA[=sum(s6:s19)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,1" type="0" >
+						<property name="value"><![CDATA[沈阳]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,2" type="0" >
+						<property name="value"><![CDATA[=sum(c6:g6)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,3" type="0" >
+						<property name="value"><![CDATA[=ds1.select(SYZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,4" type="0" >
+						<property name="value"><![CDATA[=ds1.select(SYXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,5" type="0" >
+						<property name="value"><![CDATA[=ds1.select(SYTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,6" type="0" >
+						<property name="value"><![CDATA[=ds1.select(SYXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,7" type="0" >
+						<property name="value"><![CDATA[=ds1.select(SYXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,8" type="0" >
+						<property name="value"><![CDATA[=sum(i6:m6)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,9" type="0" >
+						<property name="value"><![CDATA[=ds2.select(SYZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,10" type="0" >
+						<property name="value"><![CDATA[=ds2.select(SYXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,11" type="0" >
+						<property name="value"><![CDATA[=ds2.select(SYTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,12" type="0" >
+						<property name="value"><![CDATA[=ds2.select(SYXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,13" type="0" >
+						<property name="value"><![CDATA[=ds2.select(SYXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,14" type="0" >
+						<property name="value"><![CDATA[=sum(o6:s6)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,15" type="0" >
+						<property name="value"><![CDATA[=ds3.select(SYZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,16" type="0" >
+						<property name="value"><![CDATA[=ds3.select(SYXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,17" type="0" >
+						<property name="value"><![CDATA[=ds3.select(SYTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,18" type="0" >
+						<property name="value"><![CDATA[=ds3.select(SYXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,19" type="0" >
+						<property name="value"><![CDATA[=ds3.select(SYXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,1" type="0" >
+						<property name="value"><![CDATA[大连]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,2" type="0" >
+						<property name="value"><![CDATA[=sum(c7:g7)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,3" type="0" >
+						<property name="value"><![CDATA[=ds1.select(DLZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,4" type="0" >
+						<property name="value"><![CDATA[=ds1.select(DLXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,5" type="0" >
+						<property name="value"><![CDATA[=ds1.select(DLTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,6" type="0" >
+						<property name="value"><![CDATA[=ds1.select(DLXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,7" type="0" >
+						<property name="value"><![CDATA[=ds1.select(DLXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,8" type="0" >
+						<property name="value"><![CDATA[=sum(i7:m7)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,9" type="0" >
+						<property name="value"><![CDATA[=ds2.select(DLZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,10" type="0" >
+						<property name="value"><![CDATA[=ds2.select(DLXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,11" type="0" >
+						<property name="value"><![CDATA[=ds2.select(DLTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,12" type="0" >
+						<property name="value"><![CDATA[=ds2.select(DLXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,13" type="0" >
+						<property name="value"><![CDATA[=ds2.select(DLXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,14" type="0" >
+						<property name="value"><![CDATA[=sum(o7:s7)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,15" type="0" >
+						<property name="value"><![CDATA[=ds3.select(DLZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,16" type="0" >
+						<property name="value"><![CDATA[=ds3.select(DLXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,17" type="0" >
+						<property name="value"><![CDATA[=ds3.select(DLTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,18" type="0" >
+						<property name="value"><![CDATA[=ds3.select(DLXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,19" type="0" >
+						<property name="value"><![CDATA[=ds3.select(DLXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,1" type="0" >
+						<property name="value"><![CDATA[鞍山]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,2" type="0" >
+						<property name="value"><![CDATA[=sum(c8:g8)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,3" type="0" >
+						<property name="value"><![CDATA[=ds1.select(ASZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,4" type="0" >
+						<property name="value"><![CDATA[=ds1.select(ASXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,5" type="0" >
+						<property name="value"><![CDATA[=ds1.select(ASTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,6" type="0" >
+						<property name="value"><![CDATA[=ds1.select(ASXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,7" type="0" >
+						<property name="value"><![CDATA[=ds1.select(ASXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,8" type="0" >
+						<property name="value"><![CDATA[=sum(i8:m8)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,9" type="0" >
+						<property name="value"><![CDATA[=ds2.select(ASZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,10" type="0" >
+						<property name="value"><![CDATA[=ds2.select(ASXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,11" type="0" >
+						<property name="value"><![CDATA[=ds2.select(ASTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,12" type="0" >
+						<property name="value"><![CDATA[=ds2.select(ASXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,13" type="0" >
+						<property name="value"><![CDATA[=ds2.select(ASXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,14" type="0" >
+						<property name="value"><![CDATA[=sum(o8:s8)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,15" type="0" >
+						<property name="value"><![CDATA[=ds3.select(ASZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,16" type="0" >
+						<property name="value"><![CDATA[=ds3.select(ASXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,17" type="0" >
+						<property name="value"><![CDATA[=ds3.select(ASTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,18" type="0" >
+						<property name="value"><![CDATA[=ds3.select(ASXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,19" type="0" >
+						<property name="value"><![CDATA[=ds3.select(ASXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,1" type="0" >
+						<property name="value"><![CDATA[抚顺]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,2" type="0" >
+						<property name="value"><![CDATA[=sum(c9:g9)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,3" type="0" >
+						<property name="value"><![CDATA[=ds1.select(FSZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,4" type="0" >
+						<property name="value"><![CDATA[=ds1.select(FSXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,5" type="0" >
+						<property name="value"><![CDATA[=ds1.select(FSTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,6" type="0" >
+						<property name="value"><![CDATA[=ds1.select(FSXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,7" type="0" >
+						<property name="value"><![CDATA[=ds1.select(FSXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,8" type="0" >
+						<property name="value"><![CDATA[=sum(i9:m9)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,9" type="0" >
+						<property name="value"><![CDATA[=ds2.select(FSZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,10" type="0" >
+						<property name="value"><![CDATA[=ds2.select(FSXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,11" type="0" >
+						<property name="value"><![CDATA[=ds2.select(FSTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,12" type="0" >
+						<property name="value"><![CDATA[=ds2.select(FSXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,13" type="0" >
+						<property name="value"><![CDATA[=ds2.select(FSXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,14" type="0" >
+						<property name="value"><![CDATA[=sum(o9:s9)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,15" type="0" >
+						<property name="value"><![CDATA[=ds3.select(FSZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,16" type="0" >
+						<property name="value"><![CDATA[=ds3.select(FSXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,17" type="0" >
+						<property name="value"><![CDATA[=ds3.select(FSTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,18" type="0" >
+						<property name="value"><![CDATA[=ds3.select(FSXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,19" type="0" >
+						<property name="value"><![CDATA[=ds3.select(FSXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,1" type="0" >
+						<property name="value"><![CDATA[本溪]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,2" type="0" >
+						<property name="value"><![CDATA[=sum(c10:g10)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,3" type="0" >
+						<property name="value"><![CDATA[=ds1.select(BXZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,4" type="0" >
+						<property name="value"><![CDATA[=ds1.select(BXXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,5" type="0" >
+						<property name="value"><![CDATA[=ds1.select(BXTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,6" type="0" >
+						<property name="value"><![CDATA[=ds1.select(BXXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,7" type="0" >
+						<property name="value"><![CDATA[=ds1.select(BXXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,8" type="0" >
+						<property name="value"><![CDATA[=sum(i10:m10)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,9" type="0" >
+						<property name="value"><![CDATA[=ds2.select(BXZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,10" type="0" >
+						<property name="value"><![CDATA[=ds2.select(BXXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,11" type="0" >
+						<property name="value"><![CDATA[=ds2.select(BXTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,12" type="0" >
+						<property name="value"><![CDATA[=ds2.select(BXXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,13" type="0" >
+						<property name="value"><![CDATA[=ds2.select(BXXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,14" type="0" >
+						<property name="value"><![CDATA[=sum(o10:s10)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,15" type="0" >
+						<property name="value"><![CDATA[=ds3.select(BXZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,16" type="0" >
+						<property name="value"><![CDATA[=ds3.select(BXXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,17" type="0" >
+						<property name="value"><![CDATA[=ds3.select(BXTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,18" type="0" >
+						<property name="value"><![CDATA[=ds3.select(BXXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,19" type="0" >
+						<property name="value"><![CDATA[=ds3.select(BXXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,1" type="0" >
+						<property name="value"><![CDATA[丹东]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,2" type="0" >
+						<property name="value"><![CDATA[=sum(c11:g11)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,3" type="0" >
+						<property name="value"><![CDATA[=ds1.select(DDZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,4" type="0" >
+						<property name="value"><![CDATA[=ds1.select(DDXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,5" type="0" >
+						<property name="value"><![CDATA[=ds1.select(DDTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,6" type="0" >
+						<property name="value"><![CDATA[=ds1.select(DDXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,7" type="0" >
+						<property name="value"><![CDATA[=ds1.select(DDXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,8" type="0" >
+						<property name="value"><![CDATA[=sum(i11:m11)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,9" type="0" >
+						<property name="value"><![CDATA[=ds2.select(DDZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,10" type="0" >
+						<property name="value"><![CDATA[=ds2.select(DDXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,11" type="0" >
+						<property name="value"><![CDATA[=ds2.select(DDTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,12" type="0" >
+						<property name="value"><![CDATA[=ds2.select(DDXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,13" type="0" >
+						<property name="value"><![CDATA[=ds2.select(DDXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,14" type="0" >
+						<property name="value"><![CDATA[=sum(o11:s11)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,15" type="0" >
+						<property name="value"><![CDATA[=ds3.select(DDZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,16" type="0" >
+						<property name="value"><![CDATA[=ds3.select(DDXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,17" type="0" >
+						<property name="value"><![CDATA[=ds3.select(DDTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,18" type="0" >
+						<property name="value"><![CDATA[=ds3.select(DDXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,19" type="0" >
+						<property name="value"><![CDATA[=ds3.select(DDXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="12,1" type="0" >
+						<property name="value"><![CDATA[锦州]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="12,2" type="0" >
+						<property name="value"><![CDATA[=sum(c12:g12)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="12,3" type="0" >
+						<property name="value"><![CDATA[=ds1.select(JZZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="12,4" type="0" >
+						<property name="value"><![CDATA[=ds1.select(JZXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="12,5" type="0" >
+						<property name="value"><![CDATA[=ds1.select(JZTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="12,6" type="0" >
+						<property name="value"><![CDATA[=ds1.select(JZXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="12,7" type="0" >
+						<property name="value"><![CDATA[=ds1.select(JZXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="12,8" type="0" >
+						<property name="value"><![CDATA[=sum(i12:m12)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="12,9" type="0" >
+						<property name="value"><![CDATA[=ds2.select(JZZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="12,10" type="0" >
+						<property name="value"><![CDATA[=ds2.select(JZXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="12,11" type="0" >
+						<property name="value"><![CDATA[=ds2.select(JZTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="12,12" type="0" >
+						<property name="value"><![CDATA[=ds2.select(JZXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="12,13" type="0" >
+						<property name="value"><![CDATA[=ds2.select(JZXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="12,14" type="0" >
+						<property name="value"><![CDATA[=sum(o12:s12)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="12,15" type="0" >
+						<property name="value"><![CDATA[=ds3.select(JZZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="12,16" type="0" >
+						<property name="value"><![CDATA[=ds3.select(JZXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="12,17" type="0" >
+						<property name="value"><![CDATA[=ds3.select(JZTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="12,18" type="0" >
+						<property name="value"><![CDATA[=ds3.select(JZXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="12,19" type="0" >
+						<property name="value"><![CDATA[=ds3.select(JZXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="13,1" type="0" >
+						<property name="value"><![CDATA[营口]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="13,2" type="0" >
+						<property name="value"><![CDATA[=sum(c13:g13)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="13,3" type="0" >
+						<property name="value"><![CDATA[=ds1.select(YKZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="13,4" type="0" >
+						<property name="value"><![CDATA[=ds1.select(YKXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="13,5" type="0" >
+						<property name="value"><![CDATA[=ds1.select(YKTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="13,6" type="0" >
+						<property name="value"><![CDATA[=ds1.select(YKXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="13,7" type="0" >
+						<property name="value"><![CDATA[=ds1.select(YKXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="13,8" type="0" >
+						<property name="value"><![CDATA[=sum(i13:m13)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="13,9" type="0" >
+						<property name="value"><![CDATA[=ds2.select(YKZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="13,10" type="0" >
+						<property name="value"><![CDATA[=ds2.select(YKXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="13,11" type="0" >
+						<property name="value"><![CDATA[=ds2.select(YKTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="13,12" type="0" >
+						<property name="value"><![CDATA[=ds2.select(YKXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="13,13" type="0" >
+						<property name="value"><![CDATA[=ds2.select(YKXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="13,14" type="0" >
+						<property name="value"><![CDATA[=sum(o13:s13)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="13,15" type="0" >
+						<property name="value"><![CDATA[=ds3.select(YKZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="13,16" type="0" >
+						<property name="value"><![CDATA[=ds3.select(YKXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="13,17" type="0" >
+						<property name="value"><![CDATA[=ds3.select(YKTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="13,18" type="0" >
+						<property name="value"><![CDATA[=ds3.select(YKXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="13,19" type="0" >
+						<property name="value"><![CDATA[=ds3.select(YKXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="14,1" type="0" >
+						<property name="value"><![CDATA[阜新]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="14,2" type="0" >
+						<property name="value"><![CDATA[=sum(c14:g14)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="14,3" type="0" >
+						<property name="value"><![CDATA[=ds1.select(FXZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="14,4" type="0" >
+						<property name="value"><![CDATA[=ds1.select(FXXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="14,5" type="0" >
+						<property name="value"><![CDATA[=ds1.select(FXTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="14,6" type="0" >
+						<property name="value"><![CDATA[=ds1.select(FXXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="14,7" type="0" >
+						<property name="value"><![CDATA[=ds1.select(FXXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="14,8" type="0" >
+						<property name="value"><![CDATA[=sum(i14:m14)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="14,9" type="0" >
+						<property name="value"><![CDATA[=ds2.select(FXZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="14,10" type="0" >
+						<property name="value"><![CDATA[=ds2.select(FXXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="14,11" type="0" >
+						<property name="value"><![CDATA[=ds2.select(FXTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="14,12" type="0" >
+						<property name="value"><![CDATA[=ds2.select(FXXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="14,13" type="0" >
+						<property name="value"><![CDATA[=ds2.select(FXXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="14,14" type="0" >
+						<property name="value"><![CDATA[=sum(o14:s14)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="14,15" type="0" >
+						<property name="value"><![CDATA[=ds3.select(FXZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="14,16" type="0" >
+						<property name="value"><![CDATA[=ds3.select(FXXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="14,17" type="0" >
+						<property name="value"><![CDATA[=ds3.select(FXTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="14,18" type="0" >
+						<property name="value"><![CDATA[=ds3.select(FXXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="14,19" type="0" >
+						<property name="value"><![CDATA[=ds3.select(FXXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="15,1" type="0" >
+						<property name="value"><![CDATA[辽阳]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="15,2" type="0" >
+						<property name="value"><![CDATA[=sum(c15:g15)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="15,3" type="0" >
+						<property name="value"><![CDATA[=ds1.select(LYZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="15,4" type="0" >
+						<property name="value"><![CDATA[=ds1.select(LYXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="15,5" type="0" >
+						<property name="value"><![CDATA[=ds1.select(LYTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="15,6" type="0" >
+						<property name="value"><![CDATA[=ds1.select(LYXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="15,7" type="0" >
+						<property name="value"><![CDATA[=ds1.select(LYXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="15,8" type="0" >
+						<property name="value"><![CDATA[=sum(i15:m15)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="15,9" type="0" >
+						<property name="value"><![CDATA[=ds2.select(LYZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="15,10" type="0" >
+						<property name="value"><![CDATA[=ds2.select(LYXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="15,11" type="0" >
+						<property name="value"><![CDATA[=ds2.select(LYTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="15,12" type="0" >
+						<property name="value"><![CDATA[=ds2.select(LYXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="15,13" type="0" >
+						<property name="value"><![CDATA[=ds2.select(LYXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="15,14" type="0" >
+						<property name="value"><![CDATA[=sum(o15:s15)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="15,15" type="0" >
+						<property name="value"><![CDATA[=ds3.select(LYZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="15,16" type="0" >
+						<property name="value"><![CDATA[=ds3.select(LYXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="15,17" type="0" >
+						<property name="value"><![CDATA[=ds3.select(LYTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="15,18" type="0" >
+						<property name="value"><![CDATA[=ds3.select(LYXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="15,19" type="0" >
+						<property name="value"><![CDATA[=ds3.select(LYXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="16,1" type="0" >
+						<property name="value"><![CDATA[盘锦]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="16,2" type="0" >
+						<property name="value"><![CDATA[=sum(c16:g16)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="16,3" type="0" >
+						<property name="value"><![CDATA[=ds1.select(PJZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="16,4" type="0" >
+						<property name="value"><![CDATA[=ds1.select(PJXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="16,5" type="0" >
+						<property name="value"><![CDATA[=ds1.select(PJTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="16,6" type="0" >
+						<property name="value"><![CDATA[=ds1.select(PJXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="16,7" type="0" >
+						<property name="value"><![CDATA[=ds1.select(PJXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="16,8" type="0" >
+						<property name="value"><![CDATA[=sum(i16:m16)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="16,9" type="0" >
+						<property name="value"><![CDATA[=ds2.select(PJZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="16,10" type="0" >
+						<property name="value"><![CDATA[=ds2.select(PJXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="16,11" type="0" >
+						<property name="value"><![CDATA[=ds2.select(PJTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="16,12" type="0" >
+						<property name="value"><![CDATA[=ds2.select(PJXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="16,13" type="0" >
+						<property name="value"><![CDATA[=ds2.select(PJXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="16,14" type="0" >
+						<property name="value"><![CDATA[=sum(o16:s16)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="16,15" type="0" >
+						<property name="value"><![CDATA[=ds3.select(PJZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="16,16" type="0" >
+						<property name="value"><![CDATA[=ds3.select(PJXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="16,17" type="0" >
+						<property name="value"><![CDATA[=ds3.select(PJTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="16,18" type="0" >
+						<property name="value"><![CDATA[=ds3.select(PJXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="16,19" type="0" >
+						<property name="value"><![CDATA[=ds3.select(PJXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="17,1" type="0" >
+						<property name="value"><![CDATA[铁岭]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="17,2" type="0" >
+						<property name="value"><![CDATA[=sum(c17:g17)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="17,3" type="0" >
+						<property name="value"><![CDATA[=ds1.select(TLZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="17,4" type="0" >
+						<property name="value"><![CDATA[=ds1.select(TLXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="17,5" type="0" >
+						<property name="value"><![CDATA[=ds1.select(TLTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="17,6" type="0" >
+						<property name="value"><![CDATA[=ds1.select(TLXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="17,7" type="0" >
+						<property name="value"><![CDATA[=ds1.select(TLXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="17,8" type="0" >
+						<property name="value"><![CDATA[=sum(i17:m17)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="17,9" type="0" >
+						<property name="value"><![CDATA[=ds2.select(TLZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="17,10" type="0" >
+						<property name="value"><![CDATA[=ds2.select(TLXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="17,11" type="0" >
+						<property name="value"><![CDATA[=ds2.select(TLTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="17,12" type="0" >
+						<property name="value"><![CDATA[=ds2.select(TLXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="17,13" type="0" >
+						<property name="value"><![CDATA[=ds2.select(TLXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="17,14" type="0" >
+						<property name="value"><![CDATA[=sum(o17:s17)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="17,15" type="0" >
+						<property name="value"><![CDATA[=ds3.select(TLZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="17,16" type="0" >
+						<property name="value"><![CDATA[=ds3.select(TLXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="17,17" type="0" >
+						<property name="value"><![CDATA[=ds3.select(TLTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="17,18" type="0" >
+						<property name="value"><![CDATA[=ds3.select(TLXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="17,19" type="0" >
+						<property name="value"><![CDATA[=ds3.select(TLXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="18,1" type="0" >
+						<property name="value"><![CDATA[朝阳]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="18,2" type="0" >
+						<property name="value"><![CDATA[=sum(c18:g18)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="18,3" type="0" >
+						<property name="value"><![CDATA[=ds1.select(CYZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="18,4" type="0" >
+						<property name="value"><![CDATA[=ds1.select(CYXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="18,5" type="0" >
+						<property name="value"><![CDATA[=ds1.select(CYTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="18,6" type="0" >
+						<property name="value"><![CDATA[=ds1.select(CYXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="18,7" type="0" >
+						<property name="value"><![CDATA[=ds1.select(CYXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="18,8" type="0" >
+						<property name="value"><![CDATA[=sum(i18:m18)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="18,9" type="0" >
+						<property name="value"><![CDATA[=ds2.select(CYZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="18,10" type="0" >
+						<property name="value"><![CDATA[=ds2.select(CYXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="18,11" type="0" >
+						<property name="value"><![CDATA[=ds2.select(CYTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="18,12" type="0" >
+						<property name="value"><![CDATA[=ds2.select(CYXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="18,13" type="0" >
+						<property name="value"><![CDATA[=ds2.select(CYXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="18,14" type="0" >
+						<property name="value"><![CDATA[=sum(o18:s18)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="18,15" type="0" >
+						<property name="value"><![CDATA[=ds3.select(CYZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="18,16" type="0" >
+						<property name="value"><![CDATA[=ds3.select(CYXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="18,17" type="0" >
+						<property name="value"><![CDATA[=ds3.select(CYTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="18,18" type="0" >
+						<property name="value"><![CDATA[=ds3.select(CYXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="18,19" type="0" >
+						<property name="value"><![CDATA[=ds3.select(CYXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="19,1" type="0" >
+						<property name="value"><![CDATA[葫芦岛]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="19,2" type="0" >
+						<property name="value"><![CDATA[=sum(c19:g19)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="19,3" type="0" >
+						<property name="value"><![CDATA[=ds1.select(HLDZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="19,4" type="0" >
+						<property name="value"><![CDATA[=ds1.select(HLDXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="19,5" type="0" >
+						<property name="value"><![CDATA[=ds1.select(HLDTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="19,6" type="0" >
+						<property name="value"><![CDATA[=ds1.select(HLDXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="19,7" type="0" >
+						<property name="value"><![CDATA[=ds1.select(HLDXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="19,8" type="0" >
+						<property name="value"><![CDATA[=sum(i19:m19)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="19,9" type="0" >
+						<property name="value"><![CDATA[=ds2.select(HLDZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="19,10" type="0" >
+						<property name="value"><![CDATA[=ds2.select(HLDXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="19,11" type="0" >
+						<property name="value"><![CDATA[=ds2.select(HLDTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="19,12" type="0" >
+						<property name="value"><![CDATA[=ds2.select(HLDXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="19,13" type="0" >
+						<property name="value"><![CDATA[=ds2.select(HLDXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="19,14" type="0" >
+						<property name="value"><![CDATA[=sum(o19:s19)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="19,15" type="0" >
+						<property name="value"><![CDATA[=ds3.select(HLDZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="19,16" type="0" >
+						<property name="value"><![CDATA[=ds3.select(HLDXXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="19,17" type="0" >
+						<property name="value"><![CDATA[=ds3.select(HLDTEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="19,18" type="0" >
+						<property name="value"><![CDATA[=ds3.select(HLDXMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="19,19" type="0" >
+						<property name="value"><![CDATA[=ds3.select(HLDXDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+				</cells>
+			</grid>
+		</sheet>
+	</body>
+</report>

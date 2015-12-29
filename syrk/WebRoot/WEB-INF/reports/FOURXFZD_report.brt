@@ -1,0 +1,1115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<report version="5.0">
+	<head>
+		<property name="type">0</property>
+		<name><![CDATA[FOURXFZD_report]]></name>
+		<dataSets>
+			<dataSet name="ds1" type="DB_SQL" >
+				<property name="dataSource">zwjh</property>
+				<property name="desc"><![CDATA[]]></property>
+				<property name="query"><![CDATA[="with zxl as( 
+select count(*)zxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and z.xt_lrsj
+BETWEEN  '"+@qnz_starttime+"' AND  '"+@qnz_endtime+"'
+),
+xxl as(
+select count(*)xxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and z.xt_lrsj
+BETWEEN  '"+@qnz_starttime+"' AND  '"+@qnz_endtime+"'
+),
+tezxl as(
+select count(*)tezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and z.xt_lrsj
+BETWEEN  '"+@qnz_starttime+"' AND  '"+@qnz_endtime+"'
+),
+xmsfl as(
+select count(*)xmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and z.xt_lrsj
+BETWEEN  '"+@qnz_starttime+"' AND  '"+@qnz_endtime+"'
+),
+xdl as(
+select count(*)xdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and z.xt_lrsj
+BETWEEN  '"+@qnz_starttime+"' AND  '"+@qnz_endtime+"'
+)
+select * from zxl,xxl,tezxl,xmsfl,xdl"
+]]></property>
+				<property name="beginRow">0</property>
+				<property name="endRow">0</property>
+			</dataSet>
+			<dataSet name="ds2" type="DB_SQL" >
+				<property name="dataSource">zwjh</property>
+				<property name="desc"><![CDATA[]]></property>
+				<property name="query"><![CDATA[="with zxl as( 
+select count(*)zxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and z.xt_lrsj
+BETWEEN  '"+@sy_starttime+"' AND  '"+@sy_endtime+"'
+),
+xxl as(
+select count(*)xxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and z.xt_lrsj
+BETWEEN  '"+@sy_starttime+"' AND  '"+@sy_endtime+"'
+),
+tezxl as(
+select count(*)tezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and z.xt_lrsj
+BETWEEN  '"+@sy_starttime+"' AND  '"+@sy_endtime+"'
+),
+xmsfl as(
+select count(*)xmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and z.xt_lrsj
+BETWEEN  '"+@sy_starttime+"' AND  '"+@sy_endtime+"'
+),
+xdl as(
+select count(*)xdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and z.xt_lrsj
+BETWEEN  '"+@sy_starttime+"' AND  '"+@sy_endtime+"'
+)
+select * from zxl,xxl,tezxl,xmsfl,xdl"
+
+
+
+
+
+]]></property>
+				<property name="beginRow">0</property>
+				<property name="endRow">0</property>
+			</dataSet>
+			<dataSet name="ds3" type="DB_SQL" >
+				<property name="dataSource">zwjh</property>
+				<property name="desc"><![CDATA[]]></property>
+				<property name="query"><![CDATA[="with zxl as( 
+select count(*)zxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0201'
+and z.xt_lrsj
+BETWEEN  '"+@by_starttime+"' AND  '"+@by_endtime+"'
+),
+xxl as(
+select count(*)xxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0202'
+and z.xt_lrsj
+BETWEEN  '"+@by_starttime+"' AND  '"+@by_endtime+"'
+),
+tezxl as(
+select count(*)tezxl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0203'
+and z.xt_lrsj
+BETWEEN  '"+@by_starttime+"' AND  '"+@by_endtime+"'
+),
+xmsfl as(
+select count(*)xmsfl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0204'
+and z.xt_lrsj
+BETWEEN  '"+@by_starttime+"' AND  '"+@by_endtime+"'
+),
+xdl as(
+select count(*)xdl from ZDRY_ZDRYZB z, RY_RYJBXXB r
+where 1=1
+and r.ID = z.RYID
+and z.zdrygllxdm='02'
+and substr(zdrylb,0,4)='0205'
+and z.xt_lrsj
+BETWEEN  '"+@by_starttime+"' AND  '"+@by_endtime+"'
+)
+select * from zxl,xxl,tezxl,xmsfl,xdl"]]></property>
+				<property name="beginRow">0</property>
+				<property name="endRow">0</property>
+			</dataSet>
+		</dataSets>
+		<parameters>
+			<parameter name="qnz_starttime" type="6">
+				<property name="dateFormat"></property>
+				<property name="default"></property>
+				<property name="desc">去年开始时间</property>
+				<property name="valueCalc">false</property>
+			</parameter>
+			<parameter name="qnz_endtime" type="6">
+				<property name="dateFormat"></property>
+				<property name="default"></property>
+				<property name="desc">去年结束时间</property>
+				<property name="valueCalc">false</property>
+			</parameter>
+			<parameter name="sy_starttime" type="6">
+				<property name="dateFormat"></property>
+				<property name="default"></property>
+				<property name="desc">上个月开始时间</property>
+				<property name="valueCalc">false</property>
+			</parameter>
+			<parameter name="sy_endtime" type="6">
+				<property name="dateFormat"></property>
+				<property name="default"></property>
+				<property name="desc">上个月结束时间</property>
+				<property name="valueCalc">false</property>
+			</parameter>
+			<parameter name="by_starttime" type="6">
+				<property name="dateFormat"></property>
+				<property name="default"></property>
+				<property name="desc">本月开始时间</property>
+				<property name="valueCalc">false</property>
+			</parameter>
+			<parameter name="by_endtime" type="6">
+				<property name="dateFormat"></property>
+				<property name="default"></property>
+				<property name="desc">本月结束时间</property>
+				<property name="valueCalc">false</property>
+			</parameter>
+		</parameters>
+		<variables/>
+	</head>
+	<body>
+		<sheet id="sheet1">
+			<page>
+			</page>
+			<grid row="11" col="21">
+				<properties>
+				</properties>
+				<rows>
+					<row id="1">
+						<property name="height">37</property>
+					</row>
+					<row id="2">
+					</row>
+					<row id="3">
+					</row>
+					<row id="4">
+					</row>
+					<row id="5">
+					</row>
+					<row id="6">
+					</row>
+					<row id="7">
+					</row>
+					<row id="8">
+					</row>
+					<row id="9">
+					</row>
+					<row id="10">
+					</row>
+					<row id="11">
+					</row>
+				</rows>
+				<columns>
+					<column id="1">
+						<property name="width">80</property>
+					</column>
+					<column id="2">
+						<property name="width">110</property>
+					</column>
+					<column id="3">
+						<property name="width">86</property>
+					</column>
+					<column id="4">
+					</column>
+					<column id="5">
+						<property name="width">100</property>
+					</column>
+					<column id="6">
+						<property name="width">94</property>
+					</column>
+					<column id="7">
+					</column>
+					<column id="8">
+						<property name="width">78</property>
+					</column>
+					<column id="9">
+						<property name="width">91</property>
+					</column>
+					<column id="10">
+						<property name="width">89</property>
+					</column>
+					<column id="11">
+					</column>
+					<column id="12">
+					</column>
+					<column id="13">
+						<property name="width">87</property>
+					</column>
+					<column id="14">
+					</column>
+					<column id="15">
+					</column>
+					<column id="16">
+					</column>
+					<column id="17">
+					</column>
+					<column id="18">
+					</column>
+					<column id="19">
+					</column>
+					<column id="20">
+					</column>
+					<column id="21">
+					</column>
+				</columns>
+				<cells>
+					<cell id="1,1" type="0" colspan="21" >
+						<property name="value"><![CDATA[四支队研判报告需求数据统计表]]></property>
+						<property name="font-size">16</property>
+						<border type="0">1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1</border>
+						<border type="1">2:0,0,0:1;2:0,0,0:1;2:0,0,0:1;2:0,0,0:1;2:0,0,0:1;2:0,0,0:1;2:0,0,0:1;2:0,0,0:1;2:0,0,0:1;2:0,0,0:1;2:0,0,0:1;2:0,0,0:1;2:0,0,0:1;2:0,0,0:1;2:0,0,0:1;2:0,0,0:1;2:0,0,0:1;2:0,0,0:1;2:0,0,0:1;2:0,0,0:1;2:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="2,1" type="0" colspan="7" >
+						<property name="value"><![CDATA[重点人口]]></property>
+						<property name="font-size">14</property>
+						<property name="bold">0</property>
+						<border type="1">1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">2:0,0,0:1</border>
+					</cell>
+					<cell id="2,8" type="0" colspan="14" >
+						<property name="value"><![CDATA[第三级消防]]></property>
+						<property name="font-size">14</property>
+						<property name="bold">0</property>
+						<border type="1">1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="3,1" type="0" rowspan="2" >
+						<property name="value"><![CDATA[时间]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1;1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,2" type="0" rowspan="2" >
+						<property name="value"><![CDATA[重点人口总数]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,3" type="0" rowspan="2" >
+						<property name="value"><![CDATA[政嫌类]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,4" type="0" rowspan="2" >
+						<property name="value"><![CDATA[刑嫌类]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,5" type="0" rowspan="2" >
+						<property name="value"><![CDATA[挺而走险类]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,6" type="0" rowspan="2" >
+						<property name="value"><![CDATA[刑满释放类]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,7" type="0" rowspan="2" >
+						<property name="value"><![CDATA[吸毒类]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">2:0,0,0:1;2:0,0,0:1</border>
+					</cell>
+					<cell id="3,8" type="0" rowspan="2" >
+						<property name="value"><![CDATA[火灾起数]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,9" type="0" rowspan="2" >
+						<property name="value"><![CDATA[重大火灾数]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,10" type="0" rowspan="2" >
+						<property name="value"><![CDATA[一般火灾数]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,11" type="0" rowspan="2" >
+						<property name="value"><![CDATA[伤亡数]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,12" type="0" colspan="5" >
+						<property name="value"><![CDATA[火灾分类数]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1;1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="3,17" type="0" colspan="3" >
+						<property name="value"><![CDATA[三停数]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1;1:0,0,0:1;1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="3,20" type="0" rowspan="2" >
+						<property name="value"><![CDATA[罚款数]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="3,21" type="0" rowspan="2" >
+						<property name="value"><![CDATA[拘留数]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1;1:0,0,0:1</border>
+					</cell>
+					<cell id="4,12" type="0" >
+						<property name="value"><![CDATA[爆炸性]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="4,13" type="0" >
+						<property name="value"><![CDATA[气体火灾]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="4,14" type="0" >
+						<property name="value"><![CDATA[油类]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="4,15" type="0" >
+						<property name="value"><![CDATA[固体]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="4,16" type="0" >
+						<property name="value"><![CDATA[液体]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="4,17" type="0" >
+						<property name="value"><![CDATA[停产]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="4,18" type="0" >
+						<property name="value"><![CDATA[停业]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="4,19" type="0" >
+						<property name="value"><![CDATA[停工]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,1" type="0" >
+						<property name="value"><![CDATA[去年数]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,2" type="0" >
+						<property name="value"><![CDATA[=sum(c5:g5)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,3" type="0" >
+						<property name="value"><![CDATA[=ds1.select(ZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,4" type="0" >
+						<property name="value"><![CDATA[=ds1.select(XXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,5" type="0" >
+						<property name="value"><![CDATA[=ds1.select(TEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,6" type="0" >
+						<property name="value"><![CDATA[=ds1.select(XMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,7" type="0" >
+						<property name="value"><![CDATA[=ds1.select(XDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">2:0,0,0:1</border>
+					</cell>
+					<cell id="5,8" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,9" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,10" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,11" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,12" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,13" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,14" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,15" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,16" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,17" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,18" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,19" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,20" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="5,21" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,1" type="0" >
+						<property name="value"><![CDATA[上个月数]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,2" type="0" >
+						<property name="value"><![CDATA[=sum(c6:g6)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,3" type="0" >
+						<property name="value"><![CDATA[=ds2.select(ZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,4" type="0" >
+						<property name="value"><![CDATA[=ds2.select(XXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,5" type="0" >
+						<property name="value"><![CDATA[=ds2.select(TEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,6" type="0" >
+						<property name="value"><![CDATA[=ds2.select(XMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,7" type="0" >
+						<property name="value"><![CDATA[=ds2.select(XDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">2:0,0,0:1</border>
+					</cell>
+					<cell id="6,8" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,9" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,10" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,11" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,12" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,13" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,14" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,15" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,16" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,17" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,18" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,19" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,20" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="6,21" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,1" type="0" >
+						<property name="value"><![CDATA[本月数]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,2" type="0" >
+						<property name="value"><![CDATA[=sum(c7:g7)]]></property>
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,3" type="0" >
+						<property name="value"><![CDATA[=ds3.select(ZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,4" type="0" >
+						<property name="value"><![CDATA[=ds3.select(XXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,5" type="0" >
+						<property name="value"><![CDATA[=ds3.select(TEZXL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,6" type="0" >
+						<property name="value"><![CDATA[=ds3.select(XMSFL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,7" type="0" >
+						<property name="value"><![CDATA[=ds3.select(XDL)]]></property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">2:0,0,0:1</border>
+					</cell>
+					<cell id="7,8" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,9" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,10" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,11" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,12" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,13" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,14" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,15" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,16" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,17" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,18" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,19" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,20" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="7,21" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,1" type="0" >
+						<property name="value"><![CDATA[同比数]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,2" type="0" >
+						<property name="value"><![CDATA[=if(b5=0,b7,(b7-b5)/b5)]]></property>
+						<property name="view-format">1|###0.##%;-###0.##%</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,3" type="0" >
+						<property name="value"><![CDATA[=if(c5=0,c7,(c7-c5)/c5)]]></property>
+						<property name="view-format">1|###0.##%;-###0.##%</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,4" type="0" >
+						<property name="value"><![CDATA[=if(d5=0,d7,(d7-d5)/d5)]]></property>
+						<property name="view-format">1|###0.##%;-###0.##%</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,5" type="0" >
+						<property name="value"><![CDATA[=if(e5=0,e7,(e7-e5)/e5)]]></property>
+						<property name="view-format">1|###0.##%;-###0.##%</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,6" type="0" >
+						<property name="value"><![CDATA[=if(f5=0,f7,(f7-f5)/f5)]]></property>
+						<property name="view-format">1|###0.##%;-###0.##%</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,7" type="0" >
+						<property name="value"><![CDATA[=if(g5=0,g7,(g7-g5)/g5)]]></property>
+						<property name="view-format">1|###0.##%;-###0.##%</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">2:0,0,0:1</border>
+					</cell>
+					<cell id="8,8" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,9" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,10" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,11" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,12" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,13" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,14" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,15" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,16" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,17" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,18" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,19" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,20" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="8,21" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,1" type="0" >
+						<property name="value"><![CDATA[环比数]]></property>
+						<property name="font-size">12</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,2" type="0" >
+						<property name="value"><![CDATA[=if(b6=0,b7,(b7-b6)/b6)]]></property>
+						<property name="view-format">1|###0.##%;-###0.##%</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,3" type="0" >
+						<property name="value"><![CDATA[=if(c6=0,c7,(c7-c6)/c6)]]></property>
+						<property name="view-format">1|###0.##%;-###0.##%</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,4" type="0" >
+						<property name="value"><![CDATA[=if(d6=0,d7,(d7-d6)/d6)]]></property>
+						<property name="view-format">1|###0.##%;-###0.##%</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,5" type="0" >
+						<property name="value"><![CDATA[=if(e6=0,e7,(e7-e6)/e6)]]></property>
+						<property name="view-format">1|###0.##%;-###0.##%</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,6" type="0" >
+						<property name="value"><![CDATA[=if(f6=0,f7,(f7-f6)/f6)]]></property>
+						<property name="view-format">1|###0.##%;-###0.##%</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,7" type="0" >
+						<property name="value"><![CDATA[=if(g6=0,g7,(g7-g6)/g6)]]></property>
+						<property name="view-format">1|###0.##%;-###0.##%</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">2:0,0,0:1</border>
+					</cell>
+					<cell id="9,8" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,9" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,10" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,11" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,12" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,13" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,14" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,15" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,16" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,17" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,18" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,19" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,20" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="9,21" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,1" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,2" type="0" >
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,3" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,4" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,5" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,6" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,7" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">2:0,0,0:1</border>
+					</cell>
+					<cell id="10,8" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,9" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,10" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,11" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,12" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,13" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,14" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,15" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,16" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,17" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,18" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,19" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,20" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="10,21" type="0" >
+						<border type="1">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,1" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="2">1:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,2" type="0" >
+						<property name="view-format">1|###0;-###0</property>
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,3" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,4" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,5" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,6" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,7" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">2:0,0,0:1</border>
+					</cell>
+					<cell id="11,8" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,9" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,10" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,11" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,12" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,13" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,14" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,15" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,16" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,17" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,18" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,19" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,20" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+					<cell id="11,21" type="0" >
+						<border type="1">2:0,0,0:1</border>
+						<border type="3">1:0,0,0:1</border>
+					</cell>
+				</cells>
+			</grid>
+		</sheet>
+	</body>
+</report>
