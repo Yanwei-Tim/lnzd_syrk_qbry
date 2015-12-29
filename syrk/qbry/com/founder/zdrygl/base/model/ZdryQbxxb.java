@@ -53,9 +53,13 @@ public class ZdryQbxxb extends BaseEntity implements Serializable, Zdry {
 	@FieldDesc("ETL时间") private String etldate;	
 	@FieldDesc("实有人口ID") private String syrkid;
 	@FieldDesc("情报人员所属支队") private String qbzd;
+	@FieldDesc("情报人员所属支队名称") private String qbzdmc;
 	@FieldDesc("情报人员所属大队") private String qbdd;
+	@FieldDesc("情报人员所属大队名称") private String qbddmc;
 	@FieldDesc("情报人员所属派出所") private String qbpcs;
+	@FieldDesc("情报人员所属派出所名称") private String qbpcsmc;
 	@FieldDesc("情报人员所属责任区") private String qbzrq;
+	@FieldDesc("情报人员所属责任区名称") private String qbzrqmc;
 	@FieldDesc("当前级别") private String dqjb;
 	@FieldDesc("管理状态") private String glzt;
 	@FieldDesc("备注") private String bz;
@@ -270,4 +274,30 @@ public class ZdryQbxxb extends BaseEntity implements Serializable, Zdry {
 	public void setBz(String bz) {
 		this.bz = bz;
 	}
+	public String getQbzdmc() {
+		return qbzdmc;
+	}
+	public void setQbzdmc(String qbzdmc) {
+		this.qbzdmc = qbzdmc;
+	}
+	public String getQbddmc() {
+		return qbddmc;
+	}
+	public void setQbddmc(String qbddmc) {
+		this.qbddmc = qbddmc;
+	}
+	public String getQbpcsmc() {
+		return qbpcsmc;
+	}
+	public void setQbpcsmc(String qbpcsmc) {
+		this.qbpcsmc = qbpcsmc;
+	}
+	public String getQbzrqmc() {
+		return qbzrqmc;
+	}
+	public void setQbzrqmc(String qbzrqmc) {
+		this.qbzrqmc = qbzrqmc;
+	}
+	
+	
 }

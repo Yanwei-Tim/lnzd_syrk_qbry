@@ -147,10 +147,13 @@ public class qbryController extends BaseController {
 	 * @throws
 	 */
 	@RequestMapping(value = "/{ryid}/view", method = RequestMethod.GET)
-	public ModelAndView view(@PathVariable(value = "ryid") String qbryid){
+	public ModelAndView view(@PathVariable(value = "ryid") String qbryid,SessionBean sessionBean){
 			ModelAndView mv = new ModelAndView("qbry/manager/qbryEdit");
 			ZdryQbxxb qbxxb = zdryQbxxbService.queryById(qbryid);
 			mv.addObject("qbry",qbxxb);
+			
+			sessionBean = getSessionBean(sessionBean);
+			mv.addObject("orgLevel",sessionBean.getUserOrgLevel());
 			return mv;
 	}
 

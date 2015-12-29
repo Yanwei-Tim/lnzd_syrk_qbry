@@ -39,6 +39,10 @@
 		<isNotEmpty prepend="," property="qbdd"><![CDATA[ qbdd]]></isNotEmpty>
 		<isNotEmpty prepend="," property="qbpcs"><![CDATA[ qbpcs]]></isNotEmpty>
 		<isNotEmpty prepend="," property="qbzrq"><![CDATA[ qbzrq]]></isNotEmpty>
+		<isNotEmpty prepend="," property="qbzdmc"><![CDATA[ qbzdmc]]></isNotEmpty>
+		<isNotEmpty prepend="," property="qbddmc"><![CDATA[ qbddmc]]></isNotEmpty>
+		<isNotEmpty prepend="," property="qbpcsmc"><![CDATA[ qbpcsmc]]></isNotEmpty>
+		<isNotEmpty prepend="," property="qbzrqmc"><![CDATA[ qbzrqmc]]></isNotEmpty>
 		<isNotEmpty prepend="," property="dqjb"><![CDATA[ dqjb]]></isNotEmpty>
 		<isNotEmpty prepend="," property="glzt"><![CDATA[ glzt]]></isNotEmpty>
 		<isNotEmpty prepend="," property="bz"><![CDATA[ bz]]></isNotEmpty>
@@ -76,6 +80,10 @@
 		<isNotEmpty prepend="," property="qbdd"><![CDATA[#qbdd#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="qbpcs"><![CDATA[#qbpcs#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="qbzrq"><![CDATA[#qbzrq#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="qbzdmc"><![CDATA[#qbzdmc#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="qbddmc"><![CDATA[#qbddmc#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="qbpcsmc"><![CDATA[#qbpcsmc#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="qbzrqmc"><![CDATA[#qbzrqmc#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="dqjb"><![CDATA[#dqjb#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="glzt"><![CDATA[#glzt#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="bz"><![CDATA[#bz#]]></isNotEmpty>
