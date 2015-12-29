@@ -22,6 +22,8 @@ import com.founder.framework.exception.BussinessException;
 import com.founder.framework.organization.department.service.OrgOrganizationService;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.UUID;
+import com.founder.syrkgl.bean.SyrkSyrkxxzb;
+import com.founder.syrkgl.service.SyrkSyrkxxzbService;
 import com.founder.zdrygl.base.model.ZdryQbxxb;
 import com.founder.zdrygl.base.model.ZdryQbywb;
 import com.founder.zdrygl.base.service.ZdryQbxxbService;
@@ -41,6 +43,9 @@ public class qbryController extends BaseController {
 	
 	@Resource(name = "zdryQbywbService")
 	private ZdryQbywbService zdryQbywbService;
+	
+	@Resource(name = "syrkSyrkxxzbService")
+	private SyrkSyrkxxzbService  syrkSyrkxxzbService; 
 	
 	@RequestMapping(value = "/qbryManager", method = RequestMethod.GET)
 	public ModelAndView qbryManager() throws BussinessException {
@@ -94,21 +99,28 @@ public class qbryController extends BaseController {
 	@RequestMapping(value ="/qbryget", method = RequestMethod.POST)
 	public ModelAndView qbryget(ZdryQbxxb qbzdrymsg,SessionBean sessionBean){
 		 /*验证字段
-		  * 1.身份证号是否存在以及各式是否正确（18位）
-		  * 2.情报人员是否已存在
-		  * 2.管辖单位是否存在
-		  * 3.立案单位是否存在
-		  * 4.管理状态（默认为待接收、还未设置）调用字典
-		  */
-		
+		  *调用别的service验证：
+		  * 1.情报人员在实有人口表里是否已存在
+		  * 自己的service里完成验证功能：
+		  * 1.身份证号是否存在以及各式是否正确（18位）	  
+		  * 2.管理状态（默认为待接收、还未设置）调用字典
+		  */		
 		ModelAndView mv = new ModelAndView(getViewName(sessionBean));		
-		 sessionBean = getSessionBean(sessionBean);
-           String  gmsfhm = qbzdrymsg.getGmsfhm();
-           String xm = qbzdrymsg.getXm();
-		
-		   if(validationqbryexitbygmsfhm(gmsfhm, xm)){				 
-				String erromsg="该人员已经存在！";			    			   					  			  
-				throw new RuntimeException(erromsg);
+		 sessionBean = getSessionBean(sessionBean); 		          
+		 SyrkSyrkxxzb entity=new  SyrkSyrkxxzb();
+		  //ZJHM(证件号码)【默认身份证】、
+		 //可增加查询条件字段： JZD_DZID（居住地详细地址）、 CYZJDM（证件种类）
+		   entity.setZjhm(qbzdrymsg.getGmsfhm());		          		        		          
+		   if(validationqbryexitbygmsfhm( entity)!=null){				 	    			   					  			  
+	        	try{			        		     
+	        		   qbzdrymsg.setSyrkid(validationqbryexitbygmsfhm( entity));
+					   zdryQbxxbService.save(qbzdrymsg,sessionBean);
+					   System.out.println("保存成功！");					
+					   mv = new ModelAndView("qbry/manager/qbryManage");					 
+				 }catch(Exception e){
+					   logger.error(e.getLocalizedMessage(), e);							   
+					   System.out.println("保存失败!");							   							  
+			       }			   
 		     } 	
 		    else{		    	
 		        	try{											  			   
@@ -124,19 +136,27 @@ public class qbryController extends BaseController {
 	}
 	
 	/**
-	 * @Description: TODO(验证是否已存在该情报人员)
-	 * */
-	public boolean  validationqbryexitbygmsfhm(String gmsfhm,String xm){
+	 * 
+	 * @Title: validationqbryexitbygmsfhm
+	 * @Description: TODO(情报人员（根据查询条件：【默认省份证】）是否存在于实有人口总表，有返回)
+	 * @param @param syrkid
+	 * @param @return    设定文件
+	 * @return boolean    返回类型
+	 * @throws
+	 */ 	
+	public String  validationqbryexitbygmsfhm( SyrkSyrkxxzb entity){
 		
-/*	    boolean  cz=false;		
-		   ZdryQbxxb  realmsg =  zdryQbxxbService.queryById(gmsfhm);		    		    
-		if(realmsg==null){		
-			return true;			
-		}else{
-			return false;		
-		}	*/		
-		return false;	
-	} 	
+	
+		   try{
+			   return syrkSyrkxxzbService.querySyrkxxzb(entity).getId();   
+		   }catch(Exception e){
+			   
+			   return null;  		  
+		   }
+		
+	}
+	
+	
 	/**
 	 * 
 	 * @Title: ywList

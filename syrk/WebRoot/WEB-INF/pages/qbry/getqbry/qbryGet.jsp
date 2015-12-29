@@ -27,144 +27,100 @@
 <tr class="dialogTr">
 	<td width="20%" class="dialogTd" align="right">外文姓名：</td>
 	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="wwxm" name="wwxm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="Zhangth"/></td>
-	<td width="20%" class="dialogTd" align="right">性别：</td>
+	<td width="20%" class="dialogTd" align="right">性别代码：</td>
 	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xbdm" name="xbdm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="1"/></td>
 </tr>
 <tr class="dialogTr">
 	<td width="20%" class="dialogTd" align="right">出生日期：</td>
 	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="csrq" name="csrq" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="19890501"/></td>
-	<td width="20%" class="dialogTd" align="right">国籍：</td>
+	<td width="20%" class="dialogTd" align="right">国籍代码：</td>
 	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="gjdm" name="gjdm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="1"/></td>
 </tr>
 <tr class="dialogTr">
-	<td width="20%" class="dialogTd" align="right">身份证号：</td>
+	<td width="20%" class="dialogTd" align="right">公民身份证号：</td>
 	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="gmsfhm" name="gmsfhm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="510125198905016988"/></td>
 	<td width="20%" class="dialogTd" align="right">其他证件号码：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="qtzjhm" name="qtzjhm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="5112356"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="qtzjhm" name="qtzjhm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
 </tr>
 <tr class="dialogTr">
-	<td width="20%" class="dialogTd" align="right">民族：</td>
+	<td width="20%" class="dialogTd" align="right">民族代码：</td>
 	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="mzdm" name="mzdm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="1"/></td>
-	<td width="20%" class="dialogTd" align="right">籍贯：</td>
+	<td width="20%" class="dialogTd" align="right">籍贯省市县(区)代码：</td>
 	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="jgssxdm" name="jgssxdm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="1"/></td>
 </tr>
 <tr class="dialogTr">
 	<td width="20%" class="dialogTd" align="right">户籍地：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="hjd" name="hjd" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="22"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="hjd" name="hjd" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="大连市沙河口"/></td>
 	<td width="20%" class="dialogTd" align="right">现住地：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xzd" name="xzd" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="33"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xzd" name="xzd" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="成都市锦江区"/></td>
 </tr>
 <tr class="dialogTr">
 	<td width="20%" class="dialogTd" align="right">现住地派出所名称：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xzdpcsmc" name="xzdpcsmc" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="44"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xzdpcsmc" name="xzdpcsmc" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="白山路派出所"/></td>
 	<td width="20%" class="dialogTd" align="right">现住地派出所代码：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xzdpcsdm" name="xzdpcsdm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="125633521"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xzdpcsdm" name="xzdpcsdm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="210204410000
+"/></td>
 </tr>
 <tr class="dialogTr">
 	<td width="20%" class="dialogTd" align="right">居住地：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="jzd" name="jzd" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="55"/></td>
-	<td width="20%" class="dialogTd" align="right">管辖单位：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="gxdwmc" name="gxdwmc" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="66"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="jzd" name="jzd" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="大连市沙河口"/></td>
+	<td width="20%" class="dialogTd" align="right">管辖单位名称：</td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="gxdwmc" name="gxdwmc" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="解放责任区2 "/></td>
 </tr>
 <tr class="dialogTr">
 	<td width="20%" class="dialogTd" align="right">管辖单位机构代码：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="gxdwdm" name="gxdwdm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="12"/></td>
-	<td width="20%" class="dialogTd" align="right">立案单位：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="ladwmc" name="ladwmc" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="77"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="gxdwdm" name="gxdwdm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="210204410102"/></td>
+	<td width="20%" class="dialogTd" align="right">立案单位名称：</td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="ladwmc" name="ladwmc" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="大连市公安局"/></td>
 </tr>
 <tr class="dialogTr">
 	<td width="20%" class="dialogTd" align="right">立案单位机构代码：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="ladwdm" name="ladwdm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="255"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="ladwdm" name="ladwdm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="210200000000
+"/></td>
 	<td width="20%" class="dialogTd" align="right">立案时间：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="lasj" name="lasj" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="201"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="lasj" name="lasj" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
 </tr>
 <tr class="dialogTr">
 	<td width="20%" class="dialogTd" align="right">部级重点人员入库时间：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="bjzdryrksj" name="bjzdryrksj" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="201"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="bjzdryrksj" name="bjzdryrksj" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
 	<td width="20%" class="dialogTd" align="right">情报人员类别（小类）：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="zdrylb" name="zdrylb" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="33"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="zdrylb" name="zdrylb" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
 </tr>
 <tr class="dialogTr">
 	<td width="20%" class="dialogTd" align="right">情报人员管理类型代码（大类）：</td>
 	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="zdrygllxdm" name="zdrygllxdm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="1"/></td>
 	<td width="20%" class="dialogTd" align="right">有效性：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="yxx" name="yxx" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="y"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="yxx" name="yxx" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
 </tr>
 <tr class="dialogTr">
 	<td width="20%" class="dialogTd" align="right">ETL时间：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="etldate" name="etldate" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="2012"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="etldate" name="etldate" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
 	</tr>
 <tr class="dialogTr">
-	<td width="20%" class="dialogTd" align="right">实有人口ID：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="syrkid" name="syrkid" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="1231"/></td>
-	<td width="20%" class="dialogTd" align="right">情报人员所属支队：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="qbzd" name="qbzd" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="dddd"/></td>
+	<!-- <td width="20%" class="dialogTd" align="right">实有人口ID：</td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="syrkid" name="syrkid" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
+	 --><td width="20%" class="dialogTd" align="right">情报人员所属支队：</td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="qbzd" name="qbzd" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
 </tr>
 <tr class="dialogTr">
 	<td width="20%" class="dialogTd" align="right">情报人员所属大队：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="qbdd" name="qbdd" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="fffff"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="qbdd" name="qbdd" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
 	<td width="20%" class="dialogTd" align="right">情报人员所属派出所：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="qbpcs" name="qbpcs" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="hhhhhh"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="qbpcs" name="qbpcs" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
 </tr>
 <tr class="dialogTr">
 	<td width="20%" class="dialogTd" align="right">情报人员所属责任区：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="qbzrq" name="qbzrq" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="nnnnn"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="qbzrq" name="qbzrq" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
 	<td width="20%" class="dialogTd" align="right">当前级别：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="dqjb" name="dqjb" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="s"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="dqjb" name="dqjb" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="10"/></td>
 </tr>
 <tr class="dialogTr">
 	<td width="20%" class="dialogTd" align="right">管理状态：</td>
 	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="glzt" name="glzt" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="1"/></td>
 	<td width="20%" class="dialogTd" align="right">备注：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="bz" name="bz" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="1"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="bz" name="bz" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
 </tr>
-<!-- <tr class="dialogTr">
-	<td width="20%" class="dialogTd" align="right">采集时间：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xt_cjsj" name="xt_cjsj" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-	<td width="20%" class="dialogTd" align="right">录入时间：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xt_lrsj" name="xt_lrsj" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-</tr>
-<tr class="dialogTr">
-	<td width="20%" class="dialogTd" align="right">录入人姓名：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xt_lrrxm" name="xt_lrrxm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-	<td width="20%" class="dialogTd" align="right">录入人ID：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xt_lrrid" name="xt_lrrid" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-</tr>
-<tr class="dialogTr">
-	<td width="20%" class="dialogTd" align="right">录入人部门：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xt_lrrbm" name="xt_lrrbm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-	<td width="20%" class="dialogTd" align="right">录入人部门ID：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xt_lrrbmid" name="xt_lrrbmid" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-</tr>
-<tr class="dialogTr">
-	<td width="20%" class="dialogTd" align="right">录入IP：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xt_lrip" name="xt_lrip" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-	<td width="20%" class="dialogTd" align="right">最后修改时间：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xt_zhxgsj" name="xt_zhxgsj" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-</tr>
-<tr class="dialogTr">
-	<td width="20%" class="dialogTd" align="right">最后修改人姓名：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xt_zhxgrxm" name="xt_zhxgrxm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-	<td width="20%" class="dialogTd" align="right">最后修改人ID：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xt_zhxgrid" name="xt_zhxgrid" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-</tr>
-<tr class="dialogTr">
-	<td width="20%" class="dialogTd" align="right">最后修改人部门：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xt_zhxgrbm" name="xt_zhxgrbm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-	<td width="20%" class="dialogTd" align="right">最后修改人部门ID：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xt_zhxgrbmid" name="xt_zhxgrbmid" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-</tr>
-<tr class="dialogTr">
-	<td width="20%" class="dialogTd" align="right">最后修改IP：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xt_zhxgip" name="xt_zhxgip" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-	<td width="20%" class="dialogTd" align="right">注销标志：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xt_zxbz" name="xt_zxbz" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-</tr>
-<tr class="dialogTr">
-	<td width="20%" class="dialogTd" align="right">注销原因：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="xt_zxyy" name="xt_zxyy" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value=""/></td>
-</tr>
- -->
+
 </table>
 <input type="submit" value="提交">
 <input type="reset"  value="重置">
