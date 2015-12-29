@@ -65,7 +65,7 @@
     <script type="text/javascript" src="<%=contextPath%>/js/zdrygl/zdryzbManage.js"></script>
   </head>
    <body class="easyui-layout" data-options="fit:true,border:false">
-       <div data-options="region:'center',border:false" style="width:538px;">
+       <div data-options="region:'center',border:false" style="width:538px;height:auto;">
            <table id="dg" class="easyui-datagrid"
 	              	data-options="url:'<%=contextPath%>/qbryManager/queryList',
 						selectOnCheck:true,
@@ -74,9 +74,8 @@
 		        		border:false,
 		        		sortName:'',
 		        		sortOrder:'desc',
-		        		pageSize:getAutoPageSize(105),
-		        		pageList:[getAutoPageSize(105),
-		        		getAutoPageSize(105) * 2],
+		        		pageSize:20,
+		        		pageList:[10,20,30],
 		        		singleSelect:true,
 		        		fitColumns:true,
 						toolbar:'#datagridToolbar'">
@@ -85,17 +84,16 @@
 				            <th data-options="field:'zdrylb',width:100,align:'center',halign:'center',sortable:true">重点人员细类</th>
 				            <th data-options="field:'xm',width:70,align:'center',sortable:true,halign:'center'">姓名</th>
 				            <th data-options="field:'gmsfhm',width:100,align:'center',sortable:true,halign:'center'">身份证号码</th>
-				            <th  data-options="field:'xbdm',width:30,align:'center',halign:'center',sortable:true">性别</th>
-				            <th  data-options="field:'gjdm',width:50,align:'center',halign:'center',sortable:true">国籍</th>
+				            <th  data-options="field:'xbdm',width:30,align:'center',halign:'center',sortable:true,formatter:dictFormatter,dictName:contextPath+'/common/dict/GB_D_XBDM.js'">性别</th>
 				            <th  data-options="field:'xzd',width:100,align:'center',halign:'center',sortable:true">现居住地址</th>
 				            <th  data-options="field:'hjd',width:100,align:'center',halign:'center',sortable:true">户籍地址</th>
 				            <th  data-options="field:'bjzdryrksj',width:100,align:'center',halign:'center',sortable:true">入部省库时间</th>
+				            <th  data-options="field:'glzt',width:50,align:'center',halign:'center',sortable:true,formatter:dictFormatter,dictName:contextPath+'/common/dict/BD_D_QBRYGLZT.js'">管理状态</th>
 				            <th data-options="field:'process',align:'center',width:100,halign:'center',formatter:datagridProcessFormater">操作</th>
 				        </tr>
 			       </thead>
 	       </table>
 	       <div id="datagridToolbar" style="padding:5px;height:auto;">
-			<!-- <input id="searchBox" type="text" class="easyui-searchbox" data-options="prompt:'请输入姓名'"/> -->
 			<table cellspacing = "0" cellpadding="0" class="table-toolbar">
 				<tr>
 					<td class="td-title">重点人员大类:</td>
