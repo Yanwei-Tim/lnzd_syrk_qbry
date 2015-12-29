@@ -114,7 +114,6 @@ public class SydwQueryController extends BaseController{
 		SessionBean sessionBean = getSessionBean();
 		//增加查询条件 begin
 		if(StringUtils.isBlank(flag) && null != sessionBean){
-			//entity.setGlpcsid((String)sessionBean.getExtendMap().get("ssPcsCode"));
 			entity.setGlbmid((String)sessionBean.getUserOrgCode());
 		} 
 		//增加查询条件 end
@@ -198,7 +197,7 @@ public class SydwQueryController extends BaseController{
 	 */
 	@RequestMapping(value = "/queryDwByLx", method = RequestMethod.GET)
 	public ModelAndView queryDwByLx(String sydwlx){
-		ModelAndView mv = new ModelAndView("sydw/sydwMain");
+		ModelAndView mv = new ModelAndView("sydw/sydwManager");
 		mv.addObject("dwlbdm", sydwlx);
 		return mv;
 	}

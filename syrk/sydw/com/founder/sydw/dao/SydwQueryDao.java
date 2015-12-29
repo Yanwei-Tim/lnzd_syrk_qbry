@@ -47,28 +47,9 @@ public class SydwQueryDao extends BaseDaoImpl {
 		}
 		entity.setZagldwbm(StringUtils.getSqlExpression(entity.getZagldwbm()));
 		entity.setDwmc(StringUtils.getSqlExpression(entity.getDwmc()));
-
 		map.put("dwjbxxb", entity);
-
-		 page.setTotal((Integer) queryForObject("SydwQuery.queryCountDw",
-		 map));
-		 page.setRows(queryForList("SydwQuery.queryDw", map));
-		// 后期修改增加延时加载
-//		List<?> list = queryForList("SydwQuery.queryDw", map);
-//		if (page.getBegin() == 0) {
-//			if (list != null && list.size() > 0) {
-//				page.setTotal(list.size());
-//			} else {
-//				page.setTotal(0);
-//			}
-//		} else {
-//			if (page.getTotal() == 0) {
-//				if (list != null && list.size() > 0) {
-//					page.setTotal(list.size());
-//				}
-//			}
-//		}
-//		page.setRows(list);
+		page.setTotal((Integer) queryForObject("SydwQuery.queryCountDw",map));
+		page.setRows(queryForList("SydwQuery.queryDw", map));
 		return page;
 	}
 

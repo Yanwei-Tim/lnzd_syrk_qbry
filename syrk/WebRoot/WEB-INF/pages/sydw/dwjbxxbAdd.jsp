@@ -81,6 +81,8 @@
 								    	<input type='hidden' name='dwjbxxb.dz_dwdzdm' id='dz_dwdzdm' value="${dwjbxxb.dz_dwdzdm}" />
 								    	<input type='hidden' name='dwjbxxb.dz_dwdzssxdm' id='dz_dwdzssxdm' value="${dwjbxxb.dz_dwdzssxdm}" />
 								    	<input type='hidden' name='dwjbxxb.dz_dwdzxz' id='dz_dwdzxz' value="${dwjbxxb.dz_dwdzxz}" /> 
+								    	<input type="hidden" name="dwjbxxb.dz_dwzbx" id='dz_dwzbx' value="${dwjbxxb.dz_dwzbx}">
+										<input type="hidden" name="dwjbxxb.dz_dwzby" id='dz_dwzby' value="${dwjbxxb.dz_dwzby}">
 								    </td>	
 					    	   </tr>
 					    	   <!-- zhang_guoliang@Founder.com 新增地址描述【开始】-->

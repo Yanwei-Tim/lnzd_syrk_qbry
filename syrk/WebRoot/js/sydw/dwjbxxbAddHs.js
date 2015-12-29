@@ -108,6 +108,8 @@ function onRadioClick(bz){
 		 $("#dz_dwdzdm").val("");
 		 $("#dz_dwdzssxdm").val("");
 		 $("#dz_dwdzxz").val("");
+		 $("#dz_dwzbx").val("");
+		 $("#dz_dwzby").val("");
 	 }
 };
 
@@ -196,7 +198,7 @@ function exit_onclick() {
 $(document).ready(function(){
 	
 	sfblyyzzdmOnchange($("#dwjbxxb_sfblyyzzdm").val(), "");
-	initAddressSearch('jzd1', {fxjdm:fxjdm,pcsdm:pcsdm,zrqdm:zrqdm}, 'dz_dwdzmlpdm', 'dz_dwdzmlpxz', 'jzd2', {text:'dz_dwdzxz',dzxzqh:'dz_dwdzssxdm',id:'dz_dwdzdm'}, null, null);
+	initAddressSearch('jzd1', {fxjdm:fxjdm,pcsdm:pcsdm,zrqdm:zrqdm}, 'dz_dwdzmlpdm', 'dz_dwdzmlpxz', 'jzd2', {text:'dz_dwdzxz',dzxzqh:'dz_dwdzssxdm',id:'dz_dwdzdm',dzzbx:"dz_dwzbx",dzzby:"dz_dwzby"}, null, null);
 	//单位地址描述门楼地址选中【zhang_gouliang@founder.com】
 	initAddressSearch('dzms_mldz', {}, 'dzms_dwdzmlpdm', 'dzms_dwdzmlpxz',null,null, null, null);
 	//默认地址描述为只读模式

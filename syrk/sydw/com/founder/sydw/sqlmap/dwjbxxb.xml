@@ -144,6 +144,8 @@
 		<isNotEmpty prepend="," property="dz_dwdzxz"><![CDATA[dz_dwdzxz]]></isNotEmpty>
 		<isNotEmpty prepend="," property="dz_dwdzmlpdm"><![CDATA[dz_dwdzmlpdm]]></isNotEmpty>
 		<isNotEmpty prepend="," property="dz_dwdzmlpxz"><![CDATA[dz_dwdzmlpxz]]></isNotEmpty>
+		<isNotEmpty prepend="," property="dz_dwzbx"><![CDATA[dz_dwzbx]]></isNotEmpty>
+		<isNotEmpty prepend="," property="dz_dwzby"><![CDATA[dz_dwzby]]></isNotEmpty>
 		<isNotEmpty prepend="," property="sfyxfjddm"><![CDATA[sfyxfjddm]]></isNotEmpty>
 		<isNotEmpty prepend="," property="sfswdwdm"><![CDATA[sfswdwdm]]></isNotEmpty>
 		<isNotEmpty prepend="," property="dwywmc"><![CDATA[dwywmc]]></isNotEmpty>
@@ -203,6 +205,8 @@
 		<isNotEmpty prepend="," property="dz_dwdzxz"><![CDATA[#dz_dwdzxz#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="dz_dwdzmlpdm"><![CDATA[#dz_dwdzmlpdm#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="dz_dwdzmlpxz"><![CDATA[#dz_dwdzmlpxz#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="dz_dwzbx"><![CDATA[#dz_dwzbx#]]></isNotEmpty>
+		<isNotEmpty prepend="," property="dz_dwzby"><![CDATA[#dz_dwzby#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="sfyxfjddm"><![CDATA[#sfyxfjddm#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="sfswdwdm"><![CDATA[#sfswdwdm#]]></isNotEmpty>
 		<isNotEmpty prepend="," property="dwywmc"><![CDATA[#dwywmc#]]></isNotEmpty>
@@ -316,6 +320,8 @@
 				 <isNotNull prepend="," property="dz_dwdzxz"><![CDATA[ DZ_DWDZXZ=#dz_dwdzxz# ]]></isNotNull>
 				 <isNotNull prepend="," property="dz_dwdzmlpdm"><![CDATA[ DZ_DWDZMLPDM=#dz_dwdzmlpdm# ]]></isNotNull>
 				 <isNotNull prepend="," property="dz_dwdzmlpxz"><![CDATA[ DZ_DWDZMLPXZ=#dz_dwdzmlpxz# ]]></isNotNull>
+				 <isNotNull prepend="," property="dz_dwzbx"><![CDATA[ DZ_DWZBX=#dz_dwzbx# ]]></isNotNull>
+				 <isNotNull prepend="," property="dz_dwzby"><![CDATA[ DZ_DWZBY=#dz_dwzby# ]]></isNotNull>
 				 <isNotNull prepend="," property="sfswdwdm"><![CDATA[ SFSWDWDM=#sfswdwdm# ]]></isNotNull>
 				 <isNotNull prepend="," property="sfyxfjddm"><![CDATA[ SFYXFJDDM=#sfyxfjddm# ]]></isNotNull>
 				 <isNotNull prepend="," property="kyrq"><![CDATA[ KYRQ=#kyrq# ]]></isNotNull>
@@ -380,6 +386,8 @@
 				 <isNotNull prepend="," property="dz_dwdzxz"><![CDATA[ DZ_DWDZXZ=#dz_dwdzxz# ]]></isNotNull>
 				 <isNotNull prepend="," property="dz_dwdzmlpdm"><![CDATA[ DZ_DWDZMLPDM=#dz_dwdzmlpdm# ]]></isNotNull>
 				 <isNotNull prepend="," property="dz_dwdzmlpxz"><![CDATA[ DZ_DWDZMLPXZ=#dz_dwdzmlpxz# ]]></isNotNull>
+				 <isNotNull prepend="," property="dz_dwzbx"><![CDATA[ DZ_DWZBX=#dz_dwzbx# ]]></isNotNull>
+				 <isNotNull prepend="," property="dz_dwzby"><![CDATA[ DZ_DWZBY=#dz_dwzby# ]]></isNotNull>
 				 <isNotNull prepend="," property="sfswdwdm"><![CDATA[ SFSWDWDM=#sfswdwdm# ]]></isNotNull>
 				 <isNotNull prepend="," property="sfyxfjddm"><![CDATA[ SFYXFJDDM=#sfyxfjddm# ]]></isNotNull>
 				 <isNotNull prepend="," property="kyrq"><![CDATA[ KYRQ=#kyrq# ]]></isNotNull>
@@ -409,11 +417,11 @@
 	</update>
 	<!-- 根据地址代码查询单位 列表-->
 	<select id ="queryDwByDzDm" parameterClass="Map" resultClass="dwjbxxb">
-		<![CDATA[SELECT A.ID, A.DWLBDM, A.DWMC, a.DZ_DWDZXZ, a.DZ_DWDZDM
+		<![CDATA[SELECT A.ID, A.DWLBDM, A.DWMC, A.DZ_DWDZXZ, A.DZ_DWDZDM,A.DZ_DWDZMLPDM,A.DZ_DWDZMLPXZ,A.DZ_DWZBX,A.DZ_DWZBY
 				  		FROM DW_DWJBXXB A
 				 		WHERE 1=1]]>
 		<isNotEmpty prepend="and" property="dwjbxxb.dz_dwdzdm">
-			a.DZ_DWDZMLPDM =#dwjbxxb.dz_dwdzdm#
+			A.DZ_DWDZDM = #dwjbxxb.dz_dwdzdm#
 		</isNotEmpty>	   			  
 	</select>
 	<!-- 获取空间图层srid -->
