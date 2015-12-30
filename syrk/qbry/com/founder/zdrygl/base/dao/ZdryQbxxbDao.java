@@ -64,8 +64,11 @@ public class ZdryQbxxbDao extends BaseDaoImpl {
 	 * @throws
 	 */
 	public EasyUIPage queryList(ZdryQbxxb entity, EasyUIPage page) {
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("begin", page.getBegin());
+		map.put("end", page.getEnd());
+		
 		
 		String sort = page.getSort();
 		String order = page.getOrder();
@@ -76,11 +79,13 @@ public class ZdryQbxxbDao extends BaseDaoImpl {
 		map.put("sort", sort);
 		map.put("order", order);
 		map.put("entity", entity);
+		
+		
+		page.setTotal((Integer)queryForObject("ZdryQbxxb.queryCount", map)==null?0:(Integer)queryForObject("ZdryQbxxb.queryCount", map));
 		page.setRows(queryForList("ZdryQbxxb.query", map));
-		Integer i = (Integer) queryForObject("ZdryQbxxb.queryCount", map);
-		page.setTotal((Integer) queryForObject("ZdryQbxxb.queryCount", map));
 		return page;
 	}
+	
 	
 	/**
 	 * 

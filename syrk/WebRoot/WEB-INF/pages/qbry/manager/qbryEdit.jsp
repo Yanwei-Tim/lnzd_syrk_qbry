@@ -2,7 +2,6 @@
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@include file="/WEB-INF/pages/commonInclude.jsp" %>
-<%@ include file="/WEB-INF/pages/commonMap.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -17,14 +16,14 @@
 <style>
 .nameTable{ width:500px;height:auto;overflow:hidden;}
 .nameTable tr{height:auto;}
-.nameTable th{line-height:26px; color:#666;font-weight:normal;word-wrap:break-all;}
-.nameTable td{line-height:20px; color:#333;word-wrap:break-all; }
+.nameTable th{line-height:26px; color:#666;font-weight:normal;word-wrap:break-all;font-size:1.2rem;}
+.nameTable td{line-height:20px; color:#333;word-wrap:break-all;font-size:1.2rem; }
 
 
 /*本页面自定义样式 ******/
-.operate-btns{width:400px;margin-left:180px;margin-top:20px;margin-bottom:20px;}
+.operate-btns{width:400px;margin-left:180px;margin-top:20px;margin-bottom:20px;text-align:center}
 #sendBack,#syrkAdd,#accept{margin-left:25px;}
-#operate-track{height:400px;}
+#operate-track{width:400px;height:400px;margin:0 auto;}
 /********************/
 
 </style>
@@ -39,126 +38,154 @@
 <div class="lf_conta">
 <div class="lf_contb">
 <div class="lf_contc">
-					<table width="100%" style="margin-left:200px;">
+					<table width="100%" style="margin-left:100px;">
 							<tr >
-								<td valign="top" align="center" style="width:200px; display:none;">
-									<div class="pphoto_1" style="text-align: center;" >
-										<div>
-											<img id="topPhotoid" width="160"
-												height="200" alt="" />
-										</div>
-									</div>
-									<div style="padding-left: 15px;">
-										<c:if test="${mode != 'view'}">
-										    <a href="javascript:void(0);" info="ryid_main,RY_RYJBXXB,ryid_main,人员基本信息表"
-											class="addphoto"></a>
-										</c:if>
-									</div>
-								</td>
-								
-								<td valign="top" style="margin-left:50px;">
+								<td valign="top" >
 									<div class="pinfo1" >
 									<ul>
 										<li style="padding:0px;" >
-										<table cellpadding="0" cellspacing="0" class="nameTable" style="margin-left: 10px" >
-										<tr>
-											<td colspan="4" align="left" valign="top" >
-												<strong><span id="jbxx_xm" style="padding-left: 56px;">${ry.xm }</span>
-												<c:if test="${zdry != ''}">
-												<span>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="openZdrk('${ry.xm }','${ry.id}','${syrkid}')">
-												
-												<script type="text/javascript">document.write(window.top.getDictName(contextPath + '/common/dict/DL_D_ZDRYGLLXDM.js', "${zdry}"));</script>
-												</a></span>
-												</c:if>
-												</strong>
-											</td>
-										 </tr>
+										<table cellpadding="0" cellspacing="0" class="nameTable"  >
 										 <tbody id="jbxxInfo">
-										 <tr>
-										      <th  align="right" width="100">姓名：</th>
-											  <td width="120">${qbry.xm}</td>
-											  <th  align="right" width="100">证件号码：</th>
-											  <td width="120"> ${qbry.gmsfhm}</td>
-										 </tr>
-										 <tr >
-										      <th  align="right" width="100">性别：</th>
-											  <td width="90">${qbry.xbdm}</td>
-											  <th  align="right" width="100">国籍：</th>
-											  <td width="120">${qbry.gjdm}</td>
-										 </tr>
-										 <tr>
-										      <th  align="right" width="100">参考居住地址(居住地)：</th>
-											  <td  colspan="3" width="270">${qbry.jzd}</td>
-										 </tr>
-										 <tr>
-										      <th  align="right" width="100">实际居住地址(现住地)：</th>
-											  <td  colspan="3" width="270">${qbry.xzd}</td>
-										 </tr>
-										 <tr >
-										      <th  align="right" width="100">户籍地址：</th>
-											  <td  colspan="3" width="270">${qbry.hjd}</td>
-										 </tr>
-										 <tr >
-										      <th  align="right" width="100">当前级别：</th>
-											  <td width="90">${qbry.dqjb}</td>
-											  <th  align="right" width="100">下发状态(管理状态)：</th>
-											  <td width="120">${qbry.glzt}</td>
-										 </tr>
-										 <tr >
-										      <th  align="right" width="100">责任单位：</th>
-											  <td width="90"><script type="text/javascript">document.write(window.top.getDictName(contextPath + '/common/dict/GB_D_XZQHDM.js', "${ry.jgssxdm}"));</script></td>
-											  <th  align="right" width="100">责任人：</th>
-											  <td width="120"><script type="text/javascript"> document.write(window.top.getDictName(contextPath + '/common/dict/GB_D_GJHDQDM.js', "${ry.jggjdqdm}"));</script></td>
-										 </tr>
-										 <tr >
-										      <th  align="right" width="100">联系电话：</th>
-											  <td width="90"><script type="text/javascript">document.write(window.top.getDictName(contextPath + '/common/dict/GB_D_XZQHDM.js', "${ry.jgssxdm}"));</script></td>
-											  <th  align="right" width="100">入部省库时间：</th>
-											  <td width="120">${qbry.bjzdryrksj}</td>
-										 </tr>
-										 <tr >
-										      <th  align="right" width="100">立案单位：</th>
-											  <td width="90">${qbry.ladwmc}</td>
-											  <th  align="right" width="100">立案时间：</th>
-											  <td width="120">${qbry.lasj}</td>
-										 </tr>
-										 
+											 <tr>
+											      <th  align="right" >姓名：</th>
+												  <td >${qbry.xm}</td>
+												  <th  align="right" >证件号码：</th>
+												  <td > ${qbry.gmsfhm}</td>
+											 </tr>
+											 <tr >
+											      <th  align="right" >性别：</th>
+												  <td width="90"><script type="text/javascript">  document.write(window.top.getDictName(contextPath + '/common/dict/GB_D_XBDM.js', "${qbry.xbdm}"));</script></td>
+												  <th  align="right" >国籍：</th>
+												  <td width="120"><script type="text/javascript">  document.write(window.top.getDictName(contextPath + '/common/dict/D_BZ_SJGGHDQMCDM.js', "${qbry.gjdm}"));</script></td>
+											 </tr>
+											 <tr>
+											      <th  align="right" >参考居住地址(居住地)：</th>
+												  <td  colspan="3" width="270">${qbry.jzd}</td>
+											 </tr>
+											 <tr>
+											      <th  align="right" >实际居住地址(现住地)：</th>
+												  <td  colspan="3" width="270">${qbry.xzd}</td>
+											 </tr>
+											 <tr >
+											      <th  align="right" >户籍地址：</th>
+												  <td  colspan="3" width="270">${qbry.hjd}</td>
+											 </tr>
+											 <tr >
+											      <th  align="right" >当前级别：</th>
+											      <td><script type="text/javascript">  document.write(window.top.getDictName(contextPath + '/common/dict/D_ORG_ORGLEVEL.js', "${qbry.dqjb}"));</script></td>
+												  <th  align="right" >下发状态(管理状态)：</th>
+												  <td><script type="text/javascript">  document.write(window.top.getDictName(contextPath + '/common/dict/BD_D_QBRYGLZT.js', "${qbry.glzt}"));</script></td>
+											 </tr>
+											 <tr >
+											      <th  align="right" >责任单位：</th>
+												  <c:if test="${qbry.dqjb == '10'}">
+											      	<td width="90">${qbry.qbzd}</td>
+											      </c:if>
+												  <c:if test="${qbry.dqjb == '21'}">
+											      	<td width="90">${qbry.qbdd}</td>
+											      </c:if>
+											      <c:if test="${qbry.dqjb == '32'}">
+											      	<td width="90">${qbry.qbpcs}</td>
+											      </c:if>
+											      <c:if test="${qbry.dqjb == '50'}">
+											      	<td width="90">${qbry.qbzrq}</td>
+											      </c:if>
+												  <th  align="right" >责任人：</th>
+												  <td width="120">无字段</td>
+											 </tr>
+											 <tr >
+											      <th  align="right" >联系电话：</th>
+												  <td width="90">无字段</td>
+												  <th  align="right" >入部省库时间：</th>
+												  <td width="120">${qbry.bjzdryrksj}</td>
+											 </tr>
+											 <tr >
+											      <th  align="right" >立案单位：</th>
+												  <td width="90">${qbry.ladwmc}</td>
+												  <th  align="right" >立案时间：</th>
+												  <td width="120">${qbry.lasj}</td>
+											 </tr>
 										 </tbody>
-										 
 										</table>
 									</li>
 								    </ul> 	
-								   <a href="javascript:void(0);" class="" onclick="moreInfoMethod();" id="moreButton" style="margin-left: 70px;width: 40px">更多</a>													
 								</div>
 							</td>
 						</tr>
 					</table>
-					<!-- 业务操作记录  start -->
-					<table id="operate-track"  class="easyui-datagrid" title='业务操作记录表' style="height:auto;"
-		              	data-options="url:'<%=contextPath%>/qbryManager/ywList/${qbry.gmsfhm}',
-		              	height:'200'		
-		              	">
-				        <thead>
-				          	<tr>
-					            <th data-options="field:'czlb',width:100,align:'center',halign:'center',sortable:true">操作类别</th>
-					            <th data-options="field:'gmsfhm',width:100,align:'center',sortable:true,halign:'center'">操作时间</th>
-					            <th data-options="field:'bz',width:200,align:'center',sortable:true,halign:'center'">操作原因</th>
-					            <th  data-options="field:'mbbmmc',width:100,align:'center',halign:'center',sortable:true">操作部门</th>
-					            <th  data-options="field:'bz',width:100,align:'center',halign:'center',sortable:true">操作人</th>
-					        </tr>
-				       </thead>
-			       </table>
-					
+					<div style="width:600px;height:210px;margin-left:110px;border:1px solid #ccc;">
+						<!-- 业务操作记录  start -->
+						<table id="operate-track"  class="easyui-datagrid" style="width:100%;height:200px;margin-left:20px;" title='业务操作记录表' 
+			              	data-options="url:'<%=contextPath%>/qbryManager/ywList/${qbry.gmsfhm}',
+			              	selectOnCheck:true,
+			        		checkOnSelect:true,
+			        		rownumbers:true,
+			        		border:false,
+			        		sortName:'',
+			        		sortOrder:'desc',
+			        		pageSize:5,
+			        		pageList:[5],
+			        		singleSelect:true,
+			        		fitColumns:true">
+					        <thead>
+					          	<tr>
+						            <th data-options="field:'czlb',width:100,align:'center',halign:'center',sortable:true">操作类别</th>
+						            <th data-options="field:'gmsfhm',width:100,align:'center',sortable:true,halign:'center'">操作时间</th>
+						            <th data-options="field:'bz',width:200,align:'center',sortable:true,halign:'center'">操作原因</th>
+						            <th  data-options="field:'mbbmmc',width:100,align:'center',halign:'center',sortable:true">操作部门</th>
+						            <th  data-options="field:'bz',width:100,align:'center',halign:'center',sortable:true">操作人</th>
+						        </tr>
+					       </thead>
+				       </table>
 					<!-- 业务操作记录  end -->
+					</div>
+					
 					<!-- 功能按钮 start -->
 					<div class="operate-btns">
 						<a id="sendDown" href="#" class="easyui-linkbutton" >下发</a>
 						<a id="sendBack" href="#" class="easyui-linkbutton" >申请回退</a>
-						<a id="syrkAdd" href="#" class="easyui-linkbutton" >新增实有人口</a>
-						<a id="accept" href="#" class="easyui-linkbutton" >接受</a>
+						
+						<!-- 责任区民警才能 添加实有人口以及 接收 -->
+						<c:if test="${orgLevel == '50' }" >
+						
+						<c:if test="${qbry.syrkid == null }" >
+						<a id="syrkAdd" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-add'" onclick="addSyrk()">新增实有人口</a>
+						</c:if>
+						
+						<c:if test="${qbry.glzt != '9'}" >
+						<a id="accept" href="#" class="easyui-linkbutton" onclick="acceptQbryWin()">接收</a>
+						</c:if>
+						</c:if>
 					</div>			
 					<!-- 功能按钮 end-->
 					
+					<!-- 情报人员接收窗口 -->
+					<div id="acceptQbryDiv" class="easyui-window" title="情报人员接收"  data-options="iconCls:'icon-search',
+		                collapsible:false,minimizable:false,maximizable:false,
+				        modal:true,closed:true,width:600,height:200">
+				        <div id="datagridToolbar" style="padding: 0px; height: 150px; width: 100%; vertical-align: top;">
+				        <form id ="acceptForm" >		 
+				        	<input type="hidden" name="id" id="id" value="${qbry.id }" />
+				               
+					        <table border="0" cellpadding="0" cellspacing="10" width="100%" align="center">
+						        
+						        <tr class="dialogTr">
+							    	<td width="20%" class="dialogTd" align="right">接收备注：</td>
+							    	<td width="80%" class="dialogTd">
+							    	    <textarea name="acceptBz" id="acceptBz" class="easyui-validatebox" style="width: 100%; height:48px;" data-options="required:false,validType:['maxLength[500]'],tipPosition:'left'"></textarea>
+							    	</td>				    	
+						    	</tr>	
+						    	<tr class="dialogTr" style="padding-bottom:0px;margin-bottom:0px;">
+							    	<td align="center" colspan="2">
+							    		<a class="easyui-linkbutton" iconCls="icon-ok" onclick="acceptQbry();">确定</a>
+							    		<a class="easyui-linkbutton" iconCls="icon-cancel" onclick="acceptQbryWinClose()">关闭</a>
+							    	</td>
+						    	</tr>
+					         </table>
+					         
+				        </form>
+				        </div>
+				   </div> 
 </div>
 
 </div>
@@ -169,7 +196,50 @@
 </div>
 </body>
 <script type="text/javascript">
-
+	function addSyrk(){
+		 menu_open('实有人口新增','/syrkGl/add?mainTabID='+getMainTabID()+'&zjhm=210211198906132911');
+	}
+	
+	function acceptQbryWin(){//接收情报人员窗口
+		$("#acceptBz").val("");
+		$("#acceptQbryDiv").window("open");
+	}
+	
+	function acceptQbryWinClose(){
+		$("#acceptQbryDiv").window("close");
+	}
+	function acceptQbry(){
+		var qbryId=$("#id").val();
+		var qbryBz=$("#acceptBz").val();
+		$.ajax({
+			type: "POST",
+			url: contextPath + "/qbryManager/saveLg",
+			dataType: "json",
+			data:"id=" + qbryId + "&bz=" + qbryBz,
+			success: function(data) {
+				if (data) {				
+					if(data.status && data.status=="success"){
+						alert("接收成功");
+						acceptQbryWinClose();
+						$("#accept").hide();
+					}else{
+						if(data.message){
+							alert("接收失败："+data.message);
+						}else{
+							alert("接收失败："+data);
+						}
+						
+					}
+				}else{
+					alert("接收失败："+data);
+				}
+			},		
+			error: function(data) {
+				alert("接收失败："+data);
+			}
+		});	
+	}
+	
 </script>
 </html>
     

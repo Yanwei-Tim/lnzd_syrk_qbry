@@ -50,8 +50,8 @@ public class ZdryQbywbService {
 	 * @return List<ZdryQbywb>    返回类型
 	 * @throw
 	 */
-	public EasyUIPage queryListByZjhm(String zjhm,EasyUIPage page) {
-		return zdryQbywbDao.queryListByZjhm(zjhm,page);
+	public EasyUIPage queryListByZjhm(String zjhm,EasyUIPage page,ZdryQbywb entity) {
+		return zdryQbywbDao.queryListByZjhm(zjhm,page,entity);
 	}
 	
 	

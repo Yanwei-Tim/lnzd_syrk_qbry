@@ -30,11 +30,17 @@
 
 	
 	<!-- 根据证件号码查询记录列表，按时间倒序排列 -->
-	<select id="queryListByZjhm" parameterClass="String" resultClass="zdryQbywb">
-		<![CDATA[ select * from ZDRY_QBRYYWB where GMSFHM= #zjhm# and  xt_zxbz = '0' ORDER BY XT_CJSJ DESC]]>
+	<select id="queryListByZjhm" parameterClass="map" resultClass="zdryQbywb">
+		<![CDATA[select * from ( 
+		            select a.* , rownum r   from 
+		               (select *  from ZDRY_QBRYYWB where XT_ZXBZ='0']]>
+			<isNotEmpty prepend="and" property="entity.gmsfhm"> GMSFHM = #entity.gmsfhm#</isNotEmpty>
+		<![CDATA[ ) a where rownum <= #end# ) where r > #begin#  order by $sort$ $order$   ]]>
 	</select>
-	
-	<select id="queryListCountByZjhm" parameterClass="String" resultClass="Integer">
-		<![CDATA[ select COUNT(*) from ZDRY_QBRYYWB where GMSFHM= #zjhm# and  xt_zxbz = '0' ORDER BY XT_CJSJ DESC]]>
+	<!-- 根据证件号码查询操作记录总数 -->
+	<select id="queryListCountByZjhm" parameterClass="map" resultClass="Integer">
+		<![CDATA[ SELECT COUNT(*)
+	          FROM ZDRY_QBRYYWB where XT_ZXBZ='0' ]]>
+	        <isNotEmpty prepend="and" property="entity.gmsfhm"> GMSFHM = #entity.gmsfhm#</isNotEmpty>
 	</select>
 </sqlMap>

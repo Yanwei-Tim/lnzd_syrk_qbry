@@ -2,14 +2,12 @@ package com.founder.zdrygl.base.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.base.service.BaseService;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.UUID;
 import com.founder.syrkgl.bean.SyrkSyrkxxzb;
-import com.founder.syrkgl.service.SyrkSyrkxxzbService;
 import com.founder.zdrygl.base.dao.ZdryQbxxbDao;
 import com.founder.zdrygl.base.dao.ZdryZdryZbDao;
 import com.founder.zdrygl.base.model.ZdryQbxxb;
@@ -65,27 +63,22 @@ public class ZdryQbxxbService {
 	 * @throws
 	 */
 	public void save(ZdryQbxxb entity,SessionBean sessionBean){	
-		  String  gmsfhm = entity.getGmsfhm();		  		
-		   String  glzt=entity.getGlzt();
+		  String  gmsfhm = entity.getGmsfhm();		  				  
 		   //验证身份号码
-			if(validationqbrygmsfhm(gmsfhm)){												   			    			        
-			            //验证管理状态		
-			        	if(validationqbryglzt(glzt)){
-	                       //待下发状态，才开始新增情报人员信息
-			        		 entity.setId(UUID.create());
-			        		 BaseService.setSaveProperties(entity, sessionBean);
-			        		 zdryQbxxbDao.save(entity);
-			        	 }else{			        		 
-			        		      String erromsg="管理状态不是带下发状态";			
-			        		      throw new RuntimeException(erromsg);
-			        	 }		        			        					        	         				        	    	 		    		 					    								 
-			    }
+		  if(validationqbrygmsfhm(gmsfhm)){												   			    			        		            
+			    entity.setId(UUID.create());
+			    entity.setGlzt(ZdryQbDict.GLZT_DXF);//当前管理状态设置为带下发
+			    entity.setQbzdmc(entity.getGxdwmc());//当前的所属支队名称设置为管辖单位名称
+			    entity.setQbzd(entity.getGxdwdm());//当前的所属支队设置为管辖单位代码
+			    entity.setDqjb("10");//当前级别设置为 支队（市局）
+			    BaseService.setSaveProperties(entity, sessionBean);
+			    zdryQbxxbDao.save(entity);
+			}
 			else{						
 				String erromsg="公民身份证号码位数不正确或者为空";			
 				throw new RuntimeException(erromsg);
 			}				 		
 	}
-
 		
 		/**
 		 * 
@@ -104,24 +97,7 @@ public class ZdryQbxxbService {
 				return false;	
 			}	
 		}	
-	
-		/**
-		 * 
-		 * @Title: validationqbryglzt
-		 * @Description: TODO(验证管理状态)
-		 * @param @param glzt
-		 * @param @return    设定文件
-		 * @return boolean    返回类型
-		 * @throws
-		 */
-		public boolean validationqbryglzt(String glzt){
-			if( ZdryQbDict.GLZT_DXF.equals(glzt)){
-				return true;	
-			}		
-			else{
-				return false;	
-			}
-		}	
+					
 	/**
 	 * 
 	 * @Title: saveLg
@@ -131,15 +107,19 @@ public class ZdryQbxxbService {
 	 * @return void    返回类型
 	 * @throw
 	 */
-	public void saveLg(ZdryQbxxb entity,SessionBean sessionBean){
+	public void saveLg(ZdryQbxxb entity,SyrkSyrkxxzb syrkEntity,SessionBean sessionBean){
 		ZdryZb zdryzb = new ZdryZb();
 		zdryzb.setId(entity.getId());//列管后，情报人员信息表 作为重点人员总表的子表，两者Id要保持一致
 		zdryzb.setGlzt(ZdryConstant.YLG);
 		zdryzb.setGlbm(sessionBean.getUserOrgCode());//管理部门
+		zdryzb.setRyid(syrkEntity.getRyid());
+		zdryzb.setSyrkid(syrkEntity.getId());
 		BaseService.setSaveProperties(zdryzb, sessionBean);		
 		
+		//信息用下发的信息，不用实有人口的信息
 		zdryzb.setXm(entity.getXm());
 		zdryzb.setXbdm(entity.getXbdm());
+		zdryzb.setCyzjdm("111");//身份证
 		zdryzb.setZjhm(entity.getGmsfhm());
 		zdryzb.setCsrq(entity.getCsrq());
 		zdryzb.setMzdm(entity.getMzdm());
