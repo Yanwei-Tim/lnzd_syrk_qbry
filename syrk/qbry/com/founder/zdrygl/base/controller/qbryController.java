@@ -21,7 +21,6 @@ import com.founder.framework.exception.BussinessException;
 import com.founder.framework.organization.department.bean.OrgOrganization;
 import com.founder.framework.organization.department.service.OrgOrganizationService;
 import com.founder.framework.utils.EasyUIPage;
-import com.founder.framework.utils.UUID;
 import com.founder.syrkgl.bean.SyrkSyrkxxzb;
 import com.founder.syrkgl.service.SyrkSyrkxxzbService;
 import com.founder.zdrygl.base.model.ZdryQbxxb;
@@ -183,7 +182,49 @@ public class qbryController extends BaseController {
 			return zdryQbywbService.queryListByZjhm(gmsfhm,page,entity);
 	}
 	
-
+	/**
+	 * 
+	 * @Title: htsq
+	 * @Description: TODO(回退申请)
+	 * @param @return    设定文件
+	 * @return Map<String,Object>    返回类型
+	 * @throws
+	 */
+	@RequestMapping(value = "/htsq", method = RequestMethod.POST)
+    public  @ResponseBody Map<String, Object> htsq(String id,String thyy,SessionBean sessionBean){
+		
+		 	 
+		Map<String, Object> model = new HashMap<String, Object>();
+		sessionBean = getSessionBean(sessionBean);
+		try{		
+		  ZdryQbxxb zdrtqbxxb=zdryQbxxbService.queryById(id);//查询情报人员信息
+			if(zdrtqbxxb==null){
+				throw new BussinessException("未查询到该情报人员信息！");
+			}
+			if(zdrtqbxxb.getSyrkid()==null){
+				throw new BussinessException("请先添加实有人口信息！");
+			}			
+			SyrkSyrkxxzb syrkEntity = syrkSyrkxxzbService.queryById(zdrtqbxxb.getSyrkid());
+			if(syrkEntity==null){
+				throw new BussinessException("未查询到该重点人员对应的实有人口信息！");
+			}  						
+		    zdryQbxxbService.tuiHui(zdrtqbxxb, sessionBean);
+		    ZdryQbywb zdryqbywb=new ZdryQbywb();
+		    zdryqbywb.setCzyj(thyy); //把回退原因写到操作意见里	
+		    zdryQbywbService.insert( zdryqbywb, sessionBean);
+		    model.put(AppConst.STATUS, AppConst.SUCCESS);
+			model.put(AppConst.MESSAGES, "退回成功");
+		} catch (BussinessException e) {
+			logger.error(e.getLocalizedMessage(), e);
+			model.put(AppConst.STATUS, AppConst.FAIL);
+			model.put(AppConst.MESSAGES, e.getLocalizedMessage());
+		} catch (Exception e) {
+			logger.error(e.getLocalizedMessage(), e);
+			model.put(AppConst.STATUS, AppConst.FAIL);
+			model.put(AppConst.MESSAGES, "退回失败！");
+		}
+    	return model;
+    }
 	
 	/**
 	 * 

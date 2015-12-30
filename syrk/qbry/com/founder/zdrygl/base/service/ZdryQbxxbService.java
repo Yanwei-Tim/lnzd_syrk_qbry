@@ -63,7 +63,7 @@ public class ZdryQbxxbService {
 	 * @throws
 	 */
 	public void save(ZdryQbxxb entity,SessionBean sessionBean){	
-		  String  gmsfhm = entity.getGmsfhm();		  				  
+		  String  gmsfhm = entity.getGmsfhm();		  
 		   //验证身份号码
 		  if(validationqbrygmsfhm(gmsfhm)){												   			    			        		            
 			    entity.setId(UUID.create());
@@ -75,7 +75,7 @@ public class ZdryQbxxbService {
 			    zdryQbxxbDao.save(entity);
 			}
 			else{						
-				String erromsg="公民身份证号码位数不正确或者为空";			
+				String erromsg="公民身份证号码不正确或者已存在";			
 				throw new RuntimeException(erromsg);
 			}				 		
 	}
@@ -89,15 +89,18 @@ public class ZdryQbxxbService {
 		 * @return boolean    返回类型
 		 * @throws
 		 */
-		public boolean validationqbrygmsfhm(String gmsfhm){		
+	public boolean validationqbrygmsfhm(String gmsfhm){		
 			if(gmsfhm.length()==18){
-				return true;	
+				if(zdryQbxxbDao.queryByGmsfhm(gmsfhm)==null){					
+					return true;
+				}else{
+					 return false;	
+				}				   								  					
 			}		
 			else{
-				return false;	
+			    return false;	
 			}	
-		}	
-					
+	 }						
 	/**
 	 * 
 	 * @Title: saveLg
@@ -132,6 +135,19 @@ public class ZdryQbxxbService {
 		BaseService.setUpdateProperties(entity, sessionBean);
 		zdryQbxxbDao.update(entity);
 	}
-	
-	
+	/**
+	 * 
+	 * @Title: tuiHui
+	 * @Description: TODO(退回申请)
+	 * @param @param entity
+	 * @param @param sessionBean    设定文件
+	 * @return void    返回类型
+	 * @throws
+	 */
+	public void tuiHui(ZdryQbxxb entity,SessionBean sessionBean){
+		
+		//修改情报人员状态为“退回申请中”
+		entity.setGlzt(ZdryQbDict.GLZT_THSQZ);
+		zdryQbxxbDao.update(entity);
+	}  
 }

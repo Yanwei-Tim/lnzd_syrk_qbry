@@ -34,7 +34,7 @@
 	<td width="20%" class="dialogTd" align="right">出生日期：</td>
 	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="csrq" name="csrq" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="19890501"/></td>
 	<td width="20%" class="dialogTd" align="right">国籍代码：</td>
-	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="gjdm" name="gjdm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="1"/></td>
+	<td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="gjdm" name="gjdm" maxlength="20" style="width:200px;" data-options="charSet:'halfUpper'"  value="156"/></td>
 </tr>
 <tr class="dialogTr">
 	<td width="20%" class="dialogTd" align="right">公民身份证号：</td>

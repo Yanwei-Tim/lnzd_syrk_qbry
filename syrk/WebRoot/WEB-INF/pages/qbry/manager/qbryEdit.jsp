@@ -203,7 +203,6 @@
 				        </form>
 				        </div>
 				   </div> 
-				   
 
 </div>
 
@@ -312,6 +311,44 @@
 			}
 		});	
 	}
+ //申请回退	
+  function sendBack(){	
+		$("#sendBackDiv").window("open");		 
+ }	
+ function sendBackWinClose(){
+	 $("#sendBackDiv").window("close");
+ }
+ function sendBackupdate(){
+		var qbryId=$("#id").val();
+		var thyy=$("#thyy").val();
+		$.ajax({
+			type: "POST",
+			url: contextPath + "/qbryManager/htsq",
+			dataType: "json",
+			data:"id=" + qbryId + "&thyy=" + thyy,
+			success: function(data) {
+				if (data) {				
+					if(data.status && data.status=="success"){
+						alert("退回成功");
+						acceptQbryWinClose();
+						$("#accept").hide();
+					}else{
+						if(data.message){
+							alert("退回失败："+data.message);
+						}else{
+							alert("退回失败："+data);
+						}
+						
+					}
+				}else{
+					alert("退回失败："+data);
+				}
+			},		
+			error: function(data) {
+				alert("退回失败："+data);
+			}
+		});		 
+ }
 </script>
 </html>
     
