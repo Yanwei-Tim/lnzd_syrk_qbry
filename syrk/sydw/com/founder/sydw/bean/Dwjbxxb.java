@@ -91,6 +91,10 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	private String dz_dwdzmlpdm;
 	@FieldDesc("地址-单位地址门楼牌详址")
 	private String dz_dwdzmlpxz;
+	@FieldDesc("地址-单位坐标X")
+	private String dz_dwzbx;
+	@FieldDesc("地址-单位坐标Y")
+	private String dz_dwzby;
 	@FieldDesc("是否涉外单位代码")
 	private String sfswdwdm;
 	@FieldDesc("是否有消防鉴定代码")
@@ -132,7 +136,6 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	private String cxfs;
 	private String dwbm;
 	private String sjdwmc;
-	// zhang_guoliang@founder.com 增加地址描述业务流程【开始】
 	@FieldDesc("地址描述_坐标X")
 	private String dzms_zbx;
 	@FieldDesc("地址描述_坐标Y")
@@ -143,7 +146,6 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	@FieldDesc("地址描述_所属派出所代码")
 	private String dzms_sspcsdm;
 	private String dzms_sspcsmc;
-
 	@FieldDesc("地址描述")
 	private String dzms;
 	@FieldDesc("层户地址")
@@ -154,7 +156,6 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	private String dzms_dwdzmlpxz;
 	// 地址状态
 	private String dwdzzt;
-	// zhang_guoliang@founder.com 增加地址描述业务流程【结束】
 	/**
 	 * @return the sjdwmc
 	 */
@@ -169,12 +170,612 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 	@FieldDesc("房间合并")
 	private String shbs;
 
-	public String getShbs() {
-		return shbs;
+	public String getId() {
+		return id;
 	}
 
-	public void setShbs(String shbs) {
-		this.shbs = shbs;
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getDwlbdm() {
+		return dwlbdm;
+	}
+
+	public void setDwlbdm(String dwlbdm) {
+		this.dwlbdm = dwlbdm;
+	}
+
+	public String getSjdwid() {
+		return sjdwid;
+	}
+
+	public void setSjdwid(String sjdwid) {
+		this.sjdwid = sjdwid;
+	}
+
+	public String getGlbmid() {
+		return glbmid;
+	}
+
+	public void setGlbmid(String glbmid) {
+		this.glbmid = glbmid;
+	}
+
+	public String getGlpcsid() {
+		return glpcsid;
+	}
+
+	public void setGlpcsid(String glpcsid) {
+		this.glpcsid = glpcsid;
+	}
+
+	public String getGlfxjid() {
+		return glfxjid;
+	}
+
+	public void setGlfxjid(String glfxjid) {
+		this.glfxjid = glfxjid;
+	}
+
+	public String getZagldwbm() {
+		return zagldwbm;
+	}
+
+	public void setZagldwbm(String zagldwbm) {
+		this.zagldwbm = zagldwbm;
+	}
+
+	public String getDwmc() {
+		return dwmc;
+	}
+
+	public void setDwmc(String dwmc) {
+		this.dwmc = dwmc;
+	}
+
+	public String getSfblyyzzdm() {
+		return sfblyyzzdm;
+	}
+
+	public void setSfblyyzzdm(String sfblyyzzdm) {
+		this.sfblyyzzdm = sfblyyzzdm;
+	}
+
+	public String getYyzzh() {
+		return yyzzh;
+	}
+
+	public void setYyzzh(String yyzzh) {
+		this.yyzzh = yyzzh;
+	}
+
+	public String getYyzzyxq_qsrq() {
+		return yyzzyxq_qsrq;
+	}
+
+	public void setYyzzyxq_qsrq(String yyzzyxq_qsrq) {
+		this.yyzzyxq_qsrq = yyzzyxq_qsrq;
+	}
+
+	public String getYyzzyxq_jzrq() {
+		return yyzzyxq_jzrq;
+	}
+
+	public void setYyzzyxq_jzrq(String yyzzyxq_jzrq) {
+		this.yyzzyxq_jzrq = yyzzyxq_jzrq;
+	}
+
+	public String getYyzzfzjgid() {
+		return yyzzfzjgid;
+	}
+
+	public void setYyzzfzjgid(String yyzzfzjgid) {
+		this.yyzzfzjgid = yyzzfzjgid;
+	}
+
+	public String getYyzzfzjg() {
+		return yyzzfzjg;
+	}
+
+	public void setYyzzfzjg(String yyzzfzjg) {
+		this.yyzzfzjg = yyzzfzjg;
+	}
+
+	public String getZczb() {
+		return zczb;
+	}
+
+	public void setZczb(String zczb) {
+		this.zczb = zczb;
+	}
+
+	public String getZzjgdm() {
+		return zzjgdm;
+	}
+
+	public void setZzjgdm(String zzjgdm) {
+		this.zzjgdm = zzjgdm;
+	}
+
+	public String getZzjgmc() {
+		return zzjgmc;
+	}
+
+	public void setZzjgmc(String zzjgmc) {
+		this.zzjgmc = zzjgmc;
+	}
+
+	public String getSwdjhm() {
+		return swdjhm;
+	}
+
+	public void setSwdjhm(String swdjhm) {
+		this.swdjhm = swdjhm;
+	}
+
+	public String getJyfwzy() {
+		return jyfwzy;
+	}
+
+	public void setJyfwzy(String jyfwzy) {
+		this.jyfwzy = jyfwzy;
+	}
+
+	public String getJyfwjy() {
+		return jyfwjy;
+	}
+
+	public void setJyfwjy(String jyfwjy) {
+		this.jyfwjy = jyfwjy;
+	}
+
+	public String getJyfsdm() {
+		return jyfsdm;
+	}
+
+	public void setJyfsdm(String jyfsdm) {
+		this.jyfsdm = jyfsdm;
+	}
+
+	public String getJymj_mjpfm() {
+		return jymj_mjpfm;
+	}
+
+	public void setJymj_mjpfm(String jymj_mjpfm) {
+		this.jymj_mjpfm = jymj_mjpfm;
+	}
+
+	public String getJjlxdm() {
+		return jjlxdm;
+	}
+
+	public void setJjlxdm(String jjlxdm) {
+		this.jjlxdm = jjlxdm;
+	}
+
+	public String getLxdh() {
+		return lxdh;
+	}
+
+	public void setLxdh(String lxdh) {
+		this.lxdh = lxdh;
+	}
+
+	public String getCzhm() {
+		return czhm;
+	}
+
+	public void setCzhm(String czhm) {
+		this.czhm = czhm;
+	}
+
+	public String getSfyfwjddm() {
+		return sfyfwjddm;
+	}
+
+	public void setSfyfwjddm(String sfyfwjddm) {
+		this.sfyfwjddm = sfyfwjddm;
+	}
+
+	public String getJdsj() {
+		return jdsj;
+	}
+
+	public void setJdsj(String jdsj) {
+		this.jdsj = jdsj;
+	}
+
+	public String getSfwzdwdm() {
+		return sfwzdwdm;
+	}
+
+	public void setSfwzdwdm(String sfwzdwdm) {
+		this.sfwzdwdm = sfwzdwdm;
+	}
+
+	public String getDwztdm() {
+		return dwztdm;
+	}
+
+	public void setDwztdm(String dwztdm) {
+		this.dwztdm = dwztdm;
+	}
+
+	public String getHdrnrs() {
+		return hdrnrs;
+	}
+
+	public void setHdrnrs(String hdrnrs) {
+		this.hdrnrs = hdrnrs;
+	}
+
+	public String getYysj() {
+		return yysj;
+	}
+
+	public void setYysj(String yysj) {
+		this.yysj = yysj;
+	}
+
+	public String getSfzqxydm() {
+		return sfzqxydm;
+	}
+
+	public void setSfzqxydm(String sfzqxydm) {
+		this.sfzqxydm = sfzqxydm;
+	}
+
+	public String getZqxyygl() {
+		return zqxyygl;
+	}
+
+	public void setZqxyygl(String zqxyygl) {
+		this.zqxyygl = zqxyygl;
+	}
+
+	public String getBz() {
+		return bz;
+	}
+
+	public void setBz(String bz) {
+		this.bz = bz;
+	}
+
+	public String getDz_dwdzdm() {
+		return dz_dwdzdm;
+	}
+
+	public void setDz_dwdzdm(String dz_dwdzdm) {
+		this.dz_dwdzdm = dz_dwdzdm;
+	}
+
+	public String getDz_dwdzssxdm() {
+		return dz_dwdzssxdm;
+	}
+
+	public void setDz_dwdzssxdm(String dz_dwdzssxdm) {
+		this.dz_dwdzssxdm = dz_dwdzssxdm;
+	}
+
+	public String getDz_dwdzxz() {
+		return dz_dwdzxz;
+	}
+
+	public void setDz_dwdzxz(String dz_dwdzxz) {
+		this.dz_dwdzxz = dz_dwdzxz;
+	}
+
+	public String getDz_dwdzmlpdm() {
+		return dz_dwdzmlpdm;
+	}
+
+	public void setDz_dwdzmlpdm(String dz_dwdzmlpdm) {
+		this.dz_dwdzmlpdm = dz_dwdzmlpdm;
+	}
+
+	public String getDz_dwdzmlpxz() {
+		return dz_dwdzmlpxz;
+	}
+
+	public void setDz_dwdzmlpxz(String dz_dwdzmlpxz) {
+		this.dz_dwdzmlpxz = dz_dwdzmlpxz;
+	}
+
+	public String getDz_dwzbx() {
+		return dz_dwzbx;
+	}
+
+	public void setDz_dwzbx(String dz_dwzbx) {
+		this.dz_dwzbx = dz_dwzbx;
+	}
+
+	public String getDz_dwzby() {
+		return dz_dwzby;
+	}
+
+	public void setDz_dwzby(String dz_dwzby) {
+		this.dz_dwzby = dz_dwzby;
+	}
+
+	public String getSfswdwdm() {
+		return sfswdwdm;
+	}
+
+	public void setSfswdwdm(String sfswdwdm) {
+		this.sfswdwdm = sfswdwdm;
+	}
+
+	public String getSfyxfjddm() {
+		return sfyxfjddm;
+	}
+
+	public void setSfyxfjddm(String sfyxfjddm) {
+		this.sfyxfjddm = sfyxfjddm;
+	}
+
+	public String getKyrq() {
+		return kyrq;
+	}
+
+	public void setKyrq(String kyrq) {
+		this.kyrq = kyrq;
+	}
+
+	public String getZddwbs() {
+		return zddwbs;
+	}
+
+	public void setZddwbs(String zddwbs) {
+		this.zddwbs = zddwbs;
+	}
+
+	public String getSfzqxyydm() {
+		return sfzqxyydm;
+	}
+
+	public void setSfzqxyydm(String sfzqxyydm) {
+		this.sfzqxyydm = sfzqxyydm;
+	}
+
+	public String getXt_lrbz() {
+		return xt_lrbz;
+	}
+
+	public void setXt_lrbz(String xt_lrbz) {
+		this.xt_lrbz = xt_lrbz;
+	}
+
+	public String getXt_hssj() {
+		return xt_hssj;
+	}
+
+	public void setXt_hssj(String xt_hssj) {
+		this.xt_hssj = xt_hssj;
+	}
+
+	public String getDwywmc() {
+		return dwywmc;
+	}
+
+	public void setDwywmc(String dwywmc) {
+		this.dwywmc = dwywmc;
+	}
+
+	public String getDwywsx() {
+		return dwywsx;
+	}
+
+	public void setDwywsx(String dwywsx) {
+		this.dwywsx = dwywsx;
+	}
+
+	public String getHylbdm() {
+		return hylbdm;
+	}
+
+	public void setHylbdm(String hylbdm) {
+		this.hylbdm = hylbdm;
+	}
+
+	public String getTyrq01() {
+		return tyrq01;
+	}
+
+	public void setTyrq01(String tyrq01) {
+		this.tyrq01 = tyrq01;
+	}
+
+	public String getWz() {
+		return wz;
+	}
+
+	public void setWz(String wz) {
+		this.wz = wz;
+	}
+
+	public int getSrid() {
+		return srid;
+	}
+
+	public void setSrid(int srid) {
+		this.srid = srid;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getZbx() {
+		return zbx;
+	}
+
+	public void setZbx(String zbx) {
+		this.zbx = zbx;
+	}
+
+	public String getZby() {
+		return zby;
+	}
+
+	public void setZby(String zby) {
+		this.zby = zby;
+	}
+
+	public String getMapRadius() {
+		return mapRadius;
+	}
+
+	public void setMapRadius(String mapRadius) {
+		this.mapRadius = mapRadius;
+	}
+
+	public String getZbz() {
+		return zbz;
+	}
+
+	public void setZbz(String zbz) {
+		this.zbz = zbz;
+	}
+
+	public HttpEntity<byte[]> getZpfj() {
+		return zpfj;
+	}
+
+	public void setZpfj(HttpEntity<byte[]> zpfj) {
+		this.zpfj = zpfj;
+	}
+
+	public String getCondition() {
+		return condition;
+	}
+
+	public void setCondition(String condition) {
+		this.condition = condition;
+	}
+
+	public String getCxfs() {
+		return cxfs;
+	}
+
+	public void setCxfs(String cxfs) {
+		this.cxfs = cxfs;
+	}
+
+	public String getDwbm() {
+		return dwbm;
+	}
+
+	public void setDwbm(String dwbm) {
+		this.dwbm = dwbm;
+	}
+
+	public String getSjdwmc() {
+		return sjdwmc;
+	}
+
+	public void setSjdwmc(String sjdwmc) {
+		this.sjdwmc = sjdwmc;
+	}
+
+	public String getDzms_zbx() {
+		return dzms_zbx;
+	}
+
+	public void setDzms_zbx(String dzms_zbx) {
+		this.dzms_zbx = dzms_zbx;
+	}
+
+	public String getDzms_zby() {
+		return dzms_zby;
+	}
+
+	public void setDzms_zby(String dzms_zby) {
+		this.dzms_zby = dzms_zby;
+	}
+
+	public String getDzms_sszrqdm() {
+		return dzms_sszrqdm;
+	}
+
+	public void setDzms_sszrqdm(String dzms_sszrqdm) {
+		this.dzms_sszrqdm = dzms_sszrqdm;
+	}
+
+	public String getDzms_sszrqmc() {
+		return dzms_sszrqmc;
+	}
+
+	public void setDzms_sszrqmc(String dzms_sszrqmc) {
+		this.dzms_sszrqmc = dzms_sszrqmc;
+	}
+
+	public String getDzms_sspcsdm() {
+		return dzms_sspcsdm;
+	}
+
+	public void setDzms_sspcsdm(String dzms_sspcsdm) {
+		this.dzms_sspcsdm = dzms_sspcsdm;
+	}
+
+	public String getDzms_sspcsmc() {
+		return dzms_sspcsmc;
+	}
+
+	public void setDzms_sspcsmc(String dzms_sspcsmc) {
+		this.dzms_sspcsmc = dzms_sspcsmc;
+	}
+
+	public String getDzms() {
+		return dzms;
+	}
+
+	public void setDzms(String dzms) {
+		this.dzms = dzms;
+	}
+
+	public String getDzms_chdz() {
+		return dzms_chdz;
+	}
+
+	public void setDzms_chdz(String dzms_chdz) {
+		this.dzms_chdz = dzms_chdz;
+	}
+
+	public String getDzms_dwdzmlpdm() {
+		return dzms_dwdzmlpdm;
+	}
+
+	public void setDzms_dwdzmlpdm(String dzms_dwdzmlpdm) {
+		this.dzms_dwdzmlpdm = dzms_dwdzmlpdm;
+	}
+
+	public String getDzms_dwdzmlpxz() {
+		return dzms_dwdzmlpxz;
+	}
+
+	public void setDzms_dwdzmlpxz(String dzms_dwdzmlpxz) {
+		this.dzms_dwdzmlpxz = dzms_dwdzmlpxz;
+	}
+
+	public String getDwdzzt() {
+		return dwdzzt;
+	}
+
+	public void setDwdzzt(String dwdzzt) {
+		this.dwdzzt = dwdzzt;
+	}
+
+	public String getSfazzaglxxxt() {
+		return sfazzaglxxxt;
+	}
+
+	public void setSfazzaglxxxt(String sfazzaglxxxt) {
+		this.sfazzaglxxxt = sfazzaglxxxt;
 	}
 
 	public String getIsCheck() {
@@ -209,1021 +810,12 @@ public class Dwjbxxb extends BaseEntity implements Serializable {
 		this.hs_sj = hs_sj;
 	}
 
-	public String getZzjgmc() {
-		return zzjgmc;
+	public String getShbs() {
+		return shbs;
 	}
 
-	public void setZzjgmc(String zzjgmc) {
-		this.zzjgmc = zzjgmc;
-	}
-
-	public String getSfazzaglxxxt() {
-		return sfazzaglxxxt;
-	}
-
-	public void setSfazzaglxxxt(String sfazzaglxxxt) {
-		this.sfazzaglxxxt = sfazzaglxxxt;
-	}
-
-	// @star新增是否安装治安管理系统结束
-	public String getSjdwmc() {
-		return sjdwmc;
-	}
-
-	public String getDwdzzt() {
-		return dwdzzt;
-	}
-
-	public void setDwdzzt(String dwdzzt) {
-		this.dwdzzt = dwdzzt;
-	}
-
-	/**
-	 * @param sjdwmc
-	 *            the sjdwmc to set
-	 */
-	public void setSjdwmc(String sjdwmc) {
-		this.sjdwmc = sjdwmc;
-	}
-
-	/**
-	 * @return the zpfj
-	 */
-	public HttpEntity<byte[]> getZpfj() {
-		return zpfj;
-	}
-
-	/**
-	 * @param zpfj
-	 *            the zpfj to set
-	 */
-	public void setZpfj(HttpEntity<byte[]> zpfj) {
-		this.zpfj = zpfj;
-	}
-
-	/**
-	 * @return the cxfs
-	 */
-	public String getCxfs() {
-		return cxfs;
-	}
-
-	/**
-	 * @param cxfs
-	 *            the cxfs to set
-	 */
-	public void setCxfs(String cxfs) {
-		this.cxfs = cxfs;
-	}
-
-	/**
-	 * @return the zczb
-	 */
-	public String getZczb() {
-		return zczb;
-	}
-
-	/**
-	 * @param zczb
-	 *            the zczb to set
-	 */
-	public void setZczb(String zczb) {
-		this.zczb = zczb;
-	}
-
-	/**
-	 * @return the jymj_mjpfm
-	 */
-	public String getJymj_mjpfm() {
-		return jymj_mjpfm;
-	}
-
-	/**
-	 * @param jymjMjpfm
-	 *            the jymj_mjpfm to set
-	 */
-	public void setJymj_mjpfm(String jymjMjpfm) {
-		jymj_mjpfm = jymjMjpfm;
-	}
-
-	/**
-	 * @return the hdrnrs
-	 */
-	public String getHdrnrs() {
-		return hdrnrs;
-	}
-
-	/**
-	 * @param hdrnrs
-	 *            the hdrnrs to set
-	 */
-	public void setHdrnrs(String hdrnrs) {
-		this.hdrnrs = hdrnrs;
-	}
-
-	/**
-	 * @return the dwbm
-	 */
-	public String getDwbm() {
-		return dwbm;
-	}
-
-	/**
-	 * @param dwbm
-	 *            the dwbm to set
-	 */
-	public void setDwbm(String dwbm) {
-		this.dwbm = dwbm;
-	}
-
-	/**
-	 * @return the condition
-	 */
-	public String getCondition() {
-		return condition;
-	}
-
-	/**
-	 * @param condition
-	 *            the condition to set
-	 */
-	public void setCondition(String condition) {
-		this.condition = condition;
-	}
-
-	/**
-	 * @return the srid
-	 */
-	public int getSrid() {
-		return srid;
-	}
-
-	/**
-	 * @param srid
-	 *            the srid to set
-	 */
-	public void setSrid(int srid) {
-		this.srid = srid;
-	}
-
-	/**
-	 * @return the type
-	 */
-	public String getType() {
-		return type;
-	}
-
-	/**
-	 * @param type
-	 *            the type to set
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	/**
-	 * @return the zbx
-	 */
-	public String getZbx() {
-		return zbx;
-	}
-
-	/**
-	 * @param zbx
-	 *            the zbx to set
-	 */
-	public void setZbx(String zbx) {
-		this.zbx = zbx;
-	}
-
-	/**
-	 * @return the zby
-	 */
-	public String getZby() {
-		return zby;
-	}
-
-	/**
-	 * @param zby
-	 *            the zby to set
-	 */
-	public void setZby(String zby) {
-		this.zby = zby;
-	}
-
-	/**
-	 * @return the mapRadius
-	 */
-	public String getMapRadius() {
-		return mapRadius;
-	}
-
-	/**
-	 * @param mapRadius
-	 *            the mapRadius to set
-	 */
-	public void setMapRadius(String mapRadius) {
-		this.mapRadius = mapRadius;
-	}
-
-	/**
-	 * @return the zbz
-	 */
-	public String getZbz() {
-		return zbz;
-	}
-
-	/**
-	 * @param zbz
-	 *            the zbz to set
-	 */
-	public void setZbz(String zbz) {
-		this.zbz = zbz;
-	}
-
-	/**
-	 * @return the id
-	 */
-	public String getId() {
-		return id;
-	}
-
-	/**
-	 * @param id
-	 *            the id to set
-	 */
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	/**
-	 * @return the dwlbdm
-	 */
-	public String getDwlbdm() {
-		return dwlbdm;
-	}
-
-	/**
-	 * @param dwlbdm
-	 *            the dwlbdm to set
-	 */
-	public void setDwlbdm(String dwlbdm) {
-		this.dwlbdm = dwlbdm;
-	}
-
-	/**
-	 * @return the sjdwid
-	 */
-	public String getSjdwid() {
-		return sjdwid;
-	}
-
-	/**
-	 * @param sjdwid
-	 *            the sjdwid to set
-	 */
-	public void setSjdwid(String sjdwid) {
-		this.sjdwid = sjdwid;
-	}
-
-	/**
-	 * @return the glbmid
-	 */
-	public String getGlbmid() {
-		return glbmid;
-	}
-
-	/**
-	 * @param glbmid
-	 *            the glbmid to set
-	 */
-	public void setGlbmid(String glbmid) {
-		this.glbmid = glbmid;
-	}
-
-	/**
-	 * @return the glpcsid
-	 */
-	public String getGlpcsid() {
-		return glpcsid;
-	}
-
-	/**
-	 * @param glpcsid
-	 *            the glpcsid to set
-	 */
-	public void setGlpcsid(String glpcsid) {
-		this.glpcsid = glpcsid;
-	}
-
-	/**
-	 * @return the glfxjid
-	 */
-	public String getGlfxjid() {
-		return glfxjid;
-	}
-
-	/**
-	 * @param glfxjid
-	 *            the glfxjid to set
-	 */
-	public void setGlfxjid(String glfxjid) {
-		this.glfxjid = glfxjid;
-	}
-
-	/**
-	 * @return the zagldwbm
-	 */
-	public String getZagldwbm() {
-		return zagldwbm;
-	}
-
-	/**
-	 * @param zagldwbm
-	 *            the zagldwbm to set
-	 */
-	public void setZagldwbm(String zagldwbm) {
-		this.zagldwbm = zagldwbm;
-	}
-
-	/**
-	 * @return the dwmc
-	 */
-	public String getDwmc() {
-		return dwmc;
-	}
-
-	/**
-	 * @param dwmc
-	 *            the dwmc to set
-	 */
-	public void setDwmc(String dwmc) {
-		this.dwmc = dwmc;
-	}
-
-	/**
-	 * @return the sfblyyzzdm
-	 */
-	public String getSfblyyzzdm() {
-		return sfblyyzzdm;
-	}
-
-	/**
-	 * @param sfblyyzzdm
-	 *            the sfblyyzzdm to set
-	 */
-	public void setSfblyyzzdm(String sfblyyzzdm) {
-		this.sfblyyzzdm = sfblyyzzdm;
-	}
-
-	/**
-	 * @return the yyzzh
-	 */
-	public String getYyzzh() {
-		return yyzzh;
-	}
-
-	/**
-	 * @param yyzzh
-	 *            the yyzzh to set
-	 */
-	public void setYyzzh(String yyzzh) {
-		this.yyzzh = yyzzh;
-	}
-
-	/**
-	 * @return the yyzzyxq_qsrq
-	 */
-	public String getYyzzyxq_qsrq() {
-		return yyzzyxq_qsrq;
-	}
-
-	/**
-	 * @param yyzzyxqQsrq
-	 *            the yyzzyxq_qsrq to set
-	 */
-	public void setYyzzyxq_qsrq(String yyzzyxqQsrq) {
-		yyzzyxq_qsrq = yyzzyxqQsrq;
-	}
-
-	/**
-	 * @return the yyzzyxq_jzrq
-	 */
-	public String getYyzzyxq_jzrq() {
-		return yyzzyxq_jzrq;
-	}
-
-	/**
-	 * @param yyzzyxqJzrq
-	 *            the yyzzyxq_jzrq to set
-	 */
-	public void setYyzzyxq_jzrq(String yyzzyxqJzrq) {
-		yyzzyxq_jzrq = yyzzyxqJzrq;
-	}
-
-	/**
-	 * @return the yyzzfzjgid
-	 */
-	public String getYyzzfzjgid() {
-		return yyzzfzjgid;
-	}
-
-	/**
-	 * @param yyzzfzjgid
-	 *            the yyzzfzjgid to set
-	 */
-	public void setYyzzfzjgid(String yyzzfzjgid) {
-		this.yyzzfzjgid = yyzzfzjgid;
-	}
-
-	/**
-	 * @return the yyzzfzjg
-	 */
-	public String getYyzzfzjg() {
-		return yyzzfzjg;
-	}
-
-	/**
-	 * @param yyzzfzjg
-	 *            the yyzzfzjg to set
-	 */
-	public void setYyzzfzjg(String yyzzfzjg) {
-		this.yyzzfzjg = yyzzfzjg;
-	}
-
-	/**
-	 * @return the zzjgdm
-	 */
-	public String getZzjgdm() {
-		return zzjgdm;
-	}
-
-	/**
-	 * @param zzjgdm
-	 *            the zzjgdm to set
-	 */
-	public void setZzjgdm(String zzjgdm) {
-		this.zzjgdm = zzjgdm;
-	}
-
-	/**
-	 * @return the swdjhm
-	 */
-	public String getSwdjhm() {
-		return swdjhm;
-	}
-
-	/**
-	 * @param swdjhm
-	 *            the swdjhm to set
-	 */
-	public void setSwdjhm(String swdjhm) {
-		this.swdjhm = swdjhm;
-	}
-
-	/**
-	 * @return the jyfwzy
-	 */
-	public String getJyfwzy() {
-		return jyfwzy;
-	}
-
-	/**
-	 * @param jyfwzy
-	 *            the jyfwzy to set
-	 */
-	public void setJyfwzy(String jyfwzy) {
-		this.jyfwzy = jyfwzy;
-	}
-
-	/**
-	 * @return the jyfwjy
-	 */
-	public String getJyfwjy() {
-		return jyfwjy;
-	}
-
-	/**
-	 * @param jyfwjy
-	 *            the jyfwjy to set
-	 */
-	public void setJyfwjy(String jyfwjy) {
-		this.jyfwjy = jyfwjy;
-	}
-
-	/**
-	 * @return the jyfsdm
-	 */
-	public String getJyfsdm() {
-		return jyfsdm;
-	}
-
-	/**
-	 * @param jyfsdm
-	 *            the jyfsdm to set
-	 */
-	public void setJyfsdm(String jyfsdm) {
-		this.jyfsdm = jyfsdm;
-	}
-
-	/**
-	 * @return the jjlxdm
-	 */
-	public String getJjlxdm() {
-		return jjlxdm;
-	}
-
-	/**
-	 * @param jjlxdm
-	 *            the jjlxdm to set
-	 */
-	public void setJjlxdm(String jjlxdm) {
-		this.jjlxdm = jjlxdm;
-	}
-
-	/**
-	 * @return the lxdh
-	 */
-	public String getLxdh() {
-		return lxdh;
-	}
-
-	/**
-	 * @param lxdh
-	 *            the lxdh to set
-	 */
-	public void setLxdh(String lxdh) {
-		this.lxdh = lxdh;
-	}
-
-	/**
-	 * @return the czhm
-	 */
-	public String getCzhm() {
-		return czhm;
-	}
-
-	/**
-	 * @param czhm
-	 *            the czhm to set
-	 */
-	public void setCzhm(String czhm) {
-		this.czhm = czhm;
-	}
-
-	/**
-	 * @return the sfyfwjddm
-	 */
-	public String getSfyfwjddm() {
-		return sfyfwjddm;
-	}
-
-	/**
-	 * @param sfyfwjddm
-	 *            the sfyfwjddm to set
-	 */
-	public void setSfyfwjddm(String sfyfwjddm) {
-		this.sfyfwjddm = sfyfwjddm;
-	}
-
-	/**
-	 * @return the jdsj
-	 */
-	public String getJdsj() {
-		return jdsj;
-	}
-
-	/**
-	 * @param jdsj
-	 *            the jdsj to set
-	 */
-	public void setJdsj(String jdsj) {
-		this.jdsj = jdsj;
-	}
-
-	/**
-	 * @return the sfwzdwdm
-	 */
-	public String getSfwzdwdm() {
-		return sfwzdwdm;
-	}
-
-	/**
-	 * @param sfwzdwdm
-	 *            the sfwzdwdm to set
-	 */
-	public void setSfwzdwdm(String sfwzdwdm) {
-		this.sfwzdwdm = sfwzdwdm;
-	}
-
-	/**
-	 * @return the dwztdm
-	 */
-	public String getDwztdm() {
-		return dwztdm;
-	}
-
-	/**
-	 * @param dwztdm
-	 *            the dwztdm to set
-	 */
-	public void setDwztdm(String dwztdm) {
-		this.dwztdm = dwztdm;
-	}
-
-	/**
-	 * @return the yysj
-	 */
-	public String getYysj() {
-		return yysj;
-	}
-
-	/**
-	 * @param yysj
-	 *            the yysj to set
-	 */
-	public void setYysj(String yysj) {
-		this.yysj = yysj;
-	}
-
-	/**
-	 * @return the sfzqxydm
-	 */
-	public String getSfzqxydm() {
-		return sfzqxydm;
-	}
-
-	/**
-	 * @param sfzqxydm
-	 *            the sfzqxydm to set
-	 */
-	public void setSfzqxydm(String sfzqxydm) {
-		this.sfzqxydm = sfzqxydm;
-	}
-
-	/**
-	 * @return the zqxyygl
-	 */
-	public String getZqxyygl() {
-		return zqxyygl;
-	}
-
-	/**
-	 * @param zqxyygl
-	 *            the zqxyygl to set
-	 */
-	public void setZqxyygl(String zqxyygl) {
-		this.zqxyygl = zqxyygl;
-	}
-
-	/**
-	 * @return the bz
-	 */
-	public String getBz() {
-		return bz;
-	}
-
-	/**
-	 * @param bz
-	 *            the bz to set
-	 */
-	public void setBz(String bz) {
-		this.bz = bz;
-	}
-
-	/**
-	 * @return the dz_dwdzdm
-	 */
-	public String getDz_dwdzdm() {
-		return dz_dwdzdm;
-	}
-
-	/**
-	 * @param dzDwdzdm
-	 *            the dz_dwdzdm to set
-	 */
-	public void setDz_dwdzdm(String dzDwdzdm) {
-		dz_dwdzdm = dzDwdzdm;
-	}
-
-	/**
-	 * @return the dz_dwdzssxdm
-	 */
-	public String getDz_dwdzssxdm() {
-		return dz_dwdzssxdm;
-	}
-
-	/**
-	 * @param dzDwdzssxdm
-	 *            the dz_dwdzssxdm to set
-	 */
-	public void setDz_dwdzssxdm(String dzDwdzssxdm) {
-		dz_dwdzssxdm = dzDwdzssxdm;
-	}
-
-	/**
-	 * @return the dz_dwdzxz
-	 */
-	public String getDz_dwdzxz() {
-		return dz_dwdzxz;
-	}
-
-	/**
-	 * @param dzDwdzxz
-	 *            the dz_dwdzxz to set
-	 */
-	public void setDz_dwdzxz(String dzDwdzxz) {
-		dz_dwdzxz = dzDwdzxz;
-	}
-
-	/**
-	 * @return the dz_dwdzmlpdm
-	 */
-	public String getDz_dwdzmlpdm() {
-		return dz_dwdzmlpdm;
-	}
-
-	/**
-	 * @param dzDwdzmlpdm
-	 *            the dz_dwdzmlpdm to set
-	 */
-	public void setDz_dwdzmlpdm(String dzDwdzmlpdm) {
-		dz_dwdzmlpdm = dzDwdzmlpdm;
-	}
-
-	/**
-	 * @return the dz_dwdzmlpxz
-	 */
-	public String getDz_dwdzmlpxz() {
-		return dz_dwdzmlpxz;
-	}
-
-	/**
-	 * @param dzDwdzmlpxz
-	 *            the dz_dwdzmlpxz to set
-	 */
-	public void setDz_dwdzmlpxz(String dzDwdzmlpxz) {
-		dz_dwdzmlpxz = dzDwdzmlpxz;
-	}
-
-	/**
-	 * @return the sfswdwdm
-	 */
-	public String getSfswdwdm() {
-		return sfswdwdm;
-	}
-
-	/**
-	 * @param sfswdwdm
-	 *            the sfswdwdm to set
-	 */
-	public void setSfswdwdm(String sfswdwdm) {
-		this.sfswdwdm = sfswdwdm;
-	}
-
-	/**
-	 * @return the sfyxfjddm
-	 */
-	public String getSfyxfjddm() {
-		return sfyxfjddm;
-	}
-
-	/**
-	 * @param sfyxfjddm
-	 *            the sfyxfjddm to set
-	 */
-	public void setSfyxfjddm(String sfyxfjddm) {
-		this.sfyxfjddm = sfyxfjddm;
-	}
-
-	/**
-	 * @return the kyrq
-	 */
-	public String getKyrq() {
-		return kyrq;
-	}
-
-	/**
-	 * @param kyrq
-	 *            the kyrq to set
-	 */
-	public void setKyrq(String kyrq) {
-		this.kyrq = kyrq;
-	}
-
-	/**
-	 * @return the zddwbs
-	 */
-	public String getZddwbs() {
-		return zddwbs;
-	}
-
-	/**
-	 * @param zddwbs
-	 *            the zddwbs to set
-	 */
-	public void setZddwbs(String zddwbs) {
-		this.zddwbs = zddwbs;
-	}
-
-	/**
-	 * @return the sfzqxyydm
-	 */
-	public String getSfzqxyydm() {
-		return sfzqxyydm;
-	}
-
-	/**
-	 * @param sfzqxyydm
-	 *            the sfzqxyydm to set
-	 */
-	public void setSfzqxyydm(String sfzqxyydm) {
-		this.sfzqxyydm = sfzqxyydm;
-	}
-
-	/**
-	 * @return the xt_lrbz
-	 */
-	public String getXt_lrbz() {
-		return xt_lrbz;
-	}
-
-	/**
-	 * @param xtLrbz
-	 *            the xt_lrbz to set
-	 */
-	public void setXt_lrbz(String xtLrbz) {
-		xt_lrbz = xtLrbz;
-	}
-
-	/**
-	 * @return the xt_hssj
-	 */
-	public String getXt_hssj() {
-		return xt_hssj;
-	}
-
-	/**
-	 * @param xtHssj
-	 *            the xt_hssj to set
-	 */
-	public void setXt_hssj(String xtHssj) {
-		xt_hssj = xtHssj;
-	}
-
-	/**
-	 * @return the dwywmc
-	 */
-	public String getDwywmc() {
-		return dwywmc;
-	}
-
-	/**
-	 * @param dwywmc
-	 *            the dwywmc to set
-	 */
-	public void setDwywmc(String dwywmc) {
-		this.dwywmc = dwywmc;
-	}
-
-	/**
-	 * @return the dwywsx
-	 */
-	public String getDwywsx() {
-		return dwywsx;
-	}
-
-	/**
-	 * @param dwywsx
-	 *            the dwywsx to set
-	 */
-	public void setDwywsx(String dwywsx) {
-		this.dwywsx = dwywsx;
-	}
-
-	/**
-	 * @return the hylbdm
-	 */
-	public String getHylbdm() {
-		return hylbdm;
-	}
-
-	/**
-	 * @param hylbdm
-	 *            the hylbdm to set
-	 */
-	public void setHylbdm(String hylbdm) {
-		this.hylbdm = hylbdm;
-	}
-
-	/**
-	 * @return the tyrq01
-	 */
-	public String getTyrq01() {
-		return tyrq01;
-	}
-
-	/**
-	 * @param tyrq01
-	 *            the tyrq01 to set
-	 */
-	public void setTyrq01(String tyrq01) {
-		this.tyrq01 = tyrq01;
-	}
-
-	/**
-	 * @return the wz
-	 */
-	public String getWz() {
-		return wz;
-	}
-
-	/**
-	 * @param wz
-	 *            the wz to set
-	 */
-	public void setWz(String wz) {
-		this.wz = wz;
-	}
-
-	public String getDzms_zbx() {
-		return dzms_zbx;
-	}
-
-	public void setDzms_zbx(String dzms_zbx) {
-		this.dzms_zbx = dzms_zbx;
-	}
-
-	public String getDzms_zby() {
-		return dzms_zby;
-	}
-
-	public void setDzms_zby(String dzms_zby) {
-		this.dzms_zby = dzms_zby;
-	}
-
-	public String getDzms_sszrqdm() {
-		return dzms_sszrqdm;
-	}
-
-	public void setDzms_sszrqdm(String dzms_sszrqdm) {
-		this.dzms_sszrqdm = dzms_sszrqdm;
-	}
-
-	public String getDzms_sspcsdm() {
-		return dzms_sspcsdm;
-	}
-
-	public void setDzms_sspcsdm(String dzms_sspcsdm) {
-		this.dzms_sspcsdm = dzms_sspcsdm;
-	}
-
-	public String getDzms_chdz() {
-		return dzms_chdz;
-	}
-
-	public void setDzms_chdz(String dzms_chdz) {
-		this.dzms_chdz = dzms_chdz;
-	}
-
-	public String getDzms_dwdzmlpdm() {
-		return dzms_dwdzmlpdm;
-	}
-
-	public void setDzms_dwdzmlpdm(String dzms_dwdzmlpdm) {
-		this.dzms_dwdzmlpdm = dzms_dwdzmlpdm;
-	}
-
-	public String getDzms_dwdzmlpxz() {
-		return dzms_dwdzmlpxz;
-	}
-
-	public void setDzms_dwdzmlpxz(String dzms_dwdzmlpxz) {
-		this.dzms_dwdzmlpxz = dzms_dwdzmlpxz;
-	}
-
-	public String getDzms_sszrqmc() {
-		return dzms_sszrqmc;
-	}
-
-	public void setDzms_sszrqmc(String dzms_sszrqmc) {
-		this.dzms_sszrqmc = dzms_sszrqmc;
-	}
-
-	public String getDzms_sspcsmc() {
-		return dzms_sspcsmc;
-	}
-
-	public void setDzms_sspcsmc(String dzms_sspcsmc) {
-		this.dzms_sspcsmc = dzms_sspcsmc;
-	}
-
-	public String getDzms() {
-		return dzms;
-	}
-
-	public void setDzms(String dzms) {
-		this.dzms = dzms;
+	public void setShbs(String shbs) {
+		this.shbs = shbs;
 	}
 
 }

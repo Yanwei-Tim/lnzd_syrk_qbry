@@ -327,7 +327,6 @@ public class SydwController extends BaseController {
 		sessionBean = getSessionBean(sessionBean);
 		//增加查询条件 begin
 		if(StringUtils.isBlank(page.getFlag()) && null != sessionBean){
-			//entity.setGlpcsid((String)sessionBean.getExtendMap().get("ssPcsCode"));
 			entity.setGlbmid((String)sessionBean.getUserOrgCode());
 		} 
 		//增加查询条件 end

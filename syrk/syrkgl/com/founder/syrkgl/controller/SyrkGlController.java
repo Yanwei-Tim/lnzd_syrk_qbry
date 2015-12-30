@@ -186,7 +186,7 @@ public class SyrkGlController extends BaseController {
 	 */
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public ModelAndView add(String cyzjdm, String zjhm, String mainTabID,
-			String invokeJSMethod, SessionBean sessionBean, String messageid) {
+			String invokeJSMethod, SessionBean sessionBean, String messageid,String dtchdzid) {
 		// 这里修改兼容通过message打开
 		if(messageid != null && !"".equals(messageid)){
 			SysMessage sysmessage = new SysMessage();
@@ -220,6 +220,7 @@ public class SyrkGlController extends BaseController {
 			DzXxbVO kgJm = dzService.queryHjdKgJm(zrqdm); // 空挂居民
 			mv.addObject("kgJm", kgJm);
 		}
+		mv.addObject("dtchdzid", dtchdzid);
 		mv.addObject("mainTabID", mainTabID);
 		mv.addObject("invokeJSMethod", invokeJSMethod);
 		return mv;

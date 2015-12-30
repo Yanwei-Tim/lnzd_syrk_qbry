@@ -10,24 +10,21 @@
 %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>实有人口新增</title>
-<script type="text/javascript">
-   var orglevel = "<%=orglevel%>";
-</script>
-<script type="text/javascript" src="<%=contextPath%>/js/syrkgl/syrkGlAdd.js"></script>
-
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>实有人口新增</title>
+	<script type="text/javascript">
+	   var dtchdzid = "${dtchdzid}";
+	   var orglevel = "<%=orglevel%>";
+	</script>
+	<script type="text/javascript" src="<%=contextPath%>/js/syrkgl/syrkGlAdd.js"></script>
 </head>
-
 <body style="margin-top:20px; margin-bottom:10px" class="bodybg">
 <input type="hidden" id="isCheck" value="${isCheck}"/>
 <div data-options="region:'center',split:true" style="border-width: 0px;margin:0 0 0;text-align:center;" class="bodybg">
-
 	<table height="100%" style="margin:0 auto;"><tr><td height="100%" valign="top" align="center">
 		<div class="pop_conta">
 		<div class="pop_contb">
 		<div class="pop_contc">
-		
 			<div data-options="region:'center', split:true" style="width:800px; border-width: 0px;">
 				<form action="" id="jbxxForm" name="jbxxForm" method="post">
 				<table border="0" cellpadding="0" cellspacing="10" width="100%" align="center">
@@ -655,10 +652,10 @@
 					<tr class="dialogTr" id="jwry_fz_tr2" style="display: none;">
 					    <td width="20%" class="dialogTd" align="right">房主外文姓：</td>
 		    	        <td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="jwry_fz_wwx" name="jwry.fz_wwx" value="${jwry.fz_wwx}" style="width:200px;" maxlength="40"
-		    	        	data-options="required:false,validType:['letter'],charSet:'half',tipPosition:'right'"/></td>
+		    	        	data-options="required:false,validType:['letterOrSpace'],charSet:'half',tipPosition:'right'"/></td>
 					 	<td width="20%" class="dialogTd" align="right">房主外文名：</td>
 		    	        <td width="30%" class="dialogTd"><input class="easyui-validatebox" type="text" id="jwry_fz_wwm" name="jwry.fz_wwm" value="${jwry.fz_wwm}" style="width:200px;" maxlength="40"
-		    	        	data-options="required:false,validType:['letter'],charSet:'half',tipPosition:'right'"/></td>
+		    	        	data-options="required:false,validType:['letterOrSpace'],charSet:'half',tipPosition:'right'"/></td>
 					</tr>
 					<tr class="dialogTr" id="jwry_fz_tr3" style="display: none;">
 		    	        <td width="20%" class="dialogTd" align="right">房主出生日期：</td>

@@ -48,26 +48,8 @@ SyrkGl.onloadMap = function(){
 	SyrkGl.map.showNewMapServer("mapDiv","SyrkGl.map");
 	/*加载地图工具条*/
 	SyrkGl.map.buildTools("mapDiv","toolDiv","SyrkGl.map");
-	/*设置工具条显示的位置*/
-	SyrkGl.diyToolDiv();
-	/*窗口变化地图工具条自动变*/
-	$("#mapDiv").resize(function(){SyrkGl.diyToolDiv();});
 	/*加载边界坐标值*/
 	SyrkGl.map.moveMapToBjzbz(bjzbz);
-};
-/**
- * @title:diyToolDiv
- * @description:设置工具条显示的位置
- * @author: zhang_guoliang@founder.com
- * @param   
- * @date:2015-04-14 10:29:32
- */	
-SyrkGl.diyToolDiv = function(){
-	var top = $("#mapDiv").height() - 40;
-	$("#toolDiv").css({
-		"top" : top,
-		"left" : 10
-	});
 };
 /**
  * @title:loadPoint

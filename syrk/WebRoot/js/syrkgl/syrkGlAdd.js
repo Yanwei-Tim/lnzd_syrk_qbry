@@ -112,7 +112,6 @@ $(document).ready(function(){
 		jbxx_zjhm_onblur();
 	}
 	//gem end
-	
 });
 
 // 保存按钮 type标示为1为保存并打印，0为保存（默认）
@@ -190,17 +189,19 @@ function saveForm(type) {
 				}
 			}
 			else { // 人户一致
-				if ($("#czrk_jzd_mlpdm").val() == "") {
-					topMessager.alert("", "居住地必须为标准地址，请重新选择！");
-					var comboText = $("#czrk_jzd1").next(".combo").children(".combo-text");
-					comboText.focus();
-					return;
-				}
-				if ($("#czrk_jzd2").combobox("getValue") == "") {
-					topMessager.alert("", "居住地必须为标准地址，请重新选择！");
-					var comboText = $("#czrk_jzd2").next(".combo").children(".combo-text");
-					comboText.focus();
-					return;
+				if(dtchdzid==""){
+					if ($("#czrk_jzd_mlpdm").val() == "") {
+						topMessager.alert("", "居住地必须为标准地址，请重新选择！");
+						var comboText = $("#czrk_jzd1").next(".combo").children(".combo-text");
+						comboText.focus();
+						return;
+					}
+					if ($("#czrk_jzd2").combobox("getValue") == "") {
+						topMessager.alert("", "居住地必须为标准地址，请重新选择！");
+						var comboText = $("#czrk_jzd2").next(".combo").children(".combo-text");
+						comboText.focus();
+						return;
+					}
 				}
 				$("#czrk_hjd_xzqhdm").val($("#czrk_jzd_xzqhdm").val());
 				$("#czrk_hjd_mlpdm").val($("#czrk_jzd_mlpdm").val());
@@ -210,17 +211,19 @@ function saveForm(type) {
 			}
 		} 
 		else if (syrkywlxdmValue == "2") {
-			if ($("#jzrk_jzd_mlpdm").val() == "") {
-				topMessager.alert("", "居住地必须为标准地址，请重新选择！");
-				var comboText = $("#jzrk_jzd1").next(".combo").children(".combo-text");
-				comboText.focus();
-				return;
-			}
-			if ($("#jzrk_jzd2").combobox("getValue") == "") {
-				topMessager.alert("", "居住地必须为标准地址，请重新选择！");
-				var comboText = $("#jzrk_jzd2").next(".combo").children(".combo-text");
-				comboText.focus();
-				return;
+			if(dtchdzid==""){
+				if ($("#jzrk_jzd_mlpdm").val() == "") {
+					topMessager.alert("", "居住地必须为标准地址，请重新选择！");
+					var comboText = $("#jzrk_jzd1").next(".combo").children(".combo-text");
+					comboText.focus();
+					return;
+				}
+				if ($("#jzrk_jzd2").combobox("getValue") == "") {
+					topMessager.alert("", "居住地必须为标准地址，请重新选择！");
+					var comboText = $("#jzrk_jzd2").next(".combo").children(".combo-text");
+					comboText.focus();
+					return;
+				}
 			}
 			if ($("#jzrk_jz_ksrq01").val() != "" && $("#jzrk_yj_lksj").val() != "" && $("#jzrk_jz_ksrq01").val() >  $("#jzrk_yj_lksj").val()) {
 				topMessager.alert("", "预计离开时间不能小于寄住开始时间，请重新输入！");
@@ -237,17 +240,19 @@ function saveForm(type) {
 			}
 		} 
 		else if (syrkywlxdmValue == "3") {
-			if ($("#ldrk_jzd_mlpdm").val() == "") {
-				topMessager.alert("", "居住地必须为标准地址，请重新选择！");
-				var comboText = $("#ldrk_jzd1").next(".combo").children(".combo-text");
-				comboText.focus();
-				return;
-			}
-			if ($("#ldrk_jzd2").combobox("getValue") == "") {
-				topMessager.alert("", "居住地必须为标准地址，请重新选择！");
-				var comboText = $("#ldrk_jzd2").next(".combo").children(".combo-text");
-				comboText.focus();
-				return;
+			if(dtchdzid==""){
+				if ($("#ldrk_jzd_mlpdm").val() == "") {
+					topMessager.alert("", "居住地必须为标准地址，请重新选择！");
+					var comboText = $("#ldrk_jzd1").next(".combo").children(".combo-text");
+					comboText.focus();
+					return;
+				}
+				if ($("#ldrk_jzd2").combobox("getValue") == "") {
+					topMessager.alert("", "居住地必须为标准地址，请重新选择！");
+					var comboText = $("#ldrk_jzd2").next(".combo").children(".combo-text");
+					comboText.focus();
+					return;
+				}
 			}
 			var ldrk_zjzcsfldmValue = $("#ldrk_zjzcsfldm").combotree("getValue");
 			if (ldrk_zjzcsfldmValue == "30") { // 居住处所为租赁房屋
@@ -261,17 +266,19 @@ function saveForm(type) {
 		else if (syrkywlxdmValue == "4") {
 			var dzredio = $('input[name="jwry.fz_sflb"]:checked').val();
 			if(dzredio=="0"){
-				if ($("#jwry_jzd_mlpdm").val() == "") {
-					topMessager.alert("", "居住地必须为标准地址，请重新选择！");
-					var comboText = $("#jwry_jzd1").next(".combo").children(".combo-text");
-					comboText.focus();
-					return;
-				}
-				if ($("#jwry_jzd2").combobox("getValue") == "") {
-					topMessager.alert("", "居住地必须为标准地址，请重新选择！");
-					var comboText = $("#jwry_jzd2").next(".combo").children(".combo-text");
-					comboText.focus();
-					return;
+				if(dtchdzid==""){
+					if ($("#jwry_jzd_mlpdm").val() == "") {
+						topMessager.alert("", "居住地必须为标准地址，请重新选择！");
+						var comboText = $("#jwry_jzd1").next(".combo").children(".combo-text");
+						comboText.focus();
+						return;
+					}
+					if ($("#jwry_jzd2").combobox("getValue") == "") {
+						topMessager.alert("", "居住地必须为标准地址，请重新选择！");
+						var comboText = $("#jwry_jzd2").next(".combo").children(".combo-text");
+						comboText.focus();
+						return;
+					}
 				}
 			}
 			if ($("#jwry_zsrq").val() != "" && $("#jwry_nlkrq").val() != "" && $("#jwry_zsrq").val() >  $("#jwry_nlkrq").val()) {
@@ -289,17 +296,19 @@ function saveForm(type) {
 			}*/
 		}
 		else if (syrkywlxdmValue == "5") {
-			if ($("#wlrk_jzd_mlpdm").val() == "") {
-				topMessager.alert("", "居住地必须为标准地址，请重新选择！");
-				var comboText = $("#wlrk_jzd1").next(".combo").children(".combo-text");
-				comboText.focus();
-				return;
-			}
-			if ($("#wlrk_jzd2").combobox("getValue") == "") {
-				topMessager.alert("", "居住地必须为标准地址，请重新选择！");
-				var comboText = $("#wlrk_jzd2").next(".combo").children(".combo-text");
-				comboText.focus();
-				return;
+			if(dtchdzid==""){
+				if ($("#wlrk_jzd_mlpdm").val() == "") {
+					topMessager.alert("", "居住地必须为标准地址，请重新选择！");
+					var comboText = $("#wlrk_jzd1").next(".combo").children(".combo-text");
+					comboText.focus();
+					return;
+				}
+				if ($("#wlrk_jzd2").combobox("getValue") == "") {
+					topMessager.alert("", "居住地必须为标准地址，请重新选择！");
+					var comboText = $("#wlrk_jzd2").next(".combo").children(".combo-text");
+					comboText.focus();
+					return;
+				}
 			}
 			var wlrk_zjzcsfldmValue = $("#wlrk_zjzcsfldm").combotree("getValue");
 			if (wlrk_zjzcsfldmValue == "30") { // 居住处所为租赁房屋
@@ -377,8 +386,9 @@ function saveForm(type) {
 								});
 								closeSelf();
 								executeTabPageMethod(mainTabID, invokeJSMethod);
-							}
-							else {
+							}else if(dtchdzid!=""){
+								parent.DzBuildingRoom.initSaveSyrk_back(syrkywlxdmValue);
+							}else{
 								var openUrl = contextPath + "/syrkEdit/"+ result.ryid + "/" + result.saveID + "/view";
 								location.href = openUrl;
 							}
@@ -606,6 +616,7 @@ function syrkywlxdm_onChange(newValue, oldValue) {
 		document.getElementById("jbxx_zjzlDiv").style.display ='';
 		setComboRequired("jbxx_cyzjdm", true);
 	}
+	onloadJzdz(syrkywlxdmValue);
 }
 
 // 基本信息，证件种类改变事件
@@ -1467,4 +1478,81 @@ function onRadioClick(bz){
 		 $("#jwry_jzd_zbx").val("");
 		 $("#jwry_jzd_zby").val("");
 	 }
+};
+/**
+ * @title:onloadJzdz
+ * @description:加载居住地址
+ * @author: zhang_guoliang@founder.com
+ * @param syrkywlxdmValue 业务类型
+ * @date:2015-12-23 18:27:43
+ */
+function onloadJzdz(syrkywlxdmValue){
+	if(dtchdzid!=""){
+		var url = contextPath+"/dz/chdz/"+dtchdzid;
+		$.ajax({
+			type:"GET",
+			sync:true,
+			url:url,
+			dataType:'json',
+			success:function(json){
+				if(syrkywlxdmValue=="2"){
+					$("#jzrk_jzd1").combobox("setValue",json[0].mlpxz).combobox("setText",json[0].mlpxz);
+					$("#jzrk_jzd_mlpdm").val(json[0].mlpdm);
+					$("#jzrk_jzd_mlpxz").val(json[0].mlpxz);
+					$("#jzrk_jzd2").combobox("setValue",json[0].dzxz.replace(json[0].mlpxz,''));
+					$("#jzrk_jzd_dzid").val(dtchdzid);
+					$("#jzrk_jzd_xzqhdm").val(json[0].xzqhdm);
+					$("#jzrk_jzd_dzxz").val(json[0].dzxz);
+					$("#jzrk_jzd_zbx").val(json[0].zbx);
+					$("#jzrk_jzd_zby").val(json[0].zby);
+					setInputReadonly('jzrk_jzd1', true);
+					setInputReadonly('jzrk_jzd2', true);
+					setComboRequired('jzrk_jzd1', false);
+					setComboRequired('jzrk_jzd2', false);
+				}else if(syrkywlxdmValue=="3"){
+					$("#ldrk_jzd1").combobox("setValue",json[0].mlpxz);
+					$("#ldrk_jzd_mlpdm").val(json[0].mlpdm);
+					$("#ldrk_jzd_mlpxz").val(json[0].mlpxz);
+					$("#ldrk_jzd2").combobox("setValue",json[0].dzxz.replace(json[0].mlpxz,''));
+					$("#ldrk_jzd_dzid").val(dtchdzid);
+					$("#ldrk_jzd_xzqhdm").val(json[0].xzqhdm);
+					$("#ldrk_jzd_dzxz").val(json[0].dzxz);
+					$("#ldrk_jzd_zbx").val(json[0].zbx);
+					$("#ldrk_jzd_zby").val(json[0].zby);
+					setInputReadonly('ldrk_jzd1', true);
+					setInputReadonly('ldrk_jzd2', true);
+					setComboRequired('ldrk_jzd1', false);
+					setComboRequired('ldrk_jzd2', false);
+				}else if(syrkywlxdmValue=="4"){
+					$("#jwry_jzd1").combobox("setValue",json[0].mlpxz);
+					$("#jwry_jzd_mlpdm").val(json[0].mlpdm);
+					$("#jwry_jzd_mlpxz").val(json[0].mlpxz);
+					$("#jwry_jzd2").combobox("setValue",json[0].dzxz.replace(json[0].mlpxz,''));
+					$("#jwry_jzd_dzid").val(dtchdzid);
+					$("#jwry_jzd_xzqhdm").val(json[0].xzqhdm);
+					$("#jwry_jzd_dzxz").val(json[0].dzxz);
+					$("#jwry_jzd_zbx").val(json[0].zbx);
+					$("#jwry_jzd_zby").val(json[0].zby);
+					setInputReadonly('jwry_jzd1', true);
+					setInputReadonly('jwry_jzd2', true);
+					setComboRequired('jwry_jzd1', false);
+					setComboRequired('jwry_jzd2', false);
+				}else if(syrkywlxdmValue=="5"){
+					$("#wlrk_jzd1").combobox("setValue",json[0].mlpxz);
+					$("#wlrk_jzd_mlpdm").val(json[0].mlpdm);
+					$("#wlrk_jzd_mlpxz").val(json[0].mlpxz);
+					$("#wlrk_jzd2").combobox("setValue",json[0].dzxz.replace(json[0].mlpxz,''));
+					$("#wlrk_jzd_dzid").val(dtchdzid);
+					$("#wlrk_jzd_xzqhdm").val(json[0].xzqhdm);
+					$("#wlrk_jzd_dzxz").val(json[0].dzxz);
+					$("#wlrk_jzd_zbx").val(json[0].zbx);
+					$("#wlrk_jzd_zby").val(json[0].zby);
+					setInputReadonly('wlrk_jzd1', true);
+					setInputReadonly('wlrk_jzd2', true);
+					setComboRequired('wlrk_jzd1', false);
+					setComboRequired('wlrk_jzd2', false);
+				}
+			}
+		});
+	}
 };

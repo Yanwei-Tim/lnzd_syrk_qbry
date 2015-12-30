@@ -37,9 +37,9 @@
 		        		border:false,
 		        		sortName:'',
 		        		sortOrder:'desc',
-		        		pageSize:getAutoPageSize(105),
-		        		pageList:[getAutoPageSize(105),
-		        		getAutoPageSize(105) * 2],
+		        		pageSize:getAutoPageSize(120),
+		        		pageList:[getAutoPageSize(120),
+		        		getAutoPageSize(120) * 2],
 		        		singleSelect:true,
 		        		fitColumns:true,
 		        		nowrap:false,
@@ -47,11 +47,11 @@
 						onClickRow:SyfwQuery.onClickRow">
 			        <thead>
 			          <tr>
-			           	<th data-options="field:'fwlbdm',width:70,align:'left',halign:'center',sortable:true,formatter:dictFormatter,dictName:contextPath+'/common/dict/D_BZ_FWLBDM.js'">房屋类别</th>
-						<th data-options="field:'fwdz_dzxz',width:200,align:'right',halign:'center',formatter:subjzdz,sortable:true">房屋地址</th>
-						<th data-options="field:'fz_xm',width:70,align:'center',halign:'center',sortable:true">房主</th>
-						<th data-options="field:'sfczfw',width:70,align:'center',halign:'center',sortable:true,formatter:dictFormatter,dictName:contextPath+'/common/dict/D_BZ_SF.js'">出租房屋</th>
-						<th data-options="field:'process',width:100,align:'center',halign:'center',formatter:SyfwQuery.datagridProcessFormater">操作</th>
+			           	<th data-options="field:'fwlbdm',width:60,align:'left',halign:'center',sortable:true,formatter:dictFormatter,dictName:contextPath+'/common/dict/D_BZ_FWLBDM.js'">房屋类别</th>
+						<th data-options="field:'fwdz_dzxz',width:270,align:'left',halign:'center',formatter:SyfwQuery.subjzddzxz,sortable:true">房屋地址</th>
+						<th data-options="field:'fz_xm',width:60,align:'center',halign:'center',sortable:true">房主</th>
+						<th data-options="field:'sfczfw',width:60,align:'center',halign:'center',sortable:true,formatter:dictFormatter,dictName:contextPath+'/common/dict/D_BZ_SF.js'">出租房屋</th>
+						<th data-options="field:'process',width:60,align:'center',halign:'center',formatter:SyfwQuery.datagridProcessFormater">操作</th>
 					</tr>
 			       </thead>
 	       </table>

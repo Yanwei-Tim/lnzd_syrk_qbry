@@ -23,6 +23,7 @@
 	function logout_click(){
 	 	window.top.location.href = contextPath+"/LoginPage/login?action=logout";
 	 	//document.forms["dataform"].submit();
+	 	//window.close();
 	}
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -37,13 +38,8 @@
 						<img src="../common/skin/images/banner_user.jpg" width="42" height="42" border="0">
 					</td>
 					<td>
-					    <span class="userInfo">
-					       <%=userName%>
-					    </span>
-					    <br>
-					    <span class="userInfo">
-					       <%=userOrgName%>
-					    </span>
+					    <div class="userInfo"><%=userName%></div>
+					    <div class="userInfo"><%=userOrgName%></div>
 					</td>
 					<td class="logout1" onclick="logout_click()" onmousemove="this.className='logout2'" onmouseout="this.className='logout1'">退出</td>
 				</tr>
