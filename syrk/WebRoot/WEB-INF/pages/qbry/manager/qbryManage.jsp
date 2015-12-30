@@ -62,7 +62,6 @@
 		height:22px;
 	}
 	</style>
-    <script type="text/javascript" src="<%=contextPath%>/js/zdrygl/zdryzbManage.js"></script>
   </head>
    <body class="easyui-layout" data-options="fit:true,border:false">
        <div data-options="region:'center',border:false" style="width:538px;height:auto;">
@@ -94,55 +93,108 @@
 			       </thead>
 	       </table>
 	       <div id="datagridToolbar" style="padding:5px;height:auto;">
+	       <form id ="queryForm" >
 			<table cellspacing = "0" cellpadding="0" class="table-toolbar">
 				<tr>
 					<td class="td-title">重点人员大类:</td>
-					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+					<td class="td-value">
+						<input class="easyui-combobox" type="text" id="zdrygllxdm" name="zdrygllxdm" style="width:180px;" 
+								data-options="url: contextPath + '/common/dict/GB_D_XBDM.js',
+								    	   valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/>
+						<span>*字典未找到(用的性别字典)</span>
+					</td>
 					<td class="td-title">重点人员大细类:</td>
-					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+					<td class="td-value">
+						<input class="easyui-combobox" type="text" id="zdrylb" name="zdrylb" style="width:180px;" 
+								data-options="url: contextPath + '/common/dict/GB_D_XBDM.js',
+								    	   valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/>
+						<span>*字典未找到(用的性别字典)</span>
+					</td>
 					<td class="td-title">姓名：</td>
-					<td class="td-value"><input type="text" class="easyui-validatebox"/></td>
+					<td class="td-value">
+						<input type="text" name="xm" id="xm" class="easyui-validatebox" data-options="required:false,validType:'maxLength[20]'" style="width:180px;"/>
+					</td>
 				</tr>
 				<tr>
-					<td class="td-title">证件号码:</td>
-					<td class="td-value"><input type="text" class="easyui-validatebox"/></td>
+					<td class="td-title">身份证号码:</td>
+					<td class="td-value">
+						<input type="text" name="gmsfhm" id="gmsfhm" class="easyui-validatebox" data-options="required:false,validType:'maxLength[20]'" style="width:180px;"/>
+					</td>
 					<td class="td-title">性别:</td>
-					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+					<td class="td-value">
+						<input class="easyui-combobox" type="text" id="xbdm" name="xbdm" style="width:180px;" 
+								data-options="url: contextPath + '/common/dict/GB_D_XBDM.js',
+								    	   valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/>
+					</td>
 					<td class="td-title">国籍：</td>
-					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+					<td class="td-value">
+						<input class="easyui-combobox" type="text" id="gjdm" name="gjdm" style="width:180px;" 
+								data-options="url: contextPath + '/common/dict/GB_D_GJHDQDM.js',
+								    	   valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/>
+					</td>
 				</tr>
 				<tr>
 					<td class="td-title">现居住地址:</td>
-					<td class="td-value"><input type="text" class="easyui-validatebox"/></td>
+					<td class="td-value">
+						<input type="text" name="xzd" id="xzd" class="easyui-validatebox" data-options="required:false,validType:'maxLength[20]'" style="width:180px;"/>
+					</td>
 					<td class="td-title">户籍地址:</td>
-					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+					<td class="td-value">
+						<input class="easyui-combobox" type="text" id="hjd" name="hjd" style="width:180px;" 
+								data-options="url: contextPath + '/common/dict/GB_D_XBDM.js',
+								    	   valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/>
+						<span>*字典未找到(用的性别字典)</span>
+					</td>
 					<td class="td-title">责任单位：</td>
-					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+					<td class="td-value">
+						<input class="easyui-combobox" type="text" id="bjzdrybh" name="bjzdrybh" style="width:180px;" 
+								data-options="url: contextPath + '/common/dict/GB_D_XBDM.js',
+								    	   valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/>
+						<span>*需求未明确</span>
+					</td>
 				</tr>
 				<tr>
 					<td class="td-title">当前级别:</td>
-					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+					<td class="td-value">
+						<input class="easyui-combobox" type="text" id="dqjb" name="dqjb" style="width:180px;" 
+								data-options="url: contextPath + '/common/dict/D_ORG_ORGLEVEL.js',
+								    	   valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/>
+					</td>
 					<td class="td-title">下发状态:</td>
-					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+					<td class="td-value">
+						<input class="easyui-combobox" type="text" id="glzt" name="glzt" style="width:180px;" 
+								data-options="url: contextPath + '/common/dict/BD_D_QBRYGLZT.js',
+								    	   valueField:'id',textField:'text',selectOnNavigation:false,method:'get'"/>
+					</td>
 					<td class="td-title">纪实时间:</td>
-					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+					<td class="td-value">
+						<input class="easyui-combobox" data-options="width:180,height:22"/>
+						<span>*数据表中未找到字段</span>
+					</td>
 				</tr>
 				<tr>
 					<td class="td-title">入部省库时间-开始:</td>
-					<td class="td-value"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+					<td class="td-value">
+						<input type="text" name="xzd" id="xzd" class="easyui-validatebox" data-options="required:false,validType:'maxLength[20]'" style="width:180px;"/>
+						<span>*需求未确认</span>
+					</td>
 					<td class="td-title">入部省库时间-截止:</td>
-					<td class="td-value" colspan="3"><input class="easyui-combobox" data-options="width:160,height:22"/></td>
+					<td class="td-value" colspan="3">
+						<input type="text" name="xzd" id="xzd" class="easyui-validatebox" data-options="required:false,validType:'maxLength[20]'" style="width:180px;"/>
+						<span>*需求未确认</span>
+					</td>
 				</tr>
 				<tr>
 					<td class="td-btns" colspan="6" align="center">
 						<div class="td-btns-container">
-							<a class="easyui-linkbutton" data-options="iconCls:'icon-search'" href="javascript:void(0)">查询</a>
-							<a id="reset-btn" class="easyui-linkbutton"  href="#">重置</a>
+							<a class="easyui-linkbutton" data-options="iconCls:'icon-search'" href="javascript:void(0);" onclick="queryButton()">查询</a>
+							<a id="reset-btn" class="easyui-linkbutton"  href="javascript:void(0);" onclick="resetButton()">重置</a>
 							<a id="dzaddid" class="easyui-linkbutton"  data-options="iconCls:'icon-add'" onclick="add()">新增</a>
 						</div>
 					</td>
 				</tr>
 			</table>
+			</form>
         </div>
 	        
 	  </div>
@@ -185,5 +237,94 @@ datagridProcessFormater = function(val, row, index) {
  			+ index + ')">编辑</a>&nbsp;';
  };
  
+ /**
+  * @title:queryButton
+  * @description:精确查询【确定】
+  * @author: zhang_guoliang@founder.com
+  * @param 
+  * @date:2015-04-14 18:42:43
+  */
+ queryButton = function(){
+ 	/* //清除【空间查询】图层
+ 	if(SyrkQuery.drawType == "" || SyrkQuery.drawZbz ==""){
+ 		SyrkQuery.drawType = "";
+ 		SyrkQuery.map.clearGraph();
+ 	} */
+ 	var zdrygllxdm = document.getElementById("zdrygllxdm").value;
+ 	var xm = document.getElementById("xm").value;
+ 	var zdrylb = document.getElementById("zdrylb").value;
+ 	var gmsfhm = document.getElementById("gmsfhm").value;
+ 	var xbdm = document.getElementById("xbdm").value;
+ 	var gjdm = document.getElementById("gjdm").value;
+ 	var xzd = document.getElementById("xzd").value;
+ 	var hjd = document.getElementById("hjd").value;
+ 	//责任单位不确定
+ 	var bjzdrybh = document.getElementById("bjzdrybh").value;
+ 	
+ 	var dqjb = document.getElementById("dqjb").value;
+ 	var glzt = document.getElementById("glzt").value;
+ 	
+ 	//gem 需求说只按照年龄，不按照年龄段
+ 	/* var ageTemp = document.getElementById("age").value;
+ 	var year = new Date().getFullYear();
+ 	var age = "";
+ 	if (ageTemp!=null && ageTemp!='') {
+ 		age = year - ageTemp;
+ 	} */
+ 	
+ 	
+ 	/* var jzd_dzxz = document.getElementById("jzd_dzxz").value; */
+ 	//var searchbox = $('#searchbox').searchbox('getValue');
+ 	$('#dg').datagrid('load',{    
+ 		'dqjb':dqjb,
+ 		'zdrygllxdm':zdrygllxdm,
+ 		'xm':xm,
+ 		'zdrylb':zdrylb,
+ 		'gmsfhm':gmsfhm,
+ 		'xbdm':xbdm,
+ 		'glzt':glzt,
+ 		'xzd':xzd,
+ 		'hjd':hjd,
+ 		'bjzdrybh':bjzdrybh,
+ 		'gjdm': gjdm
+ 	});
+ 	/* alert("a"); */
+ 	if(zdrygllxdm != null || zdrygllxdm != ""){
+ 		document.getElementById("zdrygllxdm").value = zdrygllxdm;
+ 	}
+ 	if(xm != null || xm != ""){
+ 		document.getElementById("xm").value = xm;
+ 	}
+	if(zdrylb != null || zdrylb != ""){
+		document.getElementById("zdrylb").value = zdrylb;
+ 	}
+ 	if(gmsfhm != null || gmsfhm != ""){
+ 		document.getElementById("gmsfhm").value =  gmsfhm;
+ 	}
+	if(xbdm != null || xbdm != ""){
+		document.getElementById("xbdm").value = zdrygllxdm;
+ 	}
+ 	if(gjdm != null || gjdm != ""){
+ 		document.getElementById("gjdm").value = gjdm;
+ 	}
+	if(xzd != null || xzd != ""){
+		document.getElementById("xzd").value = xzd;
+ 	}
+ 	if(hjd != null || hjd != ""){
+ 		document.getElementById("hjd").value = hjd;
+ 	}
+	if(bjzdrybh != null || bjzdrybh != ""){
+		document.getElementById("bjzdrybh").value = bjzdrybh;
+ 	}
+ 	if(dqjb != null || dqjb != ""){
+ 		document.getElementById("dqjb").value = dqjb;
+ 	}
+	if(glzt != null || glzt != ""){
+		document.getElementById("glzt").value = glzt;
+ 	}
+ };
  
+resetButton = function(){
+		$("#queryForm").form("reset");
+	};
 </script>

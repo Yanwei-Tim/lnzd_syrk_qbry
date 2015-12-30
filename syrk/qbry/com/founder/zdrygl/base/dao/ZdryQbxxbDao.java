@@ -99,4 +99,19 @@ public class ZdryQbxxbDao extends BaseDaoImpl {
 	public ZdryQbxxb queryViewByMap(Map<String, Object> map) {
 		return (ZdryQbxxb)super.queryForObject("ZdryQbxxb.queryViewByMap", map);
 	}
+	/**
+	 * 
+	 * @Title: queryByGmsfhm
+	 * @Description: TODO(通过省份证验证是否已存在情报人员)
+	 * @param @param gmsfhm
+	 * @param @return    设定文件
+	 * @return ZdryQbxxb    返回类型
+	 * @throws
+	 */
+	public ZdryQbxxb queryByGmsfhm(String gmsfhm){		
+		ZdryQbxxb entity=new ZdryQbxxb();
+	    entity.setGmsfhm(gmsfhm);
+		return (ZdryQbxxb) queryForObject("ZdryQbxxb.queryByEntity", entity);		
+	}
+	
 }

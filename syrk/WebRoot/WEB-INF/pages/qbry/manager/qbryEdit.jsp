@@ -143,7 +143,7 @@
 					<!-- 功能按钮 start -->
 					<div class="operate-btns">
 						<a id="sendDown" href="#" class="easyui-linkbutton" >下发</a>
-						<a id="sendBack" href="#" class="easyui-linkbutton" >申请回退</a>
+						<a id="sendBack" href="#" class="easyui-linkbutton"  onclick="sendBack()">申请回退</a>
 						
 						<!-- 责任区民警才能 添加实有人口以及 接收 -->
 						<c:if test="${orgLevel == '50' }" >
@@ -186,6 +186,28 @@
 				        </form>
 				        </div>
 				   </div> 
+				  <div id="sendBackDiv" class="easyui-window" title="申请退回"  data-options="iconCls:'icon-search',
+		                collapsible:false,minimizable:false,maximizable:false,
+				        modal:true,closed:true,width:600,height:200">				        
+					    <form id="sendBackForm">  
+					    <input type="hidden" name="id" id="id" value="${qbry.id }" /> 
+					    <table border="0" cellpadding="0" cellspacing="10" width="100%" align="center">
+						        
+						        <tr class="dialogTr">
+							    	<td width="20%" class="dialogTd" align="right">退回原因：</td>
+							    	<td width="80%" class="dialogTd">
+							    	    <textarea name="thyy" id="thyy" class="easyui-validatebox" style="width: 100%; height:48px;" data-options="required:false,validType:['maxLength[500]'],tipPosition:'left'"></textarea>
+							    	</td>				    	
+						    	</tr>	
+						    	<tr class="dialogTr" style="padding-bottom:0px;margin-bottom:0px;">
+							    	<td align="center" colspan="2">
+							    		<a class="easyui-linkbutton" iconCls="icon-ok" onclick="sendBackupdate()">确定</a>
+							    		<a class="easyui-linkbutton" iconCls="icon-cancel" onclick="sendBackWinClose()">关闭</a>
+							    	</td>
+						    	</tr>
+					         </table>                  				        				                     
+				        </form>   				        
+				  </div> 
 </div>
 
 </div>
@@ -239,7 +261,44 @@
 			}
 		});	
 	}
-	
+ //申请回退	
+  function sendBack(){	
+		$("#sendBackDiv").window("open");		 
+ }	
+ function sendBackWinClose(){
+	 $("#sendBackDiv").window("close");
+ }
+ function sendBackupdate(){
+		var qbryId=$("#id").val();
+		var thyy=$("#thyy").val();
+		$.ajax({
+			type: "POST",
+			url: contextPath + "/qbryManager/htsq",
+			dataType: "json",
+			data:"id=" + qbryId + "&thyy=" + thyy,
+			success: function(data) {
+				if (data) {				
+					if(data.status && data.status=="success"){
+						alert("退回成功");
+						acceptQbryWinClose();
+						$("#accept").hide();
+					}else{
+						if(data.message){
+							alert("退回失败："+data.message);
+						}else{
+							alert("退回失败："+data);
+						}
+						
+					}
+				}else{
+					alert("退回失败："+data);
+				}
+			},		
+			error: function(data) {
+				alert("退回失败："+data);
+			}
+		});		 
+ }
 </script>
 </html>
     
