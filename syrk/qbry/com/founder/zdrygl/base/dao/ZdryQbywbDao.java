@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.founder.framework.base.dao.BaseDaoImpl;
+import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.utils.EasyUIPage;
 import com.founder.framework.utils.StringUtils;
 import com.founder.zdrygl.base.model.ZdryQbxxb;
@@ -62,6 +63,10 @@ public class ZdryQbywbDao extends BaseDaoImpl {
 			page.setRows(queryForList("ZdryQbywb.queryListByZjhm",map));
 			page.setTotal((Integer) queryForObject("ZdryQbywb.queryListCountByZjhm", map));
 			return page;
+	}
+
+	public void sendQdry(ZdryQbywb yewuBean, SessionBean sessionBean) {
+		    insert("ZdryQbywb.save", yewuBean);
 	}
 	
 	

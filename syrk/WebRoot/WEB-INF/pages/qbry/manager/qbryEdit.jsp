@@ -142,8 +142,8 @@
 					
 					<!-- 功能按钮 start -->
 					<div class="operate-btns">
-						<a id="sendDown" href="#" class="easyui-linkbutton" >下发</a>
-						<a id="sendBack" href="#" class="easyui-linkbutton" >申请回退</a>
+						<a id="sendDown"  class="easyui-linkbutton" onclick="openCzWin(1)">下发</a>
+						<a id="sendBack" href="#" class="easyui-linkbutton" onclick="openCzWin(2)">申请回退</a>
 						
 						<!-- 责任区民警才能 添加实有人口以及 接收 -->
 						<c:if test="${orgLevel == '50' }" >
@@ -159,26 +159,43 @@
 					</div>			
 					<!-- 功能按钮 end-->
 					
-					<!-- 情报人员接收窗口 -->
-					<div id="acceptQbryDiv" class="easyui-window" title="情报人员接收"  data-options="iconCls:'icon-search',
+					<!-- 情报人员操作窗口 -->
+					<div id="czDiv" class="easyui-window" title="情报人员操作"  data-options="iconCls:'icon-search',
 		                collapsible:false,minimizable:false,maximizable:false,
 				        modal:true,closed:true,width:600,height:200">
 				        <div id="datagridToolbar" style="padding: 0px; height: 150px; width: 100%; vertical-align: top;">
 				        <form id ="acceptForm" >		 
 				        	<input type="hidden" name="id" id="id" value="${qbry.id }" />
-				               
+				            <input type="hidden" name="gmsfhm" id="gmsfhm" value="${qbry.gmsfhm }" />  
 					        <table border="0" cellpadding="0" cellspacing="10" width="100%" align="center">
 						        
 						        <tr class="dialogTr">
-							    	<td width="20%" class="dialogTd" align="right">接收备注：</td>
+							    	<td width="20%" class="dialogTd" align="right">操作意见：</td>
 							    	<td width="80%" class="dialogTd">
-							    	    <textarea name="acceptBz" id="acceptBz" class="easyui-validatebox" style="width: 100%; height:48px;" data-options="required:false,validType:['maxLength[500]'],tipPosition:'left'"></textarea>
+							    	    <textarea name="czyj" id="czyj" class="easyui-validatebox" style="width: 100%; height:48px;" data-options="required:false,validType:['maxLength[500]'],tipPosition:'left'"></textarea>
+							    	</td>				    	
+						    	</tr>
+						    	<tr class="dialogTr">
+							    	<td width="20%" class="dialogTd" align="right">目标部门：</td>
+							    	<td width="80%" class="dialogTd">
+							    		<input class="easyui-combobox" type="text" id="mbbmdm"  style="width:180px;"
+								            data-options="
+								            url:'<%=contextPath%>/orgPublicSelect/queryComboBoxList?parentOrgCode='+${orgCode},
+								            valueField:'id',
+								            textField:'text',
+								            selectOnNavigation:false,
+								            method:'get',
+								            required:true,
+								            tipPosition:'right',
+								            onChange:orgCode_change"/>
+								            <input type="hidden" id="mbbmdm" name="mbbmdm"/>
+										    <input type="hidden" id="mbbmmc" name="mbbmmc"/>
 							    	</td>				    	
 						    	</tr>	
 						    	<tr class="dialogTr" style="padding-bottom:0px;margin-bottom:0px;">
 							    	<td align="center" colspan="2">
-							    		<a class="easyui-linkbutton" iconCls="icon-ok" onclick="acceptQbry();">确定</a>
-							    		<a class="easyui-linkbutton" iconCls="icon-cancel" onclick="acceptQbryWinClose()">关闭</a>
+							    		<a class="easyui-linkbutton" iconCls="icon-ok" onclick="czOk();">确定</a>
+							    		<a class="easyui-linkbutton" iconCls="icon-cancel" onclick="czWinClose()">关闭</a>
 							    	</td>
 						    	</tr>
 					         </table>
@@ -186,6 +203,8 @@
 				        </form>
 				        </div>
 				   </div> 
+				   
+
 </div>
 
 </div>
@@ -196,31 +215,42 @@
 </div>
 </body>
 <script type="text/javascript">
+	var czlx=0;
 	function addSyrk(){
 		 menu_open('实有人口新增','/syrkGl/add?mainTabID='+getMainTabID()+'&zjhm=210211198906132911');
 	}
 	
-	function acceptQbryWin(){//接收情报人员窗口
-		$("#acceptBz").val("");
-		$("#acceptQbryDiv").window("open");
+	function openCzWin(val){ //情报人员操作窗口
+		czlx=val;
+		$("#czyj").val("");
+		$("#czDiv").window("open");
+	}
+
+	function czWinClose(){
+		$("#czDiv").window("close");
+	} 
+	
+	function czOk(){
+		alert("")
+		if(czlx==1){
+			
+			sendQbry();
+		}
 	}
 	
-	function acceptQbryWinClose(){
-		$("#acceptQbryDiv").window("close");
-	}
 	function acceptQbry(){
 		var qbryId=$("#id").val();
-		var qbryBz=$("#acceptBz").val();
+		var qbryBz=$("#czyj").val();
 		$.ajax({
 			type: "POST",
-			url: contextPath + "/qbryManager/saveLg",
+			url: contextPath +"/qbryManager/saveLg",
 			dataType: "json",
 			data:"id=" + qbryId + "&bz=" + qbryBz,
 			success: function(data) {
 				if (data) {				
 					if(data.status && data.status=="success"){
 						alert("接收成功");
-						acceptQbryWinClose();
+						czWinClose();
 						$("#accept").hide();
 					}else{
 						if(data.message){
@@ -240,6 +270,48 @@
 		});	
 	}
 	
+
+	function orgCode_change(newVal, oldVal){
+	if(newVal){
+		$("#mbbmdm").val(newVal);
+	       } 
+	} 
+	function sendQbry(){
+		var gmsfhm=$("#gmsfhm").val();
+		var czyj=$("#czyj").val();
+		var mbbmmc=	$("#mbbmdm").combobox('getText');
+		if(mbbmmc){
+			 $("#mbbmmc").val(mbbmmc);
+		 }
+		alert(contextPath +"/qbryManager/send");
+		$.ajax({
+			type: "POST",
+			url: contextPath +"/qbryManager/sendQbry",
+			dataType: "json",
+			data:"mbbmmc=" + mbbmmc + "&mbbmdm=" + $("#mbbmdm").val()+"&czyj="+czyj+"&gmsfhm="+gmsfhm,
+			success: function(data) {
+				if (data) {				
+					if(data.status && data.status=="success"){
+						alert("下发成功");
+						czWinClose();
+						$("#sendDown").hide();
+					}else{
+						if(data.message){
+							alert("下发失败："+data.message);
+						}else{
+							alert("下发失败："+data);
+						}
+						
+					}
+				}else{
+					alert("下发失败："+data);
+				}
+			},		
+			error: function(data) {
+				alert("下发失败："+data);
+			}
+		});	
+	}
 </script>
 </html>
     

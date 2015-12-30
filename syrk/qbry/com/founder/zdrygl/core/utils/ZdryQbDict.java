@@ -18,4 +18,12 @@ public class ZdryQbDict {
 	public static String GLZT_THJJ="3";//退回拒绝
 	public static String GLZT_YJS="9";//已接收
 
+	
+	//业务操作类型
+	public static String YWCZLX_XF="1";//下发
+	public static String YWCZLX_TH="2";//退回
+	public static String YWCZLX_THJJ="3";//退回拒绝
+	public static String YWCZLX_THTY="4";//退回同意
+	public static String YWCZLX_THCX="8";//退回撤销
+	public static String YWCZLX_JS="9";//接收
 }

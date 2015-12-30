@@ -132,4 +132,6 @@ public class ZdryQbxxbService {
 		BaseService.setUpdateProperties(entity, sessionBean);
 		zdryQbxxbDao.update(entity);
 	}
+	
+	
 }

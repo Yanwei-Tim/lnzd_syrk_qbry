@@ -21,6 +21,7 @@ import com.founder.framework.exception.BussinessException;
 import com.founder.framework.organization.department.bean.OrgOrganization;
 import com.founder.framework.organization.department.service.OrgOrganizationService;
 import com.founder.framework.utils.EasyUIPage;
+import com.founder.framework.utils.UUID;
 import com.founder.syrkgl.bean.SyrkSyrkxxzb;
 import com.founder.syrkgl.service.SyrkSyrkxxzbService;
 import com.founder.zdrygl.base.model.ZdryQbxxb;
@@ -159,6 +160,7 @@ public class qbryController extends BaseController {
 			mv.addObject("qbry",qbxxb);
 			
 			sessionBean = getSessionBean(sessionBean);
+			mv.addObject("orgCode",sessionBean.getUserOrgCode());
 			mv.addObject("orgLevel",sessionBean.getUserOrgLevel());
 			return mv;
 	}
@@ -224,6 +226,40 @@ public class qbryController extends BaseController {
 			logger.error(e.getLocalizedMessage(), e);
 			model.put(AppConst.STATUS, AppConst.FAIL);
 			model.put(AppConst.MESSAGES, "接收失败！");
+		}
+
+		return model;
+
+	}
+
+	/**
+	 * 
+	 * @Title: send
+	 * @Description: (下发)
+	 * @param @param id 情报人员ID
+	 * @param @param sessionBean
+	 * @param @return    设定文件
+	 * @return ModelAndView    返回类型
+	 * @throw
+	 */
+	@RequestMapping(value = "/sendQbry", method = RequestMethod.POST)
+	public @ResponseBody Map<String, Object> sendQbry(ZdryQbywb yewuBean,SessionBean sessionBean) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		sessionBean = getSessionBean(sessionBean);
+		try {
+			
+			zdryQbywbService.sendQdry(yewuBean,sessionBean);
+			model.put(AppConst.STATUS, AppConst.SUCCESS);
+			model.put(AppConst.MESSAGES, "下发成功");
+			
+		} catch (BussinessException e) {
+			logger.error(e.getLocalizedMessage(), e);
+			model.put(AppConst.STATUS, AppConst.FAIL);
+			model.put(AppConst.MESSAGES, e.getLocalizedMessage());
+		} catch (Exception e) {
+			logger.error(e.getLocalizedMessage(), e);
+			model.put(AppConst.STATUS, AppConst.FAIL);
+			model.put(AppConst.MESSAGES, "下发失败！");
 		}
 
 		return model;

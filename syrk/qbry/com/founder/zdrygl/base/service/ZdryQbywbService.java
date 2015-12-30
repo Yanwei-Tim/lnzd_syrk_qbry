@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.founder.framework.base.entity.SessionBean;
 import com.founder.framework.base.service.BaseService;
 import com.founder.framework.utils.EasyUIPage;
+import com.founder.framework.utils.UUID;
 import com.founder.zdrygl.base.dao.ZdryQbywbDao;
 import com.founder.zdrygl.base.model.ZdryQbywb;
 
@@ -52,6 +53,12 @@ public class ZdryQbywbService {
 	 */
 	public EasyUIPage queryListByZjhm(String zjhm,EasyUIPage page,ZdryQbywb entity) {
 		return zdryQbywbDao.queryListByZjhm(zjhm,page,entity);
+	}
+
+	public void sendQdry(ZdryQbywb yewuBean, SessionBean sessionBean) {
+		yewuBean.setId(UUID.create());
+		yewuBean.setCzlb("1");
+		zdryQbywbDao.sendQdry(yewuBean,sessionBean);
 	}
 	
 	
