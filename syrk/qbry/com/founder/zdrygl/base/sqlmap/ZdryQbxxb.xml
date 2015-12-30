@@ -182,6 +182,21 @@
 			<isNotEmpty prepend="and" property="entity.qbdd"> QBDD = #entity.qbdd#</isNotEmpty>
 			<isNotEmpty prepend="and" property="entity.qbpcs"> QBPCS = #entity.qbpcs#</isNotEmpty>
 			<isNotEmpty prepend="and" property="entity.qbzrq"> QBZRQ = #entity.qbzrq#</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.zdrygllxdm"> ZDRYGLLXDM = #entity.zdrygllxdm#</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.xm">
+			 	XM LIKE '%'||#entity.xm#||'%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.zdrylb"> ZDRYLB= #entity.zdrylb#</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.gmsfhm"> GMSFHM = #entity.gmsfhm#</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.xbdm"> XBDM = #entity.xbdm#</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.gjdm"> GJDM = #entity.gjdm#</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.xzd"> 
+				XZD LIKE '%'||#entity.xzd#||'%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.hjd"> HJD = #entity.hjd#</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.bjzdrybh"> BJZDRYBH = #entity.bjzdrybh#</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.dqjb"> DQJB = #entity.dqjb#</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.glzt"> GLZT = #entity.glzt#</isNotEmpty>
 	</select>
 	
 	<!-- 情报人员管理列表数据【分页总数】 -->
@@ -192,7 +207,22 @@
 		    <isNotEmpty prepend="and" property="entity.qbzd"> QBZD = #entity.qbzd#</isNotEmpty>
 			<isNotEmpty prepend="and" property="entity.qbdd"> QBDD = #entity.qbdd#</isNotEmpty>
 			<isNotEmpty prepend="and" property="entity.qbpcs"> QBPCS = #entity.qbpcs#</isNotEmpty>
-			<isNotEmpty prepend="and" property="entity.qbzrq"> QBZRQ = #entity.qbzrq#</isNotEmpty>           
+			<isNotEmpty prepend="and" property="entity.qbzrq"> QBZRQ = #entity.qbzrq#</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.zdrygllxdm"> ZDRYGLLXDM = #entity.zdrygllxdm#</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.xm">
+			 	XM LIKE '%'||#entity.xm#||'%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.zdrylb"> ZDRYLB= #entity.zdrylb#</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.gmsfhm"> GMSFHM = #entity.gmsfhm#</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.xbdm"> XBDM = #entity.xbdm#</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.gjdm"> GJDM = #entity.gjdm#</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.xzd"> 
+				XZD LIKE '%'||#entity.xzd#||'%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.hjd"> HJD = #entity.hjd#</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.bjzdrybh"> BJZDRYBH = #entity.bjzdrybh#</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.dqjb"> DQJB = #entity.dqjb#</isNotEmpty>
+			<isNotEmpty prepend="and" property="entity.glzt"> GLZT = #entity.glzt#</isNotEmpty>           
 		    <![CDATA[ ) a where rownum <= #end# ) where r > #begin#  
 			          order by $sort$ $order$   ]]>
 	</select>
